@@ -35,7 +35,10 @@
 #include <java/util/ListIterator.h>
 
       
-#include <java/util/Vector.h>
+#include <org/allbinary/util/BasicArrayList.h>
+
+      
+#include <org/allbinary/util/BasicArrayListD.h>
 
       
 #include <org/allbinary/business/context/modules/storefront/StoreFrontInterface.h>
@@ -159,15 +162,17 @@ class InventorySearchUtil
 
     private: const CommonPhoneStrings commonPhoneStrings = CommonPhoneStrings::getInstance();
 
+    protected: const BasicItemData basicItemData = BasicItemData::getInstance();
+
                 //@Throws(Exception.constructor)
             
-    public: Vector getBasicItemIdColumn(SearchRequest searchRequest);
+    public: BasicArrayList getBasicItemIdColumn(SearchRequest searchRequest);
 
                 //@Throws(Exception.constructor)
             
     private: std::string getNoResults(TransformDocumentInterface viewDocumentInterface, Node inventoryNode);
 
-    public: std::vector<std::string> search(AbeClientInformationInterface abeClientInformation, SearchRequest searchRequest, Vector column);
+    public: std::vector<std::string> search(AbeClientInformationInterface abeClientInformation, SearchRequest searchRequest, BasicArrayList column);
 
 };
 

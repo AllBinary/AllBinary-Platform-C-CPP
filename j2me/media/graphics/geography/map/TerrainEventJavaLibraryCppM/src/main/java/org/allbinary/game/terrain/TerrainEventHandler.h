@@ -26,7 +26,7 @@
 #include <java/util/Hashtable.h>
 
       
-#include <org/allbinary/logic/NullUtil.h>
+#include <org/allbinary/logic/StdUtil.h>
 
       
 #include <org/allbinary/logic/util/event/AllBinaryEventObject.h>
@@ -71,7 +71,7 @@
 
 class TerrainEventHandler: public BasicEventHandler {
 
-    private: static Hashtable<any, any> hashtable = NullUtil::getInstance().NULL_TABLE;
+    private: static Hashtable<any, any> hashtable = StdUtil::getInstance().NULL_TABLE;
 
     public: static void init();
 

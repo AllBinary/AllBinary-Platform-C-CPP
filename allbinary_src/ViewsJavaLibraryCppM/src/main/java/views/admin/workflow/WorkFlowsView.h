@@ -23,7 +23,10 @@
 
             #include "../../../java/lang/Exception.h"
         
-#include <java/util/Vector.h>
+#include <org/allbinary/util/BasicArrayList.h>
+
+      
+#include <org/allbinary/util/BasicArrayListD.h>
 
       
 #include <org/allbinary/data/tables/workflow/WorkFlowEntityFactory.h>
@@ -79,7 +82,7 @@ class WorkFlowsView: public HttpStoreComponentView, public DomNodeInterface {
 
     protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: Vector workFlowsVector;
+    private: BasicArrayList workFlowsVector;
 
 public: WorkFlowsView(TransformInfoInterface transformInfoInterface);
 

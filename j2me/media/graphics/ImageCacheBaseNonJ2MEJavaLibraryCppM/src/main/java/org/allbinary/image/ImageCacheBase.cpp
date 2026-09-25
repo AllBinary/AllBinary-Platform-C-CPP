@@ -68,6 +68,9 @@
 #include <jsinterop/annotations/JsConstructor.h>
 
       
+#include <org/allbinary/logic/StdUtil.h>
+
+      
 
 
 
@@ -96,7 +99,7 @@ class ImageCacheBase
 
     protected: const ImageFactory imageFactory = ImageFactory::getInstance();
 
-    protected: const Hashtable<any, any> hashtable = Hashtable<any, any>();
+    protected: const Hashtable<any, any> hashtable = StdUtil::getInstance().createHashtable();
 
     protected: const int32_t SIZE = 128;
 

@@ -54,6 +54,9 @@
 #include <org/allbinary/data/tree/dom/ModDomHelper.h>
 
       
+#include <org/allbinary/logic/StdUtil.h>
+
+      
 #include <org/allbinary/logic/string/StringUtil.h>
 
       
@@ -389,7 +392,7 @@ this->storeCancelComment= value;
 
     public: HashMap<any, any> toHashMapOrder(){
 
-    HashMap<any, any> hashMap = HashMap<any, any>();;
+    HashMap<any, any> hashMap = StdUtil::getInstance().createHashMap();;
     
 hashMap.put(PaymentData::METHOD, this->paymentMethod);
     

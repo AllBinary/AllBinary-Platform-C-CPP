@@ -60,9 +60,9 @@ this->logUtil.putF(tagName, this, this->commonStrings.CONSTRUCTOR);
 
     AcceptableResponseUtil acceptableResponseUtil = AcceptableResponseUtil::getInstance();;
     
-acceptableResponseUtil.candidateVector.add(index, candidate);
+acceptableResponseUtil.candidateVector.addAt(index, candidate);
     
-acceptableResponseUtil.tagNameVector.add(index, tagName);
+acceptableResponseUtil.tagNameVector.addAt(index, tagName);
     
 }
 

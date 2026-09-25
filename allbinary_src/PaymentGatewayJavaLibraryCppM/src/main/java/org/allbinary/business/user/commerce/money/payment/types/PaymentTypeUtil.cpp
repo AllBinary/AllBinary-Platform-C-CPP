@@ -22,7 +22,10 @@
         
             #include "../../../../../../../../java/lang/Exception.h"
         
-#include <java/util/Vector.h>
+#include <org/allbinary/util/BasicArrayList.h>
+
+      
+#include <org/allbinary/util/BasicArrayListD.h>
 
       
 #include <org/allbinary/business/entry/EntryData.h>
@@ -44,6 +47,9 @@
 
       
 #include <org/allbinary/globals/URLGLOBALS.h>
+
+      
+#include <org/allbinary/logic/StdUtil.h>
 
       
 #include <org/allbinary/logic/communication/log/LogUtil.h>
@@ -135,7 +141,7 @@ class PaymentTypeUtil
                 null
             ;
 
-    private: Vector paymentTypeVector = Vector();
+    private: BasicArrayList paymentTypeVector = BasicArrayListD();
 
 private: PaymentTypeUtil(){
 
@@ -185,7 +191,7 @@ this->paymentTypeVector.add(paymentType);
             
     public: PaymentType get(std::string paymentTypeString){
 
-    int32_t size = this->paymentTypeVector.length;;
+    int32_t size = this->paymentTypeVector.size();;
     
 
 
@@ -348,12 +354,12 @@ this->initDefault(storeName);
 }
 
 
-    public: Vector difference(Vector a_PaymentTypeVector){
+    public: BasicArrayList difference(BasicArrayList a_PaymentTypeVector){
 
-    Vector diff = Vector();;
+    BasicArrayList diff = BasicArrayListD();;
     
 
-    int32_t size = this->paymentTypeVector.length;;
+    int32_t size = this->paymentTypeVector.size();;
     
 
 

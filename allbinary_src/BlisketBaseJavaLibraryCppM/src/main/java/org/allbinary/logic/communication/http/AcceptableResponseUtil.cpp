@@ -20,10 +20,16 @@
 
             #include "../../../../../java/lang/Object.h"
         
-#include <java/util/Vector.h>
+#include <org/allbinary/util/BasicArrayList.h>
+
+      
+#include <org/allbinary/util/BasicArrayListD.h>
 
       
 #include <org/allbinary/TsUtil.h>
+
+      
+#include <org/allbinary/logic/StdUtil.h>
 
       
 
@@ -72,9 +78,9 @@ TsUtil::getInstance().hashCode(AcceptableResponseFactory::getInstance().HTML);
                     return 0;
                 }
             
-    public: const Vector candidateVector = Vector();
+    public: const BasicArrayList candidateVector = BasicArrayListD();
 
-    public: const Vector tagNameVector = Vector();
+    public: const BasicArrayList tagNameVector = BasicArrayListD();
 
     public: std::string get(int32_t index){
 
@@ -101,7 +107,7 @@ TsUtil::getInstance().hashCode(AcceptableResponseFactory::getInstance().HTML);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->candidateVector.length;;
+                        return this->candidateVector.size();;
     
 }
 

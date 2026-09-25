@@ -40,6 +40,9 @@
 #include <org/allbinary/input/automation/module/generic/configuration/profile/actions/script/GenericProfileActionScript.h>
 
       
+#include <org/allbinary/logic/StdUtil.h>
+
+      
 #include <org/allbinary/logic/communication/log/LogUtil.h>
 
       
@@ -137,7 +140,7 @@ this->name= name;
 
     public: HashMap<any, any> toHashMap(){
 
-    HashMap<any, any> hashMap = HashMap<any, any>();;
+    HashMap<any, any> hashMap = StdUtil::getInstance().createHashMap();;
     
 hashMap.put(GenericProfileActionData::NAME, this->name);
     

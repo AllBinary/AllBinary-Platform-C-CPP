@@ -19,6 +19,9 @@
 #include <java/util/HashMap.h>
 
       
+#include <org/allbinary/logic/StdUtil.h>
+
+      
 #include <org/allbinary/logic/communication/log/LogUtil.h>
 
       
@@ -79,7 +82,7 @@ class MediaUtil
 
     private: static HashMap<any, any> getImageBufferPropertyHashMap(BufferedImage bufferedImage){
 
-    HashMap<any, any> hashMap = HashMap<any, any>();;
+    HashMap<any, any> hashMap = StdUtil::getInstance().createHashMap();;
     
 
     std::vector<std::string> propertyStringArray = bufferedImage.getPropertyNames();;

@@ -28,6 +28,9 @@
 #include <org/allbinary/business/user/UserInterface.h>
 
       
+#include <org/allbinary/logic/StdUtil.h>
+
+      
 #include <org/allbinary/logic/communication/log/LogUtil.h>
 
       
@@ -88,7 +91,7 @@ this->init();
 
 
     private: void init(){
-this->emailEventHashMap= HashMap<any, any>();
+this->emailEventHashMap= StdUtil::getInstance().createHashMap();
     
 
                         if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().EMAILLOGGING))

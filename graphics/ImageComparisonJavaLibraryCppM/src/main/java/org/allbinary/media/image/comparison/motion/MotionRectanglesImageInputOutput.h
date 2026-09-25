@@ -35,7 +35,10 @@
 #include <java/awt/image/BufferedImage.h>
 
       
-#include <java/util/Vector.h>
+#include <org/allbinary/util/BasicArrayList.h>
+
+      
+#include <org/allbinary/util/BasicArrayListD.h>
 
       
 #include <org/allbinary/input/automation/ImageOutputData.h>

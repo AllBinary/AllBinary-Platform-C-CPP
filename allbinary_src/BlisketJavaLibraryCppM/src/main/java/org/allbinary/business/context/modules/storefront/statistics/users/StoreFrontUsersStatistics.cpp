@@ -32,7 +32,10 @@
 #include <java/util/Set.h>
 
       
-#include <java/util/Vector.h>
+#include <org/allbinary/util/BasicArrayList.h>
+
+      
+#include <org/allbinary/util/BasicArrayListD.h>
 
       
 #include <org/allbinary/business/context/modules/storefront/StoreFrontInterface.h>
@@ -48,6 +51,9 @@
 
       
 #include <org/allbinary/data/tables/user/UserEntityInterface.h>
+
+      
+#include <org/allbinary/logic/StdUtil.h>
 
       
 
@@ -80,18 +86,18 @@ class StoreFrontUsersStatistics
     private: HashMap<any, any> totalUsersByRoleHashMap;
 
 public: StoreFrontUsersStatistics(StoreFrontInterface storeFrontInterface){
-this->totalUsersByRoleHashMap= HashMap<any, any>();
+this->totalUsersByRoleHashMap= StdUtil::getInstance().createHashMap();
     
 
     UserEntityInterface userEntityInterface = UserEntityFactory::getInstance();;
     
 
-    Vector userVector = userEntityInterface.getCustomers();;
+    BasicArrayList userVector = userEntityInterface.getCustomers();;
     
-this->totalNumberOfUsers= Long(userVector.length);
+this->totalNumberOfUsers= Long(userVector.size());
     
 
-    int32_t size = userVector.length;;
+    int32_t size = userVector.size();;
     
 
 
@@ -165,7 +171,7 @@ this->totalUsersByRoleHashMap.put(nextUserRole, currentNumberOfUsersForRole);
 
     public: HashMap<any, any> toHashMap(){
 
-    HashMap<any, any> hashMap = HashMap<any, any>();;
+    HashMap<any, any> hashMap = StdUtil::getInstance().createHashMap();;
     
 hashMap.put(StoreFrontUsersStatisticsData::getInstance().NUMBEROFUSERS, this->getNumberOfUsers().toString());
     
@@ -206,7 +212,7 @@ hashMap.put(nextUserRole.toString(), totalForRole.toString());
 }
 
 
-    public: Vector toVector(){
+    public: BasicArrayList toVector(){
 
 
 

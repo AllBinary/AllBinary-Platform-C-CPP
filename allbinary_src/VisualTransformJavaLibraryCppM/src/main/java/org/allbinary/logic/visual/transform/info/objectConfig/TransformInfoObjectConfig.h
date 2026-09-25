@@ -25,7 +25,10 @@
         
             #include "../../../../../../../java/lang/Exception.h"
         
-#include <java/util/Vector.h>
+#include <org/allbinary/util/BasicArrayList.h>
+
+      
+#include <org/allbinary/util/BasicArrayListD.h>
 
       
 #include <org/allbinary/data/tree/dom/DomNodeHelper.h>
@@ -35,6 +38,9 @@
 
       
 #include <org/allbinary/data/tree/dom/document/DomDocumentHelper.h>
+
+      
+#include <org/allbinary/logic/StdUtil.h>
 
       
 #include <org/allbinary/logic/communication/log/LogUtil.h>
@@ -149,35 +155,35 @@ public: TransformInfoObjectConfig(Object transformInfoInterface, std::string nam
 
                 //@Throws(Exception.constructor)
             
-    private: Vector getNodeVector(std::string nodeName);
+    private: BasicArrayList getNodeVector(std::string nodeName);
 
                 //@Throws(Exception.constructor)
             
-    private: Vector getTransformDomNodes(std::string nodeName);
+    private: BasicArrayList getTransformDomNodes(std::string nodeName);
 
                 //@Throws(Exception.constructor)
             
-    public: Vector getTransforms(std::string nodeName);
+    public: BasicArrayList getTransforms(std::string nodeName);
 
                 //@Throws(Exception.constructor)
             
-    public: Vector getTransformsGroup(std::string group);
+    public: BasicArrayList getTransformsGroup(std::string group);
 
                 //@Throws(Exception.constructor)
             
-    public: Vector getTransformDomNodes();
+    public: BasicArrayList getTransformDomNodes();
 
                 //@Throws(Exception.constructor)
             
-    public: Vector getTransforms();
+    public: BasicArrayList getTransforms();
 
                 //@Throws(Exception.constructor)
             
-    public: Vector getGroupTransforms();
+    public: BasicArrayList getGroupTransforms();
 
                 //@Throws(Exception.constructor)
             
-    public: Vector getParentTransforms();
+    public: BasicArrayList getParentTransforms();
 
     private: Node getRootNode();
 

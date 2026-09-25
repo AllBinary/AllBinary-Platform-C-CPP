@@ -26,10 +26,16 @@
 #include <java/util/Hashtable.h>
 
       
-#include <java/util/Vector.h>
+#include <org/allbinary/util/BasicArrayList.h>
+
+      
+#include <org/allbinary/util/BasicArrayListD.h>
 
       
 #include <org/allbinary/init/crypt/jcehelper/CryptInterface.h>
+
+      
+#include <org/allbinary/logic/StdUtil.h>
 
       
 #include <org/allbinary/logic/communication/log/LogUtil.h>
@@ -97,7 +103,7 @@ this->setServer(0);
 
         try {
             
-    Vector param = Vector();;
+    BasicArrayList param = BasicArrayListD();;
     
 
     std::string serverUrl = getClientInfo().getLicenseServer(this->getServer());;
@@ -134,7 +140,7 @@ xmlRpcClient.setBasicAuthentication(
     
 this->logUtil.putF(CLIENT_INFO +hashtable.toString(), this, this->commonStrings.GET);
     
-param.addElement(hashtable);
+param.add(hashtable);
     
 
     Object* result = xmlRpcClient.execute(this->getRemoteMethod(), param, cryptInterface);;

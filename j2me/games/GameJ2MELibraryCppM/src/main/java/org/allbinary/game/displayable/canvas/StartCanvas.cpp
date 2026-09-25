@@ -834,7 +834,7 @@ this->logUtil.putF("Trying to continue a demo lol - only continue a game canvas 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->nullUtil.NULL_TABLE;
+                        return this->stdUtil.NULL_TABLE;
     
 }
 
@@ -848,7 +848,7 @@ this->logUtil.putF("Trying to save the AI lol", this, "getCurrentStateHashtable"
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->nullUtil.NULL_TABLE;
+                        return this->stdUtil.NULL_TABLE;
     
 }
 

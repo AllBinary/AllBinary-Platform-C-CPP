@@ -28,7 +28,10 @@
 #include <java/util/HashMap.h>
 
       
-#include <java/util/Vector.h>
+#include <org/allbinary/util/BasicArrayList.h>
+
+      
+#include <org/allbinary/util/BasicArrayListD.h>
 
       
 #include <org/allbinary/business/context/modules/storefront/StoreFrontData.h>
@@ -65,6 +68,9 @@
 
       
 #include <org/allbinary/data/generator/PaymentGatewayIdGenerator.h>
+
+      
+#include <org/allbinary/logic/StdUtil.h>
 
       
 #include <org/allbinary/logic/communication/log/LogUtil.h>
@@ -138,11 +144,11 @@ this->setTableName(this->tableName);
                                     }
                                 
 
-    Vector vector = Vector();;
+    BasicArrayList vector = BasicArrayListD();;
     
 vector.add(PaymentGatewayIdGenerator().getNext());
     
-vector.addAll(PaymentGatewayEncryptedMapping(paymentGatewayInterface).toVector());
+vector.addAllList(PaymentGatewayEncryptedMapping(paymentGatewayInterface).toVector());
     
 
     Calendar calendar = Calendar::getInstance();;
@@ -195,7 +201,7 @@ super.insert(vector);
 paymentGatewayInterface.setLastModified(time);
     
 
-    HashMap<any, any> whereKeyValuePairs = HashMap<any, any>();;
+    HashMap<any, any> whereKeyValuePairs = StdUtil::getInstance().createHashMap();;
     
 whereKeyValuePairs.put(StoreFrontData::getInstance().NAME.toString(), paymentGatewayInterface.getStoreName());
     
@@ -251,10 +257,10 @@ super.updateWhere(whereKeyValuePairs, updateHashMap);
 
         try {
             
-    HashMap<any, any> paymentGatewayHashMap = HashMap<any, any>();;
+    HashMap<any, any> paymentGatewayHashMap = StdUtil::getInstance().createHashMap();;
     
 
-    HashMap<any, any> whereKeyAndValue = HashMap<any, any>();;
+    HashMap<any, any> whereKeyAndValue = StdUtil::getInstance().createHashMap();;
     
 whereKeyAndValue.put(StoreFrontData::getInstance().NAME.toString(), storeName);
     
@@ -381,11 +387,11 @@ paymentGatewayHashMap.put(PaymentGatewayData::SPECIAL9.toString(), superCrypt.de
 }
 
 
-    public: Vector findPaymentTypeVectorByStore(std::string storeName){
+    public: BasicArrayList findPaymentTypeVectorByStore(std::string storeName){
 
         try {
             
-    Vector paymentGatewayNameVector = Vector();;
+    BasicArrayList paymentGatewayNameVector = BasicArrayListD();;
     
 paymentGatewayNameVector= super.getColumnWhere(PaymentGatewayData::NAME.toString(), StoreFrontData::getInstance().NAME.toString(), storeName);
     
@@ -396,10 +402,10 @@ paymentGatewayNameVector= super.getColumnWhere(PaymentGatewayData::NAME.toString
                         
                                     {
                                     
-    Vector paymentGatewayVector = Vector();;
+    BasicArrayList paymentGatewayVector = BasicArrayListD();;
     
 
-    int32_t size = paymentGatewayNameVector.length;;
+    int32_t size = paymentGatewayNameVector.size();;
     
 
 
@@ -441,7 +447,7 @@ paymentGatewayVector.add(paymentType);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return Vector();
+                        return BasicArrayListD();
     
 
                         }
@@ -474,7 +480,7 @@ paymentGatewayVector.add(paymentType);
 
         try {
             
-    HashMap<any, any> whereHashMap = HashMap<any, any>();;
+    HashMap<any, any> whereHashMap = StdUtil::getInstance().createHashMap();;
     
 whereHashMap.put(StoreFrontData::getInstance().NAME.toString(), storeName);
     

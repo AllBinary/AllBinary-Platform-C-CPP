@@ -25,7 +25,10 @@
 #include <java/util/HashMap.h>
 
       
-#include <java/util/Vector.h>
+#include <org/allbinary/util/BasicArrayList.h>
+
+      
+#include <org/allbinary/util/BasicArrayListD.h>
 
       
 #include <javax/servlet/jsp/PageContext.h>
@@ -263,13 +266,13 @@ adminUserEmailEventHandler.receiveEmailInfo(UserEmailEventNameData::QUOTEREQUEST
     std::string userName = this->weblisketSession.getUserName();;
     
 
-    Vector vector = quoteRequestEntity.getIds(userName);;
+    BasicArrayList vector = quoteRequestEntity.getIds(userName);;
     
 
     int32_t id = 0;;
     
 
-    int32_t size = vector.length;;
+    int32_t size = vector.size();;
     
 
 

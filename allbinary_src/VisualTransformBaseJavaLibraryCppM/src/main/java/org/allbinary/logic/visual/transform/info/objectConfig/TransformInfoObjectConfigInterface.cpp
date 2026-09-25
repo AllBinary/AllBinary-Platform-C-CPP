@@ -20,7 +20,10 @@
 
             #include "../../../../../../../java/lang/Exception.h"
         
-#include <java/util/Vector.h>
+#include <org/allbinary/util/BasicArrayList.h>
+
+      
+#include <org/allbinary/util/BasicArrayListD.h>
 
       
 #include <org/allbinary/data/tree/dom/document/mapping/DomDocumentMappingInterface.h>
@@ -58,19 +61,19 @@ class TransformInfoObjectConfigInterface: public DomDocumentMappingInterface {
 
                 //@Throws(Exception.constructor)
             
-    Vector getTransformsGroup(std::string group)
+    BasicArrayList getTransformsGroup(std::string group)
 
                 //@Throws(Exception.constructor)
             
-    Vector getTransforms()
+    BasicArrayList getTransforms()
 
                 //@Throws(Exception.constructor)
             
-    Vector getParentTransforms()
+    BasicArrayList getParentTransforms()
 
                 //@Throws(Exception.constructor)
             
-    Vector getGroupTransforms()
+    BasicArrayList getGroupTransforms()
 
                 //@Throws(Exception.constructor)
             

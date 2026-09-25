@@ -33,7 +33,10 @@
 #include <java/util/Set.h>
 
       
-#include <java/util/Vector.h>
+#include <org/allbinary/util/BasicArrayList.h>
+
+      
+#include <org/allbinary/util/BasicArrayListD.h>
 
       
 #include <org/allbinary/business/user/address/StreetAddressData.h>
@@ -79,9 +82,9 @@ class ItemView
 
     private: OrderItemInterface itemInterface;
 
-    private: Vector vector;
+    private: BasicArrayList vector;
 
-public: ItemView(OrderItemInterface itemInterface, Vector vector);
+public: ItemView(OrderItemInterface itemInterface, BasicArrayList vector);
 
                 //@Throws(Exception.constructor)
             

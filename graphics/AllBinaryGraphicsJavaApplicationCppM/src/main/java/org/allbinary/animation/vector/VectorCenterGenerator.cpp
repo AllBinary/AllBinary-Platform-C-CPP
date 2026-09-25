@@ -29,9 +29,6 @@
 #include <java/util/HashMap.h>
 
       
-#include <java/util/Vector.h>
-
-      
 #include <org/allbinary/graphics/GPoint.h>
 
       
@@ -244,9 +241,6 @@ item.setPointsInterface(newPoints);
 
         try {
             
-    Vector newVector = Vector();;
-    
-
     int32_t size = pointVector.size();;
     
 

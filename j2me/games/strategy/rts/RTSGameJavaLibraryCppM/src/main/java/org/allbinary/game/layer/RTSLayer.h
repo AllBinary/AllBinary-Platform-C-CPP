@@ -138,6 +138,9 @@
 #include <org/allbinary/game/multiplayer/layer/RemoteInfo.h>
 
       
+#include <org/allbinary/logic/StdUtil.h>
+
+      
 #include <org/allbinary/logic/string/StringUtil.h>
 
       
@@ -253,7 +256,7 @@ class RTSLayer: public MultiPlayerGameLayer, public TickableInterface, public Ga
 
     private: std::string rootName;
 
-    protected: const Hashtable<any, any> hashtable = Hashtable<any, any>();
+    protected: const Hashtable<any, any> hashtable = StdUtil::getInstance().createHashtable();
 
     private: const int32_t BUILD_VALUE = 63;
 

@@ -34,7 +34,10 @@
 #include <java/awt.h>
 
       
-#include <java/util/Vector.h>
+#include <org/allbinary/util/BasicArrayList.h>
+
+      
+#include <org/allbinary/util/BasicArrayListD.h>
 
       
 #include <javax/swing/tree/DefaultMutableTreeNode.h>
@@ -68,6 +71,9 @@
 
       
 #include <org/allbinary/graphics/pipeline/BasicGraphicsPipeline.h>
+
+      
+#include <org/allbinary/logic/StdUtil.h>
 
       
 #include <org/allbinary/logic/communication/log/LogUtil.h>
@@ -145,7 +151,7 @@ class LinesGraphicItem
 
     private: DefaultMutableTreeNode treeNode;
 
-    private: Vector pointTreeNodeVector;
+    private: BasicArrayList pointTreeNodeVector;
 
     private: GPoint currentMousePoint;
 

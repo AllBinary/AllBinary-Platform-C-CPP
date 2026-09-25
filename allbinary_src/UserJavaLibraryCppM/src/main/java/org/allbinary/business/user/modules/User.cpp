@@ -30,7 +30,10 @@
 #include <java/util/HashMap.h>
 
       
-#include <java/util/Vector.h>
+#include <org/allbinary/util/BasicArrayList.h>
+
+      
+#include <org/allbinary/util/BasicArrayListD.h>
 
       
 #include <javax/servlet/http/HttpServletRequest.h>
@@ -70,6 +73,9 @@
 
       
 #include <org/allbinary/business/user/username/UserName.h>
+
+      
+#include <org/allbinary/logic/StdUtil.h>
 
       
 #include <org/allbinary/logic/communication/http/request/RequestParams.h>
@@ -795,9 +801,9 @@ this->enable= enable;
 
                 //@Throws(Exception.constructor)
             
-    public: Vector toVector(){
+    public: BasicArrayList toVector(){
 
-    Vector values = Vector();;
+    BasicArrayList values = BasicArrayListD();;
     
 values.add(this->userName);
     
@@ -840,7 +846,7 @@ values.add(userConfigurationDomDocumentMapping.toDomDocumentString());
     
 values.add(this->permissions);
     
-values.addAll(this->password.toVector(this->secret));
+values.addAllList(this->password.toVector(this->secret));
     
 values.add(this->enable);
     
@@ -867,7 +873,7 @@ values.add(time);
             
     public: HashMap<any, any> toHashMap(){
 
-    HashMap<any, any> values = HashMap<any, any>();;
+    HashMap<any, any> values = StdUtil::getInstance().createHashMap();;
     
 values.put(UserData::USERNAME, userName);
     

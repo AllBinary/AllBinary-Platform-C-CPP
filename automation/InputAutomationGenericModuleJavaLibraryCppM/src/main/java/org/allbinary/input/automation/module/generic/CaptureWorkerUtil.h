@@ -27,7 +27,10 @@
         
             #include "../../../../../../java/lang/Long.h"
         
-#include <java/util/Vector.h>
+#include <org/allbinary/util/BasicArrayList.h>
+
+      
+#include <org/allbinary/util/BasicArrayListD.h>
 
       
 #include <org/allbinary/input/automation/actions/script/condition/ProfileActionScriptConditionInterface.h>
@@ -64,7 +67,7 @@ class CaptureWorkerUtil
 
                 //@Throws(Exception.constructor)
             
-    public: static void processProfileActionConditions(Vector vector, Long frame);
+    public: static void processProfileActionConditions(BasicArrayList vector, Long frame);
 
     protected: const LogUtil logUtil = LogUtil::getInstance();
 

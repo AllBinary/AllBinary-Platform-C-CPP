@@ -22,10 +22,16 @@
         
             #include "../../../../../java/lang/Exception.h"
         
-#include <java/util/Vector.h>
+#include <org/allbinary/util/BasicArrayList.h>
+
+      
+#include <org/allbinary/util/BasicArrayListD.h>
 
       
 #include <javax/swing.h>
+
+      
+#include <org/allbinary/logic/StdUtil.h>
 
       
 
@@ -55,10 +61,10 @@ class DefaultListModelHelper
 
     private: DefaultListModel defaultListModel;
 
-    private: Vector vector;
+    private: BasicArrayList vector;
 
 public: DefaultListModelHelper(){
-this->vector= Vector();
+this->vector= BasicArrayListD();
     
 this->defaultListModel= DefaultListModel();
     
@@ -69,7 +75,7 @@ this->defaultListModel= DefaultListModel();
 this->defaultListModel= DefaultListModel();
     
 
-    int32_t size = this->vector.length;;
+    int32_t size = this->vector.size();;
     
 
 

@@ -22,10 +22,16 @@
         
             #include "../../../../../../../java/lang/Exception.h"
         
-#include <java/util/Vector.h>
+#include <org/allbinary/util/BasicArrayList.h>
+
+      
+#include <org/allbinary/util/BasicArrayListD.h>
 
       
 #include <org/allbinary/business/user/role/BasicUserRoleFactory.h>
+
+      
+#include <org/allbinary/logic/StdUtil.h>
 
       
 #include <org/allbinary/logic/communication/log/LogUtil.h>
@@ -70,7 +76,7 @@ class HttpFilePermissions
 
     private: AbFile file;
 
-    private: const Vector userRoles = Vector();
+    private: const BasicArrayList userRoles = BasicArrayListD();
 
 public: HttpFilePermissions(AbPath fullPath){
 this->file= AbFile::createAbFileFromAbPath(AbPath(fullPath.toFileSystemString(), FileUploadData::getInstance().FILE));
@@ -115,7 +121,7 @@ this->file= AbFile::createAbFileFromAbPath(AbPath(fullPath.toFileSystemString(),
 }
 
 
-    public: Vector getUserRoles(){
+    public: BasicArrayList getUserRoles(){
 
 
 

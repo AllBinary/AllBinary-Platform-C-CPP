@@ -30,7 +30,10 @@
 #include <java/util/HashMap.h>
 
       
-#include <java/util/Vector.h>
+#include <org/allbinary/util/BasicArrayList.h>
+
+      
+#include <org/allbinary/util/BasicArrayListD.h>
 
       
 #include <org/allbinary/data/tree/dom/DomData.h>
@@ -46,6 +49,9 @@
 
       
 #include <org/allbinary/data/tree/dom/ModDomHelper.h>
+
+      
+#include <org/allbinary/logic/StdUtil.h>
 
       
 #include <org/allbinary/logic/communication/log/LogUtil.h>
@@ -90,7 +96,7 @@ class CssPropertyValues
 
     protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: Vector propertyValueVector;
+    private: BasicArrayList propertyValueVector;
 
 public: CssPropertyValues();
 

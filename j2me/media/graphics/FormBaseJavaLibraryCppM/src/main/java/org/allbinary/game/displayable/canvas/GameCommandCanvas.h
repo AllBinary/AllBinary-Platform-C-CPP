@@ -30,7 +30,10 @@
 #include <jsinterop/annotations/JsType.h>
 
       
-#include <java/util/Vector.h>
+#include <org/allbinary/util/BasicArrayList.h>
+
+      
+#include <org/allbinary/util/BasicArrayListD.h>
 
       
 #include <javax/microedition/lcdui/CommandListener.h>

@@ -32,7 +32,10 @@
 #include <java/io/FileOutputStream.h>
 
       
-#include <java/util/Vector.h>
+#include <org/allbinary/util/BasicArrayList.h>
+
+      
+#include <org/allbinary/util/BasicArrayListD.h>
 
       
 #include <org/allbinary/input/automation/ImageOutputData.h>
@@ -94,9 +97,9 @@ this->infoStringBuffer.append(infoString);
 }
 
 
-    public: void addActions(Vector<string> vectorOfStrings){
+    public: void addActions(BasicArrayList vectorOfStrings){
 
-    int32_t size = vectorOfStrings.length;;
+    int32_t size = vectorOfStrings.size();;
     
 
 

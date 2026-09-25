@@ -38,7 +38,7 @@
 #include <org/allbinary/graphics/paint/Paintable.h>
 
       
-#include <org/allbinary/logic/NullUtil.h>
+#include <org/allbinary/logic/StdUtil.h>
 
       
 
@@ -118,7 +118,7 @@ this->damageFloatersPaintableInterface= damageFloaters;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return NullUtil::getInstance().NULL_TABLE;
+                        return StdUtil::getInstance().NULL_TABLE;
     
 }
 

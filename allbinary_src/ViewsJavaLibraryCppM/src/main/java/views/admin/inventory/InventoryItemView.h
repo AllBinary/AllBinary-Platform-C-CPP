@@ -31,7 +31,10 @@
 #include <java/util/Set.h>
 
       
-#include <java/util/Vector.h>
+#include <org/allbinary/util/BasicArrayList.h>
+
+      
+#include <org/allbinary/util/BasicArrayListD.h>
 
       
 #include <javax/servlet/http/HttpServletRequest.h>
@@ -59,6 +62,9 @@
 
       
 #include <org/allbinary/business/user/commerce/inventory/item/download/DownloadableItemView.h>
+
+      
+#include <org/allbinary/logic/StdUtil.h>
 
       
 #include <org/allbinary/logic/communication/http/file/upload/HttpFileUploadUtil.h>
@@ -123,6 +129,8 @@ class InventoryItemView: public HttpStoreComponentView, public RequestMapInterfa
 
     protected: const LogUtil logUtil = LogUtil::getInstance();
 
+    protected: const BasicItemData basicItemData = BasicItemData::getInstance();
+
     protected: HttpServletRequest request;
 
     private: std::string imageFileName;
@@ -131,7 +139,7 @@ class InventoryItemView: public HttpStoreComponentView, public RequestMapInterfa
 
     protected: ItemInterface itemInterface;
 
-    protected: Vector downloadableItemVector;
+    protected: BasicArrayList downloadableItemVector;
 
     private: HashMap<any, any> requestHashMap;
 

@@ -25,13 +25,19 @@
         
             #include "../../../../../../../java/lang/Exception.h"
         
-#include <java/util/Vector.h>
+#include <org/allbinary/util/BasicArrayList.h>
+
+      
+#include <org/allbinary/util/BasicArrayListD.h>
 
       
 #include <org/allbinary/business/user/UserInterface.h>
 
       
 #include <org/allbinary/business/user/modules/configuration/UserConfigurationInterface.h>
+
+      
+#include <org/allbinary/logic/StdUtil.h>
 
       
 #include <org/allbinary/logic/communication/log/LogUtil.h>
@@ -88,7 +94,7 @@ class EmailEventHandlerUtil
 
                 //@Throws(Exception.constructor)
             
-    public: static Vector getUserEmailEventListenerVector(AbeClientInformationInterface abeClientInformation, UserEmailEventNameData userEmailEventNameData, UserInterface userInterface);
+    public: static BasicArrayList getUserEmailEventListenerVector(AbeClientInformationInterface abeClientInformation, UserEmailEventNameData userEmailEventNameData, UserInterface userInterface);
 
     protected: const LogUtil logUtil = LogUtil::getInstance();
 
@@ -96,7 +102,7 @@ private: EmailEventHandlerUtil();
 
                 //@Throws(Exception.constructor)
             
-    public: UserEmailEventHandler getEventHandler(AbeClientInformationInterface abeClientInformation, UserEmailEventNameData userEmailEventNameData, Vector userVector);
+    public: UserEmailEventHandler getEventHandler(AbeClientInformationInterface abeClientInformation, UserEmailEventNameData userEmailEventNameData, BasicArrayList userVector);
 
 };
 

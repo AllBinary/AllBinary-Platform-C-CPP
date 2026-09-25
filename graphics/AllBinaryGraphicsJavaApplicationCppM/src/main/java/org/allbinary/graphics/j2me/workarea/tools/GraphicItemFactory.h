@@ -31,6 +31,9 @@
 #include <org/allbinary/log/LOGGING.h>
 
       
+#include <org/allbinary/logic/StdUtil.h>
+
+      
 #include <org/allbinary/util/BasicArrayList.h>
 
       

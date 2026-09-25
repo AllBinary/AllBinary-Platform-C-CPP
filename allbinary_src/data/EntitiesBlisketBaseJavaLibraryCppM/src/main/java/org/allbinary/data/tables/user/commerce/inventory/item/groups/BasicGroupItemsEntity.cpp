@@ -23,7 +23,10 @@
 #include <java/util/HashMap.h>
 
       
-#include <java/util/Vector.h>
+#include <org/allbinary/util/BasicArrayList.h>
+
+      
+#include <org/allbinary/util/BasicArrayListD.h>
 
       
 #include <org/allbinary/business/entry/EntryData.h>
@@ -71,6 +74,8 @@ class BasicGroupItemsEntity: public AbSqlBean, public BasicGroupItemsEntityInter
 
     protected: const LogUtil logUtil = LogUtil::getInstance();
 
+    protected: const BasicItemData basicItemData = BasicItemData::getInstance();
+
     protected: const std::string tableName = "basicgroupeditems";
 
 public: BasicGroupItemsEntity(){
@@ -84,7 +89,7 @@ this->setTableName(this->tableName);
 }
 
 
-    public: void insert(Vector values){
+    public: void insert(BasicArrayList values){
 
         try {
             super.insert(values);
@@ -119,7 +124,7 @@ this->setTableName(this->tableName);
     public: void delete_(std::string value){
 
         try {
-            super.deleteWhere(BasicItemData::ID, value);
+            super.deleteWhere(basicItemData.ID, value);
     
 
                         if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLLOGGING))
@@ -152,7 +157,7 @@ this->setTableName(this->tableName);
 
     StringMaker stringBuffer = StringMaker();;
     
-stringBuffer.append(this->sqlStrings.CREATE_TABLE).append(tableName).append(this->sqlStrings.START).append(BasicItemData::ID).append(this->sqlTypeStrings.MAX_BIG_INT_UNSIGNED_NOT_NULL).append(BasicGroupItemData::ITEM_ONE).append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL).append(BasicGroupItemData::ITEM_TWO).append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL).append(BasicGroupItemData::ITEM_THREE).append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL).append(BasicGroupItemData::ITEM_FOUR).append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL).append(BasicGroupItemData::ITEM_FIVE).append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL).append(BasicGroupItemData::ITEM_SIX).append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL).append(BasicGroupItemData::ITEM_SEVEN).append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL).append(BasicGroupItemData::ITEM_EIGHT).append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL).append(BasicGroupItemData::ITEM_NINE).append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL).append(BasicGroupItemData::ITEM_TEN).append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL).append(EntryData::getInstance().TIMECREATED).append(this->sqlTypeStrings.MAX_BIG_INT_UNSIGNED_NOT_NULL).append(EntryData::getInstance().LASTMODIFIED).append(this->sqlTypeStrings.MAX_BIG_INT_UNSIGNED_NOT_NULL).append(this->sqlStrings.PRIMARY_KEY).append(BasicItemData::ID).append(this->sqlStrings.END);
+stringBuffer.append(this->sqlStrings.CREATE_TABLE).append(tableName).append(this->sqlStrings.START).append(basicItemData.ID).append(this->sqlTypeStrings.MAX_BIG_INT_UNSIGNED_NOT_NULL).append(BasicGroupItemData::ITEM_ONE).append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL).append(BasicGroupItemData::ITEM_TWO).append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL).append(BasicGroupItemData::ITEM_THREE).append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL).append(BasicGroupItemData::ITEM_FOUR).append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL).append(BasicGroupItemData::ITEM_FIVE).append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL).append(BasicGroupItemData::ITEM_SIX).append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL).append(BasicGroupItemData::ITEM_SEVEN).append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL).append(BasicGroupItemData::ITEM_EIGHT).append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL).append(BasicGroupItemData::ITEM_NINE).append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL).append(BasicGroupItemData::ITEM_TEN).append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL).append(EntryData::getInstance().TIMECREATED).append(this->sqlTypeStrings.MAX_BIG_INT_UNSIGNED_NOT_NULL).append(EntryData::getInstance().LASTMODIFIED).append(this->sqlTypeStrings.MAX_BIG_INT_UNSIGNED_NOT_NULL).append(this->sqlStrings.PRIMARY_KEY).append(basicItemData.ID).append(this->sqlStrings.END);
     
 
 
@@ -174,7 +179,7 @@ stringBuffer.append(this->sqlStrings.CREATE_TABLE).append(tableName).append(this
 
 
     public: void update(HashMap<any, any> updatedValues){
-super.updateWhere(BasicItemData::ID, updatedValues.get(BasicItemData::ID) as string, updatedValues);
+super.updateWhere(basicItemData.ID, updatedValues.get(basicItemData.ID) as string, updatedValues);
     
 }
 

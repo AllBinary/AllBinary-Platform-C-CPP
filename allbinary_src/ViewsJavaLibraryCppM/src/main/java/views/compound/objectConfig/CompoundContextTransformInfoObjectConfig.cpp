@@ -28,7 +28,10 @@
 #include <java/io/InputStream.h>
 
       
-#include <java/util/Vector.h>
+#include <org/allbinary/util/BasicArrayList.h>
+
+      
+#include <org/allbinary/util/BasicArrayListD.h>
 
       
 #include <org/allbinary/data/tree/dom/document/DocumentToNode.h>
@@ -160,13 +163,13 @@ stringBuffer.append(RootTransformInfoData::NAME);
     TransformInterface rootComponentInterface = TransformFactory::getInstance().getInstance(abeClientInformation, stringBuffer.toString(), this->getTransformInfoInterface());;
     
 
-    Vector viewVector = this->getTransformDomNodes();;
+    BasicArrayList viewVector = this->getTransformDomNodes();;
     
 
                         if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEW))
                         
                                     {
-                                    this->logUtil.putF("Root View Called with: " +viewVector.length, this, "get(transformInfoInterface)");
+                                    this->logUtil.putF("Root View Called with: " +viewVector.size(), this, "get(transformInfoInterface)");
     
 
                                     }
@@ -181,7 +184,7 @@ stringBuffer.append(RootTransformInfoData::NAME);
     std::string endXMLHeader = "]]></xsl:text>";;
     
 
-    int32_t size = viewVector.length;;
+    int32_t size = viewVector.size();;
     
 
 

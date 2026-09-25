@@ -53,6 +53,9 @@
 #include <org/allbinary/logic/NullUtil.h>
 
       
+#include <org/allbinary/logic/StdUtil.h>
+
+      
 #include <org/allbinary/logic/communication/log/ForcedLogUtil.h>
 
       
@@ -107,7 +110,7 @@ class ResourceUtil
 
     private: Object* resources = NullUtil::getInstance().NULL_OBJECT;
 
-    private: Hashtable<any, any> hashMap = Hashtable<any, any>();
+    private: Hashtable<any, any> hashMap = StdUtil::getInstance().createHashtable();
 
 private: ResourceUtil();
 

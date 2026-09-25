@@ -25,7 +25,10 @@
 #include <java/util/HashMap.h>
 
       
-#include <java/util/Vector.h>
+#include <org/allbinary/util/BasicArrayList.h>
+
+      
+#include <org/allbinary/util/BasicArrayListD.h>
 
       
 #include <javax/servlet/jsp/PageContext.h>
@@ -89,9 +92,9 @@ class MultipartRequestParamForwardHelper
 
     private: std::string command;
 
-    private: Vector paramVector;
+    private: BasicArrayList paramVector;
 
-public: MultipartRequestParamForwardHelper(HelperTag parentHelperTag, std::string page, std::string command, Vector paramVector, PageContext pageContext){
+public: MultipartRequestParamForwardHelper(HelperTag parentHelperTag, std::string page, std::string command, BasicArrayList paramVector, PageContext pageContext){
 this->pageContext= pageContext;
     
 this->page= page;
@@ -170,7 +173,7 @@ this->pageContext.forward(stringBuffer.toString());
     StringMaker stringBuffer = StringMaker();;
     
 
-    int32_t size = this->paramVector.length;;
+    int32_t size = this->paramVector.size();;
     
 
 

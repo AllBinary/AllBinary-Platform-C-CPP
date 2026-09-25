@@ -20,7 +20,10 @@
 
             #include "../../../../../../java/lang/Exception.h"
         
-#include <java/util/Vector.h>
+#include <org/allbinary/util/BasicArrayList.h>
+
+      
+#include <org/allbinary/util/BasicArrayListD.h>
 
       
 #include <org/allbinary/business/user/commerce/shipping/modules/ShippingInterface.h>
@@ -47,7 +50,7 @@
         
 class ShippingMethodsInterface {
 
-    Vector get()
+    BasicArrayList get()
 
                 //@Throws(Exception.constructor)
             

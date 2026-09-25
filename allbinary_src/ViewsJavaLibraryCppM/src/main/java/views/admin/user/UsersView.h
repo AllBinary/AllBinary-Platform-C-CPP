@@ -23,7 +23,10 @@
 
             #include "../../../java/lang/Exception.h"
         
-#include <java/util/Vector.h>
+#include <org/allbinary/util/BasicArrayList.h>
+
+      
+#include <org/allbinary/util/BasicArrayListD.h>
 
       
 #include <org/allbinary/business/user/UserDomNode.h>
@@ -76,7 +79,7 @@ class UsersView: public HttpContextView, public DomNodeInterface {
 
     protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    protected: Vector userVector;
+    protected: BasicArrayList userVector;
 
 public: UsersView(TransformInfoInterface transformInfoInterface);
 

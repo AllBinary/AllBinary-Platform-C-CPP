@@ -26,7 +26,10 @@
 #include <java/util/HashMap.h>
 
       
-#include <java/util/Vector.h>
+#include <org/allbinary/util/BasicArrayList.h>
+
+      
+#include <org/allbinary/util/BasicArrayListD.h>
 
       
 #include <org/allbinary/business/context/modules/storefront/StoreFrontData.h>
@@ -36,6 +39,9 @@
 
       
 #include <org/allbinary/business/user/commerce/inventory/item/BasicItemData.h>
+
+      
+#include <org/allbinary/logic/StdUtil.h>
 
       
 #include <org/allbinary/logic/communication/log/LogUtil.h>
@@ -77,11 +83,13 @@ class StaticPagesEntity: public AbSqlBean, public StaticPagesEntityInterface {
 
     protected: const LogUtil logUtil = LogUtil::getInstance();
 
+    protected: const BasicItemData basicItemData = BasicItemData::getInstance();
+
     private: const std::string TABLENAME = "staticpages";
 
 public: StaticPagesEntity();
 
-    public: void insert(Vector values);
+    public: void insert(BasicArrayList values);
 
     public: std::string getFile(std::string store, std::string keywords);
 

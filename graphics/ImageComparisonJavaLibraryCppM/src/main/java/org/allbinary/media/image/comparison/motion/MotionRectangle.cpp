@@ -22,10 +22,16 @@
         
             #include "../../../../../../java/lang/Cloneable.h"
         
-#include <java/awt.h>
+#include <java/awt/Rectangle.h>
 
       
 #include <java/util/Vector.h>
+
+      
+#include <org/allbinary/util/BasicArrayList.h>
+
+      
+#include <org/allbinary/util/BasicArrayListD.h>
 
       
 
@@ -46,20 +52,19 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "Rectangle.h"
-
+        
 class MotionRectangle
             : public Object
         : public Cloneable {
 
     private: Rectangle rectangle;
 
-    private: Vector pixelDeltaVector;
+    private: BasicArrayList pixelDeltaVector;
 
 public: MotionRectangle(Rectangle rectangle){
 this->setRectangle(rectangle);
     
-this->setPixelDeltaVector(Vector());
+this->setPixelDeltaVector(BasicArrayListD());
     
 }
 
@@ -80,7 +85,7 @@ this->rectangle= rectangle;
 }
 
 
-    public: Vector getPixelDeltaVector(){
+    public: BasicArrayList getPixelDeltaVector(){
 
 
 
@@ -90,7 +95,7 @@ this->rectangle= rectangle;
 }
 
 
-    public: void setPixelDeltaVector(Vector pixelDeltaVector){
+    public: void setPixelDeltaVector(BasicArrayList pixelDeltaVector){
 this->pixelDeltaVector= pixelDeltaVector;
     
 }
@@ -100,7 +105,7 @@ this->pixelDeltaVector= pixelDeltaVector;
 
     MotionRectangle motionRectangle = MotionRectangle(this->getRectangle().clone() as Rectangle);;
     
-motionRectangle.setPixelDeltaVector(this->getPixelDeltaVector().clone() as Vector);
+motionRectangle.setPixelDeltaVector(this->getPixelDeltaVector().clone() as BasicArrayList);
     
 
 

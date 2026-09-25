@@ -32,7 +32,13 @@
 #include <java/util/HashSet.h>
 
       
-#include <java/util/Vector.h>
+#include <org/allbinary/util/BasicArrayList.h>
+
+      
+#include <org/allbinary/util/BasicArrayListD.h>
+
+      
+#include <org/allbinary/logic/StdUtil.h>
 
       
 #include <org/allbinary/logic/io/path/AbPathData.h>
@@ -77,13 +83,13 @@ class UniqueTokens
             : public Object
          {
 
-    private: const Vector specialCharacters = Vector();
+    private: const BasicArrayList specialCharacters = BasicArrayListD();
 
 public: UniqueTokens();
 
                 //@Throws(Exception.constructor)
             
-    public: HashSet getWhithoutDashesAndSkipNumberOnlyTokens(Vector stringVector);
+    public: HashSet getWhithoutDashesAndSkipNumberOnlyTokens(BasicArrayList stringVector);
 
     private: bool numberOnly(std::string subCleaningString);
 

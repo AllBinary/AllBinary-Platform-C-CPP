@@ -38,7 +38,10 @@
 #include <java/util/Random.h>
 
       
-#include <java/util/Vector.h>
+#include <org/allbinary/util/BasicArrayList.h>
+
+      
+#include <org/allbinary/util/BasicArrayListD.h>
 
       
 #include <org/allbinary/business/context/modules/storefront/StoreFrontData.h>
@@ -122,6 +125,9 @@
 #include <org/allbinary/data/tables/user/commerce/money/payment/PaymentEntity.h>
 
       
+#include <org/allbinary/logic/StdUtil.h>
+
+      
 #include <org/allbinary/logic/communication/log/LogUtil.h>
 
       
@@ -173,7 +179,7 @@ public: OrderHistoryEntity();
 
     public: void insert(std::string userName, Order order);
 
-    public: void insert(Vector values);
+    public: void insert(BasicArrayList values);
 
     public: void setStatus(std::string orderId, std::string status);
 
@@ -181,19 +187,19 @@ public: OrderHistoryEntity();
 
                 //@Throws(Exception.constructor)
             
-    public: Vector getStoreOrders(StoreFrontInterface storeFrontInterface);
+    public: BasicArrayList getStoreOrders(StoreFrontInterface storeFrontInterface);
 
                 //@Throws(Exception.constructor)
             
-    public: Vector getOrders(std::string userName);
+    public: BasicArrayList getOrders(std::string userName);
 
                 //@Throws(Exception.constructor)
             
-    public: Vector getOrders(std::string status, std::string fromDate, std::string toDate);
+    public: BasicArrayList getOrders(std::string status, std::string fromDate, std::string toDate);
 
                 //@Throws(Exception.constructor)
             
-    public: Vector getOrders(std::string fromDate, std::string toDate);
+    public: BasicArrayList getOrders(std::string fromDate, std::string toDate);
 
                 //@Throws(Exception.constructor)
             

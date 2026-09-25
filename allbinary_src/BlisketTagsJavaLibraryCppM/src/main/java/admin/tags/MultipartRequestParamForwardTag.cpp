@@ -23,7 +23,10 @@
 #include <java/util/HashMap.h>
 
       
-#include <java/util/Vector.h>
+#include <org/allbinary/util/BasicArrayList.h>
+
+      
+#include <org/allbinary/util/BasicArrayListD.h>
 
       
 #include <javax/servlet/jsp/JspTagException.h>
@@ -33,6 +36,9 @@
 
       
 #include <admin/taghelpers/MultipartRequestParamForwardHelper.h>
+
+      
+#include <org/allbinary/logic/StdUtil.h>
 
       
 #include <org/allbinary/logic/communication/http/request/AbResponseHandler.h>
@@ -74,7 +80,7 @@ class MultipartRequestParamForwardTag: public CustomTagSupport {
 
     private: std::string command;
 
-    private: Vector paramVector;
+    private: BasicArrayList paramVector;
 
     public: void setPage(std::string page){
 this->page= page;
@@ -88,7 +94,7 @@ this->command= command;
 }
 
 
-    public: void setParamVector(Vector paramVector){
+    public: void setParamVector(BasicArrayList paramVector){
 this->paramVector= paramVector;
     
 }
@@ -105,7 +111,7 @@ this->paramVector= paramVector;
 ParentInventoryTagHelper::getInstance().isValid(this, parentTag);
     
 
-    HashMap<any, any> hashMap = HashMap<any, any>();;
+    HashMap<any, any> hashMap = StdUtil::getInstance().createHashMap();;
     
 hashMap.put(AbTagData::PARENT, parentTag);
     

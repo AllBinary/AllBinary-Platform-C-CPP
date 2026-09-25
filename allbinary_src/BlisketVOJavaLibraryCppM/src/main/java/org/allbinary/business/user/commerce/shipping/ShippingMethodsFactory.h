@@ -25,7 +25,10 @@
         
             #include "../../../../../../java/lang/Exception.h"
         
-#include <java/util/Vector.h>
+#include <org/allbinary/util/BasicArrayList.h>
+
+      
+#include <org/allbinary/util/BasicArrayListD.h>
 
       
 #include <org/allbinary/business/DynamicObjectData.h>
@@ -56,6 +59,9 @@
 
       
 #include <org/allbinary/globals/URLGLOBALS.h>
+
+      
+#include <org/allbinary/logic/StdUtil.h>
 
       
 #include <org/allbinary/logic/control/crypt/file/CryptFileReader.h>
@@ -124,13 +130,13 @@ class ShippingMethodsFactory
 
     private: Document document;
 
-    private: Vector shippingVector;
+    private: BasicArrayList shippingVector;
 
 public: ShippingMethodsFactory(AbeClientInformationInterface abeClientInformation, StoreFrontInterface storeFrontInterface);
 
                 //@Throws(Exception.constructor)
             
-    public: Vector getInstance();
+    public: BasicArrayList getInstance();
 
     public: ShippingInterface getDefaultInstance();
 

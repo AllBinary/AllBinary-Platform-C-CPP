@@ -23,6 +23,9 @@
 #include <java/util/Hashtable.h>
 
       
+#include <org/allbinary/logic/StdUtil.h>
+
+      
 #include <org/allbinary/util/BasicArrayList.h>
 
       
@@ -72,7 +75,7 @@ class GameConfigurationSingleton
 private: GameConfigurationSingleton(){
 this->list= BasicArrayListD();
     
-this->hashtable= Hashtable<any, any>();
+this->hashtable= StdUtil::getInstance().createHashtable();
     
 }
 

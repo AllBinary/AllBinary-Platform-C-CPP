@@ -28,7 +28,10 @@
 #include <java/util/HashMap.h>
 
       
-#include <java/util/Vector.h>
+#include <org/allbinary/util/BasicArrayList.h>
+
+      
+#include <org/allbinary/util/BasicArrayListD.h>
 
       
 #include <org/allbinary/business/entry/EntryData.h>
@@ -44,6 +47,9 @@
 
       
 #include <org/allbinary/business/user/quoterequest/QuoteRequest.h>
+
+      
+#include <org/allbinary/logic/StdUtil.h>
 
       
 #include <org/allbinary/logic/communication/log/LogUtil.h>
@@ -83,13 +89,13 @@ class QuoteRequestEntity: public AbSqlBean, public QuoteRequestEntityInterface {
 
 public: QuoteRequestEntity();
 
-    public: void insert(Vector values);
+    public: void insert(BasicArrayList values);
 
                 //@Throws(Exception.constructor)
             
     public: QuoteRequest get(std::string userName, int32_t id);
 
-    public: Vector getIds(std::string userName);
+    public: BasicArrayList getIds(std::string userName);
 
     public: void deleteWhere(std::string key, std::string value);
 

@@ -26,7 +26,10 @@
 #include <java/util/HashMap.h>
 
       
-#include <java/util/Vector.h>
+#include <org/allbinary/util/BasicArrayList.h>
+
+      
+#include <org/allbinary/util/BasicArrayListD.h>
 
       
 #include <javax/servlet/jsp/PageContext.h>
@@ -65,15 +68,15 @@ class TransformInfoEntityInterface: public BasicDataTableInterface {
 
                 //@Throws(Exception.constructor)
             
-    Vector getObjectConfigs(std::string storeName);
+    BasicArrayList getObjectConfigs(std::string storeName);
 
                 //@Throws(Exception.constructor)
             
-    Vector getNames(std::string storeName);
+    BasicArrayList getNames(std::string storeName);
 
     void delete_(std::string name);
 
-    void insert(Vector values);
+    void insert(BasicArrayList values);
 
     void update(HashMap<any, any> updatedValues);
 

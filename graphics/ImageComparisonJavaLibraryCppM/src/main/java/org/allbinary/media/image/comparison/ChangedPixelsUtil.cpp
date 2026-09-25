@@ -29,7 +29,10 @@
 #include <java/awt/image/BufferedImage.h>
 
       
-#include <java/util/Vector.h>
+#include <org/allbinary/util/BasicArrayList.h>
+
+      
+#include <org/allbinary/util/BasicArrayListD.h>
 
       
 #include <org/allbinary/logic/util/cache/PoolInterface.h>
@@ -118,10 +121,10 @@ bufferedImageCacheables[index]!.getBufferedImage().setRGB(ChangedPixelsUtil::STA
 }
 
 
-    Vector vector = imageComparisonInfo.getNonMatchingPixelVector();;
+    BasicArrayList vector = imageComparisonInfo.getNonMatchingPixelVector();;
     
 
-    int32_t size = vector.length;;
+    int32_t size = vector.size();;
     
 
 

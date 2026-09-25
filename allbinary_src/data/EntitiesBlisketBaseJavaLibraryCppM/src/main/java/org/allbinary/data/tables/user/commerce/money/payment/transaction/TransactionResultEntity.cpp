@@ -28,7 +28,10 @@
 #include <java/util/HashMap.h>
 
       
-#include <java/util/Vector.h>
+#include <org/allbinary/util/BasicArrayList.h>
+
+      
+#include <org/allbinary/util/BasicArrayListD.h>
 
       
 #include <org/allbinary/business/entry/EntryData.h>
@@ -50,6 +53,9 @@
 
       
 #include <org/allbinary/business/user/commerce/money/payment/gateway/transaction/TransactionResultInterface.h>
+
+      
+#include <org/allbinary/logic/StdUtil.h>
 
       
 #include <org/allbinary/logic/communication/log/LogUtil.h>
@@ -102,7 +108,7 @@ this->setTableName(this->tableName);
 
         try {
             
-    HashMap<any, any> whereHashMap = HashMap<any, any>();;
+    HashMap<any, any> whereHashMap = StdUtil::getInstance().createHashMap();;
     
 whereHashMap.put(OrderData::ID, orderNumber as string);
     
@@ -141,13 +147,13 @@ super.deleteWhere(whereHashMap);
 
         try {
             
-    Vector values = Vector();;
+    BasicArrayList values = BasicArrayListD();;
     
 values.add(orderNumber);
     
 values.add(userName);
     
-values.addAll(transactionResultInterface.getValues());
+values.addAllList(transactionResultInterface.getValues());
     
 
     Calendar calendar = Calendar::getInstance();;
@@ -192,10 +198,10 @@ super.insert(values);
 
         try {
             
-    HashMap<any, any> resultHashMap = HashMap<any, any>();;
+    HashMap<any, any> resultHashMap = StdUtil::getInstance().createHashMap();;
     
 
-    HashMap<any, any> updateKeyAndValue = HashMap<any, any>();;
+    HashMap<any, any> updateKeyAndValue = StdUtil::getInstance().createHashMap();;
     
 updateKeyAndValue.put(OrderData::ID, orderNumber);
     

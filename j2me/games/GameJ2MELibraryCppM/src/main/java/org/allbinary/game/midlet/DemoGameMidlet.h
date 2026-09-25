@@ -41,7 +41,7 @@
 #include <org/allbinary/graphics/canvas/transition/progress/ProgressCanvasFactory.h>
 
       
-#include <org/allbinary/logic/NullUtil.h>
+#include <org/allbinary/logic/StdUtil.h>
 
       
 #include <org/allbinary/logic/system/security/licensing/ClientInformationFactory.h>
@@ -54,6 +54,9 @@
 
       
 #include <jsinterop/annotations/JsConstructor.h>
+
+      
+#include <org/allbinary/game/displayable/canvas/NullGameCanvasRunnable.h>
 
       
 

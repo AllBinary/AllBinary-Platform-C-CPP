@@ -28,7 +28,10 @@
 #include <java/util/HashMap.h>
 
       
-#include <java/util/Vector.h>
+#include <org/allbinary/util/BasicArrayList.h>
+
+      
+#include <org/allbinary/util/BasicArrayListD.h>
 
       
 #include <javax/servlet/http/HttpServletRequest.h>
@@ -47,6 +50,9 @@
 
       
 #include <org/allbinary/data/tables/user/commerce/inventory/item/special/SpecialItemsEntityFactory.h>
+
+      
+#include <org/allbinary/logic/StdUtil.h>
 
       
 #include <org/allbinary/logic/communication/log/LogUtil.h>
@@ -82,6 +88,8 @@ class SpecialItemsRequestHelper: public ModifyTable {
 
     protected: const LogUtil logUtil = LogUtil::getInstance();
 
+    protected: const BasicItemData basicItemData = BasicItemData::getInstance();
+
     private: HttpServletRequest request;
 
     private: std::string id;
@@ -109,9 +117,9 @@ this->getFormData();
 
 
     public: void getFormData(){
-this->id= this->request.getParameter(BasicItemData::ID);
+this->id= this->request.getParameter(basicItemData.ID);
     
-this->number= this->request.getParameter(BasicItemData::NUMBER);
+this->number= this->request.getParameter(basicItemData.NUMBER);
     
 this->enabled= this->request.getParameter(EntryData::getInstance().ENABLE);
     
@@ -119,7 +127,7 @@ this->startTime= this->request.getParameter(SpecialItemData::START_TIME);
     
 this->endTime= this->request.getParameter(SpecialItemData::END_TIME);
     
-this->price= this->request.getParameter(BasicItemData::PRICE);
+this->price= this->request.getParameter(basicItemData.PRICE);
     
 this->timeEntered= this->request.getParameter(EntryData::getInstance().TIMECREATED);
     
@@ -130,11 +138,11 @@ this->lastModified= this->request.getParameter(EntryData::getInstance().LASTMODI
 
     private: HashMap<any, any> getHashMap(){
 
-    HashMap<any, any> values = HashMap<any, any>();;
+    HashMap<any, any> values = StdUtil::getInstance().createHashMap();;
     
-values.put(BasicItemData::ID, this->id);
+values.put(basicItemData.ID, this->id);
     
-values.put(BasicItemData::NUMBER, this->number);
+values.put(basicItemData.NUMBER, this->number);
     
 values.put(EntryData::getInstance().ENABLE, this->enabled);
     
@@ -142,7 +150,7 @@ values.put(SpecialItemData::START_TIME, this->startTime);
     
 values.put(SpecialItemData::END_TIME, this->endTime);
     
-values.put(BasicItemData::PRICE, this->price);
+values.put(basicItemData.PRICE, this->price);
     
 
     Calendar calendar = Calendar::getInstance();;
@@ -171,7 +179,7 @@ values.put(EntryData::getInstance().LASTMODIFIED, time);
     std::string time = Long(calendar.getTimeInMillis()).toString();;
     
 
-    Vector values = Vector();;
+    BasicArrayList values = BasicArrayListD();;
     
 values.add(this->id);
     

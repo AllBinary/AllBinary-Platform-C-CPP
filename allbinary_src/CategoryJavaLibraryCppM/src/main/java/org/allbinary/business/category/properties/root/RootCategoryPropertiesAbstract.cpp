@@ -27,13 +27,19 @@
 #include <java/util/HashMap.h>
 
       
-#include <java/util/Vector.h>
+#include <org/allbinary/util/BasicArrayList.h>
+
+      
+#include <org/allbinary/util/BasicArrayListD.h>
 
       
 #include <org/allbinary/business/category/CategoryData.h>
 
       
 #include <org/allbinary/business/category/hierarchy/CategoryHierarchyInterface.h>
+
+      
+#include <org/allbinary/logic/StdUtil.h>
 
       
 #include <org/allbinary/logic/io/path/AbPath.h>
@@ -209,7 +215,7 @@ public: RootCategoryPropertiesAbstract(){
 
     public: HashMap<any, any> toHashMap(){
 
-    HashMap<any, any> categoryHashMap = HashMap<any, any>();;
+    HashMap<any, any> categoryHashMap = StdUtil::getInstance().createHashMap();;
     
 categoryHashMap.put(CategoryData::getInstance().NAME, this->category);
     
@@ -222,9 +228,9 @@ categoryHashMap.put(CategoryData::getInstance().NAME, this->category);
 }
 
 
-    public: Vector toVector(){
+    public: BasicArrayList toVector(){
 
-    Vector categoryVector = Vector();;
+    BasicArrayList categoryVector = BasicArrayListD();;
     
 categoryVector.add(this->category);
     

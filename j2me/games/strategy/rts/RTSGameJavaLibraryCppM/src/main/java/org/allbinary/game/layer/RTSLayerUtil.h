@@ -59,6 +59,9 @@
 #include <org/allbinary/game/part/weapon/BasicWeaponPart.h>
 
       
+#include <org/allbinary/logic/StdUtil.h>
+
+      
 #include <org/allbinary/logic/string/StringMaker.h>
 
       

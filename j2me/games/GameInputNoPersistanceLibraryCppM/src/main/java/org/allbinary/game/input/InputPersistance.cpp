@@ -70,6 +70,9 @@
 #include <jsinterop/annotations/JsConstructor.h>
 
       
+#include <org/allbinary/logic/StdUtil.h>
+
+      
 
 
 
@@ -133,7 +136,7 @@ stringBuffer.delete(0, stringBuffer.length());
     
 this->logUtil.putF(stringBuffer.append(this->persistanceStrings.LOADING_ID).appendint(id).toString(), this, this->persistanceStrings.LOAD_ALL);
     
-hashtable= Hashtable<any, any>();
+hashtable= StdUtil::getInstance().createHashtable();
     
 this->valueList.add(hashtable);
     

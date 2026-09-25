@@ -56,6 +56,9 @@
 #include <org/allbinary/game/part/weapon/BasicWeaponPart.h>
 
       
+#include <org/allbinary/logic/StdUtil.h>
+
+      
 #include <org/allbinary/logic/string/StringMaker.h>
 
       
@@ -400,7 +403,7 @@ list.clear();
 
     public: Hashtable<any, any> createFakeRTSLayerHashtable(BaseRaceTrackGeographicMap baseRaceTrackGeographicMap){
 
-    Hashtable<any, any> hashtable = Hashtable<any, any>();;
+    Hashtable<any, any> hashtable = StdUtil::getInstance().createHashtable();;
     
 
     FakeLayerManager layerManager = FakeLayerManager(GameInfo::NONE);;

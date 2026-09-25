@@ -64,6 +64,9 @@
 #include <bundle/input/automation/InputAutomationBundleActivator.h>
 
       
+#include <org/allbinary/logic/StdUtil.h>
+
+      
 #include <org/allbinary/logic/communication/log/LogUtil.h>
 
       
@@ -212,7 +215,7 @@ bundle= this->install(list.get(index) as URL);
 this->logUtil.putF(this->commonStrings.START, this, "getAllJarSymbolicNameHashMap");
     
 
-    HashMap<any, any> hashMap = HashMap<any, any>();;
+    HashMap<any, any> hashMap = StdUtil::getInstance().createHashMap();;
     
 
     BasicArrayList jarFileBasicArrayList = this->getJarModuleFileBasicArrayList();;

@@ -24,7 +24,10 @@
         
             #include "../../../../../../../../../../java/lang/Exception.h"
         
-#include <java/util/Vector.h>
+#include <org/allbinary/util/BasicArrayList.h>
+
+      
+#include <org/allbinary/util/BasicArrayListD.h>
 
       
 #include <org/allbinary/data/tree/dom/DomNodeHelper.h>
@@ -34,6 +37,9 @@
 
       
 #include <org/allbinary/input/media/image/InputImageType.h>
+
+      
+#include <org/allbinary/logic/StdUtil.h>
 
       
 #include <org/allbinary/logic/string/StringMaker.h>
@@ -99,7 +105,7 @@ imageTypes.getVector().add(imageType);
 }
 
 
-    private: Vector vector = Vector();
+    private: BasicArrayList vector = BasicArrayListD();
 
 public: ImageTypes(){
 }
@@ -145,7 +151,7 @@ this->getVector().add(InputImageType::getInstance(nextImageTypeString));
 }
 
 
-    public: Vector getVector(){
+    public: BasicArrayList getVector(){
 
 
 
@@ -162,7 +168,7 @@ this->getVector().add(InputImageType::getInstance(nextImageTypeString));
     Node newNode = document.createElement(ImageActionScriptOutputData::TYPES);;
     
 
-    int32_t size = this->vector.length;;
+    int32_t size = this->vector.size();;
     
 
 
@@ -194,7 +200,7 @@ newNode.appendChild(ModDomHelper::createTextNode(document, ImageActionScriptOutp
 stringBuffer.append("ImageTypes: ");
     
 
-    int32_t size = this->vector.length;;
+    int32_t size = this->vector.size();;
     
 
 

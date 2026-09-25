@@ -39,6 +39,9 @@
 #include <admin/taghelpers/CustomLoaderHelperFactory.h>
 
       
+#include <org/allbinary/logic/StdUtil.h>
+
+      
 #include <org/allbinary/logic/communication/http/request/AbResponseHandler.h>
 
       

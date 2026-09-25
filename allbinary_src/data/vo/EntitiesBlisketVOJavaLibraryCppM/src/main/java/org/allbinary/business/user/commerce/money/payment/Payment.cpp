@@ -39,6 +39,9 @@
 #include <org/allbinary/data/tree/dom/ModDomHelper.h>
 
       
+#include <org/allbinary/logic/StdUtil.h>
+
+      
 #include <org/allbinary/logic/control/crypt/SuperCrypt.h>
 
       
@@ -559,7 +562,7 @@ this->number= value;
 
     public: HashMap<any, any> toHashMap(){
 
-    HashMap<any, any> hashMap = HashMap<any, any>();;
+    HashMap<any, any> hashMap = StdUtil::getInstance().createHashMap();;
     
 hashMap.put(PaymentData::NAME, this->name);
     

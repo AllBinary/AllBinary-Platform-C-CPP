@@ -33,7 +33,10 @@
 #include <java/util/HashMap.h>
 
       
-#include <java/util/Vector.h>
+#include <org/allbinary/util/BasicArrayList.h>
+
+      
+#include <org/allbinary/util/BasicArrayListD.h>
 
       
 #include <org/allbinary/business/entry/EntryData.h>
@@ -52,6 +55,9 @@
 
       
 #include <org/allbinary/data/tables/TableDataFactory.h>
+
+      
+#include <org/allbinary/logic/StdUtil.h>
 
       
 #include <org/allbinary/logic/communication/log/LogUtil.h>
@@ -106,7 +112,7 @@ public: StreetAddressesEntity(std::string userName);
 
     public: std::string getLastId();
 
-    public: Vector get();
+    public: BasicArrayList get();
 
     public: StreetAddress get(Integer index);
 

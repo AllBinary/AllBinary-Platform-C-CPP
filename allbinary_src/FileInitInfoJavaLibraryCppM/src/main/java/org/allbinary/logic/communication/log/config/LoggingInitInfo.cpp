@@ -22,9 +22,6 @@
         
             #include "../../../../../../java/lang/Exception.h"
         
-#include <java/util/Vector.h>
-
-      
 #include <org/allbinary/data/tree/dom/DomSearchHelper.h>
 
       
@@ -160,12 +157,12 @@ class LoggingInitInfo
     Node logConfigsNode = logConfigsNodeList.item(0);;
     
 
-    Vector logConfigNodeVector = DomSearchHelper::getAllNodes(LogConfigData::getInstance().NAME, logConfigsNode.getChildNodes());;
+    BasicArrayList logConfigNodeVector = DomSearchHelper::getAllNodes(LogConfigData::getInstance().NAME, logConfigsNode.getChildNodes());;
     
 LoggingInitInfo::logConfigInfoList= BasicArrayListD();
     
 
-    int32_t size = logConfigNodeVector.length;;
+    int32_t size = logConfigNodeVector.size();;
     
 
 
@@ -175,7 +172,7 @@ LoggingInitInfo::logConfigInfoList= BasicArrayListD();
     int32_t i = 0;i < size; i++)
         {
 
-    Node node = logConfigNodeVector.elementAt(i) as Node;;
+    Node node = logConfigNodeVector.get(i) as Node;;
     
 
     LogConfig logConfigInfo = LogConfig(node);;

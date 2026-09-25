@@ -25,7 +25,10 @@
         
             #include "../../../../../java/lang/Exception.h"
         
-#include <java/util/Vector.h>
+#include <org/allbinary/util/BasicArrayList.h>
+
+      
+#include <org/allbinary/util/BasicArrayListD.h>
 
       
 #include <org/w3c/dom/Node.h>
@@ -69,9 +72,9 @@ class DomSearchHelper
 
                 //@Throws(Exception.constructor)
             
-    public: static Vector getAllNodes(std::string nodeName, NodeList nodeList);
+    public: static BasicArrayList getAllNodes(std::string nodeName, NodeList nodeList);
 
-    public: static Vector getAllNodesNoThrow(std::string nodeName, NodeList nodeList);
+    public: static BasicArrayList getAllNodesNoThrow(std::string nodeName, NodeList nodeList);
 
 private: DomSearchHelper();
 

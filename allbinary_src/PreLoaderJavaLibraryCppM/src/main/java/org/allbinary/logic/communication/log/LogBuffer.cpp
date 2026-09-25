@@ -20,7 +20,13 @@
 
             #include "../../../../../java/lang/Object.h"
         
-#include <java/util/Vector.h>
+#include <org/allbinary/util/BasicArrayList.h>
+
+      
+#include <org/allbinary/util/BasicArrayListD.h>
+
+      
+#include <org/allbinary/logic/StdUtil.h>
 
       
 
@@ -50,10 +56,10 @@ class LogBuffer
 
     protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    Vector logEntryVector;
+    BasicArrayList logEntryVector;
 
 public: LogBuffer(){
-this->logEntryVector= Vector();
+this->logEntryVector= BasicArrayListD();
     
 }
 
@@ -66,7 +72,7 @@ this->logEntryVector.add(log);
 
     public: void logAll(){
 
-    int32_t size = this->logEntryVector.length;;
+    int32_t size = this->logEntryVector.size();;
     
 
 

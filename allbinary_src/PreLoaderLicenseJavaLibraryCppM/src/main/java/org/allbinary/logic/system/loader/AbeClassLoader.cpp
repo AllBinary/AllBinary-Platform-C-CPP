@@ -34,10 +34,10 @@
 #include <java/io/IOException.h>
 
       
-#include <java/util/HashMap.h>
+#include <java/util/Map.h>
 
       
-#include <java/util/Map.h>
+#include <org/allbinary/logic/StdUtil.h>
 
       
 #include <org/allbinary/logic/communication/log/LogBuffer.h>
@@ -83,7 +83,7 @@
 
 class AbeClassLoader: public ClassLoader {
 
-    private: static Map classes = HashMap<any, any>();
+    private: static Map classes = StdUtil::getInstance().createHashMap();
 
     private: static std::string PATH;
 

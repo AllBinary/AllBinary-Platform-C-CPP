@@ -287,6 +287,9 @@
 #include <org/allbinary/layer/LayerInterfaceFactoryInterface.h>
 
       
+#include <org/allbinary/logic/StdUtil.h>
+
+      
 #include <org/allbinary/logic/math/BasicDecimal.h>
 
       
@@ -547,7 +550,7 @@ this->initPathAnimation.setAllBinaryGameLayerManager(allBinaryGameLayerManager);
             
     public: void updateWaypointBehavior(BasicGeographicMap geographicMapInterface){
 
-    Hashtable<any, any> hashtable = Hashtable<any, any>();;
+    Hashtable<any, any> hashtable = StdUtil::getInstance().createHashtable();;
     
 hashtable.put(this->groupCommonFactory.ID, this->getGroupInterface());
     

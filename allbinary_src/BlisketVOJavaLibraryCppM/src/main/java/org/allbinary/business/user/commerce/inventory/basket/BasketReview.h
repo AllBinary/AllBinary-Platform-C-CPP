@@ -37,13 +37,19 @@
 #include <java/util/Set.h>
 
       
-#include <java/util/Vector.h>
+#include <org/allbinary/util/BasicArrayList.h>
+
+      
+#include <org/allbinary/util/BasicArrayListD.h>
 
       
 #include <org/allbinary/business/user/commerce/inventory/item/Item.h>
 
       
 #include <org/allbinary/business/user/commerce/inventory/item/ItemView.h>
+
+      
+#include <org/allbinary/logic/StdUtil.h>
 
       
 #include <org/w3c/dom/Document.h>
@@ -76,7 +82,7 @@ class BasketReview
             : public Object
          {
 
-    Vector items = Vector();
+    BasicArrayList items = BasicArrayListD();
 
 public: BasketReview();
 
@@ -84,7 +90,7 @@ public: BasketReview();
 
     public: void addItem(Item item);
 
-    public: Vector getItems();
+    public: BasicArrayList getItems();
 
     public: void removeItem(std::string id);
 

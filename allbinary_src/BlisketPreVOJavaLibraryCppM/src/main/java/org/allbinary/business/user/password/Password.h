@@ -33,13 +33,19 @@
 #include <java/util/Random.h>
 
       
-#include <java/util/Vector.h>
+#include <org/allbinary/util/BasicArrayList.h>
+
+      
+#include <org/allbinary/util/BasicArrayListD.h>
 
       
 #include <org/allbinary/business/entry/EntryData.h>
 
       
 #include <org/allbinary/business/user/UserData.h>
+
+      
+#include <org/allbinary/logic/StdUtil.h>
 
       
 #include <org/allbinary/logic/communication/log/LogUtil.h>
@@ -94,7 +100,7 @@ public: Password(std::string password);
 
     public: std::string getValidationInfo();
 
-    public: Vector toVector(std::string secret);
+    public: BasicArrayList toVector(std::string secret);
 
     public: HashMap<any, any> toHashMap(std::string secret);
 

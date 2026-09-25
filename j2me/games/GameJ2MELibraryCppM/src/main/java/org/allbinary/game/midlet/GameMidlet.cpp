@@ -298,6 +298,9 @@
 #include <jsinterop/annotations/JsProperty.h>
 
       
+#include <org/allbinary/logic/StdUtil.h>
+
+      
 
 
 
@@ -1534,7 +1537,7 @@ GameEventHandlerUtil::removeAllListeners();
                         if(gameCanvasRunnableInterface != NullGameCanvasRunnable::NULL_GAME_CANVAS_RUNNABLE)
                         
                                     {
-                                    this->logUtil.putF("Set Running False", this, this->gameStrings.STOP_GAME_CANVAS_RUNNABLE_INTERFACE);
+                                    this->logUtil.putF(StringMaker().append("Set Running False: ").append(gameCanvasRunnableInterface->toString()).toString(), this, this->gameStrings.STOP_GAME_CANVAS_RUNNABLE_INTERFACE);
     
 gameCanvasRunnableInterface->setRunning(false);
     
@@ -1633,7 +1636,7 @@ GamePersistanceSingleton::getInstance().save(this->abeClientInformation, hashtab
 this->logUtil.putF(this->commonStrings.START, this, "getCurrentStateHashtable");
     
 
-    Hashtable<any, any> hashtable = Hashtable<any, any>();;
+    Hashtable<any, any> hashtable = StdUtil::getInstance().createHashtable();;
     
 
                         if(this->allbinaryGameCanvasRunnableInterface != NullGameCanvasRunnable::NULL_GAME_CANVAS_RUNNABLE)

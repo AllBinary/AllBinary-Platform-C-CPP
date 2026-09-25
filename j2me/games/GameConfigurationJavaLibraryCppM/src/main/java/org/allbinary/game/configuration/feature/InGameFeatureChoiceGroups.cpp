@@ -23,6 +23,9 @@
 #include <java/util/Hashtable.h>
 
       
+#include <org/allbinary/logic/StdUtil.h>
+
+      
 #include <org/allbinary/util/BasicArrayList.h>
 
       
@@ -73,7 +76,7 @@ class InGameFeatureChoiceGroups
 }
 
 
-    private: Hashtable<any, any> hashtable = Hashtable<any, any>();
+    private: Hashtable<any, any> hashtable = StdUtil::getInstance().createHashtable();
 
 private: InGameFeatureChoiceGroups(){
 }

@@ -28,10 +28,16 @@
 #include <java/util/HashMap.h>
 
       
-#include <java/util/Vector.h>
+#include <org/allbinary/util/BasicArrayList.h>
+
+      
+#include <org/allbinary/util/BasicArrayListD.h>
 
       
 #include <org/allbinary/data/tables/TableMappingInterface.h>
+
+      
+#include <org/allbinary/logic/StdUtil.h>
 
       
 
@@ -71,7 +77,7 @@ public: UserEmailEventsConfigurationMapping(UserEmailEventsConfigurationInterfac
 
                 //@Throws(Exception.constructor)
             
-    public: Vector toVector();
+    public: BasicArrayList toVector();
 
 };
 

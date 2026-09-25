@@ -31,6 +31,9 @@
 #include <org/allbinary/graphics/RelativeRelationship.h>
 
       
+#include <org/allbinary/logic/StdUtil.h>
+
+      
 #include <org/allbinary/util/BasicArrayList.h>
 
       
@@ -66,7 +69,7 @@ class ResourceRelativeRelationshipFactory
 
     private: const BasicArrayListUtil basicArrayListUtil = BasicArrayListUtil::getInstance();
 
-    private: const Hashtable<any, any> hashtable = Hashtable<any, any>();
+    private: const Hashtable<any, any> hashtable = StdUtil::getInstance().createHashtable();
 
     private: bool initialized= false;
 

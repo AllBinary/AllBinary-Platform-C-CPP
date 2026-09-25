@@ -38,6 +38,9 @@
 #include <org/allbinary/gui/dialog/HashMapJDialogListenerInterface.h>
 
       
+#include <org/allbinary/logic/StdUtil.h>
+
+      
 #include <org/allbinary/logic/communication/log/LogUtil.h>
 
       
@@ -83,7 +86,7 @@ class RotateJDialog: public javax::swing::JDialog {
 
     protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: HashMap<any, any> hashMap = HashMap<any, any>();
+    private: HashMap<any, any> hashMap = StdUtil::getInstance().createHashMap();
 
 public: RotateJDialog(java::awt::Frame parent, bool modal);
 

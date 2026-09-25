@@ -30,7 +30,10 @@
 #include <java/util/Hashtable.h>
 
       
-#include <java/util/Vector.h>
+#include <org/allbinary/util/BasicArrayList.h>
+
+      
+#include <org/allbinary/util/BasicArrayListD.h>
 
       
 #include <javax/microedition/lcdui/Command.h>
@@ -699,7 +702,7 @@ this->close();
     CommandTextItemArrayFactory commandTextItemArrayFactory = DemoLimitedCommandTextItemArrayFactory::getInstance().getCommandTextItemArrayFactory();;
     
 
-    std::vector<ABCustomItem> items = commandTextItemArrayFactory.getInstance(this->getCommandStack() as Vector<any>, this->basicColorFactory.BLACK, this->basicColorFactory.WHITE);;
+    std::vector<ABCustomItem> items = commandTextItemArrayFactory.getInstance(this->getCommandStack(), this->basicColorFactory.BLACK, this->basicColorFactory.WHITE);;
     
 
     FormType formType = FormTypeFactory::getInstance().getFormType();;
@@ -974,7 +977,7 @@ this->logUtil.putF("Trying to continue a demo lol - only continue a game canvas 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->nullUtil.NULL_TABLE;
+                        return this->stdUtil.NULL_TABLE;
     
 }
 
@@ -988,7 +991,7 @@ this->logUtil.putF("Trying to save the AI lol", this, "getCurrentStateHashtable"
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->nullUtil.NULL_TABLE;
+                        return this->stdUtil.NULL_TABLE;
     
 }
 

@@ -31,7 +31,10 @@
 #include <java/util/HashMap.h>
 
       
-#include <java/util/Vector.h>
+#include <org/allbinary/util/BasicArrayList.h>
+
+      
+#include <org/allbinary/util/BasicArrayListD.h>
 
       
 #include <org/allbinary/business/context/modules/storefront/StoreFrontData.h>
@@ -68,6 +71,9 @@
 
       
 #include <org/allbinary/data/generator/PaymentGatewayIdGenerator.h>
+
+      
+#include <org/allbinary/logic/StdUtil.h>
 
       
 #include <org/allbinary/logic/communication/log/LogUtil.h>
@@ -116,7 +122,7 @@ public: PaymentGatewayEntity();
 
     public: PaymentGatewayInterface getPaymentGatewayInterface(std::string storeName, BasicPaymentType paymentType);
 
-    public: Vector findPaymentTypeVectorByStore(std::string storeName);
+    public: BasicArrayList findPaymentTypeVectorByStore(std::string storeName);
 
     public: void remove(std::string storeName, BasicPaymentType paymentType);
 

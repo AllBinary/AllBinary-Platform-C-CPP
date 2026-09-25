@@ -22,7 +22,10 @@
         
             #include "../../../../../../../../java/lang/Exception.h"
         
-#include <java/util/Vector.h>
+#include <org/allbinary/util/BasicArrayList.h>
+
+      
+#include <org/allbinary/util/BasicArrayListD.h>
 
       
 #include <org/allbinary/data/tree/dom/DomNodeHelper.h>
@@ -32,6 +35,9 @@
 
       
 #include <org/allbinary/input/automation/module/generic/configuration/profile/actions/GenericProfileActions.h>
+
+      
+#include <org/allbinary/logic/StdUtil.h>
 
       
 #include <org/allbinary/logic/communication/log/LogUtil.h>
@@ -76,14 +82,14 @@ class GenericProfile
 
     private: std::string name;
 
-    private: Vector vector;
+    private: BasicArrayList vector;
 
     private: GenericProfileActions genericProfileActions;
 
 public: GenericProfile(Node node){
 this->setName(DomNodeHelper::getTextNodeValue(node));
     
-this->vector= Vector();
+this->vector= BasicArrayListD();
     
 
     NodeList nodeList = node.getChildNodes();;
@@ -122,12 +128,12 @@ this->vector.add(genericProfileDataWorkerType);
 public: GenericProfile(std::string name){
 this->setName(name);
     
-this->vector= Vector();
+this->vector= BasicArrayListD();
     
 }
 
 
-    public: Vector getGenericProfileDataWorkerTypeVector(){
+    public: BasicArrayList getGenericProfileDataWorkerTypeVector(){
 
 
 
@@ -158,7 +164,7 @@ this->vector.remove(genericProfileDataWorkerType);
     Node node = ModDomHelper::createTextNode(document, GenericProfileData::NAME, this->name);;
     
 
-    int32_t size = this->vector.length;;
+    int32_t size = this->vector.size();;
     
 
 

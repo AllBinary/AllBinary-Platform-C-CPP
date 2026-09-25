@@ -28,7 +28,10 @@
 #include <java/util/HashMap.h>
 
       
-#include <java/util/Vector.h>
+#include <org/allbinary/util/BasicArrayList.h>
+
+      
+#include <org/allbinary/util/BasicArrayListD.h>
 
       
 #include <javax/servlet/http/HttpServletRequest.h>
@@ -47,6 +50,9 @@
 
       
 #include <org/allbinary/data/tables/user/commerce/inventory/item/options/XmlOptionItemsEntityFactory.h>
+
+      
+#include <org/allbinary/logic/StdUtil.h>
 
       
 #include <org/allbinary/logic/communication/log/LogUtil.h>
@@ -82,6 +88,8 @@ class XmlOptionItemsRequestHelper: public ModifyTable {
 
     protected: const LogUtil logUtil = LogUtil::getInstance();
 
+    protected: const BasicItemData basicItemData = BasicItemData::getInstance();
+
     private: HttpServletRequest request;
 
     private: std::string id;
@@ -103,7 +111,7 @@ this->getFormData();
 
 
     public: void getFormData(){
-this->id= this->request.getParameter(BasicItemData::ID);
+this->id= this->request.getParameter(basicItemData.ID);
     
 this->xmlFileStatus= this->request.getParameter(XmlOptionItemData::XML_FILE_STATUS);
     
@@ -118,9 +126,9 @@ this->lastModified= this->request.getParameter(EntryData::getInstance().LASTMODI
 
     private: HashMap<any, any> getHashMap(){
 
-    HashMap<any, any> values = HashMap<any, any>();;
+    HashMap<any, any> values = StdUtil::getInstance().createHashMap();;
     
-values.put(BasicItemData::ID, this->id);
+values.put(basicItemData.ID, this->id);
     
 values.put(XmlOptionItemData::XML_FILE_STATUS, this->xmlFileStatus);
     
@@ -153,7 +161,7 @@ values.put(EntryData::getInstance().LASTMODIFIED, time);
     std::string time = Long(calendar.getTimeInMillis()).toString();;
     
 
-    Vector values = Vector();;
+    BasicArrayList values = BasicArrayListD();;
     
 values.add(this->id);
     

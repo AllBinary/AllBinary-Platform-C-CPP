@@ -31,7 +31,10 @@
 #include <java/util/Hashtable.h>
 
       
-#include <java/util/Vector.h>
+#include <org/allbinary/util/BasicArrayList.h>
+
+      
+#include <org/allbinary/util/BasicArrayListD.h>
 
       
 #include <org/apache/xmlrpc/XmlRpcClient.h>

@@ -24,6 +24,9 @@
         
             #include "../../../../../java/lang/Math.h"
         
+#include <jsinterop/annotations/JsType.h>
+
+      
 #include <org/allbinary/graphics/GPoint.h>
 
       
@@ -60,13 +63,7 @@
 #include <org/allbinary/logic/math/J2SEMath.h>
 
       
-#include <org/allbinary/logic/string/StringMaker.h>
-
-      
 #include <org/allbinary/logic/util/event/handler/BasicEventHandler.h>
-
-      
-#include <org/allbinary/string/CommonSeps.h>
 
       
 #include <org/allbinary/string/CommonStrings.h>

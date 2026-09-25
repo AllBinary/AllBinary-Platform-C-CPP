@@ -51,6 +51,9 @@
 #include <javax/help/event/HelpSetListener.h>
 
       
+#include <org/allbinary/logic/StdUtil.h>
+
+      
 #include <org/allbinary/logic/communication/log/LogUtil.h>
 
       
@@ -111,7 +114,7 @@ class InputRobotFactory
 
     private: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    private: const Hashtable<any, any> hashtable = Hashtable<any, any>();
+    private: const Hashtable<any, any> hashtable = StdUtil::getInstance().createHashtable();
 
     private: HelpSetListener helpSetListenerInterface;
 

@@ -22,7 +22,10 @@
         
             #include "../../../java/lang/Integer.h"
         
-#include <java/util/Vector.h>
+#include <org/allbinary/util/BasicArrayList.h>
+
+      
+#include <org/allbinary/util/BasicArrayListD.h>
 
       
 #include <org/allbinary/business/context/modules/storefront/StoreFrontFactory.h>
@@ -120,12 +123,12 @@ public: InventoryView(TransformInfoInterface transformInfoInterface){
     Node inventoryNode = document.createElement(InventoryData::INVENTORY);;
     
 
-    Vector itemVector = inventoryEntityInterface.getItems(StoreFrontFactory::getInstance(this->getTransformInfoInterface().getStoreName()));;
+    BasicArrayList itemVector = inventoryEntityInterface.getItems(StoreFrontFactory::getInstance(this->getTransformInfoInterface().getStoreName()));;
     
-inventoryNode.appendChild(ModDomHelper::createNameValueNodes(document, SearchData::TOTAL_NUMBER_ITEMS_ON_THIS_PAGE, Integer(itemVector.length).toString()));
+inventoryNode.appendChild(ModDomHelper::createNameValueNodes(document, SearchData::TOTAL_NUMBER_ITEMS_ON_THIS_PAGE, Integer(itemVector.size()).toString()));
     
 
-    int32_t size = itemVector.length;;
+    int32_t size = itemVector.size();;
     
 
 
@@ -144,7 +147,7 @@ inventoryNode.appendChild(ModDomHelper::createNameValueNodes(document, SearchDat
                         
                                     {
                                     
-    Node node = BasicItemView(itemInterface, Vector()).toXmlNode(document);;
+    Node node = BasicItemView(itemInterface, BasicArrayListD()).toXmlNode(document);;
     
 inventoryNode.appendChild(node);
     

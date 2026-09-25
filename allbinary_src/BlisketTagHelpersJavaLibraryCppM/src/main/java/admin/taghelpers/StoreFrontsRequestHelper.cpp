@@ -23,7 +23,10 @@
 #include <java/util/HashMap.h>
 
       
-#include <java/util/Vector.h>
+#include <org/allbinary/util/BasicArrayList.h>
+
+      
+#include <org/allbinary/util/BasicArrayListD.h>
 
       
 #include <javax/servlet/http/HttpServletRequest.h>
@@ -334,7 +337,7 @@ this->modifyingStoreFrontInterface.install(this->portion.getCurrent().intValue()
     std::string success = "Added Successfully";;
     
 
-    Vector values = this->modifyingStoreFrontInterface.toVector();;
+    BasicArrayList values = this->modifyingStoreFrontInterface.toVector();;
     
 StoreFrontsEntityFactory::getInstance().getStoreFrontsEntityInstance().insert(values);
     

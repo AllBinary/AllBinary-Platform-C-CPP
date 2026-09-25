@@ -27,6 +27,9 @@
 #include <java/util/Hashtable.h>
 
       
+#include <org/allbinary/logic/StdUtil.h>
+
+      
 #include <org/allbinary/logic/math/SmallIntegerSingletonFactory.h>
 
       
@@ -120,7 +123,7 @@ this->timeDelayHelper= timeDelayHelper;
 
     public: Hashtable<any, any> toHashtable(){
 
-    Hashtable<any, any> hashtable = Hashtable<any, any>();;
+    Hashtable<any, any> hashtable = StdUtil::getInstance().createHashtable();;
     
 hashtable.put(InputProbability::INPUT_PROBABILITY, this);
     

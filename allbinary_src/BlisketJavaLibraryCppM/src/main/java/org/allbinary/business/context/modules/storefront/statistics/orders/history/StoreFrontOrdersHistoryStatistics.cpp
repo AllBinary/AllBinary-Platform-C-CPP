@@ -27,7 +27,10 @@
 #include <java/util/HashMap.h>
 
       
-#include <java/util/Vector.h>
+#include <org/allbinary/util/BasicArrayList.h>
+
+      
+#include <org/allbinary/util/BasicArrayListD.h>
 
       
 #include <org/allbinary/business/context/modules/storefront/StoreFrontInterface.h>
@@ -43,6 +46,9 @@
 
       
 #include <org/allbinary/data/tables/user/commerce/inventory/order/OrderHistoryEntityInterface.h>
+
+      
+#include <org/allbinary/logic/StdUtil.h>
 
       
 
@@ -93,7 +99,7 @@ this->totalMoney= Money();
     OrderHistoryEntityInterface orderHistoryEntityInterface = OrderHistoryEntityFactory::getInstance();;
     
 
-    Vector orderHistoryInterfaceVector = orderHistoryEntityInterface.getStoreOrders(storeFrontInterface);;
+    BasicArrayList orderHistoryInterfaceVector = orderHistoryEntityInterface.getStoreOrders(storeFrontInterface);;
     
 
     int64_t numberOfOrders = 0;;
@@ -102,7 +108,7 @@ this->totalMoney= Money();
     OrderHistoryInterface orderHistoryInterface;;
     
 
-    int32_t size = orderHistoryInterfaceVector.length;;
+    int32_t size = orderHistoryInterfaceVector.size();;
     
 
 
@@ -182,7 +188,7 @@ this->numberOfOrdersLong= Long(numberOfOrders);
 
     public: HashMap<any, any> toHashMap(){
 
-    HashMap<any, any> hashMap = HashMap<any, any>();;
+    HashMap<any, any> hashMap = StdUtil::getInstance().createHashMap();;
     
 
     StoreFrontOrdersHistoryStatisticsData storeFrontOrdersHistoryStatisticsData = StoreFrontOrdersHistoryStatisticsData::getInstance();;
@@ -206,7 +212,7 @@ hashMap.put(storeFrontOrdersHistoryStatisticsData.TOTAL, this->getTotal().toStri
 }
 
 
-    public: Vector toVector(){
+    public: BasicArrayList toVector(){
 
 
 

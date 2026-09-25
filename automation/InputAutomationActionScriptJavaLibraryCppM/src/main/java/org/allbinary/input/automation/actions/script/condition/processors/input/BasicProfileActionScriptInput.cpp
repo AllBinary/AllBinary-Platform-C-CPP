@@ -52,6 +52,9 @@
 #include <org/allbinary/input/automation/robot/InputRobotInterface.h>
 
       
+#include <org/allbinary/logic/StdUtil.h>
+
+      
 #include <org/allbinary/logic/communication/log/LogUtil.h>
 
       
@@ -183,7 +186,7 @@ this->time= time;
 
     public: HashMap<any, any> BasicProfileActionScriptInput_toHashMap(){
 
-    HashMap<any, any> hashMap = HashMap<any, any>();;
+    HashMap<any, any> hashMap = StdUtil::getInstance().createHashMap();;
     
 hashMap.put(GenericProfileActionScriptInputData::TYPE, this->getInputRobotInterface().getName());
     

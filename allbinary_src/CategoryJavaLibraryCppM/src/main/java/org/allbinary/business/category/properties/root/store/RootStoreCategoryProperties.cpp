@@ -25,7 +25,10 @@
 #include <java/util/HashMap.h>
 
       
-#include <java/util/Vector.h>
+#include <org/allbinary/util/BasicArrayList.h>
+
+      
+#include <org/allbinary/util/BasicArrayListD.h>
 
       
 #include <javax/servlet/http/HttpServletRequest.h>
@@ -55,6 +58,9 @@
 #include <org/allbinary/globals/URLGLOBALS.h>
 
       
+#include <org/allbinary/logic/StdUtil.h>
+
+      
 #include <org/allbinary/logic/communication/log/LogUtil.h>
 
       
@@ -62,9 +68,6 @@
 
       
 #include <org/allbinary/logic/io/path/AbPathData.h>
-
-      
-#include <org/allbinary/logic/io/path/PathUtil.h>
 
       
 #include <org/allbinary/logic/string/StringMaker.h>
@@ -358,7 +361,7 @@ this->category= value;
 
     public: HashMap<any, any> toHashMap(){
 
-    HashMap<any, any> categoryHashMap = HashMap<any, any>();;
+    HashMap<any, any> categoryHashMap = StdUtil::getInstance().createHashMap();;
     
 categoryHashMap.put(CategoryData::getInstance().NAME, this->getValue());
     
@@ -371,9 +374,9 @@ categoryHashMap.put(CategoryData::getInstance().NAME, this->getValue());
 }
 
 
-    public: Vector toVector(){
+    public: BasicArrayList toVector(){
 
-    Vector categoryVector = Vector();;
+    BasicArrayList categoryVector = BasicArrayListD();;
     
 categoryVector.add(this->getValue());
     

@@ -23,7 +23,10 @@
 #include <java/util/HashMap.h>
 
       
-#include <java/util/Vector.h>
+#include <org/allbinary/util/BasicArrayList.h>
+
+      
+#include <org/allbinary/util/BasicArrayListD.h>
 
       
 #include <javax/servlet/jsp/PageContext.h>
@@ -81,6 +84,8 @@ class InventoryRequestHelper: public ModifyTable {
 
     protected: const LogUtil logUtil = LogUtil::getInstance();
 
+    protected: const BasicItemData basicItemData = BasicItemData::getInstance();
+
     private: ItemInterface itemInterface;
 
 public: InventoryRequestHelper(HashMap<any, any> propertiesHashMap, PageContext pageContext){
@@ -104,7 +109,7 @@ this->itemInterface= itemView.getItemInterface();
     TableMappingInterface dataMappingInterface = this->getItemInterface() as TableMappingInterface;;
     
 
-    Vector values = dataMappingInterface.toVector();;
+    BasicArrayList values = dataMappingInterface.toVector();;
     
 InventoryEntityFactory::getInstance().getInventoryEntityInstance().insert(values);
     
@@ -162,14 +167,14 @@ InventoryEntityFactory::getInstance().getInventoryEntityInstance().insert(values
 
     std::string id = dataMappingInterface.getKey() as string;;
     
-InventoryEntityFactory::getInstance().getInventoryEntityInstance().deleteWhere(BasicItemData::ID, id);
+InventoryEntityFactory::getInstance().getInventoryEntityInstance().deleteWhere(basicItemData.ID, id);
     
 
     StringMaker stringBuffer = StringMaker();;
     
 stringBuffer.append("Successfully Removed the item with ");
     
-stringBuffer.append(BasicItemData::ID);
+stringBuffer.append(basicItemData.ID);
     
 stringBuffer.append("=");
     

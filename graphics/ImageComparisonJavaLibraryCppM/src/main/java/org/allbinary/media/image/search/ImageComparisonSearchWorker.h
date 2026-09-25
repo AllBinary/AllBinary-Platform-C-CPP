@@ -26,7 +26,13 @@
 #include <java/awt/image/BufferedImage.h>
 
       
-#include <java/util/Vector.h>
+#include <org/allbinary/util/BasicArrayList.h>
+
+      
+#include <org/allbinary/util/BasicArrayListD.h>
+
+      
+#include <org/allbinary/logic/StdUtil.h>
 
       
 #include <org/allbinary/logic/communication/log/LogUtil.h>
@@ -82,7 +88,7 @@ class ImageComparisonSearchWorker: public BasicEventHandler, public ImageCompari
 
     protected: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    private: Vector imageComparisonInfoVector;
+    private: BasicArrayList imageComparisonInfoVector;
 
     private: int64_t index= 0;
 

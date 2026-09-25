@@ -67,6 +67,9 @@
 #include <org/allbinary/game/configuration/persistance/NullRecordStore.h>
 
       
+#include <org/allbinary/logic/StdUtil.h>
+
+      
 #include <org/allbinary/logic/communication/log/LogUtil.h>
 
       
@@ -118,7 +121,7 @@
 
 class RecordStoreHighScores: public HighScores {
 
-    private: static const Hashtable<any, any> hashTable = Hashtable<any, any>();
+    private: static const Hashtable<any, any> hashTable = StdUtil::getInstance().createHashtable();
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
     public: static HighScores getInstance(AbeClientInformationInterface abeClientInformation, GameInfo gameInfo, std::string highScoreName, std::string heading, std::string columnTwoHeading, RecordComparator recordComparatorInterface){

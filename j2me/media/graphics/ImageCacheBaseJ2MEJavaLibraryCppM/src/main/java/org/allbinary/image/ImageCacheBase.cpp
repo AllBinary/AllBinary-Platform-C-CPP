@@ -38,6 +38,9 @@
 #include <javax/microedition/lcdui/NullImage.h>
 
       
+#include <org/allbinary/logic/StdUtil.h>
+
+      
 #include <org/allbinary/logic/communication/log/LogUtil.h>
 
       
@@ -84,7 +87,7 @@ class ImageCacheBase
 
     protected: const ImageFactory imageFactory = ImageFactory::getInstance();
 
-    protected: const Hashtable<any, any> hashtable = Hashtable<any, any>();
+    protected: const Hashtable<any, any> hashtable = StdUtil::getInstance().createHashtable();
 
     protected: const int32_t SIZE = 128;
 

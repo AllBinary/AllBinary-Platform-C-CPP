@@ -22,7 +22,10 @@
         
             #include "../../../../java/lang/Exception.h"
         
-#include <java/util/Vector.h>
+#include <org/allbinary/util/BasicArrayList.h>
+
+      
+#include <org/allbinary/util/BasicArrayListD.h>
 
       
 #include <org/allbinary/business/context/modules/storefront/StoreFrontInterface.h>
@@ -193,10 +196,16 @@ stringBuffer.append(PATH_GLOBALS::getInstance().BACKUP_PATH);
     StoreFrontsEntity storeFrontsEntity = StoreFrontsEntityFactory::getInstance().getStoreFrontsEntityInstance();;
     
 
-    Vector storeFrontNamesBasicArrayList = storeFrontsEntity.getStoreFrontNames();;
+    BasicArrayList storeFrontNamesBasicArrayList = storeFrontsEntity.getStoreFrontNames();;
     
 
-    int32_t size = storeFrontNamesBasicArrayList.length;;
+    int32_t size = storeFrontNamesBasicArrayList.size();;
+    
+
+    std::string nextStore;;
+    
+
+    std::string viewsPath;;
     
 
 
@@ -205,8 +214,7 @@ stringBuffer.append(PATH_GLOBALS::getInstance().BACKUP_PATH);
                         for (
     int32_t index = 0;index < size; index++)
         {
-
-    std::string nextStore = storeFrontNamesBasicArrayList.get(index) as string;;
+nextStore= storeFrontNamesBasicArrayList.get(index) as string;
     
 stringBuffer.delete(0, stringBuffer.length());
     
@@ -216,8 +224,7 @@ stringBuffer.append(PATH_GLOBALS::getInstance().VIEWS_PATH);
     
 stringBuffer.append(nextStore);
     
-
-    std::string viewsPath = stringBuffer.toString();;
+viewsPath= stringBuffer.toString();
     
 stringBuffer.delete(0, stringBuffer.length());
     
@@ -273,10 +280,19 @@ stringBuffer.append(PATH_GLOBALS::getInstance().BACKUP_PATH);
     StoreFrontsEntity storeFrontsEntity = StoreFrontsEntityFactory::getInstance().getStoreFrontsEntityInstance();;
     
 
-    Vector storeFrontNamesBasicArrayList = storeFrontsEntity.getStoreFrontNames();;
+    BasicArrayList storeFrontNamesBasicArrayList = storeFrontsEntity.getStoreFrontNames();;
     
 
-    int32_t size = storeFrontNamesBasicArrayList.length;;
+    int32_t size = storeFrontNamesBasicArrayList.size();;
+    
+
+    std::string nextStore;;
+    
+
+    StoreFrontInterface storeFrontInterface;;
+    
+
+    std::string resourcesPath;;
     
 
 
@@ -285,11 +301,9 @@ stringBuffer.append(PATH_GLOBALS::getInstance().BACKUP_PATH);
                         for (
     int32_t index = 0;index < size; index++)
         {
-
-    std::string nextStore = storeFrontNamesBasicArrayList.get(index) as string;;
+nextStore= storeFrontNamesBasicArrayList.get(index) as string;
     
-
-    StoreFrontInterface storeFrontInterface = storeFrontsEntity.getStoreFrontInterface(nextStore);;
+storeFrontInterface= storeFrontsEntity.getStoreFrontInterface(nextStore);
     
 stringBuffer.delete(0, stringBuffer.length());
     
@@ -299,8 +313,7 @@ stringBuffer.append(storeFrontInterface.getCurrentHostNamePath());
     
 stringBuffer.append(storeFrontInterface.getCategoryPath());
     
-
-    std::string resourcesPath = stringBuffer.toString();;
+resourcesPath= stringBuffer.toString();
     
 stringBuffer.delete(0, stringBuffer.length());
     
@@ -356,10 +369,13 @@ stringBuffer.append(PATH_GLOBALS::getInstance().BACKUP_PATH);
     StoreFrontsEntity storeFrontsEntity = StoreFrontsEntityFactory::getInstance().getStoreFrontsEntityInstance();;
     
 
-    Vector storeFrontNamesBasicArrayList = storeFrontsEntity.getStoreFrontNames();;
+    BasicArrayList storeFrontNamesBasicArrayList = storeFrontsEntity.getStoreFrontNames();;
     
 
-    int32_t size = storeFrontNamesBasicArrayList.length;;
+    int32_t size = storeFrontNamesBasicArrayList.size();;
+    
+
+    std::string nextStore;;
     
 
 
@@ -368,8 +384,7 @@ stringBuffer.append(PATH_GLOBALS::getInstance().BACKUP_PATH);
                         for (
     int32_t index = 0;index < size; index++)
         {
-
-    std::string nextStore = storeFrontNamesBasicArrayList.get(index) as string;;
+nextStore= storeFrontNamesBasicArrayList.get(index) as string;
     
 PreLogUtil::put("Backup Store Jsps: " +nextStore, this, "backupJsps()");
     

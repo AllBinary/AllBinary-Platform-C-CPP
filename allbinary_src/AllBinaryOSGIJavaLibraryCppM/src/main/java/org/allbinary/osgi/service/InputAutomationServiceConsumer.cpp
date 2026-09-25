@@ -24,7 +24,10 @@
         
             #include "../../../../java/lang/Exception.h"
         
-#include <java/util/Vector.h>
+#include <org/allbinary/util/BasicArrayList.h>
+
+      
+#include <org/allbinary/util/BasicArrayListD.h>
 
       
 #include <org/osgi/framework/BundleContext.h>
@@ -97,12 +100,12 @@ this->setOsgiServiceVisitorInterface(osgiServiceVisitorInterface);
 this->logUtil.putF(this->commonStrings.START, this, this->commonStrings.PROCESS);
     
 
-    Vector vector = this->osgiServiceUtil.getServicesObjectVector(this->getBundleContext(), this->getServiceReferences());;
+    BasicArrayList vector = this->osgiServiceUtil.getServicesObjectVector(this->getBundleContext(), this->getServiceReferences());;
     
-this->logUtil.putF("Processing " +vector.length +" Services", this, this->commonStrings.PROCESS);
+this->logUtil.putF("Processing " +vector.size() +" Services", this, this->commonStrings.PROCESS);
     
 
-    int32_t size = vector.length;;
+    int32_t size = vector.size();;
     
 
     OSGIServiceInterface osgiServiceInterface;;

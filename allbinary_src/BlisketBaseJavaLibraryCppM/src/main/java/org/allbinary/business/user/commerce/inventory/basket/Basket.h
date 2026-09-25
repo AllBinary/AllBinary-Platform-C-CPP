@@ -53,6 +53,9 @@
 #include <org/allbinary/data/tables/user/commerce/inventory/item/InventoryEntityFactory.h>
 
       
+#include <org/allbinary/logic/StdUtil.h>
+
+      
 
 
 
@@ -77,7 +80,7 @@ class Basket
             : public Object
         : public BasketInterface, public Serializable {
 
-    private: HashMap<any, any> items = HashMap<any, any>();
+    private: HashMap<any, any> items = StdUtil::getInstance().createHashMap();
 
 public: Basket();
 

@@ -27,6 +27,9 @@
         
             #include "../../../../java/lang/Thread.h"
         
+#include <jsinterop/annotations/JsType.h>
+
+      
 #include <org/allbinary/string/CommonStrings.h>
 
       

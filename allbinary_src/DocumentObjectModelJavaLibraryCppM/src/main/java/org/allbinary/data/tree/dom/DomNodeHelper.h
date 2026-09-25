@@ -18,18 +18,23 @@
 
 
 
-        #ifndef ORG_ALLBINARY_MATH_POSITIONSTRINGS_H
-        #define ORG_ALLBINARY_MATH_POSITIONSTRINGS_H
+        #ifndef ORG_ALLBINARY_DATA_TREE_DOM_DOMNODEHELPER_H
+        #define ORG_ALLBINARY_DATA_TREE_DOM_DOMNODEHELPER_H
 
-            #include "../../../java/lang/Object.h"
+            #include "../../../../../java/lang/Object.h"
         
-#include <jsinterop/annotations/JsType.h>
+            #include "../../../../../java/lang/Exception.h"
+        
+#include <org/allbinary/logic/string/StringMaker.h>
 
       
-#include <jsinterop/annotations/JsMethod.h>
+#include <org/allbinary/logic/string/StringUtil.h>
 
       
-#include <jsinterop/annotations/JsProperty.h>
+#include <org/w3c/dom/Node.h>
+
+      
+#include <org/w3c/dom/NodeList.h>
 
       
 
@@ -50,34 +55,27 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        
-class PositionStrings
+        #include "DomSearchHelper.h"
+
+class DomNodeHelper
             : public Object
          {
 
-    private: static PositionStrings instance() { return PositionStrings(); }
+    public: static Node getFirstChildElement(Node parentNode);
 
-    public: static PositionStrings getInstance();
+    public: static std::string getTextNodeValue(Node node);
 
-    public: const std::string X = "x";
+                //@Throws(Exception.constructor)
+            
+    public: static std::string getTextNodeValue(std::string nodeName, NodeList nodeList);
 
-    public: const std::string Y = "y";
+    public: static std::string getTextNodesValue(Node node);
 
-    public: const std::string X_LABEL = "x: ";
-
-    public: const std::string Y_LABEL = "y: ";
-
-    public: const std::string Z_LABEL = "z: ";
-
-    public: const std::string DX_LABEL = "dx: ";
-
-    public: const std::string DY_LABEL = "dy: ";
-
-    public: const std::string DZ_LABEL = "dz: ";
+private: DomNodeHelper();
 
 };
 
             
 
 
-        #endif //ORG_ALLBINARY_MATH_POSITIONSTRINGS_H
+        #endif //ORG_ALLBINARY_DATA_TREE_DOM_DOMNODEHELPER_H

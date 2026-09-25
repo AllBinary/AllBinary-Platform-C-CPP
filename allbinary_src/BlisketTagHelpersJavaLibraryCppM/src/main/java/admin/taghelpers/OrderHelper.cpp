@@ -23,7 +23,10 @@
 #include <java/util/HashMap.h>
 
       
-#include <java/util/Vector.h>
+#include <org/allbinary/util/BasicArrayList.h>
+
+      
+#include <org/allbinary/util/BasicArrayListD.h>
 
       
 #include <javax/servlet/http/HttpServletRequest.h>
@@ -164,10 +167,10 @@ paymentGatewayBoolean= Boolean::TRUE;
     PaymentGatewayEntity paymentGatewayEntityInterface = PaymentGatewayEntityFactory::getInstance() as PaymentGatewayEntity;;
     
 
-    Vector paymentTypeVector = paymentGatewayEntityInterface.findPaymentTypeVectorByStore(this->weblisketSession.getStoreName());;
+    BasicArrayList paymentTypeVector = paymentGatewayEntityInterface.findPaymentTypeVectorByStore(this->weblisketSession.getStoreName());;
     
 
-                        if(paymentTypeVector.length == 1)
+                        if(paymentTypeVector.size() == 1)
                         
                                     {
                                     

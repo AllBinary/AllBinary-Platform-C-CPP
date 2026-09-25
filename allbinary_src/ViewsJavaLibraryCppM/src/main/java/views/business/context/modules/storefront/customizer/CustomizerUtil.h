@@ -25,7 +25,10 @@
         
             #include "../../../../../../java/lang/Exception.h"
         
-#include <java/util/Vector.h>
+#include <org/allbinary/util/BasicArrayList.h>
+
+      
+#include <org/allbinary/util/BasicArrayListD.h>
 
       
 #include <org/allbinary/data/tables/transform/info/TransformInfoEntity.h>
@@ -98,15 +101,15 @@ private: CustomizerUtil();
 
                 //@Throws(Exception.constructor)
             
-    public: Vector getTransformInfoObjectConfigComponentNodesToCustomize(Object customizerTransformInfoInterface, Object transformInfoInterface);
+    public: BasicArrayList getTransformInfoObjectConfigComponentNodesToCustomize(Object customizerTransformInfoInterface, Object transformInfoInterface);
 
                 //@Throws(Exception.constructor)
             
-    public: Vector getTransformInfoObjectConfigComponentNodes(Object transformInfoInterface);
+    public: BasicArrayList getTransformInfoObjectConfigComponentNodes(Object transformInfoInterface);
 
                 //@Throws(Exception.constructor)
             
-    public: Vector getTransformInfoObjectConfigGroupComponentNodes(Object transformInfoInterface);
+    public: BasicArrayList getTransformInfoObjectConfigGroupComponentNodes(Object transformInfoInterface);
 
                 //@Throws(Exception.constructor)
             

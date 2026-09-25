@@ -26,6 +26,9 @@
 #include <javax/servlet/jsp/tagext/TagSupport.h>
 
       
+#include <org/allbinary/logic/StdUtil.h>
+
+      
 #include <org/allbinary/logic/communication/log/LogUtil.h>
 
       
@@ -71,7 +74,7 @@ public: Properties(){
 
                                     }
                                 
-this->propertiesHashMap= HashMap<any, any>();
+this->propertiesHashMap= StdUtil::getInstance().createHashMap();
     
 }
 
@@ -96,7 +99,7 @@ this->propertiesHashMap= HashMap<any, any>();
 
                                     }
                                 
-this->propertiesHashMap= HashMap<any, any>();
+this->propertiesHashMap= StdUtil::getInstance().createHashMap();
     
 
 

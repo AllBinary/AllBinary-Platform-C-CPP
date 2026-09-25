@@ -28,7 +28,10 @@
 #include <java/util/Set.h>
 
       
-#include <java/util/Vector.h>
+#include <org/allbinary/util/BasicArrayList.h>
+
+      
+#include <org/allbinary/util/BasicArrayListD.h>
 
       
 #include <javax/servlet/http/HttpServletRequest.h>
@@ -164,7 +167,7 @@ this->request= this->getPageContext().getRequest() as HttpServletRequest;
                         
                                     {
                                     
-    BasicItemView basicItemView = BasicItemView(itemInterface, Vector());;
+    BasicItemView basicItemView = BasicItemView(itemInterface, BasicArrayListD());;
     
 
     Node node = basicItemView.toXmlNode(document);;

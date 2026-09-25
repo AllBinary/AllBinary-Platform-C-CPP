@@ -22,7 +22,10 @@
         
             #include "../../../../../../java/lang/Exception.h"
         
-#include <java/util/Vector.h>
+#include <org/allbinary/util/BasicArrayList.h>
+
+      
+#include <org/allbinary/util/BasicArrayListD.h>
 
       
 #include <org/allbinary/business/entry/EntryData.h>
@@ -279,10 +282,10 @@ stringBuffer.append(this->getFileName());
     Node logConfigTypesNode = logConfigTypesNodeList.item(0);;
     
 
-    Vector logConfigTypeNodeVector = DomSearchHelper::getAllNodes(LogConfigTypeData::getInstance().NAME, logConfigTypesNode.getChildNodes());;
+    BasicArrayList logConfigTypeNodeVector = DomSearchHelper::getAllNodes(LogConfigTypeData::getInstance().NAME, logConfigTypesNode.getChildNodes());;
     
 
-    int32_t size = logConfigTypeNodeVector.length;;
+    int32_t size = logConfigTypeNodeVector.size();;
     
 
 
@@ -292,7 +295,7 @@ stringBuffer.append(this->getFileName());
     int32_t i = 0;i < size; i++)
         {
 
-    Node node = logConfigTypeNodeVector.elementAt(i) as Node;;
+    Node node = logConfigTypeNodeVector.get(i) as Node;;
     
 
     LogConfigType logType = LogConfigTypes::getInstance(node);;

@@ -59,6 +59,9 @@
 #include <org/allbinary/data/tables/user/commerce/inventory/order/OrderHistoryEntityFactory.h>
 
       
+#include <org/allbinary/logic/StdUtil.h>
+
+      
 #include <org/allbinary/logic/communication/log/LogUtil.h>
 
       
@@ -255,10 +258,10 @@ this->storeCancelComment= this->request.getParameter(OrderData::STORECANCELCOMME
     std::string success = "Successful update";;
     
 
-    HashMap<any, any> orderHashMap = HashMap<any, any>();;
+    HashMap<any, any> orderHashMap = StdUtil::getInstance().createHashMap();;
     
 
-    HashMap<any, any> whereHashMap = HashMap<any, any>();;
+    HashMap<any, any> whereHashMap = StdUtil::getInstance().createHashMap();;
     
 orderHashMap.put(EntryData::getInstance().ID, this->entryId);
     

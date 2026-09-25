@@ -32,6 +32,15 @@
 #include <jsinterop/annotations/JsType.h>
 
       
+#include <jsinterop/annotations/JsMethod.h>
+
+      
+#include <jsinterop/annotations/JsConstructor.h>
+
+      
+#include <jsinterop/annotations/JsProperty.h>
+
+      
 #include <org/allbinary/AndroidUtil.h>
 
       
@@ -41,13 +50,7 @@
 #include <org/allbinary/logic/communication/log/LogUtil.h>
 
       
-#include <jsinterop/annotations/JsMethod.h>
-
-      
-#include <jsinterop/annotations/JsConstructor.h>
-
-      
-#include <jsinterop/annotations/JsProperty.h>
+#include <org/allbinary/logic/string/StringMaker.h>
 
       
 
@@ -92,6 +95,8 @@ class SmallIntegerSingletonFactory
     private: int32_t lastNegativeMin = 0;
 
     public: int32_t getMin();
+
+    private: int32_t getMinAllowed();
 
     public: void initWithRange(int32_t value, int32_t negativeValue);
 

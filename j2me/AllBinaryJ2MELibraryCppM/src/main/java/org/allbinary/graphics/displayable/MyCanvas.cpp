@@ -74,6 +74,9 @@
 #include <jsinterop/annotations/JsProperty.h>
 
       
+#include <org/allbinary/logic/StdUtil.h>
+
+      
 
 
 
@@ -127,7 +130,7 @@ this->name= name;
     
 this->childNameList= childNameList;
     
-this->commandStack= Stack();
+this->commandStack= StdUtil::getInstance().createStack();
     
 }
 

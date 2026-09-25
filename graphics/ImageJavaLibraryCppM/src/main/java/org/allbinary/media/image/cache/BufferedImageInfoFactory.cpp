@@ -23,6 +23,9 @@
 #include <java/util/HashMap.h>
 
       
+#include <org/allbinary/logic/StdUtil.h>
+
+      
 #include <org/allbinary/logic/string/StringMaker.h>
 
       
@@ -50,7 +53,7 @@ class BufferedImageInfoFactory
             : public Object
          {
 
-    private: static HashMap<any, any> hashMap = HashMap<any, any>();
+    private: static HashMap<any, any> hashMap = StdUtil::getInstance().createHashMap();
 
     public: static BufferedImageInfo getInstance(int32_t width, int32_t height, int32_t type){
 

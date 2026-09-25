@@ -20,7 +20,10 @@
 
             #include "../../../java/lang/Exception.h"
         
-#include <java/util/Vector.h>
+#include <org/allbinary/util/BasicArrayList.h>
+
+      
+#include <org/allbinary/util/BasicArrayListD.h>
 
       
 #include <org/allbinary/logic/communication/log/LogUtil.h>
@@ -149,10 +152,10 @@ public: RootContextView(TransformInfoInterface transformInfoInterface){
     NoTemplateTransformInfoObjectConfig objectConfig = NoTemplateTransformInfoObjectConfig(this->getTransformInfoInterface(), this->getTransformInfoInterface().getObjectConfigInterface().toXmlDoc());;
     
 
-    Vector componentsVector = objectConfig.getTransforms();;
+    BasicArrayList componentsVector = objectConfig.getTransforms();;
     
 
-                        if(componentsVector.length == 0)
+                        if(componentsVector.size() == 0)
                         
                                     {
                                     
@@ -164,13 +167,13 @@ public: RootContextView(TransformInfoInterface transformInfoInterface){
                                     }
                                 
 
-                        if(componentsVector.length > 1)
+                        if(componentsVector.size() > 1)
                         
                                     {
                                     
 
 
-                            throw Exception("To Many Root Template Views: " +componentsVector.length);
+                            throw Exception("To Many Root Template Views: " +componentsVector.size());
                     
 
                                     }

@@ -23,7 +23,10 @@
 #include <java/util/HashMap.h>
 
       
-#include <java/util/Vector.h>
+#include <org/allbinary/util/BasicArrayList.h>
+
+      
+#include <org/allbinary/util/BasicArrayListD.h>
 
       
 #include <org/allbinary/business/context/modules/storefront/StoreFront.h>
@@ -36,6 +39,9 @@
 
       
 #include <org/allbinary/business/init/db/UserDbInitInfo.h>
+
+      
+#include <org/allbinary/logic/StdUtil.h>
 
       
 #include <org/allbinary/logic/communication/log/LogUtil.h>
@@ -84,7 +90,7 @@ this->setTableName(this->tableName);
 }
 
 
-    public: void insert(Vector values){
+    public: void insert(BasicArrayList values){
 
         try {
             super.insert(values);
@@ -152,7 +158,7 @@ this->setTableName(this->tableName);
             
     public: StoreFront getStoreFrontInterface(std::string name){
 
-    HashMap<any, any> keysAndValues = HashMap<any, any>();;
+    HashMap<any, any> keysAndValues = StdUtil::getInstance().createHashMap();;
     
 keysAndValues.put(StoreFrontData::getInstance().NAME, name);
     
@@ -187,9 +193,9 @@ keysAndValues.put(StoreFrontData::getInstance().NAME, name);
 }
 
 
-    public: Vector getStoreFrontNames(){
+    public: BasicArrayList getStoreFrontNames(){
 
-    Vector storeFrontNames = super.getColumn(StoreFrontData::getInstance().NAME);;
+    BasicArrayList storeFrontNames = super.getColumn(StoreFrontData::getInstance().NAME);;
     
 
 

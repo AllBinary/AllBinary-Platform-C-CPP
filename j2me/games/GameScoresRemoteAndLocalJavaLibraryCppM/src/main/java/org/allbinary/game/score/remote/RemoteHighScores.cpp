@@ -28,7 +28,10 @@
 #include <java/util/Hashtable.h>
 
       
-#include <java/util/Vector.h>
+#include <org/allbinary/util/BasicArrayList.h>
+
+      
+#include <org/allbinary/util/BasicArrayListD.h>
 
       
 #include <org/allbinary/game/GameInfo.h>
@@ -41,6 +44,9 @@
 
       
 #include <org/allbinary/game/score/RemoteErrorHighScoresSingletonFactory.h>
+
+      
+#include <org/allbinary/logic/StdUtil.h>
 
       
 #include <org/allbinary/logic/communication/log/LogUtil.h>
@@ -82,7 +88,7 @@
 
 class RemoteHighScores: public HighScores {
 
-    private: static const Hashtable<any, any> hashTable = Hashtable<any, any>();
+    private: static const Hashtable<any, any> hashTable = StdUtil::getInstance().createHashtable();
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
     public: static HighScores getInstance(AbeClientInformationInterface abeClientInformation, SoftwareInformation softwareInformation, GameInfo gameInfo, std::string heading, std::string columnTwoHeading, Boolean isAscending){
@@ -190,7 +196,7 @@ RemoteHighScoresSubmissionProcessorFactory::getInstance().process(this, this->ab
 this->getList().clear();
     
 
-    Vector vector = hashtable.get(RemoteHighScoresData::getInstance().HIGH_SCORES) as Vector;;
+    BasicArrayList vector = hashtable.get(RemoteHighScoresData::getInstance().HIGH_SCORES) as BasicArrayList;;
     
 
                         if(vector != 
@@ -199,7 +205,7 @@ this->getList().clear();
                         
                                     {
                                     
-    int32_t size = vector.length;;
+    int32_t size = vector.size();;
     
 
 
@@ -209,13 +215,13 @@ this->getList().clear();
     int32_t index = 0;index < size; index++)
         {
 
-    Vector highScoreVector = vector.elementAt(index) as Vector;;
+    BasicArrayList highScoreVector = vector.get(index) as BasicArrayList;;
     
 
-    std::string displayName = highScoreVector.elementAt(0) as string;;
+    std::string displayName = highScoreVector.get(0) as string;;
     
 
-    std::string score = highScoreVector.elementAt(1) as string;;
+    std::string score = highScoreVector.get(1) as string;;
     
 
     int64_t longScore = Long::parseLong(score);;

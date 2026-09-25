@@ -31,7 +31,10 @@
 #include <java/util/HashMap.h>
 
       
-#include <java/util/Vector.h>
+#include <org/allbinary/util/BasicArrayList.h>
+
+      
+#include <org/allbinary/util/BasicArrayListD.h>
 
       
 #include <javax/servlet/http/HttpServletRequest.h>
@@ -50,6 +53,9 @@
 
       
 #include <org/allbinary/data/tables/user/commerce/inventory/item/options/BasicOptionItemsEntityFactory.h>
+
+      
+#include <org/allbinary/logic/StdUtil.h>
 
       
 #include <org/allbinary/logic/communication/log/LogUtil.h>
@@ -85,6 +91,8 @@ class BasicOptionItemsRequestHelper: public ModifyTable {
 
     protected: const LogUtil logUtil = LogUtil::getInstance();
 
+    protected: const BasicItemData basicItemData = BasicItemData::getInstance();
+
     private: HttpServletRequest request;
 
     private: std::string id;
@@ -95,9 +103,9 @@ class BasicOptionItemsRequestHelper: public ModifyTable {
 
     private: std::string defaultOptionValue;
 
-    private: Vector optionItem;
+    private: BasicArrayList optionItem;
 
-    private: Vector optionValue;
+    private: BasicArrayList optionValue;
 
     private: std::string timeEntered;
 

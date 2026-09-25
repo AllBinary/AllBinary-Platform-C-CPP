@@ -34,13 +34,19 @@
 #include <java/util/Set.h>
 
       
-#include <java/util/Vector.h>
+#include <org/allbinary/util/BasicArrayList.h>
+
+      
+#include <org/allbinary/util/BasicArrayListD.h>
 
       
 #include <org/allbinary/business/user/commerce/inventory/item/Item.h>
 
       
 #include <org/allbinary/business/user/commerce/inventory/item/ItemView.h>
+
+      
+#include <org/allbinary/logic/StdUtil.h>
 
       
 #include <org/w3c/dom/Document.h>
@@ -73,7 +79,7 @@ class BasketReview
             : public Object
          {
 
-    Vector items = Vector();
+    BasicArrayList items = BasicArrayListD();
 
 public: BasketReview(){
 }
@@ -95,7 +101,7 @@ this->items.add(item);
 }
 
 
-    public: Vector getItems(){
+    public: BasicArrayList getItems(){
 
 
 
@@ -205,7 +211,7 @@ weightFloat += number(item.getWeight());
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return Integer(this->items.length);
+                        return Integer(this->items.size());
     
 }
 
@@ -306,7 +312,7 @@ idSet.add(item.getId());
 
     Item item = itemArray[index]! as Item;;
     
-node.appendChild(ItemView(item, Vector()).toXmlNode(document));
+node.appendChild(ItemView(item, BasicArrayListD()).toXmlNode(document));
     
 }
 

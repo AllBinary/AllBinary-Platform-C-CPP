@@ -49,6 +49,9 @@
 #include <org/allbinary/input/automation/module/configuration/InputAutomationModuleConfigurations.h>
 
       
+#include <org/allbinary/logic/StdUtil.h>
+
+      
 #include <org/allbinary/logic/communication/log/LogUtil.h>
 
       
@@ -96,7 +99,7 @@ this->helpSetListenerInterface= helpSetListenerInterface;
     
 this->defaultListModelHelper= DefaultListModelHelper();
     
-this->hashMap= HashMap<any, any>();
+this->hashMap= StdUtil::getInstance().createHashMap();
     
 
     Collection collection = inputAutomationModuleConfigurations.getHashMap().values();;

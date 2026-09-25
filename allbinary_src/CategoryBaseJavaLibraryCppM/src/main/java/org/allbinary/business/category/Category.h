@@ -30,7 +30,10 @@
 #include <java/util/HashMap.h>
 
       
-#include <java/util/Vector.h>
+#include <org/allbinary/util/BasicArrayList.h>
+
+      
+#include <org/allbinary/util/BasicArrayListD.h>
 
       
 #include <org/allbinary/business/category/hierarchy/CategoryHierarchy.h>
@@ -46,6 +49,9 @@
 
       
 #include <org/allbinary/business/category/properties/root/RootCategoryPropertiesInterface.h>
+
+      
+#include <org/allbinary/logic/StdUtil.h>
 
       
 #include <org/allbinary/logic/communication/log/LogUtil.h>
@@ -103,9 +109,9 @@ class Category
 
     private: CategoryPropertiesInterface categoryPropertiesInterface;
 
-    private: const Vector childCategoryVector = Vector();
+    private: const BasicArrayList childCategoryVector = BasicArrayListD();
 
-    private: const Vector typeVector = Vector();
+    private: const BasicArrayList typeVector = BasicArrayListD();
 
     private: const Integer PROPERTIES = Integer(1);
 
@@ -143,12 +149,12 @@ public: Category(CategoryInterface rootCategoryInterface, CategoryInterface pare
 
     public: bool addChild(CategoryInterface categoryInterface);
 
-    public: Vector getChildNodes();
+    public: BasicArrayList getChildNodes();
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
     public: bool removeChild(CategoryInterface categoryInterface);
 
-    private: void removal(Vector removalVector);
+    private: void removal(BasicArrayList removalVector);
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
     private: bool removeDuplicateChild(CategoryInterface categoryInterface);
@@ -188,7 +194,7 @@ public: Category(CategoryInterface rootCategoryInterface, CategoryInterface pare
 
                 //@Throws(Exception.constructor)
             
-    public: Vector toVector();
+    public: BasicArrayList toVector();
 
                 //@Throws(Exception.constructor)
             

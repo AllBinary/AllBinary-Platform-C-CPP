@@ -25,10 +25,16 @@
 #include <java/util/HashMap.h>
 
       
-#include <java/util/Vector.h>
+#include <org/allbinary/util/BasicArrayList.h>
+
+      
+#include <org/allbinary/util/BasicArrayListD.h>
 
       
 #include <org/allbinary/data/tables/TableMappingInterface.h>
+
+      
+#include <org/allbinary/logic/StdUtil.h>
 
       
 #include <org/allbinary/logic/io/file/AbFile.h>
@@ -88,9 +94,9 @@ this->file= file;
 
                 //@Throws(Exception.constructor)
             
-    public: Vector toVector(){
+    public: BasicArrayList toVector(){
 
-    Vector filePropertyVector = Vector();;
+    BasicArrayList filePropertyVector = BasicArrayListD();;
     
 filePropertyVector.add(this->file.getAbsolutePath());
     
@@ -115,7 +121,7 @@ filePropertyVector.add(this->file.getPath());
             
     public: HashMap<any, any> toHashMap(){
 
-    HashMap<any, any> filePropertyHashMap = HashMap<any, any>();;
+    HashMap<any, any> filePropertyHashMap = StdUtil::getInstance().createHashMap();;
     
 
     AbPathData pathData = AbPathData::getInstance();;

@@ -50,13 +50,19 @@
 #include <java/util/Set.h>
 
       
-#include <java/util/Vector.h>
+#include <org/allbinary/util/BasicArrayList.h>
+
+      
+#include <org/allbinary/util/BasicArrayListD.h>
 
       
 #include <org/allbinary/business/init/db/DatabaseConnectionInfoInterface.h>
 
       
 #include <org/allbinary/business/init/db/DbConnectionInfo.h>
+
+      
+#include <org/allbinary/logic/StdUtil.h>
 
       
 #include <org/allbinary/logic/communication/log/PreLogUtil.h>
@@ -119,6 +125,8 @@ class InitSql
     protected: const SqlTypeStrings sqlTypeStrings = SqlTypeStrings::getInstance();
 
     protected: const SqlStrings sqlStrings = SqlStrings::getInstance();
+
+    protected: const StdUtil stdUtil = StdUtil::getInstance();
 
     protected: const std::string INSERT = "insert";
 
@@ -335,7 +343,7 @@ stringBuffer.append(this->sqlStrings.CLOSE_QUOTE);
 
         while(rset.next())
         {
-result= HashMap<any, any>();
+result= stdUtil.createHashMap();
     
 
     int32_t columnCount = resultSetMetaData.getColumnCount();;
@@ -521,7 +529,7 @@ this->executeSQLStatement(sqlStatement);
 }
 
 
-    public: void insert(Vector values){
+    public: void insert(BasicArrayList values){
 
     StringMaker stringBuffer = StringMaker();;
     
@@ -534,7 +542,7 @@ stringBuffer.append(this->sqlStrings.VALUES);
 
         try {
             
-    int32_t size = values.length;;
+    int32_t size = values.size();;
     
 
 
@@ -553,7 +561,7 @@ stringBuffer.append(this->sqlStrings.SINGLE_QUOTE_COMMA_SEP);
 }
 
 
-    std::string value = this->getValue(values.lastElement() as string);;
+    std::string value = this->getValue(values.get(values.size() -1) as string);;
     
 stringBuffer.append(value);
     

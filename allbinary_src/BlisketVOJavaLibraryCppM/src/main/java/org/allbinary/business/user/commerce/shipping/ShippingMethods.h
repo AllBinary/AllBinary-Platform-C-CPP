@@ -25,7 +25,10 @@
         
             #include "../../../../../../java/lang/Exception.h"
         
-#include <java/util/Vector.h>
+#include <org/allbinary/util/BasicArrayList.h>
+
+      
+#include <org/allbinary/util/BasicArrayListD.h>
 
       
 #include <org/allbinary/business/context/modules/storefront/StoreFrontInterface.h>
@@ -72,13 +75,13 @@ class ShippingMethods
 
     protected: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    private: Vector shippingVector;
+    private: BasicArrayList shippingVector;
 
     private: ShippingInterface defaultShippingMethodInterface;
 
 public: ShippingMethods(AbeClientInformationInterface abeClientInformation, StoreFrontInterface storeFrontInterface);
 
-    public: Vector get();
+    public: BasicArrayList get();
 
                 //@Throws(Exception.constructor)
             

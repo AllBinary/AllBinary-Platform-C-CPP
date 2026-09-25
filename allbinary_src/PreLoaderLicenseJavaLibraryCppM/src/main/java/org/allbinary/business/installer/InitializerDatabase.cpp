@@ -41,6 +41,9 @@
 #include <org/allbinary/business/init/db/DbConnectionInfo.h>
 
       
+#include <org/allbinary/logic/StdUtil.h>
+
+      
 #include <org/allbinary/logic/communication/log/LogUtil.h>
 
       
@@ -113,7 +116,7 @@ public: InitializerDatabase(AbeClientInformationInterface abeClientInformation, 
     StringMaker stringBuffer = StringMaker();;
     
 
-    HashMap<any, any> hashMap = HashMap<any, any>();;
+    HashMap<any, any> hashMap = StdUtil::getInstance().createHashMap();;
     
 
     Set keys = map.keySet();;

@@ -25,7 +25,13 @@
 #include <java/util/HashMap.h>
 
       
-#include <java/util/Vector.h>
+#include <org/allbinary/util/BasicArrayList.h>
+
+      
+#include <org/allbinary/util/BasicArrayListD.h>
+
+      
+#include <org/allbinary/logic/StdUtil.h>
 
       
 #include <org/allbinary/logic/control/validate/ValidationInterface.h>
@@ -64,9 +70,9 @@ class CssPropertiesValidationFactory
 
                 //@Throws(Exception.constructor)
             
-    public: static Vector getInstance(NodeList nodeList){
+    public: static BasicArrayList getInstance(NodeList nodeList){
 
-    Vector propertiesVector = Vector();;
+    BasicArrayList propertiesVector = BasicArrayListD();;
     
 
 
@@ -101,9 +107,9 @@ propertiesVector.add(cssPropertyValidationInterface);
 }
 
 
-    public: static Vector getInstance(HashMap<any, any> hashMap){
+    public: static BasicArrayList getInstance(HashMap<any, any> hashMap){
 
-    Vector styles = Vector();;
+    BasicArrayList styles = BasicArrayListD();;
     
 
 

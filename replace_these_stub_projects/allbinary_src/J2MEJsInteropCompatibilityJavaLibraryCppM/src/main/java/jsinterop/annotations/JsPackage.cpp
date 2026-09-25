@@ -27,6 +27,8 @@
         
 class JsPackage {
 
+    std::string GLOBAL = "<global>";
+
 };
 
             

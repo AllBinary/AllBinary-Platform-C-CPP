@@ -31,6 +31,9 @@
 #include <org/allbinary/data/tree/dom/ModDomHelper.h>
 
       
+#include <org/allbinary/logic/StdUtil.h>
+
+      
 #include <org/w3c/dom/Document.h>
 
       
@@ -69,7 +72,7 @@ public: UrlGlobalsView(){
             
     public: Node toXmlNode(Document document){
 
-    HashMap<any, any> hashMap = HashMap<any, any>();;
+    HashMap<any, any> hashMap = StdUtil::getInstance().createHashMap();;
     
 hashMap.put(UrlGlobalsData::WEBAPPPATH, org.allbinary.globals.URLGLOBALS.getWebappPath());
     

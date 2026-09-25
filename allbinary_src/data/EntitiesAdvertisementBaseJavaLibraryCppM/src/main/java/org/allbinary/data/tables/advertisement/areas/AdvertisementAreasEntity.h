@@ -26,7 +26,10 @@
 #include <java/util/HashMap.h>
 
       
-#include <java/util/Vector.h>
+#include <org/allbinary/util/BasicArrayList.h>
+
+      
+#include <org/allbinary/util/BasicArrayListD.h>
 
       
 #include <org/allbinary/business/advertisement/area/AdvertisementArea.h>
@@ -48,6 +51,9 @@
 
       
 #include <org/allbinary/business/init/db/UserDbInitInfo.h>
+
+      
+#include <org/allbinary/logic/StdUtil.h>
 
       
 #include <org/allbinary/logic/communication/log/LogUtil.h>
@@ -91,7 +97,7 @@ public: AdvertisementAreasEntity();
 
                 //@Throws(Exception.constructor)
             
-    public: Vector get(std::string storeName);
+    public: BasicArrayList get(std::string storeName);
 
                 //@Throws(Exception.constructor)
             

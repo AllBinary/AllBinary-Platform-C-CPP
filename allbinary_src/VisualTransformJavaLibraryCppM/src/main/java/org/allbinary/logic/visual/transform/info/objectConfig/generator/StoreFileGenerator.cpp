@@ -32,6 +32,9 @@
 #include <org/allbinary/globals/URLGLOBALS.h>
 
       
+#include <org/allbinary/logic/StdUtil.h>
+
+      
 #include <org/allbinary/logic/communication/http/request/session/WeblisketSession.h>
 
       
@@ -150,7 +153,7 @@ stringBuffer.append(AbPathData::getInstance().SEPARATOR);
 fileName= transformInfoInterface.getName().substring(transformInfoHttpStoreInterface.getStoreName().length() +1);
     
 
-    HashMap<any, any> outputMappingHashMap = HashMap<any, any>();;
+    HashMap<any, any> outputMappingHashMap = StdUtil::getInstance().createHashMap();;
     
 outputMappingHashMap.put(TransformInfosData::getInstance().PREVIEW, "Preview");
     

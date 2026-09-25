@@ -23,6 +23,15 @@
 
             #include "../../../../java/lang/Object.h"
         
+#include <jsinterop/annotations/JsMethod.h>
+
+      
+#include <jsinterop/annotations/JsProperty.h>
+
+      
+#include <jsinterop/annotations/JsType.h>
+
+      
 
 
 

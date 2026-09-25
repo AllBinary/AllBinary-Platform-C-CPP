@@ -28,7 +28,10 @@
 #include <java/util/HashMap.h>
 
       
-#include <java/util/Vector.h>
+#include <org/allbinary/util/BasicArrayList.h>
+
+      
+#include <org/allbinary/util/BasicArrayListD.h>
 
       
 #include <org/allbinary/business/category/CategoryData.h>
@@ -65,6 +68,9 @@
 
       
 #include <org/allbinary/data/tree/dom/document/DomDocumentHelper.h>
+
+      
+#include <org/allbinary/logic/StdUtil.h>
 
       
 #include <org/allbinary/logic/communication/log/LogUtil.h>
@@ -198,7 +204,7 @@ public: ThemeValidation(StoreThemeCategoryInterface storeThemeCategoryInterface,
 
     public: Object* getKey();
 
-    public: Vector toVector();
+    public: BasicArrayList toVector();
 
     public: HashMap<any, any> toHashMap();
 

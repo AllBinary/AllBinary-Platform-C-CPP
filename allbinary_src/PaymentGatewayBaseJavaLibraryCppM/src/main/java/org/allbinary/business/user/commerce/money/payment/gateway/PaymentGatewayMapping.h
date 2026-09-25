@@ -28,7 +28,10 @@
 #include <java/util/HashMap.h>
 
       
-#include <java/util/Vector.h>
+#include <org/allbinary/util/BasicArrayList.h>
+
+      
+#include <org/allbinary/util/BasicArrayListD.h>
 
       
 #include <org/allbinary/data/tables/TableMappingInterface.h>
@@ -66,7 +69,7 @@ public: PaymentGatewayMapping(PaymentGatewayInterface paymentGatewayInterface);
             
     public: HashMap<any, any> toHashMap();
 
-    public: Vector toVector();
+    public: BasicArrayList toVector();
 
                 //@Throws(Exception.constructor)
             

@@ -30,7 +30,7 @@
 #include <java/util/Hashtable.h>
 
       
-#include <org/allbinary/logic/NullUtil.h>
+#include <org/allbinary/logic/StdUtil.h>
 
       
 #include <org/allbinary/logic/string/StringUtil.h>

@@ -125,6 +125,8 @@ class AddFileValidationView: public DownloadableInventoryItemView, public Valida
 
     protected: const LogUtil logUtil = LogUtil::getInstance();
 
+    protected: const BasicItemData basicItemData = BasicItemData::getInstance();
+
 public: AddFileValidationView(TransformInfoInterface transformInfoInterface){
             super(transformInfoInterface);
                     
@@ -394,7 +396,7 @@ this->unzip(fileItem);
 
     HashMap<any, any> hashMap = this->getRequestHashMap();;
     
-hashMap.put(BasicItemData::ID, this->itemInterface.getId());
+hashMap.put(basicItemData.ID, this->itemInterface.getId());
     
 
     Object* licenseObject = hashMap.get(DownloadItemData::LICENSE_FILE);;

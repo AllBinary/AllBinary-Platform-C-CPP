@@ -27,7 +27,10 @@
 #include <java/util/HashMap.h>
 
       
-#include <java/util/Vector.h>
+#include <org/allbinary/util/BasicArrayList.h>
+
+      
+#include <org/allbinary/util/BasicArrayListD.h>
 
       
 #include <org/allbinary/business/category/hierarchy/CategoryHierarchy.h>
@@ -43,6 +46,9 @@
 
       
 #include <org/allbinary/business/category/properties/root/RootCategoryPropertiesInterface.h>
+
+      
+#include <org/allbinary/logic/StdUtil.h>
 
       
 #include <org/allbinary/logic/communication/log/LogUtil.h>
@@ -100,9 +106,9 @@ class Category
 
     private: CategoryPropertiesInterface categoryPropertiesInterface;
 
-    private: const Vector childCategoryVector = Vector();
+    private: const BasicArrayList childCategoryVector = BasicArrayListD();
 
-    private: const Vector typeVector = Vector();
+    private: const BasicArrayList typeVector = BasicArrayListD();
 
     private: const Integer PROPERTIES = Integer(1);
 
@@ -274,7 +280,7 @@ this->typeVector.add(this->CATEGORY);
 }
 
 
-    public: Vector getChildNodes(){
+    public: BasicArrayList getChildNodes(){
 
 
 
@@ -287,13 +293,13 @@ this->typeVector.add(this->CATEGORY);
 
     public: bool removeChild(CategoryInterface categoryInterface){
 
-    Vector removalVector = Vector();;
+    BasicArrayList removalVector = BasicArrayListD();;
     
 
     bool bool_return = false;;
     
 
-    int32_t size = this->childCategoryVector.length;;
+    int32_t size = this->childCategoryVector.size();;
     
 
 
@@ -339,9 +345,9 @@ this->removal(removalVector);
 }
 
 
-    private: void removal(Vector removalVector){
+    private: void removal(BasicArrayList removalVector){
 
-    int32_t removalSize = removalVector.length;;
+    int32_t removalSize = removalVector.size();;
     
 
 
@@ -368,13 +374,13 @@ this->childCategoryVector.remove(objectIndex);
 
     private: bool removeDuplicateChild(CategoryInterface categoryInterface){
 
-    Vector removalVector = Vector();;
+    BasicArrayList removalVector = BasicArrayListD();;
     
 
     bool bool_return = false;;
     
 
-    int32_t size = this->childCategoryVector.length;;
+    int32_t size = this->childCategoryVector.size();;
     
 
 
@@ -468,7 +474,7 @@ this->removal(removalVector);
                                     }
                                 
 
-                        if(this->childCategoryVector.length == 0)
+                        if(this->childCategoryVector.size() == 0)
                         
                                     {
                                     
@@ -543,7 +549,7 @@ this->categoryHierarchyInterface= categoryHierarchyInterface;
                                     }
                                 
 
-    int32_t size = this->childCategoryVector.length;;
+    int32_t size = this->childCategoryVector.size();;
     
 
 
@@ -665,9 +671,9 @@ this->categoryHierarchyInterface= categoryHierarchyInterface;
 
                 //@Throws(Exception.constructor)
             
-    public: Vector toVector(){
+    public: BasicArrayList toVector(){
 
-    Vector categoryVector = this->categoryPropertiesInterface.toVector();;
+    BasicArrayList categoryVector = this->categoryPropertiesInterface.toVector();;
     
 categoryVector.add(this->childCategoryVector);
     

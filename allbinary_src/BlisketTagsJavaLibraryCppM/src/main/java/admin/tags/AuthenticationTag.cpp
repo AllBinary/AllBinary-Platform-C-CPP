@@ -32,7 +32,10 @@
 #include <java/util/HashMap.h>
 
       
-#include <java/util/Vector.h>
+#include <org/allbinary/util/BasicArrayList.h>
+
+      
+#include <org/allbinary/util/BasicArrayListD.h>
 
       
 #include <javax/servlet/http/HttpServletRequest.h>
@@ -48,6 +51,9 @@
 
       
 #include <admin/taghelpers/AuthenticationRequestHelperFactory.h>
+
+      
+#include <org/allbinary/logic/StdUtil.h>
 
       
 #include <org/allbinary/logic/communication/http/request/AbResponseHandler.h>
@@ -102,7 +108,7 @@ class AuthenticationTag: public CustomTagSupport {
 
     private: std::string newPassword;
 
-    private: Vector roles;
+    private: BasicArrayList roles;
 
     private: HashMap<any, any> propertiesHashMap;
 
@@ -141,7 +147,7 @@ this->newPassword= value;
 }
 
 
-    public: void setRoles(Vector values){
+    public: void setRoles(BasicArrayList values){
 this->roles= values;
     
 }
@@ -804,7 +810,7 @@ this->logUtil.putF(stringBuffer.toString(), this, tagStrings.DO_START_TAG);
                         if(true)
                         
                                     {
-                                    this->propertiesHashMap= HashMap<any, any>();
+                                    this->propertiesHashMap= StdUtil::getInstance().createHashMap();
     
 
                         if(this->command.compareTo(org.allbinary.globals.GLOBALS2.NEWPASSWORD) == 0)

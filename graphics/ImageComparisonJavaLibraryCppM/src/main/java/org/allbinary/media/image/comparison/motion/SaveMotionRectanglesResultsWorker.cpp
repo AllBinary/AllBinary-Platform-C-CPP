@@ -22,7 +22,13 @@
         
             #include "../../../../../../java/lang/Exception.h"
         
-#include <java/util/Vector.h>
+#include <org/allbinary/util/BasicArrayList.h>
+
+      
+#include <org/allbinary/util/BasicArrayListD.h>
+
+      
+#include <org/allbinary/logic/StdUtil.h>
 
       
 #include <org/allbinary/logic/communication/log/LogUtil.h>
@@ -73,15 +79,15 @@ class SaveMotionRectanglesResultsWorker
 
     private: bool running= false;
 
-    private: Vector motionRectanglesVector;
+    private: BasicArrayList motionRectanglesVector;
 
 public: SaveMotionRectanglesResultsWorker(){
-this->motionRectanglesVector= Vector();
+this->motionRectanglesVector= BasicArrayListD();
     
 }
 
 
-    public: Vector getMotionRectanglesVector(){
+    public: BasicArrayList getMotionRectanglesVector(){
 
 
 

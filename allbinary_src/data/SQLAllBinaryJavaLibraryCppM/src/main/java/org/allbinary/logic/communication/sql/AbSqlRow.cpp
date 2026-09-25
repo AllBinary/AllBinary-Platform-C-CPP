@@ -34,7 +34,10 @@
 #include <java/util/Set.h>
 
       
-#include <java/util/Vector.h>
+#include <org/allbinary/util/BasicArrayList.h>
+
+      
+#include <org/allbinary/util/BasicArrayListD.h>
 
       
 #include <org/allbinary/business/init/db/DbConnectionInfo.h>
@@ -562,7 +565,7 @@ this->executeSQLStatement(sqlStatement);
 }
 
 
-    public: void insert(Vector values){
+    public: void insert(BasicArrayList values){
 
     StringMaker stringBuffer = StringMaker();;
     
@@ -579,7 +582,7 @@ stringBuffer.append(this->sqlStrings.VALUES);
 
 
                         for (
-    int32_t i = 0;i < values.length -1; i++)
+    int32_t i = 0;i < values.size() -1; i++)
         {
 
     std::string value = this->getValue(values.get(i) as string);;
@@ -593,7 +596,7 @@ stringBuffer.append(this->sqlStrings.SINGLE_QUOTE_COMMA_SEP);
 }
 
 
-    std::string value = this->getValue(values.lastElement() as string);;
+    std::string value = this->getValue(values.get(values.size() -1) as string);;
     
 value= Replace(this->sqlStrings.ESCAPE, this->sqlStrings.DOUBLE_ESCAPE).all(value);
     
@@ -712,7 +715,7 @@ stringBuffer.append(this->sqlStrings.CLOSE_QUOTE);
 
         while(rset.next())
         {
-result= HashMap<any, any>();
+result= this->stdUtil.createHashMap();
     
 
     int32_t columnCount = resultSetMetaData.getColumnCount();;
@@ -790,7 +793,7 @@ result.put(columnName, field);
 }
 
 
-    public: Vector getRows(HashMap<any, any> keysAndValues){
+    public: BasicArrayList getRows(HashMap<any, any> keysAndValues){
 
 
 
@@ -800,7 +803,7 @@ result.put(columnName, field);
 }
 
 
-    public: Vector getRows(HashMap<any, any> keysAndValues, std::string more){
+    public: BasicArrayList getRows(HashMap<any, any> keysAndValues, std::string more){
 
     StringMaker stringBuffer = StringMaker();;
     
@@ -813,7 +816,7 @@ stringBuffer.append(this->sqlStrings.WHERE);
 
         try {
             
-    Vector rows = Vector();;
+    BasicArrayList rows = BasicArrayListD();;
     
 
     Set set = keysAndValues.keySet();;
@@ -880,7 +883,7 @@ stringBuffer.append(more);
         while(rset.next())
         {
 
-    HashMap<any, any> result = HashMap<any, any>();;
+    HashMap<any, any> result = this->stdUtil.createHashMap();;
     
 
     int32_t columnCount = resultSetMetaData.getColumnCount();;
@@ -948,7 +951,7 @@ rows.add(result);
 }
 
 
-    public: Vector getAllRows(){
+    public: BasicArrayList getAllRows(){
 
     StringMaker stringBuffer = StringMaker();;
     
@@ -968,7 +971,7 @@ stringBuffer.append(this->getTableName());
                                     }
                                 
 
-    Vector rows = Vector();;
+    BasicArrayList rows = BasicArrayListD();;
     
 
     std::string sqlStatement = stringBuffer.toString();;
@@ -983,7 +986,7 @@ stringBuffer.append(this->getTableName());
         while(rset.next())
         {
 
-    HashMap<any, any> result = HashMap<any, any>();;
+    HashMap<any, any> result = this->stdUtil.createHashMap();;
     
 
     int32_t columnCount = resultSetMetaData.getColumnCount();;
@@ -1048,7 +1051,7 @@ rows.add(result);
 }
 
 
-    public: Vector getRowsWhereBetween(HashMap<any, any> whereKeyValuePairs, std::string betweenColumn, std::string smallest, std::string largest){
+    public: BasicArrayList getRowsWhereBetween(HashMap<any, any> whereKeyValuePairs, std::string betweenColumn, std::string smallest, std::string largest){
 
     StringMaker stringBuffer = StringMaker();;
     
@@ -1059,7 +1062,7 @@ stringBuffer.append(this->getTableName());
 
         try {
             
-    Vector rows = Vector();;
+    BasicArrayList rows = BasicArrayListD();;
     
 stringBuffer.append(this->sqlStrings.WHERE);
     
@@ -1141,7 +1144,7 @@ stringBuffer.append(this->sqlStrings.CLOSE_QUOTE);
     HashMap<any, any> result;;
     
 
-    Vector columnNames;;
+    BasicArrayList columnNames;;
     
 
     int32_t columnCount= 0;;
@@ -1155,9 +1158,9 @@ stringBuffer.append(this->sqlStrings.CLOSE_QUOTE);
 
         while(rset.next())
         {
-result= HashMap<any, any>();
+result= this->stdUtil.createHashMap();
     
-columnNames= Vector();
+columnNames= BasicArrayListD();
     
 columnCount= resultSetMetaData.getColumnCount();
     
@@ -1219,7 +1222,7 @@ rows.add(result);
 }
 
 
-    public: Vector getRowsWhereBetween(std::string betweenColumn, std::string smallest, std::string largest){
+    public: BasicArrayList getRowsWhereBetween(std::string betweenColumn, std::string smallest, std::string largest){
 
     StringMaker stringBuffer = StringMaker();;
     
@@ -1230,7 +1233,7 @@ stringBuffer.append(this->getTableName());
 
         try {
             
-    Vector rows = Vector();;
+    BasicArrayList rows = BasicArrayListD();;
     
 stringBuffer.append(this->sqlStrings.WHERE);
     
@@ -1280,7 +1283,7 @@ stringBuffer.append(this->sqlStrings.CLOSE_QUOTE);
     HashMap<any, any> result;;
     
 
-    Vector columnNames;;
+    BasicArrayList columnNames;;
     
 
     int32_t columnCount= 0;;
@@ -1288,9 +1291,9 @@ stringBuffer.append(this->sqlStrings.CLOSE_QUOTE);
 
         while(rset.next())
         {
-result= HashMap<any, any>();
+result= this->stdUtil.createHashMap();
     
-columnNames= Vector();
+columnNames= BasicArrayListD();
     
 columnCount= resultSetMetaData.getColumnCount();
     

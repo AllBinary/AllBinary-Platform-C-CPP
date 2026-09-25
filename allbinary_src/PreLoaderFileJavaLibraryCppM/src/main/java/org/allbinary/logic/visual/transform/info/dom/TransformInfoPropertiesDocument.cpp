@@ -25,13 +25,19 @@
 #include <java/util/HashMap.h>
 
       
-#include <java/util/Vector.h>
+#include <org/allbinary/util/BasicArrayList.h>
+
+      
+#include <org/allbinary/util/BasicArrayListD.h>
 
       
 #include <org/allbinary/data/tree/dom/DomSearchHelper.h>
 
       
 #include <org/allbinary/data/tree/dom/document/DomDocumentFileHelper.h>
+
+      
+#include <org/allbinary/logic/StdUtil.h>
 
       
 #include <org/allbinary/logic/communication/log/LogUtil.h>
@@ -104,7 +110,7 @@ this->document= DomDocumentFileHelper::createDocument(xmlFile);
 
         try {
             
-    HashMap<any, any> transformInfoPropertiesHashMap = HashMap<any, any>();;
+    HashMap<any, any> transformInfoPropertiesHashMap = StdUtil::getInstance().createHashMap();;
     
 
     Node transformInfosNode = this->document.getElementsByTagName(TransformInfosData::getInstance().NAME).item(0);;
@@ -113,19 +119,19 @@ this->document= DomDocumentFileHelper::createDocument(xmlFile);
     NodeList transformInfosChildNodeList = transformInfosNode.getChildNodes();;
     
 
-    Vector transformInfoNodeVector = DomSearchHelper::getAllNodes(TransformInfoData::getInstance().NAME, transformInfosChildNodeList);;
+    BasicArrayList transformInfoNodeVector = DomSearchHelper::getAllNodes(TransformInfoData::getInstance().NAME, transformInfosChildNodeList);;
     
 
                         if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEW))
                         
                                     {
-                                    this->logUtil.putF("Size: " +transformInfoNodeVector.length, this, "toTransformInfoPropertiesHashMap()");
+                                    this->logUtil.putF("Size: " +transformInfoNodeVector.size(), this, "toTransformInfoPropertiesHashMap()");
     
 
                                     }
                                 
 
-    int32_t size = transformInfoNodeVector.length;;
+    int32_t size = transformInfoNodeVector.size();;
     
 
     Node node;;

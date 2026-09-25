@@ -28,7 +28,10 @@
 #include <java/util/HashMap.h>
 
       
-#include <java/util/Vector.h>
+#include <org/allbinary/util/BasicArrayList.h>
+
+      
+#include <org/allbinary/util/BasicArrayListD.h>
 
       
 #include <javax/servlet/http/HttpServletRequest.h>
@@ -56,6 +59,9 @@
 
       
 #include <org/allbinary/globals/URLGLOBALS.h>
+
+      
+#include <org/allbinary/logic/StdUtil.h>
 
       
 #include <org/allbinary/logic/communication/http/request/MultipartRequestParams.h>
@@ -116,6 +122,8 @@ class DownloadableInventoryItemView: public HttpStoreComponentView, public Reque
 
     protected: const LogUtil logUtil = LogUtil::getInstance();
 
+    protected: const BasicItemData basicItemData = BasicItemData::getInstance();
+
     protected: HttpServletRequest request;
 
     protected: std::string id;
@@ -165,14 +173,14 @@ this->request= this->getPageContext().getRequest() as HttpServletRequest;
     private: void getFormData(){
 this->setRequestHashMap(MultipartRequestParams(this->request).toHashMap());
     
-this->id= this->getRequestHashMap().get(BasicItemData::ID) as string;
+this->id= this->getRequestHashMap().get(basicItemData.ID) as string;
     
 }
 
 
     public: void addDomNodeInterfaces(){
 
-    Vector vector = Vector();;
+    BasicArrayList vector = BasicArrayListD();;
     
 
                         if(this->downloadableItem != 

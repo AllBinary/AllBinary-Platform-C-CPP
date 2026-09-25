@@ -20,7 +20,10 @@
 
             #include "../../../../java/lang/Exception.h"
         
-#include <java/util/Vector.h>
+#include <org/allbinary/util/BasicArrayList.h>
+
+      
+#include <org/allbinary/util/BasicArrayListD.h>
 
       
 #include <javax/servlet/http/HttpServletRequest.h>
@@ -130,10 +133,10 @@ this->cancelled= this->request.getParameter(OrderHistoryData::CANCELLEDNAME);
     OrderHistoryEntity orderHistoryEntity = OrderHistoryEntity();;
     
 
-    Vector orderReviewVector = orderHistoryEntity.getOrders(this->getWeblisketSession().getUserName());;
+    BasicArrayList orderReviewVector = orderHistoryEntity.getOrders(this->getWeblisketSession().getUserName());;
     
 
-    int32_t size = orderReviewVector.length;;
+    int32_t size = orderReviewVector.size();;
     
 
 

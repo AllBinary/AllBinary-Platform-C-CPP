@@ -27,13 +27,19 @@
         
             #include "../../../../../java/lang/RuntimeException.h"
         
-#include <java/awt.h>
+#include <java/awt/Color.h>
+
+      
+#include <java/awt/Rectangle.h>
 
       
 #include <java/awt/image/BufferedImage.h>
 
       
-#include <java/util/Vector.h>
+#include <org/allbinary/util/BasicArrayList.h>
+
+      
+#include <org/allbinary/util/BasicArrayListD.h>
 
       
 #include <org/allbinary/collision/RectangleCollisionUtil.h>
@@ -66,16 +72,14 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "Color.h"
-#include "Rectangle.h"
-
+        
 class ImageComparatorConstraints
             : public Object
         : public ImageComparatorConstraintsInterface {
 
     protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: Vector avoidVector;
+    private: BasicArrayList avoidVector;
 
     private: int32_t maxNonMatchingPixelDeltas= 0;
 
@@ -83,7 +87,7 @@ class ImageComparatorConstraints
 
 public: ImageComparatorConstraints(int32_t doImageComparisonEveryNthFrame);
 
-    public: Vector getAvoidVector();
+    public: BasicArrayList getAvoidVector();
 
     public: bool isColorAllowed(int32_t frame, GPoint point, Color color);
 
@@ -91,7 +95,7 @@ public: ImageComparatorConstraints(int32_t doImageComparisonEveryNthFrame);
 
     public: bool isCollisionWithAvoidRectangles(GPoint point);
 
-    public: void setAvoidVector(Vector avoidVector);
+    public: void setAvoidVector(BasicArrayList avoidVector);
 
     public: int32_t getMaxNonMatchingPixelDeltas();
 

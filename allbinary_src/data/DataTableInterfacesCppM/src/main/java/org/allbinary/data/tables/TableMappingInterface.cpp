@@ -23,7 +23,7 @@
 #include <java/util/HashMap.h>
 
       
-#include <java/util/Vector.h>
+#include <org/allbinary/util/BasicArrayList.h>
 
       
 
@@ -53,7 +53,7 @@ class TableMappingInterface {
 
                 //@Throws(Exception.constructor)
             
-    Vector toVector()
+    BasicArrayList toVector()
 
                 //@Throws(Exception.constructor)
             

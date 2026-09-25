@@ -32,7 +32,10 @@
 #include <java/util/HashMap.h>
 
       
-#include <java/util/Vector.h>
+#include <org/allbinary/util/BasicArrayList.h>
+
+      
+#include <org/allbinary/util/BasicArrayListD.h>
 
       
 #include <org/allbinary/business/context/modules/storefront/StoreFrontInterface.h>
@@ -48,6 +51,9 @@
 
       
 #include <org/allbinary/data/tables/user/commerce/inventory/item/InventoryEntityInterface.h>
+
+      
+#include <org/allbinary/logic/StdUtil.h>
 
       
 
@@ -87,7 +93,7 @@ public: StoreFrontInventoryStatistics(StoreFrontInterface storeFrontInterface);
 
     public: HashMap<any, any> toHashMap();
 
-    public: Vector toVector();
+    public: BasicArrayList toVector();
 
     public: Object* getKey();
 

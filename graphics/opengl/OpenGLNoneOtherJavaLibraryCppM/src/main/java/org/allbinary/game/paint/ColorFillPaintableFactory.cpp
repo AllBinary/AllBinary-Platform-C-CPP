@@ -20,6 +20,9 @@
 
             #include "../../../../java/lang/Object.h"
         
+#include <jsinterop/annotations/JsType.h>
+
+      
 #include <org/allbinary/graphics/color/BasicColor.h>
 
       

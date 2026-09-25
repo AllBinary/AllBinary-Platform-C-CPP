@@ -25,7 +25,10 @@
 #include <java/util/HashMap.h>
 
       
-#include <java/util/Vector.h>
+#include <org/allbinary/util/BasicArrayList.h>
+
+      
+#include <org/allbinary/util/BasicArrayListD.h>
 
       
 #include <org/allbinary/business/user/commerce/money/payment/gateway/PaymentGatewayData.h>
@@ -35,6 +38,9 @@
 
       
 #include <org/allbinary/business/user/commerce/money/payment/gateway/modules/gateway/PaymentGatewayDomNodeFactoryInterface.h>
+
+      
+#include <org/allbinary/logic/StdUtil.h>
 
       
 #include <org/allbinary/logic/io/path/AbPathData.h>
@@ -96,7 +102,7 @@ this->paymentGatewayDomNodeFactoryInterface= paymentGatewayDomNodeFactoryInterfa
 
     private: void init(std::string paymentMethod){
 
-    HashMap<any, any> hashMap = HashMap<any, any>();;
+    HashMap<any, any> hashMap = StdUtil::getInstance().createHashMap();;
     
 
     std::string UNDERSCORE = "_";;
@@ -201,9 +207,9 @@ BasicPaymentTypeUtil::getInstance().add(this);
 }
 
 
-    public: Vector toVector(){
+    public: BasicArrayList toVector(){
 
-    Vector vector = Vector();;
+    BasicArrayList vector = BasicArrayListD();;
     
 vector.add(this->name);
     
@@ -220,7 +226,7 @@ vector.add(this->value);
 
     public: HashMap<any, any> toHashMap(){
 
-    HashMap<any, any> hashMap = HashMap<any, any>();;
+    HashMap<any, any> hashMap = StdUtil::getInstance().createHashMap();;
     
 hashMap.put(PaymentGatewayData::NAME.toString(), this->name);
     

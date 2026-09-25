@@ -6,7 +6,7 @@
                 *   
                 *  By agreeing to this license you and any business entity you represent are 
                 *  legally bound to the AllBinary Open License Version 1 legal agreement. 
-                *   
+                *  ` 
                 *  You may obtain the AllBinary Open License Version 1 legal agreement from 
                 *  AllBinary or the root directory of AllBinary's AllBinary Platform repository. 
                 *   
@@ -26,7 +26,10 @@
 #include <java/util/HashMap.h>
 
       
-#include <java/util/Vector.h>
+#include <org/allbinary/util/BasicArrayList.h>
+
+      
+#include <org/allbinary/util/BasicArrayListD.h>
 
       
 #include <org/allbinary/business/entry/EntryData.h>
@@ -74,11 +77,13 @@ class XmlOptionItemsEntity: public AbSqlBean, public XmlOptionItemsEntityInterfa
 
     protected: const LogUtil logUtil = LogUtil::getInstance();
 
+    protected: const BasicItemData basicItemData = BasicItemData::getInstance();
+
     protected: const std::string tableName = "xmloptionitems";
 
 public: XmlOptionItemsEntity();
 
-    public: void insert(Vector values);
+    public: void insert(BasicArrayList values);
 
     public: void delete_(std::string value);
 

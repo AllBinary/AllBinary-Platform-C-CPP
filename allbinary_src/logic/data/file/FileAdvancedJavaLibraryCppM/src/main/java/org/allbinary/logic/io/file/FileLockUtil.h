@@ -31,7 +31,13 @@
 #include <java/nio/channels/FileLock.h>
 
       
-#include <java/util/Vector.h>
+#include <org/allbinary/util/BasicArrayList.h>
+
+      
+#include <org/allbinary/util/BasicArrayListD.h>
+
+      
+#include <org/allbinary/logic/StdUtil.h>
 
       
 #include <org/allbinary/logic/communication/log/LogUtil.h>
@@ -77,15 +83,15 @@ private: FileLockUtil();
 
                 //@Throws(Exception.constructor)
             
-    public: Vector getAll(Vector vector, bool isReturnOnFailure);
+    public: BasicArrayList getAll(BasicArrayList vector, bool isReturnOnFailure);
 
                 //@Throws(Exception.constructor)
             
-    public: Vector getAllPossible(Vector vector);
+    public: BasicArrayList getAllPossible(BasicArrayList vector);
 
                 //@Throws(Exception.constructor)
             
-    public: Vector getAllOrNone(Vector vector);
+    public: BasicArrayList getAllOrNone(BasicArrayList vector);
 
                 //@Throws(Exception.constructor)
             

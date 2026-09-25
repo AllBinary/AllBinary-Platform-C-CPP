@@ -18,7 +18,10 @@
 
 
 
-#include <java/util/Vector.h>
+#include <org/allbinary/util/BasicArrayList.h>
+
+      
+#include <org/allbinary/util/BasicArrayListD.h>
 
       
 
@@ -44,7 +47,7 @@ class TransactionResultInterface {
 
     std::string toString()
 
-    Vector getValues()
+    BasicArrayList getValues()
 
     std::string getResult()
 

@@ -20,7 +20,10 @@
 
             #include "../../../java/lang/Exception.h"
         
-#include <java/util/Vector.h>
+#include <org/allbinary/util/BasicArrayList.h>
+
+      
+#include <org/allbinary/util/BasicArrayListD.h>
 
       
 #include <org/allbinary/business/user/commerce/money/payment/Payment.h>
@@ -93,10 +96,10 @@ public: PaymentView(TransformInfoInterface transformInfoInterface){
 document.appendChild(paymentNode);
     
 
-    Vector paymentVector = PaymentEntityFactory::getInstance().getPaymentEntityInstance().get(this->getWeblisketSession().getUserName());;
+    BasicArrayList paymentVector = PaymentEntityFactory::getInstance().getPaymentEntityInstance().get(this->getWeblisketSession().getUserName());;
     
 
-    int32_t size = paymentVector.length;;
+    int32_t size = paymentVector.size();;
     
 
 

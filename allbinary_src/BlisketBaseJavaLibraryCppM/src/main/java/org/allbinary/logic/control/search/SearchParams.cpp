@@ -41,6 +41,9 @@
 #include <org/allbinary/data/tree/dom/ToDomHelper.h>
 
       
+#include <org/allbinary/logic/StdUtil.h>
+
+      
 #include <org/w3c/dom/Document.h>
 
       
@@ -84,7 +87,7 @@ class SearchParams
     private: std::string endPage;
 
 public: SearchParams(HttpServletRequest request){
-this->columnsAndSearchValues= HashMap<any, any>();
+this->columnsAndSearchValues= StdUtil::getInstance().createHashMap();
     
 this->setLength(request.getParameter(SearchData::LENGTH));
     

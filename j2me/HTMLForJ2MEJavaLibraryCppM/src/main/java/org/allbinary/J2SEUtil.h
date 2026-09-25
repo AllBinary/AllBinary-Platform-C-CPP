@@ -52,7 +52,7 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        //ArkTs does not have this.  So this is for the ArkTs build.
+        //HTMLForJ2ME
 class J2SEUtil
             : public Object
          {

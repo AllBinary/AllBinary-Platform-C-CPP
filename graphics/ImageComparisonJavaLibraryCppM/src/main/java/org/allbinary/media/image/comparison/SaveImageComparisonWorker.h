@@ -25,7 +25,13 @@
         
             #include "../../../../../java/lang/Exception.h"
         
-#include <java/util/Vector.h>
+#include <org/allbinary/util/BasicArrayList.h>
+
+      
+#include <org/allbinary/util/BasicArrayListD.h>
+
+      
+#include <org/allbinary/logic/StdUtil.h>
 
       
 #include <org/allbinary/logic/communication/log/LogUtil.h>
@@ -76,7 +82,7 @@ class SaveImageComparisonWorker
 
     private: bool running= false;
 
-    private: const Vector imageComparisonInfoVector = Vector();
+    private: const BasicArrayList imageComparisonInfoVector = BasicArrayListD();
 
 public: SaveImageComparisonWorker();
 

@@ -25,10 +25,13 @@
 #include <java/util/Hashtable.h>
 
       
-#include <java/util/Vector.h>
+#include <org/allbinary/util/BasicArrayList.h>
 
       
-#include <org/allbinary/logic/NullUtil.h>
+#include <org/allbinary/util/BasicArrayListD.h>
+
+      
+#include <org/allbinary/logic/StdUtil.h>
 
       
 #include <org/allbinary/logic/string/StringMaker.h>
@@ -102,29 +105,29 @@ class WindowsHardware
             : public Object
         : public HardwareInterface {
 
-    private: Vector componentInterfaceVector;
+    private: BasicArrayList componentInterfaceVector;
 
-    private: Vector videoInterfaceVector;
+    private: BasicArrayList videoInterfaceVector;
 
-    private: Vector hardDriveControllerInterfaceVector;
+    private: BasicArrayList hardDriveControllerInterfaceVector;
 
-    private: Vector cpuInterfaceVector;
+    private: BasicArrayList cpuInterfaceVector;
 
-    private: Vector usbInterfaceVector;
+    private: BasicArrayList usbInterfaceVector;
 
-    private: Vector ethernetInterfaceVector;
+    private: BasicArrayList ethernetInterfaceVector;
 
-    private: Vector multimediaInterfaceVector;
+    private: BasicArrayList multimediaInterfaceVector;
 
-    private: Vector fireWireInterfaceVector;
+    private: BasicArrayList fireWireInterfaceVector;
 
-    private: Vector bridgeInterfaceVector;
+    private: BasicArrayList bridgeInterfaceVector;
 
-    private: Vector hardDriveInterfaceVector;
+    private: BasicArrayList hardDriveInterfaceVector;
 
-    private: Vector macInterfaceVector;
+    private: BasicArrayList macInterfaceVector;
 
-    private: Vector monitorInterfaceVector;
+    private: BasicArrayList monitorInterfaceVector;
 
     private: const std::string NAME = "Windows Hardware Profile";
 
@@ -135,32 +138,32 @@ class WindowsHardware
 public: WindowsHardware(){
 
         try {
-            this->componentInterfaceVector= Vector();
+            this->componentInterfaceVector= BasicArrayListD();
     
-this->videoInterfaceVector= Vector();
+this->videoInterfaceVector= BasicArrayListD();
     
-this->hardDriveControllerInterfaceVector= Vector();
+this->hardDriveControllerInterfaceVector= BasicArrayListD();
     
-this->cpuInterfaceVector= Vector();
+this->cpuInterfaceVector= BasicArrayListD();
     
-this->usbInterfaceVector= Vector();
+this->usbInterfaceVector= BasicArrayListD();
     
-this->ethernetInterfaceVector= Vector();
+this->ethernetInterfaceVector= BasicArrayListD();
     
-this->multimediaInterfaceVector= Vector();
+this->multimediaInterfaceVector= BasicArrayListD();
     
-this->fireWireInterfaceVector= Vector();
+this->fireWireInterfaceVector= BasicArrayListD();
     
-this->bridgeInterfaceVector= Vector();
+this->bridgeInterfaceVector= BasicArrayListD();
     
-this->hardDriveInterfaceVector= Vector();
+this->hardDriveInterfaceVector= BasicArrayListD();
     
-this->macInterfaceVector= Vector();
+this->macInterfaceVector= BasicArrayListD();
     
-this->monitorInterfaceVector= Vector();
+this->monitorInterfaceVector= BasicArrayListD();
     
 
-                        if(this->componentInterfaceVector.length < this->MINHARDWARE)
+                        if(this->componentInterfaceVector.size() < this->MINHARDWARE)
                         
                                     throw Exception("Not Enough Data For A Valid License On Windows");
                                 
@@ -401,7 +404,7 @@ this->monitorInterfaceVector= Vector();
     StringMaker hardwareBuffer = StringMaker();;
     
 
-    int32_t size = this->componentInterfaceVector.length;;
+    int32_t size = this->componentInterfaceVector.size();;
     
 
 
@@ -443,7 +446,7 @@ hardwareBuffer.append(CommonSeps::getInstance().NEW_LINE);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return NullUtil::getInstance().NULL_TABLE;
+                        return StdUtil::getInstance().NULL_TABLE;
     
 }
 

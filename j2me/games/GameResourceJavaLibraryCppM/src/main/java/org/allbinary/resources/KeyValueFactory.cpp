@@ -23,6 +23,9 @@
 #include <java/util/Hashtable.h>
 
       
+#include <org/allbinary/logic/StdUtil.h>
+
+      
 
 
 
@@ -58,7 +61,7 @@ class KeyValueFactory
 }
 
 
-    public: const Hashtable<any, any> MAP = Hashtable<any, any>();
+    public: const Hashtable<any, any> MAP = StdUtil::getInstance().createHashtable();
 
     public: std::string get(std::string key){
 

@@ -62,6 +62,9 @@
 #include <jsinterop/annotations/JsConstructor.h>
 
       
+#include <org/allbinary/logic/StdUtil.h>
+
+      
 
 
 
@@ -211,7 +214,7 @@ this->init();
     GenericOperatingSystem genericOperatingSystem = this->getOperatingSystemInterface();;
     
 
-    Hashtable<any, any> clientInfoHashtable = Hashtable<any, any>();;
+    Hashtable<any, any> clientInfoHashtable = StdUtil::getInstance().createHashtable();;
     
 clientInfoHashtable.put(abeClientInformationData.NAME, this->name);
     

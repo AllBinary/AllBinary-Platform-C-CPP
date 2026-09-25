@@ -26,10 +26,16 @@
 #include <java/util/Hashtable.h>
 
       
-#include <java/util/Vector.h>
+#include <org/allbinary/util/BasicArrayList.h>
+
+      
+#include <org/allbinary/util/BasicArrayListD.h>
 
       
 #include <org/allbinary/init/crypt/jcehelper/CryptInterface.h>
+
+      
+#include <org/allbinary/logic/StdUtil.h>
 
       
 #include <org/allbinary/string/CommonLabels.h>
@@ -39,9 +45,6 @@
 
       
 #include <org/apache/xmlrpc/XmlRpcException.h>
-
-      
-#include <org/allbinary/string/CommonStrings.h>
 
       
 #include <org/allbinary/logic/string/StringMaker.h>
@@ -117,7 +120,7 @@ stringBuffer.append(server);
 this->logUtil.putF(CommonLabels::getInstance().START_LABEL +stringBuffer.toString(), this, this->commonStrings.GET);
     
 
-    Vector param = Vector();;
+    BasicArrayList param = BasicArrayListD();;
     
 
     std::string serverUrl = getClientInfo().getLicenseServer(this->getServer());;

@@ -27,7 +27,10 @@
 #include <java/util/HashMap.h>
 
       
-#include <java/util/Vector.h>
+#include <org/allbinary/util/BasicArrayList.h>
+
+      
+#include <org/allbinary/util/BasicArrayListD.h>
 
       
 #include <org/allbinary/data/tree/dom/DomData.h>
@@ -43,6 +46,9 @@
 
       
 #include <org/allbinary/data/tree/dom/ModDomHelper.h>
+
+      
+#include <org/allbinary/logic/StdUtil.h>
 
       
 #include <org/allbinary/logic/communication/log/LogUtil.h>
@@ -87,34 +93,34 @@ class CssPropertyValues
 
     protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: Vector propertyValueVector;
+    private: BasicArrayList propertyValueVector;
 
 public: CssPropertyValues(){
-this->propertyValueVector= Vector();
+this->propertyValueVector= BasicArrayListD();
     
 }
 
 
 public: CssPropertyValues(Node node){
 
-    HashMap<any, any> indexPropertyValueHashMap = HashMap<any, any>();;
+    HashMap<any, any> indexPropertyValueHashMap = StdUtil::getInstance().createHashMap();;
     
-this->propertyValueVector= Vector();
+this->propertyValueVector= BasicArrayListD();
     
 
-    Vector cssPropertyNodeVector = DomSearchHelper::getAllNodes(CssPropertyValueData::getInstance().NAME, node.getChildNodes());;
+    BasicArrayList cssPropertyNodeVector = DomSearchHelper::getAllNodes(CssPropertyValueData::getInstance().NAME, node.getChildNodes());;
     
 
                         if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().STYLE))
                         
                                     {
-                                    this->logUtil.putF("Number Of Properties: " +cssPropertyNodeVector.length, this, "CssProperties()");
+                                    this->logUtil.putF("Number Of Properties: " +cssPropertyNodeVector.size(), this, "CssProperties()");
     
 
                                     }
                                 
 
-    int32_t size = cssPropertyNodeVector.length;;
+    int32_t size = cssPropertyNodeVector.size();;
     
 
 
@@ -182,13 +188,13 @@ this->propertyValueVector.add(propertyValue);
     CssPropertyValueData cssPropertyValueData = CssPropertyValueData::getInstance();;
     
 
-    HashMap<any, any> hashMap = HashMap<any, any>();;
+    HashMap<any, any> hashMap = StdUtil::getInstance().createHashMap();;
     
 
     StringMaker stringBuffer = StringMaker();;
     
 
-    int32_t size = this->propertyValueVector.length;;
+    int32_t size = this->propertyValueVector.size();;
     
 
 

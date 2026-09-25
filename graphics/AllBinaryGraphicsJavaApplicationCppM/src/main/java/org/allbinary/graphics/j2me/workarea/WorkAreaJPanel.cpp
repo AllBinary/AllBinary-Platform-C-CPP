@@ -74,6 +74,9 @@
 #include <org/allbinary/log/LOGGING.h>
 
       
+#include <org/allbinary/logic/StdUtil.h>
+
+      
 #include <org/allbinary/logic/communication/log/LogUtil.h>
 
       
@@ -328,7 +331,7 @@ MyCanvasEventService::addListener(this as MyCanvasEventListener);
 
     private: HashMap<any, any> getCanvasHashMap(){
 
-    HashMap<any, any> canvasJPanelHashMap = HashMap<any, any>();;
+    HashMap<any, any> canvasJPanelHashMap = StdUtil::getInstance().createHashMap();;
     
 
     int32_t size = this->canvasJPanelList.size();;

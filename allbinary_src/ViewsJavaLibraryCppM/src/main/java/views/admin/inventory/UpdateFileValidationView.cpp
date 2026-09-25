@@ -230,7 +230,7 @@ stringBuffer.append(this->itemInterface.getCategory());
                                     }
                                 
 
-    Object* anyType = this->getRequestHashMap().get(BasicItemData::IMAGE);;
+    Object* anyType = this->getRequestHashMap().get(basicItemData.IMAGE);;
     
 
                         if(HttpFileUploadUtil::getInstance().isValid(anyType))
@@ -381,7 +381,7 @@ stringBuffer.append(BasicItemValidation(this->itemInterface).validationInfo());
 }
 
 
-    Object* anyType = this->getRequestHashMap().get(BasicItemData::IMAGE);;
+    Object* anyType = this->getRequestHashMap().get(basicItemData.IMAGE);;
     
 
                         if(HttpFileUploadUtil::getInstance().isValid(anyType))
@@ -496,7 +496,7 @@ this->processImageFiles();
                         
                                     {
                                     
-                        if(fileItemFieldName.compareTo(BasicItemData::IMAGE) == 0)
+                        if(fileItemFieldName.compareTo(basicItemData.IMAGE) == 0)
                         
                                     {
                                     

@@ -34,6 +34,9 @@
 #include <org/allbinary/business/user/commerce/money/payment/types/BasicPaymentTypeUtil.h>
 
       
+#include <org/allbinary/logic/StdUtil.h>
+
+      
 #include <org/allbinary/logic/communication/http/request/RequestParams.h>
 
       
@@ -125,7 +128,7 @@ public: PaymentGatewayInterfaceFactory(){
             
     public: PaymentGatewayInterface getInstance(BasicPaymentType paymentType){
 
-    HashMap<any, any> hashMap = HashMap<any, any>();;
+    HashMap<any, any> hashMap = StdUtil::getInstance().createHashMap();;
     
 hashMap.put(PaymentGatewayData::NAME.toString(), paymentType.getName());
     

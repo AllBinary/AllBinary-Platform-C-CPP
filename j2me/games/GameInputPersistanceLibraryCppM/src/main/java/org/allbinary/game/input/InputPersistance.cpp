@@ -93,6 +93,9 @@
 #include <jsinterop/annotations/JsConstructor.h>
 
       
+#include <org/allbinary/logic/StdUtil.h>
+
+      
 
 
 
@@ -171,6 +174,9 @@ public: InputPersistance(std::string name){
     SmallIntegerSingletonFactory smallIntegerSingletonFactory = SmallIntegerSingletonFactory::getInstance();;
     
 
+    StdUtil stdUtil = StdUtil::getInstance();;
+    
+
     std::vector<int8_t> recordAsBytes;;
     
 
@@ -201,7 +207,7 @@ recordAsBytes= this->tsUtil.getRecord(recordStore, id);
     
 inputStream= DataInputStream(byteArrayInputStream);
     
-hashtable= Hashtable<any, any>();
+hashtable= stdUtil.createHashtable();
     
 
     int32_t value= 0;;

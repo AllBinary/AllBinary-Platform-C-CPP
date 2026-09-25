@@ -31,7 +31,10 @@
 #include <java/util/Set.h>
 
       
-#include <java/util/Vector.h>
+#include <org/allbinary/util/BasicArrayList.h>
+
+      
+#include <org/allbinary/util/BasicArrayListD.h>
 
       
 #include <javax/servlet/http/HttpServletRequest.h>
@@ -53,6 +56,9 @@
 
       
 #include <org/allbinary/data/tree/dom/document/DomDocumentHelper.h>
+
+      
+#include <org/allbinary/logic/StdUtil.h>
 
       
 #include <org/allbinary/logic/communication/log/LogUtil.h>
@@ -127,7 +133,7 @@ public: NameSpaceRequestParams(PageContext pageContext);
 
                 //@Throws(Exception.constructor)
             
-    private: int32_t isElementValueTextNodeUnique(HashMap<any, any> nextPackagePropertiesHashMap, Vector elementNodeVector);
+    private: int32_t isElementValueTextNodeUnique(HashMap<any, any> nextPackagePropertiesHashMap, BasicArrayList elementNodeVector);
 
                 //@Throws(Exception.constructor)
             

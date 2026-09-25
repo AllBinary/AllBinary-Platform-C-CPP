@@ -23,7 +23,10 @@
 #include <java/util/HashMap.h>
 
       
-#include <java/util/Vector.h>
+#include <org/allbinary/util/BasicArrayList.h>
+
+      
+#include <org/allbinary/util/BasicArrayListD.h>
 
       
 #include <org/allbinary/business/user/quoterequest/QuoteRequest.h>
@@ -57,11 +60,11 @@ class QuoteRequestEntityInterface: public BasicDataTableInterface {
             
     QuoteRequest get(std::string userName, int32_t id)
 
-    Vector getIds(std::string userName)
+    BasicArrayList getIds(std::string userName)
 
     void deleteWhere(std::string key, std::string value)
 
-    void insert(Vector values)
+    void insert(BasicArrayList values)
 
     void update(std::string userName, HashMap<any, any> updatedValues)
 

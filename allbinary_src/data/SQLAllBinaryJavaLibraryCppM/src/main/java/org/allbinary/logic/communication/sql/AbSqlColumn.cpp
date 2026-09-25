@@ -25,7 +25,10 @@
 #include <java/sql/ResultSet.h>
 
       
-#include <java/util/Vector.h>
+#include <org/allbinary/util/BasicArrayList.h>
+
+      
+#include <org/allbinary/util/BasicArrayListD.h>
 
       
 #include <org/allbinary/business/init/db/DbConnectionInfo.h>
@@ -182,9 +185,9 @@ this->logUtil.putF(stringBuffer.toString(), this, this->METHOD_GET_LARGETS_INTEG
 }
 
 
-    public: Vector getColumn(std::string columnName){
+    public: BasicArrayList getColumn(std::string columnName){
 
-    Vector column = Vector();;
+    BasicArrayList column = BasicArrayListD();;
     
 
     StringMaker stringBuffer = StringMaker();;
@@ -264,7 +267,7 @@ this->logUtil.putF(stringBuffer.toString(), this, this->METHOD_GET_COLUMN);
 }
 
 
-    public: Vector getColumnWhere(std::string columnName, std::string key, std::string value){
+    public: BasicArrayList getColumnWhere(std::string columnName, std::string key, std::string value){
 
     StringMaker stringBuffer = StringMaker();;
     
@@ -290,7 +293,7 @@ stringBuffer.append(this->sqlStrings.CLOSE_QUOTE);
     std::string sqlStatement = stringBuffer.toString();;
     
 
-    Vector column = Vector();;
+    BasicArrayList column = BasicArrayListD();;
     
 
     ResultSet rset;;

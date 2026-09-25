@@ -49,6 +49,9 @@
 #include <jsinterop/annotations/JsProperty.h>
 
       
+#include <org/allbinary/logic/StdUtil.h>
+
+      
 
 
 
@@ -234,7 +237,7 @@ this->logUtil.putF(StringMaker().append(this->NEXT).append(this->NEW_LEVEL).appe
 
     public: Hashtable<any, any> toHashtable(){
 
-    Hashtable<any, any> hashtable = Hashtable<any, any>();;
+    Hashtable<any, any> hashtable = StdUtil::getInstance().createHashtable();;
     
 hashtable.put(this->gameInfoData.GAME_TYPE, this->getGameType().toString());
     

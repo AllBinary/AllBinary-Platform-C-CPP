@@ -58,6 +58,9 @@
 #include <org/allbinary/globals/URLGLOBALS.h>
 
       
+#include <org/allbinary/logic/StdUtil.h>
+
+      
 #include <org/allbinary/logic/communication/http/file/upload/FileUploadData.h>
 
       

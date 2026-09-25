@@ -28,7 +28,13 @@
 #include <java/awt/image/BufferedImage.h>
 
       
-#include <java/util/Vector.h>
+#include <org/allbinary/util/BasicArrayList.h>
+
+      
+#include <org/allbinary/util/BasicArrayListD.h>
+
+      
+#include <org/allbinary/logic/StdUtil.h>
 
       
 #include <org/allbinary/logic/communication/log/LogUtil.h>
@@ -84,7 +90,7 @@ class ImageComparisonSearch
 
     private: int32_t tolerance= 0;
 
-    private: Vector nonMatchingPixelVector;
+    private: BasicArrayList nonMatchingPixelVector;
 
     private: std::vector<BufferedImage> bufferedImages;
 
@@ -96,7 +102,7 @@ public: ImageComparisonSearch(BufferedImage bufferedImage, BufferedImage buffere
 
     public: void add(PixelDelta pixel);
 
-    public: Vector getNonMatchingPixelVector();
+    public: BasicArrayList getNonMatchingPixelVector();
 
     public: std::string toString();
 

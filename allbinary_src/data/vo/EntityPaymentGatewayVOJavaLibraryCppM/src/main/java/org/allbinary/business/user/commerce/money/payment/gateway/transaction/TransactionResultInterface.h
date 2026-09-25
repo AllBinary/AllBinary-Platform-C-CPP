@@ -21,7 +21,10 @@
         #ifndef ORG_ALLBINARY_BUSINESS_USER_COMMERCE_MONEY_PAYMENT_GATEWAY_TRANSACTION_TRANSACTIONRESULTINTERFACE_H
         #define ORG_ALLBINARY_BUSINESS_USER_COMMERCE_MONEY_PAYMENT_GATEWAY_TRANSACTION_TRANSACTIONRESULTINTERFACE_H
 
-#include <java/util/Vector.h>
+#include <org/allbinary/util/BasicArrayList.h>
+
+      
+#include <org/allbinary/util/BasicArrayListD.h>
 
       
 
@@ -47,7 +50,7 @@ class TransactionResultInterface {
 
     std::string toString();
 
-    Vector getValues();
+    BasicArrayList getValues();
 
     std::string getResult();
 

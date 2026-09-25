@@ -26,7 +26,10 @@
 #include <java/util/HashMap.h>
 
       
-#include <java/util/Vector.h>
+#include <org/allbinary/util/BasicArrayList.h>
+
+      
+#include <org/allbinary/util/BasicArrayListD.h>
 
       
 #include <org/allbinary/business/advertisement/area/AdvertisementAreaInterface.h>
@@ -58,7 +61,7 @@ class AdvertisementAreasEntityInterface: public BasicDataTableInterface {
 
                 //@Throws(Exception.constructor)
             
-    Vector get(std::string storeName);
+    BasicArrayList get(std::string storeName);
 
                 //@Throws(Exception.constructor)
             
@@ -66,7 +69,7 @@ class AdvertisementAreasEntityInterface: public BasicDataTableInterface {
 
     void delete_(std::string value);
 
-    void insert(Vector values);
+    void insert(BasicArrayList values);
 
     void update(HashMap<any, any> updatedValues);
 

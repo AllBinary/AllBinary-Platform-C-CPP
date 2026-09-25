@@ -57,6 +57,9 @@
 #include <org/allbinary/input/automation/module/generic/configuration/profile/actions/GenericProfileActionData.h>
 
       
+#include <org/allbinary/logic/StdUtil.h>
+
+      
 #include <org/allbinary/logic/communication/log/LogUtil.h>
 
       
@@ -117,7 +120,7 @@ this->fileName= fileName;
     
 this->profilesDefaultListModelHelper= DefaultListModelHelper();
     
-this->hashMap= HashMap<any, any>();
+this->hashMap= StdUtil::getInstance().createHashMap();
     
 
                         if(File(fileName).isFile())

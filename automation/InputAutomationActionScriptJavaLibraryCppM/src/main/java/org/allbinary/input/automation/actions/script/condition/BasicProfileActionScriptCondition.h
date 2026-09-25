@@ -28,7 +28,10 @@
 #include <java/awt/event/ActionEvent.h>
 
       
-#include <java/util/Vector.h>
+#include <org/allbinary/util/BasicArrayList.h>
+
+      
+#include <org/allbinary/util/BasicArrayListD.h>
 
       
 #include <javax/swing.h>
@@ -116,9 +119,9 @@ class BasicProfileActionScriptCondition: public ProfileActionScriptItem, public 
 
     protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: Vector profileActionProcessorInterfaceVector;
+    private: BasicArrayList profileActionProcessorInterfaceVector;
 
-    private: Vector profileActionConditionInterfaceVector;
+    private: BasicArrayList profileActionConditionInterfaceVector;
 
 public: BasicProfileActionScriptCondition(std::string label, Node node);
 
@@ -148,15 +151,15 @@ public: BasicProfileActionScriptCondition(std::string label);
             
     public: Node toXmlNode(Document document);
 
-    public: Vector getProfileActionConditionInterfaceVector();
+    public: BasicArrayList getProfileActionConditionInterfaceVector();
 
-    public: void setProfileActionConditionInterfaceVector(Vector profileActionConditionInterfaceVector);
+    public: void setProfileActionConditionInterfaceVector(BasicArrayList profileActionConditionInterfaceVector);
 
     public: void actionPerformed(ActionEvent actionEvent);
 
-    public: Vector getProfileActionProcessorInterfaceVector();
+    public: BasicArrayList getProfileActionProcessorInterfaceVector();
 
-    public: void setProfileActionProcessorInterfaceVector(Vector profileActionProcessorInterfaceVector);
+    public: void setProfileActionProcessorInterfaceVector(BasicArrayList profileActionProcessorInterfaceVector);
 
     private: void updateTree();
 

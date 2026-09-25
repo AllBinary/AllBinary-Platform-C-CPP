@@ -23,7 +23,10 @@
 #include <java/util/HashMap.h>
 
       
-#include <java/util/Vector.h>
+#include <org/allbinary/util/BasicArrayList.h>
+
+      
+#include <org/allbinary/util/BasicArrayListD.h>
 
       
 #include <javax/servlet/jsp/PageContext.h>
@@ -299,7 +302,7 @@ this->portion= Portion(hashMap);
     std::string success = CommonSeps::getInstance().SPACE;;
     
 
-    Vector storeNamesVector = StoreFrontsEntityFactory::getInstance().getStoreFrontsEntityInstance().getStoreFrontNames();;
+    BasicArrayList storeNamesVector = StoreFrontsEntityFactory::getInstance().getStoreFrontsEntityInstance().getStoreFrontNames();;
     
 
     HtmlSelect storeSelect = HtmlSelect(StringUtil::getInstance().EMPTY_STRING, this->commonPhoneStrings.ONE, StoreFrontData::getInstance().SELECTSTORENAME, StringUtil::getInstance().EMPTY_STRING);;
@@ -307,7 +310,7 @@ this->portion= Portion(hashMap);
 storeSelect.addAttribute(StoreFrontsHelper::CLASS, StoreFrontsHelper::TEXT);
     
 
-    int32_t size = storeNamesVector.length;;
+    int32_t size = storeNamesVector.size();;
     
 
 

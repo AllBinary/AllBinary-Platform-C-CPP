@@ -23,7 +23,10 @@
 #include <java/util/HashMap.h>
 
       
-#include <java/util/Vector.h>
+#include <org/allbinary/util/BasicArrayList.h>
+
+      
+#include <org/allbinary/util/BasicArrayListD.h>
 
       
 #include <org/allbinary/business/context/modules/storefront/StoreFrontData.h>
@@ -33,6 +36,9 @@
 
       
 #include <org/allbinary/business/user/commerce/inventory/item/BasicItemData.h>
+
+      
+#include <org/allbinary/logic/StdUtil.h>
 
       
 #include <org/allbinary/logic/communication/log/LogUtil.h>
@@ -74,6 +80,8 @@ class StaticPagesEntity: public AbSqlBean, public StaticPagesEntityInterface {
 
     protected: const LogUtil logUtil = LogUtil::getInstance();
 
+    protected: const BasicItemData basicItemData = BasicItemData::getInstance();
+
     private: const std::string TABLENAME = "staticpages";
 
 public: StaticPagesEntity(){
@@ -87,7 +95,7 @@ this->setTableName(this->TABLENAME);
 }
 
 
-    public: void insert(Vector values){
+    public: void insert(BasicArrayList values){
 
         try {
             super.insert(values);
@@ -121,11 +129,11 @@ this->setTableName(this->TABLENAME);
 
     public: std::string getFile(std::string store, std::string keywords){
 
-    HashMap<any, any> whereHashMap = HashMap<any, any>();;
+    HashMap<any, any> whereHashMap = StdUtil::getInstance().createHashMap();;
     
 whereHashMap.put(StoreFrontData::getInstance().NAME, store);
     
-whereHashMap.put(BasicItemData::KEYWORDS, keywords);
+whereHashMap.put(basicItemData.KEYWORDS, keywords);
     
 
     std::string file = super.getField(whereHashMap, SearchData::PAGE);;
@@ -140,7 +148,7 @@ whereHashMap.put(BasicItemData::KEYWORDS, keywords);
 
 
     public: void delete_(std::string keywords){
-super.deleteWhere(BasicItemData::KEYWORDS, keywords);
+super.deleteWhere(basicItemData.KEYWORDS, keywords);
     
 }
 
@@ -159,7 +167,7 @@ super.deleteWhere(BasicItemData::KEYWORDS, keywords);
 
 
     public: void update(HashMap<any, any> updatedValues){
-super.updateWhere(BasicItemData::KEYWORDS, updatedValues.get(BasicItemData::KEYWORDS) as string, updatedValues);
+super.updateWhere(basicItemData.KEYWORDS, updatedValues.get(basicItemData.KEYWORDS) as string, updatedValues);
     
 }
 
@@ -168,7 +176,7 @@ super.updateWhere(BasicItemData::KEYWORDS, updatedValues.get(BasicItemData::KEYW
 
     StringMaker stringBuffer = StringMaker();;
     
-stringBuffer.append(this->sqlStrings.CREATE_TABLE).append(TABLENAME).append(this->sqlStrings.START).append(StoreFrontData::getInstance().NAME).append(this->sqlTypeStrings.SIXTY_CHAR_COLUMN_NOT_NULL).append(BasicItemData::KEYWORDS).append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL).append(SearchData::PAGE).append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL).append(this->sqlStrings.PRIMARY_KEY).append(StoreFrontData::getInstance().NAME).append(CommonSeps::getInstance().COMMA_SEP).append(BasicItemData::KEYWORDS).append(this->sqlStrings.END);
+stringBuffer.append(this->sqlStrings.CREATE_TABLE).append(TABLENAME).append(this->sqlStrings.START).append(StoreFrontData::getInstance().NAME).append(this->sqlTypeStrings.SIXTY_CHAR_COLUMN_NOT_NULL).append(basicItemData.KEYWORDS).append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL).append(SearchData::PAGE).append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL).append(this->sqlStrings.PRIMARY_KEY).append(StoreFrontData::getInstance().NAME).append(CommonSeps::getInstance().COMMA_SEP).append(basicItemData.KEYWORDS).append(this->sqlStrings.END);
     
 
 

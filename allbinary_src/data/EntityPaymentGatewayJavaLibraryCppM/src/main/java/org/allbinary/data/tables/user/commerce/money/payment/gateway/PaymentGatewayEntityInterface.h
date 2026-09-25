@@ -21,7 +21,10 @@
         #ifndef ORG_ALLBINARY_DATA_TABLES_USER_COMMERCE_MONEY_PAYMENT_GATEWAY_PAYMENTGATEWAYENTITYINTERFACE_H
         #define ORG_ALLBINARY_DATA_TABLES_USER_COMMERCE_MONEY_PAYMENT_GATEWAY_PAYMENTGATEWAYENTITYINTERFACE_H
 
-#include <java/util/Vector.h>
+#include <org/allbinary/util/BasicArrayList.h>
+
+      
+#include <org/allbinary/util/BasicArrayListD.h>
 
       
 #include <org/allbinary/business/user/commerce/money/payment/gateway/PaymentGatewayInterface.h>
@@ -56,7 +59,7 @@ class PaymentGatewayEntityInterface: public BasicDataTableInterface {
 
     PaymentGatewayInterface getPaymentGatewayInterface(std::string storeName, BasicPaymentType paymentType);
 
-    Vector findPaymentTypeVectorByStore(std::string storeName);
+    BasicArrayList findPaymentTypeVectorByStore(std::string storeName);
 
     void remove(std::string storeName, BasicPaymentType paymentType);
 

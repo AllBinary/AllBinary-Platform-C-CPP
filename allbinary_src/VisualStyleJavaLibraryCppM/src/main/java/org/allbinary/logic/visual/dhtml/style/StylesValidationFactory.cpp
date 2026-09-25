@@ -25,7 +25,10 @@
 #include <java/util/HashMap.h>
 
       
-#include <java/util/Vector.h>
+#include <org/allbinary/util/BasicArrayList.h>
+
+      
+#include <org/allbinary/util/BasicArrayListD.h>
 
       
 #include <org/allbinary/data/tree/dom/DomSearchHelper.h>
@@ -97,7 +100,7 @@ class StylesValidationFactory
 
                 //@Throws(Exception.constructor)
             
-    public: static Vector getInstance(HashMap<any, any> hashMap){
+    public: static BasicArrayList getInstance(HashMap<any, any> hashMap){
 
     Document stylesDocument = hashMap.get(NameSpaceRequestParamData::DOCUMENT) as Document;;
     
@@ -118,7 +121,7 @@ private: StylesValidationFactory(){
 
                 //@Throws(Exception.constructor)
             
-    public: Vector getInstance(Document document){
+    public: BasicArrayList getInstance(Document document){
 
     CommonStrings commonStrings = CommonStrings::getInstance();;
     
@@ -154,13 +157,13 @@ private: StylesValidationFactory(){
     Node stylesNode = nodeList.item(index);;
     
 
-    Vector styleNodeList = DomSearchHelper::getAllNodes(StyleData::getInstance().NAME, stylesNode.getChildNodes());;
+    BasicArrayList styleNodeList = DomSearchHelper::getAllNodes(StyleData::getInstance().NAME, stylesNode.getChildNodes());;
     
 
                         if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEW))
                         
                                     {
-                                    this->logUtil.putF("Number Of Style Nodes Present: " +styleNodeList.length, this, commonStrings.GET_INSTANCE);
+                                    this->logUtil.putF("Number Of Style Nodes Present: " +styleNodeList.size(), this, commonStrings.GET_INSTANCE);
     
 
                                     }
@@ -170,19 +173,19 @@ private: StylesValidationFactory(){
 
 
                         for (
-    int32_t styleNodesIndex = 0;styleNodesIndex < styleNodeList.length; styleNodesIndex++)
+    int32_t styleNodesIndex = 0;styleNodesIndex < styleNodeList.size(); styleNodesIndex++)
         {
 
     Node styleNode = styleNodeList.get(styleNodesIndex) as Node;;
     
 
-    Vector cssElementStyleNodeList = DomSearchHelper::getAllNodes(CssElementData::getInstance().NAME, styleNode.getChildNodes());;
+    BasicArrayList cssElementStyleNodeList = DomSearchHelper::getAllNodes(CssElementData::getInstance().NAME, styleNode.getChildNodes());;
     
 
                         if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEW))
                         
                                     {
-                                    this->logUtil.putF("Number Of Element Nodes Present: " +cssElementStyleNodeList.length, this, commonStrings.GET_INSTANCE);
+                                    this->logUtil.putF("Number Of Element Nodes Present: " +cssElementStyleNodeList.size(), this, commonStrings.GET_INSTANCE);
     
 
                                     }
@@ -210,7 +213,7 @@ private: StylesValidationFactory(){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return Vector();
+                        return BasicArrayListD();
     
 }
 

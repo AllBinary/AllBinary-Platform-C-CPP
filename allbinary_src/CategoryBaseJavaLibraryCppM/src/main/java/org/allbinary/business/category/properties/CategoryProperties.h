@@ -28,9 +28,6 @@
 #include <java/util/HashMap.h>
 
       
-#include <java/util/Vector.h>
-
-      
 #include <org/allbinary/business/category/CategoryData.h>
 
       
@@ -41,6 +38,9 @@
 
       
 #include <org/allbinary/business/category/hierarchy/CategoryHierarchyInterface.h>
+
+      
+#include <org/allbinary/logic/StdUtil.h>
 
       
 #include <org/allbinary/logic/communication/log/LogUtil.h>
@@ -136,7 +136,7 @@ public: CategoryProperties(HashMap<any, any> categoryPropertiesHashMap);
 
     public: HashMap<any, any> toHashMap();
 
-    public: Vector toVector();
+    public: BasicArrayList toVector();
 
                 //@Throws(Exception.constructor)
             

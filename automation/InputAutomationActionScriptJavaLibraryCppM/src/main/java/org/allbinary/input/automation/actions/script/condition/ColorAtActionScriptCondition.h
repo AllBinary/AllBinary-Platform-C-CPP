@@ -27,7 +27,10 @@
         
             #include "../../../../../../../java/lang/Long.h"
         
-#include <java/awt.h>
+#include <java/awt/Color.h>
+
+      
+#include <java/awt/Point.h>
 
       
 #include <java/awt/image/BufferedImage.h>
@@ -52,6 +55,9 @@
 
       
 #include <org/allbinary/input/media/image/capture/CapturedBufferedImagesCacheSingleton.h>
+
+      
+#include <org/allbinary/logic/StdUtil.h>
 
       
 #include <org/allbinary/logic/communication/log/LogUtil.h>
@@ -105,9 +111,7 @@
         #include "BasicProfileActionScriptCondition.h"
 #include "ColorAtActionScriptConditionInterface.h"
 #include "ColorAtActionScriptConditionJPanel.h"
-#include "Point.h"
 #include "ColorAtActionScriptConditionData.h"
-#include "Color.h"
 
 class ColorAtActionScriptCondition: public BasicProfileActionScriptCondition, public ColorAtActionScriptConditionInterface {
 

@@ -23,6 +23,9 @@
 #include <java/util/HashMap.h>
 
       
+#include <org/allbinary/logic/StdUtil.h>
+
+      
 
 
 
@@ -49,7 +52,7 @@ class HtmlTag
     protected: HashMap<any, any> otherAttributes;
 
 public: HtmlTag(){
-this->otherAttributes= HashMap<any, any>();
+this->otherAttributes= StdUtil::getInstance().createHashMap();
     
 }
 

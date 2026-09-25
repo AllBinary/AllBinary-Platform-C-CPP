@@ -26,7 +26,10 @@
 #include <java/util/HashMap.h>
 
       
-#include <java/util/Vector.h>
+#include <org/allbinary/util/BasicArrayList.h>
+
+      
+#include <org/allbinary/util/BasicArrayListD.h>
 
       
 #include <org/allbinary/business/context/modules/storefront/StoreFrontInterface.h>
@@ -48,6 +51,9 @@
 
       
 #include <org/allbinary/business/user/commerce/money/MoneyException.h>
+
+      
+#include <org/allbinary/logic/StdUtil.h>
 
       
 #include <org/allbinary/logic/communication/log/LogUtil.h>
@@ -86,17 +92,19 @@ class InventoryEntity: public AbSqlBean, public InventoryEntityInterface {
 
     protected: const LogUtil logUtil = LogUtil::getInstance();
 
+    protected: const BasicItemData basicItemData = BasicItemData::getInstance();
+
     private: const std::string tableName = "basicinventory";
 
 public: InventoryEntity();
 
-    public: void insert(Vector values);
+    public: void insert(BasicArrayList values);
 
     public: void delete_(std::string value);
 
                 //@Throws(Exception.constructor)
             
-    public: Vector getItems(StoreFrontInterface storeFrontInterface);
+    public: BasicArrayList getItems(StoreFrontInterface storeFrontInterface);
 
                 //@Throws(MoneyException.constructor)
             

@@ -33,7 +33,10 @@
 #include <java/util/HashMap.h>
 
       
-#include <java/util/Vector.h>
+#include <org/allbinary/util/BasicArrayList.h>
+
+      
+#include <org/allbinary/util/BasicArrayListD.h>
 
       
 #include <javax/servlet/http/HttpServletRequest.h>
@@ -73,6 +76,9 @@
 
       
 #include <org/allbinary/business/user/username/UserName.h>
+
+      
+#include <org/allbinary/logic/StdUtil.h>
 
       
 #include <org/allbinary/logic/communication/http/request/RequestParams.h>
@@ -282,7 +288,7 @@ public: User(HashMap<any, any> userHashMap);
 
                 //@Throws(Exception.constructor)
             
-    public: Vector toVector();
+    public: BasicArrayList toVector();
 
                 //@Throws(Exception.constructor)
             

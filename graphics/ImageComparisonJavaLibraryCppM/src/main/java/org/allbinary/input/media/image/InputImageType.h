@@ -26,7 +26,13 @@
 #include <java/util/HashMap.h>
 
       
-#include <java/util/Vector.h>
+#include <org/allbinary/util/BasicArrayList.h>
+
+      
+#include <org/allbinary/util/BasicArrayListD.h>
+
+      
+#include <org/allbinary/logic/StdUtil.h>
 
       
 
@@ -52,9 +58,9 @@ class InputImageType
             : public Object
          {
 
-    private: static HashMap<any, any> hashMap = HashMap<any, any>();
+    private: static HashMap<any, any> hashMap = StdUtil::getInstance().createHashMap();
 
-    private: static const Vector TYPE_VECTOR = Vector();
+    private: static const BasicArrayList TYPE_VECTOR = BasicArrayListD();
 
     public: static InputImageType CAPTURE = InputImageType("Capture", 0);
 
@@ -64,7 +70,7 @@ class InputImageType
 
     public: static InputImageType getInstance(std::string imageTypeString);
 
-    public: static Vector getAllAsVector();
+    public: static BasicArrayList getAllAsVector();
 
     private: std::string name;
 

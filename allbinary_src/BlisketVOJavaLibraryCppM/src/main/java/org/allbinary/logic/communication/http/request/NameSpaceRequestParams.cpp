@@ -28,7 +28,10 @@
 #include <java/util/Set.h>
 
       
-#include <java/util/Vector.h>
+#include <org/allbinary/util/BasicArrayList.h>
+
+      
+#include <org/allbinary/util/BasicArrayListD.h>
 
       
 #include <javax/servlet/http/HttpServletRequest.h>
@@ -50,6 +53,9 @@
 
       
 #include <org/allbinary/data/tree/dom/document/DomDocumentHelper.h>
+
+      
+#include <org/allbinary/logic/StdUtil.h>
 
       
 #include <org/allbinary/logic/communication/log/LogUtil.h>
@@ -494,18 +500,18 @@ node.appendChild(newPropertyNode);
 
                 //@Throws(Exception.constructor)
             
-    private: int32_t isElementValueTextNodeUnique(HashMap<any, any> nextPackagePropertiesHashMap, Vector elementNodeVector){
+    private: int32_t isElementValueTextNodeUnique(HashMap<any, any> nextPackagePropertiesHashMap, BasicArrayList elementNodeVector){
 
                         if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().HTTPREQUEST))
                         
                                     {
-                                    this->logUtil.putF("\nComparing Properties of: " +elementNodeVector.length +" Nodes", this, "isElementValueTextNodeUnique");
+                                    this->logUtil.putF("\nComparing Properties of: " +elementNodeVector.size() +" Nodes", this, "isElementValueTextNodeUnique");
     
 
                                     }
                                 
 
-    int32_t size = elementNodeVector.length;;
+    int32_t size = elementNodeVector.size();;
     
 
 
@@ -548,10 +554,10 @@ node.appendChild(newPropertyNode);
     Node node = rootNode;;
     
 
-    Vector packageVector = nameSpaceRequestParam.getPackages();;
+    BasicArrayList packageVector = nameSpaceRequestParam.getPackages();;
     
 
-    int32_t size = packageVector.length;;
+    int32_t size = packageVector.size();;
     
 
 
@@ -576,13 +582,13 @@ node.appendChild(newPropertyNode);
     HashMap<any, any> nextPackagePropertiesHashMap = nameSpaceRequestParam.getPackageProperties(index);;
     
 
-    Vector elementNodeVector = DomSearchHelper::getAllNodesNoThrow(nextPackageName, node.getChildNodes());;
+    BasicArrayList elementNodeVector = DomSearchHelper::getAllNodesNoThrow(nextPackageName, node.getChildNodes());;
     
 
                         if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().HTTPREQUEST))
                         
                                     {
-                                    this->logUtil.putF("\nDocument Contains " +elementNodeVector.length +" Node(s) With Same Name", this, "addChildren");
+                                    this->logUtil.putF("\nDocument Contains " +elementNodeVector.size() +" Node(s) With Same Name", this, "addChildren");
     
 
                                     }
@@ -591,7 +597,7 @@ node.appendChild(newPropertyNode);
     int32_t isElementValueTextNodeUniqueIndex = this->isElementValueTextNodeUnique(nextPackagePropertiesHashMap, elementNodeVector);;
     
 
-                        if((elementNodeVector.length == 0 || isElementValueTextNodeUniqueIndex ==  -1) && !nextPackageName.endsWith(CommonSeps::getInstance().BRACKET_CLOSE))
+                        if((elementNodeVector.size() == 0 || isElementValueTextNodeUniqueIndex ==  -1) && !nextPackageName.endsWith(CommonSeps::getInstance().BRACKET_CLOSE))
                         
                                     {
                                     
@@ -701,10 +707,10 @@ node= this->addNewProperties(document, nodeNameDuplicateNode, nextPackagePropert
     NameSpaceRequestParam nameSpaceRequestParam = NameSpaceRequestParam(key, value);;
     
 
-    Vector packageVector = nameSpaceRequestParam.getPackages();;
+    BasicArrayList packageVector = nameSpaceRequestParam.getPackages();;
     
 
-    int32_t size = packageVector.length;;
+    int32_t size = packageVector.size();;
     
 
 
@@ -753,7 +759,7 @@ node= this->addNewProperties(document, nodeNameDuplicateNode, nextPackagePropert
     Document document = DomDocumentHelper::create();;
     
 
-    HashMap<any, any> hashMap = HashMap<any, any>();;
+    HashMap<any, any> hashMap = StdUtil::getInstance().createHashMap();;
     
 
     Set keys = this->getMap().keySet();;

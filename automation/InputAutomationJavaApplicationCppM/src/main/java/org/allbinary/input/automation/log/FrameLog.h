@@ -35,7 +35,10 @@
 #include <java/io/FileOutputStream.h>
 
       
-#include <java/util/Vector.h>
+#include <org/allbinary/util/BasicArrayList.h>
+
+      
+#include <org/allbinary/util/BasicArrayListD.h>
 
       
 #include <org/allbinary/input/automation/ImageOutputData.h>
@@ -89,7 +92,7 @@ public: FrameLog(Long frame);
 
     public: void addInfo(std::string infoString);
 
-    public: void addActions(Vector<string> vectorOfStrings);
+    public: void addActions(BasicArrayList vectorOfStrings);
 
     public: void addAction(std::string action);
 

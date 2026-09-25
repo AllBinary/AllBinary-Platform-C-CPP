@@ -30,7 +30,10 @@
 #include <java/util/Set.h>
 
       
-#include <java/util/Vector.h>
+#include <org/allbinary/util/BasicArrayList.h>
+
+      
+#include <org/allbinary/util/BasicArrayListD.h>
 
       
 #include <org/allbinary/input/automation/module/AbstractInputAutomationWorker.h>
@@ -124,10 +127,10 @@ this->setMotionRectanglesWorker(MotionRectanglesWorker(motionRectangleConstraint
 this->setGenericProfile(genericProfile);
     
 
-    Vector vector = this->getGenericProfile().getGenericProfileDataWorkerTypeVector();;
+    BasicArrayList vector = this->getGenericProfile().getGenericProfileDataWorkerTypeVector();;
     
 
-    int32_t size = vector.length;;
+    int32_t size = vector.size();;
     
 
 
@@ -224,7 +227,7 @@ this->logUtil.putF("Processing Action: " +actionNameString, this, this->PROCESS_
     GenericProfileActionScript genericProfileActionScript = genericProfileAction.getGenericProfileActionScript();;
     
 
-    Vector vector = genericProfileActionScript.getProfileActionConditionInterfaceVector();;
+    BasicArrayList vector = genericProfileActionScript.getProfileActionConditionInterfaceVector();;
     
 CaptureWorkerUtil::processProfileActionConditions(vector, getFrame());
     

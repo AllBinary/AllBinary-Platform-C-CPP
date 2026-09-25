@@ -23,7 +23,10 @@
 #include <java/util/HashMap.h>
 
       
-#include <java/util/Vector.h>
+#include <org/allbinary/util/BasicArrayList.h>
+
+      
+#include <org/allbinary/util/BasicArrayListD.h>
 
       
 #include <org/allbinary/business/advertisement/campaign/AdvertisementCampaign.h>
@@ -51,6 +54,9 @@
 
       
 #include <org/allbinary/business/time/TimeData.h>
+
+      
+#include <org/allbinary/logic/StdUtil.h>
 
       
 #include <org/allbinary/logic/communication/log/LogUtil.h>
@@ -133,18 +139,18 @@ this->setTableName(this->tableName);
 
     public: AdvertisementCampaignsInterface getCampaignsInStore(std::string storeName){
 
-    HashMap<any, any> keysAndValues = HashMap<any, any>();;
+    HashMap<any, any> keysAndValues = StdUtil::getInstance().createHashMap();;
     
 keysAndValues.put(StoreFrontData::getInstance().NAME, storeName);
     
 
-    Vector hashMapVector = super.getRows(keysAndValues);;
+    BasicArrayList hashMapVector = super.getRows(keysAndValues);;
     
 
-    Vector vector = Vector();;
+    BasicArrayList vector = BasicArrayListD();;
     
 
-    int32_t size = hashMapVector.length;;
+    int32_t size = hashMapVector.size();;
     
 
 
@@ -180,7 +186,7 @@ keysAndValues.put(StoreFrontData::getInstance().NAME, storeName);
 
     public: AdvertisementCampaignInterface get(std::string storeName, std::string name){
 
-    HashMap<any, any> keysAndValues = HashMap<any, any>();;
+    HashMap<any, any> keysAndValues = StdUtil::getInstance().createHashMap();;
     
 keysAndValues.put(StoreFrontData::getInstance().NAME, storeName);
     

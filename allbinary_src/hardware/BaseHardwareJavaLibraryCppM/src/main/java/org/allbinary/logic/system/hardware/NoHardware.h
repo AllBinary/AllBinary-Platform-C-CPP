@@ -26,7 +26,7 @@
 #include <java/util/Hashtable.h>
 
       
-#include <org/allbinary/logic/NullUtil.h>
+#include <org/allbinary/logic/StdUtil.h>
 
       
 #include <org/allbinary/logic/system/hardware/components/interfaces/HardwareComponentInterface.h>

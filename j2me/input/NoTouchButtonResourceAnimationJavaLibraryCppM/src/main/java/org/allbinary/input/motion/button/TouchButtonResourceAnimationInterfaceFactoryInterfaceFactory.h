@@ -23,9 +23,6 @@
 
             #include "../../../../../java/lang/Exception.h"
         
-#include <java/util/Hashtable.h>
-
-      
 #include <org/allbinary/animation/resource/BaseResourceAnimationInterfaceFactoryInterfaceFactory.h>
 
       
@@ -42,6 +39,9 @@
 
       
 #include <org/allbinary/image/ImageCacheFactory.h>
+
+      
+#include <org/allbinary/logic/StdUtil.h>
 
       
 

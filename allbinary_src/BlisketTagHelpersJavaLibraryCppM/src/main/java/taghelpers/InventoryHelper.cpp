@@ -100,6 +100,8 @@ class InventoryHelper: public TagHelper {
 
     protected: const LogUtil logUtil = LogUtil::getInstance();
 
+    protected: const BasicItemData basicItemData = BasicItemData::getInstance();
+
     private: WeblisketSession weblisketSession;
 
     private: HttpServletResponse response;
@@ -147,7 +149,7 @@ this->getFormData();
 
 
     private: void getFormData(){
-this->id= this->request.getParameter(BasicItemData::ID);
+this->id= this->request.getParameter(basicItemData.ID);
     
 }
 
@@ -210,7 +212,7 @@ this->id= this->request.getParameter(BasicItemData::ID);
     StringUtil stringUtil = StringUtil::getInstance();;
     
 
-    std::string keywords = this->searchRequest.getParams().get().get(BasicItemData::KEYWORDS) as string;;
+    std::string keywords = this->searchRequest.getParams().get().get(basicItemData.KEYWORDS) as string;;
     
 
                         if(false || keywords.compareTo(stringUtil.EMPTY_STRING) == 0)

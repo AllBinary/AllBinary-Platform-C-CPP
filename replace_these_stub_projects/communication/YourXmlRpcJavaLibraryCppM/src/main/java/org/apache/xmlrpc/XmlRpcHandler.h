@@ -9,7 +9,10 @@
 
             #include "../../../java/lang/Exception.h"
         
-#include <java/util/Vector.h>
+#include <org/allbinary/util/BasicArrayList.h>
+
+      
+#include <org/allbinary/util/BasicArrayListD.h>
 
       
 
@@ -35,7 +38,7 @@ class XmlRpcHandler {
 
                 //@Throws(Exception.constructor)
             
-    Object* execute(std::string method, Vector<any> params);
+    Object* execute(std::string method, BasicArrayList params);
 
 };
 

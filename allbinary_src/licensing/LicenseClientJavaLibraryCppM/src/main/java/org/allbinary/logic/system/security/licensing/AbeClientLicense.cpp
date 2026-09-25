@@ -23,7 +23,7 @@
 #include <java/util/Hashtable.h>
 
       
-#include <java/util/Vector.h>
+#include <org/allbinary/logic/StdUtil.h>
 
       
 #include <org/allbinary/logic/string/StringMaker.h>
@@ -109,7 +109,7 @@ class AbeClientLicense
     private: LicenseType licenseType;
 
 public: AbeClientLicense(Hashtable<any, any> hashtable){
-this->hashtable= Hashtable<any, any>();
+this->hashtable= StdUtil::getInstance().createHashtable();
     
 
     AbeClientInformationData abeClientInformationData = AbeClientInformationData::getInstance();;
@@ -138,12 +138,12 @@ this->hashtable= Hashtable<any, any>();
 this->id= hashtable.get(abeClientInformationData.LICENSEID) as string;
     
 
-    Vector vector = hashtable.get(abeClientInformationData.LICENSESERVERS) as Vector;;
+    BasicArrayList vector = hashtable.get(abeClientInformationData.LICENSESERVERS) as BasicArrayList;;
     
 this->servers= BasicArrayListD();
     
 
-    int32_t size = vector.length;;
+    int32_t size = vector.size();;
     
 
 

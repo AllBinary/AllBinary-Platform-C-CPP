@@ -26,7 +26,13 @@
 #include <java/util/HashMap.h>
 
       
+#include <org/allbinary/logic/StdUtil.h>
+
+      
 #include <org/allbinary/logic/io/path/AbPathData.h>
+
+      
+#include <org/allbinary/logic/math/MathData.h>
 
       
 #include <org/allbinary/string/CommonPhoneStrings.h>

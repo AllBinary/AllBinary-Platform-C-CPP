@@ -38,7 +38,7 @@
 #include <org/allbinary/graphics/canvas/transition/progress/ProgressCanvasFactory.h>
 
       
-#include <org/allbinary/logic/NullUtil.h>
+#include <org/allbinary/logic/StdUtil.h>
 
       
 #include <org/allbinary/logic/system/security/licensing/ClientInformationFactory.h>
@@ -51,6 +51,9 @@
 
       
 #include <jsinterop/annotations/JsConstructor.h>
+
+      
+#include <org/allbinary/game/displayable/canvas/NullGameCanvasRunnable.h>
 
       
 
@@ -133,11 +136,14 @@ public: DemoGameMidlet(ClientInformationFactory clientInformationFactory){
                 //@Throws(Exception.constructor)
             
     public: GameCanvasRunnableInterface createDemoGameCanvasRunnableInterface(){
+this->logUtil.putF(this->commonStrings.NOT_IMPLEMENTED, this, this->commonStrings.CREATE);
+    
 
 
 
-                            throw Exception(this->commonStrings.NOT_IMPLEMENTED);
-                    
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return NullGameCanvasRunnable::NULL_GAME_CANVAS_RUNNABLE;
+    
 }
 
 
@@ -205,7 +211,7 @@ progressCanvas.start();
 
     Hashtable<any, any> hashtable = this->getStartStateHashtable();;
     
-this->setStartStateHashtable(NullUtil::getInstance().NULL_TABLE);
+this->setStartStateHashtable(StdUtil::getInstance().NULL_TABLE);
     
 PrimaryThreadPool::getInstance().runTask(CreateGameRunnable(this, hashtable));
     

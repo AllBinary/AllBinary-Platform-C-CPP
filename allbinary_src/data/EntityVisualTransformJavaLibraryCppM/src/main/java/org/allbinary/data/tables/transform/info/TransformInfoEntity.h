@@ -26,7 +26,10 @@
 #include <java/util/HashMap.h>
 
       
-#include <java/util/Vector.h>
+#include <org/allbinary/util/BasicArrayList.h>
+
+      
+#include <org/allbinary/util/BasicArrayListD.h>
 
       
 #include <javax/servlet/jsp/PageContext.h>
@@ -42,6 +45,9 @@
 
       
 #include <org/allbinary/data/tree/dom/document/DomDocumentHelper.h>
+
+      
+#include <org/allbinary/logic/StdUtil.h>
 
       
 #include <org/allbinary/logic/communication/log/LogUtil.h>
@@ -113,7 +119,7 @@ class TransformInfoEntity: public AbSqlBean, public TransformInfoEntityInterface
 
 public: TransformInfoEntity(TransformInfoObjectConfigGeneratorFactoryInterface transformInfoObjectConfigGeneratorFactoryInterface, TransformInfoObjectConfigAndManipulatorFactoryBase transformInfoObjectConfigAndManipulatorFactoryInterface, TransformInfoFactoryInterface transformInfoFactoryInterface);
 
-    public: void insert(Vector values);
+    public: void insert(BasicArrayList values);
 
     public: void delete_(std::string value);
 
@@ -123,11 +129,11 @@ public: TransformInfoEntity(TransformInfoObjectConfigGeneratorFactoryInterface t
 
                 //@Throws(Exception.constructor)
             
-    public: Vector getObjectConfigs(std::string storeName);
+    public: BasicArrayList getObjectConfigs(std::string storeName);
 
                 //@Throws(Exception.constructor)
             
-    public: Vector getNames(std::string storeName);
+    public: BasicArrayList getNames(std::string storeName);
 
     public: std::string createTableStatement();
 

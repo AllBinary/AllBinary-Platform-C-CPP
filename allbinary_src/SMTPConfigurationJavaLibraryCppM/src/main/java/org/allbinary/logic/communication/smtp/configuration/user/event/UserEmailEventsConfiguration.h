@@ -31,6 +31,9 @@
 #include <org/allbinary/business/user/UserInterface.h>
 
       
+#include <org/allbinary/logic/StdUtil.h>
+
+      
 #include <org/allbinary/logic/communication/log/LogUtil.h>
 
       

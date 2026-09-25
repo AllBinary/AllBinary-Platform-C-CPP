@@ -28,10 +28,16 @@
 #include <java/util/HashMap.h>
 
       
-#include <java/util/Vector.h>
+#include <org/allbinary/util/BasicArrayList.h>
+
+      
+#include <org/allbinary/util/BasicArrayListD.h>
 
       
 #include <javax/servlet/http/HttpServletRequest.h>
+
+      
+#include <org/allbinary/logic/StdUtil.h>
 
       
 #include <org/allbinary/logic/string/StringMaker.h>
@@ -143,7 +149,7 @@ this->remotePort= std::to_string(getRemotePort);
 
     public: HashMap<any, any> toHashMap(){
 
-    HashMap<any, any> hashMap = HashMap<any, any>();;
+    HashMap<any, any> hashMap = StdUtil::getInstance().createHashMap();;
     
 hashMap.put(abeHttpRequestInfoData.HTTP_USER_AGENT, this->httpUserAgent);
     
@@ -166,9 +172,9 @@ hashMap.put(abeHttpRequestInfoData.REQUEST_FILE_PATH, this->requestedFilePath);
 }
 
 
-    public: Vector toVector(){
+    public: BasicArrayList toVector(){
 
-    Vector vector = Vector();;
+    BasicArrayList vector = BasicArrayListD();;
     
 vector.add(this->httpUserAgent);
     

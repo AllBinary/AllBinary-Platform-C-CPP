@@ -23,7 +23,10 @@
 #include <java/util/HashMap.h>
 
       
-#include <java/util/Vector.h>
+#include <org/allbinary/util/BasicArrayList.h>
+
+      
+#include <org/allbinary/util/BasicArrayListD.h>
 
       
 #include <javax/servlet/jsp/PageContext.h>
@@ -96,7 +99,7 @@ this->downloadableItem= downloadableInventoryItemView.getDownloadableItem();
 
         try {
             
-    Vector vector = this->downloadableItem.toVector();;
+    BasicArrayList vector = this->downloadableItem.toVector();;
     
 DownloadItemsEntityFactory::getInstance().getDownloadItemsEntityInstance().insert(vector);
     

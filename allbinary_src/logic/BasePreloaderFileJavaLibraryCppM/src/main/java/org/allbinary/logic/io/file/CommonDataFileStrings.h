@@ -91,6 +91,10 @@ class CommonDataFileStrings
 
     public: const std::string _CPP = ".cpp";
 
+    public: const std::string H = "h";
+
+    public: const std::string _H = ".h";
+
     public: const std::string UNCRYPTED_EXTENSION = this->XML;
 
     public: const std::string ENCRYPTED_EXTENSION = "abd";

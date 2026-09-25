@@ -23,7 +23,13 @@
 
             #include "../../../java/lang/Object.h"
         
-#include <java/util/Vector.h>
+#include <org/allbinary/util/BasicArrayList.h>
+
+      
+#include <org/allbinary/util/BasicArrayListD.h>
+
+      
+#include <org/allbinary/logic/StdUtil.h>
 
       
 
@@ -49,7 +55,7 @@ class LOGGING
             : public Object
          {
 
-    private: static Vector logging = Vector();
+    private: static BasicArrayList logging = BasicArrayListD();
 
     public: static bool contains(LOGGING logType);
 

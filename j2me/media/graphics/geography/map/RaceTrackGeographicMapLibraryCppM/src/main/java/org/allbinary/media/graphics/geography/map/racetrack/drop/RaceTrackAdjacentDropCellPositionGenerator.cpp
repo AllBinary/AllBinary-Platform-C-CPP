@@ -43,9 +43,6 @@
 #include <org/allbinary/game/identification/BasicGroupFactory.h>
 
       
-#include <org/allbinary/game/identification/Group.h>
-
-      
 #include <org/allbinary/game/layer/AllBinaryGameLayerManager.h>
 
       
@@ -59,6 +56,9 @@
 
       
 #include <org/allbinary/layer/AllBinaryLayerManager.h>
+
+      
+#include <org/allbinary/logic/StdUtil.h>
 
       
 #include <org/allbinary/media/graphics/geography/map/BasicGeographicMap.h>
@@ -202,7 +202,7 @@ break;
 }
 
 
-    private: const Hashtable<any, any> hashtable = Hashtable<any, any>();
+    private: const Hashtable<any, any> hashtable = StdUtil::getInstance().createHashtable();
 
                 //@Throws(Exception.constructor)
             

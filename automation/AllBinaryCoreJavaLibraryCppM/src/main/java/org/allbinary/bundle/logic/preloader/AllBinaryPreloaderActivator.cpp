@@ -40,6 +40,9 @@
 #include <org/allbinary/bundle/logic/system/loader/CryptServiceFactory.h>
 
       
+#include <org/allbinary/logic/StdUtil.h>
+
+      
 #include <org/allbinary/logic/communication/log/LogUtil.h>
 
       
@@ -122,7 +125,7 @@ this->logUtil.put(this->commonStrings.EXCEPTION, this, "start", e);
             
     public: void registerAsService(){
 
-    Hashtable<any, any> properties = Hashtable<any, any>();;
+    Hashtable<any, any> properties = StdUtil::getInstance().createHashtable();;
     
 
     ServiceRegistration serviceRegistration = AllBinaryPreloaderActivator::context.registerService(CRYPT_REGISTRY_NAME, CryptServiceFactory(), properties);;

@@ -23,7 +23,10 @@
 #include <java/util/HashMap.h>
 
       
-#include <java/util/Vector.h>
+#include <org/allbinary/util/BasicArrayList.h>
+
+      
+#include <org/allbinary/util/BasicArrayListD.h>
 
       
 #include <org/allbinary/business/context/modules/storefront/StoreFrontInterface.h>
@@ -67,15 +70,15 @@ class OrderHistoryEntityInterface: public BasicDataTableInterface {
 
                 //@Throws(Exception.constructor)
             
-    Vector getStoreOrders(StoreFrontInterface storeFrontInterface)
+    BasicArrayList getStoreOrders(StoreFrontInterface storeFrontInterface)
 
                 //@Throws(Exception.constructor)
             
-    Vector getOrders(std::string userName)
+    BasicArrayList getOrders(std::string userName)
 
                 //@Throws(Exception.constructor)
             
-    Vector getOrders(std::string status, std::string fromDate, std::string toDate)
+    BasicArrayList getOrders(std::string status, std::string fromDate, std::string toDate)
 
                 //@Throws(Exception.constructor)
             

@@ -22,13 +22,19 @@
         
             #include "../../../../../../../java/lang/Exception.h"
         
-#include <java/util/Vector.h>
+#include <org/allbinary/util/BasicArrayList.h>
+
+      
+#include <org/allbinary/util/BasicArrayListD.h>
 
       
 #include <org/allbinary/business/user/UserInterface.h>
 
       
 #include <org/allbinary/business/user/modules/configuration/UserConfigurationInterface.h>
+
+      
+#include <org/allbinary/logic/StdUtil.h>
 
       
 #include <org/allbinary/logic/communication/log/LogUtil.h>
@@ -93,7 +99,7 @@ class EmailEventHandlerUtil
 
                 //@Throws(Exception.constructor)
             
-    public: static Vector getUserEmailEventListenerVector(AbeClientInformationInterface abeClientInformation, UserEmailEventNameData userEmailEventNameData, UserInterface userInterface){
+    public: static BasicArrayList getUserEmailEventListenerVector(AbeClientInformationInterface abeClientInformation, UserEmailEventNameData userEmailEventNameData, UserInterface userInterface){
 
     UserConfigurationInterface userConfigurationInterface = userInterface.getUserConfigurationInterface();;
     
@@ -107,7 +113,7 @@ class EmailEventHandlerUtil
     UserEmailEventListenerInterface userEmailEventListenerInterface = userEmailEventsConfigurationInterface.getEventListener(abeClientInformation, userEmailEventNameData, userInterface);;
     
 
-    Vector vector = Vector();;
+    BasicArrayList vector = BasicArrayListD();;
     
 vector.add(userEmailEventListenerInterface);
     
@@ -128,7 +134,7 @@ private: EmailEventHandlerUtil(){
 
                 //@Throws(Exception.constructor)
             
-    public: UserEmailEventHandler getEventHandler(AbeClientInformationInterface abeClientInformation, UserEmailEventNameData userEmailEventNameData, Vector userVector){
+    public: UserEmailEventHandler getEventHandler(AbeClientInformationInterface abeClientInformation, UserEmailEventNameData userEmailEventNameData, BasicArrayList userVector){
 
                         if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().EMAILLOGGING))
                         
@@ -138,7 +144,7 @@ private: EmailEventHandlerUtil(){
     
 stringBuffer.append("Returning UserEmailEventHandler for ");
     
-stringBuffer.appendint(userVector.length);
+stringBuffer.appendint(userVector.size());
     
 stringBuffer.append(" users.");
     
@@ -153,7 +159,7 @@ this->logUtil.putF(stringBuffer.toString(), this, "getEventHandler");
 userEmailEventHandler.addListener(LogUserEmailEventListenerModule());
     
 
-    int32_t size = userVector.length;;
+    int32_t size = userVector.size();;
     
 
 
@@ -166,7 +172,7 @@ userEmailEventHandler.addListener(LogUserEmailEventListenerModule());
     UserInterface userInterface = userVector.get(index) as UserInterface;;
     
 
-    Vector vector = EmailEventHandlerUtil::getUserEmailEventListenerVector(abeClientInformation, userEmailEventNameData, userInterface);;
+    BasicArrayList vector = EmailEventHandlerUtil::getUserEmailEventListenerVector(abeClientInformation, userEmailEventNameData, userInterface);;
     
 userEmailEventHandler.addListener(vector);
     

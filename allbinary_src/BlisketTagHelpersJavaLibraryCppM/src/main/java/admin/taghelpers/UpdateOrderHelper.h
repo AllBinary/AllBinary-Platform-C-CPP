@@ -62,6 +62,9 @@
 #include <org/allbinary/data/tables/user/commerce/inventory/order/OrderHistoryEntityFactory.h>
 
       
+#include <org/allbinary/logic/StdUtil.h>
+
+      
 #include <org/allbinary/logic/communication/log/LogUtil.h>
 
       

@@ -28,6 +28,9 @@
 #include <org/allbinary/TsUtil.h>
 
       
+#include <org/allbinary/logic/StdUtil.h>
+
+      
 #include <org/allbinary/logic/string/StringUtil.h>
 
       
@@ -197,7 +200,7 @@ break;
 
     public: Hashtable<any, any> getTokens(BasicArrayList stringVector){
 
-    Hashtable<any, any> tokenHashtable = Hashtable<any, any>();;
+    Hashtable<any, any> tokenHashtable = StdUtil::getInstance().createHashtable();;
     
 
     std::string string = StringUtil::getInstance().EMPTY_STRING;;

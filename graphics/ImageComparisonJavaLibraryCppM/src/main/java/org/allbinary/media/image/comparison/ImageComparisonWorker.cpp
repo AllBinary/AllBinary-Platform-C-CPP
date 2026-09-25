@@ -24,13 +24,19 @@
         
             #include "../../../../../java/lang/Long.h"
         
-#include <java/util/Vector.h>
+#include <org/allbinary/util/BasicArrayList.h>
+
+      
+#include <org/allbinary/util/BasicArrayListD.h>
 
       
 #include <org/allbinary/input/media/image/capture/CapturedImageWorkerResultsEvent.h>
 
       
 #include <org/allbinary/input/media/image/capture/CapturedImageWorkerResultsListener.h>
+
+      
+#include <org/allbinary/logic/StdUtil.h>
 
       
 #include <org/allbinary/logic/communication/log/LogUtil.h>
@@ -85,7 +91,7 @@ class ImageComparisonWorker: public BasicEventHandler, public CapturedImageWorke
 
     private: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    private: const Vector bufferedImageVector = Vector();
+    private: const BasicArrayList bufferedImageVector = BasicArrayListD();
 
     private: ImageComparatorConstraintsInterface imageComparatorConstraintsInterface;
 
@@ -126,7 +132,7 @@ this->running= running;
 this->bufferedImageVector.add(capturedImageWorkerResultsEvent);
     
 
-                        if(this->bufferedImageVector.length > 1)
+                        if(this->bufferedImageVector.size() > 1)
                         
                                     {
                                     this->run();

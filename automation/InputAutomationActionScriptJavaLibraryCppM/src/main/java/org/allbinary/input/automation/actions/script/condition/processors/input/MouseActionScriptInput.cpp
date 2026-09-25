@@ -42,6 +42,9 @@
 #include <org/allbinary/data/tree/dom/ModDomHelper.h>
 
       
+#include <org/allbinary/logic/StdUtil.h>
+
+      
 #include <org/allbinary/logic/communication/log/LogUtil.h>
 
       
@@ -256,7 +259,7 @@ this->mouseActionScriptInputJPanel.getMouseActionJDialog().setVisible(true);
 
     public: HashMap<any, any> toHashMap(){
 
-    HashMap<any, any> hashMap = HashMap<any, any>();;
+    HashMap<any, any> hashMap = StdUtil::getInstance().createHashMap();;
     
 hashMap.put(MouseActionScriptInputData::BUTTONS, std::to_string(getButtonClicks));
     
@@ -283,7 +286,7 @@ this->logUtil.putF("HashMap: " +hashMap.toString(), this, "toHashMap()");
 node.appendChild(mouseNode);
     
 
-    HashMap<any, any> hashMap = HashMap<any, any>();;
+    HashMap<any, any> hashMap = StdUtil::getInstance().createHashMap();;
     
 hashMap.put(MouseActionScriptInputData::MOVE_X, std::to_string(x));
     

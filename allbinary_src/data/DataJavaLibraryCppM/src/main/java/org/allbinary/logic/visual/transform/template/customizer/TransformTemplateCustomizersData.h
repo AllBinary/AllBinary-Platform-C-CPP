@@ -18,12 +18,11 @@
 
 
 
-#include <jsinterop/annotations/JsType.h>
+        #ifndef ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_TEMPLATE_CUSTOMIZER_TRANSFORMTEMPLATECUSTOMIZERSDATA_H
+        #define ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_TEMPLATE_CUSTOMIZER_TRANSFORMTEMPLATECUSTOMIZERSDATA_H
 
-      
-#include <jsinterop/annotations/JsMethod.h>
-
-      
+            #include "../../../../../../../java/lang/Object.h"
+        
 
 
 
@@ -43,11 +42,17 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class PositionInterface {
+class TransformTemplateCustomizersData
+            : public Object
+         {
 
-    void setPosition(int32_t x, int32_t y, int32_t z)
+    public: static std::string NAME = "TEMPLATE_CUSTOMIZERS_NAME";
+
+public: TransformTemplateCustomizersData();
 
 };
 
             
 
+
+        #endif //ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_TEMPLATE_CUSTOMIZER_TRANSFORMTEMPLATECUSTOMIZERSDATA_H

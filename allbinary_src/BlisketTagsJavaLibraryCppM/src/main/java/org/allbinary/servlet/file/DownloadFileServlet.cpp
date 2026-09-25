@@ -53,6 +53,9 @@
 #include <org/allbinary/globals/URLGLOBALS.h>
 
       
+#include <org/allbinary/logic/StdUtil.h>
+
+      
 #include <org/allbinary/logic/communication/log/LogUtil.h>
 
       
@@ -179,7 +182,7 @@ class DownloadFileServlet: public HttpServlet {
                                     }
                                 
 
-    HashMap<any, any> hashMap = HashMap<any, any>();;
+    HashMap<any, any> hashMap = StdUtil::getInstance().createHashMap();;
     
 
     AuthenticationHelper authenticationHelper = AuthenticationHelperFactory().getInstance(hashMap, request) as AuthenticationHelper;;

@@ -28,7 +28,10 @@
 #include <java/util/Arrays.h>
 
       
-#include <java/util/Vector.h>
+#include <org/allbinary/util/BasicArrayList.h>
+
+      
+#include <org/allbinary/util/BasicArrayListD.h>
 
       
 #include <org/allbinary/data/tables/transform/info/TransformInfoEntityBuilder.h>
@@ -41,6 +44,9 @@
 
       
 #include <org/allbinary/globals/GLOBALS2.h>
+
+      
+#include <org/allbinary/logic/StdUtil.h>
 
       
 #include <org/allbinary/logic/communication/log/LogUtil.h>
@@ -107,7 +113,7 @@ class CustomizersView: public HttpStoreComponentView, public DomNodeInterface {
 
     protected: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    protected: Vector customizersVector;
+    protected: BasicArrayList customizersVector;
 
 public: CustomizersView(TransformInfoInterface transformInfoInterface);
 

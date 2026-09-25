@@ -23,7 +23,10 @@
 #include <java/util/HashMap.h>
 
       
-#include <java/util/Vector.h>
+#include <org/allbinary/util/BasicArrayList.h>
+
+      
+#include <org/allbinary/util/BasicArrayListD.h>
 
       
 #include <org/allbinary/data/tables/BasicDataTableInterface.h>
@@ -56,7 +59,7 @@
         
 class WorkFlowEntityInterface: public BasicDataTableInterface {
 
-    Vector get(std::string storeName)
+    BasicArrayList get(std::string storeName)
 
                 //@Throws(Exception.constructor, LicensingException.constructor)
             
@@ -64,7 +67,7 @@ class WorkFlowEntityInterface: public BasicDataTableInterface {
 
     void delete_(std::string name, std::string storeName)
 
-    void insert(Vector values)
+    void insert(BasicArrayList values)
 
     void update(HashMap<any, any> updatedValues)
 

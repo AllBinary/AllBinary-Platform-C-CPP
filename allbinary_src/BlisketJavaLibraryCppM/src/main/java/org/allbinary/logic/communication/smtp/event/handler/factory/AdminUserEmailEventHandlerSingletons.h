@@ -28,10 +28,16 @@
 #include <java/util/HashMap.h>
 
       
-#include <java/util/Vector.h>
+#include <org/allbinary/util/BasicArrayList.h>
+
+      
+#include <org/allbinary/util/BasicArrayListD.h>
 
       
 #include <org/allbinary/data/tables/user/UserEntityFactory.h>
+
+      
+#include <org/allbinary/logic/StdUtil.h>
 
       
 #include <org/allbinary/logic/communication/log/LogUtil.h>
@@ -83,7 +89,7 @@ class AdminUserEmailEventHandlerSingletons
 
     protected: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    private: const HashMap<any, any> userEmailEventHandlerHashMap = HashMap<any, any>();
+    private: const HashMap<any, any> userEmailEventHandlerHashMap = StdUtil::getInstance().createHashMap();
 
 private: AdminUserEmailEventHandlerSingletons();
 

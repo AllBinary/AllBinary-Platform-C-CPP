@@ -30,7 +30,10 @@
 #include <java/util/HashMap.h>
 
       
-#include <java/util/Vector.h>
+#include <org/allbinary/util/BasicArrayList.h>
+
+      
+#include <org/allbinary/util/BasicArrayListD.h>
 
       
 #include <org/allbinary/business/context/modules/storefront/StoreFrontData.h>
@@ -46,6 +49,9 @@
 
       
 #include <org/allbinary/globals/URLGLOBALS.h>
+
+      
+#include <org/allbinary/logic/StdUtil.h>
 
       
 #include <org/allbinary/logic/communication/log/LogUtil.h>
@@ -918,7 +924,7 @@ stringBuffer.append(this->getDataFilePath().toFileSystemString());
     TransformInfoData transformInfoData = TransformInfoData::getInstance();;
     
 
-    HashMap<any, any> hashMap = HashMap<any, any>();;
+    HashMap<any, any> hashMap = StdUtil::getInstance().createHashMap();;
     
 hashMap.put(transformInfoData.NAME, this->name);
     
@@ -957,9 +963,9 @@ hashMap.put(EntryData::getInstance().LASTMODIFIED, time);
 }
 
 
-    public: java::util::Vector toVector(){
+    public: BasicArrayList toVector(){
 
-    Vector vector = Vector();;
+    BasicArrayList vector = BasicArrayListD();;
     
 vector.add(this->name);
     

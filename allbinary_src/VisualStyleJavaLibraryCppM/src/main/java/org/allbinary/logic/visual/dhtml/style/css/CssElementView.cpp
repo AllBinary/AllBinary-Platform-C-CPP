@@ -25,7 +25,10 @@
 #include <java/util/HashMap.h>
 
       
-#include <java/util/Vector.h>
+#include <org/allbinary/util/BasicArrayList.h>
+
+      
+#include <org/allbinary/util/BasicArrayListD.h>
 
       
 #include <org/allbinary/data/tree/dom/DomData.h>
@@ -41,6 +44,9 @@
 
       
 #include <org/allbinary/data/tree/dom/ModDomHelper.h>
+
+      
+#include <org/allbinary/logic/StdUtil.h>
 
       
 #include <org/allbinary/logic/communication/log/LogUtil.h>
@@ -106,12 +112,12 @@ class CssElementView
 
     private: std::string description;
 
-    protected: Vector cssElementVector;
+    protected: BasicArrayList cssElementVector;
 
-    protected: Vector cssPropertyVector;
+    protected: BasicArrayList cssPropertyVector;
 
 public: CssElementView(){
-this->cssPropertyVector= Vector();
+this->cssPropertyVector= BasicArrayListD();
     
 
     StringUtil stringUtil = StringUtil::getInstance();;
@@ -186,13 +192,13 @@ this->title= stringUtil.EMPTY_STRING;
                                     }
                                 
 
-    Vector cssElementStyleNodeVector = DomSearchHelper::getAllNodes(CssElementData::getInstance().NAME, node.getChildNodes());;
+    BasicArrayList cssElementStyleNodeVector = DomSearchHelper::getAllNodes(CssElementData::getInstance().NAME, node.getChildNodes());;
     
 
                         if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEW))
                         
                                     {
-                                    this->logUtil.putF("Child Css Elements: " +cssElementStyleNodeVector.length, this, "CssElementView()");
+                                    this->logUtil.putF("Child Css Elements: " +cssElementStyleNodeVector.size(), this, "CssElementView()");
     
 
                                     }
@@ -239,7 +245,7 @@ this->cssPropertyVector= CssPropertiesValidationFactory::getInstance(nodeList);
 
     public: HashMap<any, any> toHashMap(){
 
-    HashMap<any, any> hashMap = HashMap<any, any>();;
+    HashMap<any, any> hashMap = StdUtil::getInstance().createHashMap();;
     
 hashMap.put(DomData::VALUE, this->value);
     
@@ -275,7 +281,7 @@ hashMap.put(this->DESCRIPTION, this->description);
     Node node = ModDomHelper::createNodeWithValueNodes(document, CssElementData::getInstance().NAME, hashMap);;
     
 
-    int32_t size = this->cssPropertyVector.length;;
+    int32_t size = this->cssPropertyVector.size();;
     
 
 
@@ -292,7 +298,7 @@ node.appendChild(cssPropertyDomNodeInterface.toXmlNode(document));
 }
 
 
-    int32_t size2 = this->cssElementVector.length;;
+    int32_t size2 = this->cssElementVector.size();;
     
 
 

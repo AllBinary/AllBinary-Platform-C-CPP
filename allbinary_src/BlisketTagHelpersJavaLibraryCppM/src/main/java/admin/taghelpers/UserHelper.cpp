@@ -23,7 +23,10 @@
 #include <java/util/HashMap.h>
 
       
-#include <java/util/Vector.h>
+#include <org/allbinary/util/BasicArrayList.h>
+
+      
+#include <org/allbinary/util/BasicArrayListD.h>
 
       
 #include <javax/servlet/http/HttpServletRequest.h>
@@ -212,7 +215,7 @@ stringBuffer.append(" from to the user table");
                                     }
                                 
 
-    Vector values = userInterface.toVector();;
+    BasicArrayList values = userInterface.toVector();;
     
 UserEntityFactory::getInstance().insert(values);
     

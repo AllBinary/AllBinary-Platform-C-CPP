@@ -28,7 +28,10 @@
 #include <java/util/Hashtable.h>
 
       
-#include <java/util/Vector.h>
+#include <org/allbinary/util/BasicArrayList.h>
+
+      
+#include <org/allbinary/util/BasicArrayListD.h>
 
       
 #include <org/apache/xmlrpc/XmlRpcClient.h>
@@ -90,7 +93,7 @@ public: XmlRpcRemoteLogClient(AbeClientInformationInterface clientInfo){
 
         try {
             
-    Vector param = Vector();;
+    BasicArrayList param = BasicArrayListD();;
     
 
     std::string serverUrl = getClientInfo().getLicenseServer(this->getServer());;

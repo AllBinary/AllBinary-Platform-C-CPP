@@ -25,6 +25,9 @@
 #include <java/util/HashMap.h>
 
       
+#include <org/allbinary/logic/StdUtil.h>
+
+      
 #include <org/allbinary/logic/communication/log/PreLogUtil.h>
 
       
@@ -454,7 +457,7 @@ this->mainPath= value;
 
     public: HashMap<any, any> toHashMap(){
 
-    HashMap<any, any> hashMap = HashMap<any, any>();;
+    HashMap<any, any> hashMap = StdUtil::getInstance().createHashMap();;
     
 hashMap.put(this->TESTING, this->getTesting());
     

@@ -22,7 +22,10 @@
         
             #include "../../../../java/lang/Integer.h"
         
-#include <java/util/Vector.h>
+#include <org/allbinary/util/BasicArrayList.h>
+
+      
+#include <org/allbinary/util/BasicArrayListD.h>
 
       
 #include <javax/servlet/http/HttpServletRequest.h>
@@ -86,7 +89,7 @@ class ShippingAddressesView: public HttpStoreComponentView, public DomNodeInterf
 
     private: HttpServletRequest request;
 
-    protected: Vector streetAddressList;
+    protected: BasicArrayList streetAddressList;
 
 public: ShippingAddressesView(TransformInfoInterface transformInfoInterface){
             super(transformInfoInterface);
@@ -121,7 +124,7 @@ this->request= httpTransformInfoInterface.getPageContext().getRequest() as HttpS
     Node billingAddressesNode = document.createElement(ShippingAddressData::MULTIPLE);;
     
 
-    int32_t size = this->streetAddressList.length;;
+    int32_t size = this->streetAddressList.size();;
     
 
 
@@ -137,7 +140,7 @@ billingAddressesNode.appendChild(streetAddress.toXmlNode(document));
     
 }
 
-billingAddressesNode.appendChild(ModDomHelper::createNameValueNodes(document, StreetAddressData::NUMBEROFADDRESSES, Integer(streetAddressList.length).toString()));
+billingAddressesNode.appendChild(ModDomHelper::createNameValueNodes(document, StreetAddressData::NUMBEROFADDRESSES, Integer(streetAddressList.size()).toString()));
     
 
 

@@ -35,7 +35,10 @@
 #include <java/util/Random.h>
 
       
-#include <java/util/Vector.h>
+#include <org/allbinary/util/BasicArrayList.h>
+
+      
+#include <org/allbinary/util/BasicArrayListD.h>
 
       
 #include <org/allbinary/business/context/modules/storefront/StoreFrontData.h>
@@ -119,6 +122,9 @@
 #include <org/allbinary/data/tables/user/commerce/money/payment/PaymentEntity.h>
 
       
+#include <org/allbinary/logic/StdUtil.h>
+
+      
 #include <org/allbinary/logic/communication/log/LogUtil.h>
 
       
@@ -179,7 +185,7 @@ this->setTableName(this->tableName);
 
     public: void insert(std::string userName, Order order){
 
-    Vector vector = Vector();;
+    BasicArrayList vector = BasicArrayListD();;
     
 
         try {
@@ -420,7 +426,7 @@ this->insert(vector);
 }
 
 
-    public: void insert(Vector values){
+    public: void insert(BasicArrayList values){
 
         try {
             super.insert(values);
@@ -462,7 +468,7 @@ this->insert(vector);
     std::string time = Long(calendar.getTimeInMillis()).toString();;
     
 
-    HashMap<any, any> updateHashMap = HashMap<any, any>();;
+    HashMap<any, any> updateHashMap = StdUtil::getInstance().createHashMap();;
     
 updateHashMap.put(OrderHistoryData::STATUS, status);
     
@@ -514,7 +520,7 @@ super.updateWhere(OrderData::ID, orderId, updateHashMap);
     std::string time = Long(calendar.getTimeInMillis()).toString();;
     
 
-    HashMap<any, any> updateHashMap = HashMap<any, any>();;
+    HashMap<any, any> updateHashMap = StdUtil::getInstance().createHashMap();;
     
 updateHashMap.put(PaymentData::METHOD, paymentMethod);
     
@@ -542,20 +548,20 @@ super.updateWhere(OrderData::ID, orderId, updateHashMap);
 
                 //@Throws(Exception.constructor)
             
-    public: Vector getStoreOrders(StoreFrontInterface storeFrontInterface){
+    public: BasicArrayList getStoreOrders(StoreFrontInterface storeFrontInterface){
 
-    Vector orderReviewVector = Vector();;
+    BasicArrayList orderReviewVector = BasicArrayListD();;
     
 
-    HashMap<any, any> whereHashMap = HashMap<any, any>();;
+    HashMap<any, any> whereHashMap = StdUtil::getInstance().createHashMap();;
     
 whereHashMap.put(StoreFrontData::getInstance().NAME, storeFrontInterface.getName());
     
 
-    Vector orderHashMapVector = super.getRows(whereHashMap);;
+    BasicArrayList orderHashMapVector = super.getRows(whereHashMap);;
     
 
-    int32_t size = orderHashMapVector.length;;
+    int32_t size = orderHashMapVector.size();;
     
 
 
@@ -585,20 +591,20 @@ orderReviewVector.add(orderReview);
 
                 //@Throws(Exception.constructor)
             
-    public: Vector getOrders(std::string userName){
+    public: BasicArrayList getOrders(std::string userName){
 
-    Vector orderReviewVector = Vector();;
+    BasicArrayList orderReviewVector = BasicArrayListD();;
     
 
-    HashMap<any, any> whereHashMap = HashMap<any, any>();;
+    HashMap<any, any> whereHashMap = StdUtil::getInstance().createHashMap();;
     
 whereHashMap.put(UserData::USERNAME, userName);
     
 
-    Vector orderHashMapVector = super.getRows(whereHashMap);;
+    BasicArrayList orderHashMapVector = super.getRows(whereHashMap);;
     
 
-    int32_t size = orderHashMapVector.length;;
+    int32_t size = orderHashMapVector.size();;
     
 
 
@@ -628,20 +634,20 @@ orderReviewVector.add(orderReview);
 
                 //@Throws(Exception.constructor)
             
-    public: Vector getOrders(std::string status, std::string fromDate, std::string toDate){
+    public: BasicArrayList getOrders(std::string status, std::string fromDate, std::string toDate){
 
-    Vector orderReviewVector = Vector();;
+    BasicArrayList orderReviewVector = BasicArrayListD();;
     
 
-    HashMap<any, any> whereHashMap = HashMap<any, any>();;
+    HashMap<any, any> whereHashMap = StdUtil::getInstance().createHashMap();;
     
 whereHashMap.put(OrderHistoryData::STATUS, status);
     
 
-    Vector orderHashMapVector = super.getRowsWhereBetween(whereHashMap, OrderHistoryData::ORDERDATE, fromDate, toDate);;
+    BasicArrayList orderHashMapVector = super.getRowsWhereBetween(whereHashMap, OrderHistoryData::ORDERDATE, fromDate, toDate);;
     
 
-    int32_t size = orderHashMapVector.length;;
+    int32_t size = orderHashMapVector.size();;
     
 
 
@@ -671,15 +677,15 @@ orderReviewVector.add(orderReview);
 
                 //@Throws(Exception.constructor)
             
-    public: Vector getOrders(std::string fromDate, std::string toDate){
+    public: BasicArrayList getOrders(std::string fromDate, std::string toDate){
 
-    Vector orderReviewVector = Vector();;
+    BasicArrayList orderReviewVector = BasicArrayListD();;
     
 
-    Vector orderHashMapVector = super.getRowsWhereBetween(OrderHistoryData::ORDERDATE, fromDate, toDate);;
+    BasicArrayList orderHashMapVector = super.getRowsWhereBetween(OrderHistoryData::ORDERDATE, fromDate, toDate);;
     
 
-    int32_t size = orderHashMapVector.length;;
+    int32_t size = orderHashMapVector.size();;
     
 
 
@@ -711,7 +717,7 @@ orderReviewVector.add(orderReview);
             
     public: OrderHistory getOrder(std::string id){
 
-    HashMap<any, any> whereHashMap = HashMap<any, any>();;
+    HashMap<any, any> whereHashMap = StdUtil::getInstance().createHashMap();;
     
 whereHashMap.put(OrderData::ID, id);
     

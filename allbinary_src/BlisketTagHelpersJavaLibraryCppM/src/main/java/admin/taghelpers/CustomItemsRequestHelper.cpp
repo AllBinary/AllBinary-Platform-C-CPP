@@ -28,7 +28,10 @@
 #include <java/util/HashMap.h>
 
       
-#include <java/util/Vector.h>
+#include <org/allbinary/util/BasicArrayList.h>
+
+      
+#include <org/allbinary/util/BasicArrayListD.h>
 
       
 #include <javax/servlet/http/HttpServletRequest.h>
@@ -50,6 +53,9 @@
 
       
 #include <org/allbinary/data/tables/user/commerce/inventory/item/customs/CustomItemsEntityFactory.h>
+
+      
+#include <org/allbinary/logic/StdUtil.h>
 
       
 #include <org/allbinary/logic/communication/log/LogUtil.h>
@@ -85,6 +91,8 @@ class CustomItemsRequestHelper: public ModifyTable {
 
     protected: const LogUtil logUtil = LogUtil::getInstance();
 
+    protected: const BasicItemData basicItemData = BasicItemData::getInstance();
+
     private: HttpServletRequest request;
 
     private: std::string id;
@@ -106,7 +114,7 @@ this->getFormData();
 
 
     public: void getFormData(){
-this->id= this->request.getParameter(BasicItemData::ID);
+this->id= this->request.getParameter(basicItemData.ID);
     
 this->className= this->request.getParameter(DynamicObjectData::NAME);
     
@@ -121,9 +129,9 @@ this->lastModified= this->request.getParameter(EntryData::getInstance().LASTMODI
 
     private: HashMap<any, any> getHashMap(){
 
-    HashMap<any, any> values = HashMap<any, any>();;
+    HashMap<any, any> values = StdUtil::getInstance().createHashMap();;
     
-values.put(BasicItemData::ID, this->id);
+values.put(basicItemData.ID, this->id);
     
 values.put(DynamicObjectData::NAME, this->className);
     
@@ -156,7 +164,7 @@ values.put(EntryData::getInstance().LASTMODIFIED, time);
     std::string time = Long(calendar.getTimeInMillis()).toString();;
     
 
-    Vector values = Vector();;
+    BasicArrayList values = BasicArrayListD();;
     
 values.add(this->id);
     

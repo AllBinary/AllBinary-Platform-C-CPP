@@ -26,6 +26,9 @@
 #include <javax/microedition/lcdui/TextField.h>
 
       
+#include <org/allbinary/logic/StdUtil.h>
+
+      
 #include <org/allbinary/logic/string/StringUtil.h>
 
       
@@ -52,7 +55,7 @@ class GameConfigurationTextInput
             : public Object
          {
 
-    private: static Hashtable<any, any> hashtable = Hashtable<any, any>();
+    private: static Hashtable<any, any> hashtable = StdUtil::getInstance().createHashtable();
 
     public: static GameConfigurationTextInput SIMULATOR_IP = GameConfigurationTextInput("IP: ", "192.168.1.3");
 

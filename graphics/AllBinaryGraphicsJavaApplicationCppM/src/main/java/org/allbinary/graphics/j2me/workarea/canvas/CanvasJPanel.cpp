@@ -32,7 +32,10 @@
 #include <java/util/HashMap.h>
 
       
-#include <java/util/Vector.h>
+#include <org/allbinary/util/BasicArrayList.h>
+
+      
+#include <org/allbinary/util/BasicArrayListD.h>
 
       
 #include <javax/swing/tree/DefaultMutableTreeNode.h>
@@ -104,6 +107,9 @@
 #include <org/allbinary/log/LOGGING.h>
 
       
+#include <org/allbinary/logic/StdUtil.h>
+
+      
 #include <org/allbinary/logic/communication/log/GuiLog.h>
 
       
@@ -123,6 +129,9 @@
 
       
 #include <org/allbinary/util/BasicArrayList.h>
+
+      
+#include <org/allbinary/util/BasicArrayListD.h>
 
       
 #include <org/w3c/dom/Node.h>
@@ -302,7 +311,7 @@ CanvasJPanel::frame++;
     
 this->workAreaJTreeJPanel.add(this->getTreeNode());
     
-this->graphicItemHashMap= HashMap<any, any>();
+this->graphicItemHashMap= StdUtil::getInstance().createHashMap();
     
 this->grid.grid= PointFactory::getInstance().createXY(0, 0);
     
@@ -483,7 +492,7 @@ this->setAngle(this->angle +angle);
 
     public: void explodeAll(){
 
-    Vector newPoints = Vector();;
+    BasicArrayList newPoints = BasicArrayListD();;
     
 
     std::vector<Object*> graphicItemArray = this->getGraphicItemHashMap().keys().();;
@@ -545,7 +554,7 @@ newPoints.add(newGraphicItem);
 }
 
 
-    int32_t size2 = newPoints.length;;
+    int32_t size2 = newPoints.size();;
     
 
 

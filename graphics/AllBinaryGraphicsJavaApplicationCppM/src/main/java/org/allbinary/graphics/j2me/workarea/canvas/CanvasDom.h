@@ -58,6 +58,9 @@
 #include <org/allbinary/graphics/j2me/workarea/tools/LinesGraphicItem.h>
 
       
+#include <org/allbinary/logic/StdUtil.h>
+
+      
 #include <org/allbinary/util/BasicArrayList.h>
 
       

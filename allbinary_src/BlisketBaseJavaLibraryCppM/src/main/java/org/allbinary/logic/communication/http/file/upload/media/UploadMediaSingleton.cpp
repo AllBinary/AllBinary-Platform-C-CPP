@@ -28,6 +28,9 @@
 #include <java/util/Set.h>
 
       
+#include <org/allbinary/logic/StdUtil.h>
+
+      
 #include <org/allbinary/logic/communication/log/LogUtil.h>
 
       
@@ -102,9 +105,9 @@ class UploadMediaSingleton
     private: HashMap<any, any> writerFileTypesHashMap;
 
 private: UploadMediaSingleton(){
-this->readerFileTypesHashMap= HashMap<any, any>();
+this->readerFileTypesHashMap= StdUtil::getInstance().createHashMap();
     
-this->writerFileTypesHashMap= HashMap<any, any>();
+this->writerFileTypesHashMap= StdUtil::getInstance().createHashMap();
     
 
     HashMap<any, any> hashMap = MediaData::toHashMap();;

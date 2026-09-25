@@ -28,6 +28,9 @@
 #include <org/allbinary/log/LOGGING.h>
 
       
+#include <org/allbinary/logic/StdUtil.h>
+
+      
 #include <org/allbinary/util/BasicArrayList.h>
 
       
@@ -80,7 +83,7 @@ class GraphicItemFactory
     private: const GraphicsItemInterfaceFactoryInterface DEFAULT = SelectionToolFactory();
 
 private: GraphicItemFactory(){
-this->graphicItems= HashMap<any, any>();
+this->graphicItems= StdUtil::getInstance().createHashMap();
     
 this->graphicItems.put(LinesGraphicItem::getStaticName(), LinesGraphicItemFactory());
     
@@ -118,7 +121,7 @@ this->graphicItems.put(LinesGraphicItem::getStaticName(), LinesGraphicItemFactor
     int32_t numberOfItems = graphicItemNodeList.size();;
     
 
-    HashMap<any, any> graphicItemHashMap = HashMap<any, any>();;
+    HashMap<any, any> graphicItemHashMap = StdUtil::getInstance().createHashMap();;
     
 
                         if(LOGGING::contains(LOGGING::MENUEVENT))

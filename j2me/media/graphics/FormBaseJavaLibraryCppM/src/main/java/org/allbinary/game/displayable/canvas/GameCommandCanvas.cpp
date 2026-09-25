@@ -27,7 +27,10 @@
 #include <jsinterop/annotations/JsType.h>
 
       
-#include <java/util/Vector.h>
+#include <org/allbinary/util/BasicArrayList.h>
+
+      
+#include <org/allbinary/util/BasicArrayListD.h>
 
       
 #include <javax/microedition/lcdui/CommandListener.h>
@@ -384,7 +387,7 @@ this->repaintBehavior.onChangeRepaint(this);
             
     public: ScrollSelectionForm createForm(){
 
-    std::vector<ABCustomItem> items = CommandTextItemArrayFactory(AllCommandsVisitor()).getInstance(this->getCommandStack() as Vector<any>, this->backgroundBasicColor, this->foregroundBasicColor);;
+    std::vector<ABCustomItem> items = CommandTextItemArrayFactory(AllCommandsVisitor()).getInstance(this->getCommandStack(), this->backgroundBasicColor, this->foregroundBasicColor);;
     
 
     Rectangle rectangle = this->createRectangle(items.size());;

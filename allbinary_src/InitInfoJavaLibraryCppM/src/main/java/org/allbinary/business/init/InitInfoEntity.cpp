@@ -23,10 +23,16 @@
 #include <java/util/HashMap.h>
 
       
-#include <java/util/Vector.h>
+#include <org/allbinary/util/BasicArrayList.h>
+
+      
+#include <org/allbinary/util/BasicArrayListD.h>
 
       
 #include <org/allbinary/business/init/db/UserDbInitInfo.h>
+
+      
+#include <org/allbinary/logic/StdUtil.h>
 
       
 #include <org/allbinary/logic/communication/log/PreLogUtil.h>
@@ -135,7 +141,7 @@ this->setTable(this->tableName);
 
         try {
             
-    HashMap<any, any> keyAndValue = HashMap<any, any>();;
+    HashMap<any, any> keyAndValue = StdUtil::getInstance().createHashMap();;
     
 keyAndValue.put(this->NOTHING, this->NOTHING);
     
@@ -206,7 +212,7 @@ keyAndValue.put(this->NOTHING, this->NOTHING);
 
         try {
             
-    HashMap<any, any> keyAndValue = HashMap<any, any>();;
+    HashMap<any, any> keyAndValue = StdUtil::getInstance().createHashMap();;
     
 keyAndValue.put(this->NOTHING, this->NOTHING);
     
@@ -281,7 +287,7 @@ updateWhere(NOTHING, NOTHING, InitInfo::getInstance().toHashMap());
 
         try {
             
-    Vector values = Vector();;
+    BasicArrayList values = BasicArrayListD();;
     
 values.add(this->NOTHING);
     

@@ -23,7 +23,10 @@
 #include <java/util/HashMap.h>
 
       
-#include <java/util/Vector.h>
+#include <org/allbinary/util/BasicArrayList.h>
+
+      
+#include <org/allbinary/util/BasicArrayListD.h>
 
       
 #include <org/allbinary/business/user/commerce/inventory/item/BasicItemData.h>
@@ -123,7 +126,7 @@ this->getFormData();
 
                                     }
                                 
-this->id= hashMap.get(BasicItemData::ID) as string;
+this->id= hashMap.get(basicItemData.ID) as string;
     
 this->downloadItemId= hashMap.get(DownloadItemData::ID) as string;
     
@@ -172,10 +175,10 @@ this->itemInterface= inventoryEntity.getItem(this->id);
     DownloadItemsEntity downloadItemsEntity = DownloadItemsEntityFactory::getInstance().getDownloadItemsEntityInstance();;
     
 
-    Vector vector = downloadItemsEntity.getForItem(this->id, this->downloadItemId);;
+    BasicArrayList vector = downloadItemsEntity.getForItem(this->id, this->downloadItemId);;
     
 
-                        if(vector.length != 1)
+                        if(vector.size() != 1)
                         
                                     {
                                     
@@ -260,10 +263,10 @@ this->itemInterface= inventoryEntity.getItem(this->id);
     DownloadItemsEntity downloadItemsEntity = DownloadItemsEntityFactory::getInstance().getDownloadItemsEntityInstance();;
     
 
-    Vector vector = downloadItemsEntity.getForItem(this->id, this->downloadItemId);;
+    BasicArrayList vector = downloadItemsEntity.getForItem(this->id, this->downloadItemId);;
     
 
-                        if(vector.length == 0)
+                        if(vector.size() == 0)
                         
                                     {
                                     stringBuffer.append("DownloadItem does not exist.<br />");
@@ -272,7 +275,7 @@ this->itemInterface= inventoryEntity.getItem(this->id);
                                     }
                                 
 
-                        if(vector.length > 1)
+                        if(vector.size() > 1)
                         
                                     {
                                     stringBuffer.append("To Many DownloadItems exist.<br />");

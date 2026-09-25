@@ -36,6 +36,9 @@
 #include <org/allbinary/data/tree/dom/ModDomHelper.h>
 
       
+#include <org/allbinary/logic/StdUtil.h>
+
+      
 #include <org/allbinary/logic/communication/log/LogUtil.h>
 
       
@@ -179,7 +182,7 @@ this->timeIntervalActionScriptConditionJPanel.getTimeIntervalActionJDialog().set
 
     public: HashMap<any, any> toHashMap(){
 
-    HashMap<any, any> hashMap = HashMap<any, any>();;
+    HashMap<any, any> hashMap = StdUtil::getInstance().createHashMap();;
     
 hashMap.put(TimeIntervalActionScriptConditionData::TIME, std::to_string(delay));
     

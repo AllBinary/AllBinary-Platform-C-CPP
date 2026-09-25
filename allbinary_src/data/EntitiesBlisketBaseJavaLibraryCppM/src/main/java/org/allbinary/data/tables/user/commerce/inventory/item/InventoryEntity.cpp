@@ -23,7 +23,10 @@
 #include <java/util/HashMap.h>
 
       
-#include <java/util/Vector.h>
+#include <org/allbinary/util/BasicArrayList.h>
+
+      
+#include <org/allbinary/util/BasicArrayListD.h>
 
       
 #include <org/allbinary/business/context/modules/storefront/StoreFrontInterface.h>
@@ -45,6 +48,9 @@
 
       
 #include <org/allbinary/business/user/commerce/money/MoneyException.h>
+
+      
+#include <org/allbinary/logic/StdUtil.h>
 
       
 #include <org/allbinary/logic/communication/log/LogUtil.h>
@@ -83,6 +89,8 @@ class InventoryEntity: public AbSqlBean, public InventoryEntityInterface {
 
     protected: const LogUtil logUtil = LogUtil::getInstance();
 
+    protected: const BasicItemData basicItemData = BasicItemData::getInstance();
+
     private: const std::string tableName = "basicinventory";
 
 public: InventoryEntity(){
@@ -96,7 +104,7 @@ this->setTableName(this->tableName);
 }
 
 
-    public: void insert(Vector values){
+    public: void insert(BasicArrayList values){
 
         try {
             super.insert(values);
@@ -131,7 +139,7 @@ this->setTableName(this->tableName);
     public: void delete_(std::string value){
 
         try {
-            super.deleteWhere(BasicItemData::ID, value);
+            super.deleteWhere(basicItemData.ID, value);
     
 
                         if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLLOGGING))
@@ -162,7 +170,7 @@ this->setTableName(this->tableName);
 
                 //@Throws(Exception.constructor)
             
-    public: Vector getItems(StoreFrontInterface storeFrontInterface){
+    public: BasicArrayList getItems(StoreFrontInterface storeFrontInterface){
 
                         if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLLOGGING))
                         
@@ -173,16 +181,16 @@ this->setTableName(this->tableName);
                                     }
                                 
 
-    Vector itemVector = Vector();;
+    BasicArrayList itemVector = BasicArrayListD();;
     
 
-    HashMap<any, any> keysAndValues = HashMap<any, any>();;
+    HashMap<any, any> keysAndValues = StdUtil::getInstance().createHashMap();;
     
 
-    Vector itemHashMapVector = super.getRows(keysAndValues);;
+    BasicArrayList itemHashMapVector = super.getRows(keysAndValues);;
     
 
-    int32_t size = itemHashMapVector.length;;
+    int32_t size = itemHashMapVector.size();;
     
 
 
@@ -201,7 +209,7 @@ this->setTableName(this->tableName);
                         
                                     {
                                     
-    std::string category = itemHashMap.get(BasicItemData::CATEGORY) as string;;
+    std::string category = itemHashMap.get(basicItemData.CATEGORY) as string;;
     
 
                         if(!StringValidationUtil::getInstance().isEmpty(category) && category.startsWith(storeFrontInterface.getCategoryPath()))
@@ -230,9 +238,9 @@ this->setTableName(this->tableName);
             
     public: ItemInterface getItem(std::string id){
 
-    HashMap<any, any> keysAndValues = HashMap<any, any>();;
+    HashMap<any, any> keysAndValues = StdUtil::getInstance().createHashMap();;
     
-keysAndValues.put(BasicItemData::ID, id);
+keysAndValues.put(basicItemData.ID, id);
     
 
     HashMap<any, any> itemHashMap = super.getRow(keysAndValues);;
@@ -270,7 +278,7 @@ keysAndValues.put(BasicItemData::ID, id);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return super.getField(BasicItemData::ID, id, BasicItemData::WEIGHT);;
+                        return super.getField(basicItemData.ID, id, basicItemData.WEIGHT);;
     
 }
 
@@ -285,19 +293,19 @@ stringBuffer.append(this->tableName);
     
 stringBuffer.append(this->sqlStrings.START);
     
-stringBuffer.append(BasicItemData::ID);
+stringBuffer.append(basicItemData.ID);
     
 stringBuffer.append(this->sqlTypeStrings.MAX_BIG_INT_UNSIGNED_NOT_NULL);
     
-stringBuffer.append(BasicItemData::NUMBER);
+stringBuffer.append(basicItemData.NUMBER);
     
 stringBuffer.append(this->sqlTypeStrings.MAX_BIG_INT_UNSIGNED_NOT_NULL);
     
-stringBuffer.append(BasicItemData::INBASKETS);
+stringBuffer.append(basicItemData.INBASKETS);
     
 stringBuffer.append(this->sqlTypeStrings.MAX_BIG_INT_UNSIGNED_NOT_NULL);
     
-stringBuffer.append(BasicItemData::WEIGHT);
+stringBuffer.append(basicItemData.WEIGHT);
     
 stringBuffer.append(" VARCHAR(20) NOT NULL,");
     
@@ -305,59 +313,59 @@ stringBuffer.append(EntryData::getInstance().ENABLE);
     
 stringBuffer.append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL);
     
-stringBuffer.append(BasicItemData::NEWORUSED);
+stringBuffer.append(basicItemData.NEWORUSED);
     
 stringBuffer.append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL);
     
-stringBuffer.append(BasicItemData::SUMMARY);
+stringBuffer.append(basicItemData.SUMMARY);
     
 stringBuffer.append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL);
     
-stringBuffer.append(BasicItemData::DISTRIBUTOR);
+stringBuffer.append(basicItemData.DISTRIBUTOR);
     
 stringBuffer.append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL);
     
-stringBuffer.append(BasicItemData::IDUSEDBYDISTRIBUTOR);
+stringBuffer.append(basicItemData.IDUSEDBYDISTRIBUTOR);
     
 stringBuffer.append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL);
     
-stringBuffer.append(BasicItemData::PRODUCEDBY);
+stringBuffer.append(basicItemData.PRODUCEDBY);
     
 stringBuffer.append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL);
     
-stringBuffer.append(BasicItemData::PRODUCTIONDATE);
+stringBuffer.append(basicItemData.PRODUCTIONDATE);
     
 stringBuffer.append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL);
     
-stringBuffer.append(BasicItemData::STARTPRODUCTIONDATE);
+stringBuffer.append(basicItemData.STARTPRODUCTIONDATE);
     
 stringBuffer.append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL);
     
-stringBuffer.append(BasicItemData::DESCRIPTION);
+stringBuffer.append(basicItemData.DESCRIPTION);
     
 stringBuffer.append(this->sqlTypeStrings.BLOB_NOT_NULL);
     
-stringBuffer.append(BasicItemData::KEYWORDS);
+stringBuffer.append(basicItemData.KEYWORDS);
     
 stringBuffer.append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL);
     
-stringBuffer.append(BasicItemData::CATEGORY);
+stringBuffer.append(basicItemData.CATEGORY);
     
 stringBuffer.append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL);
     
-stringBuffer.append(BasicItemData::TYPE);
+stringBuffer.append(basicItemData.TYPE);
     
 stringBuffer.append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL);
     
-stringBuffer.append(BasicItemData::SMALLIMAGE);
+stringBuffer.append(basicItemData.SMALLIMAGE);
     
 stringBuffer.append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL);
     
-stringBuffer.append(BasicItemData::MEDIUMIMAGE);
+stringBuffer.append(basicItemData.MEDIUMIMAGE);
     
 stringBuffer.append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL);
     
-stringBuffer.append(BasicItemData::LARGEIMAGE);
+stringBuffer.append(basicItemData.LARGEIMAGE);
     
 stringBuffer.append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL);
     
@@ -369,41 +377,41 @@ stringBuffer.append(EntryData::getInstance().TIMECREATED);
     
 stringBuffer.append(this->sqlTypeStrings.MAX_BIG_INT_UNSIGNED_NOT_NULL);
     
-stringBuffer.append(BasicItemData::PRICE);
+stringBuffer.append(basicItemData.PRICE);
     
 stringBuffer.append(" VARCHAR(20) NOT NULL,");
     
-stringBuffer.append(BasicItemData::COMMENT);
+stringBuffer.append(basicItemData.COMMENT);
     
 stringBuffer.append(this->sqlTypeStrings.BLOB_NOT_NULL);
     
-stringBuffer.append(BasicItemData::CUSTOMS);
+stringBuffer.append(basicItemData.CUSTOMS);
     
 stringBuffer.append(this->sqlTypeStrings.MAX_BIG_INT_UNSIGNED_NOT_NULL);
     
-stringBuffer.append(BasicItemData::DOWNLOADS);
+stringBuffer.append(basicItemData.DOWNLOADS);
     
 stringBuffer.append(this->sqlTypeStrings.MAX_BIG_INT_UNSIGNED_NOT_NULL);
     
-stringBuffer.append(BasicItemData::GROUPS);
+stringBuffer.append(basicItemData.GROUPS);
     
 stringBuffer.append(this->sqlTypeStrings.MAX_BIG_INT_UNSIGNED_NOT_NULL);
     
-stringBuffer.append(BasicItemData::OPTIONS);
+stringBuffer.append(basicItemData.OPTIONS);
     
 stringBuffer.append(this->sqlTypeStrings.MAX_BIG_INT_UNSIGNED_NOT_NULL);
     
-stringBuffer.append(BasicItemData::PERMISSIONS);
+stringBuffer.append(basicItemData.PERMISSIONS);
     
 stringBuffer.append(this->sqlTypeStrings.MAX_BIG_INT_UNSIGNED_NOT_NULL);
     
-stringBuffer.append(BasicItemData::SPECIALS);
+stringBuffer.append(basicItemData.SPECIALS);
     
 stringBuffer.append(this->sqlTypeStrings.MAX_BIG_INT_UNSIGNED_NOT_NULL);
     
 stringBuffer.append(this->sqlStrings.PRIMARY_KEY);
     
-stringBuffer.append(BasicItemData::ID);
+stringBuffer.append(basicItemData.ID);
     
 stringBuffer.append(this->sqlStrings.END);
     
@@ -427,7 +435,7 @@ stringBuffer.append(this->sqlStrings.END);
 
 
     public: void update(HashMap<any, any> updatedValues){
-super.updateWhere(BasicItemData::ID, updatedValues.get(BasicItemData::ID) as string, updatedValues);
+super.updateWhere(basicItemData.ID, updatedValues.get(basicItemData.ID) as string, updatedValues);
     
 }
 

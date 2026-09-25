@@ -30,6 +30,12 @@
         //J2SE to J2ME compatibility
 class JsType {
 
+                //Otherwise - member - AnnotationMemberDeclaration
+
+                //Otherwise - member - AnnotationMemberDeclaration
+
+                //Otherwise - member - AnnotationMemberDeclaration
+
 };
 
             

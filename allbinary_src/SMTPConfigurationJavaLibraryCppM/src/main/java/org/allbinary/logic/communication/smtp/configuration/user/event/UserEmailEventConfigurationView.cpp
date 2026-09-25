@@ -34,6 +34,9 @@
 #include <org/allbinary/data/tree/dom/ModDomHelper.h>
 
       
+#include <org/allbinary/logic/StdUtil.h>
+
+      
 #include <org/w3c/dom/Document.h>
 
       
@@ -77,7 +80,7 @@ public: UserEmailEventConfigurationView(Node node){
     NodeList childNodeList = node.getChildNodes();;
     
 
-    HashMap<any, any> hashMap = HashMap<any, any>();;
+    HashMap<any, any> hashMap = StdUtil::getInstance().createHashMap();;
     
 
     std::string name = DomNodeHelper::getTextNodeValue(UserEmailEventConfigurationData::NAME, childNodeList);;

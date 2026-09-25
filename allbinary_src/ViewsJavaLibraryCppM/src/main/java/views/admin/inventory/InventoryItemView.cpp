@@ -28,7 +28,10 @@
 #include <java/util/Set.h>
 
       
-#include <java/util/Vector.h>
+#include <org/allbinary/util/BasicArrayList.h>
+
+      
+#include <org/allbinary/util/BasicArrayListD.h>
 
       
 #include <javax/servlet/http/HttpServletRequest.h>
@@ -56,6 +59,9 @@
 
       
 #include <org/allbinary/business/user/commerce/inventory/item/download/DownloadableItemView.h>
+
+      
+#include <org/allbinary/logic/StdUtil.h>
 
       
 #include <org/allbinary/logic/communication/http/file/upload/HttpFileUploadUtil.h>
@@ -120,6 +126,8 @@ class InventoryItemView: public HttpStoreComponentView, public RequestMapInterfa
 
     protected: const LogUtil logUtil = LogUtil::getInstance();
 
+    protected: const BasicItemData basicItemData = BasicItemData::getInstance();
+
     protected: HttpServletRequest request;
 
     private: std::string imageFileName;
@@ -128,7 +136,7 @@ class InventoryItemView: public HttpStoreComponentView, public RequestMapInterfa
 
     protected: ItemInterface itemInterface;
 
-    protected: Vector downloadableItemVector;
+    protected: BasicArrayList downloadableItemVector;
 
     private: HashMap<any, any> requestHashMap;
 
@@ -172,7 +180,7 @@ this->request= this->getPageContext().getRequest() as HttpServletRequest;
 this->setRequestHashMap(MultipartRequestParams(this->request).toHashMap());
     
 
-    Object* imageFileItemObject = this->getRequestHashMap().get(BasicItemData::IMAGE);;
+    Object* imageFileItemObject = this->getRequestHashMap().get(basicItemData.IMAGE);;
     
 
                         if(HttpFileUploadUtil::getInstance().isValid(imageFileItemObject))
@@ -232,13 +240,13 @@ this->itemInterface= BasicItem(this->getRequestHashMap()) as ItemInterface;
 
     public: void addDomNodeInterfaces(){
 
-    Vector vector = Vector();;
+    BasicArrayList vector = BasicArrayListD();;
     
 
     DownloadableItem downloadableItem;;
     
 
-    int32_t size = this->downloadableItemVector.length;;
+    int32_t size = this->downloadableItemVector.size();;
     
 
 
@@ -327,7 +335,7 @@ this->addDomNodeInterface(BasicItemView(this->itemInterface, vector));
     std::string fieldName = fieldNameArray[index]! as string;;
     
 
-                        if(fieldName.compareTo(BasicItemData::IMAGE) == 0)
+                        if(fieldName.compareTo(basicItemData.IMAGE) == 0)
                         
                                     {
                                     
@@ -337,7 +345,7 @@ this->addDomNodeInterface(BasicItemView(this->itemInterface, vector));
     InventoryUploadMediaUtil inventoryUploadMediaUtil = InventoryUploadMediaUtil(storeFrontInterface, this->itemInterface);;
     
 
-    FileItem fileItem = this->getRequestHashMap().get(BasicItemData::IMAGE) as FileItem;;
+    FileItem fileItem = this->getRequestHashMap().get(basicItemData.IMAGE) as FileItem;;
     
 this->itemInterface= inventoryUploadMediaUtil.saveFiles(fileItem.get(), this->imageFileName, this->mediaData);
     

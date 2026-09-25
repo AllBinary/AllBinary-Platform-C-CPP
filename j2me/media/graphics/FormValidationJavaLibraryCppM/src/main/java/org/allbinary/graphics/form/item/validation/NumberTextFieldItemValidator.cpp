@@ -22,7 +22,10 @@
         
             #include "../../../../../../java/lang/Integer.h"
         
-#include <java/util/Vector.h>
+#include <org/allbinary/util/BasicArrayList.h>
+
+      
+#include <org/allbinary/util/BasicArrayListD.h>
 
       
 #include <org/allbinary/graphics/form/item/ABTextFieldItem.h>
@@ -97,12 +100,12 @@ this->maxChars= maxChars;
 }
 
 
-    protected: Vector<any> toNumberVector(Integer value){
+    protected: BasicArrayList toNumberVector(Integer value){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return Vector<any>();
+                        return BasicArrayListD();
     
 }
 

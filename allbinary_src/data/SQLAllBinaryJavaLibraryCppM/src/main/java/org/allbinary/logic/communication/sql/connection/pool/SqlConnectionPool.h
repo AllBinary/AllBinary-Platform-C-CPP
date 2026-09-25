@@ -35,7 +35,13 @@
 #include <java/util/HashMap.h>
 
       
-#include <java/util/Vector.h>
+#include <org/allbinary/util/BasicArrayList.h>
+
+      
+#include <org/allbinary/util/BasicArrayListD.h>
+
+      
+#include <org/allbinary/logic/StdUtil.h>
 
       
 #include <org/allbinary/logic/communication/log/LogUtil.h>
@@ -72,6 +78,8 @@ class SqlConnectionPool
     public: static SqlConnectionPool getInstance();
 
     protected: const LogUtil logUtil = LogUtil::getInstance();
+
+    protected: const StdUtil stdUtil = StdUtil::getInstance();
 
     private: HashMap<any, any> connectionHashMap = 
                 nullptr

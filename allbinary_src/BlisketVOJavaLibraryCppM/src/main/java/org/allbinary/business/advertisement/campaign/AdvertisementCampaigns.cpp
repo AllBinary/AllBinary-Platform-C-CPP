@@ -20,7 +20,10 @@
 
             #include "../../../../../java/lang/Object.h"
         
-#include <java/util/Vector.h>
+#include <org/allbinary/util/BasicArrayList.h>
+
+      
+#include <org/allbinary/util/BasicArrayListD.h>
 
       
 #include <org/allbinary/business/advertisement/AdvertisementInterface.h>
@@ -56,9 +59,9 @@ class AdvertisementCampaigns
             : public Object
         : public AdvertisementCampaignsInterface {
 
-    private: Vector advertisementsVector;
+    private: BasicArrayList advertisementsVector;
 
-public: AdvertisementCampaigns(Vector vector){
+public: AdvertisementCampaigns(BasicArrayList vector){
 this->advertisementsVector= this->advertisementsVector;
     
 }
@@ -85,7 +88,7 @@ this->advertisementsVector.add(advertisementInterface);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->advertisementsVector.length;;
+                        return this->advertisementsVector.size();;
     
 }
 

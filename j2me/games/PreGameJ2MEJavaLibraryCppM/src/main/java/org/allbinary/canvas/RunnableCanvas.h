@@ -42,6 +42,9 @@
 #include <org/allbinary/logic/NullUtil.h>
 
       
+#include <org/allbinary/logic/StdUtil.h>
+
+      
 #include <org/allbinary/logic/string/StringMaker.h>
 
       
@@ -102,6 +105,8 @@
 class RunnableCanvas: public MyCanvas, public RunnableInterface {
 
     protected: const NullUtil nullUtil = NullUtil::getInstance();
+
+    protected: const StdUtil stdUtil = StdUtil::getInstance();
 
     private: Thread thread = NullThread::NULL_THREAD;
 

@@ -72,6 +72,9 @@
 #include <org/allbinary/layer/LayerInterfaceFactoryInterface.h>
 
       
+#include <org/allbinary/logic/StdUtil.h>
+
+      
 #include <org/allbinary/logic/string/StringMaker.h>
 
       
@@ -111,7 +114,7 @@ class RTSFormInput
 
     private: const GroupCommonFactory groupCommonFactory = GroupCommonFactory::getInstance();
 
-    private: const Hashtable<any, any> hashtable = Hashtable<any, any>();
+    private: const Hashtable<any, any> hashtable = StdUtil::getInstance().createHashtable();
 
     protected: const std::vector<CollidableDestroyableDamageableLayer> newUnconstructedRTSLayerInterfaceArray = new Array(7);
 

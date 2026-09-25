@@ -33,7 +33,10 @@
 #include <java/util/Random.h>
 
       
-#include <java/util/Vector.h>
+#include <org/allbinary/util/BasicArrayList.h>
+
+      
+#include <org/allbinary/util/BasicArrayListD.h>
 
       
 #include <org/allbinary/business/entry/EntryData.h>
@@ -55,6 +58,9 @@
 
       
 #include <org/allbinary/data/generator/PaymentIdGenerator.h>
+
+      
+#include <org/allbinary/logic/StdUtil.h>
 
       
 #include <org/allbinary/logic/communication/log/LogUtil.h>
@@ -123,10 +129,10 @@ this->setTableName(this->tableName);
 
         try {
             
-    HashMap<any, any> updateKeyAndValue = HashMap<any, any>();;
+    HashMap<any, any> updateKeyAndValue = StdUtil::getInstance().createHashMap();;
     
 
-    HashMap<any, any> whereKeyAndValue = HashMap<any, any>();;
+    HashMap<any, any> whereKeyAndValue = StdUtil::getInstance().createHashMap();;
     
 whereKeyAndValue.put(UserData::USERNAME, userName);
     
@@ -181,22 +187,22 @@ super.updateWhere(whereKeyAndValue, updateKeyAndValue);
 }
 
 
-    public: Vector get(std::string userName){
+    public: BasicArrayList get(std::string userName){
 
         try {
             
-    Vector paymentVector = Vector();;
+    BasicArrayList paymentVector = BasicArrayListD();;
     
 
-    HashMap<any, any> keyAndValue = HashMap<any, any>();;
+    HashMap<any, any> keyAndValue = StdUtil::getInstance().createHashMap();;
     
 keyAndValue.put(UserData::USERNAME, userName);
     
 
-    Vector paymentList = super.getRows(keyAndValue);;
+    BasicArrayList paymentList = super.getRows(keyAndValue);;
     
 
-    int32_t size = paymentList.length;;
+    int32_t size = paymentList.size();;
     
 
 
@@ -258,10 +264,10 @@ keyAndValue.put(UserData::USERNAME, userName);
 
         try {
             
-    HashMap<any, any> paymentHashMap = HashMap<any, any>();;
+    HashMap<any, any> paymentHashMap = StdUtil::getInstance().createHashMap();;
     
 
-    HashMap<any, any> updateKeyAndValue = HashMap<any, any>();;
+    HashMap<any, any> updateKeyAndValue = StdUtil::getInstance().createHashMap();;
     
 updateKeyAndValue.put(EntryData::getInstance().DEFAULT, EntryData::getInstance().DEFAULT);
     
@@ -334,7 +340,7 @@ paymentHashMap= super.getRow(updateKeyAndValue);
 
         try {
             
-    HashMap<any, any> whereHashMap = HashMap<any, any>();;
+    HashMap<any, any> whereHashMap = StdUtil::getInstance().createHashMap();;
     
 whereHashMap.put(UserData::USERNAME, userName);
     
@@ -373,7 +379,7 @@ super.deleteWhere(whereHashMap);
 
         try {
             
-    Vector vector = Vector();;
+    BasicArrayList vector = BasicArrayListD();;
     
 vector.add(PaymentIdGenerator().getNext());
     

@@ -22,7 +22,10 @@
         
             #include "../../../../../../java/lang/Exception.h"
         
-#include <java/util/Vector.h>
+#include <org/allbinary/util/BasicArrayList.h>
+
+      
+#include <org/allbinary/util/BasicArrayListD.h>
 
       
 #include <org/allbinary/data/tables/transform/info/TransformInfoEntity.h>
@@ -134,7 +137,7 @@ private: CustomizerUtil(){
 
                 //@Throws(Exception.constructor)
             
-    public: Vector getTransformInfoObjectConfigComponentNodesToCustomize(Object customizerTransformInfoInterface, Object transformInfoInterface){
+    public: BasicArrayList getTransformInfoObjectConfigComponentNodesToCustomize(Object customizerTransformInfoInterface, Object transformInfoInterface){
 
                         if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEW))
                         
@@ -167,7 +170,7 @@ private: CustomizerUtil(){
 
                 //@Throws(Exception.constructor)
             
-    public: Vector getTransformInfoObjectConfigComponentNodes(Object transformInfoInterface){
+    public: BasicArrayList getTransformInfoObjectConfigComponentNodes(Object transformInfoInterface){
 
                         if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEW))
                         
@@ -191,7 +194,7 @@ private: CustomizerUtil(){
 
                 //@Throws(Exception.constructor)
             
-    public: Vector getTransformInfoObjectConfigGroupComponentNodes(Object transformInfoInterface){
+    public: BasicArrayList getTransformInfoObjectConfigGroupComponentNodes(Object transformInfoInterface){
 
                         if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEW))
                         
@@ -229,7 +232,7 @@ private: CustomizerUtil(){
     TransformInfoEntity transformInfoEntityInterface = TransformInfoEntityBuilder::getInstance();;
     
 
-    Vector allViewsToBeModified = this->getTransformInfoObjectConfigGroupComponentNodes(transformInfoInterface);;
+    BasicArrayList allViewsToBeModified = this->getTransformInfoObjectConfigGroupComponentNodes(transformInfoInterface);;
     
 
     Document document = DomDocumentHelper::create();;
@@ -248,7 +251,7 @@ document.appendChild(domNodeInterface.toXmlNode(document));
                                     {
                                     stringBuffer.append("Total Views For Modification: ");
     
-stringBuffer.appendint(allViewsToBeModified.length);
+stringBuffer.appendint(allViewsToBeModified.size());
     
 stringBuffer.append(" New Xml/Data: ");
     
@@ -262,7 +265,7 @@ this->logUtil.putF(stringBuffer.toString(), this, "insert()");
 transformInfoInterface.setData(documentString);
     
 
-    int32_t size = allViewsToBeModified.length;;
+    int32_t size = allViewsToBeModified.size();;
     
 
 
@@ -407,13 +410,13 @@ transformInfoEntityInterface.update(specifiedTransformInfoInterface.toHashMap())
     TransformInfoObjectConfigInterface transformInfoObjectConfigInterface = transformInfoInterface.getObjectConfigInterface();;
     
 
-    Vector allViewsToBeModified = transformInfoObjectConfigInterface.getGroupTransforms();;
+    BasicArrayList allViewsToBeModified = transformInfoObjectConfigInterface.getGroupTransforms();;
     
 
     TransformInfoEntity transformInfoEntityInterface = TransformInfoEntityBuilder::getInstance();;
     
 
-    int32_t size = allViewsToBeModified.length;;
+    int32_t size = allViewsToBeModified.size();;
     
 
 

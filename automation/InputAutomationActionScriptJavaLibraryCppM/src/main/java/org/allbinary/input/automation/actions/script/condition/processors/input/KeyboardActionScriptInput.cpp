@@ -32,7 +32,10 @@
 #include <java/util/HashMap.h>
 
       
-#include <java/util/Vector.h>
+#include <org/allbinary/util/BasicArrayList.h>
+
+      
+#include <org/allbinary/util/BasicArrayListD.h>
 
       
 #include <org/allbinary/data/tree/dom/DomNodeHelper.h>
@@ -48,6 +51,9 @@
 
       
 #include <org/allbinary/input/KeyUtil.h>
+
+      
+#include <org/allbinary/logic/StdUtil.h>
 
       
 #include <org/allbinary/logic/communication/log/LogUtil.h>
@@ -173,7 +179,7 @@ this->logUtil.putF(this->commonStrings.START, this, this->commonStrings.CONSTRUC
     NodeList nodeList = actionNode.getChildNodes();;
     
 
-    Vector vector = Vector();;
+    BasicArrayList vector = BasicArrayListD();;
     
 
 
@@ -244,7 +250,7 @@ this->setRelease(value.slice(, ).join(''));
                             
 }
 
-this->setKeyArray(vector.toArray(new Array(vector.length)) as Integer[]);
+this->setKeyArray(vector.toArrayType(new Array(vector.size())) as Integer[]);
     
 
                                     }
@@ -417,7 +423,7 @@ this->setKeyArray(integerArray);
 this->logUtil.putF(CommonLabels::getInstance().START +text, this, "integerArrayValue");
     
 
-    Vector vector = Vector();;
+    BasicArrayList vector = BasicArrayListD();;
     
 
     int32_t index = 0;;
@@ -472,7 +478,7 @@ index++;
 }
 
 
-    std::vector<Integer> integerArray = vector.toArray(new Array(vector.length)) as Integer[];;
+    std::vector<Integer> integerArray = vector.toArrayType(new Array(vector.size())) as Integer[];;
     
 
 
@@ -485,7 +491,7 @@ index++;
 
     public: HashMap<any, any> toHashMap(){
 
-    HashMap<any, any> hashMap = HashMap<any, any>();;
+    HashMap<any, any> hashMap = StdUtil::getInstance().createHashMap();;
     
 
 

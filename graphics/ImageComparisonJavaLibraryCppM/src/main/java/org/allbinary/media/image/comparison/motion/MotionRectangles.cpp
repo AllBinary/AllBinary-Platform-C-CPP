@@ -22,7 +22,10 @@
         
             #include "../../../../../../java/lang/Exception.h"
         
-#include <java/util/Vector.h>
+#include <org/allbinary/util/BasicArrayList.h>
+
+      
+#include <org/allbinary/util/BasicArrayListD.h>
 
       
 #include <org/allbinary/media/image/comparison/ImageComparisonResult.h>
@@ -53,7 +56,7 @@ class MotionRectangles
 
     private: std::string name;
 
-    private: Vector rectangleVector;
+    private: BasicArrayList rectangleVector;
 
     private: ImageComparisonResult imageComparisonResult;
 
@@ -64,12 +67,12 @@ this->name= name;
     
 this->setImageComparisonResult(imageComparisonResult);
     
-this->setVector(Vector());
+this->setVector(BasicArrayListD());
     
 }
 
 
-    public: Vector getVector(){
+    public: BasicArrayList getVector(){
 
 
 
@@ -79,7 +82,7 @@ this->setVector(Vector());
 }
 
 
-    public: void setVector(Vector rectangleVector){
+    public: void setVector(BasicArrayList rectangleVector){
 this->rectangleVector= rectangleVector;
     
 }

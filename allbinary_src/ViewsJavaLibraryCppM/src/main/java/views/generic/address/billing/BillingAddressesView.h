@@ -25,7 +25,10 @@
         
             #include "../../../../java/lang/Integer.h"
         
-#include <java/util/Vector.h>
+#include <org/allbinary/util/BasicArrayList.h>
+
+      
+#include <org/allbinary/util/BasicArrayListD.h>
 
       
 #include <javax/servlet/http/HttpServletRequest.h>
@@ -89,7 +92,7 @@ class BillingAddressesView: public HttpStoreComponentView, public DomNodeInterfa
 
     private: HttpServletRequest request;
 
-    protected: Vector streetAddresses;
+    protected: BasicArrayList streetAddresses;
 
 public: BillingAddressesView(TransformInfoInterface transformInfoInterface);
 

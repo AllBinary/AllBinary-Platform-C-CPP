@@ -30,7 +30,13 @@
 #include <java/util/HashMap.h>
 
       
-#include <java/util/Vector.h>
+#include <org/allbinary/util/BasicArrayList.h>
+
+      
+#include <org/allbinary/util/BasicArrayListD.h>
+
+      
+#include <org/allbinary/logic/StdUtil.h>
 
       
 #include <org/allbinary/logic/communication/log/LogUtil.h>
@@ -77,7 +83,7 @@ class NameSpaceRequestParam
 
     protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: Vector nameSpaceVector;
+    private: BasicArrayList nameSpaceVector;
 
     private: HashMap<any, any> nameSpacePropertiesHashMap;
 
@@ -85,7 +91,7 @@ class NameSpaceRequestParam
 
 public: NameSpaceRequestParam(std::string nameSpace, std::string value);
 
-    public: Vector getPackages();
+    public: BasicArrayList getPackages();
 
     public: HashMap<any, any> getPackageProperties(int32_t packageIndex);
 

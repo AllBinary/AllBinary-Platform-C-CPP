@@ -20,7 +20,10 @@
 
             #include "../../../java/lang/Exception.h"
         
-#include <java/util/Vector.h>
+#include <org/allbinary/util/BasicArrayList.h>
+
+      
+#include <org/allbinary/util/BasicArrayListD.h>
 
       
 #include <javax/servlet/http/HttpServletRequest.h>
@@ -185,10 +188,10 @@ this->addDomNodeInterface(this as DomNodeInterface);
     OrderHistoryEntity orderHistoryEntity = OrderHistoryEntity();;
     
 
-    Vector orderReviewVector = orderHistoryEntity.getOrders(this->userName);;
+    BasicArrayList orderReviewVector = orderHistoryEntity.getOrders(this->userName);;
     
 
-    int32_t size = orderReviewVector.length;;
+    int32_t size = orderReviewVector.size();;
     
 
 

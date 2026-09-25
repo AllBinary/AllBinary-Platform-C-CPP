@@ -24,7 +24,10 @@
 #include <java/util/HashMap.h>
 
       
-#include <java/util/Vector.h>
+#include <org/allbinary/util/BasicArrayList.h>
+
+      
+#include <org/allbinary/util/BasicArrayListD.h>
 
       
 #include <org/allbinary/data/tables/BasicDataTableInterface.h>
@@ -53,7 +56,7 @@ class CustomItemsEntityInterface: public BasicDataTableInterface {
 
     void delete_(std::string value);
 
-    void insert(Vector values);
+    void insert(BasicArrayList values);
 
     void update(HashMap<any, any> updatedValues);
 

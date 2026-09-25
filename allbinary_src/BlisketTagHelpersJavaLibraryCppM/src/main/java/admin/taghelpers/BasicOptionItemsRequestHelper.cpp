@@ -28,7 +28,10 @@
 #include <java/util/HashMap.h>
 
       
-#include <java/util/Vector.h>
+#include <org/allbinary/util/BasicArrayList.h>
+
+      
+#include <org/allbinary/util/BasicArrayListD.h>
 
       
 #include <javax/servlet/http/HttpServletRequest.h>
@@ -47,6 +50,9 @@
 
       
 #include <org/allbinary/data/tables/user/commerce/inventory/item/options/BasicOptionItemsEntityFactory.h>
+
+      
+#include <org/allbinary/logic/StdUtil.h>
 
       
 #include <org/allbinary/logic/communication/log/LogUtil.h>
@@ -82,6 +88,8 @@ class BasicOptionItemsRequestHelper: public ModifyTable {
 
     protected: const LogUtil logUtil = LogUtil::getInstance();
 
+    protected: const BasicItemData basicItemData = BasicItemData::getInstance();
+
     private: HttpServletRequest request;
 
     private: std::string id;
@@ -92,9 +100,9 @@ class BasicOptionItemsRequestHelper: public ModifyTable {
 
     private: std::string defaultOptionValue;
 
-    private: Vector optionItem;
+    private: BasicArrayList optionItem;
 
-    private: Vector optionValue;
+    private: BasicArrayList optionValue;
 
     private: std::string timeEntered;
 
@@ -109,11 +117,11 @@ this->getFormData();
 
 
     public: void getFormData(){
-this->optionItem= Vector();
+this->optionItem= BasicArrayListD();
     
-this->optionValue= Vector();
+this->optionValue= BasicArrayListD();
     
-this->id= this->request.getParameter(BasicItemData::ID);
+this->id= this->request.getParameter(basicItemData.ID);
     
 this->optionOneTitle= this->request.getParameter(BasicOptionItemData::OPTION_ONE_TITLE);
     
@@ -166,9 +174,9 @@ this->lastModified= this->request.getParameter(EntryData::getInstance().LASTMODI
 
     private: HashMap<any, any> getHashMap(){
 
-    HashMap<any, any> values = HashMap<any, any>();;
+    HashMap<any, any> values = StdUtil::getInstance().createHashMap();;
     
-values.put(BasicItemData::ID, id);
+values.put(basicItemData.ID, id);
     
 values.put(BasicOptionItemData::OPTION_ONE_ONE_ITEM, this->optionItem.get(0));
     
@@ -233,12 +241,12 @@ values.put(EntryData::getInstance().LASTMODIFIED, time);
     std::string time = Long(calendar.getTimeInMillis()).toString();;
     
 
-    Vector values = Vector();;
+    BasicArrayList values = BasicArrayListD();;
     
 values.add(this->id);
     
 
-    int32_t size = this->optionValue.length;;
+    int32_t size = this->optionValue.size();;
     
 
 

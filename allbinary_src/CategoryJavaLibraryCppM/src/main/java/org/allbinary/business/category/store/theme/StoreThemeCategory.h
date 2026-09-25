@@ -26,7 +26,10 @@
 #include <java/util/HashMap.h>
 
       
-#include <java/util/Vector.h>
+#include <org/allbinary/util/BasicArrayList.h>
+
+      
+#include <org/allbinary/util/BasicArrayListD.h>
 
       
 #include <org/allbinary/business/category/Category.h>
@@ -39,6 +42,9 @@
 
       
 #include <org/allbinary/data/tree/dom/DomSearchHelper.h>
+
+      
+#include <org/allbinary/logic/StdUtil.h>
 
       
 #include <org/allbinary/logic/visual/theme/ThemeData.h>
@@ -83,7 +89,7 @@ class StoreThemeCategory: public Category, public StoreThemeCategoryInterface {
 
     private: TransformInfoInterface transformInfoInterface;
 
-    private: Vector themeVector;
+    private: BasicArrayList themeVector;
 
 public: StoreThemeCategory(TransformInfoInterface transformInfoInterface, CategoryPropertiesFactoryInterface categoryPropertiesFactoryInterface, int32_t level);
 
@@ -101,7 +107,7 @@ public: StoreThemeCategory(TransformInfoInterface transformInfoInterface, Node n
 
     public: void addTheme(ThemeValidation themeValidation);
 
-    public: Vector getThemes();
+    public: BasicArrayList getThemes();
 
                 //@Throws(Exception.constructor)
             
@@ -113,7 +119,7 @@ public: StoreThemeCategory(TransformInfoInterface transformInfoInterface, Node n
 
                 //@Throws(Exception.constructor)
             
-    public: Vector toVector();
+    public: BasicArrayList toVector();
 
 };
 

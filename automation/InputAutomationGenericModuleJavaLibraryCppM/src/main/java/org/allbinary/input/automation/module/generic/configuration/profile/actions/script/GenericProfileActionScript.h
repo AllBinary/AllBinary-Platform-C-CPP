@@ -26,7 +26,10 @@
 #include <java/util/HashMap.h>
 
       
-#include <java/util/Vector.h>
+#include <org/allbinary/util/BasicArrayList.h>
+
+      
+#include <org/allbinary/util/BasicArrayListD.h>
 
       
 #include <javax/swing/tree/DefaultMutableTreeNode.h>
@@ -48,6 +51,9 @@
 
       
 #include <org/allbinary/input/automation/module/generic/configuration/profile/actions/GenericProfileActionJPanel.h>
+
+      
+#include <org/allbinary/logic/StdUtil.h>
 
       
 #include <org/allbinary/logic/communication/log/LogUtil.h>
@@ -94,7 +100,7 @@ class GenericProfileActionScript: public DefaultMutableTreeNode, public ProfileA
 
     private: GenericProfileActionJPanel genericProfileActionJPanel;
 
-    private: Vector profileActionConditionInterfaceVector;
+    private: BasicArrayList profileActionConditionInterfaceVector;
 
 public: GenericProfileActionScript(GenericProfileActionJPanel genericProfileActionJPanel, Node node);
 
@@ -106,9 +112,9 @@ public: GenericProfileActionScript(GenericProfileActionJPanel genericProfileActi
 
     public: HashMap<any, any> toHashMap();
 
-    public: Vector getProfileActionConditionInterfaceVector();
+    public: BasicArrayList getProfileActionConditionInterfaceVector();
 
-    public: void setProfileActionConditionInterfaceVector(Vector profileActionConditionInterfaceVector);
+    public: void setProfileActionConditionInterfaceVector(BasicArrayList profileActionConditionInterfaceVector);
 
                 //@Throws(Exception.constructor)
             

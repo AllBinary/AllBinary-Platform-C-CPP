@@ -25,13 +25,19 @@
         
             #include "../../../../../../java/lang/Exception.h"
         
-#include <java/awt.h>
+#include <java/awt/Rectangle.h>
 
       
 #include <java/awt/image/BufferedImage.h>
 
       
-#include <java/util/Vector.h>
+#include <org/allbinary/util/BasicArrayList.h>
+
+      
+#include <org/allbinary/util/BasicArrayListD.h>
+
+      
+#include <org/allbinary/logic/StdUtil.h>
 
       
 #include <org/allbinary/logic/communication/log/LogUtil.h>
@@ -58,7 +64,6 @@
         #include "MotionRectangles.h"
 #include "MotionRectangleConstraintsInterface.h"
 #include "MotionRectangle.h"
-#include "Rectangle.h"
 
 class ConstrainedMotionRectangles: public MotionRectangles {
 

@@ -23,7 +23,13 @@
 
             #include "../../../../../java/lang/Object.h"
         
-#include <java/util/Vector.h>
+#include <org/allbinary/util/BasicArrayList.h>
+
+      
+#include <org/allbinary/util/BasicArrayListD.h>
+
+      
+#include <org/allbinary/logic/StdUtil.h>
 
       
 #include <org/w3c/dom/NodeList.h>
@@ -53,7 +59,7 @@ class DomNodeListHelper
             : public Object
          {
 
-    public: static Vector getVector(NodeList nodeList);
+    public: static BasicArrayList getVector(NodeList nodeList);
 
 };
 

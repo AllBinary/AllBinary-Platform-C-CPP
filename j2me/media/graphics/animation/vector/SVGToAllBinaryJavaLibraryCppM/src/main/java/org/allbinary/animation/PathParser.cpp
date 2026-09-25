@@ -10,7 +10,13 @@
         
             #include "../../../java/lang/Double.h"
         
-#include <java/util/Vector.h>
+#include <org/allbinary/util/BasicArrayList.h>
+
+      
+#include <org/allbinary/util/BasicArrayListD.h>
+
+      
+#include <org/allbinary/logic/StdUtil.h>
 
       
 
@@ -41,7 +47,7 @@ class PathParser
 
     private: static std::vector<std::string> tokenize(std::string d){
 
-    Vector tokens = Vector();;
+    BasicArrayList tokens = BasicArrayListD();;
     
 
     StringBuffer sb = StringBuffer();;
@@ -64,7 +70,7 @@ class PathParser
                         if(sb.length() > 0)
                         
                                     {
-                                    tokens.addElement(sb.toString());
+                                    tokens.add(sb.toString());
     
 sb.setLength(0);
     
@@ -82,14 +88,14 @@ sb.setLength(0);
                         if(sb.length() > 0)
                         
                                     {
-                                    tokens.addElement(sb.toString());
+                                    tokens.add(sb.toString());
     
 sb.setLength(0);
     
 
                                     }
                                 
-tokens.addElement(c.slice(, ).join(''));
+tokens.add(c.slice(, ).join(''));
     
 
                                     }
@@ -104,12 +110,12 @@ tokens.addElement(c.slice(, ).join(''));
 
 
                         if(sb.length() > 0)
-                        tokens.addElement(sb.toString());
+                        tokens.add(sb.toString());
                                 
 
-    std::vector<std::string> res = new Array(tokens.length);;
+    std::vector<std::string> res = new Array(tokens.size());;
     
-tokens.copyInto(res);
+tokens.toArrayType(res);
     
 
 

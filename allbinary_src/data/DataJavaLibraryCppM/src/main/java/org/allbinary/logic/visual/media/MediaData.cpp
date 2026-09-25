@@ -25,6 +25,9 @@
 #include <java/util/HashMap.h>
 
       
+#include <org/allbinary/logic/StdUtil.h>
+
+      
 
 
 
@@ -50,7 +53,7 @@ class MediaData
             : public Object
          {
 
-    private: static HashMap<any, any> hashMap = HashMap<any, any>();
+    private: static HashMap<any, any> hashMap = StdUtil::getInstance().createHashMap();
 
                 //@Throws(Exception.constructor)
             

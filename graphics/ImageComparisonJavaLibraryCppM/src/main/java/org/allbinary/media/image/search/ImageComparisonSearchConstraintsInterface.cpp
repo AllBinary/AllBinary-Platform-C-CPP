@@ -18,7 +18,10 @@
 
 
 
-#include <java/util/Vector.h>
+#include <org/allbinary/util/BasicArrayList.h>
+
+      
+#include <org/allbinary/util/BasicArrayListD.h>
 
       
 
@@ -42,7 +45,7 @@
         
 class ImageComparisonSearchConstraintsInterface {
 
-    Vector getStatisticalMatchConstraintsVector()
+    BasicArrayList getStatisticalMatchConstraintsVector()
 
 };
 

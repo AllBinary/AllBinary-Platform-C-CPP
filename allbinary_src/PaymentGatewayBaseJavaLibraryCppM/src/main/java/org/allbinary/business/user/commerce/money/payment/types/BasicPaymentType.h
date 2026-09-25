@@ -28,7 +28,10 @@
 #include <java/util/HashMap.h>
 
       
-#include <java/util/Vector.h>
+#include <org/allbinary/util/BasicArrayList.h>
+
+      
+#include <org/allbinary/util/BasicArrayListD.h>
 
       
 #include <org/allbinary/business/user/commerce/money/payment/gateway/PaymentGatewayData.h>
@@ -38,6 +41,9 @@
 
       
 #include <org/allbinary/business/user/commerce/money/payment/gateway/modules/gateway/PaymentGatewayDomNodeFactoryInterface.h>
+
+      
+#include <org/allbinary/logic/StdUtil.h>
 
       
 #include <org/allbinary/logic/io/path/AbPathData.h>
@@ -101,7 +107,7 @@ protected: BasicPaymentType(std::string paymentMethod, PaymentGatewayInterfaceFa
 
     public: Object* getKey();
 
-    public: Vector toVector();
+    public: BasicArrayList toVector();
 
     public: HashMap<any, any> toHashMap();
 

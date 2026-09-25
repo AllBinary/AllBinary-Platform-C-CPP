@@ -28,10 +28,13 @@
 #include <java/util/Hashtable.h>
 
       
-#include <java/util/Vector.h>
+#include <org/allbinary/util/BasicArrayList.h>
 
       
-#include <org/allbinary/logic/NullUtil.h>
+#include <org/allbinary/util/BasicArrayListD.h>
+
+      
+#include <org/allbinary/logic/StdUtil.h>
 
       
 #include <org/allbinary/logic/string/StringMaker.h>
@@ -105,29 +108,29 @@ class WindowsHardware
             : public Object
         : public HardwareInterface {
 
-    private: Vector componentInterfaceVector;
+    private: BasicArrayList componentInterfaceVector;
 
-    private: Vector videoInterfaceVector;
+    private: BasicArrayList videoInterfaceVector;
 
-    private: Vector hardDriveControllerInterfaceVector;
+    private: BasicArrayList hardDriveControllerInterfaceVector;
 
-    private: Vector cpuInterfaceVector;
+    private: BasicArrayList cpuInterfaceVector;
 
-    private: Vector usbInterfaceVector;
+    private: BasicArrayList usbInterfaceVector;
 
-    private: Vector ethernetInterfaceVector;
+    private: BasicArrayList ethernetInterfaceVector;
 
-    private: Vector multimediaInterfaceVector;
+    private: BasicArrayList multimediaInterfaceVector;
 
-    private: Vector fireWireInterfaceVector;
+    private: BasicArrayList fireWireInterfaceVector;
 
-    private: Vector bridgeInterfaceVector;
+    private: BasicArrayList bridgeInterfaceVector;
 
-    private: Vector hardDriveInterfaceVector;
+    private: BasicArrayList hardDriveInterfaceVector;
 
-    private: Vector macInterfaceVector;
+    private: BasicArrayList macInterfaceVector;
 
-    private: Vector monitorInterfaceVector;
+    private: BasicArrayList monitorInterfaceVector;
 
     private: const std::string NAME = "Windows Hardware Profile";
 

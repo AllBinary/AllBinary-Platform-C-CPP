@@ -34,7 +34,10 @@
 #include <java/util/Set.h>
 
       
-#include <java/util/Vector.h>
+#include <org/allbinary/util/BasicArrayList.h>
+
+      
+#include <org/allbinary/util/BasicArrayListD.h>
 
       
 #include <org/allbinary/business/context/modules/storefront/StoreFrontData.h>
@@ -44,6 +47,9 @@
 
       
 #include <org/allbinary/business/init/db/HistoryDbInitInfo.h>
+
+      
+#include <org/allbinary/logic/StdUtil.h>
 
       
 #include <org/allbinary/business/user/UserData.h>
@@ -126,6 +132,8 @@
 class OrderItemsEntity: public AbSqlBean, public OrderItemsEntityInterface {
 
     protected: const LogUtil logUtil = LogUtil::getInstance();
+
+    protected: const BasicItemData basicItemData = BasicItemData::getInstance();
 
     protected: const std::string tableName = "orderitems";
 

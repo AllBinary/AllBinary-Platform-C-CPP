@@ -23,7 +23,13 @@
 #include <java/util/HashMap.h>
 
       
+#include <org/allbinary/logic/StdUtil.h>
+
+      
 #include <org/allbinary/logic/io/path/AbPathData.h>
+
+      
+#include <org/allbinary/logic/math/MathData.h>
 
       
 #include <org/allbinary/string/CommonPhoneStrings.h>
@@ -58,13 +64,16 @@ class SpecialCharacterUtil
 
     public: static HashMap<any, any> getHashMap(){
 
+    CommonSeps commonSeps = CommonSeps::getInstance();;
+    
+
     CommonPhoneStrings commonPhoneStrings = CommonPhoneStrings::getInstance();;
     
 
     StringUtil stringUtil = StringUtil::getInstance();;
     
 
-    HashMap<any, any> hashMap = HashMap<any, any>();;
+    HashMap<any, any> hashMap = StdUtil::getInstance().createHashMap();;
     
 hashMap.put("!", stringUtil.EMPTY_STRING);
     
@@ -78,21 +87,21 @@ hashMap.put("%", stringUtil.EMPTY_STRING);
     
 hashMap.put("^", stringUtil.EMPTY_STRING);
     
-hashMap.put(CommonSeps::getInstance().AMPERSAND, stringUtil.EMPTY_STRING);
+hashMap.put(commonSeps.AMPERSAND, stringUtil.EMPTY_STRING);
     
 hashMap.put(commonPhoneStrings.STAR, stringUtil.EMPTY_STRING);
     
-hashMap.put("(", stringUtil.EMPTY_STRING);
+hashMap.put(commonSeps.PARENTHESIS_OPEN, stringUtil.EMPTY_STRING);
     
-hashMap.put(")", stringUtil.EMPTY_STRING);
+hashMap.put(commonSeps.PARENTHESIS_CLOSE, stringUtil.EMPTY_STRING);
     
-hashMap.put("-", stringUtil.EMPTY_STRING);
+hashMap.put(commonSeps.DASH, stringUtil.EMPTY_STRING);
     
-hashMap.put("_", stringUtil.EMPTY_STRING);
+hashMap.put(commonSeps.UNDERSCORE, stringUtil.EMPTY_STRING);
     
-hashMap.put("+", stringUtil.EMPTY_STRING);
+hashMap.put(MathData::getInstance().PLUS, stringUtil.EMPTY_STRING);
     
-hashMap.put("=", stringUtil.EMPTY_STRING);
+hashMap.put(commonSeps.EQUALS, stringUtil.EMPTY_STRING);
     
 hashMap.put("\\", stringUtil.EMPTY_STRING);
     

@@ -18,7 +18,10 @@
 
 
 
-#include <java/util/Vector.h>
+#include <org/allbinary/util/BasicArrayList.h>
+
+      
+#include <org/allbinary/util/BasicArrayListD.h>
 
       
 #include <org/allbinary/business/user/commerce/inventory/basket/BasketReview.h>
@@ -59,7 +62,7 @@ class OrderItemsEntityInterface: public BasicDataTableInterface {
 
     void insert(std::string userName, OrderInterface order)
 
-    void insert(Vector values)
+    void insert(BasicArrayList values)
 
 };
 

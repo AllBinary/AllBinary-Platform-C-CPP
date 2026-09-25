@@ -25,7 +25,13 @@
         
             #include "../../../../../../../../java/lang/Exception.h"
         
-#include <java/util/Vector.h>
+#include <org/allbinary/util/BasicArrayList.h>
+
+      
+#include <org/allbinary/util/BasicArrayListD.h>
+
+      
+#include <org/allbinary/logic/StdUtil.h>
 
       
 
@@ -61,7 +67,7 @@ class BasicPaymentTypeUtil
 
 private: BasicPaymentTypeUtil();
 
-    private: Vector paymentTypeVector = Vector();
+    private: BasicArrayList paymentTypeVector = BasicArrayListD();
 
     public: void add(BasicPaymentType paymentType);
 
@@ -71,7 +77,7 @@ private: BasicPaymentTypeUtil();
 
     public: bool isContain(BasicPaymentType paymentType);
 
-    public: Vector difference(Vector a_PaymentTypeVector);
+    public: BasicArrayList difference(BasicArrayList a_PaymentTypeVector);
 
 };
 

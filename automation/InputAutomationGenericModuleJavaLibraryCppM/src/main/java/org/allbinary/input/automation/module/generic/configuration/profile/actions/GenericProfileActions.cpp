@@ -57,6 +57,9 @@
 #include <org/allbinary/input/automation/module/generic/configuration/profile/GenericProfiles.h>
 
       
+#include <org/allbinary/logic/StdUtil.h>
+
+      
 #include <org/allbinary/logic/communication/log/LogUtil.h>
 
       
@@ -373,7 +376,7 @@ this->save();
 
     public: HashMap<any, any> toHashMap(){
 
-    HashMap<any, any> hashMap = HashMap<any, any>();;
+    HashMap<any, any> hashMap = StdUtil::getInstance().createHashMap();;
     
 this->logUtil.putF("HashMap: " +hashMap.toString(), this, "toHashMap()");
     

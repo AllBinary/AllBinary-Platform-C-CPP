@@ -26,7 +26,13 @@
 #include <java/awt.h>
 
       
-#include <java/util/Vector.h>
+#include <org/allbinary/util/BasicArrayList.h>
+
+      
+#include <org/allbinary/util/BasicArrayListD.h>
+
+      
+#include <org/allbinary/logic/StdUtil.h>
 
       
 #include <org/allbinary/logic/communication/log/LogUtil.h>
@@ -64,7 +70,7 @@ public: ConsolidateMotionRectangles(MotionRectangles motionRectangles);
 
     private: void consolidateMotionRectangles();
 
-    private: void remove(Vector removeVector);
+    private: void remove(BasicArrayList removeVector);
 
 };
 

@@ -22,7 +22,10 @@
         
             #include "../../../java/lang/Float.h"
         
-#include <java/util/Vector.h>
+#include <org/allbinary/util/BasicArrayList.h>
+
+      
+#include <org/allbinary/util/BasicArrayListD.h>
 
       
 #include <org/allbinary/business/context/modules/storefront/StoreFrontFactory.h>
@@ -146,10 +149,10 @@ this->shippingMethods= ShippingMethods(this->abeClientInformation, this->storeFr
     StreetAddress streetAddress = shippingAddressesEntityInterface.getDefault();;
     
 
-    Vector shippingVector = this->shippingMethods.get();;
+    BasicArrayList shippingVector = this->shippingMethods.get();;
     
 
-    int32_t size = shippingVector.length;;
+    int32_t size = shippingVector.size();;
     
 
 

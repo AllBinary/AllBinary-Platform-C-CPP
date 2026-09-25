@@ -23,7 +23,10 @@
 #include <java/util/HashMap.h>
 
       
-#include <java/util/Vector.h>
+#include <org/allbinary/util/BasicArrayList.h>
+
+      
+#include <org/allbinary/util/BasicArrayListD.h>
 
       
 #include <org/allbinary/business/entry/EntryData.h>
@@ -71,6 +74,8 @@ class BasicOptionItemsEntity: public AbSqlBean, public BasicOptionItemsEntityInt
 
     protected: const LogUtil logUtil = LogUtil::getInstance();
 
+    protected: const BasicItemData basicItemData = BasicItemData::getInstance();
+
     protected: const std::string tableName = "basicoptionitems";
 
 public: BasicOptionItemsEntity(){
@@ -84,7 +89,7 @@ this->setTableName(this->tableName);
 }
 
 
-    public: void insert(Vector values){
+    public: void insert(BasicArrayList values){
 
         try {
             super.insert(values);
@@ -119,7 +124,7 @@ this->setTableName(this->tableName);
     public: void delete_(std::string value){
 
         try {
-            super.deleteWhere(BasicItemData::ID, value);
+            super.deleteWhere(basicItemData.ID, value);
     
 
                         if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLLOGGING))
@@ -152,11 +157,11 @@ this->setTableName(this->tableName);
 
     StringMaker stringBuffer = StringMaker();;
     
-stringBuffer.append(this->sqlStrings.CREATE_TABLE).append(tableName).append(this->sqlStrings.START).append(BasicItemData::ID).append(this->sqlTypeStrings.MAX_BIG_INT_UNSIGNED_NOT_NULL);
+stringBuffer.append(this->sqlStrings.CREATE_TABLE).append(tableName).append(this->sqlStrings.START).append(basicItemData.ID).append(this->sqlTypeStrings.MAX_BIG_INT_UNSIGNED_NOT_NULL);
     
 stringBuffer.append(BasicOptionItemData::OPTION_ONE_TITLE).append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL).append(BasicOptionItemData::DEFAULT_OPTION_ITEM).append(this->sqlTypeStrings.MAX_BIG_INT_UNSIGNED_NOT_NULL).append(BasicOptionItemData::DEFAULT_OPTION_VALUE).append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL);
     
-stringBuffer.append(BasicOptionItemData::OPTION_ONE_ONE_ITEM).append(this->sqlTypeStrings.MAX_BIG_INT_UNSIGNED_NOT_NULL).append(BasicOptionItemData::OPTION_ONE_ONE_VALUE).append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL).append(BasicOptionItemData::OPTION_ONE_TWO_ITEM).append(this->sqlTypeStrings.MAX_BIG_INT_UNSIGNED_NOT_NULL).append(BasicOptionItemData::OPTION_ONE_TWO_VALUE).append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL).append(BasicOptionItemData::OPTION_ONE_THREE_ITEM).append(this->sqlTypeStrings.MAX_BIG_INT_UNSIGNED_NOT_NULL).append(BasicOptionItemData::OPTION_ONE_THREE_VALUE).append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL).append(BasicOptionItemData::OPTION_ONE_FOUR_ITEM).append(this->sqlTypeStrings.MAX_BIG_INT_UNSIGNED_NOT_NULL).append(BasicOptionItemData::OPTION_ONE_FOUR_VALUE).append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL).append(BasicOptionItemData::OPTION_ONE_FIVE_ITEM).append(this->sqlTypeStrings.MAX_BIG_INT_UNSIGNED_NOT_NULL).append(BasicOptionItemData::OPTION_ONE_FIVE_VALUE).append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL).append(BasicOptionItemData::OPTION_ONE_SIX_ITEM).append(this->sqlTypeStrings.MAX_BIG_INT_UNSIGNED_NOT_NULL).append(BasicOptionItemData::OPTION_ONE_SIX_VALUE).append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL).append(BasicOptionItemData::OPTION_ONE_SEVEN_ITEM).append(this->sqlTypeStrings.MAX_BIG_INT_UNSIGNED_NOT_NULL).append(BasicOptionItemData::OPTION_ONE_SEVEN_VALUE).append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL).append(BasicOptionItemData::OPTION_ONE_EIGHT_ITEM).append(this->sqlTypeStrings.MAX_BIG_INT_UNSIGNED_NOT_NULL).append(BasicOptionItemData::OPTION_ONE_EIGHT_VALUE).append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL).append(BasicOptionItemData::OPTION_ONE_NINE_ITEM).append(this->sqlTypeStrings.MAX_BIG_INT_UNSIGNED_NOT_NULL).append(BasicOptionItemData::OPTION_ONE_NINE_VALUE).append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL).append(EntryData::getInstance().TIMECREATED).append(this->sqlTypeStrings.MAX_BIG_INT_UNSIGNED_NOT_NULL).append(EntryData::getInstance().LASTMODIFIED).append(this->sqlTypeStrings.MAX_BIG_INT_UNSIGNED_NOT_NULL).append(this->sqlStrings.PRIMARY_KEY).append(BasicItemData::ID).append(this->sqlStrings.END);
+stringBuffer.append(BasicOptionItemData::OPTION_ONE_ONE_ITEM).append(this->sqlTypeStrings.MAX_BIG_INT_UNSIGNED_NOT_NULL).append(BasicOptionItemData::OPTION_ONE_ONE_VALUE).append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL).append(BasicOptionItemData::OPTION_ONE_TWO_ITEM).append(this->sqlTypeStrings.MAX_BIG_INT_UNSIGNED_NOT_NULL).append(BasicOptionItemData::OPTION_ONE_TWO_VALUE).append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL).append(BasicOptionItemData::OPTION_ONE_THREE_ITEM).append(this->sqlTypeStrings.MAX_BIG_INT_UNSIGNED_NOT_NULL).append(BasicOptionItemData::OPTION_ONE_THREE_VALUE).append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL).append(BasicOptionItemData::OPTION_ONE_FOUR_ITEM).append(this->sqlTypeStrings.MAX_BIG_INT_UNSIGNED_NOT_NULL).append(BasicOptionItemData::OPTION_ONE_FOUR_VALUE).append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL).append(BasicOptionItemData::OPTION_ONE_FIVE_ITEM).append(this->sqlTypeStrings.MAX_BIG_INT_UNSIGNED_NOT_NULL).append(BasicOptionItemData::OPTION_ONE_FIVE_VALUE).append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL).append(BasicOptionItemData::OPTION_ONE_SIX_ITEM).append(this->sqlTypeStrings.MAX_BIG_INT_UNSIGNED_NOT_NULL).append(BasicOptionItemData::OPTION_ONE_SIX_VALUE).append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL).append(BasicOptionItemData::OPTION_ONE_SEVEN_ITEM).append(this->sqlTypeStrings.MAX_BIG_INT_UNSIGNED_NOT_NULL).append(BasicOptionItemData::OPTION_ONE_SEVEN_VALUE).append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL).append(BasicOptionItemData::OPTION_ONE_EIGHT_ITEM).append(this->sqlTypeStrings.MAX_BIG_INT_UNSIGNED_NOT_NULL).append(BasicOptionItemData::OPTION_ONE_EIGHT_VALUE).append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL).append(BasicOptionItemData::OPTION_ONE_NINE_ITEM).append(this->sqlTypeStrings.MAX_BIG_INT_UNSIGNED_NOT_NULL).append(BasicOptionItemData::OPTION_ONE_NINE_VALUE).append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL).append(EntryData::getInstance().TIMECREATED).append(this->sqlTypeStrings.MAX_BIG_INT_UNSIGNED_NOT_NULL).append(EntryData::getInstance().LASTMODIFIED).append(this->sqlTypeStrings.MAX_BIG_INT_UNSIGNED_NOT_NULL).append(this->sqlStrings.PRIMARY_KEY).append(basicItemData.ID).append(this->sqlStrings.END);
     
 
 
@@ -178,7 +183,7 @@ stringBuffer.append(BasicOptionItemData::OPTION_ONE_ONE_ITEM).append(this->sqlTy
 
 
     public: void update(HashMap<any, any> updatedValues){
-super.updateWhere(BasicItemData::ID, updatedValues.get(BasicItemData::ID) as string, updatedValues);
+super.updateWhere(basicItemData.ID, updatedValues.get(basicItemData.ID) as string, updatedValues);
     
 }
 

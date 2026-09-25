@@ -30,7 +30,10 @@
 #include <java/util/HashMap.h>
 
       
-#include <java/util/Vector.h>
+#include <org/allbinary/util/BasicArrayList.h>
+
+      
+#include <org/allbinary/util/BasicArrayListD.h>
 
       
 #include <org/allbinary/business/context/modules/storefront/StoreFrontInterface.h>
@@ -109,6 +112,8 @@ class InventorySearch
     protected: const LogUtil logUtil = LogUtil::getInstance();
 
     private: const CommonStrings commonStrings = CommonStrings::getInstance();
+
+    protected: const BasicItemData basicItemData = BasicItemData::getInstance();
 
     private: SearchRequest searchRequest;
 

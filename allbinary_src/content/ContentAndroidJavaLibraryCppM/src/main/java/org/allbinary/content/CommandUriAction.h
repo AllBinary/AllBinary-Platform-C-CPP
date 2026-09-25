@@ -40,6 +40,9 @@
 #include <org/allbinary/data/resource/ResourceUtil.h>
 
       
+#include <org/allbinary/logic/StdUtil.h>
+
+      
 #include <org/allbinary/logic/communication/log/LogUtil.h>
 
       
@@ -75,7 +78,7 @@ class CommandUriAction
 
     protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: Hashtable<any, any> hashtable = Hashtable<any, any>();
+    private: Hashtable<any, any> hashtable = StdUtil::getInstance().createHashtable();
 
     public: void add(Command command, std::string url);
 

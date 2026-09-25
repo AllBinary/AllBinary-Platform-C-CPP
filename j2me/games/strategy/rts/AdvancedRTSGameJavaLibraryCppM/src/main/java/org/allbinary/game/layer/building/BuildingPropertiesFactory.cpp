@@ -58,6 +58,9 @@
 #include <org/allbinary/layer/AllBinaryLayer.h>
 
       
+#include <org/allbinary/logic/StdUtil.h>
+
+      
 
 
 
@@ -165,7 +168,7 @@ this->damageFloatersPaintableInterface= damageFloaters;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return Hashtable<any, any>();
+                        return StdUtil::getInstance().createHashtable();;
     
 }
 

@@ -23,7 +23,10 @@
 
             #include "../../../../../java/lang/Object.h"
         
-#include <java/util/Vector.h>
+#include <org/allbinary/util/BasicArrayList.h>
+
+      
+#include <org/allbinary/util/BasicArrayListD.h>
 
       
 #include <org/allbinary/business/advertisement/AdvertisementInterface.h>
@@ -59,9 +62,9 @@ class AdvertisementCampaigns
             : public Object
         : public AdvertisementCampaignsInterface {
 
-    private: Vector advertisementsVector;
+    private: BasicArrayList advertisementsVector;
 
-public: AdvertisementCampaigns(Vector vector);
+public: AdvertisementCampaigns(BasicArrayList vector);
 
     public: void add(AdvertisementInterface advertisementInterface);
 

@@ -28,7 +28,13 @@
 #include <java/util/Hashtable.h>
 
       
-#include <java/util/Vector.h>
+#include <org/allbinary/util/BasicArrayList.h>
+
+      
+#include <org/allbinary/util/BasicArrayListD.h>
+
+      
+#include <org/allbinary/logic/StdUtil.h>
 
       
 #include <org/allbinary/logic/communication/log/LogUtil.h>
@@ -146,12 +152,12 @@ this->result= "Needs to have the hashmap converted to string for other construct
 }
 
 
-    private: Vector getAllPossibleKeys(){
+    private: BasicArrayList getAllPossibleKeys(){
 
     PaymentTransactionKeysFactory paymentTransactionKeysFactory = PaymentTransactionKeysFactory::getInstance();;
     
 
-    Vector verisignResponseKeys = Vector();;
+    BasicArrayList verisignResponseKeys = BasicArrayListD();;
     
 verisignResponseKeys.add(paymentTransactionKeysFactory.RESULT.toString());
     
@@ -206,15 +212,15 @@ verisignResponseKeys.add(paymentTransactionKeysFactory.EXCEPTION7.toString());
 }
 
 
-    public: Vector getValues(){
+    public: BasicArrayList getValues(){
 
-    Vector keyVector = this->getAllPossibleKeys();;
+    BasicArrayList keyVector = this->getAllPossibleKeys();;
     
 
-    Vector valueVector = Vector();;
+    BasicArrayList valueVector = BasicArrayListD();;
     
 
-    int32_t size = keyVector.length;;
+    int32_t size = keyVector.size();;
     
 
 

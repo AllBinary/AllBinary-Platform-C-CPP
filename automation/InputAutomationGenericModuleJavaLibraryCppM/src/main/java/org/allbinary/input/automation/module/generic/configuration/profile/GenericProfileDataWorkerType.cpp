@@ -34,6 +34,9 @@
 #include <org/allbinary/input/media/image/InputImageType.h>
 
       
+#include <org/allbinary/logic/StdUtil.h>
+
+      
 #include <org/w3c/dom/Document.h>
 
       
@@ -66,7 +69,7 @@ class GenericProfileDataWorkerType
             : public Object
         : public GenericProfileDataWorkerTypeInterface {
 
-    private: static HashMap<any, any> hashMap = HashMap<any, any>();
+    private: static HashMap<any, any> hashMap = StdUtil::getInstance().createHashMap();
 
     public: static GenericProfileDataWorkerType SAVED_CAPTURE = SavedCaptureGenericProfileDataWorkerType::SAVED_CAPTURE;
 

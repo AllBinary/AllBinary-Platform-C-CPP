@@ -18,7 +18,10 @@
 
 
 
-#include <java/util/Vector.h>
+#include <org/allbinary/util/BasicArrayList.h>
+
+      
+#include <org/allbinary/util/BasicArrayListD.h>
 
       
 #include <org/allbinary/business/user/commerce/money/payment/gateway/PaymentGatewayInterface.h>
@@ -53,7 +56,7 @@ class PaymentGatewayEntityInterface: public BasicDataTableInterface {
 
     PaymentGatewayInterface getPaymentGatewayInterface(std::string storeName, BasicPaymentType paymentType)
 
-    Vector findPaymentTypeVectorByStore(std::string storeName)
+    BasicArrayList findPaymentTypeVectorByStore(std::string storeName)
 
     void remove(std::string storeName, BasicPaymentType paymentType)
 

@@ -28,6 +28,9 @@
 #include <org/allbinary/business/user/commerce/inventory/order/OrderHistoryData.h>
 
       
+#include <org/allbinary/logic/StdUtil.h>
+
+      
 
 
 
@@ -51,7 +54,7 @@ class UserEmailEventNameData
             : public Object
          {
 
-    private: static HashMap<any, any> userNameEvenNameHashMap = HashMap<any, any>();
+    private: static HashMap<any, any> userNameEvenNameHashMap = StdUtil::getInstance().createHashMap();
 
     private: static int32_t nextId = 0;
 

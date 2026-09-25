@@ -39,7 +39,7 @@
 #include <org/allbinary/logic/io/NullCloseable.h>
 
       
-#include <org/allbinary/logic/NullUtil.h>
+#include <org/allbinary/logic/StdUtil.h>
 
       
 #include <org/allbinary/logic/communication/log/LogUtil.h>
@@ -257,7 +257,7 @@ stringBuilder.append(CommonSeps::getInstance().NEW_LINE);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return NullUtil::getInstance().NULL_TABLE;
+                        return StdUtil::getInstance().NULL_TABLE;
     
 }
 

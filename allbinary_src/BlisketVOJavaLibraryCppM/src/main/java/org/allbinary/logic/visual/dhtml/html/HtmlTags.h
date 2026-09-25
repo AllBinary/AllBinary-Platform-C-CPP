@@ -23,7 +23,13 @@
 
             #include "../../../../../../java/lang/Object.h"
         
-#include <java/util/Vector.h>
+#include <org/allbinary/util/BasicArrayList.h>
+
+      
+#include <org/allbinary/util/BasicArrayListD.h>
+
+      
+#include <org/allbinary/logic/StdUtil.h>
 
       
 
@@ -50,7 +56,7 @@ class HtmlTags
             : public Object
          {
 
-    private: Vector htmlTagVector;
+    private: BasicArrayList htmlTagVector;
 
 public: HtmlTags();
 

@@ -22,6 +22,9 @@
         
             #include "../../../../../../java/lang/Exception.h"
         
+#include <jsinterop/annotations/JsType.h>
+
+      
 #include <org/allbinary/input/motion/gesture/MotionGestureInput.h>
 
       
@@ -85,8 +88,6 @@ class GameMotionGestureListener
     private: BasicArrayList motionGestureCollection = BasicArrayListD();
 
     private: BasicArrayList touchGestureCollection = BasicArrayListD();
-
-    private: BasicArrayList scrolledGestureCollection = BasicArrayListD();
 
     private: CompleteMotionGestureListenerInterface signed;
 

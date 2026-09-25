@@ -30,7 +30,10 @@
 #include <java/util/HashMap.h>
 
       
-#include <java/util/Vector.h>
+#include <org/allbinary/util/BasicArrayList.h>
+
+      
+#include <org/allbinary/util/BasicArrayListD.h>
 
       
 #include <org/allbinary/business/entry/EntryData.h>
@@ -40,6 +43,9 @@
 
       
 #include <org/allbinary/data/generator/ProductIdGenerator.h>
+
+      
+#include <org/allbinary/logic/StdUtil.h>
 
       
 #include <org/allbinary/logic/string/StringUtil.h>
@@ -137,7 +143,7 @@ this->retries= EMPTY_STRING;
 public: DownloadableItem(HashMap<any, any> hashMap){
 this->id= hashMap.get(DownloadItemData::ID) as string;
     
-this->basicItemId= hashMap.get(BasicItemData::ID) as string;
+this->basicItemId= hashMap.get(BasicItemData::getInstance().ID) as string;
     
 this->enabled= hashMap.get(EntryData::getInstance().ENABLE) as string;
     
@@ -217,7 +223,7 @@ this->retries= hashMap.get(DownloadItemData::RETRIES) as string;
 }
 
 
-    public: Vector toVector(){
+    public: BasicArrayList toVector(){
 
     Calendar calendar = Calendar::getInstance();;
     
@@ -225,7 +231,7 @@ this->retries= hashMap.get(DownloadItemData::RETRIES) as string;
     std::string time = Long(calendar.getTimeInMillis()).toString();;
     
 
-    Vector values = Vector();;
+    BasicArrayList values = BasicArrayListD();;
     
 values.add(getId());
     
@@ -268,11 +274,11 @@ values.add(time);
 
     public: HashMap<any, any> toHashMap(){
 
-    HashMap<any, any> values = HashMap<any, any>();;
+    HashMap<any, any> values = StdUtil::getInstance().createHashMap();;
     
 values.put(DownloadItemData::ID, this->getId());
     
-values.put(BasicItemData::ID, this->basicItemId);
+values.put(BasicItemData::getInstance().ID, this->basicItemId);
     
 values.put(EntryData::getInstance().ENABLE, this->enabled);
     

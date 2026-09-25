@@ -34,9 +34,6 @@
 #include <java/util/HashMap.h>
 
       
-#include <java/util/Set.h>
-
-      
 #include <org/allbinary/J2SEUtil.h>
 
       
@@ -46,6 +43,9 @@
 #include <org/allbinary/globals/URLGLOBALS.h>
 
       
+#include <org/allbinary/logic/StdUtil.h>
+
+      
 #include <org/allbinary/logic/communication/log/LogUtil.h>
 
       
@@ -53,9 +53,6 @@
 
       
 #include <org/allbinary/logic/string/StringUtil.h>
-
-      
-#include <org/allbinary/string/CommonStrings.h>
 
       
 #include <org/allbinary/logic/communication/log/config/type/LogConfigTypes.h>

@@ -32,6 +32,9 @@
 #include <org/allbinary/data/tree/dom/ModDomHelper.h>
 
       
+#include <org/allbinary/logic/StdUtil.h>
+
+      
 #include <org/allbinary/logic/communication/http/request/HttpRequestUtil.h>
 
       
@@ -379,7 +382,7 @@ stringBuffer.append("Logo is not valid.");
     StringUtil stringUtil = StringUtil::getInstance();;
     
 
-    HashMap<any, any> hashMap = HashMap<any, any>();;
+    HashMap<any, any> hashMap = StdUtil::getInstance().createHashMap();;
     
 hashMap.put(LogoData::getInstance().IMAGE, stringUtil.EMPTY_STRING);
     

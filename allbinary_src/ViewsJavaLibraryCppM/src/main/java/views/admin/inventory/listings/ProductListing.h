@@ -38,7 +38,10 @@
 #include <java/util/Set.h>
 
       
-#include <java/util/Vector.h>
+#include <org/allbinary/util/BasicArrayList.h>
+
+      
+#include <org/allbinary/util/BasicArrayListD.h>
 
       
 #include <org/allbinary/business/context/modules/storefront/StoreFrontInterface.h>
@@ -60,6 +63,9 @@
 
       
 #include <org/allbinary/globals/URLGLOBALS.h>
+
+      
+#include <org/allbinary/logic/StdUtil.h>
 
       
 #include <org/allbinary/logic/communication/log/LogUtil.h>
@@ -159,6 +165,8 @@ class ProductListing
 
     private: const Directory directory = Directory::getInstance();
 
+    protected: const BasicItemData basicItemData = BasicItemData::getInstance();
+
     private: StoreFrontsEntity storeFronts;
 
     private: StaticPagesEntity staticPages;
@@ -181,7 +189,7 @@ public: ProductListing(SearchRequest searchRequest);
 
                 //@Throws(Exception.constructor)
             
-    private: void create(std::string keywordData, HashMap<any, any> keywordFilenameHashMap, Vector vector, AbPath staticPath);
+    private: void create(std::string keywordData, HashMap<any, any> keywordFilenameHashMap, BasicArrayList vector, AbPath staticPath);
 
     private: void addStaticPageInfoToDatabase(StoreFrontInterface storeFront, HashMap<any, any> keywordFilenameHashMap);
 

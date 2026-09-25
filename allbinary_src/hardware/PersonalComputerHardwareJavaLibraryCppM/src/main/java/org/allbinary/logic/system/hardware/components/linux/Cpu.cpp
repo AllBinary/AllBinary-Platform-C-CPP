@@ -31,6 +31,9 @@
 #include <java/util/HashMap.h>
 
       
+#include <org/allbinary/logic/StdUtil.h>
+
+      
 #include <org/allbinary/logic/communication/log/LogUtil.h>
 
       
@@ -159,7 +162,7 @@ this->init(this->CPUFILE);
     
 lineNumberReader= LineNumberReader(fileReader);
     
-this->cpuHashMap= HashMap<any, any>();
+this->cpuHashMap= StdUtil::getInstance().createHashMap();
     
 
                         if(lineNumberReader == 
@@ -174,7 +177,7 @@ this->cpuHashMap= HashMap<any, any>();
                         if(LogConfigTypes::LOGGING.contains(LogConfigTypeFactory::getInstance().OS))
                         
                                     {
-                                    this->logUtil.putF(StringMaker().append("Cpu File Vector Size: ").appendint(fileVector.size()).toString(), this, this->commonStrings.CONSTRUCTOR);
+                                    this->logUtil.putF(StringMaker().append("Cpu File BasicArrayList Size: ").appendint(fileVector.size()).toString(), this, this->commonStrings.CONSTRUCTOR);
     
 
                                     }

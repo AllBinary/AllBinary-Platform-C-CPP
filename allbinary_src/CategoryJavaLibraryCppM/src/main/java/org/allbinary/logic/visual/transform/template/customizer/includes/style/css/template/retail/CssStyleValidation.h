@@ -26,10 +26,16 @@
 #include <java/util/HashMap.h>
 
       
-#include <java/util/Vector.h>
+#include <org/allbinary/util/BasicArrayList.h>
+
+      
+#include <org/allbinary/util/BasicArrayListD.h>
 
       
 #include <org/allbinary/data/tree/dom/DomNodeInterface.h>
+
+      
+#include <org/allbinary/logic/StdUtil.h>
 
       
 #include <org/allbinary/logic/communication/log/LogUtil.h>
@@ -82,7 +88,7 @@ class CssStyleValidation: public Validation, public DomNodeInterface {
 
     protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    protected: Vector cssStyleElementVector;
+    protected: BasicArrayList cssStyleElementVector;
 
 public: CssStyleValidation();
 

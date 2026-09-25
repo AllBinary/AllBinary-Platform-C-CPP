@@ -43,6 +43,9 @@
 #include <org/allbinary/business/user/commerce/money/payment/gateway/PaymentGatewayData.h>
 
       
+#include <org/allbinary/logic/StdUtil.h>
+
+      
 #include <org/allbinary/logic/communication/http/request/AbResponseHandler.h>
 
       
@@ -233,7 +236,7 @@ this->storeName= value;
                         if(true)
                         
                                     {
-                                    this->propertiesHashMap= HashMap<any, any>();
+                                    this->propertiesHashMap= StdUtil::getInstance().createHashMap();
     
 this->propertiesHashMap.put(StoreFrontData::getInstance().NAME, this->storeName);
     

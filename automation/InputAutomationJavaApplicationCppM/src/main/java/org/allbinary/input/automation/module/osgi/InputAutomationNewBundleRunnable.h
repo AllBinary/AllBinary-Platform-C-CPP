@@ -67,6 +67,9 @@
 #include <bundle/input/automation/InputAutomationBundleActivator.h>
 
       
+#include <org/allbinary/logic/StdUtil.h>
+
+      
 #include <org/allbinary/logic/communication/log/LogUtil.h>
 
       

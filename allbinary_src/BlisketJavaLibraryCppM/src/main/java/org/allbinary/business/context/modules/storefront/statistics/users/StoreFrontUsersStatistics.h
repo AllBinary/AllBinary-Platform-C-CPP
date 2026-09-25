@@ -35,7 +35,10 @@
 #include <java/util/Set.h>
 
       
-#include <java/util/Vector.h>
+#include <org/allbinary/util/BasicArrayList.h>
+
+      
+#include <org/allbinary/util/BasicArrayListD.h>
 
       
 #include <org/allbinary/business/context/modules/storefront/StoreFrontInterface.h>
@@ -51,6 +54,9 @@
 
       
 #include <org/allbinary/data/tables/user/UserEntityInterface.h>
+
+      
+#include <org/allbinary/logic/StdUtil.h>
 
       
 
@@ -92,7 +98,7 @@ public: StoreFrontUsersStatistics(StoreFrontInterface storeFrontInterface);
 
     public: HashMap<any, any> toHashMap();
 
-    public: Vector toVector();
+    public: BasicArrayList toVector();
 
     public: Object* getKey();
 

@@ -22,7 +22,10 @@
         
             #include "../../../../../../../../../java/lang/Exception.h"
         
-#include <java/util/Vector.h>
+#include <org/allbinary/util/BasicArrayList.h>
+
+      
+#include <org/allbinary/util/BasicArrayListD.h>
 
       
 #include <org/allbinary/business/context/modules/storefront/StoreFrontFactory.h>
@@ -32,6 +35,9 @@
 
       
 #include <org/allbinary/data/tree/dom/DomNodeInterface.h>
+
+      
+#include <org/allbinary/logic/StdUtil.h>
 
       
 #include <org/allbinary/logic/communication/log/LogUtil.h>
@@ -87,12 +93,12 @@ class MetasValidation: public Validation, public DomNodeInterface {
 
     private: StoreFrontInterface storeFrontInterface;
 
-    private: Vector metaValidationVector;
+    private: BasicArrayList metaValidationVector;
 
 public: MetasValidation(std::string storeName){
 this->storeFrontInterface= StoreFrontFactory::getInstance(storeName);
     
-this->metaValidationVector= Vector();
+this->metaValidationVector= BasicArrayListD();
     
 
     std::string contentValue = this->storeFrontInterface.getName() +" E-Commerce Site";;
@@ -223,7 +229,7 @@ public: MetasValidation(Document document){
     Node node = document.createElement(HtmlMetasData::getInstance().NAME);;
     
 
-    std::vector<MetaValidation> metaArray = this->metaValidationVector.toArray({}) as MetaValidation[];;
+    std::vector<MetaValidation> metaArray = this->metaValidationVector.toArrayType(new Array(this->metaValidationVector.size())) as MetaValidation[];;
     
 
     int32_t size = metaArray.size();;

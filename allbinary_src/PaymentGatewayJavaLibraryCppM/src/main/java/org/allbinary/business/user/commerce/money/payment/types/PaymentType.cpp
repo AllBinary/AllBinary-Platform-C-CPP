@@ -25,7 +25,10 @@
 #include <java/util/HashMap.h>
 
       
-#include <java/util/Vector.h>
+#include <org/allbinary/util/BasicArrayList.h>
+
+      
+#include <org/allbinary/util/BasicArrayListD.h>
 
       
 #include <org/allbinary/business/user/commerce/money/payment/gateway/PaymentGatewayData.h>
@@ -35,6 +38,9 @@
 
       
 #include <org/allbinary/business/user/commerce/money/payment/gateway/transaction/PaymentTransactionInterfaceFactoryInterface.h>
+
+      
+#include <org/allbinary/logic/StdUtil.h>
 
       
 
@@ -148,11 +154,11 @@ PaymentTypeUtil::getInstance().add(this);
 }
 
 
-    public: Vector toVector(){
+    public: BasicArrayList toVector(){
 
-    Vector vector = Vector();;
+    BasicArrayList vector = BasicArrayListD();;
     
-vector.addAll(this->getBasicPaymentType().toVector());
+vector.addAllList(this->getBasicPaymentType().toVector());
     
 
                         if(this->paymentTransactionInterfaceFactoryInterface != 
@@ -187,7 +193,7 @@ vector.addAll(this->getBasicPaymentType().toVector());
 
     public: HashMap<any, any> toHashMap(){
 
-    HashMap<any, any> hashMap = HashMap<any, any>();;
+    HashMap<any, any> hashMap = StdUtil::getInstance().createHashMap();;
     
 hashMap.putAll(this->getBasicPaymentType().toHashMap());
     

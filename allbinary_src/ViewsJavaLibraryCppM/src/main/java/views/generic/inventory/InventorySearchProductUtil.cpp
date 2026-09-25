@@ -22,7 +22,10 @@
         
             #include "../../../java/lang/Exception.h"
         
-#include <java/util/Vector.h>
+#include <org/allbinary/util/BasicArrayList.h>
+
+      
+#include <org/allbinary/util/BasicArrayListD.h>
 
       
 #include <org/allbinary/business/user/commerce/inventory/item/BasicItemView.h>
@@ -128,7 +131,7 @@ class InventorySearchProductUtil
                                     
     TransformDocumentInterface viewDocumentInterface = TransformStoreDocumentFactory::getInstance(searchRequest);;
     
-viewDocumentInterface.getBaseNode().appendChild(BasicItemView(itemInterface, Vector()).toXmlNode(viewDocumentInterface.getDoc()));
+viewDocumentInterface.getBaseNode().appendChild(BasicItemView(itemInterface, BasicArrayListD()).toXmlNode(viewDocumentInterface.getDoc()));
     
 
     std::string success = DomDocumentHelper::toString(viewDocumentInterface.getDoc());;

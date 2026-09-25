@@ -28,7 +28,10 @@
 #include <java/util/HashMap.h>
 
       
-#include <java/util/Vector.h>
+#include <org/allbinary/util/BasicArrayList.h>
+
+      
+#include <org/allbinary/util/BasicArrayListD.h>
 
       
 #include <org/allbinary/data/tree/dom/DomSearchHelper.h>
@@ -92,7 +95,7 @@ class StylesValidationFactory
 
                 //@Throws(Exception.constructor)
             
-    public: static Vector getInstance(HashMap<any, any> hashMap);
+    public: static BasicArrayList getInstance(HashMap<any, any> hashMap);
 
     protected: const LogUtil logUtil = LogUtil::getInstance();
 
@@ -100,7 +103,7 @@ private: StylesValidationFactory();
 
                 //@Throws(Exception.constructor)
             
-    public: Vector getInstance(Document document);
+    public: BasicArrayList getInstance(Document document);
 
 };
 

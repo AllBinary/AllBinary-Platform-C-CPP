@@ -30,13 +30,19 @@
 #include <java/util/Random.h>
 
       
-#include <java/util/Vector.h>
+#include <org/allbinary/util/BasicArrayList.h>
+
+      
+#include <org/allbinary/util/BasicArrayListD.h>
 
       
 #include <org/allbinary/business/entry/EntryData.h>
 
       
 #include <org/allbinary/business/user/UserData.h>
+
+      
+#include <org/allbinary/logic/StdUtil.h>
 
       
 #include <org/allbinary/logic/communication/log/LogUtil.h>
@@ -195,14 +201,14 @@ valid= Boolean::FALSE;
 }
 
 
-    public: Vector toVector(std::string secret){
+    public: BasicArrayList toVector(std::string secret){
 this->password= StringUtil::getInstance().getNonNull(this->password);
     
 
     int32_t random = Random().nextInt(SuperCrypt::KEYMAX);;
     
 
-    Vector vector = Vector();;
+    BasicArrayList vector = BasicArrayListD();;
     
 vector.add(Integer(random).toString());
     
@@ -223,7 +229,7 @@ vector.add(SuperCrypt(random).encrypt(this->password));
 this->password= StringUtil::getInstance().getNonNull(this->password);
     
 
-    HashMap<any, any> values = HashMap<any, any>();;
+    HashMap<any, any> values = StdUtil::getInstance().createHashMap();;
     
 
     int32_t random = Random().nextInt(SuperCrypt::KEYMAX);;

@@ -28,7 +28,10 @@
 #include <java/util/HashMap.h>
 
       
-#include <java/util/Vector.h>
+#include <org/allbinary/util/BasicArrayList.h>
+
+      
+#include <org/allbinary/util/BasicArrayListD.h>
 
       
 #include <org/allbinary/business/context/modules/storefront/StoreFrontData.h>
@@ -65,6 +68,9 @@
 
       
 #include <org/allbinary/globals/GLOBALS2.h>
+
+      
+#include <org/allbinary/logic/StdUtil.h>
 
       
 #include <org/allbinary/logic/communication/log/LogUtil.h>
@@ -124,27 +130,27 @@ class UserEntity: public AbSqlBean, public UserEntityInterface {
 
 public: UserEntity();
 
-    public: void insert(Vector values);
+    public: void insert(BasicArrayList values);
 
                 //@Throws(Exception.constructor)
             
-    public: Vector getAdministrators();
+    public: BasicArrayList getAdministrators();
 
                 //@Throws(Exception.constructor)
             
-    public: Vector getStoreManagers(StoreFrontInterface storeFrontInterface);
+    public: BasicArrayList getStoreManagers(StoreFrontInterface storeFrontInterface);
 
                 //@Throws(Exception.constructor)
             
-    public: Vector getCustomers();
+    public: BasicArrayList getCustomers();
 
                 //@Throws(Exception.constructor)
             
-    public: Vector getUsersWithRole(UserRole userRole);
+    public: BasicArrayList getUsersWithRole(UserRole userRole);
 
                 //@Throws(Exception.constructor)
             
-    public: Vector getUsers(StoreFrontInterface storeFrontInterface);
+    public: BasicArrayList getUsers(StoreFrontInterface storeFrontInterface);
 
                 //@Throws(Exception.constructor)
             

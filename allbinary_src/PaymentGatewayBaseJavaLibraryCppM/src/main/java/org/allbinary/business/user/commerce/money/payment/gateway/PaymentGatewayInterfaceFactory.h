@@ -37,6 +37,9 @@
 #include <org/allbinary/business/user/commerce/money/payment/types/BasicPaymentTypeUtil.h>
 
       
+#include <org/allbinary/logic/StdUtil.h>
+
+      
 #include <org/allbinary/logic/communication/http/request/RequestParams.h>
 
       

@@ -31,7 +31,10 @@
 #include <java/util/HashMap.h>
 
       
-#include <java/util/Vector.h>
+#include <org/allbinary/util/BasicArrayList.h>
+
+      
+#include <org/allbinary/util/BasicArrayListD.h>
 
       
 #include <javax/servlet/http/HttpServletRequest.h>
@@ -59,6 +62,9 @@
 
       
 #include <org/allbinary/globals/URLGLOBALS.h>
+
+      
+#include <org/allbinary/logic/StdUtil.h>
 
       
 #include <org/allbinary/logic/communication/http/request/MultipartRequestParams.h>
@@ -118,6 +124,8 @@ class DownloadableInventoryItemView: public HttpStoreComponentView, public Reque
     public: static int32_t TYPE_ID = 11;
 
     protected: const LogUtil logUtil = LogUtil::getInstance();
+
+    protected: const BasicItemData basicItemData = BasicItemData::getInstance();
 
     protected: HttpServletRequest request;
 

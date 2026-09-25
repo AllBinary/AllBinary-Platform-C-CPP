@@ -26,7 +26,10 @@
 #include <java/util/HashMap.h>
 
       
-#include <java/util/Vector.h>
+#include <org/allbinary/util/BasicArrayList.h>
+
+      
+#include <org/allbinary/util/BasicArrayListD.h>
 
       
 #include <org/allbinary/business/context/modules/storefront/StoreFrontInterface.h>
@@ -64,23 +67,23 @@ class UserEntityInterface: public BasicDataTableInterface {
 
                 //@Throws(Exception.constructor)
             
-    Vector getAdministrators();
+    BasicArrayList getAdministrators();
 
                 //@Throws(Exception.constructor)
             
-    Vector getStoreManagers(StoreFrontInterface storeFrontInterface);
+    BasicArrayList getStoreManagers(StoreFrontInterface storeFrontInterface);
 
                 //@Throws(Exception.constructor)
             
-    Vector getCustomers();
+    BasicArrayList getCustomers();
 
                 //@Throws(Exception.constructor)
             
-    Vector getUsersWithRole(UserRole userRole);
+    BasicArrayList getUsersWithRole(UserRole userRole);
 
                 //@Throws(Exception.constructor)
             
-    Vector getUsers(StoreFrontInterface storeFrontInterface);
+    BasicArrayList getUsers(StoreFrontInterface storeFrontInterface);
 
                 //@Throws(Exception.constructor)
             
@@ -90,7 +93,7 @@ class UserEntityInterface: public BasicDataTableInterface {
 
     void deleteWhere(std::string key, std::string value);
 
-    void insert(Vector values);
+    void insert(BasicArrayList values);
 
     void update(std::string userName, HashMap<any, any> updatedValues);
 

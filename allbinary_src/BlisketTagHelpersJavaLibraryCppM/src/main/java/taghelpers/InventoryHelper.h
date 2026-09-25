@@ -103,6 +103,8 @@ class InventoryHelper: public TagHelper {
 
     protected: const LogUtil logUtil = LogUtil::getInstance();
 
+    protected: const BasicItemData basicItemData = BasicItemData::getInstance();
+
     private: WeblisketSession weblisketSession;
 
     private: HttpServletResponse response;

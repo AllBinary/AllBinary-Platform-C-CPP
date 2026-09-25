@@ -22,7 +22,10 @@
         
             #include "../../../../../../java/lang/Exception.h"
         
-#include <java/util/Vector.h>
+#include <org/allbinary/util/BasicArrayList.h>
+
+      
+#include <org/allbinary/util/BasicArrayListD.h>
 
       
 #include <org/allbinary/logic/communication/log/LogUtil.h>
@@ -101,10 +104,10 @@ private: StoreCustomizerComponentUtil(){
     CustomizerUtil customizerUtil = CustomizerUtil::getInstance();;
     
 
-    Vector allCustomizedViews = customizerUtil.getTransformInfoObjectConfigGroupComponentNodes(transformInfoInterface);;
+    BasicArrayList allCustomizedViews = customizerUtil.getTransformInfoObjectConfigGroupComponentNodes(transformInfoInterface);;
     
 
-    int32_t size = allCustomizedViews.length;;
+    int32_t size = allCustomizedViews.size();;
     
 
 
@@ -117,7 +120,7 @@ private: StoreCustomizerComponentUtil(){
     TransformInfo nextTransformInfoInterface = allCustomizedViews.get(index) as TransformInfo;;
     
 
-    Vector allViewsToBeModified = customizerUtil.getTransformInfoObjectConfigComponentNodesToCustomize(transformInfoInterface, nextTransformInfoInterface);;
+    BasicArrayList allViewsToBeModified = customizerUtil.getTransformInfoObjectConfigComponentNodesToCustomize(transformInfoInterface, nextTransformInfoInterface);;
     
 
                         if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEW))
@@ -143,12 +146,12 @@ this->generate(abeClientInformation, transformInfoInterface, allViewsToBeModifie
 
                 //@Throws(Exception.constructor)
             
-    private: void generate(AbeClientInformationInterface abeClientInformation, TransformInfoInterface transformInfoInterface, Vector allViewsToBeModifiedVector){
+    private: void generate(AbeClientInformationInterface abeClientInformation, TransformInfoInterface transformInfoInterface, BasicArrayList allViewsToBeModifiedVector){
 
     CustomizerUtil customizerUtil = CustomizerUtil::getInstance();;
     
 
-    int32_t size = allViewsToBeModifiedVector.length;;
+    int32_t size = allViewsToBeModifiedVector.size();;
     
 
 

@@ -35,7 +35,10 @@
 #include <java/util/HashMap.h>
 
       
-#include <java/util/Vector.h>
+#include <org/allbinary/util/BasicArrayList.h>
+
+      
+#include <org/allbinary/util/BasicArrayListD.h>
 
       
 #include <org/allbinary/business/entry/EntryData.h>
@@ -48,6 +51,9 @@
 
       
 #include <org/allbinary/data/generator/ProductIdGenerator.h>
+
+      
+#include <org/allbinary/logic/StdUtil.h>
 
       
 #include <org/allbinary/logic/communication/log/LogUtil.h>
@@ -93,6 +99,8 @@ class BasicItem
     protected: const LogUtil logUtil = LogUtil::getInstance();
 
     protected: const CommonStrings commonStrings = CommonStrings::getInstance();
+
+    protected: const BasicItemData basicItemData = BasicItemData::getInstance();
 
     protected: std::string itemId;
 
@@ -282,7 +290,7 @@ public: BasicItem();
 
     public: HashMap<any, any> toHashMap();
 
-    public: Vector toVector();
+    public: BasicArrayList toVector();
 
                 //@Throws(Exception.constructor)
             

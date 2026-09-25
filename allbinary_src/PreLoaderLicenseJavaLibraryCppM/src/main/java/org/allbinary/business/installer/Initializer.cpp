@@ -50,6 +50,9 @@
 #include <org/allbinary/business/init/db/UserDbInitInfo.h>
 
       
+#include <org/allbinary/logic/StdUtil.h>
+
+      
 #include <org/allbinary/logic/communication/log/LogUtil.h>
 
       
@@ -171,7 +174,7 @@ public: Initializer(Map map){
     StringMaker stringBuffer = StringMaker();;
     
 
-    HashMap<any, any> hashMap = HashMap<any, any>();;
+    HashMap<any, any> hashMap = StdUtil::getInstance().createHashMap();;
     
 
     Set keys = map.keySet();;

@@ -33,7 +33,10 @@
 #include <java/util/HashMap.h>
 
       
-#include <java/util/Vector.h>
+#include <org/allbinary/util/BasicArrayList.h>
+
+      
+#include <org/allbinary/util/BasicArrayListD.h>
 
       
 #include <org/allbinary/business/context/modules/storefront/StoreFrontData.h>
@@ -49,6 +52,9 @@
 
       
 #include <org/allbinary/globals/URLGLOBALS.h>
+
+      
+#include <org/allbinary/logic/StdUtil.h>
 
       
 #include <org/allbinary/logic/communication/log/LogUtil.h>
@@ -243,7 +249,7 @@ public: TransformInfo(std::string name, std::string objectFileName, std::string 
 
     public: HashMap<any, any> toHashMap();
 
-    public: java::util::Vector toVector();
+    public: BasicArrayList toVector();
 
     public: Object* getKey();
 

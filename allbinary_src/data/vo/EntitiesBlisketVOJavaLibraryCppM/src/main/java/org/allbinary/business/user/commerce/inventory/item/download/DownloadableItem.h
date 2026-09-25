@@ -33,7 +33,10 @@
 #include <java/util/HashMap.h>
 
       
-#include <java/util/Vector.h>
+#include <org/allbinary/util/BasicArrayList.h>
+
+      
+#include <org/allbinary/util/BasicArrayListD.h>
 
       
 #include <org/allbinary/business/entry/EntryData.h>
@@ -43,6 +46,9 @@
 
       
 #include <org/allbinary/data/generator/ProductIdGenerator.h>
+
+      
+#include <org/allbinary/logic/StdUtil.h>
 
       
 #include <org/allbinary/logic/string/StringUtil.h>
@@ -108,7 +114,7 @@ public: DownloadableItem(std::string id);
 
 public: DownloadableItem(HashMap<any, any> hashMap);
 
-    public: Vector toVector();
+    public: BasicArrayList toVector();
 
     public: HashMap<any, any> toHashMap();
 

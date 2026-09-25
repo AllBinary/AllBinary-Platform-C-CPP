@@ -25,7 +25,10 @@
 #include <java/awt/event/ActionEvent.h>
 
       
-#include <java/util/Vector.h>
+#include <org/allbinary/util/BasicArrayList.h>
+
+      
+#include <org/allbinary/util/BasicArrayListD.h>
 
       
 #include <javax/swing.h>
@@ -113,9 +116,9 @@ class BasicProfileActionScriptCondition: public ProfileActionScriptItem, public 
 
     protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: Vector profileActionProcessorInterfaceVector;
+    private: BasicArrayList profileActionProcessorInterfaceVector;
 
-    private: Vector profileActionConditionInterfaceVector;
+    private: BasicArrayList profileActionConditionInterfaceVector;
 
 public: BasicProfileActionScriptCondition(std::string label, Node node){
             super(label, node);
@@ -228,9 +231,9 @@ this->init();
 
 
     private: void init(){
-this->setProfileActionProcessorInterfaceVector(Vector());
+this->setProfileActionProcessorInterfaceVector(BasicArrayListD());
     
-this->setProfileActionConditionInterfaceVector(Vector());
+this->setProfileActionConditionInterfaceVector(BasicArrayListD());
     
 this->getJPopupMenu().add(this->getConditionJPopupMenu());
     
@@ -376,10 +379,10 @@ this->add(profileActionScriptNodeInterface);
     Node node = document.createElement(GenericProfileActionScriptConditionData::NAME);;
     
 
-    Vector profileActionConditionInterfaceVector = this->getProfileActionConditionInterfaceVector();;
+    BasicArrayList profileActionConditionInterfaceVector = this->getProfileActionConditionInterfaceVector();;
     
 
-    int32_t size = profileActionConditionInterfaceVector.length;;
+    int32_t size = profileActionConditionInterfaceVector.size();;
     
 
 
@@ -396,10 +399,10 @@ node.appendChild(profileActionConditionInterface.toXmlNode(document));
 }
 
 
-    Vector profileActionProcessorInterfaceVector = this->getProfileActionProcessorInterfaceVector();;
+    BasicArrayList profileActionProcessorInterfaceVector = this->getProfileActionProcessorInterfaceVector();;
     
 
-    int32_t size2 = profileActionProcessorInterfaceVector.length;;
+    int32_t size2 = profileActionProcessorInterfaceVector.size();;
     
 
 
@@ -424,7 +427,7 @@ node.appendChild(profileActionProcessorInterface.toXmlNode(document));
 }
 
 
-    public: Vector getProfileActionConditionInterfaceVector(){
+    public: BasicArrayList getProfileActionConditionInterfaceVector(){
 
 
 
@@ -434,7 +437,7 @@ node.appendChild(profileActionProcessorInterface.toXmlNode(document));
 }
 
 
-    public: void setProfileActionConditionInterfaceVector(Vector profileActionConditionInterfaceVector){
+    public: void setProfileActionConditionInterfaceVector(BasicArrayList profileActionConditionInterfaceVector){
 this->profileActionConditionInterfaceVector= profileActionConditionInterfaceVector;
     
 }
@@ -543,7 +546,7 @@ this->logUtil.put("Error", this, "actionPerformed", e);
 }
 
 
-    public: Vector getProfileActionProcessorInterfaceVector(){
+    public: BasicArrayList getProfileActionProcessorInterfaceVector(){
 
 
 
@@ -553,7 +556,7 @@ this->logUtil.put("Error", this, "actionPerformed", e);
 }
 
 
-    public: void setProfileActionProcessorInterfaceVector(Vector profileActionProcessorInterfaceVector){
+    public: void setProfileActionProcessorInterfaceVector(BasicArrayList profileActionProcessorInterfaceVector){
 this->profileActionProcessorInterfaceVector= profileActionProcessorInterfaceVector;
     
 }
@@ -574,10 +577,10 @@ JTreeInterfaceFactory::getInstance().getJTreeInterface().getActionScriptJTree().
             
     public: bool shouldProcess(Long frame){
 
-    Vector profileActionConditionInterfaceVector = this->getProfileActionConditionInterfaceVector();;
+    BasicArrayList profileActionConditionInterfaceVector = this->getProfileActionConditionInterfaceVector();;
     
 
-    int32_t size = profileActionConditionInterfaceVector.length;;
+    int32_t size = profileActionConditionInterfaceVector.size();;
     
 
 
@@ -619,10 +622,10 @@ JTreeInterfaceFactory::getInstance().getJTreeInterface().getActionScriptJTree().
 this->logUtil.putF(StringMaker().append("Start - Processing ").appendint(this->getProfileActionProcessorInterfaceVector().size()).append(" inputs").toString(), this, this->commonStrings.PROCESS);
     
 
-    Vector profileActionProcessorInterfaceVector = this->getProfileActionProcessorInterfaceVector();;
+    BasicArrayList profileActionProcessorInterfaceVector = this->getProfileActionProcessorInterfaceVector();;
     
 
-    int32_t size = profileActionProcessorInterfaceVector.length;;
+    int32_t size = profileActionProcessorInterfaceVector.size();;
     
 
 

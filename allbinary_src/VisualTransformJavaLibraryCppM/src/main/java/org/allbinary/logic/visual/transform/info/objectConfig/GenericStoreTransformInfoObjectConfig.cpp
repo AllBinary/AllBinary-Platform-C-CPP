@@ -29,6 +29,9 @@
 #include <org/allbinary/data/tree/dom/document/DomDocumentHelper.h>
 
       
+#include <org/allbinary/logic/StdUtil.h>
+
+      
 #include <org/allbinary/logic/communication/log/LogUtil.h>
 
       
@@ -219,7 +222,7 @@ hashMap.put(transformInfoObjectConfigData.VARKEY +TransformInfoData::getInstance
             
     private: HashMap<any, any> createHashMap(TransformInfoHttp transformInfoHttpStoreInterface, std::string objectConfigDocumentString){
 
-    HashMap<any, any> hashMap = HashMap<any, any>();;
+    HashMap<any, any> hashMap = StdUtil::getInstance().createHashMap();;
     
 
     std::string storeName = transformInfoHttpStoreInterface.getStoreName();;

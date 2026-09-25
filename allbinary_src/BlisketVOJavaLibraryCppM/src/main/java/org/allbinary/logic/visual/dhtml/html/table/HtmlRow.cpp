@@ -20,7 +20,13 @@
 
             #include <vector>
         
-#include <java/util/Vector.h>
+#include <org/allbinary/util/BasicArrayList.h>
+
+      
+#include <org/allbinary/util/BasicArrayListD.h>
+
+      
+#include <org/allbinary/logic/StdUtil.h>
 
       
 #include <org/allbinary/logic/string/StringUtil.h>
@@ -63,14 +69,14 @@ class HtmlRow: public HtmlTag {
 
     private: std::string after;
 
-    private: Vector htmlCellsVector;
+    private: BasicArrayList htmlCellsVector;
 
 public: HtmlRow(std::string before, std::string after){
 this->before= before.toCharArray().slice(0, ).join('');
     
 this->after= after.toCharArray().slice(0, ).join('');
     
-this->htmlCellsVector= Vector();
+this->htmlCellsVector= BasicArrayListD();
     
 }
 
@@ -107,7 +113,7 @@ this->numberOfColumns++;
     int32_t attributeSize = attributeKeys.size();;
     
 
-    int32_t cellSize = this->htmlCellsVector.length;;
+    int32_t cellSize = this->htmlCellsVector.size();;
     
 result= this->before;
     

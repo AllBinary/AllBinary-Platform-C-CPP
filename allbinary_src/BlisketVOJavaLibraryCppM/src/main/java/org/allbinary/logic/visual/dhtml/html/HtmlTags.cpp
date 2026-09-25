@@ -20,7 +20,13 @@
 
             #include "../../../../../../java/lang/Object.h"
         
-#include <java/util/Vector.h>
+#include <org/allbinary/util/BasicArrayList.h>
+
+      
+#include <org/allbinary/util/BasicArrayListD.h>
+
+      
+#include <org/allbinary/logic/StdUtil.h>
 
       
 
@@ -47,10 +53,10 @@ class HtmlTags
             : public Object
          {
 
-    private: Vector htmlTagVector;
+    private: BasicArrayList htmlTagVector;
 
 public: HtmlTags(){
-this->htmlTagVector= Vector();
+this->htmlTagVector= BasicArrayListD();
     
 }
 
@@ -76,7 +82,7 @@ this->htmlTagVector.add(htmlTag);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->htmlTagVector.length;;
+                        return this->htmlTagVector.size();;
     
 }
 

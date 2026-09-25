@@ -28,7 +28,10 @@
 #include <java/io/Serializable.h>
 
       
-#include <java/util/Vector.h>
+#include <org/allbinary/util/BasicArrayList.h>
+
+      
+#include <org/allbinary/util/BasicArrayListD.h>
 
       
 
@@ -54,14 +57,14 @@ class BasicUserRole
             : public Object
         : public Serializable {
 
-    private: static const Vector<any> roleVector = Vector<any>();
+    private: static const BasicArrayList roleVector = BasicArrayListD();
 
                 //@Throws(Exception.constructor)
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
     public: static BasicUserRole getRole(std::string role);
 
-    public: static Vector<any> getAll();
+    public: static BasicArrayList getAll();
 
     private: int32_t m_int_RoleId;
 

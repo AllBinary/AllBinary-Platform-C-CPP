@@ -20,7 +20,10 @@
 
             #include "../../../../java/lang/Exception.h"
         
-#include <java/util/Vector.h>
+#include <org/allbinary/util/BasicArrayList.h>
+
+      
+#include <org/allbinary/util/BasicArrayListD.h>
 
       
 #include <org/allbinary/business/context/modules/storefront/StoreFrontFactory.h>
@@ -140,7 +143,7 @@ public: AddTaxValidationView(TransformInfoInterface transformInfoInterface){
     ShippingAddressesEntity billingAddressesEntity = ShippingAddressesEntity(this->getWeblisketSession().getUserName());;
     
 
-    Vector streetAddressList = billingAddressesEntity.get();;
+    BasicArrayList streetAddressList = billingAddressesEntity.get();;
     
 
                         if(streetAddressList == 
@@ -158,7 +161,7 @@ public: AddTaxValidationView(TransformInfoInterface transformInfoInterface){
                                     }
                                 
 
-    int32_t size = streetAddressList.length;;
+    int32_t size = streetAddressList.size();;
     
 
 
@@ -257,10 +260,10 @@ public: AddTaxValidationView(TransformInfoInterface transformInfoInterface){
     ShippingAddressesEntity billingAddressesEntity = ShippingAddressesEntity(this->getWeblisketSession().getUserName());;
     
 
-    Vector streetAddressList = billingAddressesEntity.get();;
+    BasicArrayList streetAddressList = billingAddressesEntity.get();;
     
 
-    int32_t size = streetAddressList.length;;
+    int32_t size = streetAddressList.size();;
     
 
 

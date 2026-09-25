@@ -83,6 +83,8 @@ class BasketRequestHelper: public TagHelper {
 
     protected: const LogUtil logUtil = LogUtil::getInstance();
 
+    protected: const BasicItemData basicItemData = BasicItemData::getInstance();
+
     private: WeblisketSession weblisketSession;
 
     private: const StoreFrontInterface storeFrontInterface;
@@ -132,7 +134,7 @@ this->getFormData();
 
 
     private: void getFormData(){
-this->id= this->request.getParameter(BasicItemData::ID);
+this->id= this->request.getParameter(basicItemData.ID);
     
 this->num= this->request.getParameter(BasketData::ITEMTOTALINBASKET);
     

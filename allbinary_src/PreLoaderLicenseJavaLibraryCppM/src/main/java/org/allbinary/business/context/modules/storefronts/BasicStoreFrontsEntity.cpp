@@ -32,6 +32,9 @@
 #include <org/allbinary/business/init/db/UserDbInitInfo.h>
 
       
+#include <org/allbinary/logic/StdUtil.h>
+
+      
 #include <org/allbinary/logic/communication/log/LogUtil.h>
 
       
@@ -77,7 +80,7 @@ this->setTable(this->tableName);
             
     public: BasicStoreFrontInterface getStoreFrontInterface(std::string name){
 
-    HashMap<any, any> keysAndValues = HashMap<any, any>();;
+    HashMap<any, any> keysAndValues = StdUtil::getInstance().createHashMap();;
     
 keysAndValues.put(StoreFrontData::getInstance().NAME, name);
     

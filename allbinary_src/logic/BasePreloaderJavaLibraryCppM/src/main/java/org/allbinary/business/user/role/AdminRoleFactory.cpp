@@ -20,7 +20,10 @@
 
             #include "../../../../../java/lang/Object.h"
         
-#include <java/util/Vector.h>
+#include <org/allbinary/util/BasicArrayList.h>
+
+      
+#include <org/allbinary/util/BasicArrayListD.h>
 
       
 
@@ -59,27 +62,27 @@ class AdminRoleFactory
 }
 
 
-    private: const Vector<any> adminRoles = Vector<any>();
+    private: const BasicArrayList adminRoles = BasicArrayListD();
 
-    private: const Vector<any> storeAdminRoles = Vector<any>();
+    private: const BasicArrayList storeAdminRoles = BasicArrayListD();
 
-    private: const Vector<any> storeManagementRoles = Vector<any>();
+    private: const BasicArrayList storeManagementRoles = BasicArrayListD();
 
-    private: const Vector<any> productManagementRoles = Vector<any>();
+    private: const BasicArrayList productManagementRoles = BasicArrayListD();
 
-    private: const Vector<any> reviewManagementRoles = Vector<any>();
+    private: const BasicArrayList reviewManagementRoles = BasicArrayListD();
 
-    private: const Vector<any> customerManagementRoles = Vector<any>();
+    private: const BasicArrayList customerManagementRoles = BasicArrayListD();
 
-    private: const Vector<any> workflowManagementRoles = Vector<any>();
+    private: const BasicArrayList workflowManagementRoles = BasicArrayListD();
 
-    private: const Vector<any> orderManagementRoles = Vector<any>();
+    private: const BasicArrayList orderManagementRoles = BasicArrayListD();
 
-    private: const Vector<any> adjusterManagementRoles = Vector<any>();
+    private: const BasicArrayList adjusterManagementRoles = BasicArrayListD();
 
-    private: const Vector<any> shippingManagementRoles = Vector<any>();
+    private: const BasicArrayList shippingManagementRoles = BasicArrayListD();
 
-    private: const Vector<any> webManagementRoles = Vector<any>();
+    private: const BasicArrayList webManagementRoles = BasicArrayListD();
 
 private: AdminRoleFactory(){
 
@@ -158,7 +161,7 @@ this->webManagementRoles.add(basicUserRoleFactory.VIEWEDITOR);
 }
 
 
-    public: Vector<any> getProductManagementRoles(){
+    public: BasicArrayList getProductManagementRoles(){
 
 
 
@@ -168,7 +171,7 @@ this->webManagementRoles.add(basicUserRoleFactory.VIEWEDITOR);
 }
 
 
-    public: Vector<any> getAdminRoles(){
+    public: BasicArrayList getAdminRoles(){
 
 
 
@@ -178,7 +181,7 @@ this->webManagementRoles.add(basicUserRoleFactory.VIEWEDITOR);
 }
 
 
-    public: Vector<any> getStoreAdminRoles(){
+    public: BasicArrayList getStoreAdminRoles(){
 
 
 
@@ -188,7 +191,7 @@ this->webManagementRoles.add(basicUserRoleFactory.VIEWEDITOR);
 }
 
 
-    public: Vector<any> getStoreManagementRoles(){
+    public: BasicArrayList getStoreManagementRoles(){
 
 
 
@@ -198,7 +201,7 @@ this->webManagementRoles.add(basicUserRoleFactory.VIEWEDITOR);
 }
 
 
-    public: Vector<any> getReviewManagementRoles(){
+    public: BasicArrayList getReviewManagementRoles(){
 
 
 
@@ -208,7 +211,7 @@ this->webManagementRoles.add(basicUserRoleFactory.VIEWEDITOR);
 }
 
 
-    public: Vector<any> getCustomerManagementRoles(){
+    public: BasicArrayList getCustomerManagementRoles(){
 
 
 
@@ -218,7 +221,7 @@ this->webManagementRoles.add(basicUserRoleFactory.VIEWEDITOR);
 }
 
 
-    public: Vector<any> getWorkflowManagementRoles(){
+    public: BasicArrayList getWorkflowManagementRoles(){
 
 
 
@@ -228,7 +231,7 @@ this->webManagementRoles.add(basicUserRoleFactory.VIEWEDITOR);
 }
 
 
-    public: Vector<any> getWebManagementRoles(){
+    public: BasicArrayList getWebManagementRoles(){
 
 
 
@@ -238,7 +241,7 @@ this->webManagementRoles.add(basicUserRoleFactory.VIEWEDITOR);
 }
 
 
-    public: Vector<any> getShippingManagementRoles(){
+    public: BasicArrayList getShippingManagementRoles(){
 
 
 
@@ -248,7 +251,7 @@ this->webManagementRoles.add(basicUserRoleFactory.VIEWEDITOR);
 }
 
 
-    public: Vector<any> getAdjusterManagementRoles(){
+    public: BasicArrayList getAdjusterManagementRoles(){
 
 
 
@@ -258,7 +261,7 @@ this->webManagementRoles.add(basicUserRoleFactory.VIEWEDITOR);
 }
 
 
-    public: Vector<any> getOrderManagementRoles(){
+    public: BasicArrayList getOrderManagementRoles(){
 
 
 

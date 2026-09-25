@@ -35,6 +35,9 @@
 #include <jsinterop/annotations/JsConstructor.h>
 
       
+#include <org/allbinary/logic/StdUtil.h>
+
+      
 
 
 
@@ -58,7 +61,7 @@ class Feature
             : public Object
          {
 
-    private: static Hashtable<any, any> hashtable = Hashtable<any, any>();
+    private: static Hashtable<any, any> hashtable = StdUtil::getInstance().createHashtable();
 
     public: static Feature getInstance(std::string name){
 

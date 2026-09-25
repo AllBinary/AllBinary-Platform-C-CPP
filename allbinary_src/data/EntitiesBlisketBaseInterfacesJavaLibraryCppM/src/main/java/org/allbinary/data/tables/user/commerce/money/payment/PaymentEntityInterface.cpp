@@ -20,7 +20,10 @@
 
             #include "../../../../../../../../java/lang/Integer.h"
         
-#include <java/util/Vector.h>
+#include <org/allbinary/util/BasicArrayList.h>
+
+      
+#include <org/allbinary/util/BasicArrayListD.h>
 
       
 #include <org/allbinary/business/user/commerce/money/payment/PaymentInterface.h>
@@ -56,13 +59,13 @@ class PaymentEntityInterface: public BasicDataTableInterface {
 
     PaymentInterface getDefault(std::string userName)
 
-    Vector get(std::string userName)
+    BasicArrayList get(std::string userName)
 
     void add(std::string userName, PaymentInterface paymentInterface)
 
     void remove(std::string userName, Integer index)
 
-    void insert(Vector values)
+    void insert(BasicArrayList values)
 
 };
 

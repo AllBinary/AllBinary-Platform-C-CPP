@@ -26,6 +26,9 @@
 #include <java/util/Hashtable.h>
 
       
+#include <org/allbinary/logic/StdUtil.h>
+
+      
 
 
 
@@ -53,7 +56,7 @@ class ThreedObjResources
 
     public: static ThreedObjResources getInstance();
 
-    public: const Hashtable<any, any> hashtable = Hashtable<any, any>();
+    public: const Hashtable<any, any> hashtable = StdUtil::getInstance().createHashtable();
 
     public: std::string get(std::string resourceName);
 

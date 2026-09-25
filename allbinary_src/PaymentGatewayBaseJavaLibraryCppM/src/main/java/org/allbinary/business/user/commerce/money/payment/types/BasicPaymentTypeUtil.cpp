@@ -22,7 +22,13 @@
         
             #include "../../../../../../../../java/lang/Exception.h"
         
-#include <java/util/Vector.h>
+#include <org/allbinary/util/BasicArrayList.h>
+
+      
+#include <org/allbinary/util/BasicArrayListD.h>
+
+      
+#include <org/allbinary/logic/StdUtil.h>
 
       
 
@@ -73,7 +79,7 @@ private: BasicPaymentTypeUtil(){
 }
 
 
-    private: Vector paymentTypeVector = Vector();
+    private: BasicArrayList paymentTypeVector = BasicArrayListD();
 
     public: void add(BasicPaymentType paymentType){
 this->paymentTypeVector.add(paymentType);
@@ -85,7 +91,7 @@ this->paymentTypeVector.add(paymentType);
             
     public: BasicPaymentType get(std::string paymentTypeString){
 
-    int32_t size = this->paymentTypeVector.length;;
+    int32_t size = this->paymentTypeVector.size();;
     
 
 
@@ -130,12 +136,12 @@ this->paymentTypeVector.add(paymentType);
 }
 
 
-    public: Vector difference(Vector a_PaymentTypeVector){
+    public: BasicArrayList difference(BasicArrayList a_PaymentTypeVector){
 
-    Vector diff = Vector();;
+    BasicArrayList diff = BasicArrayListD();;
     
 
-    int32_t size = this->paymentTypeVector.length;;
+    int32_t size = this->paymentTypeVector.size();;
     
 
 

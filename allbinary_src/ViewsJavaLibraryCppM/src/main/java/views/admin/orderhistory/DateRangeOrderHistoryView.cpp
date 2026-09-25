@@ -25,7 +25,10 @@
 #include <java/util/Calendar.h>
 
       
-#include <java/util/Vector.h>
+#include <org/allbinary/util/BasicArrayList.h>
+
+      
+#include <org/allbinary/util/BasicArrayListD.h>
 
       
 #include <javax/servlet/http/HttpServletRequest.h>
@@ -286,10 +289,10 @@ this->logUtil.putF(stringBuffer.toString(), this, "view");
                                     }
                                 
 
-    Vector orderHistoryVector = OrderHistoryEntityFactory::getInstance().getOrders(OrderHistoryData::PREPROCESSING, fromDate, toDate);;
+    BasicArrayList orderHistoryVector = OrderHistoryEntityFactory::getInstance().getOrders(OrderHistoryData::PREPROCESSING, fromDate, toDate);;
     
 
-    int32_t size = orderHistoryVector.length;;
+    int32_t size = orderHistoryVector.size();;
     
 
 
@@ -322,10 +325,10 @@ node.appendChild(orderHistory.toXmlNode(document));
                                     }
                                 
 
-    Vector orderHistoryVector = OrderHistoryEntityFactory::getInstance().getOrders(OrderHistoryData::SHIPPED, fromDate, toDate);;
+    BasicArrayList orderHistoryVector = OrderHistoryEntityFactory::getInstance().getOrders(OrderHistoryData::SHIPPED, fromDate, toDate);;
     
 
-    int32_t size = orderHistoryVector.length;;
+    int32_t size = orderHistoryVector.size();;
     
 
 
@@ -358,10 +361,10 @@ node.appendChild(orderHistory.toXmlNode(document));
                                     }
                                 
 
-    Vector orderHistoryVector = OrderHistoryEntityFactory::getInstance().getOrders(OrderHistoryData::PARTIALLYSHIPPED, fromDate, toDate);;
+    BasicArrayList orderHistoryVector = OrderHistoryEntityFactory::getInstance().getOrders(OrderHistoryData::PARTIALLYSHIPPED, fromDate, toDate);;
     
 
-    int32_t size = orderHistoryVector.length;;
+    int32_t size = orderHistoryVector.size();;
     
 
 
@@ -394,10 +397,10 @@ node.appendChild(orderHistory.toXmlNode(document));
                                     }
                                 
 
-    Vector orderHistoryVector = OrderHistoryEntityFactory::getInstance().getOrders(OrderHistoryData::PROCESSING, fromDate, toDate);;
+    BasicArrayList orderHistoryVector = OrderHistoryEntityFactory::getInstance().getOrders(OrderHistoryData::PROCESSING, fromDate, toDate);;
     
 
-    int32_t size = orderHistoryVector.length;;
+    int32_t size = orderHistoryVector.size();;
     
 
 
@@ -430,10 +433,10 @@ node.appendChild(orderHistory.toXmlNode(document));
                                     }
                                 
 
-    Vector orderHistoryVector = OrderHistoryEntityFactory::getInstance().getOrders(OrderHistoryData::CANCELLED, fromDate, toDate);;
+    BasicArrayList orderHistoryVector = OrderHistoryEntityFactory::getInstance().getOrders(OrderHistoryData::CANCELLED, fromDate, toDate);;
     
 
-    int32_t size = orderHistoryVector.length;;
+    int32_t size = orderHistoryVector.size();;
     
 
 

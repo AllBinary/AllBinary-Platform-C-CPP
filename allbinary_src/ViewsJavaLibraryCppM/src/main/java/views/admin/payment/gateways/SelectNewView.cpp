@@ -20,7 +20,10 @@
 
             #include "../../../../java/lang/Exception.h"
         
-#include <java/util/Vector.h>
+#include <org/allbinary/util/BasicArrayList.h>
+
+      
+#include <org/allbinary/util/BasicArrayListD.h>
 
       
 #include <org/allbinary/business/user/commerce/money/payment/types/BasicPaymentTypeUtil.h>
@@ -83,10 +86,10 @@ public: SelectNewView(TransformInfoInterface transformInfoInterface){
     PaymentGatewayEntityInterface paymentGatewayEntityInterface = PaymentGatewayEntityFactory::getInstance();;
     
 
-    Vector existingGateways = paymentGatewayEntityInterface.findPaymentTypeVectorByStore(this->getPaymentGatewayPrimaryKey().getStoreName());;
+    BasicArrayList existingGateways = paymentGatewayEntityInterface.findPaymentTypeVectorByStore(this->getPaymentGatewayPrimaryKey().getStoreName());;
     
 
-    Vector allGatewaysLessExisting = BasicPaymentTypeUtil::getInstance().difference(existingGateways);;
+    BasicArrayList allGatewaysLessExisting = BasicPaymentTypeUtil::getInstance().difference(existingGateways);;
     
 
 

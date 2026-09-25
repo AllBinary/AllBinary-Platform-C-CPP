@@ -29,6 +29,9 @@
 #include <org/allbinary/data/tree/dom/document/DomDocumentHelper.h>
 
       
+#include <org/allbinary/logic/StdUtil.h>
+
+      
 #include <org/allbinary/logic/communication/log/LogUtil.h>
 
       
@@ -129,7 +132,7 @@ this->setDocument(this->generate(this->toXmlDoc()));
     std::string viewName = this->getTransformInfoInterface().getName();;
     
 
-    HashMap<any, any> hashMap = HashMap<any, any>();;
+    HashMap<any, any> hashMap = StdUtil::getInstance().createHashMap();;
     
 
     std::string VARKEY = TransformInfoObjectConfigData::getInstance().VARKEY;;

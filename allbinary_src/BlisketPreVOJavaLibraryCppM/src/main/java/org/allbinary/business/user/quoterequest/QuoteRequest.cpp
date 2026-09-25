@@ -30,7 +30,10 @@
 #include <java/util/HashMap.h>
 
       
-#include <java/util/Vector.h>
+#include <org/allbinary/util/BasicArrayList.h>
+
+      
+#include <org/allbinary/util/BasicArrayListD.h>
 
       
 #include <javax/servlet/http/HttpServletRequest.h>
@@ -46,6 +49,9 @@
 
       
 #include <org/allbinary/data/generator/QuoteRequestIdGenerator.h>
+
+      
+#include <org/allbinary/logic/StdUtil.h>
 
       
 #include <org/allbinary/logic/communication/log/LogUtil.h>
@@ -344,9 +350,9 @@ this->setComments(hashMap.get(quoteRequestData.COMMENTS) as string);
 }
 
 
-    public: Vector toVector(){
+    public: BasicArrayList toVector(){
 
-    Vector values = Vector();;
+    BasicArrayList values = BasicArrayListD();;
     
 values.add(this->id);
     
@@ -386,7 +392,7 @@ values.add(time);
     QuoteRequestData quoteRequestData = QuoteRequestData::getInstance();;
     
 
-    HashMap<any, any> values = HashMap<any, any>();;
+    HashMap<any, any> values = StdUtil::getInstance().createHashMap();;
     
 values.put(UserData::USERNAME, userName);
     

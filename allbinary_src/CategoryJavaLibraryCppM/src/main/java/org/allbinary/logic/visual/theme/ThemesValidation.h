@@ -26,10 +26,16 @@
 #include <java/util/HashMap.h>
 
       
-#include <java/util/Vector.h>
+#include <org/allbinary/util/BasicArrayList.h>
+
+      
+#include <org/allbinary/util/BasicArrayListD.h>
 
       
 #include <org/allbinary/data/tree/dom/DomNodeInterface.h>
+
+      
+#include <org/allbinary/logic/StdUtil.h>
 
       
 #include <org/allbinary/logic/control/validate/Validation.h>
@@ -63,7 +69,7 @@
 
 class ThemesValidation: public Validation, public DomNodeInterface {
 
-    private: Vector themeVector;
+    private: BasicArrayList themeVector;
 
 public: ThemesValidation();
 

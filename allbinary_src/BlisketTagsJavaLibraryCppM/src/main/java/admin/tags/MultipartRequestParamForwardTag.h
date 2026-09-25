@@ -26,7 +26,10 @@
 #include <java/util/HashMap.h>
 
       
-#include <java/util/Vector.h>
+#include <org/allbinary/util/BasicArrayList.h>
+
+      
+#include <org/allbinary/util/BasicArrayListD.h>
 
       
 #include <javax/servlet/jsp/JspTagException.h>
@@ -36,6 +39,9 @@
 
       
 #include <admin/taghelpers/MultipartRequestParamForwardHelper.h>
+
+      
+#include <org/allbinary/logic/StdUtil.h>
 
       
 #include <org/allbinary/logic/communication/http/request/AbResponseHandler.h>
@@ -77,13 +83,13 @@ class MultipartRequestParamForwardTag: public CustomTagSupport {
 
     private: std::string command;
 
-    private: Vector paramVector;
+    private: BasicArrayList paramVector;
 
     public: void setPage(std::string page);
 
     public: void setCommand(std::string command);
 
-    public: void setParamVector(Vector paramVector);
+    public: void setParamVector(BasicArrayList paramVector);
 
                 //@Throws(JspTagException.constructor)
             

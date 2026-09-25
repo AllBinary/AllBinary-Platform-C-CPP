@@ -26,7 +26,10 @@
 #include <java/util/HashMap.h>
 
       
-#include <java/util/Vector.h>
+#include <org/allbinary/util/BasicArrayList.h>
+
+      
+#include <org/allbinary/util/BasicArrayListD.h>
 
       
 #include <org/allbinary/business/DynamicObjectData.h>
@@ -39,6 +42,9 @@
 
       
 #include <org/allbinary/business/init/db/UserDbInitInfo.h>
+
+      
+#include <org/allbinary/logic/StdUtil.h>
 
       
 #include <org/allbinary/logic/communication/log/LogUtil.h>
@@ -102,7 +108,7 @@ class WorkFlowEntity: public AbSqlBean, public WorkFlowEntityInterface {
 
 public: WorkFlowEntity();
 
-    public: void insert(Vector values);
+    public: void insert(BasicArrayList values);
 
     public: void delete_(std::string name, std::string storeName);
 
@@ -110,7 +116,7 @@ public: WorkFlowEntity();
             
     public: WorkFlowInterface get(std::string name, std::string storeName);
 
-    public: Vector get(std::string storeName);
+    public: BasicArrayList get(std::string storeName);
 
     public: void update(HashMap<any, any> updatedValues);
 

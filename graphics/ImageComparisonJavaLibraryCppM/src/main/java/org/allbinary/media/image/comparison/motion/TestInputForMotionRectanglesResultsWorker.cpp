@@ -38,7 +38,10 @@
 #include <java/util/Hashtable.h>
 
       
-#include <java/util/Vector.h>
+#include <org/allbinary/util/BasicArrayList.h>
+
+      
+#include <org/allbinary/util/BasicArrayListD.h>
 
       
 #include <org/allbinary/input/automation/robot/InputRobotFactory.h>
@@ -48,6 +51,9 @@
 
       
 #include <org/allbinary/input/automation/robot/TempInputRobotNames.h>
+
+      
+#include <org/allbinary/logic/StdUtil.h>
 
       
 #include <org/allbinary/logic/communication/log/LogUtil.h>
@@ -100,15 +106,15 @@ class TestInputForMotionRectanglesResultsWorker
 
     private: bool running= false;
 
-    private: Vector motionRectanglesVector;
+    private: BasicArrayList motionRectanglesVector;
 
 public: TestInputForMotionRectanglesResultsWorker(){
-this->motionRectanglesVector= Vector();
+this->motionRectanglesVector= BasicArrayListD();
     
 }
 
 
-    public: Vector getMotionRectanglesVector(){
+    public: BasicArrayList getMotionRectanglesVector(){
 
 
 
@@ -166,10 +172,10 @@ timeHelper.setStartTimeTNT();
     MotionRectangles motionRectangles = this->getMotionRectanglesVector().get(0) as MotionRectangles;;
     
 
-    Vector motionRectangleVector = motionRectangles.getVector();;
+    BasicArrayList motionRectangleVector = motionRectangles.getVector();;
     
 
-                        if(motionRectangleVector.length > 0)
+                        if(motionRectangleVector.size() > 0)
                         
                                     {
                                     

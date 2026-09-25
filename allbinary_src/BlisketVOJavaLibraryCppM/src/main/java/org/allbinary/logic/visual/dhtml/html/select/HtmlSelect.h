@@ -25,7 +25,13 @@
         
             #include "../../../../../../../java/lang/Exception.h"
         
-#include <java/util/Vector.h>
+#include <org/allbinary/util/BasicArrayList.h>
+
+      
+#include <org/allbinary/util/BasicArrayListD.h>
+
+      
+#include <org/allbinary/logic/StdUtil.h>
 
       
 #include <org/allbinary/logic/io/LineReader.h>
@@ -84,7 +90,7 @@ class HtmlSelect: public HtmlTag {
 
     private: std::string selected;
 
-    private: Vector options;
+    private: BasicArrayList options;
 
     private: std::string multiple = "multiple";
 

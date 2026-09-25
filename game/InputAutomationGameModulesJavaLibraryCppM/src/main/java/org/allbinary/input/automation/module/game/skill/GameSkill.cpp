@@ -23,7 +23,13 @@
 #include <java/util/HashMap.h>
 
       
-#include <java/util/Vector.h>
+#include <org/allbinary/util/BasicArrayList.h>
+
+      
+#include <org/allbinary/util/BasicArrayListD.h>
+
+      
+#include <org/allbinary/logic/StdUtil.h>
 
       
 #include <org/allbinary/logic/string/StringMaker.h>
@@ -57,7 +63,7 @@ class GameSkill
             : public Object
          {
 
-    private: static HashMap<any, any> hashMap = HashMap<any, any>();
+    private: static HashMap<any, any> hashMap = StdUtil::getInstance().createHashMap();
 
     public: static GameSkill getInstance(GameSkillType gameSkillType, std::string extra){
 
@@ -75,7 +81,7 @@ class GameSkill
 
     private: int32_t time= 0;
 
-    private: Vector vector;
+    private: BasicArrayList vector;
 
     private: const std::string GAME_SKILL_LABEL = "GameSkill: ";
 
@@ -90,7 +96,7 @@ this->setExtra(extra);
     
 this->setTime(time);
     
-this->vector= Vector();
+this->vector= BasicArrayListD();
     
 GameSkill::hashMap.put(StringMaker().append(this->getGameSkillType().getName()).append(CommonSeps::getInstance().SPACE).append(extra).toString(), this);
     
@@ -151,7 +157,7 @@ this->vector.add(gameSkillPropertyInterface);
 }
 
 
-    public: Vector getProperties(){
+    public: BasicArrayList getProperties(){
 
 
 

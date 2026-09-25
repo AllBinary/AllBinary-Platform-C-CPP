@@ -28,7 +28,10 @@
 #include <java/util/HashMap.h>
 
       
-#include <java/util/Vector.h>
+#include <org/allbinary/util/BasicArrayList.h>
+
+      
+#include <org/allbinary/util/BasicArrayListD.h>
 
       
 #include <javax/servlet/http/HttpServletRequest.h>
@@ -124,7 +127,7 @@ public: AuthenticationRequestHelper(HashMap<any, any> hashMap, HttpServletReques
 
     public: Boolean changePassword();
 
-    public: Boolean isRoleValid(std::string userName, std::string password, Vector roles);
+    public: Boolean isRoleValid(std::string userName, std::string password, BasicArrayList roles);
 
 };
 

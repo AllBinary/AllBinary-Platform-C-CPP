@@ -41,7 +41,7 @@
 #include <org/allbinary/graphics/paint/Paintable.h>
 
       
-#include <org/allbinary/logic/NullUtil.h>
+#include <org/allbinary/logic/StdUtil.h>
 
       
 

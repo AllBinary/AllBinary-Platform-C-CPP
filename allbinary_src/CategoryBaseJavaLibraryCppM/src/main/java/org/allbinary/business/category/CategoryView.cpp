@@ -22,7 +22,10 @@
         
             #include "../../../../java/lang/Exception.h"
         
-#include <java/util/Vector.h>
+#include <org/allbinary/util/BasicArrayList.h>
+
+      
+#include <org/allbinary/util/BasicArrayListD.h>
 
       
 #include <org/allbinary/business/category/properties/CategoryPropertiesInterface.h>
@@ -101,19 +104,19 @@ this->categoryInterface= categoryInterface;
     Node node = document.createElement(CategoryData::getInstance().NAME);;
     
 
-    Vector childCategoryVector = this->categoryInterface.getChildNodes();;
+    BasicArrayList childCategoryVector = this->categoryInterface.getChildNodes();;
     
 
                         if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().CATEGORY))
                         
                                     {
-                                    this->logUtil.putF("Number Of Children: " +childCategoryVector.length, this, "toXmlNode");
+                                    this->logUtil.putF("Number Of Children: " +childCategoryVector.size(), this, "toXmlNode");
     
 
                                     }
                                 
 
-    int32_t size = childCategoryVector.length;;
+    int32_t size = childCategoryVector.size();;
     
 
 

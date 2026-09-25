@@ -20,6 +20,9 @@
 
             #include "../../../../java/lang/Exception.h"
         
+#include <jsinterop/annotations/JsType.h>
+
+      
 #include <org/allbinary/graphics/CustomGPoint.h>
 
       

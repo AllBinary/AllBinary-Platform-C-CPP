@@ -117,6 +117,8 @@ class AddFileValidationView: public InventoryItemView, public ValidationComponen
 
     protected: const LogUtil logUtil = LogUtil::getInstance();
 
+    protected: const BasicItemData basicItemData = BasicItemData::getInstance();
+
 public: AddFileValidationView(TransformInfoInterface transformInfoInterface){
             super(transformInfoInterface);
                     
@@ -252,7 +254,7 @@ this->itemInterface.setCategory(storeFrontInterface.getCategoryPath() +this->ite
                                     }
                                 
 
-    Object* imageFileItemObject = this->getRequestHashMap().get(BasicItemData::IMAGE);;
+    Object* imageFileItemObject = this->getRequestHashMap().get(basicItemData.IMAGE);;
     
 
                         if(HttpFileUploadUtil::getInstance().isValid(imageFileItemObject))
@@ -431,7 +433,7 @@ stringBuffer.append(" does not exist.<br />");
 }
 
 
-    Object* anyType = this->getRequestHashMap().get(BasicItemData::IMAGE);;
+    Object* anyType = this->getRequestHashMap().get(basicItemData.IMAGE);;
     
 
                         if(HttpFileUploadUtil::getInstance().isValid(anyType))
@@ -623,7 +625,7 @@ this->logUtil.putF(stringBuffer.toString(), this, this->commonStrings.IS_VALID);
                         
                                     {
                                     
-                        if(fileItemFieldName.compareTo(BasicItemData::IMAGE) == 0)
+                        if(fileItemFieldName.compareTo(basicItemData.IMAGE) == 0)
                         
                                     {
                                     

@@ -29,7 +29,13 @@
 #include <java/util/HashSet.h>
 
       
-#include <java/util/Vector.h>
+#include <org/allbinary/util/BasicArrayList.h>
+
+      
+#include <org/allbinary/util/BasicArrayListD.h>
+
+      
+#include <org/allbinary/logic/StdUtil.h>
 
       
 #include <org/allbinary/logic/io/path/AbPathData.h>
@@ -74,7 +80,7 @@ class UniqueTokens
             : public Object
          {
 
-    private: const Vector specialCharacters = Vector();
+    private: const BasicArrayList specialCharacters = BasicArrayListD();
 
 public: UniqueTokens(){
 this->specialCharacters.add("!");
@@ -130,7 +136,7 @@ this->specialCharacters.add("`");
 
                 //@Throws(Exception.constructor)
             
-    public: HashSet getWhithoutDashesAndSkipNumberOnlyTokens(Vector stringVector){
+    public: HashSet getWhithoutDashesAndSkipNumberOnlyTokens(BasicArrayList stringVector){
 
         try {
             
@@ -143,10 +149,10 @@ this->specialCharacters.add("`");
     CommonSeps commonSeps = CommonSeps::getInstance();;
     
 
-        while(index < stringVector.length)
+        while(index < stringVector.size())
         {
 
-    std::string keywords = stringVector.elementAt(index) as string;;
+    std::string keywords = stringVector.get(index) as string;;
     
 
     Tokenizer tokenizer = Tokenizer(commonSeps.COMMA);;
@@ -264,10 +270,10 @@ index++;
 
 
                         for (
-    int32_t index = 0;index < this->specialCharacters.length; index++)
+    int32_t index = 0;index < this->specialCharacters.size(); index++)
         {
 
-                        if(subCleaningString.compareTo(this->specialCharacters.elementAt(index) as string) == 0)
+                        if(subCleaningString.compareTo(this->specialCharacters.get(index) as string) == 0)
                         
 
 

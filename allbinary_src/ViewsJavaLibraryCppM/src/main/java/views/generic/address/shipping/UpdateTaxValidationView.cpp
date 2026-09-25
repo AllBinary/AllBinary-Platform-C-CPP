@@ -20,7 +20,10 @@
 
             #include "../../../../java/lang/Exception.h"
         
-#include <java/util/Vector.h>
+#include <org/allbinary/util/BasicArrayList.h>
+
+      
+#include <org/allbinary/util/BasicArrayListD.h>
 
       
 #include <org/allbinary/business/context/modules/storefront/StoreFrontFactory.h>
@@ -109,7 +112,7 @@ this->streetAddress= StreetAddress(this->getRequest());
     ShippingAddressesEntity billingAddressesEntity = ShippingAddressesEntity(this->getWeblisketSession().getUserName());;
     
 
-    Vector streetAddressList = billingAddressesEntity.get();;
+    BasicArrayList streetAddressList = billingAddressesEntity.get();;
     
 
                         if(streetAddressList == 
@@ -130,7 +133,7 @@ this->streetAddress= StreetAddress(this->getRequest());
     int32_t count = 0;;
     
 
-    int32_t size = streetAddressList.length;;
+    int32_t size = streetAddressList.size();;
     
 
 

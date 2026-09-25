@@ -25,7 +25,10 @@
 #include <java/util/HashMap.h>
 
       
-#include <java/util/Vector.h>
+#include <org/allbinary/util/BasicArrayList.h>
+
+      
+#include <org/allbinary/util/BasicArrayListD.h>
 
       
 #include <org/allbinary/business/entry/EntryData.h>
@@ -41,6 +44,9 @@
 
       
 #include <org/allbinary/business/user/quoterequest/QuoteRequest.h>
+
+      
+#include <org/allbinary/logic/StdUtil.h>
 
       
 #include <org/allbinary/logic/communication/log/LogUtil.h>
@@ -89,7 +95,7 @@ this->setTableName(this->tableName);
 }
 
 
-    public: void insert(Vector values){
+    public: void insert(BasicArrayList values){
 
         try {
             super.insert(values);
@@ -125,7 +131,7 @@ this->setTableName(this->tableName);
             
     public: QuoteRequest get(std::string userName, int32_t id){
 
-    HashMap<any, any> row = HashMap<any, any>();;
+    HashMap<any, any> row = StdUtil::getInstance().createHashMap();;
     
 row.put(UserData::USERNAME, userName);
     
@@ -162,7 +168,7 @@ row.put(QuoteRequestData::getInstance().ID, std::to_string(id));
 }
 
 
-    public: Vector getIds(std::string userName){
+    public: BasicArrayList getIds(std::string userName){
 
 
 

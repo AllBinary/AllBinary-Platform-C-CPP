@@ -25,7 +25,10 @@
         
             #include "../../../../../../java/lang/Exception.h"
         
-#include <java/util/Vector.h>
+#include <org/allbinary/util/BasicArrayList.h>
+
+      
+#include <org/allbinary/util/BasicArrayListD.h>
 
       
 #include <org/allbinary/logic/communication/log/LogUtil.h>
@@ -84,7 +87,7 @@ private: StoreCustomizerComponentUtil();
 
                 //@Throws(Exception.constructor)
             
-    private: void generate(AbeClientInformationInterface abeClientInformation, TransformInfoInterface transformInfoInterface, Vector allViewsToBeModifiedVector);
+    private: void generate(AbeClientInformationInterface abeClientInformation, TransformInfoInterface transformInfoInterface, BasicArrayList allViewsToBeModifiedVector);
 
 };
 

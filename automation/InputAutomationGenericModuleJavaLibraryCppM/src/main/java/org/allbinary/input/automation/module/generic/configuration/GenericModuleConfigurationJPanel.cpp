@@ -22,7 +22,10 @@
         
             #include "../../../../../../../java/lang/Exception.h"
         
-#include <java/util/Vector.h>
+#include <org/allbinary/util/BasicArrayList.h>
+
+      
+#include <org/allbinary/util/BasicArrayListD.h>
 
       
 #include <org/allbinary/input/automation/module/generic/configuration/profile/GenericProfile.h>
@@ -554,7 +557,7 @@ this->logUtil.putF(this->commonStrings.START, this, "updateProfileOptions");
     GenericProfile genericProfile = this->getSelectedGenericProfile();;
     
 
-    Vector vector = genericProfile.getGenericProfileDataWorkerTypeVector();;
+    BasicArrayList vector = genericProfile.getGenericProfileDataWorkerTypeVector();;
     
 this->screenCaptureJRadioButton.setSelected(false);
     
@@ -565,7 +568,7 @@ this->captureComparisonJCheckBox.setSelected(false);
 this->captureMotionAnalysisJCheckBox.setSelected(false);
     
 
-    int32_t size = vector.length;;
+    int32_t size = vector.size();;
     
 
 

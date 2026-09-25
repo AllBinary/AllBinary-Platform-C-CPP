@@ -28,6 +28,9 @@
 #include <java/util/Hashtable.h>
 
       
+#include <org/allbinary/logic/StdUtil.h>
+
+      
 
 
 
@@ -57,7 +60,7 @@ class BasicColorCacheFactory
 
     public: static BasicColorCacheFactory getInstance();
 
-    private: const Hashtable<any, any> hashtable = Hashtable<any, any>();
+    private: const Hashtable<any, any> hashtable = StdUtil::getInstance().createHashtable();
 
 private: BasicColorCacheFactory();
 

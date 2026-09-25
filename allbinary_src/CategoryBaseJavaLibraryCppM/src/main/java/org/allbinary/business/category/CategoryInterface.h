@@ -23,7 +23,10 @@
 
             #include "../../../../java/lang/Exception.h"
         
-#include <java/util/Vector.h>
+#include <org/allbinary/util/BasicArrayList.h>
+
+      
+#include <org/allbinary/util/BasicArrayListD.h>
 
       
 #include <org/allbinary/business/category/hierarchy/CategoryHierarchyInterface.h>
@@ -62,7 +65,7 @@
         
 class CategoryInterface: public TableMappingInterface, public ValidationInterface {
 
-    Vector getChildNodes();
+    BasicArrayList getChildNodes();
 
     bool addChildProperty(CategoryPropertiesInterface categoryPropertiesInterface);
 

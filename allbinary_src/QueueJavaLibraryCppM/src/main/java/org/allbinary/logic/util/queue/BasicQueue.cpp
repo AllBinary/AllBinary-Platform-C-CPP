@@ -22,7 +22,10 @@
         
             #include "../../../../../java/lang/Exception.h"
         
-#include <java/util/Vector.h>
+#include <org/allbinary/util/BasicArrayList.h>
+
+      
+#include <org/allbinary/util/BasicArrayListD.h>
 
       
 
@@ -48,7 +51,7 @@ class BasicQueue
             : public Object
          {
 
-    protected: const Vector queueVector = Vector();
+    protected: const BasicArrayList queueVector = BasicArrayListD();
 
 protected: BasicQueue(){
 }
@@ -79,7 +82,7 @@ this->queueVector.remove(anyType);
 
     protected: Object* removeLast(){
 
-    Object* anyType = this->queueVector.lastElement();;
+    Object* anyType = this->queueVector.get(this->queueVector.size() -1);;
     
 this->queueVector.remove(anyType);
     

@@ -86,6 +86,8 @@ class BasketRequestHelper: public TagHelper {
 
     protected: const LogUtil logUtil = LogUtil::getInstance();
 
+    protected: const BasicItemData basicItemData = BasicItemData::getInstance();
+
     private: WeblisketSession weblisketSession;
 
     private: const StoreFrontInterface storeFrontInterface;

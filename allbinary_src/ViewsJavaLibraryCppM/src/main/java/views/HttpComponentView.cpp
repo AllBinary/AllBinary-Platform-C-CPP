@@ -20,7 +20,10 @@
 
             #include "../java/lang/Exception.h"
         
-#include <java/util/Vector.h>
+#include <org/allbinary/util/BasicArrayList.h>
+
+      
+#include <org/allbinary/util/BasicArrayListD.h>
 
       
 #include <org/allbinary/data/tree/dom/DomNodeHelper.h>
@@ -30,6 +33,9 @@
 
       
 #include <org/allbinary/data/tree/dom/document/DomDocumentHelper.h>
+
+      
+#include <org/allbinary/logic/StdUtil.h>
 
       
 #include <org/allbinary/logic/communication/log/LogUtil.h>
@@ -90,7 +96,7 @@ class HttpComponentView: public TransformInfoHttpComposite, public TransformInte
 
     protected: const AbeClientInformationInterface abeClientInformation = ServiceClientInformationInterfaceFactory::getInstance();
 
-    private: Vector domNodeInterfaceVector;
+    private: BasicArrayList domNodeInterfaceVector;
 
     private: TransformDocumentInterface transformDocumentInterface;
 
@@ -109,7 +115,7 @@ public: HttpComponentView(TransformInfoInterface transformInfoInterface){
 
                                     }
                                 
-this->domNodeInterfaceVector= Vector();
+this->domNodeInterfaceVector= BasicArrayListD();
     
 this->setTransformDocumentInterface(TransformHttpRequestDocumentFactory::getInstance(this->getPageContext(), this->getWeblisketSession()));
     
@@ -156,7 +162,7 @@ this->domNodeInterfaceVector.add(domNodeInterface);
 
         try {
             
-    int32_t size = this->domNodeInterfaceVector.length;;
+    int32_t size = this->domNodeInterfaceVector.size();;
     
 
 

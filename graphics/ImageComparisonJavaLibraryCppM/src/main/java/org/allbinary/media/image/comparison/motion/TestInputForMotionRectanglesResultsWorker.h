@@ -41,7 +41,10 @@
 #include <java/util/Hashtable.h>
 
       
-#include <java/util/Vector.h>
+#include <org/allbinary/util/BasicArrayList.h>
+
+      
+#include <org/allbinary/util/BasicArrayListD.h>
 
       
 #include <org/allbinary/input/automation/robot/InputRobotFactory.h>
@@ -51,6 +54,9 @@
 
       
 #include <org/allbinary/input/automation/robot/TempInputRobotNames.h>
+
+      
+#include <org/allbinary/logic/StdUtil.h>
 
       
 #include <org/allbinary/logic/communication/log/LogUtil.h>
@@ -103,11 +109,11 @@ class TestInputForMotionRectanglesResultsWorker
 
     private: bool running= false;
 
-    private: Vector motionRectanglesVector;
+    private: BasicArrayList motionRectanglesVector;
 
 public: TestInputForMotionRectanglesResultsWorker();
 
-    public: Vector getMotionRectanglesVector();
+    public: BasicArrayList getMotionRectanglesVector();
 
     public: void onMotionRectanglesImageComparisonResultsEvent(MotionRectanglesResultsEvent motionRectanglesImageComparisonResultsEvent);
 

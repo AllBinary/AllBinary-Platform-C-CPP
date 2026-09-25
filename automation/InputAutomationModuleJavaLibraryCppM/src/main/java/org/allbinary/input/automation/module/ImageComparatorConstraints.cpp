@@ -24,13 +24,19 @@
         
             #include "../../../../../java/lang/RuntimeException.h"
         
-#include <java/awt.h>
+#include <java/awt/Color.h>
+
+      
+#include <java/awt/Rectangle.h>
 
       
 #include <java/awt/image/BufferedImage.h>
 
       
-#include <java/util/Vector.h>
+#include <org/allbinary/util/BasicArrayList.h>
+
+      
+#include <org/allbinary/util/BasicArrayListD.h>
 
       
 #include <org/allbinary/collision/RectangleCollisionUtil.h>
@@ -63,16 +69,14 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "Color.h"
-#include "Rectangle.h"
-
+        
 class ImageComparatorConstraints
             : public Object
         : public ImageComparatorConstraintsInterface {
 
     protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: Vector avoidVector;
+    private: BasicArrayList avoidVector;
 
     private: int32_t maxNonMatchingPixelDeltas= 0;
 
@@ -81,12 +85,12 @@ class ImageComparatorConstraints
 public: ImageComparatorConstraints(int32_t doImageComparisonEveryNthFrame){
 this->doImageComparisonEveryNthFrame= doImageComparisonEveryNthFrame;
     
-this->setAvoidVector(Vector());
+this->setAvoidVector(BasicArrayListD());
     
 }
 
 
-    public: Vector getAvoidVector(){
+    public: BasicArrayList getAvoidVector(){
 
 
 
@@ -110,10 +114,10 @@ this->setAvoidVector(Vector());
     bool isCollsionWithAvoidRectangles = false;;
     
 
-    Vector avoidVector = this->getAvoidVector();;
+    BasicArrayList avoidVector = this->getAvoidVector();;
     
 
-    int32_t size = avoidVector.length;;
+    int32_t size = avoidVector.size();;
     
 
 
@@ -150,10 +154,10 @@ this->setAvoidVector(Vector());
     bool isCollsionWithAvoidRectangles = false;;
     
 
-    Vector avoidVector = this->getAvoidVector();;
+    BasicArrayList avoidVector = this->getAvoidVector();;
     
 
-    int32_t size = avoidVector.length;;
+    int32_t size = avoidVector.size();;
     
 
 
@@ -188,7 +192,7 @@ break;
 }
 
 
-    public: void setAvoidVector(Vector avoidVector){
+    public: void setAvoidVector(BasicArrayList avoidVector){
 this->avoidVector= avoidVector;
     
 }
@@ -255,10 +259,10 @@ this->logUtil.putF(" Frame: " +frame +" remainder: " +remainder +" this.doImageC
 
     public: void log(){
 
-    Vector avoidVector = this->getAvoidVector();;
+    BasicArrayList avoidVector = this->getAvoidVector();;
     
 
-    int32_t size = avoidVector.length;;
+    int32_t size = avoidVector.size();;
     
 
 

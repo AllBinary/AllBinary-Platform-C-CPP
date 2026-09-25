@@ -24,6 +24,9 @@
         
             #include "../../../../java/lang/Thread.h"
         
+#include <jsinterop/annotations/JsType.h>
+
+      
 #include <org/allbinary/game/configuration/event/GameInitializedEvent.h>
 
       

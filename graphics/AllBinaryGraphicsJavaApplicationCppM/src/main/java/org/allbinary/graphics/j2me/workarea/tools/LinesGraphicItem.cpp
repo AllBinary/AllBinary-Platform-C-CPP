@@ -31,7 +31,10 @@
 #include <java/awt.h>
 
       
-#include <java/util/Vector.h>
+#include <org/allbinary/util/BasicArrayList.h>
+
+      
+#include <org/allbinary/util/BasicArrayListD.h>
 
       
 #include <javax/swing/tree/DefaultMutableTreeNode.h>
@@ -65,6 +68,9 @@
 
       
 #include <org/allbinary/graphics/pipeline/BasicGraphicsPipeline.h>
+
+      
+#include <org/allbinary/logic/StdUtil.h>
 
       
 #include <org/allbinary/logic/communication/log/LogUtil.h>
@@ -150,7 +156,7 @@ class LinesGraphicItem
 
     private: DefaultMutableTreeNode treeNode;
 
-    private: Vector pointTreeNodeVector;
+    private: BasicArrayList pointTreeNodeVector;
 
     private: GPoint currentMousePoint;
 
@@ -253,7 +259,7 @@ LinesGraphicItem::item++;
     
 this->points.init();
     
-this->pointTreeNodeVector= Vector();
+this->pointTreeNodeVector= BasicArrayListD();
     
 this->fulcrumPoint= PointFactory::getInstance().createXY(0, 0);
     
@@ -376,7 +382,7 @@ this->logUtil.putF(point.toString(), this, "addPoint");
     
 this->pointTreeNodeVector.add(DefaultMutableTreeNode(point.toString()));
     
-this->treeNode.add(this->pointTreeNodeVector.get(this->pointTreeNodeVector.length -1) as DefaultMutableTreeNode);
+this->treeNode.add(this->pointTreeNodeVector.get(this->pointTreeNodeVector.size() -1) as DefaultMutableTreeNode);
     
 }
 
@@ -398,7 +404,7 @@ this->treeNode.add(this->pointTreeNodeVector.get(this->pointTreeNodeVector.lengt
 point= this->points.getPoints().removeAt(lastPoint) as GPoint;
     
 
-    int32_t index = this->pointTreeNodeVector.length -1;;
+    int32_t index = this->pointTreeNodeVector.size() -1;;
     
 
                         if(index > 0)
@@ -471,7 +477,7 @@ this->active= true;
     
 this->pointTreeNodeVector.add(DefaultMutableTreeNode(point.toString()));
     
-this->treeNode.add(this->pointTreeNodeVector.get(this->pointTreeNodeVector.length -1) as DefaultMutableTreeNode);
+this->treeNode.add(this->pointTreeNodeVector.get(this->pointTreeNodeVector.size() -1) as DefaultMutableTreeNode);
     
 
                                     }

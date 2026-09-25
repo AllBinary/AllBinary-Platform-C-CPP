@@ -25,7 +25,13 @@
         
             #include "../../../../../../../java/lang/Exception.h"
         
-#include <java/util/Vector.h>
+#include <org/allbinary/util/BasicArrayList.h>
+
+      
+#include <org/allbinary/util/BasicArrayListD.h>
+
+      
+#include <org/allbinary/logic/StdUtil.h>
 
       
 #include <org/allbinary/logic/communication/smtp/event/EmailEvent.h>
@@ -63,7 +69,7 @@ class UserEmailEventHandler
             : public Object
          {
 
-    private: Vector emailVector;
+    private: BasicArrayList emailVector;
 
     private: EmailInfo emailInfo;
 
@@ -77,7 +83,7 @@ public: UserEmailEventHandler();
     public: void receiveEmailInfo(UserEmailEventNameData userEmailEventNameData, EmailInfo emailInfo);
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: void addListener(Vector vector);
+    public: void addListener(BasicArrayList vector);
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
     public: void addListener(UserEmailEventListenerInterface emailEventListenerInterface);

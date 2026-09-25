@@ -28,7 +28,10 @@
 #include <java/sql/ResultSet.h>
 
       
-#include <java/util/Vector.h>
+#include <org/allbinary/util/BasicArrayList.h>
+
+      
+#include <org/allbinary/util/BasicArrayListD.h>
 
       
 #include <org/allbinary/business/init/db/DbConnectionInfo.h>
@@ -78,9 +81,9 @@ public: AbSqlColumn(DbConnectionInfo databaseConnectionInfoInterface);
 
     public: std::string getLargestIntegerInColumnWhere(std::string columnName, std::string key, std::string value);
 
-    public: Vector getColumn(std::string columnName);
+    public: BasicArrayList getColumn(std::string columnName);
 
-    public: Vector getColumnWhere(std::string columnName, std::string key, std::string value);
+    public: BasicArrayList getColumnWhere(std::string columnName, std::string key, std::string value);
 
 };
 

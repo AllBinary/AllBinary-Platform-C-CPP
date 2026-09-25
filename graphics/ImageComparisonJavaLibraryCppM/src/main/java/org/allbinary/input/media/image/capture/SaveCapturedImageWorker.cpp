@@ -23,7 +23,13 @@
 #include <java/awt/image/BufferedImage.h>
 
       
-#include <java/util/Vector.h>
+#include <org/allbinary/util/BasicArrayList.h>
+
+      
+#include <org/allbinary/util/BasicArrayListD.h>
+
+      
+#include <org/allbinary/logic/StdUtil.h>
 
       
 #include <org/allbinary/logic/communication/log/LogUtil.h>
@@ -74,7 +80,7 @@ class SaveCapturedImageWorker: public BasicEventHandler, public CapturedImageWor
 
     private: bool running= false;
 
-    private: Vector capturedImageWorkerResultsEventVector = Vector();
+    private: BasicArrayList capturedImageWorkerResultsEventVector = BasicArrayListD();
 
 public: SaveCapturedImageWorker(){
 }

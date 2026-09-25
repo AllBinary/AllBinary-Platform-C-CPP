@@ -35,7 +35,10 @@
 #include <java/util/Set.h>
 
       
-#include <java/util/Vector.h>
+#include <org/allbinary/util/BasicArrayList.h>
+
+      
+#include <org/allbinary/util/BasicArrayListD.h>
 
       
 #include <org/allbinary/business/context/modules/storefront/StoreFrontInterface.h>
@@ -57,6 +60,9 @@
 
       
 #include <org/allbinary/globals/URLGLOBALS.h>
+
+      
+#include <org/allbinary/logic/StdUtil.h>
 
       
 #include <org/allbinary/logic/communication/log/LogUtil.h>
@@ -156,6 +162,8 @@ class ProductListing
 
     private: const Directory directory = Directory::getInstance();
 
+    protected: const BasicItemData basicItemData = BasicItemData::getInstance();
+
     private: StoreFrontsEntity storeFronts;
 
     private: StaticPagesEntity staticPages;
@@ -185,7 +193,7 @@ this->inventory= InventoryEntity();
     InventoryColumnUtil inventoryColumnUtil = InventoryColumnUtil::getInstance();;
     
 
-    Vector keywords = inventoryColumnUtil.getColumnWhereLike(this->inventory, storeFront.getCategoryPath(), BasicItemData::KEYWORDS);;
+    BasicArrayList keywords = inventoryColumnUtil.getColumnWhereLike(this->inventory, storeFront.getCategoryPath(), basicItemData.KEYWORDS);;
     
 
     BasicArrayList subStoreVector = storeFront.getSubStores();;
@@ -204,9 +212,9 @@ this->inventory= InventoryEntity();
     std::string subStore = subStoreVector.get(index) as string;;
     
 
-    Vector substoreKeywords = inventoryColumnUtil.getColumnWhereLike(this->inventory, AbPathData::getInstance().SEPARATOR +subStore, BasicItemData::CATEGORY);;
+    BasicArrayList substoreKeywords = inventoryColumnUtil.getColumnWhereLike(this->inventory, AbPathData::getInstance().SEPARATOR +subStore, basicItemData.CATEGORY);;
     
-keywords.addAll(substoreKeywords);
+keywords.addAllList(substoreKeywords);
     
 }
 
@@ -290,7 +298,7 @@ StreamUtil::getInstance().close(idOutData);
 
                 //@Throws(Exception.constructor)
             
-    private: void create(std::string keywordData, HashMap<any, any> keywordFilenameHashMap, Vector vector, AbPath staticPath){
+    private: void create(std::string keywordData, HashMap<any, any> keywordFilenameHashMap, BasicArrayList vector, AbPath staticPath){
 
     StringMaker stringBuffer = StringMaker();;
     
@@ -305,7 +313,7 @@ hashMap.put(CommonSeps::getInstance().SPACE, StringUtil::getInstance().EMPTY_STR
 
     SearchParams searchParams = this->searchRequest.getParams();;
     
-searchParams.add(BasicItemData::KEYWORDS, keywordData);
+searchParams.add(basicItemData.KEYWORDS, keywordData);
     
 searchParams.setStartPage(CommonPhoneStrings::getInstance().ZERO);
     
@@ -416,7 +424,7 @@ this->savePage(file, productListingPages[index]!);
     int32_t index = 0;index < size; index++)
         {
 
-    Vector insertVector = Vector();;
+    BasicArrayList insertVector = BasicArrayListD();;
     
 
     std::string keywordData = keywordArray[index]! as string;;
@@ -478,7 +486,7 @@ stringBuffer.append(storeFront.getStaticPath());
     int32_t size = keywordArray.size();;
     
 
-    HashMap<any, any> keywordFilenameHashMap = HashMap<any, any>();;
+    HashMap<any, any> keywordFilenameHashMap = StdUtil::getInstance().createHashMap();;
     
 
                         if(size == 0)
@@ -505,7 +513,7 @@ stringBuffer.append(" Store Not Found");
     InventorySearchUtil inventorySearchUtil = InventorySearchUtil::getInstance();;
     
 
-    Vector vector = inventorySearchUtil.getBasicItemIdColumn(this->searchRequest);;
+    BasicArrayList vector = inventorySearchUtil.getBasicItemIdColumn(this->searchRequest);;
     
 
 
@@ -589,10 +597,10 @@ stringBuffer.append("<br />");
                                 
                         else {
                             
-    Vector storeFrontVector = this->storeFronts.getStoreFrontNames();;
+    BasicArrayList storeFrontVector = this->storeFronts.getStoreFrontNames();;
     
 
-    int32_t size = storeFrontVector.length;;
+    int32_t size = storeFrontVector.size();;
     
 
 

@@ -21,7 +21,10 @@
         #ifndef ORG_ALLBINARY_BUSINESS_CATEGORY_STORE_THEME_STORETHEMECATEGORYINTERFACE_H
         #define ORG_ALLBINARY_BUSINESS_CATEGORY_STORE_THEME_STORETHEMECATEGORYINTERFACE_H
 
-#include <java/util/Vector.h>
+#include <org/allbinary/util/BasicArrayList.h>
+
+      
+#include <org/allbinary/util/BasicArrayListD.h>
 
       
 #include <org/allbinary/business/category/CategoryInterface.h>
@@ -62,7 +65,7 @@ class StoreThemeCategoryInterface: public CategoryInterface, public TableMapping
 
     void addTheme(ThemeValidation themeValidation);
 
-    Vector getThemes();
+    BasicArrayList getThemes();
 
 };
 

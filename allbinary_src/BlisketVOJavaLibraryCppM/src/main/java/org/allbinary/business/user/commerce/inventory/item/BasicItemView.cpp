@@ -30,7 +30,10 @@
 #include <java/util/Set.h>
 
       
-#include <java/util/Vector.h>
+#include <org/allbinary/util/BasicArrayList.h>
+
+      
+#include <org/allbinary/util/BasicArrayListD.h>
 
       
 #include <org/allbinary/data/tree/dom/DomNodeInterface.h>
@@ -72,8 +75,8 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "ItemInterface.h"
-#include "BasicItemData.h"
+        #include "BasicItemData.h"
+#include "ItemInterface.h"
 
 class BasicItemView
             : public Object
@@ -83,11 +86,13 @@ class BasicItemView
 
     protected: const CommonStrings commonStrings = CommonStrings::getInstance();
 
+    protected: const BasicItemData basicItemData = BasicItemData::getInstance();
+
     private: ItemInterface itemInterface;
 
-    private: Vector vector;
+    private: BasicArrayList vector;
 
-public: BasicItemView(ItemInterface itemInterface, Vector vector){
+public: BasicItemView(ItemInterface itemInterface, BasicArrayList vector){
 this->itemInterface= itemInterface;
     
 this->vector= vector;
@@ -113,7 +118,7 @@ this->vector= vector;
 
     std::string EMPTY_STRING = StringUtil::getInstance().EMPTY_STRING;;
     
-hashMap.put(BasicItemData::IMAGE, EMPTY_STRING);
+hashMap.put(this->basicItemData.IMAGE, EMPTY_STRING);
     
 
     StringUtil stringUtil = StringUtil::getInstance();;
@@ -122,7 +127,7 @@ hashMap.put(BasicItemData::IMAGE, EMPTY_STRING);
     Set keySet = hashMap.keys();;
     
 
-    Node node = document.createElement(BasicItemData::ITEM);;
+    Node node = document.createElement(this->basicItemData.ITEM);;
     
 
     std::vector<Object*> nameArray = keySet.();;
@@ -150,12 +155,12 @@ node.appendChild(ModDomHelper::createNameValueNodes(document, name, value));
 }
 
 
-    Node totalNode = ModDomHelper::createNameValueNodes(document, BasicItemData::TOTAL, this->itemInterface.getTotal().toString());;
+    Node totalNode = ModDomHelper::createNameValueNodes(document, this->basicItemData.TOTAL, this->itemInterface.getTotal().toString());;
     
 node.appendChild(totalNode);
     
 
-    int32_t size = this->vector.length;;
+    int32_t size = this->vector.size();;
     
 
 

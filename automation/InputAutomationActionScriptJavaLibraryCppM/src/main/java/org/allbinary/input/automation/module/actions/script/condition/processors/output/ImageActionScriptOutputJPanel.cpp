@@ -22,7 +22,10 @@
         
             #include "../../../../../../../../../../java/lang/Exception.h"
         
-#include <java/util/Vector.h>
+#include <org/allbinary/util/BasicArrayList.h>
+
+      
+#include <org/allbinary/util/BasicArrayListD.h>
 
       
 #include <javax/swing.h>
@@ -100,13 +103,13 @@ this->setImageTypeJlistModel();
     ImageTypes imageTypes = this->capturedImageActionScriptOutputInterface.getImageTypes();;
     
 
-    Vector vector = imageTypes.getVector();;
+    BasicArrayList vector = imageTypes.getVector();;
     
 
-    std::vector<int32_t> selectedArray = new Array(vector.length);;
+    std::vector<int32_t> selectedArray = new Array(vector.size());;
     
 
-    int32_t size = vector.length;;
+    int32_t size = vector.size();;
     
 
 
@@ -196,10 +199,10 @@ this->capturedImageActionScriptOutputInterface.log();
     DefaultListModel defaultListModel = DefaultListModel();;
     
 
-    Vector vector = InputImageType::getAllAsVector();;
+    BasicArrayList vector = InputImageType::getAllAsVector();;
     
 
-    int32_t size = vector.length;;
+    int32_t size = vector.size();;
     
 
 

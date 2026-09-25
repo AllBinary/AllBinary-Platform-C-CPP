@@ -25,10 +25,16 @@
 #include <java/util/HashMap.h>
 
       
-#include <java/util/Vector.h>
+#include <org/allbinary/util/BasicArrayList.h>
+
+      
+#include <org/allbinary/util/BasicArrayListD.h>
 
       
 #include <org/allbinary/business/user/UserInterface.h>
+
+      
+#include <org/allbinary/logic/StdUtil.h>
 
       
 #include <org/allbinary/logic/communication/log/LogUtil.h>
@@ -91,7 +97,7 @@ class UserEmailEventHandlerSingletons
 
     protected: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    private: const HashMap<any, any> userEmailEventHandlerHashMap = HashMap<any, any>();
+    private: const HashMap<any, any> userEmailEventHandlerHashMap = StdUtil::getInstance().createHashMap();
 
 private: UserEmailEventHandlerSingletons(){
 
@@ -140,7 +146,7 @@ private: UserEmailEventHandlerSingletons(){
     UserEmailEventHandler newUserEmailEventHandler = UserEmailEventHandler();;
     
 
-    Vector vector = EmailEventHandlerUtil::getUserEmailEventListenerVector(abeClientInformation, userEmailEventNameData, userInterface);;
+    BasicArrayList vector = EmailEventHandlerUtil::getUserEmailEventListenerVector(abeClientInformation, userEmailEventNameData, userInterface);;
     
 newUserEmailEventHandler.addListener(vector);
     

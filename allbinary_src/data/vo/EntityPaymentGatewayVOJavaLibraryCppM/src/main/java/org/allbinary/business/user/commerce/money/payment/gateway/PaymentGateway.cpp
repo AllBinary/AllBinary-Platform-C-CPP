@@ -25,7 +25,10 @@
 #include <java/util/HashMap.h>
 
       
-#include <java/util/Vector.h>
+#include <org/allbinary/util/BasicArrayList.h>
+
+      
+#include <org/allbinary/util/BasicArrayListD.h>
 
       
 #include <org/allbinary/business/context/modules/storefront/StoreFrontData.h>
@@ -38,6 +41,9 @@
 
       
 #include <org/allbinary/business/user/commerce/money/payment/PaymentData.h>
+
+      
+#include <org/allbinary/logic/StdUtil.h>
 
       
 #include <org/allbinary/logic/control/crypt/SuperCrypt.h>
@@ -888,7 +894,7 @@ this->timeEntered= value;
             
     public: HashMap<any, any> toHashMap(bool isEncrypted){
 
-    HashMap<any, any> paymentGatewayHashMap = HashMap<any, any>();;
+    HashMap<any, any> paymentGatewayHashMap = StdUtil::getInstance().createHashMap();;
     
 paymentGatewayHashMap.put(EntryData::getInstance().ENABLE, this->enable);
     
@@ -1013,7 +1019,7 @@ paymentGatewayHashMap.put(EntryData::getInstance().LASTMODIFIED.toString(), this
 }
 
 
-    public: Vector toVector(){
+    public: BasicArrayList toVector(){
 
 
 
@@ -1023,9 +1029,9 @@ paymentGatewayHashMap.put(EntryData::getInstance().LASTMODIFIED.toString(), this
 }
 
 
-    public: Vector toVector(bool isEncrypted){
+    public: BasicArrayList toVector(bool isEncrypted){
 
-    Vector updateVector = Vector();;
+    BasicArrayList updateVector = BasicArrayListD();;
     
 updateVector.add(this->enable);
     

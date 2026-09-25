@@ -26,7 +26,10 @@
 #include <java/util/HashMap.h>
 
       
-#include <java/util/Vector.h>
+#include <org/allbinary/util/BasicArrayList.h>
+
+      
+#include <org/allbinary/util/BasicArrayListD.h>
 
       
 #include <org/allbinary/business/context/modules/storefront/StoreFrontInterface.h>
@@ -68,13 +71,13 @@ class InventoryEntityInterface: public BasicDataTableInterface {
 
                 //@Throws(Exception.constructor)
             
-    Vector getItems(StoreFrontInterface storeFrontInterface);
+    BasicArrayList getItems(StoreFrontInterface storeFrontInterface);
 
     std::string getWeight(std::string id);
 
     void deleteWhere(std::string key, std::string value);
 
-    void insert(Vector values);
+    void insert(BasicArrayList values);
 
     void update(HashMap<any, any> updatedValues);
 

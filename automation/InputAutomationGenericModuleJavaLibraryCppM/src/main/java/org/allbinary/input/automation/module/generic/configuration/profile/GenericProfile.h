@@ -25,7 +25,10 @@
         
             #include "../../../../../../../../java/lang/Exception.h"
         
-#include <java/util/Vector.h>
+#include <org/allbinary/util/BasicArrayList.h>
+
+      
+#include <org/allbinary/util/BasicArrayListD.h>
 
       
 #include <org/allbinary/data/tree/dom/DomNodeHelper.h>
@@ -35,6 +38,9 @@
 
       
 #include <org/allbinary/input/automation/module/generic/configuration/profile/actions/GenericProfileActions.h>
+
+      
+#include <org/allbinary/logic/StdUtil.h>
 
       
 #include <org/allbinary/logic/communication/log/LogUtil.h>
@@ -79,7 +85,7 @@ class GenericProfile
 
     private: std::string name;
 
-    private: Vector vector;
+    private: BasicArrayList vector;
 
     private: GenericProfileActions genericProfileActions;
 
@@ -87,7 +93,7 @@ public: GenericProfile(Node node);
 
 public: GenericProfile(std::string name);
 
-    public: Vector getGenericProfileDataWorkerTypeVector();
+    public: BasicArrayList getGenericProfileDataWorkerTypeVector();
 
     public: void add(GenericProfileDataWorkerType genericProfileDataWorkerType);
 

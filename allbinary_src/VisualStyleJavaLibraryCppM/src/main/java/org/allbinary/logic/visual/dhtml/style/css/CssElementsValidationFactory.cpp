@@ -25,7 +25,13 @@
 #include <java/util/HashMap.h>
 
       
-#include <java/util/Vector.h>
+#include <org/allbinary/util/BasicArrayList.h>
+
+      
+#include <org/allbinary/util/BasicArrayListD.h>
+
+      
+#include <org/allbinary/logic/StdUtil.h>
 
       
 #include <org/allbinary/logic/control/validate/ValidationInterface.h>
@@ -60,12 +66,12 @@ class CssElementsValidationFactory
 
                 //@Throws(Exception.constructor)
             
-    public: static Vector getInstance(Vector cssElementStyleNodeList){
+    public: static BasicArrayList getInstance(BasicArrayList cssElementStyleNodeList){
 
-    Vector styles = Vector();;
+    BasicArrayList styles = BasicArrayListD();;
     
 
-    int32_t size = cssElementStyleNodeList.length;;
+    int32_t size = cssElementStyleNodeList.size();;
     
 
     Node cssElementStyleNode;;
@@ -97,9 +103,9 @@ styles.add(cssValidationInterface);
 }
 
 
-    public: static Vector getInstance(HashMap<any, any> hashMap){
+    public: static BasicArrayList getInstance(HashMap<any, any> hashMap){
 
-    Vector styles = Vector();;
+    BasicArrayList styles = BasicArrayListD();;
     
 
 

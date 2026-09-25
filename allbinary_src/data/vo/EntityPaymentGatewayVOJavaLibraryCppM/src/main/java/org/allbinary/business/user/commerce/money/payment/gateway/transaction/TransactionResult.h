@@ -31,7 +31,13 @@
 #include <java/util/Hashtable.h>
 
       
-#include <java/util/Vector.h>
+#include <org/allbinary/util/BasicArrayList.h>
+
+      
+#include <org/allbinary/util/BasicArrayListD.h>
+
+      
+#include <org/allbinary/logic/StdUtil.h>
 
       
 #include <org/allbinary/logic/communication/log/LogUtil.h>
@@ -96,9 +102,9 @@ public: TransactionResult(HashMap<any, any> keyValuePairs);
 
     public: HashMap<any, any> toHashMap();
 
-    private: Vector getAllPossibleKeys();
+    private: BasicArrayList getAllPossibleKeys();
 
-    public: Vector getValues();
+    public: BasicArrayList getValues();
 
     public: std::string getPnRef();
 

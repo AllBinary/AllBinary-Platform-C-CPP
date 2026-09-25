@@ -23,7 +23,10 @@
 #include <java/util/HashMap.h>
 
       
-#include <java/util/Vector.h>
+#include <org/allbinary/util/BasicArrayList.h>
+
+      
+#include <org/allbinary/util/BasicArrayListD.h>
 
       
 #include <org/allbinary/business/entry/EntryData.h>
@@ -39,6 +42,9 @@
 
       
 #include <org/allbinary/business/user/commerce/inventory/item/download/DownloadableItem.h>
+
+      
+#include <org/allbinary/logic/StdUtil.h>
 
       
 #include <org/allbinary/logic/communication/log/LogUtil.h>
@@ -74,6 +80,8 @@ class DownloadItemsEntity: public AbSqlBean, public DownloadItemsEntityInterface
 
     protected: const LogUtil logUtil = LogUtil::getInstance();
 
+    protected: const BasicItemData basicItemData = BasicItemData::getInstance();
+
     protected: const std::string tableName = "downloaditems";
 
 public: DownloadItemsEntity(){
@@ -87,7 +95,7 @@ this->setTableName(this->tableName);
 }
 
 
-    public: void insert(Vector values){
+    public: void insert(BasicArrayList values){
 
         try {
             super.insert(values);
@@ -157,20 +165,20 @@ super.updateWhere(DownloadItemData::ID, updatedValues.get(DownloadItemData::ID) 
 }
 
 
-    public: Vector getForItem(std::string id){
+    public: BasicArrayList getForItem(std::string id){
 
-    Vector returnVector = Vector();;
+    BasicArrayList returnVector = BasicArrayListD();;
     
 
-    HashMap<any, any> keysAndValues = HashMap<any, any>();;
+    HashMap<any, any> keysAndValues = StdUtil::getInstance().createHashMap();;
     
-keysAndValues.put(BasicItemData::ID, id);
-    
-
-    Vector vector = super.getRows(keysAndValues);;
+keysAndValues.put(basicItemData.ID, id);
     
 
-    int32_t size = vector.length;;
+    BasicArrayList vector = super.getRows(keysAndValues);;
+    
+
+    int32_t size = vector.size();;
     
 
 
@@ -204,22 +212,22 @@ returnVector.add(DownloadableItem(hashMap));
 }
 
 
-    public: Vector getForItem(std::string id, std::string downloadItemId){
+    public: BasicArrayList getForItem(std::string id, std::string downloadItemId){
 
-    Vector returnVector = Vector();;
+    BasicArrayList returnVector = BasicArrayListD();;
     
 
-    HashMap<any, any> keysAndValues = HashMap<any, any>();;
+    HashMap<any, any> keysAndValues = StdUtil::getInstance().createHashMap();;
     
-keysAndValues.put(BasicItemData::ID, id);
+keysAndValues.put(basicItemData.ID, id);
     
 keysAndValues.put(DownloadItemData::ID, downloadItemId);
     
 
-    Vector vector = super.getRows(keysAndValues);;
+    BasicArrayList vector = super.getRows(keysAndValues);;
     
 
-    int32_t size = vector.length;;
+    int32_t size = vector.size();;
     
 
 
@@ -257,7 +265,7 @@ returnVector.add(DownloadableItem(hashMap));
 
     StringMaker stringBuffer = StringMaker();;
     
-stringBuffer.append(this->sqlStrings.CREATE_TABLE).append(tableName).append(this->sqlStrings.START).append(DownloadItemData::ID).append(this->sqlTypeStrings.MAX_BIG_INT_UNSIGNED_NOT_NULL).append(BasicItemData::ID).append(this->sqlTypeStrings.MAX_BIG_INT_UNSIGNED_NOT_NULL).append(EntryData::getInstance().ENABLE).append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL).append(DownloadItemData::SPECIAL_NAME).append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL).append(DownloadItemData::VERSION).append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL).append(DownloadItemData::CHANGES).append(this->sqlTypeStrings.BLOB_NOT_NULL).append(DownloadItemData::SYSTEM).append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL).append(DownloadItemData::PLATFORM).append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL).append(DownloadItemData::LICENSE_FILE).append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL);
+stringBuffer.append(this->sqlStrings.CREATE_TABLE).append(tableName).append(this->sqlStrings.START).append(DownloadItemData::ID).append(this->sqlTypeStrings.MAX_BIG_INT_UNSIGNED_NOT_NULL).append(basicItemData.ID).append(this->sqlTypeStrings.MAX_BIG_INT_UNSIGNED_NOT_NULL).append(EntryData::getInstance().ENABLE).append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL).append(DownloadItemData::SPECIAL_NAME).append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL).append(DownloadItemData::VERSION).append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL).append(DownloadItemData::CHANGES).append(this->sqlTypeStrings.BLOB_NOT_NULL).append(DownloadItemData::SYSTEM).append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL).append(DownloadItemData::PLATFORM).append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL).append(DownloadItemData::LICENSE_FILE).append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL);
     
 stringBuffer.append(DownloadItemData::FILE).append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL).append(DownloadItemData::SIZE).append(this->sqlTypeStrings.MAX_BIG_INT_UNSIGNED_NOT_NULL).append(DownloadItemData::VALID_TIME).append(this->sqlTypeStrings.MAX_BIG_INT_UNSIGNED_NOT_NULL).append(DownloadItemData::RETRIES).append(this->sqlTypeStrings.MAX_BIG_INT_UNSIGNED_NOT_NULL).append(EntryData::getInstance().TIMECREATED).append(this->sqlTypeStrings.MAX_BIG_INT_UNSIGNED_NOT_NULL).append(EntryData::getInstance().LASTMODIFIED).append(this->sqlTypeStrings.MAX_BIG_INT_UNSIGNED_NOT_NULL).append(this->sqlStrings.PRIMARY_KEY).append(DownloadItemData::ID).append(this->sqlStrings.END);
     

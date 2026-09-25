@@ -30,7 +30,10 @@
 #include <java/util/HashMap.h>
 
       
-#include <java/util/Vector.h>
+#include <org/allbinary/util/BasicArrayList.h>
+
+      
+#include <org/allbinary/util/BasicArrayListD.h>
 
       
 #include <javax/servlet/http/HttpServletRequest.h>
@@ -463,7 +466,7 @@ stringBuffer.append("Trying New login<p/>");
 }
 
 
-    public: Boolean isAuthenticationSessionValid(Vector roles){
+    public: Boolean isAuthenticationSessionValid(BasicArrayList roles){
 
         try {
             

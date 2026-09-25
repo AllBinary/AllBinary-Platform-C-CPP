@@ -26,7 +26,10 @@
 #include <java/util/HashMap.h>
 
       
-#include <java/util/Vector.h>
+#include <org/allbinary/util/BasicArrayList.h>
+
+      
+#include <org/allbinary/util/BasicArrayListD.h>
 
       
 #include <org/allbinary/business/entry/EntryData.h>
@@ -42,6 +45,9 @@
 
       
 #include <org/allbinary/business/user/commerce/inventory/item/download/DownloadableItem.h>
+
+      
+#include <org/allbinary/logic/StdUtil.h>
 
       
 #include <org/allbinary/logic/communication/log/LogUtil.h>
@@ -77,19 +83,21 @@ class DownloadItemsEntity: public AbSqlBean, public DownloadItemsEntityInterface
 
     protected: const LogUtil logUtil = LogUtil::getInstance();
 
+    protected: const BasicItemData basicItemData = BasicItemData::getInstance();
+
     protected: const std::string tableName = "downloaditems";
 
 public: DownloadItemsEntity();
 
-    public: void insert(Vector values);
+    public: void insert(BasicArrayList values);
 
     public: void delete_(std::string value);
 
     public: void update(HashMap<any, any> updatedValues);
 
-    public: Vector getForItem(std::string id);
+    public: BasicArrayList getForItem(std::string id);
 
-    public: Vector getForItem(std::string id, std::string downloadItemId);
+    public: BasicArrayList getForItem(std::string id, std::string downloadItemId);
 
     public: std::string createTableStatement();
 

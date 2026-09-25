@@ -43,6 +43,9 @@
 #include <org/allbinary/input/automation/module/generic/configuration/profile/actions/script/GenericProfileActionScript.h>
 
       
+#include <org/allbinary/logic/StdUtil.h>
+
+      
 #include <org/allbinary/logic/communication/log/LogUtil.h>
 
       

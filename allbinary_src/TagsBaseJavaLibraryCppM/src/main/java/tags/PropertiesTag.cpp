@@ -21,6 +21,9 @@
 #include <java/util/HashMap.h>
 
       
+#include <org/allbinary/logic/StdUtil.h>
+
+      
 #include <org/allbinary/logic/communication/log/LogUtil.h>
 
       
@@ -60,7 +63,7 @@ public: PropertiesTag(){
 
                                     }
                                 
-this->propertiesHashMap= HashMap<any, any>();
+this->propertiesHashMap= StdUtil::getInstance().createHashMap();
     
 }
 
@@ -85,7 +88,7 @@ this->propertiesHashMap= HashMap<any, any>();
 
                                     }
                                 
-this->propertiesHashMap= HashMap<any, any>();
+this->propertiesHashMap= StdUtil::getInstance().createHashMap();
     
 
 

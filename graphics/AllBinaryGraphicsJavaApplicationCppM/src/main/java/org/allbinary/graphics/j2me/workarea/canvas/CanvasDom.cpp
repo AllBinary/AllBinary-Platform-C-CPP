@@ -55,6 +55,9 @@
 #include <org/allbinary/graphics/j2me/workarea/tools/LinesGraphicItem.h>
 
       
+#include <org/allbinary/logic/StdUtil.h>
+
+      
 #include <org/allbinary/util/BasicArrayList.h>
 
       
@@ -136,7 +139,7 @@ this->dimension= IntegerDimension(0, 0);
                         if(name.compareTo(CanvasDom::FRAME) == 0)
                         
                                     {
-                                    this->graphicItemHashMap= HashMap<any, any>();
+                                    this->graphicItemHashMap= StdUtil::getInstance().createHashMap();
     
 
     Node angleNode = DomHelper::getInstance().searchNodeList(this->ROTATE, canvasNode.getChildNodes());;

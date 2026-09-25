@@ -44,6 +44,9 @@
 #include <org/allbinary/business/user/commerce/inventory/basket/BasketData.h>
 
       
+#include <org/allbinary/logic/StdUtil.h>
+
+      
 #include <org/allbinary/logic/communication/http/request/AbResponseHandler.h>
 
       

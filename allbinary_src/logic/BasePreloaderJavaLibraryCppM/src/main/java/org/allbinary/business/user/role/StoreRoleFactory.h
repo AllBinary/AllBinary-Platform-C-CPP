@@ -23,7 +23,10 @@
 
             #include "../../../../../java/lang/Object.h"
         
-#include <java/util/Vector.h>
+#include <org/allbinary/util/BasicArrayList.h>
+
+      
+#include <org/allbinary/util/BasicArrayListD.h>
 
       
 
@@ -54,19 +57,19 @@ class StoreRoleFactory
 
     public: static StoreRoleFactory getInstance();
 
-    private: const Vector<any> roles = Vector<any>();
+    private: const BasicArrayList roles = BasicArrayListD();
 
-    private: const Vector<any> subscriberRoles = Vector<any>();
+    private: const BasicArrayList subscriberRoles = BasicArrayListD();
 
-    private: const Vector<any> wholesaleRoles = Vector<any>();
+    private: const BasicArrayList wholesaleRoles = BasicArrayListD();
 
 private: StoreRoleFactory();
 
-    public: Vector<any> getRoles();
+    public: BasicArrayList getRoles();
 
-    public: Vector<any> getSubscriberRoles();
+    public: BasicArrayList getSubscriberRoles();
 
-    public: Vector<any> getWholesaleRoles();
+    public: BasicArrayList getWholesaleRoles();
 
 };
 

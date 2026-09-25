@@ -30,7 +30,10 @@
 #include <java/util/Set.h>
 
       
-#include <java/util/Vector.h>
+#include <org/allbinary/util/BasicArrayList.h>
+
+      
+#include <org/allbinary/util/BasicArrayListD.h>
 
       
 #include <org/allbinary/data/tree/dom/DomNodeInterface.h>
@@ -97,10 +100,10 @@ this->userEmailEventsConfigurationInterface= UserEmailEventsConfiguration() as U
     NodeList childNodeList = node.getChildNodes();;
     
 
-    Vector emailEventConfigurationNodeVector = DomSearchHelper::getAllNodesNoThrow(UserEmailEventConfigurationData::NAME, childNodeList);;
+    BasicArrayList emailEventConfigurationNodeVector = DomSearchHelper::getAllNodesNoThrow(UserEmailEventConfigurationData::NAME, childNodeList);;
     
 
-    int32_t size = emailEventConfigurationNodeVector.length;;
+    int32_t size = emailEventConfigurationNodeVector.size();;
     
 
 

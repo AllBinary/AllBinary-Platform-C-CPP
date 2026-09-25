@@ -37,7 +37,10 @@
 #include <java/util/Set.h>
 
       
-#include <java/util/Vector.h>
+#include <org/allbinary/util/BasicArrayList.h>
+
+      
+#include <org/allbinary/util/BasicArrayListD.h>
 
       
 #include <org/allbinary/business/init/db/DbConnectionInfo.h>
@@ -129,19 +132,19 @@ public: AbSqlRow(DbConnectionInfo databaseConnectionInfoInterface);
 
     public: void deleteWhere(HashMap<any, any> keysAndValues);
 
-    public: void insert(Vector values);
+    public: void insert(BasicArrayList values);
 
     public: HashMap<any, any> getRow(HashMap<any, any> keysAndValues);
 
-    public: Vector getRows(HashMap<any, any> keysAndValues);
+    public: BasicArrayList getRows(HashMap<any, any> keysAndValues);
 
-    public: Vector getRows(HashMap<any, any> keysAndValues, std::string more);
+    public: BasicArrayList getRows(HashMap<any, any> keysAndValues, std::string more);
 
-    public: Vector getAllRows();
+    public: BasicArrayList getAllRows();
 
-    public: Vector getRowsWhereBetween(HashMap<any, any> whereKeyValuePairs, std::string betweenColumn, std::string smallest, std::string largest);
+    public: BasicArrayList getRowsWhereBetween(HashMap<any, any> whereKeyValuePairs, std::string betweenColumn, std::string smallest, std::string largest);
 
-    public: Vector getRowsWhereBetween(std::string betweenColumn, std::string smallest, std::string largest);
+    public: BasicArrayList getRowsWhereBetween(std::string betweenColumn, std::string smallest, std::string largest);
 
 };
 

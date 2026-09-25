@@ -33,7 +33,10 @@
 #include <java/util/HashMap.h>
 
       
-#include <java/util/Vector.h>
+#include <org/allbinary/util/BasicArrayList.h>
+
+      
+#include <org/allbinary/util/BasicArrayListD.h>
 
       
 #include <javax/servlet/http/HttpServletRequest.h>
@@ -144,7 +147,7 @@ public: AuthenticationHelper(HashMap<any, any> hashMap, HttpServletRequest httpS
             
     public: bool isAuthenticated();
 
-    public: Boolean isAuthenticationSessionValid(Vector roles);
+    public: Boolean isAuthenticationSessionValid(BasicArrayList roles);
 
     public: void nextAttempt();
 

@@ -20,9 +20,6 @@
 
             #include "../../../../../java/lang/Exception.h"
         
-#include <java/util/Hashtable.h>
-
-      
 #include <org/allbinary/animation/resource/BaseResourceAnimationInterfaceFactoryInterfaceFactory.h>
 
       
@@ -39,6 +36,9 @@
 
       
 #include <org/allbinary/image/ImageCacheFactory.h>
+
+      
+#include <org/allbinary/logic/StdUtil.h>
 
       
 
@@ -73,7 +73,7 @@ class TouchButtonResourceAnimationInterfaceFactoryInterfaceFactory: public BaseR
 
 
 public: TouchButtonResourceAnimationInterfaceFactoryInterfaceFactory(std::string name){
-            super(name, Hashtable<any, any>(), Hashtable<any, any>(), Hashtable<any, any>());
+            super(name, StdUtil::getInstance().createHashtable(), StdUtil::getInstance().createHashtable(), StdUtil::getInstance().createHashtable());
                     
 
                             //For kotlin this is before the body of the constructor.

@@ -23,7 +23,10 @@
 #include <java/util/HashMap.h>
 
       
-#include <java/util/Vector.h>
+#include <org/allbinary/util/BasicArrayList.h>
+
+      
+#include <org/allbinary/util/BasicArrayListD.h>
 
       
 #include <javax/servlet/http/HttpServletRequest.h>
@@ -130,7 +133,7 @@ this->quoteRequest= QuoteRequest(this->weblisketSession.getUserName(), request);
 
         try {
             
-    Vector values = this->quoteRequest.toVector();;
+    BasicArrayList values = this->quoteRequest.toVector();;
     
 QuoteRequestEntityFactory::getInstance().getQuoteRequestEntityInstance().insert(values);
     

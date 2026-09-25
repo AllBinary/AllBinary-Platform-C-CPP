@@ -27,7 +27,10 @@
 #include <java/util/HashMap.h>
 
       
-#include <java/util/Vector.h>
+#include <org/allbinary/util/BasicArrayList.h>
+
+      
+#include <org/allbinary/util/BasicArrayListD.h>
 
       
 #include <org/allbinary/business/context/modules/storefront/StoreFrontInterface.h>
@@ -107,6 +110,8 @@ class InventorySearch
 
     private: const CommonStrings commonStrings = CommonStrings::getInstance();
 
+    protected: const BasicItemData basicItemData = BasicItemData::getInstance();
+
     private: SearchRequest searchRequest;
 
 public: InventorySearch(SearchRequest searchRequest){
@@ -135,7 +140,7 @@ this->searchRequest= searchRequest;
     HashMap<any, any> columnValueHashMap = searchParams.get();;
     
 
-    std::string file = StaticPagesEntity().getFile(storeFront.getName(), Replace("-", CommonSeps::getInstance().SPACE).all(columnValueHashMap.get(BasicItemData::KEYWORDS) as string));;
+    std::string file = StaticPagesEntity().getFile(storeFront.getName(), Replace("-", CommonSeps::getInstance().SPACE).all(columnValueHashMap.get(basicItemData.KEYWORDS) as string));;
     
 
                         if(StringValidationUtil::getInstance().isEmpty(file))
@@ -250,7 +255,7 @@ stringBuffer.append(InputOutputTypeData::getInstance().DEFAULT);
     InventorySearchUtil inventorySearchUtil = InventorySearchUtil::getInstance();;
     
 
-    Vector vector = inventorySearchUtil.getBasicItemIdColumn(this->searchRequest);;
+    BasicArrayList vector = inventorySearchUtil.getBasicItemIdColumn(this->searchRequest);;
     
 
 

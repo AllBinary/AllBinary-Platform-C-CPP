@@ -32,6 +32,9 @@
 #include <org/allbinary/game/layer/AllBinaryTiledLayer.h>
 
       
+#include <org/allbinary/logic/StdUtil.h>
+
+      
 #include <org/allbinary/logic/communication/log/LogUtil.h>
 
       
@@ -62,7 +65,7 @@
 
 class GeographicMapCellPositionFactory: public GeographicMapCellPositionBaseFactory {
 
-    private: static const Hashtable<any, any> hashtable = Hashtable<any, any>();
+    private: static const Hashtable<any, any> hashtable = StdUtil::getInstance().createHashtable();
 
     public: static Hashtable<any, any> getHashtable();
 

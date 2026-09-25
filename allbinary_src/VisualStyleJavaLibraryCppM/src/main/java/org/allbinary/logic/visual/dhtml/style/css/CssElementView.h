@@ -28,7 +28,10 @@
 #include <java/util/HashMap.h>
 
       
-#include <java/util/Vector.h>
+#include <org/allbinary/util/BasicArrayList.h>
+
+      
+#include <org/allbinary/util/BasicArrayListD.h>
 
       
 #include <org/allbinary/data/tree/dom/DomData.h>
@@ -44,6 +47,9 @@
 
       
 #include <org/allbinary/data/tree/dom/ModDomHelper.h>
+
+      
+#include <org/allbinary/logic/StdUtil.h>
 
       
 #include <org/allbinary/logic/communication/log/LogUtil.h>
@@ -109,9 +115,9 @@ class CssElementView
 
     private: std::string description;
 
-    protected: Vector cssElementVector;
+    protected: BasicArrayList cssElementVector;
 
-    protected: Vector cssPropertyVector;
+    protected: BasicArrayList cssPropertyVector;
 
 public: CssElementView();
 

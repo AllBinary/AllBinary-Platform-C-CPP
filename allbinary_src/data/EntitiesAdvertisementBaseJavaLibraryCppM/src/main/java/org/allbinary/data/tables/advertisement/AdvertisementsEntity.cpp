@@ -23,7 +23,10 @@
 #include <java/util/HashMap.h>
 
       
-#include <java/util/Vector.h>
+#include <org/allbinary/util/BasicArrayList.h>
+
+      
+#include <org/allbinary/util/BasicArrayListD.h>
 
       
 #include <org/allbinary/business/DynamicObjectData.h>
@@ -42,6 +45,9 @@
 
       
 #include <org/allbinary/business/init/db/UserDbInitInfo.h>
+
+      
+#include <org/allbinary/logic/StdUtil.h>
 
       
 #include <org/allbinary/logic/communication/log/LogUtil.h>
@@ -124,20 +130,20 @@ this->setTableName(this->tableName);
 }
 
 
-    public: Vector get(std::string storeName){
+    public: BasicArrayList get(std::string storeName){
 
-    HashMap<any, any> keysAndValues = HashMap<any, any>();;
+    HashMap<any, any> keysAndValues = StdUtil::getInstance().createHashMap();;
     
 keysAndValues.put(StoreFrontData::getInstance().NAME, storeName);
     
 
-    Vector hashMapVector = super.getRows(keysAndValues);;
+    BasicArrayList hashMapVector = super.getRows(keysAndValues);;
     
 
-    Vector vector = Vector();;
+    BasicArrayList vector = BasicArrayListD();;
     
 
-    int32_t size = hashMapVector.length;;
+    int32_t size = hashMapVector.size();;
     
 
 
@@ -155,14 +161,14 @@ keysAndValues.put(StoreFrontData::getInstance().NAME, storeName);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return vector as Vector;
+                        return vector;
     
 }
 
 
     public: AdvertisementInterface get(std::string storeName, std::string advertismentName){
 
-    HashMap<any, any> keysAndValues = HashMap<any, any>();;
+    HashMap<any, any> keysAndValues = StdUtil::getInstance().createHashMap();;
     
 keysAndValues.put(StoreFrontData::getInstance().NAME, storeName);
     

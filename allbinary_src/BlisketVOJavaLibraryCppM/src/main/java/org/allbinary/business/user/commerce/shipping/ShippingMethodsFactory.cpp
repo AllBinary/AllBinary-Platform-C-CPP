@@ -22,7 +22,10 @@
         
             #include "../../../../../../java/lang/Exception.h"
         
-#include <java/util/Vector.h>
+#include <org/allbinary/util/BasicArrayList.h>
+
+      
+#include <org/allbinary/util/BasicArrayListD.h>
 
       
 #include <org/allbinary/business/DynamicObjectData.h>
@@ -53,6 +56,9 @@
 
       
 #include <org/allbinary/globals/URLGLOBALS.h>
+
+      
+#include <org/allbinary/logic/StdUtil.h>
 
       
 #include <org/allbinary/logic/control/crypt/file/CryptFileReader.h>
@@ -144,7 +150,7 @@ SHIPPINGMETHODSFILEPATHSTRING= stringBuffer.toString();
 
     private: Document document;
 
-    private: Vector shippingVector;
+    private: BasicArrayList shippingVector;
 
 public: ShippingMethodsFactory(AbeClientInformationInterface abeClientInformation, StoreFrontInterface storeFrontInterface){
 
@@ -171,7 +177,7 @@ stringBuffer.append(ShippingMethodsFactory::SHIPPINGMETHODSFILEPATHSTRING);
     
 this->document= DomDocumentHelper::create(data);
     
-this->shippingVector= Vector();
+this->shippingVector= BasicArrayListD();
     
 
     NodeList nodeList = this->document.getElementsByTagName(ShippingMethodsData::NAME);;
@@ -216,7 +222,7 @@ this->shippingVector.add(shippingMethodInterface);
 }
 
 
-                        if(this->shippingVector.length < 1)
+                        if(this->shippingVector.size() < 1)
                         
                                     {
                                     this->defaultShippingMethodInterface= BasicWeightShippingModuleView();
@@ -233,7 +239,7 @@ this->shippingVector.add(NoShippingModuleView());
 
                 //@Throws(Exception.constructor)
             
-    public: Vector getInstance(){
+    public: BasicArrayList getInstance(){
 
 
 

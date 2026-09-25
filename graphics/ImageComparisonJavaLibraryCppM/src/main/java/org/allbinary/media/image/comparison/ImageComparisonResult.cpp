@@ -27,7 +27,13 @@
 #include <java/awt/image/BufferedImage.h>
 
       
-#include <java/util/Vector.h>
+#include <org/allbinary/util/BasicArrayList.h>
+
+      
+#include <org/allbinary/util/BasicArrayListD.h>
+
+      
+#include <org/allbinary/logic/StdUtil.h>
 
       
 #include <org/allbinary/logic/communication/log/LogUtil.h>
@@ -84,7 +90,7 @@ class ImageComparisonResult
 
     public: int32_t imageWidth;
 
-    private: Vector nonMatchingPixelVector;
+    private: BasicArrayList nonMatchingPixelVector;
 
     private: Long frameOne;
 
@@ -101,7 +107,7 @@ class ImageComparisonResult
 public: ImageComparisonResult(std::string name, BufferedImage bufferedImage, BufferedImage bufferedImage2, Long frameOne, Long frameTwo, int32_t tolerance){
 this->name= name;
     
-this->nonMatchingPixelVector= Vector();
+this->nonMatchingPixelVector= BasicArrayListD();
     
 this->bufferedImages[0]= bufferedImage;
     
@@ -215,7 +221,7 @@ this->nonMatchingPixelVector.add(pixel);
 }
 
 
-    public: Vector getNonMatchingPixelVector(){
+    public: BasicArrayList getNonMatchingPixelVector(){
 
 
 

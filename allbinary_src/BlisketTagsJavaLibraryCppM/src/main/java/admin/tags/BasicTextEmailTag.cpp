@@ -32,6 +32,9 @@
 #include <admin/taghelpers/BasicTextEmailHelperFactory.h>
 
       
+#include <org/allbinary/logic/StdUtil.h>
+
+      
 #include <org/allbinary/logic/communication/http/request/AbResponseHandler.h>
 
       
@@ -88,7 +91,7 @@ this->body= value;
 
         try {
             
-    HashMap<any, any> propertiesHashMap = HashMap<any, any>();;
+    HashMap<any, any> propertiesHashMap = StdUtil::getInstance().createHashMap();;
     
 propertiesHashMap.put("Subject", this->subject);
     

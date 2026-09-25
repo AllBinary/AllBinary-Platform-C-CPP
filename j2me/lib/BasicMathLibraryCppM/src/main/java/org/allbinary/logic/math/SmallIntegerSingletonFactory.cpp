@@ -29,6 +29,15 @@
 #include <jsinterop/annotations/JsType.h>
 
       
+#include <jsinterop/annotations/JsMethod.h>
+
+      
+#include <jsinterop/annotations/JsConstructor.h>
+
+      
+#include <jsinterop/annotations/JsProperty.h>
+
+      
 #include <org/allbinary/AndroidUtil.h>
 
       
@@ -38,13 +47,7 @@
 #include <org/allbinary/logic/communication/log/LogUtil.h>
 
       
-#include <jsinterop/annotations/JsMethod.h>
-
-      
-#include <jsinterop/annotations/JsConstructor.h>
-
-      
-#include <jsinterop/annotations/JsProperty.h>
+#include <org/allbinary/logic/string/StringMaker.h>
 
       
 
@@ -98,16 +101,7 @@ class SmallIntegerSingletonFactory
 
     public: int32_t getMin(){
 
-    int32_t minAllowed = (J2MEUtil::isJ2ME()
-                        ?       
-                                0
-                                :
-
-                            
-                                        //Otherwise - expression - elseExpr - ConditionalExpr
-;
-
-    );;
+    int32_t minAllowed = this->getMinAllowed();;
     
 
                         if(this->MIN <= minAllowed)
@@ -127,7 +121,7 @@ class SmallIntegerSingletonFactory
                                     
     LogUtil logUtil = LogUtil::getInstance();;
     
-logUtil.putF("Android InputFactory was initialized before GameMidlet: " +this->MIN, this, "getMin");
+logUtil.putF(StringMaker().append("Android InputFactory was initialized before GameMidlet: ").appendint(this->MIN).toString(), this, "getMin");
     
 this->initWithRange(0x291, 6);
     
@@ -138,7 +132,7 @@ this->initWithRange(0x291, 6);
                             
     LogUtil logUtil = LogUtil::getInstance();;
     
-logUtil.putF("InputFactory was initialized before GameMidlet or KeyFactoryInitializer - Currently this is occurs on JS build by TouchMotionGestureFactory constructor: " +this->MIN, this, "getMin");
+logUtil.putF(StringMaker().append("InputFactory was initialized before GameMidlet or KeyFactoryInitializer - Currently this is occurs on JS build by TouchMotionGestureFactory constructor: ").appendint(this->MIN).toString(), this, "getMin");
     
 this->initWithRange(0x2D0, 6);
     
@@ -166,6 +160,50 @@ logUtil.put("This means you loaded the InputFactory before determining the platf
                         //if statement needs to be on the same line and ternary does not work the same way.
                         return this->MIN;
     
+}
+
+
+    private: int32_t getMinAllowed(){
+
+                        if(J2MEUtil::isJ2ME())
+                        
+                                    {
+                                    
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return 0;
+    
+
+                                    }
+                                
+                        else {
+                            
+                        if(AndroidUtil::isAndroid())
+                        
+                                    {
+                                    
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return 0x101;
+    
+
+                                    }
+                                
+                        else {
+                            
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return 23;
+    
+
+                        }
+                            
+
+                        }
+                            
 }
 
 

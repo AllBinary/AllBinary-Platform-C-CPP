@@ -26,7 +26,10 @@
 #include <java/util/HashMap.h>
 
       
-#include <java/util/Vector.h>
+#include <org/allbinary/util/BasicArrayList.h>
+
+      
+#include <org/allbinary/util/BasicArrayListD.h>
 
       
 #include <org/allbinary/data/tables/TableMappingInterface.h>
@@ -193,7 +196,7 @@ class PaymentGatewayInterface: public TableMappingInterface {
             
     HashMap<any, any> toHashMap(bool isEncrypted);
 
-    Vector toVector(bool isEncrypted);
+    BasicArrayList toVector(bool isEncrypted);
 
 };
 

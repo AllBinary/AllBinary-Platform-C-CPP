@@ -36,7 +36,10 @@
 #include <java/util/Hashtable.h>
 
       
-#include <java/util/Vector.h>
+#include <org/allbinary/util/BasicArrayList.h>
+
+      
+#include <org/allbinary/util/BasicArrayListD.h>
 
       
 #include <javax/microedition/lcdui/ChoiceGroup.h>
@@ -546,7 +549,7 @@ class AllBinaryGameCanvas: public RunnableCanvas, public AllBinaryGameCanvasInte
 
     private: bool isCheating= false;
 
-    private: Hashtable<any, any> hashtable = this->nullUtil.NULL_TABLE;
+    private: Hashtable<any, any> hashtable = this->stdUtil.NULL_TABLE;
 
     private: bool isSingleKeyRepeatableProcessing= false;
 
@@ -895,7 +898,7 @@ this->closeMenu();
     CommandTextItemArrayFactory commandTextItemArrayFactory = gameLimitedCommandTextItemArrayFactory.getCommandTextItemArrayFactory();;
     
 
-    std::vector<ABCustomItem> items = commandTextItemArrayFactory.getInstance(this->getCommandStack() as Vector<any>, this->gameLayerManager.getBackgroundBasicColor(), this->gameLayerManager.getForegroundBasicColor());;
+    std::vector<ABCustomItem> items = commandTextItemArrayFactory.getInstance(this->getCommandStack(), this->gameLayerManager.getBackgroundBasicColor(), this->gameLayerManager.getForegroundBasicColor());;
     
 
     Rectangle rectangle = this->formUtil.createFormRectangle();;
@@ -972,7 +975,7 @@ scrollSelectionForm.deleteAll();
     CommandTextItemArrayFactory commandTextItemArrayFactory = gameLimitedCommandTextItemArrayFactory.getCommandTextItemArrayFactory();;
     
 
-    std::vector<ABCustomItem> items = commandTextItemArrayFactory.getInstance(this->getCommandStack() as Vector<any>, this->gameLayerManager.getBackgroundBasicColor(), this->gameLayerManager.getForegroundBasicColor());;
+    std::vector<ABCustomItem> items = commandTextItemArrayFactory.getInstance(this->getCommandStack(), this->gameLayerManager.getBackgroundBasicColor(), this->gameLayerManager.getForegroundBasicColor());;
     
 
     int32_t size = items.size();;
@@ -2090,7 +2093,7 @@ this->hashtable= hashtable;
 
     public: Hashtable<any, any> getCurrentStateHashtable(){
 
-    Hashtable<any, any> hashtable = Hashtable<any, any>();;
+    Hashtable<any, any> hashtable = this->stdUtil.createHashtable();;
     
 
     int32_t level = this->gameLayerManager.getGameInfo().getCurrentLevel();;

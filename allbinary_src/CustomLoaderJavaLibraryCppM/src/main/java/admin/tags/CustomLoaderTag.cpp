@@ -36,6 +36,9 @@
 #include <admin/taghelpers/CustomLoaderHelperFactory.h>
 
       
+#include <org/allbinary/logic/StdUtil.h>
+
+      
 #include <org/allbinary/logic/communication/http/request/AbResponseHandler.h>
 
       
@@ -167,7 +170,7 @@ setMethod.invoke(anyType, methodArgs);
                         if(true)
                         
                                     {
-                                    this->propertiesHashMap= HashMap<any, any>();
+                                    this->propertiesHashMap= StdUtil::getInstance().createHashMap();
     
 
                         if(this->command.compareTo(org.allbinary.globals.GLOBALS2.SET) == 0)

@@ -25,10 +25,16 @@
 #include <java/util/HashMap.h>
 
       
-#include <java/util/Vector.h>
+#include <org/allbinary/util/BasicArrayList.h>
+
+      
+#include <org/allbinary/util/BasicArrayListD.h>
 
       
 #include <org/allbinary/data/tables/TableMappingInterface.h>
+
+      
+#include <org/allbinary/logic/StdUtil.h>
 
       
 
@@ -66,7 +72,7 @@ this->userEmailEventConfigurationInterface= userEmailEventConfigurationInterface
 
     public: HashMap<any, any> toHashMap(){
 
-    HashMap<any, any> hashMap = HashMap<any, any>();;
+    HashMap<any, any> hashMap = StdUtil::getInstance().createHashMap();;
     
 hashMap.put(UserEmailEventConfigurationData::NAME, this->userEmailEventConfigurationInterface.getName());
     
@@ -95,9 +101,9 @@ hashMap.put(UserEmailEventConfigurationData::LISTENER_CLASSPATH, this->userEmail
 
                 //@Throws(Exception.constructor)
             
-    public: Vector toVector(){
+    public: BasicArrayList toVector(){
 
-    Vector vector = Vector();;
+    BasicArrayList vector = BasicArrayListD();;
     
 vector.add(this->userEmailEventConfigurationInterface.getName());
     

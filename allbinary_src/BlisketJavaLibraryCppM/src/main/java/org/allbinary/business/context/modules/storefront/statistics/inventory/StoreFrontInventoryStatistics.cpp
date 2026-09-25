@@ -29,7 +29,10 @@
 #include <java/util/HashMap.h>
 
       
-#include <java/util/Vector.h>
+#include <org/allbinary/util/BasicArrayList.h>
+
+      
+#include <org/allbinary/util/BasicArrayListD.h>
 
       
 #include <org/allbinary/business/context/modules/storefront/StoreFrontInterface.h>
@@ -45,6 +48,9 @@
 
       
 #include <org/allbinary/data/tables/user/commerce/inventory/item/InventoryEntityInterface.h>
+
+      
+#include <org/allbinary/logic/StdUtil.h>
 
       
 
@@ -83,10 +89,10 @@ this->totalInventorySaleValueMoney= Money();
     InventoryEntityInterface inventoryEntityInterface = InventoryEntityFactory::getInstance().getInventoryEntityInstance();;
     
 
-    Vector itemVector = inventoryEntityInterface.getItems(storeFrontInterface);;
+    BasicArrayList itemVector = inventoryEntityInterface.getItems(storeFrontInterface);;
     
 
-    int32_t size = itemVector.length;;
+    int32_t size = itemVector.size();;
     
 
 
@@ -137,7 +143,7 @@ this->totalInventorySaleValueMoney.add(itemPriceMoney.toString());
 
     public: HashMap<any, any> toHashMap(){
 
-    HashMap<any, any> hashMap = HashMap<any, any>();;
+    HashMap<any, any> hashMap = StdUtil::getInstance().createHashMap();;
     
 hashMap.put(StoreFrontInventoryStatisticsData::getInstance().NUMBEROFITEMS, this->getNumber().toString());
     
@@ -152,7 +158,7 @@ hashMap.put(StoreFrontInventoryStatisticsData::getInstance().TOTALVALUE, this->g
 }
 
 
-    public: Vector toVector(){
+    public: BasicArrayList toVector(){
 
 
 

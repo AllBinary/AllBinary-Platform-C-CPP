@@ -53,13 +53,19 @@
 #include <java/util/Set.h>
 
       
-#include <java/util/Vector.h>
+#include <org/allbinary/util/BasicArrayList.h>
+
+      
+#include <org/allbinary/util/BasicArrayListD.h>
 
       
 #include <org/allbinary/business/init/db/DatabaseConnectionInfoInterface.h>
 
       
 #include <org/allbinary/business/init/db/DbConnectionInfo.h>
+
+      
+#include <org/allbinary/logic/StdUtil.h>
 
       
 #include <org/allbinary/logic/communication/log/PreLogUtil.h>
@@ -123,6 +129,8 @@ class InitSql
 
     protected: const SqlStrings sqlStrings = SqlStrings::getInstance();
 
+    protected: const StdUtil stdUtil = StdUtil::getInstance();
+
     protected: const std::string INSERT = "insert";
 
     protected: const std::string UPDATE = "update";
@@ -174,7 +182,7 @@ public: InitSql(DbConnectionInfo databaseConnectionInfoInterface);
 
     public: void updateWhere(std::string key, std::string value, HashMap<any, any> updatedKeyValuePairs);
 
-    public: void insert(Vector values);
+    public: void insert(BasicArrayList values);
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
     private: std::string getValue(std::string value);

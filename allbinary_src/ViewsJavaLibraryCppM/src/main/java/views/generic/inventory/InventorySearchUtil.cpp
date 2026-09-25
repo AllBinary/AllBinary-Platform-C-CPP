@@ -32,7 +32,10 @@
 #include <java/util/ListIterator.h>
 
       
-#include <java/util/Vector.h>
+#include <org/allbinary/util/BasicArrayList.h>
+
+      
+#include <org/allbinary/util/BasicArrayListD.h>
 
       
 #include <org/allbinary/business/context/modules/storefront/StoreFrontInterface.h>
@@ -164,9 +167,11 @@ class InventorySearchUtil
 
     private: const CommonPhoneStrings commonPhoneStrings = CommonPhoneStrings::getInstance();
 
+    protected: const BasicItemData basicItemData = BasicItemData::getInstance();
+
                 //@Throws(Exception.constructor)
             
-    public: Vector getBasicItemIdColumn(SearchRequest searchRequest){
+    public: BasicArrayList getBasicItemIdColumn(SearchRequest searchRequest){
 
     InventoryEntity inventoryEntityInterface = InventoryEntityFactory::getInstance().getInventoryEntityInstance();;
     
@@ -177,13 +182,13 @@ class InventorySearchUtil
     InventoryColumnUtil inventorySearchUtil = InventoryColumnUtil::getInstance();;
     
 
-    Vector column = inventorySearchUtil.getColumnWhereLike(inventoryEntityInterface, storeFrontInterface.getCategoryPath(), BasicItemData::ID);;
+    BasicArrayList column = inventorySearchUtil.getColumnWhereLike(inventoryEntityInterface, storeFrontInterface.getCategoryPath(), basicItemData.ID);;
     
 
                         if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().PRODUCTSEARCHLOGGING))
                         
                                     {
-                                    this->logUtil.putF("Number Of Items Found: " +column.length, this, "search");
+                                    this->logUtil.putF("Number Of Items Found: " +column.size(), this, "search");
     
 
                                     }
@@ -205,9 +210,9 @@ class InventorySearchUtil
     std::string subStore = subStoreVector.get(index) as string;;
     
 
-    Vector substoreIdColumn = inventorySearchUtil.getColumnWhereLike(inventoryEntityInterface, subStore, BasicItemData::ID);;
+    BasicArrayList substoreIdColumn = inventorySearchUtil.getColumnWhereLike(inventoryEntityInterface, subStore, basicItemData.ID);;
     
-column.addAll(substoreIdColumn);
+column.addAllList(substoreIdColumn);
     
 }
 
@@ -215,7 +220,7 @@ column.addAll(substoreIdColumn);
                         if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().PRODUCTSEARCHLOGGING))
                         
                                     {
-                                    this->logUtil.putF("Number Of Items Found Including SubStores: " +column.length, this, "search");
+                                    this->logUtil.putF("Number Of Items Found Including SubStores: " +column.size(), this, "search");
     
 
                                     }
@@ -257,7 +262,7 @@ inventoryNode.appendChild(ModDomHelper::createNameValueNodes(viewDocumentInterfa
 }
 
 
-    public: std::vector<std::string> search(AbeClientInformationInterface abeClientInformation, SearchRequest searchRequest, Vector column){
+    public: std::vector<std::string> search(AbeClientInformationInterface abeClientInformation, SearchRequest searchRequest, BasicArrayList column){
 
         try {
             
@@ -282,7 +287,7 @@ inventoryNode.appendChild(ModDomHelper::createNameValueNodes(viewDocumentInterfa
     HashMap<any, any> columnValueHashMap = searchParams.get();;
     
 
-    std::string keyword = Replace("-", CommonSeps::getInstance().SPACE).all(columnValueHashMap.get(BasicItemData::KEYWORDS) as string);;
+    std::string keyword = Replace("-", CommonSeps::getInstance().SPACE).all(columnValueHashMap.get(basicItemData.KEYWORDS) as string);;
     
 
                         if(StringValidationUtil::getInstance().isEmpty(keyword))
@@ -325,9 +330,6 @@ inventoryNode.appendChild(ModDomHelper::createNameValueNodes(viewDocumentInterfa
 
     std::vector<Node> inventoryNodes = new Array(MAXPAGES);;
     
-
-    ListIterator iter = column.listIterator();;
-    
 keyword= keyword.toUpperCase();
     
 
@@ -364,7 +366,14 @@ inventoryNode.appendChild(ModDomHelper::createNameValueNodes(viewDocumentInterfa
     int32_t currentPage =  -1;;
     
 
-        while(iter.hasNext())
+    int32_t size = column.size();;
+    
+
+
+
+
+                        for (
+    int32_t index = 0;index < size; index++)
         {
 
     std::string product = .toCharArray();;
@@ -386,7 +395,7 @@ keywords= keywords.toUpperCase();
                         
                                     {
                                     
-    Node itemNode = BasicItemView(itemInterface, Vector()).toXmlNode(viewDocumentInterface.getDoc());;
+    Node itemNode = BasicItemView(itemInterface, BasicArrayListD()).toXmlNode(viewDocumentInterface.getDoc());;
     
 itemNode.appendChild(ModDomHelper::createNameValueNodes(viewDocumentInterface.getDoc(), BasketData::ITEMTOTALINBASKET, this->commonPhoneStrings.ONE));
     

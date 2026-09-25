@@ -18,13 +18,18 @@
 
 
 
-        #ifndef ORG_ALLBINARY_LAYER_POSITIONINTERFACE_H
-        #define ORG_ALLBINARY_LAYER_POSITIONINTERFACE_H
+        #ifndef TAGS_ADMIN_PAYMENT_GATEWAYS_VIEWEXISTINGTAG_H
+        #define TAGS_ADMIN_PAYMENT_GATEWAYS_VIEWEXISTINGTAG_H
 
-#include <jsinterop/annotations/JsType.h>
+            #include "../../../../java/lang/Exception.h"
+        
+#include <javax/servlet/jsp/JspTagException.h>
 
       
-#include <jsinterop/annotations/JsMethod.h>
+#include <org/allbinary/logic/communication/http/request/AbResponseHandler.h>
+
+      
+#include <tags/StoreValidationTransformTag.h>
 
       
 
@@ -46,13 +51,17 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class PositionInterface {
+class ViewExistingTag: public StoreValidationTransformTag {
 
-    void setPosition(int32_t x, int32_t y, int32_t z);
+public: ViewExistingTag();
+
+                //@Throws(JspTagException.constructor)
+            
+    public: int32_t doStartTag();
 
 };
 
             
 
 
-        #endif //ORG_ALLBINARY_LAYER_POSITIONINTERFACE_H
+        #endif //TAGS_ADMIN_PAYMENT_GATEWAYS_VIEWEXISTINGTAG_H

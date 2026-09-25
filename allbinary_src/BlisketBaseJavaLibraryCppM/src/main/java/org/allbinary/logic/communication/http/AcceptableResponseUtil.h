@@ -23,10 +23,16 @@
 
             #include "../../../../../java/lang/Object.h"
         
-#include <java/util/Vector.h>
+#include <org/allbinary/util/BasicArrayList.h>
+
+      
+#include <org/allbinary/util/BasicArrayListD.h>
 
       
 #include <org/allbinary/TsUtil.h>
+
+      
+#include <org/allbinary/logic/StdUtil.h>
 
       
 
@@ -60,9 +66,9 @@ class AcceptableResponseUtil
                     static int32_t initResult;
                 static int32_t init();
             
-    public: const Vector candidateVector = Vector();
+    public: const BasicArrayList candidateVector = BasicArrayListD();
 
-    public: const Vector tagNameVector = Vector();
+    public: const BasicArrayList tagNameVector = BasicArrayListD();
 
     public: std::string get(int32_t index);
 

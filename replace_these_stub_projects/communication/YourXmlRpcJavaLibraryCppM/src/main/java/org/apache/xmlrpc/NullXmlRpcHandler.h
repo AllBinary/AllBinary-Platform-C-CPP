@@ -25,7 +25,10 @@
         
             #include "../../../java/lang/Exception.h"
         
-#include <java/util/Vector.h>
+#include <org/allbinary/util/BasicArrayList.h>
+
+      
+#include <org/allbinary/util/BasicArrayListD.h>
 
       
 #include <org/allbinary/logic/NullUtil.h>
@@ -59,7 +62,7 @@ class NullXmlRpcHandler
 
                 //@Throws(Exception.constructor)
             
-    public: Object* execute(std::string method, Vector<any> params);
+    public: Object* execute(std::string method, BasicArrayList params);
 
 };
 

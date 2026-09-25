@@ -23,7 +23,10 @@
 #include <java/util/HashMap.h>
 
       
-#include <java/util/Vector.h>
+#include <org/allbinary/util/BasicArrayList.h>
+
+      
+#include <org/allbinary/util/BasicArrayListD.h>
 
       
 #include <org/allbinary/data/tables/transform/info/TransformInfoEntityBuilder.h>
@@ -160,10 +163,10 @@ this->viewName= requestHashMap.get(TransformInfoData::getInstance().NAME) as str
     NoTemplateTransformInfoObjectConfig objectConfig = NoTemplateTransformInfoObjectConfig(this->getTransformInfoInterface(), this->getTransformInfoInterface().getObjectConfigInterface().toXmlDoc());;
     
 
-    Vector componentVector = objectConfig.getGroupTransforms();;
+    BasicArrayList componentVector = objectConfig.getGroupTransforms();;
     
 
-    int32_t size = componentVector.length;;
+    int32_t size = componentVector.size();;
     
 
                         if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEW))
@@ -174,7 +177,7 @@ this->viewName= requestHashMap.get(TransformInfoData::getInstance().NAME) as str
     
 stringBuffer.append("Pointing ");
     
-stringBuffer.appendint(componentVector.length);
+stringBuffer.appendint(componentVector.size());
     
 stringBuffer.append(" Components");
     

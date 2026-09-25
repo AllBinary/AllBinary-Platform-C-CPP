@@ -33,7 +33,10 @@
 #include <java/util/Set.h>
 
       
-#include <java/util/Vector.h>
+#include <org/allbinary/util/BasicArrayList.h>
+
+      
+#include <org/allbinary/util/BasicArrayListD.h>
 
       
 #include <org/allbinary/data/tree/dom/DomNodeInterface.h>
@@ -75,8 +78,8 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "ItemInterface.h"
-#include "BasicItemData.h"
+        #include "BasicItemData.h"
+#include "ItemInterface.h"
 
 class BasicItemView
             : public Object
@@ -86,11 +89,13 @@ class BasicItemView
 
     protected: const CommonStrings commonStrings = CommonStrings::getInstance();
 
+    protected: const BasicItemData basicItemData = BasicItemData::getInstance();
+
     private: ItemInterface itemInterface;
 
-    private: Vector vector;
+    private: BasicArrayList vector;
 
-public: BasicItemView(ItemInterface itemInterface, Vector vector);
+public: BasicItemView(ItemInterface itemInterface, BasicArrayList vector);
 
                 //@Throws(Exception.constructor)
             

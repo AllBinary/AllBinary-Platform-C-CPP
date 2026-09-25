@@ -23,7 +23,10 @@
 
             #include "../../../../../java/lang/Object.h"
         
-#include <java/util/Vector.h>
+#include <org/allbinary/util/BasicArrayList.h>
+
+      
+#include <org/allbinary/util/BasicArrayListD.h>
 
       
 
@@ -54,51 +57,51 @@ class AdminRoleFactory
 
     public: static AdminRoleFactory getInstance();
 
-    private: const Vector<any> adminRoles = Vector<any>();
+    private: const BasicArrayList adminRoles = BasicArrayListD();
 
-    private: const Vector<any> storeAdminRoles = Vector<any>();
+    private: const BasicArrayList storeAdminRoles = BasicArrayListD();
 
-    private: const Vector<any> storeManagementRoles = Vector<any>();
+    private: const BasicArrayList storeManagementRoles = BasicArrayListD();
 
-    private: const Vector<any> productManagementRoles = Vector<any>();
+    private: const BasicArrayList productManagementRoles = BasicArrayListD();
 
-    private: const Vector<any> reviewManagementRoles = Vector<any>();
+    private: const BasicArrayList reviewManagementRoles = BasicArrayListD();
 
-    private: const Vector<any> customerManagementRoles = Vector<any>();
+    private: const BasicArrayList customerManagementRoles = BasicArrayListD();
 
-    private: const Vector<any> workflowManagementRoles = Vector<any>();
+    private: const BasicArrayList workflowManagementRoles = BasicArrayListD();
 
-    private: const Vector<any> orderManagementRoles = Vector<any>();
+    private: const BasicArrayList orderManagementRoles = BasicArrayListD();
 
-    private: const Vector<any> adjusterManagementRoles = Vector<any>();
+    private: const BasicArrayList adjusterManagementRoles = BasicArrayListD();
 
-    private: const Vector<any> shippingManagementRoles = Vector<any>();
+    private: const BasicArrayList shippingManagementRoles = BasicArrayListD();
 
-    private: const Vector<any> webManagementRoles = Vector<any>();
+    private: const BasicArrayList webManagementRoles = BasicArrayListD();
 
 private: AdminRoleFactory();
 
-    public: Vector<any> getProductManagementRoles();
+    public: BasicArrayList getProductManagementRoles();
 
-    public: Vector<any> getAdminRoles();
+    public: BasicArrayList getAdminRoles();
 
-    public: Vector<any> getStoreAdminRoles();
+    public: BasicArrayList getStoreAdminRoles();
 
-    public: Vector<any> getStoreManagementRoles();
+    public: BasicArrayList getStoreManagementRoles();
 
-    public: Vector<any> getReviewManagementRoles();
+    public: BasicArrayList getReviewManagementRoles();
 
-    public: Vector<any> getCustomerManagementRoles();
+    public: BasicArrayList getCustomerManagementRoles();
 
-    public: Vector<any> getWorkflowManagementRoles();
+    public: BasicArrayList getWorkflowManagementRoles();
 
-    public: Vector<any> getWebManagementRoles();
+    public: BasicArrayList getWebManagementRoles();
 
-    public: Vector<any> getShippingManagementRoles();
+    public: BasicArrayList getShippingManagementRoles();
 
-    public: Vector<any> getAdjusterManagementRoles();
+    public: BasicArrayList getAdjusterManagementRoles();
 
-    public: Vector<any> getOrderManagementRoles();
+    public: BasicArrayList getOrderManagementRoles();
 
 };
 

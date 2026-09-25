@@ -33,7 +33,10 @@
 #include <java/util/HashMap.h>
 
       
-#include <java/util/Vector.h>
+#include <org/allbinary/util/BasicArrayList.h>
+
+      
+#include <org/allbinary/util/BasicArrayListD.h>
 
       
 #include <javax/servlet/http/HttpServletRequest.h>
@@ -49,6 +52,9 @@
 
       
 #include <org/allbinary/data/generator/QuoteRequestIdGenerator.h>
+
+      
+#include <org/allbinary/logic/StdUtil.h>
 
       
 #include <org/allbinary/logic/communication/log/LogUtil.h>
@@ -115,7 +121,7 @@ public: QuoteRequest(HashMap<any, any> hashMap);
 
     public: std::string validationInfo();
 
-    public: Vector toVector();
+    public: BasicArrayList toVector();
 
     public: HashMap<any, any> toHashMap();
 

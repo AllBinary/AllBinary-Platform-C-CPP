@@ -32,7 +32,10 @@
 #include <java/util/HashMap.h>
 
       
-#include <java/util/Vector.h>
+#include <org/allbinary/util/BasicArrayList.h>
+
+      
+#include <org/allbinary/util/BasicArrayListD.h>
 
       
 #include <javax/servlet/http/HttpServletRequest.h>
@@ -63,6 +66,9 @@
 
       
 #include <org/allbinary/globals/URLGLOBALS.h>
+
+      
+#include <org/allbinary/logic/StdUtil.h>
 
       
 #include <org/allbinary/logic/communication/http/request/RequestParams.h>
@@ -1962,9 +1968,9 @@ FileUtil::getInstance().copyDirectoryPortion(viewStoreImagesDirectoryAbPath, sto
 
                 //@Throws(Exception.constructor)
             
-    public: Vector toVector(){
+    public: BasicArrayList toVector(){
 
-    Vector dataVector = Vector();;
+    BasicArrayList dataVector = BasicArrayListD();;
     
 dataVector.add(this->name);
     
@@ -2045,7 +2051,7 @@ dataVector.add(time);
     StoreFrontData storeFrontData = StoreFrontData::getInstance();;
     
 
-    HashMap<any, any> dataHashMap = HashMap<any, any>();;
+    HashMap<any, any> dataHashMap = StdUtil::getInstance().createHashMap();;
     
 dataHashMap.put(storeFrontData.NAME, this->name);
     

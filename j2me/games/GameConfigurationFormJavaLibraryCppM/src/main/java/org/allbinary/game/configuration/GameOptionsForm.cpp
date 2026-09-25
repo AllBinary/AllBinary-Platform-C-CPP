@@ -99,6 +99,9 @@
 #include <jsinterop/annotations/JsConstructor.h>
 
       
+#include <org/allbinary/logic/StdUtil.h>
+
+      
 
 
 
@@ -346,7 +349,7 @@ item= this->get(index);
 GameConfigurationUtil::getInstance().updateCompetitionValue();
     
 
-    Hashtable<any, any> hashtable = Hashtable<any, any>();;
+    Hashtable<any, any> hashtable = StdUtil::getInstance().createHashtable();;
     
 
     GameConfiguration SCALE = GameConfigurationCentral::getInstance().SCALE;;

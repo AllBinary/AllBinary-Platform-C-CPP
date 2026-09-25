@@ -25,10 +25,16 @@
         
             #include "../../../../../java/lang/Object.h"
         
+#include <java/util/Vector.h>
+
+      
 #include <jsinterop/annotations/JsType.h>
 
       
-#include <java/util/Vector.h>
+#include <jsinterop/annotations/JsMethod.h>
+
+      
+#include <jsinterop/annotations/JsConstructor.h>
 
       
 #include <javax/microedition/lcdui/Command.h>
@@ -56,12 +62,6 @@
 
       
 #include <org/allbinary/util/BasicArrayListD.h>
-
-      
-#include <jsinterop/annotations/JsMethod.h>
-
-      
-#include <jsinterop/annotations/JsConstructor.h>
 
       
 

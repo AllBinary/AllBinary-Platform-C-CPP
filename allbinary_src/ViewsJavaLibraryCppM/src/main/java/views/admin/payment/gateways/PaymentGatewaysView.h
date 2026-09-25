@@ -26,7 +26,10 @@
 #include <java/util/HashMap.h>
 
       
-#include <java/util/Vector.h>
+#include <org/allbinary/util/BasicArrayList.h>
+
+      
+#include <org/allbinary/util/BasicArrayListD.h>
 
       
 #include <org/allbinary/business/entry/EntryData.h>
@@ -88,9 +91,9 @@ class PaymentGatewaysView: public HttpStoreComponentView, public DomNodeInterfac
 
     protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: Vector paymentGatewayVector;
+    private: BasicArrayList paymentGatewayVector;
 
-public: PaymentGatewaysView(TransformInfoInterface transformInfoInterface, Vector gatewayVector);
+public: PaymentGatewaysView(TransformInfoInterface transformInfoInterface, BasicArrayList gatewayVector);
 
                 //@Throws(Exception.constructor)
             

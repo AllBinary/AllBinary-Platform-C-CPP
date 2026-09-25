@@ -25,7 +25,10 @@
 #include <java/util/HashMap.h>
 
       
-#include <java/util/Vector.h>
+#include <org/allbinary/util/BasicArrayList.h>
+
+      
+#include <org/allbinary/util/BasicArrayListD.h>
 
       
 #include <javax/servlet/http/HttpServletRequest.h>
@@ -434,7 +437,7 @@ NewPasswordEmail(this->abeClientInformation, userInterface, newPassword).process
 }
 
 
-    public: Boolean isRoleValid(std::string userName, std::string password, Vector roles){
+    public: Boolean isRoleValid(std::string userName, std::string password, BasicArrayList roles){
 
         try {
             

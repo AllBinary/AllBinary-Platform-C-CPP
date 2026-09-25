@@ -30,7 +30,10 @@
 #include <java/util/HashMap.h>
 
       
-#include <java/util/Vector.h>
+#include <org/allbinary/util/BasicArrayList.h>
+
+      
+#include <org/allbinary/util/BasicArrayListD.h>
 
       
 #include <org/allbinary/business/entry/EntryData.h>
@@ -49,6 +52,9 @@
 
       
 #include <org/allbinary/data/tables/TableDataFactory.h>
+
+      
+#include <org/allbinary/logic/StdUtil.h>
 
       
 #include <org/allbinary/logic/communication/log/LogUtil.h>
@@ -113,7 +119,7 @@ this->userName= userName;
 
         try {
             
-    HashMap<any, any> whereHashMap = HashMap<any, any>();;
+    HashMap<any, any> whereHashMap = StdUtil::getInstance().createHashMap();;
     
 whereHashMap.put(UserData::USERNAME, this->userName);
     
@@ -158,7 +164,7 @@ this->add(address, TableDataFactory::getInstance().INTEGER_MAX_VALUE_STRING);
 
         try {
             
-    Vector values = Vector();;
+    BasicArrayList values = BasicArrayListD();;
     
 values.add(index);
     
@@ -224,7 +230,7 @@ this->setDefault(getLastId());
     HashMap<any, any> addressHashMap = address.toHashMap();;
     
 
-    HashMap<any, any> whereKeyValuePairs = HashMap<any, any>();;
+    HashMap<any, any> whereKeyValuePairs = StdUtil::getInstance().createHashMap();;
     
 whereKeyValuePairs.put(StreetAddressData::ID, address.getId());
     
@@ -271,22 +277,22 @@ this->setDefault(address.getId());
 }
 
 
-    public: Vector get(){
+    public: BasicArrayList get(){
 
         try {
             
-    Vector streetAddressVector = Vector();;
+    BasicArrayList streetAddressVector = BasicArrayListD();;
     
 
-    HashMap<any, any> keyAndValue = HashMap<any, any>();;
+    HashMap<any, any> keyAndValue = StdUtil::getInstance().createHashMap();;
     
 keyAndValue.put(UserData::USERNAME, this->userName);
     
 
-    Vector addressList = super.getRows(keyAndValue);;
+    BasicArrayList addressList = super.getRows(keyAndValue);;
     
 
-    int32_t size = addressList.length;;
+    int32_t size = addressList.size();;
     
 
 
@@ -348,7 +354,7 @@ keyAndValue.put(UserData::USERNAME, this->userName);
 
         try {
             
-    HashMap<any, any> keyAndValue = HashMap<any, any>();;
+    HashMap<any, any> keyAndValue = StdUtil::getInstance().createHashMap();;
     
 keyAndValue.put(UserData::USERNAME, this->userName);
     
@@ -410,10 +416,10 @@ keyAndValue.put(StreetAddressData::ID, std::to_string(index));
 
         try {
             
-    HashMap<any, any> addressHashMap = HashMap<any, any>();;
+    HashMap<any, any> addressHashMap = StdUtil::getInstance().createHashMap();;
     
 
-    HashMap<any, any> updateKeyAndValue = HashMap<any, any>();;
+    HashMap<any, any> updateKeyAndValue = StdUtil::getInstance().createHashMap();;
     
 updateKeyAndValue.put(StreetAddressData::DEFAULT, StreetAddressData::DEFAULT);
     
@@ -495,10 +501,10 @@ addressHashMap= super.getRow(updateKeyAndValue);
 
         try {
             
-    HashMap<any, any> updateKeyAndValue = HashMap<any, any>();;
+    HashMap<any, any> updateKeyAndValue = StdUtil::getInstance().createHashMap();;
     
 
-    HashMap<any, any> whereKeyAndValue = HashMap<any, any>();;
+    HashMap<any, any> whereKeyAndValue = StdUtil::getInstance().createHashMap();;
     
 whereKeyAndValue.put(UserData::USERNAME, this->userName);
     

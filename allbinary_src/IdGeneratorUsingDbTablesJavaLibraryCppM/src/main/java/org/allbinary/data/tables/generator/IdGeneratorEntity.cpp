@@ -25,10 +25,16 @@
 #include <java/util/HashMap.h>
 
       
-#include <java/util/Vector.h>
+#include <org/allbinary/util/BasicArrayList.h>
+
+      
+#include <org/allbinary/util/BasicArrayListD.h>
 
       
 #include <org/allbinary/business/init/db/UserDbInitInfo.h>
+
+      
+#include <org/allbinary/logic/StdUtil.h>
 
       
 #include <org/allbinary/logic/communication/log/LogUtil.h>
@@ -89,7 +95,7 @@ super.setTableName(this->tableName);
             
     public: Long get(std::string name){
 
-    HashMap<any, any> keysAndValues = HashMap<any, any>();;
+    HashMap<any, any> keysAndValues = StdUtil::getInstance().createHashMap();;
     
 keysAndValues.put(this->NAME, name);
     
@@ -120,7 +126,7 @@ keysAndValues.put(this->NAME, name);
 }
 
 
-    public: void insert(Vector values){
+    public: void insert(BasicArrayList values){
 
         try {
             super.insert(values);
@@ -158,7 +164,7 @@ this->logUtil.put(this->commonStrings.FAILURE, this, this->commonStrings.delete_
 
     public: void update(std::string name, Long value){
 
-    HashMap<any, any> map = HashMap<any, any>();;
+    HashMap<any, any> map = StdUtil::getInstance().createHashMap();;
     
 map.put(this->NAME, name);
     

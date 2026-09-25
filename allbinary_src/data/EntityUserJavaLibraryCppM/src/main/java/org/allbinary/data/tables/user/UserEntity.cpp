@@ -25,7 +25,10 @@
 #include <java/util/HashMap.h>
 
       
-#include <java/util/Vector.h>
+#include <org/allbinary/util/BasicArrayList.h>
+
+      
+#include <org/allbinary/util/BasicArrayListD.h>
 
       
 #include <org/allbinary/business/context/modules/storefront/StoreFrontData.h>
@@ -62,6 +65,9 @@
 
       
 #include <org/allbinary/globals/GLOBALS2.h>
+
+      
+#include <org/allbinary/logic/StdUtil.h>
 
       
 #include <org/allbinary/logic/communication/log/LogUtil.h>
@@ -130,7 +136,7 @@ this->setTableName(this->tableName);
 }
 
 
-    public: void insert(Vector values){
+    public: void insert(BasicArrayList values){
 
         try {
             super.insert(values);
@@ -164,7 +170,7 @@ this->setTableName(this->tableName);
 
                 //@Throws(Exception.constructor)
             
-    public: Vector getAdministrators(){
+    public: BasicArrayList getAdministrators(){
 
 
 
@@ -176,22 +182,22 @@ this->setTableName(this->tableName);
 
                 //@Throws(Exception.constructor)
             
-    public: Vector getStoreManagers(StoreFrontInterface storeFrontInterface){
+    public: BasicArrayList getStoreManagers(StoreFrontInterface storeFrontInterface){
 
-    HashMap<any, any> keysAndValues = HashMap<any, any>();;
+    HashMap<any, any> keysAndValues = StdUtil::getInstance().createHashMap();;
     
 
-    Vector usersVector = Vector();;
+    BasicArrayList usersVector = BasicArrayListD();;
     
 keysAndValues.put(UserRoleData::NAME.toString(), UserRoleFactory::getInstance().STOREMANAGER.toString());
     
 keysAndValues.put(UserData::PERMISSIONS, storeFrontInterface.getName());
     
 
-    Vector usersHashMapVector = super.getRows(keysAndValues);;
+    BasicArrayList usersHashMapVector = super.getRows(keysAndValues);;
     
 
-    int32_t size = usersHashMapVector.length;;
+    int32_t size = usersHashMapVector.size();;
     
 
 
@@ -222,7 +228,7 @@ keysAndValues.put(UserData::PERMISSIONS, storeFrontInterface.getName());
 
                 //@Throws(Exception.constructor)
             
-    public: Vector getCustomers(){
+    public: BasicArrayList getCustomers(){
 
 
 
@@ -234,20 +240,20 @@ keysAndValues.put(UserData::PERMISSIONS, storeFrontInterface.getName());
 
                 //@Throws(Exception.constructor)
             
-    public: Vector getUsersWithRole(UserRole userRole){
+    public: BasicArrayList getUsersWithRole(UserRole userRole){
 
-    HashMap<any, any> keysAndValues = HashMap<any, any>();;
+    HashMap<any, any> keysAndValues = StdUtil::getInstance().createHashMap();;
     
 
-    Vector usersVector = Vector();;
+    BasicArrayList usersVector = BasicArrayListD();;
     
 keysAndValues.put(UserRoleData::NAME.toString(), userRole.toString());
     
 
-    Vector usersHashMapVector = super.getRows(keysAndValues);;
+    BasicArrayList usersHashMapVector = super.getRows(keysAndValues);;
     
 
-    int32_t size = usersHashMapVector.length;;
+    int32_t size = usersHashMapVector.size();;
     
 
 
@@ -278,20 +284,20 @@ keysAndValues.put(UserRoleData::NAME.toString(), userRole.toString());
 
                 //@Throws(Exception.constructor)
             
-    public: Vector getUsers(StoreFrontInterface storeFrontInterface){
+    public: BasicArrayList getUsers(StoreFrontInterface storeFrontInterface){
 
-    HashMap<any, any> keysAndValues = HashMap<any, any>();;
+    HashMap<any, any> keysAndValues = StdUtil::getInstance().createHashMap();;
     
 
-    Vector usersVector = Vector();;
+    BasicArrayList usersVector = BasicArrayListD();;
     
 keysAndValues.put(StoreFrontData::getInstance().NAME, storeFrontInterface.getName());
     
 
-    Vector usersHashMapVector = super.getRows(keysAndValues);;
+    BasicArrayList usersHashMapVector = super.getRows(keysAndValues);;
     
 
-    int32_t size = usersHashMapVector.length;;
+    int32_t size = usersHashMapVector.size();;
     
 
 
@@ -324,7 +330,7 @@ keysAndValues.put(StoreFrontData::getInstance().NAME, storeFrontInterface.getNam
             
     public: UserInterface getUser(std::string userName){
 
-    HashMap<any, any> row = HashMap<any, any>();;
+    HashMap<any, any> row = StdUtil::getInstance().createHashMap();;
     
 row.put(UserData::USERNAME, userName);
     

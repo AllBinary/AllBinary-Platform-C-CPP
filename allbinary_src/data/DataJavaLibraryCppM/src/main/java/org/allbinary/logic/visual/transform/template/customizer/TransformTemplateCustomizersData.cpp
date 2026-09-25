@@ -18,17 +18,8 @@
 
 
 
-            #include "../../../java/lang/Object.h"
+            #include "../../../../../../../java/lang/Object.h"
         
-#include <jsinterop/annotations/JsType.h>
-
-      
-#include <jsinterop/annotations/JsMethod.h>
-
-      
-#include <jsinterop/annotations/JsProperty.h>
-
-      
 
 
 
@@ -48,37 +39,15 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class PositionStrings
+class TransformTemplateCustomizersData
             : public Object
          {
 
-    private: static PositionStrings instance() { return PositionStrings(); }
+    public: static std::string NAME = "TEMPLATE_CUSTOMIZERS_NAME";
 
-    public: static PositionStrings getInstance(){
-
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return PositionStrings::instance();
-    
+public: TransformTemplateCustomizersData(){
 }
 
-
-    public: const std::string X = "x";
-
-    public: const std::string Y = "y";
-
-    public: const std::string X_LABEL = "x: ";
-
-    public: const std::string Y_LABEL = "y: ";
-
-    public: const std::string Z_LABEL = "z: ";
-
-    public: const std::string DX_LABEL = "dx: ";
-
-    public: const std::string DY_LABEL = "dy: ";
-
-    public: const std::string DZ_LABEL = "dz: ";
 
 };
 

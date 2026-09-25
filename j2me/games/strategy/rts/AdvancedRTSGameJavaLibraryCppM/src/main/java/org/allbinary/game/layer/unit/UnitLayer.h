@@ -290,6 +290,9 @@
 #include <org/allbinary/layer/LayerInterfaceFactoryInterface.h>
 
       
+#include <org/allbinary/logic/StdUtil.h>
+
+      
 #include <org/allbinary/logic/math/BasicDecimal.h>
 
       

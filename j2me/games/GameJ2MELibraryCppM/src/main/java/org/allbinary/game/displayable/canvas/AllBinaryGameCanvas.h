@@ -39,7 +39,10 @@
 #include <java/util/Hashtable.h>
 
       
-#include <java/util/Vector.h>
+#include <org/allbinary/util/BasicArrayList.h>
+
+      
+#include <org/allbinary/util/BasicArrayListD.h>
 
       
 #include <javax/microedition/lcdui/ChoiceGroup.h>
@@ -549,7 +552,7 @@ class AllBinaryGameCanvas: public RunnableCanvas, public AllBinaryGameCanvasInte
 
     private: bool isCheating= false;
 
-    private: Hashtable<any, any> hashtable = this->nullUtil.NULL_TABLE;
+    private: Hashtable<any, any> hashtable = this->stdUtil.NULL_TABLE;
 
     private: bool isSingleKeyRepeatableProcessing= false;
 

@@ -47,7 +47,7 @@
 #include <javax/microedition/midlet/MIDletStateChangeException.h>
 
       
-#include <org/allbinary/logic/NullUtil.h>
+#include <org/allbinary/logic/StdUtil.h>
 
       
 #include <org/allbinary/logic/communication/log/ForcedLogUtil.h>
@@ -84,6 +84,9 @@
 
       
 #include <jsinterop/annotations/JsProperty.h>
+
+      
+#include <org/allbinary/logic/NullUtil.h>
 
       
 
@@ -140,7 +143,7 @@ class AllBinaryMidlet: public MIDlet, public CommandListener {
 
     private: const std::string SETTING_NO_TITLE = "Setting: No Title, Display: ";
 
-    private: Hashtable<any, any> hashtable = Hashtable<any, any>();
+    private: Hashtable<any, any> hashtable = StdUtil::getInstance().createHashtable();
 
     private: bool midletDestroyed= false;
 
@@ -296,7 +299,7 @@ this->logUtil.putF(this->commonStrings.START, this, "getStateHashtable");
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return NullUtil::getInstance().NULL_TABLE;
+                        return StdUtil::getInstance().NULL_TABLE;
     
 }
 

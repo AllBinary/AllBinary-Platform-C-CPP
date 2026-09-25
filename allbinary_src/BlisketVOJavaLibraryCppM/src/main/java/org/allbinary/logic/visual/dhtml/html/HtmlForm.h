@@ -25,7 +25,13 @@
         
             #include "../../../../../../java/lang/Object.h"
         
-#include <java/util/Vector.h>
+#include <org/allbinary/util/BasicArrayList.h>
+
+      
+#include <org/allbinary/util/BasicArrayListD.h>
+
+      
+#include <org/allbinary/logic/StdUtil.h>
 
       
 #include <org/allbinary/logic/string/StringUtil.h>
@@ -83,7 +89,7 @@ class HtmlForm
 
     private: std::string action;
 
-    Vector inputs;
+    BasicArrayList inputs;
 
 public: HtmlForm(std::string action);
 

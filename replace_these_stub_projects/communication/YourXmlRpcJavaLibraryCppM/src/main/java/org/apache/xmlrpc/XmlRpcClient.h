@@ -18,7 +18,10 @@
 #include <java/net/URL.h>
 
       
-#include <java/util/Vector.h>
+#include <org/allbinary/util/BasicArrayList.h>
+
+      
+#include <org/allbinary/util/BasicArrayListD.h>
 
       
 #include <org/allbinary/init/crypt/jcehelper/CryptInterface.h>
@@ -61,11 +64,11 @@ public: XmlRpcClient(std::string url);
 
                 //@Throws(XmlRpcException.constructor, IOException.constructor)
             
-    public: Object* execute(std::string method, Vector<any> params);
+    public: Object* execute(std::string method, BasicArrayList params);
 
                 //@Throws(XmlRpcException.constructor, IOException.constructor)
             
-    public: Object* execute(std::string method, Vector<any> params, CryptInterface cryptInterface);
+    public: Object* execute(std::string method, BasicArrayList params, CryptInterface cryptInterface);
 
 };
 

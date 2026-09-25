@@ -23,7 +23,10 @@
 #include <java/util/HashMap.h>
 
       
-#include <java/util/Vector.h>
+#include <org/allbinary/util/BasicArrayList.h>
+
+      
+#include <org/allbinary/util/BasicArrayListD.h>
 
       
 #include <org/allbinary/business/DynamicObjectData.h>
@@ -36,6 +39,9 @@
 
       
 #include <org/allbinary/business/init/db/UserDbInitInfo.h>
+
+      
+#include <org/allbinary/logic/StdUtil.h>
 
       
 #include <org/allbinary/logic/communication/log/LogUtil.h>
@@ -108,7 +114,7 @@ this->setTableName(this->tableName);
 }
 
 
-    public: void insert(Vector values){
+    public: void insert(BasicArrayList values){
 
         try {
             super.insert(values);
@@ -144,7 +150,7 @@ this->setTableName(this->tableName);
 
         try {
             
-    HashMap<any, any> keysAndValues = HashMap<any, any>();;
+    HashMap<any, any> keysAndValues = StdUtil::getInstance().createHashMap();;
     
 keysAndValues.put(WorkFlowData::getInstance().NAME, name);
     
@@ -185,7 +191,7 @@ super.deleteWhere(keysAndValues);
 
         try {
             
-    HashMap<any, any> keysAndValues = HashMap<any, any>();;
+    HashMap<any, any> keysAndValues = StdUtil::getInstance().createHashMap();;
     
 keysAndValues.put(WorkFlowData::getInstance().NAME, name);
     
@@ -242,22 +248,22 @@ keysAndValues.put(StoreFrontData::getInstance().NAME, storeName);
 }
 
 
-    public: Vector get(std::string storeName){
+    public: BasicArrayList get(std::string storeName){
 
         try {
             
-    Vector workFlowsVector = Vector();;
+    BasicArrayList workFlowsVector = BasicArrayListD();;
     
 
-    HashMap<any, any> keysAndValues = HashMap<any, any>();;
+    HashMap<any, any> keysAndValues = StdUtil::getInstance().createHashMap();;
     
 keysAndValues.put(StoreFrontData::getInstance().NAME, storeName);
     
 
-    Vector hashMapVector = super.getRows(keysAndValues);;
+    BasicArrayList hashMapVector = super.getRows(keysAndValues);;
     
 
-    int32_t size = hashMapVector.length;;
+    int32_t size = hashMapVector.size();;
     
 
 
@@ -316,7 +322,7 @@ keysAndValues.put(StoreFrontData::getInstance().NAME, storeName);
 
         try {
             
-    HashMap<any, any> wherekeysAndValues = HashMap<any, any>();;
+    HashMap<any, any> wherekeysAndValues = StdUtil::getInstance().createHashMap();;
     
 wherekeysAndValues.put(WorkFlowData::getInstance().NAME, updatedValues.get(WorkFlowData::getInstance().NAME) as string);
     

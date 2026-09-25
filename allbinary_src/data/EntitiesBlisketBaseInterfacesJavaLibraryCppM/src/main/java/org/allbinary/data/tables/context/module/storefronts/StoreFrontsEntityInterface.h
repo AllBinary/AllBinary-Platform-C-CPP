@@ -26,7 +26,10 @@
 #include <java/util/HashMap.h>
 
       
-#include <java/util/Vector.h>
+#include <org/allbinary/util/BasicArrayList.h>
+
+      
+#include <org/allbinary/util/BasicArrayListD.h>
 
       
 #include <org/allbinary/business/context/modules/storefront/StoreFrontInterface.h>
@@ -60,11 +63,11 @@ class StoreFrontsEntityInterface: public BasicDataTableInterface {
             
     StoreFrontInterface getStoreFrontInterface(std::string name);
 
-    Vector getStoreFrontNames();
+    BasicArrayList getStoreFrontNames();
 
     void delete_(std::string value);
 
-    void insert(Vector values);
+    void insert(BasicArrayList values);
 
     void update(HashMap<any, any> updatedValues);
 

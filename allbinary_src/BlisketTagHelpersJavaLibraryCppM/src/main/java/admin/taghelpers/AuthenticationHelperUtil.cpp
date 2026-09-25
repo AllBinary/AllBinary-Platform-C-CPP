@@ -22,7 +22,10 @@
         
             #include "../../java/lang/Exception.h"
         
-#include <java/util/Vector.h>
+#include <org/allbinary/util/BasicArrayList.h>
+
+      
+#include <org/allbinary/util/BasicArrayListD.h>
 
       
 #include <org/allbinary/business/user/role/BasicUserRole.h>
@@ -112,7 +115,7 @@ class AuthenticationHelperUtil
     HttpFilePermissions downloadFilePermissions = HttpFilePermissions(fullPath);;
     
 
-    Vector userRoles = downloadFilePermissions.getUserRoles();;
+    BasicArrayList userRoles = downloadFilePermissions.getUserRoles();;
     
 
     UserRole userRole = authenticationHelper.getRole();;

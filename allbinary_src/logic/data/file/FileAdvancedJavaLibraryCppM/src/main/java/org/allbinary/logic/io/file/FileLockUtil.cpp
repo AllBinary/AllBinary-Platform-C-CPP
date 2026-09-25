@@ -28,7 +28,13 @@
 #include <java/nio/channels/FileLock.h>
 
       
-#include <java/util/Vector.h>
+#include <org/allbinary/util/BasicArrayList.h>
+
+      
+#include <org/allbinary/util/BasicArrayListD.h>
+
+      
+#include <org/allbinary/logic/StdUtil.h>
 
       
 #include <org/allbinary/logic/communication/log/LogUtil.h>
@@ -84,12 +90,12 @@ private: FileLockUtil(){
 
                 //@Throws(Exception.constructor)
             
-    public: Vector getAll(Vector vector, bool isReturnOnFailure){
+    public: BasicArrayList getAll(BasicArrayList vector, bool isReturnOnFailure){
 
-    Vector fileLockVector = Vector();;
+    BasicArrayList fileLockVector = BasicArrayListD();;
     
 
-    int32_t size = vector.length;;
+    int32_t size = vector.size();;
     
 
 
@@ -121,7 +127,7 @@ fileLockVector.add(fileLock);
                         if(isReturnOnFailure)
                         
                                     {
-                                    this->logUtil.putF("Total Locks Obtained: " +fileLockVector.length, this, "getAll");
+                                    this->logUtil.putF("Total Locks Obtained: " +fileLockVector.size(), this, "getAll");
     
 
 
@@ -134,7 +140,7 @@ fileLockVector.add(fileLock);
                                 
 }
 
-this->logUtil.putF("Total Locks Obtained: " +fileLockVector.length, this, "getAll");
+this->logUtil.putF("Total Locks Obtained: " +fileLockVector.size(), this, "getAll");
     
 
 
@@ -147,7 +153,7 @@ this->logUtil.putF("Total Locks Obtained: " +fileLockVector.length, this, "getAl
 
                 //@Throws(Exception.constructor)
             
-    public: Vector getAllPossible(Vector vector){
+    public: BasicArrayList getAllPossible(BasicArrayList vector){
 
 
 
@@ -159,19 +165,19 @@ this->logUtil.putF("Total Locks Obtained: " +fileLockVector.length, this, "getAl
 
                 //@Throws(Exception.constructor)
             
-    public: Vector getAllOrNone(Vector vector){
+    public: BasicArrayList getAllOrNone(BasicArrayList vector){
 
-    Vector fileLockVector = this->getAll(vector, true);;
+    BasicArrayList fileLockVector = this->getAll(vector, true);;
     
 
-                        if(vector.length != fileLockVector.length)
+                        if(vector.size() != fileLockVector.size())
                         
                                     {
                                     
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return Vector();
+                        return BasicArrayListD();
     
 
                                     }

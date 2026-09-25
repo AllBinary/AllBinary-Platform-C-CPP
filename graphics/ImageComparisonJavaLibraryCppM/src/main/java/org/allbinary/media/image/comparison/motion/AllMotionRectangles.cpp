@@ -23,7 +23,10 @@
 #include <java/awt.h>
 
       
-#include <java/util/Vector.h>
+#include <org/allbinary/util/BasicArrayList.h>
+
+      
+#include <org/allbinary/util/BasicArrayListD.h>
 
       
 #include <org/allbinary/media/image/comparison/ImageComparisonResult.h>
@@ -73,10 +76,10 @@ this->createMotionRectangles(imageComparisonResult);
             
     private: void createMotionRectangles(ImageComparisonResult imageComparisonInfo){
 
-    Vector vector = imageComparisonInfo.getNonMatchingPixelVector();;
+    BasicArrayList vector = imageComparisonInfo.getNonMatchingPixelVector();;
     
 
-    int32_t size = vector.length;;
+    int32_t size = vector.size();;
     
 
 
@@ -99,10 +102,10 @@ this->addPixelDeltaToAMotionRectangle(pixelDelta);
             
     private: bool addPixelDeltaToExistingMotionRectangle(PixelDelta pixelDelta){
 
-    Vector vector = this->getVector();;
+    BasicArrayList vector = this->getVector();;
     
 
-    int32_t size = vector.length;;
+    int32_t size = vector.size();;
     
 
 

@@ -22,13 +22,19 @@
         
             #include "../../../../../../java/lang/Exception.h"
         
-#include <java/awt.h>
+#include <java/awt/Rectangle.h>
 
       
 #include <java/awt/image/BufferedImage.h>
 
       
-#include <java/util/Vector.h>
+#include <org/allbinary/util/BasicArrayList.h>
+
+      
+#include <org/allbinary/util/BasicArrayListD.h>
+
+      
+#include <org/allbinary/logic/StdUtil.h>
 
       
 #include <org/allbinary/logic/communication/log/LogUtil.h>
@@ -55,7 +61,6 @@
         #include "MotionRectangles.h"
 #include "MotionRectangleConstraintsInterface.h"
 #include "MotionRectangle.h"
-#include "Rectangle.h"
 
 class ConstrainedMotionRectangles: public MotionRectangles {
 
@@ -88,13 +93,13 @@ this->logUtil.putF("Start - Size Before: " +motionRectangles.getVector().size(),
     BufferedImage bufferedImage = bufferedImageArray[1];;
     
 
-    Vector vector = Vector();;
+    BasicArrayList vector = BasicArrayListD();;
     
 
-    Vector vector2 = motionRectangles.getVector();;
+    BasicArrayList vector2 = motionRectangles.getVector();;
     
 
-    int32_t size = vector2.length;;
+    int32_t size = vector2.size();;
     
 
 

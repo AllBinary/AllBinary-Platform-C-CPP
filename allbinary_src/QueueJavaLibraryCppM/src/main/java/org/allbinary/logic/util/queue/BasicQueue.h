@@ -25,7 +25,10 @@
         
             #include "../../../../../java/lang/Exception.h"
         
-#include <java/util/Vector.h>
+#include <org/allbinary/util/BasicArrayList.h>
+
+      
+#include <org/allbinary/util/BasicArrayListD.h>
 
       
 
@@ -51,7 +54,7 @@ class BasicQueue
             : public Object
          {
 
-    protected: const Vector queueVector = Vector();
+    protected: const BasicArrayList queueVector = BasicArrayListD();
 
 protected: BasicQueue();
 

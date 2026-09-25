@@ -25,7 +25,10 @@
 #include <java/util/Calendar.h>
 
       
-#include <java/util/Vector.h>
+#include <org/allbinary/util/BasicArrayList.h>
+
+      
+#include <org/allbinary/util/BasicArrayListD.h>
 
       
 #include <javax/servlet/http/HttpServletRequest.h>
@@ -121,7 +124,7 @@ class FileAuthenticationTag: public CustomTagSupport {
 
     private: std::string timeout;
 
-    private: Vector roles;
+    private: BasicArrayList roles;
 
 public: FileAuthenticationTag(){
 }
@@ -151,7 +154,7 @@ this->newPassword= value;
 }
 
 
-    public: void setRoles(Vector values){
+    public: void setRoles(BasicArrayList values){
 this->roles= values;
     
 }
@@ -649,7 +652,7 @@ stringBuffer.append("Trying New login<p>");
                         
                                     {
                                     
-    int32_t size = this->roles.length;;
+    int32_t size = this->roles.size();;
     
 
 

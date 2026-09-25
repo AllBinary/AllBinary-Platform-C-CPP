@@ -28,6 +28,9 @@
 #include <org/allbinary/globals/GLOBALS2.h>
 
       
+#include <org/allbinary/logic/StdUtil.h>
+
+      
 #include <org/allbinary/logic/communication/log/LogUtil.h>
 
       
@@ -139,7 +142,7 @@ this->GLOBALS_UPDATE= commonStrings.UPDATE +SPACE;
     std::vector<std::string> ONE_EMPTY_STRING_ARRAY = StringUtil::getInstance().ONE_EMPTY_STRING_ARRAY;;
     
 
-    HashMap<any, any> hashMap = HashMap<any, any>();;
+    HashMap<any, any> hashMap = StdUtil::getInstance().createHashMap();;
     
 hashMap.put(
                                                 {

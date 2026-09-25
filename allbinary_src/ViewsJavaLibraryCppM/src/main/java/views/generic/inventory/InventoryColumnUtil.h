@@ -26,13 +26,19 @@
 #include <java/util/HashMap.h>
 
       
-#include <java/util/Vector.h>
+#include <org/allbinary/util/BasicArrayList.h>
+
+      
+#include <org/allbinary/util/BasicArrayListD.h>
 
       
 #include <org/allbinary/business/user/commerce/inventory/item/BasicItemData.h>
 
       
 #include <org/allbinary/data/tables/user/commerce/inventory/item/InventoryEntity.h>
+
+      
+#include <org/allbinary/logic/StdUtil.h>
 
       
 #include <org/allbinary/logic/communication/log/LogUtil.h>
@@ -70,7 +76,9 @@ class InventoryColumnUtil
 
     protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    public: Vector getColumnWhereLike(InventoryEntity inventoryEntity, std::string category, std::string column);
+    protected: const BasicItemData basicItemData = BasicItemData::getInstance();
+
+    public: BasicArrayList getColumnWhereLike(InventoryEntity inventoryEntity, std::string category, std::string column);
 
 };
 

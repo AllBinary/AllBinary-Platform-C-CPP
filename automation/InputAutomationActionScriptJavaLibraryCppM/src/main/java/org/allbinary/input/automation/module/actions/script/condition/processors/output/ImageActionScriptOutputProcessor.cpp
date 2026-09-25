@@ -24,7 +24,10 @@
         
             #include "../../../../../../../../../../java/lang/Long.h"
         
-#include <java/util/Vector.h>
+#include <org/allbinary/util/BasicArrayList.h>
+
+      
+#include <org/allbinary/util/BasicArrayListD.h>
 
       
 #include <org/allbinary/input/media/image/InputImageIOInterfaceFactory.h>
@@ -82,10 +85,10 @@ logUtil.putF("Start - Processing at: " +imageActionScriptOutputInterface.toStrin
     ImageTypes imageTypes = imageActionScriptOutputInterface.getImageTypes();;
     
 
-    Vector vector = imageTypes.getVector();;
+    BasicArrayList vector = imageTypes.getVector();;
     
 
-    int32_t size = vector.length;;
+    int32_t size = vector.size();;
     
 
 

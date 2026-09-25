@@ -36,7 +36,10 @@
 #include <java/util/Random.h>
 
       
-#include <java/util/Vector.h>
+#include <org/allbinary/util/BasicArrayList.h>
+
+      
+#include <org/allbinary/util/BasicArrayListD.h>
 
       
 #include <org/allbinary/business/entry/EntryData.h>
@@ -58,6 +61,9 @@
 
       
 #include <org/allbinary/data/generator/PaymentIdGenerator.h>
+
+      
+#include <org/allbinary/logic/StdUtil.h>
 
       
 #include <org/allbinary/logic/communication/log/LogUtil.h>
@@ -107,7 +113,7 @@ public: PaymentEntity();
 
     public: void setDefault(std::string userName, Integer index);
 
-    public: Vector get(std::string userName);
+    public: BasicArrayList get(std::string userName);
 
     public: PaymentInterface getDefault(std::string userName);
 

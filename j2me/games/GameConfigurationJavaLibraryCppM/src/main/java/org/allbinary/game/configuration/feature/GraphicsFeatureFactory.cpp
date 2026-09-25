@@ -89,9 +89,9 @@ private: GraphicsFeatureFactory(){
 
     public: const GraphicsFeature SPRITE_FULL_GRAPHICS = GraphicsFeature("Sprite Full Rotation Graphics");
 
-    public: const GraphicsFeature VECTOR_GRAPHICS = GraphicsFeature("Vector Graphics");
+    public: const GraphicsFeature VECTOR_GRAPHICS = GraphicsFeature("BasicArrayList Graphics");
 
-    public: const GraphicsFeature VECTOR_TO_IMAGE_GRAPHICS = GraphicsFeature("Vector To Image Graphics");
+    public: const GraphicsFeature VECTOR_TO_IMAGE_GRAPHICS = GraphicsFeature("BasicArrayList To Image Graphics");
 
 };
 

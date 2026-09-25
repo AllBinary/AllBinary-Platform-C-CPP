@@ -35,6 +35,9 @@
 #include <java/util/Hashtable.h>
 
       
+#include <org/allbinary/logic/StdUtil.h>
+
+      
 #include <org/allbinary/logic/communication/log/LogUtil.h>
 
       
@@ -64,7 +67,7 @@ class KeySingletonFactory
             : public Object
          {
 
-    private: static Hashtable<any, any> keyStringHashtable = Hashtable<any, any>();
+    private: static Hashtable<any, any> keyStringHashtable = StdUtil::getInstance().createHashtable();
 
     private: static std::vector<Integer> keyArray = 
                                                         {

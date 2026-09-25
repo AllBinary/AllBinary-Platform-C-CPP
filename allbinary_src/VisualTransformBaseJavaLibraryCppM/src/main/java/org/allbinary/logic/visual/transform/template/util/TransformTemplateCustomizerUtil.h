@@ -31,6 +31,9 @@
 #include <org/allbinary/globals/GLOBALS2.h>
 
       
+#include <org/allbinary/logic/StdUtil.h>
+
+      
 #include <org/allbinary/logic/communication/log/LogUtil.h>
 
       

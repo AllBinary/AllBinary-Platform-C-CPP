@@ -27,7 +27,13 @@
 #include <java/util/HashMap.h>
 
       
-#include <java/util/Vector.h>
+#include <org/allbinary/util/BasicArrayList.h>
+
+      
+#include <org/allbinary/util/BasicArrayListD.h>
+
+      
+#include <org/allbinary/logic/StdUtil.h>
 
       
 #include <org/allbinary/logic/communication/log/LogUtil.h>
@@ -74,16 +80,16 @@ class NameSpaceRequestParam
 
     protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: Vector nameSpaceVector;
+    private: BasicArrayList nameSpaceVector;
 
     private: HashMap<any, any> nameSpacePropertiesHashMap;
 
     private: std::string value;
 
 public: NameSpaceRequestParam(std::string nameSpace, std::string value){
-this->nameSpaceVector= Vector();
+this->nameSpaceVector= BasicArrayListD();
     
-this->nameSpacePropertiesHashMap= HashMap<any, any>();
+this->nameSpacePropertiesHashMap= StdUtil::getInstance().createHashMap();
     
 this->value= value;
     
@@ -210,7 +216,7 @@ packageIndex++;
 }
 
 
-    public: Vector getPackages(){
+    public: BasicArrayList getPackages(){
 
                         if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().HTTPREQUEST))
                         
@@ -239,7 +245,7 @@ packageIndex++;
                                 )
                         
                                     {
-                                    packagePropertiesHashMap= HashMap<any, any>();
+                                    packagePropertiesHashMap= StdUtil::getInstance().createHashMap();
     
 
                                     }
@@ -288,7 +294,7 @@ packageIndex++;
     Tokenizer propertiesTokenizer = Tokenizer(NameSpaceRequestParamData::PROPERTIESSEPARATOR);;
     
 
-    HashMap<any, any> packagePropertiesHashMap = HashMap<any, any>();;
+    HashMap<any, any> packagePropertiesHashMap = StdUtil::getInstance().createHashMap();;
     
 
     BasicArrayList propertyVector = propertiesTokenizer.getTokensFromString(properties, BasicArrayListD());;

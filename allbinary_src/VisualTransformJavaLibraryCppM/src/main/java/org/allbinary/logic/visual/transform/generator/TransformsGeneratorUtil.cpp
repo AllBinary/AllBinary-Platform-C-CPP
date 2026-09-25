@@ -22,7 +22,10 @@
         
             #include "../../../../../../java/lang/Exception.h"
         
-#include <java/util/Vector.h>
+#include <org/allbinary/util/BasicArrayList.h>
+
+      
+#include <org/allbinary/util/BasicArrayListD.h>
 
       
 #include <org/allbinary/logic/communication/log/LogUtil.h>
@@ -134,7 +137,7 @@ private: TransformsGeneratorUtil(){
                                     }
                                 
 
-    Vector transformInfoObjectConfigComponentVector = transformInfoObjectConfigInterface.getTransformsGroup(group);;
+    BasicArrayList transformInfoObjectConfigComponentVector = transformInfoObjectConfigInterface.getTransformsGroup(group);;
     
 
                         if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEW))
@@ -145,7 +148,7 @@ private: TransformsGeneratorUtil(){
     
 stringBuffer.append("Processing ");
     
-stringBuffer.appendint(transformInfoObjectConfigComponentVector.length);
+stringBuffer.appendint(transformInfoObjectConfigComponentVector.size());
     
 stringBuffer.append(" Components Group: ");
     
@@ -157,7 +160,7 @@ this->logUtil.putF(stringBuffer.toString(), this, "generateComponentsFromObjectC
                                     }
                                 
 
-                        if(transformInfoObjectConfigComponentVector.length < 1)
+                        if(transformInfoObjectConfigComponentVector.size() < 1)
                         
                                     {
                                     
@@ -169,7 +172,7 @@ this->logUtil.putF(stringBuffer.toString(), this, "generateComponentsFromObjectC
                                     }
                                 
 
-    int32_t size = transformInfoObjectConfigComponentVector.length;;
+    int32_t size = transformInfoObjectConfigComponentVector.size();;
     
 
 

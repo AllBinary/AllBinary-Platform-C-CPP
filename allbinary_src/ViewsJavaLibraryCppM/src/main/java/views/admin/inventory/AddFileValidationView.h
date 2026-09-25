@@ -120,6 +120,8 @@ class AddFileValidationView: public InventoryItemView, public ValidationComponen
 
     protected: const LogUtil logUtil = LogUtil::getInstance();
 
+    protected: const BasicItemData basicItemData = BasicItemData::getInstance();
+
 public: AddFileValidationView(TransformInfoInterface transformInfoInterface);
 
     public: Boolean isValid();

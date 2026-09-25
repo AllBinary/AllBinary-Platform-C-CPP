@@ -22,7 +22,10 @@
         
             #include "../../../../../../../java/lang/Exception.h"
         
-#include <java/util/Vector.h>
+#include <org/allbinary/util/BasicArrayList.h>
+
+      
+#include <org/allbinary/util/BasicArrayListD.h>
 
       
 #include <org/allbinary/data/tree/dom/DomNodeHelper.h>
@@ -32,6 +35,9 @@
 
       
 #include <org/allbinary/data/tree/dom/document/DomDocumentHelper.h>
+
+      
+#include <org/allbinary/logic/StdUtil.h>
 
       
 #include <org/allbinary/logic/communication/log/LogUtil.h>
@@ -399,7 +405,7 @@ attrNode.setValue(name);
 
                 //@Throws(Exception.constructor)
             
-    private: Vector getNodeVector(std::string nodeName){
+    private: BasicArrayList getNodeVector(std::string nodeName){
 
     NodeList componentsNodeList = this->document.getElementsByTagName(nodeName);;
     
@@ -410,10 +416,10 @@ attrNode.setValue(name);
                         
                                     {
                                     
-    Vector viewNodeVector = DomSearchHelper::getAllNodes(TransformInfoData::getInstance().NAME, componentsNodeList.item(0).getChildNodes());;
+    BasicArrayList viewNodeVector = DomSearchHelper::getAllNodes(TransformInfoData::getInstance().NAME, componentsNodeList.item(0).getChildNodes());;
     
 
-    int32_t numberOfViews = viewNodeVector.length;;
+    int32_t numberOfViews = viewNodeVector.size();;
     
 
                         if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEW))
@@ -448,22 +454,22 @@ this->logUtil.putF(stringBuffer.toString(), this, "getNodeVector(nodename)");
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return Vector();
+                        return BasicArrayListD();
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    private: Vector getTransformDomNodes(std::string nodeName){
+    private: BasicArrayList getTransformDomNodes(std::string nodeName){
 
-    Vector viewVector = Vector();;
+    BasicArrayList viewVector = BasicArrayListD();;
     
 
-    Vector viewNodeVector = this->getNodeVector(nodeName);;
+    BasicArrayList viewNodeVector = this->getNodeVector(nodeName);;
     
 
-    int32_t size = viewNodeVector.length;;
+    int32_t size = viewNodeVector.size();;
     
 
 
@@ -490,15 +496,15 @@ viewVector.add(TransformInfoDomNode(viewNode));
 
                 //@Throws(Exception.constructor)
             
-    public: Vector getTransforms(std::string nodeName){
+    public: BasicArrayList getTransforms(std::string nodeName){
 
-    Vector viewVector = Vector();;
+    BasicArrayList viewVector = BasicArrayListD();;
     
 
-    Vector viewNodeVector = this->getNodeVector(nodeName);;
+    BasicArrayList viewNodeVector = this->getNodeVector(nodeName);;
     
 
-    int32_t size = viewNodeVector.length;;
+    int32_t size = viewNodeVector.size();;
     
 
 
@@ -525,7 +531,7 @@ viewVector.add(TransformInfoDomNode(viewNode).getTransformInfoInterface());
 
                 //@Throws(Exception.constructor)
             
-    public: Vector getTransformsGroup(std::string group){
+    public: BasicArrayList getTransformsGroup(std::string group){
 
                         if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEW))
                         
@@ -536,7 +542,7 @@ viewVector.add(TransformInfoDomNode(viewNode).getTransformInfoInterface());
                                     }
                                 
 
-    Vector viewVector = Vector();;
+    BasicArrayList viewVector = BasicArrayListD();;
     
 
     std::string GROUP = TransformInfosData::getInstance().GROUP;;
@@ -590,10 +596,10 @@ break;
 }
 
 
-    Vector viewNodeVector = DomSearchHelper::getAllNodes(TransformInfoData::getInstance().NAME, componentsNode.getChildNodes());;
+    BasicArrayList viewNodeVector = DomSearchHelper::getAllNodes(TransformInfoData::getInstance().NAME, componentsNode.getChildNodes());;
     
 
-    int32_t numberOfViews = viewNodeVector.length;;
+    int32_t numberOfViews = viewNodeVector.size();;
     
 
                         if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEW))
@@ -605,7 +611,7 @@ break;
                                     }
                                 
 
-    int32_t size = viewNodeVector.length;;
+    int32_t size = viewNodeVector.size();;
     
 
 
@@ -663,7 +669,7 @@ viewVector.add(TransformInfoDomNode(viewNode));
 
                 //@Throws(Exception.constructor)
             
-    public: Vector getTransformDomNodes(){
+    public: BasicArrayList getTransformDomNodes(){
 
 
 
@@ -675,7 +681,7 @@ viewVector.add(TransformInfoDomNode(viewNode));
 
                 //@Throws(Exception.constructor)
             
-    public: Vector getTransforms(){
+    public: BasicArrayList getTransforms(){
 
 
 
@@ -687,7 +693,7 @@ viewVector.add(TransformInfoDomNode(viewNode));
 
                 //@Throws(Exception.constructor)
             
-    public: Vector getGroupTransforms(){
+    public: BasicArrayList getGroupTransforms(){
 
 
 
@@ -699,7 +705,7 @@ viewVector.add(TransformInfoDomNode(viewNode));
 
                 //@Throws(Exception.constructor)
             
-    public: Vector getParentTransforms(){
+    public: BasicArrayList getParentTransforms(){
 
 
 

@@ -40,6 +40,9 @@
 #include <org/allbinary/business/context/modules/storefront/StoreFrontData.h>
 
       
+#include <org/allbinary/logic/StdUtil.h>
+
+      
 #include <org/allbinary/logic/communication/http/request/AbResponseHandler.h>
 
       

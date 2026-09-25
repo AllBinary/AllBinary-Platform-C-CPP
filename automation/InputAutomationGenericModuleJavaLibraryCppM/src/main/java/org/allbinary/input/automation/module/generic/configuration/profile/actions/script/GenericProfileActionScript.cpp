@@ -23,7 +23,10 @@
 #include <java/util/HashMap.h>
 
       
-#include <java/util/Vector.h>
+#include <org/allbinary/util/BasicArrayList.h>
+
+      
+#include <org/allbinary/util/BasicArrayListD.h>
 
       
 #include <javax/swing/tree/DefaultMutableTreeNode.h>
@@ -45,6 +48,9 @@
 
       
 #include <org/allbinary/input/automation/module/generic/configuration/profile/actions/GenericProfileActionJPanel.h>
+
+      
+#include <org/allbinary/logic/StdUtil.h>
 
       
 #include <org/allbinary/logic/communication/log/LogUtil.h>
@@ -91,7 +97,7 @@ class GenericProfileActionScript: public DefaultMutableTreeNode, public ProfileA
 
     private: GenericProfileActionJPanel genericProfileActionJPanel;
 
-    private: Vector profileActionConditionInterfaceVector;
+    private: BasicArrayList profileActionConditionInterfaceVector;
 
 public: GenericProfileActionScript(GenericProfileActionJPanel genericProfileActionJPanel, Node node){
             super(NAME);
@@ -101,7 +107,7 @@ public: GenericProfileActionScript(GenericProfileActionJPanel genericProfileActi
                     
 this->genericProfileActionJPanel= genericProfileActionJPanel;
     
-this->setProfileActionConditionInterfaceVector(Vector());
+this->setProfileActionConditionInterfaceVector(BasicArrayListD());
     
 
     Node actionScriptNode = DomSearchHelper::getNode(GenericProfileActionData::SCRIPT, node.getChildNodes());;
@@ -154,7 +160,7 @@ this->setProfileActionConditionInterfaceVector(Vector());
 public: GenericProfileActionScript(GenericProfileActionJPanel genericProfileActionJPanel){
 this->genericProfileActionJPanel= genericProfileActionJPanel;
     
-this->setProfileActionConditionInterfaceVector(Vector());
+this->setProfileActionConditionInterfaceVector(BasicArrayListD());
     
 }
 
@@ -181,7 +187,7 @@ this->remove(profileActionScriptNodeInterface);
 
     public: HashMap<any, any> toHashMap(){
 
-    HashMap<any, any> hashMap = HashMap<any, any>();;
+    HashMap<any, any> hashMap = StdUtil::getInstance().createHashMap();;
     
 this->logUtil.putF("HashMap: " +hashMap.toString(), this, "toHashMap()");
     
@@ -194,7 +200,7 @@ this->logUtil.putF("HashMap: " +hashMap.toString(), this, "toHashMap()");
 }
 
 
-    public: Vector getProfileActionConditionInterfaceVector(){
+    public: BasicArrayList getProfileActionConditionInterfaceVector(){
 
 
 
@@ -204,7 +210,7 @@ this->logUtil.putF("HashMap: " +hashMap.toString(), this, "toHashMap()");
 }
 
 
-    public: void setProfileActionConditionInterfaceVector(Vector profileActionConditionInterfaceVector){
+    public: void setProfileActionConditionInterfaceVector(BasicArrayList profileActionConditionInterfaceVector){
 this->profileActionConditionInterfaceVector= profileActionConditionInterfaceVector;
     
 }
@@ -217,10 +223,10 @@ this->profileActionConditionInterfaceVector= profileActionConditionInterfaceVect
     Node node = document.createElement(GenericProfileActionData::SCRIPT);;
     
 
-    Vector vector = this->getProfileActionConditionInterfaceVector();;
+    BasicArrayList vector = this->getProfileActionConditionInterfaceVector();;
     
 
-    int32_t size = vector.length;;
+    int32_t size = vector.size();;
     
 
 

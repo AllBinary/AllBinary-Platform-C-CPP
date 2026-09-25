@@ -25,7 +25,10 @@
 #include <java/net/URL.h>
 
       
-#include <java/util/Vector.h>
+#include <org/allbinary/util/BasicArrayList.h>
+
+      
+#include <org/allbinary/util/BasicArrayListD.h>
 
       
 #include <javax/help/HelpSet.h>
@@ -54,9 +57,9 @@ class JavaHelpSetNotifier
             : public Object
          {
 
-    private: static Vector vector = Vector();
+    private: static BasicArrayList vector = BasicArrayListD();
 
-    private: static Vector get(){
+    private: static BasicArrayList get(){
 
 
 
@@ -74,7 +77,7 @@ class JavaHelpSetNotifier
     URL url = helpSet.getHelpSetURL();;
     
 
-    int32_t size = JavaHelpSetNotifier::vector.length;;
+    int32_t size = JavaHelpSetNotifier::vector.size();;
     
 
     std::vector<Object*> urlArray = JavaHelpSetNotifier::vector.toArray();;

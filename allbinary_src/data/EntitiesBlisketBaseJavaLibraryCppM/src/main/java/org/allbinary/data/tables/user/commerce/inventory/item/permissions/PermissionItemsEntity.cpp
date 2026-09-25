@@ -23,7 +23,10 @@
 #include <java/util/HashMap.h>
 
       
-#include <java/util/Vector.h>
+#include <org/allbinary/util/BasicArrayList.h>
+
+      
+#include <org/allbinary/util/BasicArrayListD.h>
 
       
 #include <org/allbinary/business/entry/EntryData.h>
@@ -71,6 +74,8 @@ class PermissionItemsEntity: public AbSqlBean, public PermissionItemsEntityInter
 
     protected: const LogUtil logUtil = LogUtil::getInstance();
 
+    protected: const BasicItemData basicItemData = BasicItemData::getInstance();
+
     protected: const std::string tableName = "permissionitems";
 
 public: PermissionItemsEntity(){
@@ -84,7 +89,7 @@ this->setTableName(this->tableName);
 }
 
 
-    public: void insert(Vector values){
+    public: void insert(BasicArrayList values){
 
         try {
             super.insert(values);
@@ -119,7 +124,7 @@ this->setTableName(this->tableName);
     public: void delete_(std::string value){
 
         try {
-            super.deleteWhere(BasicItemData::ID, value);
+            super.deleteWhere(basicItemData.ID, value);
     
 
                         if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLLOGGING))
@@ -152,9 +157,9 @@ this->setTableName(this->tableName);
 
     StringMaker stringBuffer = StringMaker();;
     
-stringBuffer.append(this->sqlStrings.CREATE_TABLE).append(tableName).append(this->sqlStrings.START).append(BasicItemData::ID).append(this->sqlTypeStrings.MAX_BIG_INT_UNSIGNED_NOT_NULL).append(BasicItemData::NUMBER).append(this->sqlTypeStrings.MAX_BIG_INT_UNSIGNED_NOT_NULL).append(EntryData::getInstance().ENABLE).append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL);
+stringBuffer.append(this->sqlStrings.CREATE_TABLE).append(tableName).append(this->sqlStrings.START).append(basicItemData.ID).append(this->sqlTypeStrings.MAX_BIG_INT_UNSIGNED_NOT_NULL).append(basicItemData.NUMBER).append(this->sqlTypeStrings.MAX_BIG_INT_UNSIGNED_NOT_NULL).append(EntryData::getInstance().ENABLE).append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL);
     
-stringBuffer.append(PermissionItemData::WHO).append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL).append(PermissionItemData::WHAT).append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL).append(PermissionItemData::TYPE).append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL).append(PermissionItemData::REMOTE_ADDR).append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL).append(PermissionItemData::START_TIME).append(this->sqlTypeStrings.MAX_BIG_INT_UNSIGNED_NOT_NULL).append(PermissionItemData::END_TIME).append(this->sqlTypeStrings.MAX_BIG_INT_UNSIGNED_NOT_NULL).append(BasicItemData::PRICE).append(" DECIMAL (11,2) NOT NULL,").append(EntryData::getInstance().TIMECREATED).append(this->sqlTypeStrings.MAX_BIG_INT_UNSIGNED_NOT_NULL).append(EntryData::getInstance().LASTMODIFIED).append(this->sqlTypeStrings.MAX_BIG_INT_UNSIGNED_NOT_NULL).append(this->sqlStrings.PRIMARY_KEY).append(BasicItemData::ID).append(this->sqlStrings.END);
+stringBuffer.append(PermissionItemData::WHO).append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL).append(PermissionItemData::WHAT).append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL).append(PermissionItemData::TYPE).append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL).append(PermissionItemData::REMOTE_ADDR).append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL).append(PermissionItemData::START_TIME).append(this->sqlTypeStrings.MAX_BIG_INT_UNSIGNED_NOT_NULL).append(PermissionItemData::END_TIME).append(this->sqlTypeStrings.MAX_BIG_INT_UNSIGNED_NOT_NULL).append(basicItemData.PRICE).append(" DECIMAL (11,2) NOT NULL,").append(EntryData::getInstance().TIMECREATED).append(this->sqlTypeStrings.MAX_BIG_INT_UNSIGNED_NOT_NULL).append(EntryData::getInstance().LASTMODIFIED).append(this->sqlTypeStrings.MAX_BIG_INT_UNSIGNED_NOT_NULL).append(this->sqlStrings.PRIMARY_KEY).append(basicItemData.ID).append(this->sqlStrings.END);
     
 
 
@@ -176,7 +181,7 @@ stringBuffer.append(PermissionItemData::WHO).append(this->sqlTypeStrings.MAX_CHA
 
 
     public: void update(HashMap<any, any> updatedValues){
-super.updateWhere(BasicItemData::ID, updatedValues.get(BasicItemData::ID) as string, updatedValues);
+super.updateWhere(basicItemData.ID, updatedValues.get(basicItemData.ID) as string, updatedValues);
     
 }
 

@@ -49,6 +49,9 @@
 #include <org/allbinary/business/init/db/DbConnectionInfo.h>
 
       
+#include <org/allbinary/logic/StdUtil.h>
+
+      
 #include <org/allbinary/logic/communication/log/LogUtil.h>
 
       
@@ -104,6 +107,8 @@ class AbSqlBasic
     protected: const CommonStrings commonStrings = CommonStrings::getInstance();
 
     protected: const CommonSeps commonSeps = CommonSeps::getInstance();
+
+    protected: const StdUtil stdUtil = StdUtil::getInstance();
 
     protected: const SqlTypeStrings sqlTypeStrings = SqlTypeStrings::getInstance();
 

@@ -23,7 +23,13 @@
 
             #include <vector>
         
-#include <java/util/Vector.h>
+#include <org/allbinary/util/BasicArrayList.h>
+
+      
+#include <org/allbinary/util/BasicArrayListD.h>
+
+      
+#include <org/allbinary/logic/StdUtil.h>
 
       
 #include <org/allbinary/logic/string/StringUtil.h>
@@ -109,7 +115,7 @@ class HtmlTable: public HtmlTag {
 
     private: std::string after;
 
-    private: Vector htmlRowsVector;
+    private: BasicArrayList htmlRowsVector;
 
 public: HtmlTable(std::string before, std::string cellpadding, std::string cellspacing, std::string after);
 

@@ -25,7 +25,10 @@
         
             #include "../../../../../../java/lang/Integer.h"
         
-#include <java/util/Vector.h>
+#include <org/allbinary/util/BasicArrayList.h>
+
+      
+#include <org/allbinary/util/BasicArrayListD.h>
 
       
 #include <org/allbinary/graphics/form/item/ABTextFieldItem.h>
@@ -82,7 +85,7 @@ public: NumberTextFieldItemValidator(ABTextFieldItem textFieldItem, int32_t maxC
 
     protected: Boolean isNumberValid(Integer value);
 
-    protected: Vector<any> toNumberVector(Integer value);
+    protected: BasicArrayList toNumberVector(Integer value);
 
     public: Boolean isValid();
 

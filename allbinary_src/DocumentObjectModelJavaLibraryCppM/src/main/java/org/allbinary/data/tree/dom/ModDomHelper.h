@@ -35,7 +35,10 @@
 #include <java/util/Set.h>
 
       
-#include <java/util/Vector.h>
+#include <org/allbinary/util/BasicArrayList.h>
+
+      
+#include <org/allbinary/util/BasicArrayListD.h>
 
       
 #include <org/allbinary/logic/java/anyType/clazz/ClassUtil.h>
@@ -115,11 +118,11 @@ class ModDomHelper
 
                 //@Throws(Exception.constructor)
             
-    public: static Node createNameValueNodes(Document document, std::string rootNodeName, std::string duplicateNodeName, Vector valueVector);
+    public: static Node createNameValueNodes(Document document, std::string rootNodeName, std::string duplicateNodeName, BasicArrayList valueVector);
 
                 //@Throws(Exception.constructor)
             
-    public: static Node createNameValueIndexNodes(Document document, std::string rootNodeName, std::string duplicateNodeName, Vector valueVector);
+    public: static Node createNameValueIndexNodes(Document document, std::string rootNodeName, std::string duplicateNodeName, BasicArrayList valueVector);
 
                 //@Throws(Exception.constructor)
             

@@ -32,7 +32,10 @@
 #include <java/util/Set.h>
 
       
-#include <java/util/Vector.h>
+#include <org/allbinary/util/BasicArrayList.h>
+
+      
+#include <org/allbinary/util/BasicArrayListD.h>
 
       
 #include <org/allbinary/logic/java/anyType/clazz/ClassUtil.h>
@@ -284,7 +287,7 @@ node.appendChild(ModDomHelper::createNameValueNodes(document, name, value));
 
                 //@Throws(Exception.constructor)
             
-    public: static Node createNameValueNodes(Document document, std::string rootNodeName, std::string duplicateNodeName, Vector valueVector){
+    public: static Node createNameValueNodes(Document document, std::string rootNodeName, std::string duplicateNodeName, BasicArrayList valueVector){
 
     StringUtil stringUtil = StringUtil::getInstance();;
     
@@ -292,7 +295,7 @@ node.appendChild(ModDomHelper::createNameValueNodes(document, name, value));
     Node node = document.createElement(rootNodeName);;
     
 
-    int32_t size = valueVector.length;;
+    int32_t size = valueVector.size();;
     
 
 
@@ -319,7 +322,7 @@ node.appendChild(ModDomHelper::createNameValueNodes(document, duplicateNodeName,
 
                 //@Throws(Exception.constructor)
             
-    public: static Node createNameValueIndexNodes(Document document, std::string rootNodeName, std::string duplicateNodeName, Vector valueVector){
+    public: static Node createNameValueIndexNodes(Document document, std::string rootNodeName, std::string duplicateNodeName, BasicArrayList valueVector){
 
     StringUtil stringUtil = StringUtil::getInstance();;
     
@@ -327,7 +330,7 @@ node.appendChild(ModDomHelper::createNameValueNodes(document, duplicateNodeName,
     Node node = document.createElement(rootNodeName);;
     
 
-    int32_t size = valueVector.length;;
+    int32_t size = valueVector.size();;
     
 
 

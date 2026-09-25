@@ -37,6 +37,9 @@
 #include <javax/servlet/jsp/PageContext.h>
 
       
+#include <org/allbinary/logic/StdUtil.h>
+
+      
 #include <org/allbinary/logic/communication/http/file/upload/AbFileUploadFactory.h>
 
       

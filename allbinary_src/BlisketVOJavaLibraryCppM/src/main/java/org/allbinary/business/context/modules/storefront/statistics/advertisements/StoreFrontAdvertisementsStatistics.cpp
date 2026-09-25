@@ -25,10 +25,16 @@
 #include <java/util/HashMap.h>
 
       
-#include <java/util/Vector.h>
+#include <org/allbinary/util/BasicArrayList.h>
+
+      
+#include <org/allbinary/util/BasicArrayListD.h>
 
       
 #include <org/allbinary/business/context/modules/storefront/StoreFrontInterface.h>
+
+      
+#include <org/allbinary/logic/StdUtil.h>
 
       
 
@@ -61,7 +67,7 @@ public: StoreFrontAdvertisementsStatistics(StoreFrontInterface storeFrontInterfa
 
     public: HashMap<any, any> toHashMap(){
 
-    HashMap<any, any> hashMap = HashMap<any, any>();;
+    HashMap<any, any> hashMap = StdUtil::getInstance().createHashMap();;
     
 
 
@@ -72,7 +78,7 @@ public: StoreFrontAdvertisementsStatistics(StoreFrontInterface storeFrontInterfa
 }
 
 
-    public: Vector toVector(){
+    public: BasicArrayList toVector(){
 
 
 

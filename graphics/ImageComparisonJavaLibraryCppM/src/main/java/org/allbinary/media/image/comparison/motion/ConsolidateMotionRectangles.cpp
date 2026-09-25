@@ -23,7 +23,13 @@
 #include <java/awt.h>
 
       
-#include <java/util/Vector.h>
+#include <org/allbinary/util/BasicArrayList.h>
+
+      
+#include <org/allbinary/util/BasicArrayListD.h>
+
+      
+#include <org/allbinary/logic/StdUtil.h>
 
       
 #include <org/allbinary/logic/communication/log/LogUtil.h>
@@ -64,10 +70,10 @@ public: ConsolidateMotionRectangles(MotionRectangles motionRectangles){
                             //For kotlin this is before the body of the constructor.
                     
 
-    Vector vector = motionRectangles.getVector();;
+    BasicArrayList vector = motionRectangles.getVector();;
     
 
-    int32_t size = vector.length;;
+    int32_t size = vector.size();;
     
 
 
@@ -90,15 +96,15 @@ this->consolidateMotionRectangles();
 
     private: void consolidateMotionRectangles(){
 
-    Vector vector = this->getVector();;
+    BasicArrayList vector = this->getVector();;
     
-this->logUtil.putF("Start - Size Before: " +vector.length, this, "consolidateMotionRectangleConstraints");
-    
-
-    Vector removeVector = Vector();;
+this->logUtil.putF("Start - Size Before: " +vector.size(), this, "consolidateMotionRectangleConstraints");
     
 
-    int32_t size = vector.length;;
+    BasicArrayList removeVector = BasicArrayListD();;
+    
+
+    int32_t size = vector.size();;
     
 
 
@@ -115,7 +121,7 @@ this->logUtil.putF("Start - Size Before: " +vector.length, this, "consolidateMot
 
 
                         for (
-    int32_t i = index +1;i < vector.length; i++)
+    int32_t i = index +1;i < vector.size(); i++)
         {
 
     MotionRectangle motionRectangle2 = vector.get(i) as MotionRectangle;;
@@ -156,12 +162,12 @@ this->remove(removeVector);
 }
 
 
-    private: void remove(Vector removeVector){
+    private: void remove(BasicArrayList removeVector){
 
-    Vector vector = this->getVector();;
+    BasicArrayList vector = this->getVector();;
     
 
-    int32_t size = removeVector.length;;
+    int32_t size = removeVector.size();;
     
 
 

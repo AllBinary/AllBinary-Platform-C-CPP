@@ -32,7 +32,13 @@
 #include <java/util/HashMap.h>
 
       
-#include <java/util/Vector.h>
+#include <org/allbinary/util/BasicArrayList.h>
+
+      
+#include <org/allbinary/util/BasicArrayListD.h>
+
+      
+#include <org/allbinary/logic/StdUtil.h>
 
       
 #include <org/allbinary/logic/communication/log/LogUtil.h>
@@ -78,6 +84,8 @@ class SqlConnectionPool
 
     protected: const LogUtil logUtil = LogUtil::getInstance();
 
+    protected: const StdUtil stdUtil = StdUtil::getInstance();
+
     private: HashMap<any, any> connectionHashMap = 
                 null
             ;
@@ -116,7 +124,7 @@ private: SqlConnectionPool(){
                                 )
                         
                                     {
-                                    this->connectionHashMap= HashMap<any, any>();
+                                    this->connectionHashMap= this->stdUtil.createHashMap();
     
 
                         if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLLOGGINGPOOL))
@@ -138,7 +146,7 @@ private: SqlConnectionPool(){
                                 
                         else {
                             
-    Vector connectionVector = this->connectionHashMap.get(url) as Vector;;
+    BasicArrayList connectionVector = this->connectionHashMap.get(url) as BasicArrayList;;
     
 
                         if(connectionVector == 
@@ -146,7 +154,7 @@ private: SqlConnectionPool(){
                                 )
                         
                                     {
-                                    connectionVector= Vector();
+                                    connectionVector= BasicArrayListD();
     
 
                         if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLLOGGINGPOOL))
@@ -178,7 +186,7 @@ this->logUtil.putF(stringBuffer.toString(), this, this->METHOD_GET);
                                     }
                                 
                              else 
-                        if(connectionVector.length == 0)
+                        if(connectionVector.size() == 0)
                         
                                     {
                                     
@@ -204,7 +212,7 @@ this->logUtil.putF(stringBuffer.toString(), this, this->METHOD_GET);
     StringMaker stringBuffer = StringMaker();;
     
 
-    int32_t size = connectionVector.length;;
+    int32_t size = connectionVector.size();;
     
 
 
@@ -236,7 +244,7 @@ stringBuffer.append(url);
     
 stringBuffer.append(this->IS);
     
-stringBuffer.appendint(connectionVector.length);
+stringBuffer.appendint(connectionVector.size());
     
 this->logUtil.putF(NUMBER_OF_SQL_CONNECTION_VECTORS +this->connectionHashMap.size(), this, this->METHOD_GET);
     
@@ -298,7 +306,7 @@ this->logUtil.putF(stringBuffer.toString(), this, this->METHOD_GET);
                         
                                     {
                                     
-    Vector connectionVector;;
+    BasicArrayList connectionVector;;
     
 
                         if(this->connectionHashMap == 
@@ -306,9 +314,9 @@ this->logUtil.putF(stringBuffer.toString(), this, this->METHOD_GET);
                                 )
                         
                                     {
-                                    this->connectionHashMap= HashMap<any, any>();
+                                    this->connectionHashMap= this->stdUtil.createHashMap();
     
-connectionVector= Vector();
+connectionVector= BasicArrayListD();
     
 connectionVector.add(sqlConnection);
     
@@ -316,7 +324,7 @@ connectionVector.add(sqlConnection);
                                     }
                                 
                         else {
-                            connectionVector= this->connectionHashMap.get(url) as Vector;
+                            connectionVector= this->connectionHashMap.get(url) as BasicArrayList;
     
 
                         if(connectionVector == 
@@ -324,7 +332,7 @@ connectionVector.add(sqlConnection);
                                 )
                         
                                     {
-                                    connectionVector= Vector();
+                                    connectionVector= BasicArrayListD();
     
 
                                     }
@@ -349,7 +357,7 @@ stringBuffer.append(url);
     
 stringBuffer.append(this->IS);
     
-stringBuffer.appendint(connectionVector.length);
+stringBuffer.appendint(connectionVector.size());
     
 this->logUtil.putF(this->NUMBER_OF_SQL_CONNECTION_VECTORS +this->connectionHashMap.size(), this, this->METHOD_ADD);
     

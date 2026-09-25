@@ -85,7 +85,7 @@ class BufferedWriterUtil
 
     private: const CommonLabels commonLabels = CommonLabels::getInstance();
 
-    private: const std::string REMOVING_OLD = "Remove old for overwritting: ";
+    private: const std::string REMOVING_OLD = "Remove old for overwriting: ";
 
                 //@Throws(Exception.constructor)
             

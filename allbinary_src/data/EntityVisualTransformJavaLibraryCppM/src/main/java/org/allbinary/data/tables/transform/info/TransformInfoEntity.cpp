@@ -23,7 +23,10 @@
 #include <java/util/HashMap.h>
 
       
-#include <java/util/Vector.h>
+#include <org/allbinary/util/BasicArrayList.h>
+
+      
+#include <org/allbinary/util/BasicArrayListD.h>
 
       
 #include <javax/servlet/jsp/PageContext.h>
@@ -39,6 +42,9 @@
 
       
 #include <org/allbinary/data/tree/dom/document/DomDocumentHelper.h>
+
+      
+#include <org/allbinary/logic/StdUtil.h>
 
       
 #include <org/allbinary/logic/communication/log/LogUtil.h>
@@ -125,7 +131,7 @@ this->transformInfoFactoryInterface= transformInfoFactoryInterface;
 }
 
 
-    public: void insert(Vector values){
+    public: void insert(BasicArrayList values){
 
         try {
             super.insert(values);
@@ -196,7 +202,7 @@ this->transformInfoFactoryInterface= transformInfoFactoryInterface;
     TransformInfoData transformInfoData = TransformInfoData::getInstance();;
     
 
-    HashMap<any, any> keysAndValues = HashMap<any, any>();;
+    HashMap<any, any> keysAndValues = StdUtil::getInstance().createHashMap();;
     
 keysAndValues.put(transformInfoData.NAME, name);
     
@@ -267,15 +273,15 @@ hashMap.put(transformInfoData.DATA, decode.toCharArray());
 
                 //@Throws(Exception.constructor)
             
-    public: Vector getObjectConfigs(std::string storeName){
+    public: BasicArrayList getObjectConfigs(std::string storeName){
 
-    Vector objectConfigVector = Vector();;
+    BasicArrayList objectConfigVector = BasicArrayListD();;
     
 
-    Vector objectConfigColumnVector = this->getColumnWhere(TransformInfoData::getInstance().OBJECTCONFIG, StoreFrontData::getInstance().NAME, storeName);;
+    BasicArrayList objectConfigColumnVector = this->getColumnWhere(TransformInfoData::getInstance().OBJECTCONFIG, StoreFrontData::getInstance().NAME, storeName);;
     
 
-    int32_t size = objectConfigColumnVector.length;;
+    int32_t size = objectConfigColumnVector.size();;
     
 
 
@@ -304,15 +310,15 @@ objectConfigVector.add(this->transformInfoObjectConfigAndManipulatorFactoryInter
 
                 //@Throws(Exception.constructor)
             
-    public: Vector getNames(std::string storeName){
+    public: BasicArrayList getNames(std::string storeName){
 
-    Vector viewNameVector = Vector();;
+    BasicArrayList viewNameVector = BasicArrayListD();;
     
 
-    Vector columnVector = this->getColumnWhere(TransformInfoData::getInstance().NAME, StoreFrontData::getInstance().NAME, storeName);;
+    BasicArrayList columnVector = this->getColumnWhere(TransformInfoData::getInstance().NAME, StoreFrontData::getInstance().NAME, storeName);;
     
 
-    int32_t size = columnVector.length;;
+    int32_t size = columnVector.size();;
     
 
 

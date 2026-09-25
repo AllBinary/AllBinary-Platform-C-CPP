@@ -28,7 +28,10 @@
 #include <java/util/HashMap.h>
 
       
-#include <java/util/Vector.h>
+#include <org/allbinary/util/BasicArrayList.h>
+
+      
+#include <org/allbinary/util/BasicArrayListD.h>
 
       
 #include <org/allbinary/business/context/modules/storefront/StoreFrontData.h>
@@ -41,6 +44,9 @@
 
       
 #include <org/allbinary/business/user/commerce/money/payment/PaymentData.h>
+
+      
+#include <org/allbinary/logic/StdUtil.h>
 
       
 #include <org/allbinary/logic/control/crypt/SuperCrypt.h>
@@ -291,9 +297,9 @@ public: PaymentGateway(HashMap<any, any> hashMap);
             
     public: HashMap<any, any> toHashMap(bool isEncrypted);
 
-    public: Vector toVector();
+    public: BasicArrayList toVector();
 
-    public: Vector toVector(bool isEncrypted);
+    public: BasicArrayList toVector(bool isEncrypted);
 
                 //@Throws(Exception.constructor)
             
