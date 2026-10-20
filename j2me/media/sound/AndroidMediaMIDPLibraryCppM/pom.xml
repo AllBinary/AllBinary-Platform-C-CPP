@@ -46,6 +46,15 @@
 
             <optional>true</optional>
         </dependency>
+        <dependency>
+            <groupId>org.allbinary</groupId>
+            <artifactId>J2MEOnlyJavaLibraryCpp</artifactId>
+            <!-- AllBinary Platform Version Start -->
+            <version>1.0.0-SNAPSHOT</version>
+            <!-- AllBinary Platform Version End -->
+
+            <optional>true</optional>
+        </dependency>
 
         <dependency>
             <groupId>org.allbinary</groupId>
@@ -61,7 +70,7 @@
             <version>1.0.0-SNAPSHOT</version>
             <!-- AllBinary Platform Version End -->
         </dependency>
-        
+
         <dependency>
             <groupId>org.allbinary</groupId>
             <artifactId>BasicPlayerJavaLibraryCpp</artifactId>
@@ -102,7 +111,7 @@
             <!-- AllBinary Platform Version End -->
             <optional>true</optional>
         </dependency>
-        
+
         <dependency>
             <groupId>org.microemu</groupId>
             <artifactId>microemu-jsr-135Cpp</artifactId>
@@ -125,7 +134,7 @@
             <optional>true</optional>
         </dependency>
         -->
-        
+
         <dependency>
             <groupId>com.google.android</groupId>
             <artifactId>androidCpp</artifactId>
@@ -140,7 +149,7 @@
             <classifier>sources</classifier>
         </dependency>
 
-    </dependencies>
+</dependencies>
 
     <build>
         

@@ -48,6 +48,15 @@
 
             <optional>true</optional>
         </dependency>
+        <dependency>
+            <groupId>org.allbinary</groupId>
+            <artifactId>LogJ2MEJavaLibraryCpp</artifactId>
+            <!-- AllBinary Platform Version Start -->
+            <version>1.0.0-SNAPSHOT</version>
+            <!-- AllBinary Platform Version End -->
+
+            <optional>true</optional>
+        </dependency>
 
         <dependency>
             <groupId>org.allbinary.graphics</groupId>
@@ -56,7 +65,7 @@
             <version>1.0.0-SNAPSHOT</version>
             <!-- AllBinary Platform Version End -->
         </dependency>
-        
+
         <dependency>
             <groupId>org.allbinary</groupId>
             <artifactId>LicenseClientJavaLibraryCpp</artifactId>    
@@ -64,7 +73,7 @@
             <version>1.0.0-SNAPSHOT</version>
             <!-- AllBinary Platform Version End -->
         </dependency>        
-        
+
         <dependency>
             <groupId>org.allbinary</groupId>
             <artifactId>PreLoaderJavaLibraryCpp</artifactId>
@@ -72,7 +81,7 @@
             <version>1.0.0-SNAPSHOT</version>
             <!-- AllBinary Platform Version End -->
         </dependency>        
-        
+
         <dependency>
             <groupId>org.allbinary</groupId>
             <artifactId>BasePreloaderFileJavaLibraryCpp</artifactId>
@@ -80,15 +89,15 @@
             <version>1.0.0-SNAPSHOT</version>
             <!-- AllBinary Platform Version End -->
         </dependency>        
-            
+
         <dependency>
             <groupId>org.osgi</groupId>
             <artifactId>YourOSGIComponentLibraryCpp</artifactId>
             <version>2.0.1</version>
             <optional>true</optional>
         </dependency>
-        
-    </dependencies>
+
+</dependencies>
 
     <build>
         <plugins>

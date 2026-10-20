@@ -50,7 +50,7 @@
         </dependency>
         <dependency>
             <groupId>org.allbinary</groupId>
-            <artifactId>LogJ2MEJavaLibraryCpp</artifactId>
+            <artifactId>LogJ2SEJavaLibraryCpp</artifactId>
             <!-- AllBinary Platform Version Start -->
             <version>1.0.0-SNAPSHOT</version>
             <!-- AllBinary Platform Version End -->
@@ -97,7 +97,7 @@
 
             <optional>true</optional>
         </dependency>
-        
+
         <dependency>
             <groupId>org.allbinary</groupId>
             <artifactId>TokenizerJavaLibraryCpp</artifactId>
@@ -106,7 +106,7 @@
             <!-- AllBinary Platform Version End -->
 
         </dependency>
-        
+
         <dependency>
             <groupId>org.allbinary.logic.control.crypt</groupId>
             <artifactId>YourCryptFileJavaLibraryCpp</artifactId>
@@ -199,7 +199,7 @@
             <version>10.0.26</version><!--            <version>9.4.58.v20250814</version>-->
             <scope>provided</scope>
         </dependency>
-                
+
         <!-- java 11-20 -->
         <!--
         <dependency>
@@ -216,7 +216,7 @@
         </dependency>
         -->
 
-    </dependencies>
+</dependencies>
 
     <build>
         <plugins>

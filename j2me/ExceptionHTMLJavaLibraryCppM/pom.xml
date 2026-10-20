@@ -37,8 +37,19 @@
             <version>3.8.1</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>org.allbinary</groupId>
+            <artifactId>J2MEJsInteropCompatibilityJavaLibraryCpp</artifactId>
+            <version>1.0.0-SNAPSHOT</version>
+            <optional>true</optional>
+        </dependency>
+        <dependency>
+            <groupId>org.allbinary</groupId>
+            <artifactId>CommonJavaLibraryCpp</artifactId>
+            <version>1.0.0-SNAPSHOT</version>
+        </dependency>
 
-    </dependencies>
+</dependencies>
 
     <build>
         <plugins>
