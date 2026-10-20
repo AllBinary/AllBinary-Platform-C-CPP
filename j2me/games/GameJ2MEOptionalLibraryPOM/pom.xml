@@ -27,7 +27,7 @@
 
     <modules>
         
-        <module>../../ProgressLazyJ2MEJavaLibraryCppM</module>
+        <!--<module>../../ProgressLazyJ2MEJavaLibraryCppM</module>-->
         <!--
                 <module>../../games/GameScoresBaseHTMLLibraryCppM</module>
                 <module>../../games/GameScoresJ2MEJavaLibraryCppM</module>
@@ -36,7 +36,7 @@
                 <module>../../games/GameScoresRemoteAndLocalLibraryCppM</module>
         -->
 <!-- in GameJ2MELibraryPOM <module>../../media/graphics/ImageCacheJ2MEJavaLibraryCppM</module>-->
-        <module>../../media/graphics/ImageCacheLazyJ2MEJavaLibraryCppM</module>
+        <!--<module>../../media/graphics/ImageCacheLazyJ2MEJavaLibraryCppM</module>-->
         <!--        <module>../../media/graphics/ImageCacheOpenGLESJavaLibraryCppM</module>-->
         <module>../../media/graphics/LazyGameResourceNoneJavaLibraryCppM</module>
 
@@ -63,9 +63,9 @@
         <module>../../../../work/j2me/media/graphics/FormJSEJavaLibraryCppM</module>
         -->
 
-        <module>../../media/sound/J2SEMediaMIDPMinimalJavaLibraryCppM</module>
+        <!--<module>../../media/sound/J2SEMediaMIDPMinimalJavaLibraryCppM</module>-->
 <!--        <module>../../media/sound/NotDeviceSpecificMIDP2JavaLibraryCppM</module>-->
-        <module>../../media/sound/MediaMIDP2ForHTMLJavaLibraryCppM</module>
+        <!--<module>../../media/sound/MediaMIDP2ForHTMLJavaLibraryCppM</module>-->
 
         <!--
                 <module>../../../../work/j2me/ScreenCaptureAndroidJavaLibraryCppM</module>

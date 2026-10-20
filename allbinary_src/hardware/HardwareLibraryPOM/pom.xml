@@ -44,7 +44,7 @@
         
         <module>../PersonalComputerSystemJavaLibraryCppM</module>
         <module>../PersonalComputerOperatingSystemsJavaLibraryCppM</module>
-        <module>../PersonalComputerHardwareJavaLibraryCppM</module>
+        <!--<module>../PersonalComputerHardwareJavaLibraryCppM</module>-->
         
     </modules>
 

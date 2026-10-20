@@ -46,7 +46,7 @@
         <module>../J2MEColorJavaLibraryCppM</module>
         <module>../EventJ2MELibraryCppM</module>
 
-        <module>../../allbinary_src/LogNoPlatformJavaLibraryCppM</module>
+        <!--<module>../../allbinary_src/LogNoPlatformJavaLibraryCppM</module>-->
         <module>../../allbinary_src/LogJ2MEJavaLibraryCppM</module>
         <module>../../allbinary_src/LogJ2SEJavaLibraryCppM</module>
         <module>../../allbinary_src/LogAndroidJavaLibraryCppM</module>
@@ -66,7 +66,7 @@
         <module>../lib/BasicMathLibraryCppM</module>
         
         <module>../../allbinary_src/ThreadLibraryCppM</module>
-        <module>../../allbinary_src/ThreadHTMLLibraryCppM</module>
+        <!--<module>../../allbinary_src/ThreadHTMLLibraryCppM</module>-->
         <module>../../replace_these_stub_projects/allbinary_src/NoneOnlyJavaLibraryCppM</module>
         <module>../../allbinary_src/ThreadJ2MELibraryCppM</module>
         <module>../time/TimeJavaLibraryCppM</module>

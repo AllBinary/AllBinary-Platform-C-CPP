@@ -48,11 +48,11 @@
         <module>../../../allbinary_src/licensing/ClientInfoLicensingJavaLibraryCppM</module>
 
         <module>../../games/licensing/PartnerJ2MEJavaLibraryCppM</module>
-        <module>../../games/licensing/PartnerHTMLJavaLibraryCppM</module>
+        <!--<module>../../games/licensing/PartnerHTMLJavaLibraryCppM</module>-->
         <module>../../games/licensing/PartnerAndroidJavaLibraryCppM</module>
         <module>../../games/licensing/NoGameLicensingJavaLibraryCppM</module>
         <module>../../games/licensing/GameLicensingOnlyDemoJavaLibraryCppM</module>
-        <module>../../games/licensing/GameLicensingOnlyNormalJavaLibraryCppM</module>
+        <!--<module>../../games/licensing/GameLicensingOnlyNormalJavaLibraryCppM</module>-->
         <module>../../games/licensing/GameLicensingBaseJavaLibraryCppM</module>
 
         <!--
@@ -61,7 +61,7 @@
         <module>../../games/GameScoresBaseJ2MELibraryCppM</module>
         -->
         <module>../../games/GameScoresLocalJavaLibraryCppM</module>
-        <module>../../games/GameScoresRemoteAndLocalJavaLibraryCppM</module>
+        <!--<module>../../games/GameScoresRemoteAndLocalJavaLibraryCppM</module>-->
 
         <module>../../../store/ThirdPartyStoreJavaLibraryCppM</module>
         <module>../../../store/NoThirdPartyStoreJavaLibraryCppM</module>

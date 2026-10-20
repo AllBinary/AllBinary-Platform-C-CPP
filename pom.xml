@@ -36,9 +36,9 @@
         <module>./j2me/AllBinaryJ2MELibraryCppP</module>
         <module>./AllBinaryPersistenceLibraryCppP</module>
 
-        <module>./automation/InputAutomationToolsCppP</module>
+        <!--<module>./automation/InputAutomationToolsCppP</module>-->
         <module>./graphics/GraphicsToolsCppP</module>
-        <module>./allbinary_src/FreeblisketJavaLibraryCppP</module>
+        <!--<module>./allbinary_src/FreeblisketJavaLibraryCppP</module>-->
         <module>./j2me/games/platform/AllBinaryOnAllPlatformsJavaLibraryCppP</module>
 
         <!--
@@ -46,8 +46,8 @@
         <module>./j2me/media/graphics/animation/image/AllBinaryHTML2ImageAnimationRotationJavaLibraryCppM</module>
         -->
         <module>./j2me/media/graphics/animation/image/AllBinaryJ2SEImageAnimationRotationJavaLibraryCppM</module>
-        <module>./j2me/games/Resources/sounds/release/GameSoundsJ2SEOggResourcesJavaLibraryCppM</module>
-        <module>./graphics/opengl/AllBinaryJOGLResourcesJavaLibraryCppM</module>
+        <!--<module>./j2me/games/Resources/sounds/release/GameSoundsJ2SEOggResourcesJavaLibraryCppM</module>-->
+        <!--<module>./graphics/opengl/AllBinaryJOGLResourcesJavaLibraryCppM</module>-->
 
     </modules>
 

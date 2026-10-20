@@ -38,7 +38,7 @@
         
         <module>../j2me/AllBinaryOnJ2MEBasePlatformJavaLibraryCppM</module>
         
-        <module>../j2me/AllBinaryOnJ2MEPlatformJavaLibraryCppM</module>
+        <!--<module>../j2me/AllBinaryOnJ2MEPlatformJavaLibraryCppM</module>-->
         
         <module>../j2se/AllBinaryOnJ2SEBasePlatformJavaLibraryCppM</module>
         
