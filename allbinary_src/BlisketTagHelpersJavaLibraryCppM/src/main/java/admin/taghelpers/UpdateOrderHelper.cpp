@@ -18,7 +18,7 @@
 
 
 
-            #include "../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
 
@@ -165,8 +165,8 @@ class UpdateOrderHelper: public TagHelper {
 
     private: std::string storeCancelComment;
 
-public: UpdateOrderHelper(HashMap<any, any> hashMap, PageContext pageContext){
-this->request= pageContext.getRequest() as HttpServletRequest;
+public: UpdateOrderHelper(HashMap<Object*, Object*> hashMap, PageContext pageContext){
+this->request= pageContext.getRequest();
     
 this->getFormData();
     
@@ -258,10 +258,10 @@ this->storeCancelComment= this->request.getParameter(OrderData::STORECANCELCOMME
     std::string success = "Successful update";;
     
 
-    HashMap<any, any> orderHashMap = StdUtil::getInstance().createHashMap();;
+    HashMap<Object*, Object*> orderHashMap = StdUtil::getInstance().createHashMap();;
     
 
-    HashMap<any, any> whereHashMap = StdUtil::getInstance().createHashMap();;
+    HashMap<Object*, Object*> whereHashMap = StdUtil::getInstance().createHashMap();;
     
 orderHashMap.put(EntryData::getInstance().ID, this->entryId);
     

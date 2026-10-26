@@ -18,11 +18,9 @@
 
 
 
-            #include "../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../java/lang/Exception.h"
-        
-            #include "../../../../java/lang/System.h"
+            #include "java/lang/Exception.h"
         
 #include <java/io/BufferedInputStream.h>
 
@@ -43,6 +41,9 @@
 
       
 #include <javax/microedition/media/Player.h>
+
+      
+#include <org/allbinary/TsUtil.h>
 
       
 #include <org/allbinary/audio/AudioContentTypeDataFactory.h>
@@ -147,7 +148,7 @@ Sounds(soundsFactoryInterface).stopAll();
     
 Sounds(soundsFactoryInterface).closeAll();
     
-System.gc();
+TsUtil::getInstance().gc();
     
 }
 

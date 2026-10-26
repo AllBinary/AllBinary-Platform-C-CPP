@@ -23,21 +23,12 @@
 
             #include <vector>
         
-            #include "../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-#include <jsinterop/annotations/JsType.h>
-
-      
 #include <org/allbinary/layer/event/LayerManagerEvent.h>
 
       
 #include <org/allbinary/layer/event/LayerManagerEventHandler.h>
-
-      
-#include <jsinterop/annotations/JsMethod.h>
-
-      
-#include <jsinterop/annotations/JsConstructor.h>
 
       
 

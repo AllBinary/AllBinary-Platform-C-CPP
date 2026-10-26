@@ -21,13 +21,13 @@
         #ifndef ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_ABSTRACTINPUTAUTOMATIONWORKER_H
         #define ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_ABSTRACTINPUTAUTOMATIONWORKER_H
 
-            #include "../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../../../java/lang/RuntimeException.h"
+            #include "java/lang/RuntimeException.h"
         
-            #include "../../../../../java/lang/Thread.h"
+            #include "java/lang/Thread.h"
         
 #include <org/allbinary/input/media/image/capture/CaptureWorkerInterface.h>
 

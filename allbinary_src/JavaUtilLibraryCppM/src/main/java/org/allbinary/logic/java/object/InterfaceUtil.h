@@ -23,9 +23,9 @@
 
             #include <vector>
         
-            #include "../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../java/lang/Class.h"
+            #include "java/lang/Class.h"
         
 #include <org/allbinary/logic/string/StringMaker.h>
 
@@ -56,15 +56,15 @@ class InterfaceUtil
             : public Object
          {
 
-    public: static std::string viewAll(Function myClass, std::string lineBreak);
+    public: static std::string viewAll(Class* myClass, std::string lineBreak);
 
-    public: static Function constructor(std::string interfaceName, std::vector<Function> interfaces);
+    public: static Class* getClass()(std::string interfaceName, std::vector<Class*> interfaces);
 
-    public: static bool isImplemented(Function clazz, Object* anyType);
+    public: static bool isImplemented(Class* clazz, Object* anyType);
 
     public: static bool isImplemented(std::string className, Object* anyType);
 
-    public: static std::string isImplementedView(Function clazz, Object* anyType);
+    public: static std::string isImplementedView(Class* clazz, Object* anyType);
 
 private: InterfaceUtil();
 

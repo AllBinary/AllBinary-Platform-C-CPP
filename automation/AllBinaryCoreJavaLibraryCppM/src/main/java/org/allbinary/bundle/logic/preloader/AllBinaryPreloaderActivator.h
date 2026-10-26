@@ -21,13 +21,10 @@
         #ifndef ORG_ALLBINARY_BUNDLE_LOGIC_PRELOADER_ALLBINARYPRELOADERACTIVATOR_H
         #define ORG_ALLBINARY_BUNDLE_LOGIC_PRELOADER_ALLBINARYPRELOADERACTIVATOR_H
 
-            #include "../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-#include <java/util/Hashtable.h>
-
-      
 #include <org/osgi/framework/BundleActivator.h>
 
       
@@ -50,6 +47,9 @@
 
       
 #include <org/allbinary/string/CommonStrings.h>
+
+      
+#include <org/allbinary/util/ABHashtable.h>
 
       
 

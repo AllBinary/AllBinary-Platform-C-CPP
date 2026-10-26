@@ -20,7 +20,7 @@
         #ifndef ORG_ALLBINARY_GAME_LAYER_WAYPOINT_EVENT_WAYPOINTEVENTHANDLER_H
         #define ORG_ALLBINARY_GAME_LAYER_WAYPOINT_EVENT_WAYPOINTEVENTHANDLER_H
 
-            #include "../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/game/layer/RTSLayerEvent.h>
 

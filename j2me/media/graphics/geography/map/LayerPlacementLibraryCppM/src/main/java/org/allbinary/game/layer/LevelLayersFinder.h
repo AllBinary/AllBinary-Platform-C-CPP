@@ -21,20 +21,20 @@
         #ifndef ORG_ALLBINARY_GAME_LAYER_LEVELLAYERSFINDER_H
         #define ORG_ALLBINARY_GAME_LAYER_LEVELLAYERSFINDER_H
 
-            #include "../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../java/lang/Integer.h"
+            #include "java/lang/Integer.h"
         
 #include <java/util/Enumeration.h>
-
-      
-#include <java/util/Hashtable.h>
 
       
 #include <org/allbinary/layer/Layer.h>
 
       
 #include <org/allbinary/logic/math/SmallIntegerSingletonFactory.h>
+
+      
+#include <org/allbinary/util/ABHashtable.h>
 
       
 #include <org/allbinary/util/BasicArrayList.h>
@@ -75,7 +75,7 @@ class LevelLayersFinder
 
     private: const EnumerationUtil enumerationUtil = EnumerationUtil::getInstance();
 
-    public: BasicArrayList get(Hashtable<any, any> hashtable);
+    public: BasicArrayList get(ABHashtable<Object*, Object*> hashtable);
 
 };
 

@@ -4,13 +4,13 @@
 
 
 
-            #include "../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../java/lang/Class.h"
+            #include "java/lang/Class.h"
         
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../../../java/lang/Thread.h"
+            #include "java/lang/Thread.h"
         
 #include <org/allbinary/thread/ARunnable.h>
 
@@ -40,6 +40,9 @@
 
       
 #include <org/allbinary/media/audio/Sound.h>
+
+      
+#include <org/allbinary/string/CommonLabels.h>
 
       
 #include <org/allbinary/string/CommonSeps.h>
@@ -81,7 +84,8 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        
+        //#include "MusicManagerPlayerListener.h"
+
 class MusicManager
             : public Object
          {
@@ -97,10 +101,12 @@ class MusicManager
     private: const PlayerStateUtil playerStateUtil = PlayerStateUtil::getInstance();
 
     private: const TimeDelayHelper timeDelayHelper = TimeDelayHelper(0);
+//Handle Media ending for Avian
+//inner= member=true isStatic=
+class MusicManagerPlayerListener
+            : public Object
+        : public PlayerListener {
 
-    private: const PlayerListener playerListener = class extends PlayerListener
-                                {
-                                
     public: void playerUpdate(Player player, std::string event, Object* eventData){
 PreLogUtil::put(event, this, commonStrings.PROCESS);
     
@@ -115,14 +121,17 @@ PreLogUtil::put(event, this, commonStrings.PROCESS);
                                 
 }
 
-                                }
-                            ;
+
+};
+
+            
+    private: const PlayerListener playerListener = MusicManagerPlayerListener();
 
     private: const std::string PLAY = "Play ";
 
     private: const std::string SONG = " for: ";
 
-    private: const std::string NEXT_SONG = "Next Song: ";
+    private: const std::string NEXT_SONG = CommonLabels::getInstance().NEXT +" Song: ";
 
     private: const std::string STOPPING = "Stopping Current Song: ";
 
@@ -146,7 +155,7 @@ PreLogUtil::put(event, this, commonStrings.PROCESS);
 
     private: bool stopped = true;
 
-public: MusicManager(Function musicServiceClass, BasicArrayList songList){
+public: MusicManager(Class* musicServiceClass, BasicArrayList songList){
 this->songList= songList;
     
 }
@@ -158,7 +167,7 @@ this->songList= songList;
                         
                                     {
                                     
-    Sound randomSongSound = this->basicArrayListUtil.getRandom(this->songList) as Sound;;
+    Sound randomSongSound = this->basicArrayListUtil.getRandom(this->songList);;
     
 this->nextSong(randomSongSound, 0, 0);
     
@@ -237,7 +246,7 @@ this->nextSongSound= NoSound::getInstance();
                         if(nextSongSound == NoSound::getInstance())
                         
                                     {
-                                    this->currentSongSound= BasicArrayListUtil::getInstance().getRandom(this->songList) as Sound;
+                                    this->currentSongSound= BasicArrayListUtil::getInstance().getRandom(this->songList);
     
 
                                     }

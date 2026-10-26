@@ -21,9 +21,9 @@
         #ifndef ADMIN_TAGS_SHIPPINGTAG_H
         #define ADMIN_TAGS_SHIPPINGTAG_H
 
-            #include "../../java/lang/Class.h"
+            #include "java/lang/Class.h"
         
-            #include "../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/lang/reflect/Method.h>
 
@@ -82,7 +82,7 @@ class ShippingTag: public CustomTagSupport {
 
     private: std::string storeName;
 
-    private: HashMap<any, any> propertiesHashMap;
+    private: HashMap<Object*, Object*> propertiesHashMap;
 
 public: ShippingTag();
 

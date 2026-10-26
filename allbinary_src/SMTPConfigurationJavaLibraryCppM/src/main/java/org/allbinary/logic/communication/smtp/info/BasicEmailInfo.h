@@ -21,11 +21,11 @@
         #ifndef ORG_ALLBINARY_LOGIC_COMMUNICATION_SMTP_INFO_BASICEMAILINFO_H
         #define ORG_ALLBINARY_LOGIC_COMMUNICATION_SMTP_INFO_BASICEMAILINFO_H
 
-            #include "../../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../../../../java/lang/RuntimeException.h"
+            #include "java/lang/RuntimeException.h"
         
 #include <org/allbinary/logic/communication/log/LogUtil.h>
 

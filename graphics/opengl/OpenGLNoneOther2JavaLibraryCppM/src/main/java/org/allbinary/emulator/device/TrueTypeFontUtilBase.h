@@ -21,7 +21,7 @@
         #ifndef ORG_ALLBINARY_EMULATOR_DEVICE_TRUETYPEFONTUTILBASE_H
         #define ORG_ALLBINARY_EMULATOR_DEVICE_TRUETYPEFONTUTILBASE_H
 
-            #include "../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
 
 

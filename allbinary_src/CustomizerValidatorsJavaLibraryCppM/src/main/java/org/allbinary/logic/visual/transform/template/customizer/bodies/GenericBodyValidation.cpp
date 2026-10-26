@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
 
@@ -121,7 +121,7 @@ this->body= DomNodeHelper::getTextNodeValue(aBodyValueNode);
 }
 
 
-public: GenericBodyValidation(HashMap<any, any> hashMap){
+public: GenericBodyValidation(HashMap<Object*, Object*> hashMap){
 this->getFormData(hashMap);
     
 }
@@ -129,8 +129,8 @@ this->getFormData(hashMap);
 
                 //@Throws(Exception.constructor)
             
-    public: void getFormData(HashMap<any, any> hashMap){
-this->body= hashMap.get(BodyData::getInstance().NAME) as string;
+    public: void getFormData(HashMap<Object*, Object*> hashMap){
+this->body= hashMap.get(BodyData::getInstance().NAME);
     
 }
 

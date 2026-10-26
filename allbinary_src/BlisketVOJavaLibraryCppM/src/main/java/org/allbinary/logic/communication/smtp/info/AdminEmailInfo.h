@@ -21,7 +21,7 @@
         #ifndef ORG_ALLBINARY_LOGIC_COMMUNICATION_SMTP_INFO_ADMINEMAILINFO_H
         #define ORG_ALLBINARY_LOGIC_COMMUNICATION_SMTP_INFO_ADMINEMAILINFO_H
 
-            #include "../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/business/context/configuration/ContextConfigurationInterface.h>
 

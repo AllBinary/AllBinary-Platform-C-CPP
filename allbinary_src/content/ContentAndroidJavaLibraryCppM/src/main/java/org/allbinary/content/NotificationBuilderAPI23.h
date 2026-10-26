@@ -21,9 +21,9 @@
         #ifndef ORG_ALLBINARY_CONTENT_NOTIFICATIONBUILDERAPI23_H
         #define ORG_ALLBINARY_CONTENT_NOTIFICATIONBUILDERAPI23_H
 
-            #include "../../../java/lang/System.h"
+            #include "java/lang/System.h"
         
-            #include "../../../java/lang/Integer.h"
+            #include "java/lang/Integer.h"
         
 #include <javax/microedition/lcdui/Command.h>
 

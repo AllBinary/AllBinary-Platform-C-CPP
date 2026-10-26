@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
 #include <java/util/HashMap.h>
 
@@ -83,7 +83,7 @@ this->setSmtpServer(StringUtil::getInstance().EMPTY_STRING);
 }
 
 
-public: EmailServerConfiguration(HashMap<any, any> hashMap){
+public: EmailServerConfiguration(HashMap<Object*, Object*> hashMap){
 
                         if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().EMAILLOGGING))
                         
@@ -96,11 +96,11 @@ this->logUtil.putF(commonStrings.START, this, "EmailServerConfiguration(HashMap)
 
                                     }
                                 
-this->setAccountName(hashMap.get(EmailServerConfigurationData::ACCOUNT) as string);
+this->setAccountName(hashMap.get(EmailServerConfigurationData::ACCOUNT));
     
-this->setPassword(hashMap.get(EmailServerConfigurationData::PASSWORD) as string);
+this->setPassword(hashMap.get(EmailServerConfigurationData::PASSWORD));
     
-this->setSmtpServer(hashMap.get(EmailServerConfigurationData::SERVER) as string);
+this->setSmtpServer(hashMap.get(EmailServerConfigurationData::SERVER));
     
 this->log();
     

@@ -18,11 +18,14 @@
 
 
 
-            #include "../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/data/tree/dom/document/DomDocumentHelper.h>
+
+      
+#include <org/allbinary/data/tree/dom/document/XmlDocumentHelper.h>
 
       
 #include <org/allbinary/data/tree/dom/document/mapping/DomDocumentMappingInterface.h>
@@ -94,7 +97,7 @@ document.appendChild(node);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return DomDocumentHelper::toString(this->toXmlDoc());;
+                        return XmlDocumentHelper::toString(this->toXmlDoc());;
     
 }
 

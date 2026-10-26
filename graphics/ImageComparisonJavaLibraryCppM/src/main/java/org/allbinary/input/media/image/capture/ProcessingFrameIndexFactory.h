@@ -21,7 +21,7 @@
         #ifndef ORG_ALLBINARY_INPUT_MEDIA_IMAGE_CAPTURE_PROCESSINGFRAMEINDEXFACTORY_H
         #define ORG_ALLBINARY_INPUT_MEDIA_IMAGE_CAPTURE_PROCESSINGFRAMEINDEXFACTORY_H
 
-            #include "../../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
 
 

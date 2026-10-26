@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/logic/util/event/AllBinaryEventObject.h>
 
@@ -88,7 +88,7 @@ private: GameNotificationEventHandler(){
                         if(list.size() > 0)
                         
                                     {
-                                    eventListenerInterface= list.objectArray[0]! as EventListenerInterface;
+                                    eventListenerInterface= list.objectArray[0];
     
 
                                     }
@@ -124,9 +124,9 @@ super.removeAllListeners();
                                     }
                                 
 
-    GameNotificationListenerInterface gameNotificationListenerInterface = eventListenerInterface as GameNotificationListenerInterface;;
+    GameNotificationListenerInterface gameNotificationListenerInterface = eventListenerInterface;;
     
-gameNotificationListenerInterface.onGameNotificationEvent(eventObject as GameNotificationEvent);
+gameNotificationListenerInterface.onGameNotificationEvent(eventObject);
     
 }
 

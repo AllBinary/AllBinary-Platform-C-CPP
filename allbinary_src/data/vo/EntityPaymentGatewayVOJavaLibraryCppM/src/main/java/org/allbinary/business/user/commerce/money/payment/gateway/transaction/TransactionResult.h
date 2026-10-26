@@ -21,23 +21,11 @@
         #ifndef ORG_ALLBINARY_BUSINESS_USER_COMMERCE_MONEY_PAYMENT_GATEWAY_TRANSACTION_TRANSACTIONRESULT_H
         #define ORG_ALLBINARY_BUSINESS_USER_COMMERCE_MONEY_PAYMENT_GATEWAY_TRANSACTION_TRANSACTIONRESULT_H
 
-            #include "../../../../../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
-
-      
-#include <java/util/Hashtable.h>
-
-      
-#include <org/allbinary/util/BasicArrayList.h>
-
-      
-#include <org/allbinary/util/BasicArrayListD.h>
-
-      
-#include <org/allbinary/logic/StdUtil.h>
 
       
 #include <org/allbinary/logic/communication/log/LogUtil.h>
@@ -53,6 +41,9 @@
 
       
 #include <org/allbinary/string/CommonStrings.h>
+
+      
+#include <org/allbinary/util/ABHashtable.h>
 
       
 #include <org/allbinary/util/BasicArrayList.h>
@@ -90,17 +81,17 @@ class TransactionResult
 
     protected: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    private: HashMap<any, any> keyValuePairs;
+    private: HashMap<Object*, Object*> keyValuePairs;
 
     private: std::string result;
 
 public: TransactionResult(std::string result);
 
-public: TransactionResult(HashMap<any, any> keyValuePairs);
+public: TransactionResult(HashMap<Object*, Object*> keyValuePairs);
 
     public: std::string toString();
 
-    public: HashMap<any, any> toHashMap();
+    public: HashMap<Object*, Object*> toHashMap();
 
     private: BasicArrayList getAllPossibleKeys();
 

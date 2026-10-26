@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/logic/communication/log/LogUtil.h>
 
@@ -62,8 +62,9 @@ class PreviewGeneratorStoreFrontContextView: public GeneratorStoreFrontContextVi
 
     protected: const LogUtil logUtil = LogUtil::getInstance();
 
-public: PreviewGeneratorStoreFrontContextView(TransformInfoInterface transformInfoInterface){
-            super(transformInfoInterface);
+public: PreviewGeneratorStoreFrontContextView(TransformInfoInterface transformInfoInterface) : GeneratorStoreFrontContextView(transformInfoInterface){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -77,7 +78,7 @@ public: PreviewGeneratorStoreFrontContextView(TransformInfoInterface transformIn
 
         try {
             
-    TransformInfoHttpInterface httpTransformInfoInterface = this->getTransformInfoInterface() as TransformInfoHttpInterface;;
+    TransformInfoHttpInterface httpTransformInfoInterface = this->getTransformInfoInterface();;
     
 httpTransformInfoInterface.getPropertiesHashMap().put(TransformInfoData::getInstance().PARTIAL, CommonSeps::getInstance().SPACE +TransformInfosData::getInstance().PREVIEW);
     

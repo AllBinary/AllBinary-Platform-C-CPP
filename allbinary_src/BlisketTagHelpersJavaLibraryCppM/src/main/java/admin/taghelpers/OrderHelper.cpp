@@ -18,7 +18,7 @@
 
 
 
-            #include "../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
 
@@ -108,21 +108,21 @@ class OrderHelper: public TagHelper {
 
     private: StoreFrontInterface storeFrontInterface;
 
-    private: HashMap<any, any> propertiesHashMap;
+    private: HashMap<Object*, Object*> propertiesHashMap;
 
     private: PageContext pageContext;
 
     private: HttpServletRequest request;
 
-public: OrderHelper(HashMap<any, any> propertiesHashMap, PageContext pageContext){
+public: OrderHelper(HashMap<Object*, Object*> propertiesHashMap, PageContext pageContext){
 this->propertiesHashMap= propertiesHashMap;
     
 this->pageContext= pageContext;
     
-this->request= pageContext.getRequest() as HttpServletRequest;
+this->request= pageContext.getRequest();
     
 
-    std::string storeName = propertiesHashMap.get(StoreFrontData::getInstance().NAME) as string;;
+    std::string storeName = propertiesHashMap.get(StoreFrontData::getInstance().NAME);;
     
 
                         if(!StringValidationUtil::getInstance().isEmpty(storeName))
@@ -148,7 +148,7 @@ this->weblisketSession= WeblisketSession(this->propertiesHashMap, this->pageCont
     OrderInterface orderInterface = this->weblisketSession.getOrder();;
     
 
-    std::string requestPaymentGateway = this->request.getParameter(PaymentGatewayData::NAME.toString()) as string;;
+    std::string requestPaymentGateway = this->request.getParameter(PaymentGatewayData::NAME.toString());;
     
 
                         if(!StringValidationUtil::getInstance().isEmpty(requestPaymentGateway))
@@ -164,7 +164,7 @@ paymentGatewayBoolean= Boolean::TRUE;
                                     }
                                 
 
-    PaymentGatewayEntity paymentGatewayEntityInterface = PaymentGatewayEntityFactory::getInstance() as PaymentGatewayEntity;;
+    PaymentGatewayEntity paymentGatewayEntityInterface = PaymentGatewayEntityFactory::getInstance();;
     
 
     BasicArrayList paymentTypeVector = paymentGatewayEntityInterface.findPaymentTypeVectorByStore(this->weblisketSession.getStoreName());;
@@ -174,10 +174,10 @@ paymentGatewayBoolean= Boolean::TRUE;
                         
                                     {
                                     
-    BasicPaymentType paymentType = paymentTypeVector.get(0) as BasicPaymentType;;
+    BasicPaymentType paymentType = paymentTypeVector.get(0);;
     
 
-    PaymentGatewayInterface paymentGatewayInterface = paymentGatewayEntityInterface.getPaymentGatewayInterface(this->weblisketSession.getStoreName(), paymentType) as PaymentGatewayInterface;;
+    PaymentGatewayInterface paymentGatewayInterface = paymentGatewayEntityInterface.getPaymentGatewayInterface(this->weblisketSession.getStoreName(), paymentType);;
     
 
     std::string paymentGateway = paymentGatewayInterface.getName();;
@@ -283,7 +283,7 @@ this->logUtil.put(stringBuffer.toString(), this, "setPaymentGateway()", e);
 order.setStoreName(this->storeFrontInterface.getName());
     
 
-    std::string result = OrderProcessorUtil::getInstance().process(this->weblisketSession.getUserName(), order as Order);;
+    std::string result = OrderProcessorUtil::getInstance().process(this->weblisketSession.getUserName(), order);;
     
 
                         if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGS))

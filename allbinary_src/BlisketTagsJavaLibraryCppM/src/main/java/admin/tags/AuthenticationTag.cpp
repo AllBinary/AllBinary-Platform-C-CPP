@@ -20,11 +20,11 @@
 
             #include <vector>
         
-            #include "../../java/lang/Class.h"
+            #include "java/lang/Class.h"
         
-            #include "../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../java/lang/Integer.h"
+            #include "java/lang/Integer.h"
         
 #include <java/lang/reflect/Method.h>
 
@@ -110,7 +110,7 @@ class AuthenticationTag: public CustomTagSupport {
 
     private: BasicArrayList roles;
 
-    private: HashMap<any, any> propertiesHashMap;
+    private: HashMap<Object*, Object*> propertiesHashMap;
 
 public: AuthenticationTag(){
 
@@ -162,7 +162,7 @@ this->roles= values;
     Object* anyType = AuthenticationRequestHelperFactory().getInstance(this->propertiesHashMap, this->pageContext);;
     
 
-    Function addressHelperClass = anyType->constructor;;
+    Class* addressHelperClass = anyType->getClass();;
     
 
     Method method = addressHelperClass.getMethod("changePassword", 
@@ -170,7 +170,7 @@ this->roles= values;
     
 
     Boolean result = method.invoke(anyType, 
-                            nullptr) as Boolean;;
+                            nullptr);;
     
 
 
@@ -221,7 +221,7 @@ this->roles= values;
     Object* anyType = AuthenticationRequestHelperFactory().getInstance(this->propertiesHashMap, this->pageContext);;
     
 
-    Function addressHelperClass = anyType->constructor;;
+    Class* addressHelperClass = anyType->getClass();;
     
 
     Method method = addressHelperClass.getMethod("newPassword", 
@@ -229,7 +229,7 @@ this->roles= values;
     
 
     Boolean result = method.invoke(anyType, 
-                            nullptr) as Boolean;;
+                            nullptr);;
     
 
 
@@ -280,7 +280,7 @@ this->roles= values;
     Object* anyType = AuthenticationHelperFactory().getInstance(this->propertiesHashMap, this->pageContext);;
     
 
-    Function addressHelperClass = anyType->constructor;;
+    Class* addressHelperClass = anyType->getClass();;
     
 
     Method method = addressHelperClass.getMethod("invalidateSession", 
@@ -288,7 +288,7 @@ this->roles= values;
     
 
     Integer resultInteger = method.invoke(anyType, 
-                            nullptr) as Integer;;
+                            nullptr);;
     
 
 
@@ -339,7 +339,7 @@ this->roles= values;
     Object* anyType = AuthenticationHelperFactory().getInstance(this->propertiesHashMap, this->pageContext);;
     
 
-    Function helperClass = anyType->constructor;;
+    Class* helperClass = anyType->getClass();;
     
 
     Method method = helperClass.getMethod("isSessionOld", 
@@ -347,7 +347,7 @@ this->roles= values;
     
 
     Boolean resultBoolean = method.invoke(anyType, 
-                            nullptr) as Boolean;;
+                            nullptr);;
     
 
 
@@ -398,12 +398,12 @@ this->roles= values;
     Object* anyType = AuthenticationRequestHelperFactory().getInstance(this->propertiesHashMap, this->pageContext);;
     
 
-    Function addressHelperClass = anyType->constructor;;
+    Class* addressHelperClass = anyType->getClass();;
     
 
-    std::vector<Function> methodParams = 
+    std::vector<Class*> methodParams = 
                                                         {
-                                                            this->userName.constructor, this->password.constructor, this->roles.constructor
+                                                            this->userName.getClass(), this->password.getClass(), this->roles.getClass()
                                                         };;
     
 
@@ -416,7 +416,7 @@ this->roles= values;
                                                         };;
     
 
-    Boolean resultBoolean = method.invoke(anyType, methodArgs) as Boolean;;
+    Boolean resultBoolean = method.invoke(anyType, methodArgs);;
     
 
 
@@ -467,7 +467,7 @@ this->roles= values;
     Object* anyType = AuthenticationHelperFactory().getInstance(this->propertiesHashMap, this->pageContext);;
     
 
-    Function addressHelperClass = anyType->constructor;;
+    Class* addressHelperClass = anyType->getClass();;
     
 
     Method method = addressHelperClass.getMethod("validRole", 
@@ -475,7 +475,7 @@ this->roles= values;
     
 
     std::string result = method.invoke(anyType, 
-                            nullptr) as string;;
+                            nullptr);;
     
 
 
@@ -529,7 +529,7 @@ this->roles= values;
     Object* anyType = AuthenticationHelperFactory().getInstance(this->propertiesHashMap, this->pageContext);;
     
 
-    Function addressHelperClass = anyType->constructor;;
+    Class* addressHelperClass = anyType->getClass();;
     
 
     Method method = addressHelperClass.getMethod("invalidRole", 
@@ -537,7 +537,7 @@ this->roles= values;
     
 
     std::string result = method.invoke(anyType, 
-                            nullptr) as string;;
+                            nullptr);;
     
 
 
@@ -591,12 +591,12 @@ this->roles= values;
     Object* anyType = AuthenticationHelperFactory().getInstance(this->propertiesHashMap, this->pageContext);;
     
 
-    Function addressHelperClass = anyType->constructor;;
+    Class* addressHelperClass = anyType->getClass();;
     
 
-    std::vector<Function> methodParams = 
+    std::vector<Class*> methodParams = 
                                                         {
-                                                            this->roles.constructor
+                                                            this->roles.getClass()
                                                         };;
     
 
@@ -609,7 +609,7 @@ this->roles= values;
                                                         };;
     
 
-    Boolean resultBoolean = method.invoke(anyType, methodArgs) as Boolean;;
+    Boolean resultBoolean = method.invoke(anyType, methodArgs);;
     
 
 
@@ -660,12 +660,12 @@ this->roles= values;
     Object* anyType = AuthenticationHelperFactory().getInstance(this->propertiesHashMap, this->pageContext);;
     
 
-    Function helperClass = anyType->constructor;;
+    Class* helperClass = anyType->getClass();;
     
 
-    std::vector<Function> methodParams = 
+    std::vector<Class*> methodParams = 
                                                         {
-                                                            this->userName.constructor, this->password.constructor
+                                                            this->userName.getClass(), this->password.getClass()
                                                         };;
     
 
@@ -678,7 +678,7 @@ this->roles= values;
                                                         };;
     
 
-    Boolean resultBoolean = method.invoke(anyType, methodArgs) as Boolean;;
+    Boolean resultBoolean = method.invoke(anyType, methodArgs);;
     
 
 
@@ -729,7 +729,7 @@ this->roles= values;
     Object* anyType = AuthenticationHelperFactory().getInstance(this->propertiesHashMap, this->pageContext);;
     
 
-    Function addressHelperClass = anyType->constructor;;
+    Class* addressHelperClass = anyType->getClass();;
     
 
     Method method = addressHelperClass.getMethod("processInvalidation", 
@@ -737,7 +737,7 @@ this->roles= values;
     
 
     Boolean resultBoolean = method.invoke(anyType, 
-                            nullptr) as Boolean;;
+                            nullptr);;
     
 
 
@@ -792,7 +792,7 @@ this->roles= values;
                         
                                     {
                                     
-    HttpServletRequest request = this->pageContext.getRequest() as HttpServletRequest;;
+    HttpServletRequest request = this->pageContext.getRequest();;
     
 
     StringMaker stringBuffer = StringMaker();;
@@ -813,7 +813,7 @@ this->logUtil.putF(stringBuffer.toString(), this, tagStrings.DO_START_TAG);
                                     this->propertiesHashMap= StdUtil::getInstance().createHashMap();
     
 
-                        if(this->command.compareTo(org.allbinary.globals.GLOBALS2.NEWPASSWORD) == 0)
+                        if(this->command.compare(org.allbinary.globals.GLOBALS2.NEWPASSWORD) == 0)
                         
                                     {
                                     
@@ -856,7 +856,7 @@ this->logUtil.putF(stringBuffer.toString(), this, tagStrings.DO_START_TAG);
                                     }
                                 
                              else 
-                        if(this->command.compareTo(org.allbinary.globals.GLOBALS2.CHANGEPASSWORD) == 0)
+                        if(this->command.compare(org.allbinary.globals.GLOBALS2.CHANGEPASSWORD) == 0)
                         
                                     {
                                     
@@ -899,7 +899,7 @@ this->logUtil.putF(stringBuffer.toString(), this, tagStrings.DO_START_TAG);
                                     }
                                 
                              else 
-                        if(this->command.compareTo(WeblisketSessionData::INVALIDATESESSION) == 0)
+                        if(this->command.compare(WeblisketSessionData::INVALIDATESESSION) == 0)
                         
                                     {
                                     
@@ -941,7 +941,7 @@ this->logUtil.putF(stringBuffer.toString(), this, tagStrings.DO_START_TAG);
 pageContext.getOut().print("Please login again.<p>");
     
 
-                        if(this->command.compareTo(org.allbinary.globals.GLOBALS2.PROCESSBODYIFAUTHENTICATED) == 0)
+                        if(this->command.compare(org.allbinary.globals.GLOBALS2.PROCESSBODYIFAUTHENTICATED) == 0)
                         
                                     {
                                     
@@ -977,7 +977,7 @@ pageContext.getOut().print("Please login again.<p>");
                                     }
                                 
 
-                        if(this->command.compareTo(org.allbinary.globals.GLOBALS2.PROCESSBODYIFAUTHENTICATED) == 0)
+                        if(this->command.compare(org.allbinary.globals.GLOBALS2.PROCESSBODYIFAUTHENTICATED) == 0)
                         
                                     {
                                     
@@ -1006,7 +1006,7 @@ pageContext.getOut().print("Please login again.<p>");
                                     }
                                 
 
-                        if((false || this->userName.compareTo(stringUtil.EMPTY_STRING) == 0) && (false || this->password.compareTo(stringUtil.EMPTY_STRING) == 0) && this->roles != 
+                        if((false || this->userName.compare(stringUtil.EMPTY_STRING) == 0) && (false || this->password.compare(stringUtil.EMPTY_STRING) == 0) && this->roles != 
                                     nullptr
                                  && this->isAuthenticationSessionValid())
                         
@@ -1021,7 +1021,7 @@ pageContext.getOut().print("Please login again.<p>");
                                     }
                                 
 
-                        if(this->command.compareTo(org.allbinary.globals.GLOBALS2.PROCESSBODYIFAUTHENTICATED) == 0)
+                        if(this->command.compare(org.allbinary.globals.GLOBALS2.PROCESSBODYIFAUTHENTICATED) == 0)
                         
                                     {
                                     
@@ -1075,7 +1075,7 @@ pageContext.getOut().print("Please login again.<p>");
 pageContext.getOut().print(validRole());
     
 
-                        if(this->command.compareTo(org.allbinary.globals.GLOBALS2.PROCESSBODYIFAUTHENTICATED) == 0)
+                        if(this->command.compare(org.allbinary.globals.GLOBALS2.PROCESSBODYIFAUTHENTICATED) == 0)
                         
                                     {
                                     
@@ -1113,7 +1113,7 @@ pageContext.getOut().print(validRole());
 pageContext.getOut().print(invalidRole());
     
 
-                        if(this->command.compareTo(org.allbinary.globals.GLOBALS2.PROCESSBODYIFAUTHENTICATED) == 0)
+                        if(this->command.compare(org.allbinary.globals.GLOBALS2.PROCESSBODYIFAUTHENTICATED) == 0)
                         
                                     {
                                     
@@ -1152,7 +1152,7 @@ pageContext.getOut().print(invalidRole());
                                     }
                                 
 
-                        if(true && this->userName.compareTo(stringUtil.EMPTY_STRING) != 0 && true && this->password.compareTo(stringUtil.EMPTY_STRING) != 0)
+                        if(true && this->userName.compare(stringUtil.EMPTY_STRING) != 0 && true && this->password.compare(stringUtil.EMPTY_STRING) != 0)
                         
                                     {
                                     pageContext.getOut().print("Sorry your username and/or password is invalid.<p/>");
@@ -1173,7 +1173,7 @@ pageContext.getOut().print(invalidRole());
                                     }
                                 
 
-                        if(this->command.compareTo(org.allbinary.globals.GLOBALS2.PROCESSBODYIFAUTHENTICATED) == 0)
+                        if(this->command.compare(org.allbinary.globals.GLOBALS2.PROCESSBODYIFAUTHENTICATED) == 0)
                         
                                     {
                                     

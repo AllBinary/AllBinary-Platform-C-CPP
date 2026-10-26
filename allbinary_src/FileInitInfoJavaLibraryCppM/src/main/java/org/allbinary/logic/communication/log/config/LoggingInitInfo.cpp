@@ -18,14 +18,17 @@
 
 
 
-            #include "../../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/data/tree/dom/DomSearchHelper.h>
 
       
 #include <org/allbinary/data/tree/dom/document/DomDocumentHelper.h>
+
+      
+#include <org/allbinary/data/tree/dom/document/XmlDocumentHelper.h>
 
       
 #include <org/allbinary/globals/PATH_GLOBALS.h>
@@ -172,7 +175,7 @@ LoggingInitInfo::logConfigInfoList= BasicArrayListD();
     int32_t i = 0;i < size; i++)
         {
 
-    Node node = logConfigNodeVector.get(i) as Node;;
+    Node node = logConfigNodeVector.get(i);;
     
 
     LogConfig logConfigInfo = LogConfig(node);;
@@ -274,7 +277,7 @@ LoggingInitInfo::updateIfNeeded();
     int32_t index = 0;index < size; index++)
         {
 
-    LogConfig logConfigInfo = LoggingInitInfo::logConfigInfoList.objectArray[index]! as LogConfig;;
+    LogConfig logConfigInfo = LoggingInitInfo::logConfigInfoList.objectArray[index];;
     
 
     BasicArrayList logTypeVector = logConfigInfo.getTypeVector();;
@@ -318,7 +321,7 @@ LoggingInitInfo::updateIfNeeded();
     int32_t index = 0;index < size; index++)
         {
 
-    LogConfig logConfigInfo = LoggingInitInfo::logConfigInfoList.objectArray[index]! as LogConfig;;
+    LogConfig logConfigInfo = LoggingInitInfo::logConfigInfoList.objectArray[index];;
     
 
     BasicArrayList logTypeVector = logConfigInfo.getTypeVector();;
@@ -393,7 +396,7 @@ public: LoggingInitInfo(){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return DomDocumentHelper::toString(document);;
+                        return XmlDocumentHelper::toString(document);;
     
 
                 //: 

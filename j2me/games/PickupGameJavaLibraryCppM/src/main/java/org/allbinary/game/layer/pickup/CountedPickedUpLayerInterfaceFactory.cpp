@@ -18,14 +18,8 @@
 
 
 
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-#include <jsinterop/annotations/JsType.h>
-
-      
-#include <java/util/Hashtable.h>
-
-      
 #include <org/allbinary/animation/Animation.h>
 
       
@@ -38,16 +32,10 @@
 #include <org/allbinary/string/CommonStrings.h>
 
       
+#include <org/allbinary/util/ABHashtable.h>
+
+      
 #include <org/allbinary/util/BasicArrayList.h>
-
-      
-#include <jsinterop/annotations/JsMethod.h>
-
-      
-#include <jsinterop/annotations/JsConstructor.h>
-
-      
-#include <jsinterop/annotations/JsProperty.h>
 
       
 
@@ -81,8 +69,9 @@ class CountedPickedUpLayerInterfaceFactory: public PickedUpLayerInterfaceFactory
 
     private: int32_t id;
 
-public: CountedPickedUpLayerInterfaceFactory(PickedUpLayerType pickeUpLayerType, IconLayer iconLayer, Animation animationInterface){
-            super(pickeUpLayerType, iconLayer, animationInterface);
+public: CountedPickedUpLayerInterfaceFactory(PickedUpLayerType pickeUpLayerType, IconLayer iconLayer, Animation animationInterface) : PickedUpLayerInterfaceFactory(pickeUpLayerType, iconLayer, animationInterface){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -99,7 +88,7 @@ list.add(this);
 
                 //@Throws(Exception.constructor)
             
-    public: AllBinaryLayer getNextInstance(Hashtable<any, any> hashtable, int32_t x, int32_t y, int32_t z){
+    public: AllBinaryLayer getNextInstance(ABHashtable<Object*, Object*> hashtable, int32_t x, int32_t y, int32_t z){
 
 
 

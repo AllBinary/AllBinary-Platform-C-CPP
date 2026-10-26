@@ -18,14 +18,8 @@
 
 
 
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-#include <jsinterop/annotations/JsType.h>
-
-      
-#include <java/util/Hashtable.h>
-
-      
 #include <javax/microedition/lcdui/CommandListener.h>
 
       
@@ -41,7 +35,7 @@
 #include <org/allbinary/thread/RunnableInterface.h>
 
       
-#include <jsinterop/annotations/JsMethod.h>
+#include <org/allbinary/util/ABHashtable.h>
 
       
 
@@ -91,15 +85,15 @@ class GameCanvasRunnableInterface: public RunnableInterface, public PaintableInt
 
                 //@Throws(Exception.constructor)
             
-    Hashtable<any, any> getCurrentStateHashtable()
+    ABHashtable<Object*, Object*> getCurrentStateHashtable()
 
                 //@Throws(Exception.constructor)
             
-    Hashtable<any, any> getLoadStateHashtable()
+    ABHashtable<Object*, Object*> getLoadStateHashtable()
 
                 //@Throws(Exception.constructor)
             
-    void setLoadStateHashtable(Hashtable<any, any> hashtable)
+    void setLoadStateHashtable(ABHashtable<Object*, Object*> hashtable)
 
     int32_t getType()
 

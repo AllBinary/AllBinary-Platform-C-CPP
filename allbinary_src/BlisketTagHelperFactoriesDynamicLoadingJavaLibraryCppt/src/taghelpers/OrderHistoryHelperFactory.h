@@ -21,7 +21,7 @@
         #ifndef TAGHELPERS_ORDERHISTORYHELPERFACTORY_H
         #define TAGHELPERS_ORDERHISTORYHELPERFACTORY_H
 
-            #include "../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
 #include <java/util/HashMap.h>
 
@@ -64,7 +64,7 @@ class OrderHistoryHelperFactory
 
                 //@Throws(LicensingException.constructor)
             
-    public: static Object* getInstance(HashMap<any, any> hashMap, PageContext pageContext);
+    public: static Object* getInstance(HashMap<Object*, Object*> hashMap, PageContext pageContext);
 
 private: OrderHistoryHelperFactory();
 

@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/game/input/CompleteMotionGestureInputEvent.h>
 
@@ -141,7 +141,7 @@ ForcedLogUtil::log(EventStrings::getInstance().PERFORMANCE_MESSAGE, this);
     TouchMotionGestureFactory touchMotionGestureFactory = TouchMotionGestureFactory::getInstance();;
     
 
-    GameKeyCompleteMotionGestureInputEvent gameKeyCompleteMotionGestureInputEvent = completeMotionGestureInputEvent as GameKeyCompleteMotionGestureInputEvent;;
+    GameKeyCompleteMotionGestureInputEvent gameKeyCompleteMotionGestureInputEvent = completeMotionGestureInputEvent;;
     
 
     GameKey gameKey = gameKeyCompleteMotionGestureInputEvent.getGameKey();;

@@ -21,9 +21,9 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_J2ME_WORKAREA_TOOLS_GRAPHICITEMFACTORY_H
         #define ORG_ALLBINARY_GRAPHICS_J2ME_WORKAREA_TOOLS_GRAPHICITEMFACTORY_H
 
-            #include "../../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
 
@@ -73,7 +73,7 @@ class GraphicItemFactory
 
     public: static GraphicItemFactory getInstance();
 
-    private: HashMap<any, any> graphicItems;
+    private: HashMap<Object*, Object*> graphicItems;
 
     private: const GraphicsItemInterfaceFactoryInterface DEFAULT = SelectionToolFactory();
 
@@ -83,7 +83,7 @@ private: GraphicItemFactory();
 
                 //@Throws(Exception.constructor)
             
-    public: HashMap<any, any> getInstance(BasicArrayList graphicItemNodeList);
+    public: HashMap<Object*, Object*> getInstance(BasicArrayList graphicItemNodeList);
 
 };
 

@@ -23,13 +23,10 @@
 
             #include <vector>
         
-            #include "../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../java/lang/Integer.h"
+            #include "java/lang/Integer.h"
         
-#include <java/util/Hashtable.h>
-
-      
 #include <javax/microedition/lcdui/Canvas.h>
 
       
@@ -37,6 +34,9 @@
 
       
 #include <org/allbinary/time/NoTimeDelayHelper.h>
+
+      
+#include <org/allbinary/util/ABHashtable.h>
 
       
 
@@ -63,7 +63,7 @@ class BasicProbabilityAIDataFactory
             : public Object
          {
 
-    public: Hashtable<any, any> getInstance();
+    public: ABHashtable<Object*, Object*> getInstance();
 
 };
 

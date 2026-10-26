@@ -37,8 +37,9 @@ class ABCustomGaugeItem: public ABCustomItem {
 
     public: static const ABCustomGaugeItem NULL_GAUGE_ITEM = ABCustomGaugeItem(StringUtil::getInstance().EMPTY_STRING, 1, 0, BasicColorFactory::getInstance().BLACK, BasicColorFactory::getInstance().WHITE);
 
-public: ABCustomGaugeItem(std::string label, int32_t maxValue, int32_t initialValue, BasicColor backgroundBasicColor, BasicColor foregroundBasicColor){
-            super(label, backgroundBasicColor, foregroundBasicColor);
+public: ABCustomGaugeItem(std::string label, int32_t maxValue, int32_t initialValue, BasicColor backgroundBasicColor, BasicColor foregroundBasicColor) : ABCustomItem(label, backgroundBasicColor, foregroundBasicColor){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.

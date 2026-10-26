@@ -62,7 +62,7 @@ this->paintableArray= paintableArray;
                         for (
     int32_t index = this->paintableArray.size() -1;index >= 0; index--)
         {
-this->paintableArray[index]!.paint(graphics);
+this->paintableArray[index].paint(graphics);
     
 }
 
@@ -77,7 +77,7 @@ this->paintableArray[index]!.paint(graphics);
                         for (
     int32_t index = this->paintableArray.size() -1;index >= 0; index--)
         {
-this->paintableArray[index]!.paintThreed(graphics);
+this->paintableArray[index].paintThreed(graphics);
     
 }
 

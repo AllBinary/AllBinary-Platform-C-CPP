@@ -18,9 +18,6 @@
 
 
 
-#include <jsinterop/annotations/JsType.h>
-
-      
 #include <javax/microedition/lcdui/Graphics.h>
 
       
@@ -43,15 +40,6 @@
 
       
 #include <org/allbinary/view/ViewPosition.h>
-
-      
-#include <jsinterop/annotations/JsMethod.h>
-
-      
-#include <jsinterop/annotations/JsConstructor.h>
-
-      
-#include <jsinterop/annotations/JsProperty.h>
 
       
 
@@ -79,8 +67,9 @@ class IconLayer: public AllBinaryLayer {
 
     private: Animation animationInterface;
 
-public: IconLayer(Animation animationInterface, int32_t width, int32_t height){
-            super(StringUtil::getInstance().EMPTY_STRING, Rectangle(PointFactory::getInstance().ZERO_ZERO, width, height), ViewPosition::getInstanceD());
+public: IconLayer(Animation animationInterface, int32_t width, int32_t height) : AllBinaryLayer(StringUtil::getInstance().EMPTY_STRING, Rectangle(PointFactory::getInstance().ZERO_ZERO, width, height), ViewPosition::getInstanceD()){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.

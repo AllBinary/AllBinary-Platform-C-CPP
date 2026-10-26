@@ -21,7 +21,7 @@
         #ifndef ORG_ALLBINARY_DATA_TABLES_ADVERTISEMENT_AREAS_ADVERTISEMENTAREASENTITYINTERFACE_H
         #define ORG_ALLBINARY_DATA_TABLES_ADVERTISEMENT_AREAS_ADVERTISEMENTAREASENTITYINTERFACE_H
 
-            #include "../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
 
@@ -71,7 +71,7 @@ class AdvertisementAreasEntityInterface: public BasicDataTableInterface {
 
     void insert(BasicArrayList values);
 
-    void update(HashMap<any, any> updatedValues);
+    void update(HashMap<Object*, Object*> updatedValues);
 
 };
 

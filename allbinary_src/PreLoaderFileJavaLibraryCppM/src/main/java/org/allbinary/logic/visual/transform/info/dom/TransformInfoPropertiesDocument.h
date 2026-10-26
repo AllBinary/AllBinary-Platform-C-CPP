@@ -21,9 +21,9 @@
         #ifndef ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_INFO_DOM_TRANSFORMINFOPROPERTIESDOCUMENT_H
         #define ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_INFO_DOM_TRANSFORMINFOPROPERTIESDOCUMENT_H
 
-            #include "../../../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
 
@@ -102,7 +102,7 @@ class TransformInfoPropertiesDocument
 
 public: TransformInfoPropertiesDocument(std::string filePath);
 
-    public: HashMap<any, any> toTransformInfoPropertiesHashMap();
+    public: HashMap<Object*, Object*> toTransformInfoPropertiesHashMap();
 
 };
 

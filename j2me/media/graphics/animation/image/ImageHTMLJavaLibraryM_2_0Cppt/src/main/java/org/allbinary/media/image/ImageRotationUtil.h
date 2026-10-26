@@ -21,11 +21,11 @@
         #ifndef ORG_ALLBINARY_MEDIA_IMAGE_IMAGEROTATIONUTIL_H
         #define ORG_ALLBINARY_MEDIA_IMAGE_IMAGEROTATIONUTIL_H
 
-            #include "../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../../java/lang/Math.h"
+            #include "java/lang/Math.h"
         
 #include <javax/microedition/lcdui/Image.h>
 
@@ -39,16 +39,13 @@
 #include <playn/core/Canvas.h>
 
       
+#include <playn/core/CoreImage.h>
+
+      
 #include <playn/core/ImageImpl.h>
 
       
-#include <playn/core/PlayN.h>
-
-      
-#include <playn/html/HtmlGraphics.h>
-
-      
-#include <playn/html/HtmlImage.h>
+#include <playn/html/HTMLPlaynUtil.h>
 
       
 
@@ -78,6 +75,8 @@ class ImageRotationUtil
     private: static ImageRotationUtil instance() { return ImageRotationUtil(); }
 
     public: static ImageRotationUtil getInstance();
+
+    private: const HTMLPlaynUtil playnUtil = HTMLPlaynUtil::getInstance();
 
 private: ImageRotationUtil();
 

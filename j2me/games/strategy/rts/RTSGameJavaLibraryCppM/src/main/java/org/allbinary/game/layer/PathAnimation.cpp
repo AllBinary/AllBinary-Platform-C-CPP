@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <javax/microedition/lcdui/Graphics.h>
 
@@ -147,7 +147,7 @@ this->allBinaryGameLayerManagerP= allBinaryGameLayerManager;
                         
                                     {
                                     
-    GeographicMapCompositeInterface geographicMapCompositeInterface = this->allBinaryGameLayerManagerP as GeographicMapCompositeInterface;;
+    GeographicMapCompositeInterface geographicMapCompositeInterface = this->allBinaryGameLayerManagerP;;
     
 
     BasicGeographicMap geographicMapInterface = geographicMapCompositeInterface.getGeographicMapInterface()[0];;
@@ -204,11 +204,11 @@ this->basicSetColorUtil.setBasicColorP3(graphics, this->getBasicColorP(), this->
 
                         }
                             
-geographicMapCellPosition= list.get(index) as GeographicMapCellPosition;
+geographicMapCellPosition= list.get(index);
     
 point= geographicMapCellPosition.getMidPoint();
     
-geographicMapCellPosition= list.get(index +1) as GeographicMapCellPosition;
+geographicMapCellPosition= list.get(index +1);
     
 nextPoint= geographicMapCellPosition.getMidPoint();
     

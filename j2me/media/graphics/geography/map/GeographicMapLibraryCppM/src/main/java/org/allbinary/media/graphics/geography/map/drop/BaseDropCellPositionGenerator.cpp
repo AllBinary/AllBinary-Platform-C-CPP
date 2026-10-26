@@ -18,9 +18,9 @@
 
 
 
-            #include "../../../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/game/layer/AllBinaryGameLayerManager.h>
 
@@ -63,7 +63,7 @@ class BaseDropCellPositionGenerator
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->constructor.name.toString()!;;
+                        return this->constructor.name.toString();;
     
 }
 

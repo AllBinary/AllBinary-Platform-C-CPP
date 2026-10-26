@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
 
@@ -57,7 +57,7 @@ class TableMappingInterface {
 
                 //@Throws(Exception.constructor)
             
-    HashMap<any, any> toHashMap()
+    HashMap<Object*, Object*> toHashMap()
 
 };
 

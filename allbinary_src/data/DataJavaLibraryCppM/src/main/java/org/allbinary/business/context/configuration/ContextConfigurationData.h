@@ -21,7 +21,7 @@
         #ifndef ORG_ALLBINARY_BUSINESS_CONTEXT_CONFIGURATION_CONTEXTCONFIGURATIONDATA_H
         #define ORG_ALLBINARY_BUSINESS_CONTEXT_CONFIGURATION_CONTEXTCONFIGURATIONDATA_H
 
-            #include "../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
 #include <org/allbinary/logic/io/file/CommonDataFileStrings.h>
 

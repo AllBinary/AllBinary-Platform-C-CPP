@@ -23,9 +23,9 @@
 
             #include <vector>
         
-            #include "../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../java/lang/Class.h"
+            #include "java/lang/Class.h"
         
 #include <org/allbinary/logic/system/loader/AbeFactory.h>
 

@@ -21,7 +21,7 @@
         #ifndef ORG_ALLBINARY_PHYSICS_MOVEMENT_NOMOVEMENTFACTORY_H
         #define ORG_ALLBINARY_PHYSICS_MOVEMENT_NOMOVEMENTFACTORY_H
 
-            #include "../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
 
 

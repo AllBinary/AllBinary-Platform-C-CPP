@@ -21,7 +21,7 @@
         #ifndef ORG_ALLBINARY_GAME_LAYER_LINEPATHANIMATION_H
         #define ORG_ALLBINARY_GAME_LAYER_LINEPATHANIMATION_H
 
-            #include "../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
 #include <javax/microedition/lcdui/Graphics.h>
 

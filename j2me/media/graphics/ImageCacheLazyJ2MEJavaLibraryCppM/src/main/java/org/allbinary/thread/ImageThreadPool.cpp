@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../java/lang/Runnable.h"
+            #include "java/lang/Runnable.h"
         
 #include <org/allbinary/string/CommonLabels.h>
 
@@ -68,8 +68,9 @@ class ImageThreadPool: public ThreadPool {
 
     protected: const LogUtil logUtil = LogUtil::getInstance();
 
-public: ImageThreadPool(std::string poolName, int32_t numThreads, int32_t priority){
-            super(poolName, numThreads, priority);
+public: ImageThreadPool(std::string poolName, int32_t numThreads, int32_t priority) : ThreadPool(poolName, numThreads, priority){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.

@@ -21,7 +21,7 @@
         #ifndef ORG_ALLBINARY_STRING_COMMONLABELS_H
         #define ORG_ALLBINARY_STRING_COMMONLABELS_H
 
-            #include "../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
 #include <jsinterop/annotations/JsType.h>
 
@@ -80,6 +80,8 @@ class CommonLabels
     public: const std::string ELAPSED = " Elapsed: ";
 
     public: const std::string CURRENT = " Current: ";
+
+    public: const std::string NEXT = "Next";
 
     public: const std::string ITEM_LABEL = "Item: ";
 

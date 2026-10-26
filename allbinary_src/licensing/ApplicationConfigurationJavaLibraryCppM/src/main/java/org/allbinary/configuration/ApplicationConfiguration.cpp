@@ -4,9 +4,9 @@
 
 
 
-            #include "../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/io/Closeable.h>
 
@@ -98,7 +98,7 @@ class ApplicationConfiguration
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return ApplicationConfiguration::instance() as ApplicationConfiguration;
+                        return ApplicationConfiguration::instance();
     
 }
 

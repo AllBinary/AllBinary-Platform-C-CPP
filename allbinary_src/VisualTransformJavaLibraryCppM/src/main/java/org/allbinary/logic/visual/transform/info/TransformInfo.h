@@ -21,11 +21,11 @@
         #ifndef ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_INFO_TRANSFORMINFO_H
         #define ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_INFO_TRANSFORMINFO_H
 
-            #include "../../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../../../../java/lang/Long.h"
+            #include "java/lang/Long.h"
         
 #include <java/util/Calendar.h>
 
@@ -46,6 +46,9 @@
 
       
 #include <org/allbinary/data/tree/dom/document/DomDocumentHelper.h>
+
+      
+#include <org/allbinary/data/tree/dom/document/XmlDocumentHelper.h>
 
       
 #include <org/allbinary/globals/FREEBLISKET_PATH_GLOBALS.h>
@@ -181,7 +184,7 @@ public: TransformInfo(std::string name, std::string objectFileName, std::string 
 
                 //@Throws(Exception.constructor)
             
-    public: void override(HashMap<any, any> hashMap);
+    public: void override(HashMap<Object*, Object*> hashMap);
 
     public: std::string log();
 
@@ -247,7 +250,7 @@ public: TransformInfo(std::string name, std::string objectFileName, std::string 
 
     public: std::string getDataFile();
 
-    public: HashMap<any, any> toHashMap();
+    public: HashMap<Object*, Object*> toHashMap();
 
     public: BasicArrayList toVector();
 

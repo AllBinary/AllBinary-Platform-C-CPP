@@ -20,7 +20,7 @@
 
             #include <vector>
         
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 
 
@@ -63,7 +63,7 @@ class EarlySoundsFactory: public BaseSoundsFactory {
             
     public: std::vector<Sound> getSoundInterfaceArray(){
 
-    std::vector<Sound> soundInterfaceArray = new Array(2);;
+    std::vector<Sound> soundInterfaceArray = std::vector<Sound>(2);;
     
 
     int32_t index = 0;;

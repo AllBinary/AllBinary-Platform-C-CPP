@@ -18,9 +18,9 @@
 
 
 
-            #include "../../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/logic/communication/log/LogUtil.h>
 
@@ -111,7 +111,7 @@ private: TransformGeneratorUtil(){
     std::string result = componentInterface.view();;
     
 
-    TransformInfoHttpInterface httpTransformInfoInterface = componentInterface.getTransformInfoInterface() as TransformInfoHttpInterface;;
+    TransformInfoHttpInterface httpTransformInfoInterface = componentInterface.getTransformInfoInterface();;
     
 
     InputOutputTypeData inputOutputTypeData = InputOutputTypeData::getInstance();;

@@ -18,9 +18,9 @@
 
 
 
-            #include "../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
 
@@ -119,9 +119,9 @@ filePropertyVector.add(this->file.getPath());
 
                 //@Throws(Exception.constructor)
             
-    public: HashMap<any, any> toHashMap(){
+    public: HashMap<Object*, Object*> toHashMap(){
 
-    HashMap<any, any> filePropertyHashMap = StdUtil::getInstance().createHashMap();;
+    HashMap<Object*, Object*> filePropertyHashMap = StdUtil::getInstance().createHashMap();;
     
 
     AbPathData pathData = AbPathData::getInstance();;

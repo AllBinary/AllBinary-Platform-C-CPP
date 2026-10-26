@@ -18,11 +18,11 @@
 
 
 
-            #include "../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../../java/lang/Math.h"
+            #include "java/lang/Math.h"
         
 #include <javax/microedition/lcdui/Image.h>
 
@@ -36,16 +36,13 @@
 #include <playn/core/Canvas.h>
 
       
+#include <playn/core/CoreImage.h>
+
+      
 #include <playn/core/ImageImpl.h>
 
       
-#include <playn/core/PlayN.h>
-
-      
-#include <playn/html/HtmlGraphics.h>
-
-      
-#include <playn/html/HtmlImage.h>
+#include <playn/html/HTMLPlaynUtil.h>
 
       
 
@@ -84,6 +81,8 @@ class ImageRotationUtil
 }
 
 
+    private: const HTMLPlaynUtil playnUtil = HTMLPlaynUtil::getInstance();
+
 private: ImageRotationUtil(){
 }
 
@@ -94,16 +93,13 @@ private: ImageRotationUtil(){
                         
                                     {
                                     
-    PlaynMutableImage htmlImage = image as PlaynMutableImage;;
+    PlaynMutableImage htmlImage = image;;
     
 
-    ImageImpl canvasImage = htmlImage.getImage() as ImageImpl;;
+    ImageImpl canvasImage = htmlImage.getImage();;
     
 
-    PlayN playN = PlayN::getInstance();;
-    
-
-    Canvas canvas = (graphics as HtmlGraphics).get(canvasImage as HtmlImage);;
+    Canvas canvas = this->playnUtil.getCanvas(canvasImage);;
     
 canvas.save();
     
@@ -204,7 +200,7 @@ canvasSurface.translate(originalImage.getWidth() /2, originalImage.getHeight() /
 
     public: void drawImage(Image originalImage, Image image, Canvas canvasSurface){
 
-    playn::core::Image originalPlayNImage = 
+    CoreImage originalPlayNImage = 
                 null
             ;;
     
@@ -213,18 +209,18 @@ canvasSurface.translate(originalImage.getWidth() /2, originalImage.getHeight() /
                         
                                     {
                                     
-    PlaynMutableImage originalHTMLImage = originalImage as PlaynMutableImage;;
+    PlaynMutableImage originalHTMLImage = originalImage;;
     
-originalPlayNImage= originalHTMLImage.getImage() as playn::core::Image;
+originalPlayNImage= originalHTMLImage.getImage();
     
 
                                     }
                                 
                         else {
                             
-    PlaynImmutableImage originalHTMLImage = originalImage as PlaynImmutableImage;;
+    PlaynImmutableImage originalHTMLImage = originalImage;;
     
-originalPlayNImage= originalHTMLImage.getImage() as playn::core::Image;
+originalPlayNImage= originalHTMLImage.getImage();
     
 
                         }

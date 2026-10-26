@@ -21,11 +21,11 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_J2ME_WORKAREA_TOOLS_POINTSUTIL_H
         #define ORG_ALLBINARY_GRAPHICS_J2ME_WORKAREA_TOOLS_POINTSUTIL_H
 
-            #include "../../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../../../../java/lang/Double.h"
+            #include "java/lang/Double.h"
         
 #include <org/allbinary/animation/VectorRotationGenerator.h>
 

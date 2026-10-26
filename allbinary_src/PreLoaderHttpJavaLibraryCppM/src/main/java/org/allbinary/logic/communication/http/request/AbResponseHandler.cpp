@@ -18,9 +18,9 @@
 
 
 
-            #include "../../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <javax/servlet/RequestDispatcher.h>
 
@@ -247,10 +247,10 @@ AbResponseHandler::sendRedirect(pageContext, FREEBLISKET_PATH_GLOBALS::getInstan
             
     public: static void sendRedirect(PageContext pageContext, std::string page){
 
-    HttpServletRequest request = pageContext.getRequest() as HttpServletRequest;;
+    HttpServletRequest request = pageContext.getRequest();;
     
 
-    HttpServletResponse response = pageContext.getResponse() as HttpServletResponse;;
+    HttpServletResponse response = pageContext.getResponse();;
     
 
     RequestDispatcher requestDispatcher = request.getRequestDispatcher(page);;

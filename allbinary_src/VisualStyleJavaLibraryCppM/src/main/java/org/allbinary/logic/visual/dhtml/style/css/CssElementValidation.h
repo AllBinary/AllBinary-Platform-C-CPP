@@ -21,7 +21,7 @@
         #ifndef ORG_ALLBINARY_LOGIC_VISUAL_DHTML_STYLE_CSS_CSSELEMENTVALIDATION_H
         #define ORG_ALLBINARY_LOGIC_VISUAL_DHTML_STYLE_CSS_CSSELEMENTVALIDATION_H
 
-            #include "../../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/logic/communication/log/LogUtil.h>
 

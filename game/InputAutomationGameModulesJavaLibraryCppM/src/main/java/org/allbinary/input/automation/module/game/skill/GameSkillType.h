@@ -21,7 +21,7 @@
         #ifndef ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_GAME_SKILL_GAMESKILLTYPE_H
         #define ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_GAME_SKILL_GAMESKILLTYPE_H
 
-            #include "../../../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
 
 

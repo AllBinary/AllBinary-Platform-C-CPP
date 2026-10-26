@@ -23,22 +23,10 @@
 
             #include <vector>
         
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../../../java/lang/Thread.h"
+            #include "java/lang/Thread.h"
         
-#include <jsinterop/annotations/JsType.h>
-
-      
-#include <java/util/Hashtable.h>
-
-      
-#include <org/allbinary/util/BasicArrayList.h>
-
-      
-#include <org/allbinary/util/BasicArrayListD.h>
-
-      
 #include <javax/microedition/lcdui/Command.h>
 
       
@@ -327,19 +315,13 @@
 #include <org/allbinary/time/TimeDelayHelper.h>
 
       
+#include <org/allbinary/util/ABHashtable.h>
+
+      
 #include <org/allbinary/util/BasicArrayList.h>
 
       
 #include <org/allbinary/util/BasicArrayListD.h>
-
-      
-#include <jsinterop/annotations/JsMethod.h>
-
-      
-#include <jsinterop/annotations/JsConstructor.h>
-
-      
-#include <jsinterop/annotations/JsProperty.h>
 
       
 
@@ -519,15 +501,15 @@ public: DemoCanvas(AbeClientInformationInterface abeClientInformation, CommandLi
 
                 //@Throws(Exception.constructor)
             
-    public: void setLoadStateHashtable(Hashtable<any, any> hashtable);
+    public: void setLoadStateHashtable(ABHashtable<Object*, Object*> hashtable);
 
                 //@Throws(Exception.constructor)
             
-    public: Hashtable<any, any> getLoadStateHashtable();
+    public: ABHashtable<Object*, Object*> getLoadStateHashtable();
 
                 //@Throws(Exception.constructor)
             
-    public: Hashtable<any, any> getCurrentStateHashtable();
+    public: ABHashtable<Object*, Object*> getCurrentStateHashtable();
 
     public: void setHighScoreSubmitted(bool isNotUsed);
 

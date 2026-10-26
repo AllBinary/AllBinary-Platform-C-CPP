@@ -18,21 +18,9 @@
 
 
 
-            #include "../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-#include <jsinterop/annotations/JsType.h>
-
-      
 #include <org/allbinary/logic/NullUtil.h>
-
-      
-#include <jsinterop/annotations/JsMethod.h>
-
-      
-#include <jsinterop/annotations/JsConstructor.h>
-
-      
-#include <jsinterop/annotations/JsProperty.h>
 
       
 
@@ -75,7 +63,7 @@ class GameStateFactory
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return GameStateFactory::instance() as GameStateFactory;
+                        return GameStateFactory::instance();
     
 }
 

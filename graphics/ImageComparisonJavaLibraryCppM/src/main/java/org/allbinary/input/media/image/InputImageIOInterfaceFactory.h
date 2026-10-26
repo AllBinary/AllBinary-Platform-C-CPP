@@ -21,9 +21,9 @@
         #ifndef ORG_ALLBINARY_INPUT_MEDIA_IMAGE_INPUTIMAGEIOINTERFACEFACTORY_H
         #define ORG_ALLBINARY_INPUT_MEDIA_IMAGE_INPUTIMAGEIOINTERFACEFACTORY_H
 
-            #include "../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/input/media/image/capture/CapturedImageInputOutput.h>
 

@@ -18,9 +18,6 @@
 
 
 
-#include <jsinterop/annotations/JsType.h>
-
-      
 #include <org/allbinary/ai/ArtificialIntelligence.h>
 
       
@@ -58,12 +55,6 @@
 
       
 #include <org/allbinary/view/ViewPositionBase.h>
-
-      
-#include <jsinterop/annotations/JsMethod.h>
-
-      
-#include <jsinterop/annotations/JsConstructor.h>
 
       
 #include <org/allbinary/logic/NullUtil.h>
@@ -107,15 +98,16 @@ class CollidableCompositeLayer: public AllBinaryGameLayer, public CollidableInte
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return CollidableCompositeLayer::NULL_COLLIDABLE_COMPOSITE_LAYER as CollidableCompositeLayer;
+                        return CollidableCompositeLayer::NULL_COLLIDABLE_COMPOSITE_LAYER;
     
 }
 
 
     private: CollidableBaseBehavior collidableInferface = CollidableNeverCollideBehaviorFactory::getInstance().createBehavior();
 
-public: CollidableCompositeLayer(std::string name, Rectangle layerInfo, ViewPositionBase viewPosition, CollidableBaseBehaviorFactory collidableBaseBehaviorFactory){
-            super(name, layerInfo, viewPosition);
+public: CollidableCompositeLayer(std::string name, Rectangle layerInfo, ViewPositionBase viewPosition, CollidableBaseBehaviorFactory collidableBaseBehaviorFactory) : AllBinaryGameLayer(name, layerInfo, viewPosition){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.

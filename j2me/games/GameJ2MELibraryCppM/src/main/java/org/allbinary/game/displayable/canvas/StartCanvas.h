@@ -23,11 +23,8 @@
 
             #include <vector>
         
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-#include <java/util/Hashtable.h>
-
-      
 #include <javax/microedition/lcdui/Command.h>
 
       
@@ -274,6 +271,9 @@
 #include <org/allbinary/time/TimeDelayHelper.h>
 
       
+#include <org/allbinary/util/ABHashtable.h>
+
+      
 #include <org/allbinary/util/BasicArrayList.h>
 
       
@@ -435,15 +435,15 @@ public: StartCanvas(AbeClientInformationInterface abeClientInformation, CommandL
 
                 //@Throws(Exception.constructor)
             
-    public: void setLoadStateHashtable(Hashtable<any, any> hashtable);
+    public: void setLoadStateHashtable(ABHashtable<Object*, Object*> hashtable);
 
                 //@Throws(Exception.constructor)
             
-    public: Hashtable<any, any> getLoadStateHashtable();
+    public: ABHashtable<Object*, Object*> getLoadStateHashtable();
 
                 //@Throws(Exception.constructor)
             
-    public: Hashtable<any, any> getCurrentStateHashtable();
+    public: ABHashtable<Object*, Object*> getCurrentStateHashtable();
 
     public: void setHighScoreSubmitted(bool isNotUsed);
 

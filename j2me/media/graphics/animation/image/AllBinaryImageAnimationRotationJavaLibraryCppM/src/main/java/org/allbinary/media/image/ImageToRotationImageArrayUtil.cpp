@@ -20,9 +20,9 @@
 
             #include <vector>
         
-            #include "../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <javax/microedition/lcdui/Image.h>
 
@@ -77,7 +77,7 @@ private: ImageToRotationImageArrayUtil(){
     int32_t totalFrames = totalAngle /angleIncrement;;
     
 
-    std::vector<Image> imageArray = new Array(totalFrames);;
+    std::vector<Image> imageArray = std::vector<Image>(totalFrames);;
     
 imageArray[0]= image;
     

@@ -21,7 +21,7 @@
         #ifndef ORG_ALLBINARY_DATA_TREE_DOM_DOCUMENT_MAPPING_DOMDOCUMENTMAPPINGINTERFACE_H
         #define ORG_ALLBINARY_DATA_TREE_DOM_DOCUMENT_MAPPING_DOMDOCUMENTMAPPINGINTERFACE_H
 
-            #include "../../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/w3c/dom/Document.h>
 

@@ -18,11 +18,11 @@
 
 
 
-            #include "../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../java/lang/RuntimeException.h"
+            #include "java/lang/RuntimeException.h"
         
-            #include "../../../../../java/lang/System.h"
+            #include "java/lang/System.h"
         
 
 

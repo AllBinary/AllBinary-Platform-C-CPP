@@ -21,7 +21,7 @@
         #ifndef ORG_ALLBINARY_LOGIC_UTIL_CACHE_POOLTYPE_H
         #define ORG_ALLBINARY_LOGIC_UTIL_CACHE_POOLTYPE_H
 
-            #include "../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
 
 

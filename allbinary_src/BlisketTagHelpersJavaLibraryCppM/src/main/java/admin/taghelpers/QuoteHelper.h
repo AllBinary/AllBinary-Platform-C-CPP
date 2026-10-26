@@ -21,9 +21,9 @@
         #ifndef ADMIN_TAGHELPERS_QUOTEHELPER_H
         #define ADMIN_TAGHELPERS_QUOTEHELPER_H
 
-            #include "../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../java/lang/Integer.h"
+            #include "java/lang/Integer.h"
         
 #include <java/util/HashMap.h>
 
@@ -141,7 +141,7 @@ class QuoteHelper: public BasicTable {
 
     private: Portion portion;
 
-public: QuoteHelper(HashMap<any, any> hashMap, PageContext pageContext);
+public: QuoteHelper(HashMap<Object*, Object*> hashMap, PageContext pageContext);
 
                 //@Throws(Exception.constructor)
             

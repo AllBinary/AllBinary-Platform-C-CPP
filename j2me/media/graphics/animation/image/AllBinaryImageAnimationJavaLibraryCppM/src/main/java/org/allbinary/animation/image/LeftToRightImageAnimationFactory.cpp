@@ -20,7 +20,7 @@
 
             #include <vector>
         
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <javax/microedition/lcdui/Image.h>
 
@@ -55,8 +55,9 @@
 
 class LeftToRightImageAnimationFactory: public BaseImageAnimationFactory {
 
-public: LeftToRightImageAnimationFactory(Image image, std::vector<int32_t> sequenceArray, int32_t dx, int32_t dy, AnimationBehaviorFactory animationBehaviorFactory){
-            super(image, sequenceArray, image.getWidth(), image.getHeight(), dx, dy, animationBehaviorFactory);
+public: LeftToRightImageAnimationFactory(Image image, std::vector<int32_t> sequenceArray, int32_t dx, int32_t dy, AnimationBehaviorFactory animationBehaviorFactory) : BaseImageAnimationFactory(image, sequenceArray, image.getWidth(), image.getHeight(), dx, dy, animationBehaviorFactory){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.

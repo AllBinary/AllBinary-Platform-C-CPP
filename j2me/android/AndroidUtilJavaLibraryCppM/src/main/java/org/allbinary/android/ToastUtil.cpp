@@ -6,11 +6,11 @@
 
             #include <hilog/log.h>
         
-            #include "../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../java/lang/Runnable.h"
+            #include "java/lang/Runnable.h"
         
 #include <android/content/Context.h>
 

@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
 
@@ -90,8 +90,9 @@ class PaymentGatewaysView: public HttpStoreComponentView, public DomNodeInterfac
 
     private: BasicArrayList paymentGatewayVector;
 
-public: PaymentGatewaysView(TransformInfoInterface transformInfoInterface, BasicArrayList gatewayVector){
-            super(transformInfoInterface);
+public: PaymentGatewaysView(TransformInfoInterface transformInfoInterface, BasicArrayList gatewayVector) : HttpStoreComponentView(transformInfoInterface){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -123,10 +124,10 @@ this->paymentGatewayVector= gatewayVector;
     int32_t index = 0;index < size; index++)
         {
 
-    BasicPaymentType paymentType = this->paymentGatewayVector.get(index) as BasicPaymentType;;
+    BasicPaymentType paymentType = this->paymentGatewayVector.get(index);;
     
 
-    HashMap<any, any> hashMap = paymentType.toHashMap();;
+    HashMap<Object*, Object*> hashMap = paymentType.toHashMap();;
     
 hashMap.put(EntryData::getInstance().DEFAULT, PaymentTypeUtil::getInstance().getDefault(storeName).getBasicPaymentType().getName());
     
@@ -167,7 +168,7 @@ paymentGatewaysNode.appendChild(paymentGatewayNode);
 
 
     public: void addDomNodeInterfaces(){
-this->addDomNodeInterface(this as DomNodeInterface);
+this->addDomNodeInterface(this);
     
 }
 

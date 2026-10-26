@@ -18,9 +18,9 @@
 
 
 
-            #include "../../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../../java/lang/Integer.h"
+            #include "java/lang/Integer.h"
         
 #include <java/util/Enumeration.h>
 
@@ -91,21 +91,21 @@ class AbeHttpRequestInfo
 
     private: std::string requestedFilePath;
 
-public: AbeHttpRequestInfo(HashMap<any, any> hashMap){
+public: AbeHttpRequestInfo(HashMap<Object*, Object*> hashMap){
 
     StringUtil stringUtil = StringUtil::getInstance();;
     
-this->httpUserAgent= stringUtil.getNonNull(hashMap.get(this->abeHttpRequestInfoData.HTTP_USER_AGENT) as string);
+this->httpUserAgent= stringUtil.getNonNull(hashMap.get(this->abeHttpRequestInfoData.HTTP_USER_AGENT));
     
-this->remoteAddress= stringUtil.getNonNull(hashMap.get(this->abeHttpRequestInfoData.REMOTE_ADDRESS) as string);
+this->remoteAddress= stringUtil.getNonNull(hashMap.get(this->abeHttpRequestInfoData.REMOTE_ADDRESS));
     
-this->remoteHost= stringUtil.getNonNull(hashMap.get(this->abeHttpRequestInfoData.REMOTE_HOST) as string);
+this->remoteHost= stringUtil.getNonNull(hashMap.get(this->abeHttpRequestInfoData.REMOTE_HOST));
     
-this->remoteHostByAddr= stringUtil.getNonNull(hashMap.get(this->abeHttpRequestInfoData.REMOTE_HOST_BY_ADDRESS) as string);
+this->remoteHostByAddr= stringUtil.getNonNull(hashMap.get(this->abeHttpRequestInfoData.REMOTE_HOST_BY_ADDRESS));
     
-this->remotePort= stringUtil.getNonNull(hashMap.get(this->abeHttpRequestInfoData.REMOTE_PORT) as string);
+this->remotePort= stringUtil.getNonNull(hashMap.get(this->abeHttpRequestInfoData.REMOTE_PORT));
     
-this->requestedFilePath= stringUtil.getNonNull(hashMap.get(this->abeHttpRequestInfoData.REQUEST_FILE_PATH) as string);
+this->requestedFilePath= stringUtil.getNonNull(hashMap.get(this->abeHttpRequestInfoData.REQUEST_FILE_PATH));
     
 }
 
@@ -117,13 +117,13 @@ public: AbeHttpRequestInfo(HttpServletRequest httpServletRequest){
 this->httpUserAgent= stringUtil.EMPTY_STRING;
     
 
-    Enumeration<any> enumuration = httpServletRequest.getHeaderNames();;
+    Enumeration<Object*> enumuration = httpServletRequest.getHeaderNames();;
     
 
         while(enumuration.hasMoreElements())
         {
 
-    std::string key = enumuration.nextElement()! as string;;
+    std::string key = enumuration.nextElement();;
     
 
     std::string value = httpServletRequest.getHeader(key);;
@@ -147,9 +147,9 @@ this->remotePort= std::to_string(getRemotePort);
 }
 
 
-    public: HashMap<any, any> toHashMap(){
+    public: HashMap<Object*, Object*> toHashMap(){
 
-    HashMap<any, any> hashMap = StdUtil::getInstance().createHashMap();;
+    HashMap<Object*, Object*> hashMap = StdUtil::getInstance().createHashMap();;
     
 hashMap.put(abeHttpRequestInfoData.HTTP_USER_AGENT, this->httpUserAgent);
     

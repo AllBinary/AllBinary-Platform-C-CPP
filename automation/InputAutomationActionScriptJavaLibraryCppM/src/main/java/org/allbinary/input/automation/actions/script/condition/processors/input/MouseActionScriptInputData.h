@@ -21,7 +21,7 @@
         #ifndef ORG_ALLBINARY_INPUT_AUTOMATION_ACTIONS_SCRIPT_CONDITION_PROCESSORS_INPUT_MOUSEACTIONSCRIPTINPUTDATA_H
         #define ORG_ALLBINARY_INPUT_AUTOMATION_ACTIONS_SCRIPT_CONDITION_PROCESSORS_INPUT_MOUSEACTIONSCRIPTINPUTDATA_H
 
-            #include "../../../../../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
 
 

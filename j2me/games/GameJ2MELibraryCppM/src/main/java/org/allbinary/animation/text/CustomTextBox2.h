@@ -21,7 +21,7 @@
         #ifndef ORG_ALLBINARY_ANIMATION_TEXT_CUSTOMTEXTBOX2_H
         #define ORG_ALLBINARY_ANIMATION_TEXT_CUSTOMTEXTBOX2_H
 
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <javax/microedition/lcdui/CommandListener.h>
 

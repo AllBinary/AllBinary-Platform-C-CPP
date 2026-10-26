@@ -21,9 +21,9 @@
         #ifndef ORG_ALLBINARY_MEDIA_IMAGE_IMAGESCALEUTIL_H
         #define ORG_ALLBINARY_MEDIA_IMAGE_IMAGESCALEUTIL_H
 
-            #include "../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <javax/microedition/lcdui/Image.h>
 
@@ -40,16 +40,13 @@
 #include <playn/core/Canvas.h>
 
       
+#include <playn/core/CoreImage.h>
+
+      
 #include <playn/core/ImageImpl.h>
 
       
-#include <playn/core/PlayN.h>
-
-      
-#include <playn/html/HtmlGraphics.h>
-
-      
-#include <playn/html/HtmlImage.h>
+#include <playn/html/HTMLPlaynUtil.h>
 
       
 
@@ -79,6 +76,8 @@ class ImageScaleUtil
     private: static ImageScaleUtil instance() { return ImageScaleUtil(); }
 
     public: static ImageScaleUtil getInstance();
+
+    private: const HTMLPlaynUtil playnUtil = HTMLPlaynUtil::getInstance();
 
 private: ImageScaleUtil();
 

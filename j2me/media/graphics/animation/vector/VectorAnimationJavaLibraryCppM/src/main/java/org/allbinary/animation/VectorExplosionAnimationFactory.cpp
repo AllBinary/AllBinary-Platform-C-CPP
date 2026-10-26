@@ -20,9 +20,9 @@
 
             #include <vector>
         
-            #include "../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/graphics/color/BasicColor.h>
 
@@ -77,7 +77,7 @@ this->setBasicColorP(basicColor);
             
     public: Animation getInstanceAnimation(Animation animationInterface){
 
-    VectorAnimationInterface vectorRotationAnimationInterface = animationInterface as unknown as VectorAnimationInterface;;
+    VectorAnimationInterface vectorRotationAnimationInterface = animationInterface as unknown;;
     
 
     int32_t frame = vectorRotationAnimationInterface.getFrame();;

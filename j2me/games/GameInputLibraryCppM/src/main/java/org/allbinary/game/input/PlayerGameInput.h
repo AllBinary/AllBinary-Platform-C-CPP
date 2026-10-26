@@ -21,11 +21,8 @@
         #ifndef ORG_ALLBINARY_GAME_INPUT_PLAYERGAMEINPUT_H
         #define ORG_ALLBINARY_GAME_INPUT_PLAYERGAMEINPUT_H
 
-            #include "../../../../java/lang/Integer.h"
+            #include "java/lang/Integer.h"
         
-#include <jsinterop/annotations/JsType.h>
-
-      
 #include <org/allbinary/game/input/event/GameKeyEvent.h>
 
       
@@ -51,15 +48,6 @@
 
       
 #include <org/allbinary/util/BasicArrayList.h>
-
-      
-#include <jsinterop/annotations/JsMethod.h>
-
-      
-#include <jsinterop/annotations/JsConstructor.h>
-
-      
-#include <jsinterop/annotations/JsProperty.h>
 
       
 

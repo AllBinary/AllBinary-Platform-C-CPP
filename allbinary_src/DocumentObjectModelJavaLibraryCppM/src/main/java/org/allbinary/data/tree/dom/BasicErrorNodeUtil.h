@@ -21,9 +21,9 @@
         #ifndef ORG_ALLBINARY_DATA_TREE_DOM_BASICERRORNODEUTIL_H
         #define ORG_ALLBINARY_DATA_TREE_DOM_BASICERRORNODEUTIL_H
 
-            #include "../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/business/error/ErrorData.h>
 

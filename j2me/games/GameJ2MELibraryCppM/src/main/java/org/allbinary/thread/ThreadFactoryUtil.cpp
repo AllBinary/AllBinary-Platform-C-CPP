@@ -18,15 +18,12 @@
 
 
 
-            #include "../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../java/lang/Thread.h"
+            #include "java/lang/Thread.h"
         
-            #include "../../../java/lang/Runnable.h"
+            #include "java/lang/Runnable.h"
         
-#include <jsinterop/annotations/JsType.h>
-
-      
 #include <org/allbinary/J2MEUtil.h>
 
       
@@ -58,12 +55,6 @@
 
       
 #include <org/allbinary/string/CommonStrings.h>
-
-      
-#include <jsinterop/annotations/JsMethod.h>
-
-      
-#include <jsinterop/annotations/JsProperty.h>
 
       
 
@@ -139,7 +130,7 @@ class ThreadFactoryUtil
                         
                                     {
                                     
-    RunnableCanvasSingleThreadStartRunnable demoGameSingleThreadStartRunnable = RunnableCanvasSingleThreadStartRunnable(runnable as RunnableCanvas);;
+    RunnableCanvasSingleThreadStartRunnable demoGameSingleThreadStartRunnable = RunnableCanvasSingleThreadStartRunnable(runnable);;
     
 PreLogUtil::put(StringMaker().append("Using Pseudo Thread for DemoCanvas/AllBinaryGameCanvas under PlayN/HTML5: ").append(StringUtil::getInstance().toString(runnable)).toString(), this, commonStrings.CONSTRUCTOR);
     

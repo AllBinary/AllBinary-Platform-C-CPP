@@ -21,7 +21,7 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_CANVAS_TRANSITION_PROGRESS_TITLEPROGRESSBARPORTIONSETPROGRESSRUNNABLE_H
         #define ORG_ALLBINARY_GRAPHICS_CANVAS_TRANSITION_PROGRESS_TITLEPROGRESSBARPORTIONSETPROGRESSRUNNABLE_H
 
-            #include "../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/string/CommonStrings.h>
 

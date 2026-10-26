@@ -21,19 +21,13 @@
         #ifndef ORG_ALLBINARY_LOGIC_SYSTEM_SECURITY_LICENSING_ABECLIENTINFORMATIONINTERFACE_H
         #define ORG_ALLBINARY_LOGIC_SYSTEM_SECURITY_LICENSING_ABECLIENTINFORMATIONINTERFACE_H
 
-#include <jsinterop/annotations/JsType.h>
-
-      
-#include <java/util/Hashtable.h>
-
-      
 #include <org/allbinary/logic/system/os/GenericOperatingSystem.h>
 
       
-#include <org/allbinary/util/BasicArrayList.h>
+#include <org/allbinary/util/ABHashtable.h>
 
       
-#include <jsinterop/annotations/JsMethod.h>
+#include <org/allbinary/util/BasicArrayList.h>
 
       
 
@@ -75,7 +69,7 @@ class AbeClientInformationInterface {
 
     int32_t getNumberOfLicenseServers();
 
-    Hashtable<any, any> toHashtable();
+    ABHashtable<Object*, Object*> toHashtable();
 
     bool isSameId(std::string alicenseId);
 

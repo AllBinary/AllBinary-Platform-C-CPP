@@ -21,11 +21,11 @@
         #ifndef ORG_ALLBINARY_GAME_AI_ARTIFICIALINTELLIGENCEINTERFACEFACTORYINTERFACEFACTORY_H
         #define ORG_ALLBINARY_GAME_AI_ARTIFICIALINTELLIGENCEINTERFACEFACTORYINTERFACEFACTORY_H
 
-            #include "../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../java/lang/Integer.h"
+            #include "java/lang/Integer.h"
         
-#include <java/util/Hashtable.h>
+#include <org/allbinary/util/ABHashtable.h>
 
       
 #include <org/allbinary/util/BasicArrayList.h>
@@ -70,7 +70,7 @@ class ArtificialIntelligenceInterfaceFactoryInterfaceFactory
 
     public: void clear();
 
-    public: ArtificialIntelligenceInterfaceFactoryInterface getInstanceFromCollection(Hashtable<any, any> hashtable);
+    public: ArtificialIntelligenceInterfaceFactoryInterface getInstanceFromCollection(ABHashtable<Object*, Object*> hashtable);
 
     public: void add(ArtificialIntelligenceInterfaceFactoryInterface artificialIntelligenceInterfaceFactoryInterface);
 

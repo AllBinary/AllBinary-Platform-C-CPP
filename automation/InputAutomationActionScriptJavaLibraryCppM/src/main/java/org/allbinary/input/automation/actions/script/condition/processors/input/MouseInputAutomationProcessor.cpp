@@ -18,11 +18,11 @@
 
 
 
-            #include "../../../../../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../../../../../../../java/lang/Thread.h"
+            #include "java/lang/Thread.h"
         
 #include <org/allbinary/input/automation/robot/InputRobotInterface.h>
 

@@ -20,7 +20,7 @@
 
             #include <vector>
         
-            #include "../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
 #include <jsinterop/annotations/JsType.h>
 

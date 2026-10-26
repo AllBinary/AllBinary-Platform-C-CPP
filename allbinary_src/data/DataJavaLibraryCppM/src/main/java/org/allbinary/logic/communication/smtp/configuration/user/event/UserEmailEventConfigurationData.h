@@ -21,7 +21,7 @@
         #ifndef ORG_ALLBINARY_LOGIC_COMMUNICATION_SMTP_CONFIGURATION_USER_EVENT_USEREMAILEVENTCONFIGURATIONDATA_H
         #define ORG_ALLBINARY_LOGIC_COMMUNICATION_SMTP_CONFIGURATION_USER_EVENT_USEREMAILEVENTCONFIGURATIONDATA_H
 
-            #include "../../../../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
 
 

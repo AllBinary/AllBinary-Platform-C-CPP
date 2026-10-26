@@ -18,27 +18,15 @@
 
 
 
-            #include "../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../../../java/lang/Thread.h"
+            #include "java/lang/Thread.h"
         
-            #include "../../../../../java/lang/Runnable.h"
+            #include "java/lang/Runnable.h"
         
-#include <jsinterop/annotations/JsType.h>
-
-      
 #include <org/allbinary/graphics/displayable/DisplayInfoSingleton.h>
-
-      
-#include <jsinterop/annotations/JsMethod.h>
-
-      
-#include <jsinterop/annotations/JsConstructor.h>
-
-      
-#include <jsinterop/annotations/JsProperty.h>
 
       
 

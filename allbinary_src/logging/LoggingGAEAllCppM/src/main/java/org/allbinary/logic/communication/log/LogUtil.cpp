@@ -18,11 +18,11 @@
 
 
 
-            #include "../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../java/lang/Class.h"
+            #include "java/lang/Class.h"
         
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/util/logging/Level.h>
 
@@ -73,7 +73,7 @@
 }
 
 
-    private: const Logger logger = Logger::getLogger(LogUtil.constructor.toString()!);
+    private: const Logger logger = Logger::getLogger(LogUtil.constructor.toString());
 
     private: const LogFormatUtil logFormatUtil = LogFormatUtil::getInstance();
 
@@ -118,15 +118,15 @@ this->putS(specialMessage, className, functionName, NullUtil::getInstance().NULL
     std::string className = CommonStrings::getInstance().EMPTY;;
     
 
-    Function clazz = anyType->constructor;;
+    Class* clazz = anyType->getClass();;
     
 
-                        if(clazz.toString()! != 
+                        if(clazz.toString() != 
                                     nullptr
                                 )
                         
                                     {
-                                    className= clazz.toString()!;
+                                    className= clazz.toString();
     
 
                                     }

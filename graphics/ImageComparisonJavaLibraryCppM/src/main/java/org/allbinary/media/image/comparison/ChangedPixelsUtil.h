@@ -23,11 +23,11 @@
 
             #include <vector>
         
-            #include "../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../../../java/lang/System.h"
+            #include "java/lang/System.h"
         
 #include <java/awt/image/BufferedImage.h>
 
@@ -88,7 +88,7 @@ class ChangedPixelsUtil
 
     private: static const int32_t SCAN_SIZE = 0;
 
-    private: static const std::vector<int32_t> CLEAR_INT_ARRAY = new Array(1800 *1600);
+    private: static const std::vector<int32_t> CLEAR_INT_ARRAY = std::vector<int32_t>(1800 *1600);
 
                 //@Throws(Exception.constructor)
             

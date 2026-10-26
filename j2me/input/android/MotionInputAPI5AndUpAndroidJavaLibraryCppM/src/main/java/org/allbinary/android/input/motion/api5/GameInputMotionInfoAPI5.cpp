@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../../../../java/lang/Integer.h"
+            #include "java/lang/Integer.h"
         
 #include <org/allbinary/android/input/motion/GameInputMotionInfo.h>
 
@@ -56,8 +56,9 @@ class GameInputMotionInfoAPI5: public GameInputMotionInfo {
 }
 
 
-private: GameInputMotionInfoAPI5(){
-            super(Integer::MAX_VALUE, 10);
+private: GameInputMotionInfoAPI5() : GameInputMotionInfo(Integer::MAX_VALUE, 10){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.

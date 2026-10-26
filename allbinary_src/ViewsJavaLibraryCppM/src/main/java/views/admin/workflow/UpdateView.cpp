@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/logic/communication/log/LogUtil.h>
 
@@ -62,8 +62,9 @@ class UpdateView: public WorkFlowView, public ValidationComponentInterface {
 
     protected: const LogUtil logUtil = LogUtil::getInstance();
 
-public: UpdateView(TransformInfoInterface transformInfoInterface){
-            super(transformInfoInterface);
+public: UpdateView(TransformInfoInterface transformInfoInterface) : WorkFlowView(transformInfoInterface){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.

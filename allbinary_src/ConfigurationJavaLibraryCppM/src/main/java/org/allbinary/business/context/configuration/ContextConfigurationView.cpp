@@ -18,9 +18,9 @@
 
 
 
-            #include "../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/data/tree/dom/DomNodeInterface.h>
 
@@ -86,7 +86,7 @@ this->contextConfigurationInterface= ContextConfiguration();
 
     EmailServerConfigurationView emailServerConfigurationView = EmailServerConfigurationView(emailConfigurationNode);;
     
-this->contextConfigurationInterface.setEmailServerConfigurationInterface(emailServerConfigurationView.getEmailConfigurationInterface() as EmailServerConfigurationInterface);
+this->contextConfigurationInterface.setEmailServerConfigurationInterface(emailServerConfigurationView.getEmailConfigurationInterface());
     
 }
 

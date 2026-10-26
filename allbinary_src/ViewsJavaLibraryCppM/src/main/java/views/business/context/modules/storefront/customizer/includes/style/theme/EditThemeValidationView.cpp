@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/business/category/CategoryFactoryInterface.h>
 
@@ -45,6 +45,9 @@
 
       
 #include <org/allbinary/data/tree/dom/document/DomDocumentHelper.h>
+
+      
+#include <org/allbinary/data/tree/dom/document/XmlDocumentHelper.h>
 
       
 #include <org/allbinary/logic/communication/log/LogUtil.h>
@@ -89,8 +92,9 @@ class EditThemeValidationView: public ThemeCustomizerView, public ValidationComp
 
     protected: const LogUtil logUtil = LogUtil::getInstance();
 
-public: EditThemeValidationView(TransformInfoInterface transformInfoInterface){
-            super(transformInfoInterface);
+public: EditThemeValidationView(TransformInfoInterface transformInfoInterface) : ThemeCustomizerView(transformInfoInterface){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -111,17 +115,17 @@ public: EditThemeValidationView(TransformInfoInterface transformInfoInterface){
     CategoryLoaderInterface categoryLoaderInterface = CategoryLoaderFactory::getInstance(categoryFactoryInterface);;
     
 
-    StoreThemeCategoryInterface rootStoreThemeCategoryInterface = categoryFactoryInterface.getRootInstance() as StoreThemeCategoryInterface;;
+    StoreThemeCategoryInterface rootStoreThemeCategoryInterface = categoryFactoryInterface.getRootInstance();;
     
 
-    StoreThemeCategoryInterface storeThemeCategoryInterface = categoryLoaderInterface.getAll(rootStoreThemeCategoryInterface as CategoryInterface) as StoreThemeCategoryInterface;;
+    StoreThemeCategoryInterface storeThemeCategoryInterface = categoryLoaderInterface.getAll(rootStoreThemeCategoryInterface);;
     
-this->validationInterface= StoreThemeCategoryPathValidationView(storeThemeCategoryInterface as StoreThemeCategoryInterface);
+this->validationInterface= StoreThemeCategoryPathValidationView(storeThemeCategoryInterface);
     
 isValid= this->validationInterface.isValid();
     
 
-    DomNodeInterface domNodeInterface = this->validationInterface as DomNodeInterface;;
+    DomNodeInterface domNodeInterface = this->validationInterface;;
     
 
     Document document = DomDocumentHelper::create();;
@@ -129,7 +133,7 @@ isValid= this->validationInterface.isValid();
 document.appendChild(domNodeInterface.toXmlNode(document));
     
 
-    std::string documentString = DomDocumentHelper::toString(document);;
+    std::string documentString = XmlDocumentHelper::toString(document);;
     
 
                         if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEWERROR))

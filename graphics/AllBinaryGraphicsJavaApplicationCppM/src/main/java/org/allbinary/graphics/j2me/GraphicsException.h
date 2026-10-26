@@ -21,7 +21,7 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_J2ME_GRAPHICSEXCEPTION_H
         #define ORG_ALLBINARY_GRAPHICS_J2ME_GRAPHICSEXCEPTION_H
 
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/logic/communication/log/GuiLog.h>
 

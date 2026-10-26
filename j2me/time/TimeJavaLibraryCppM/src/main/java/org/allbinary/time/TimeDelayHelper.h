@@ -21,15 +21,12 @@
         #ifndef ORG_ALLBINARY_TIME_TIMEDELAYHELPER_H
         #define ORG_ALLBINARY_TIME_TIMEDELAYHELPER_H
 
-            #include "../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../java/lang/System.h"
+            #include "java/lang/System.h"
         
-            #include "../../../java/lang/Long.h"
+            #include "java/lang/Long.h"
         
-#include <jsinterop/annotations/JsType.h>
-
-      
 #include <org/allbinary/logic/string/StringMaker.h>
 
       
@@ -37,15 +34,6 @@
 
       
 #include <org/allbinary/string/CommonLabels.h>
-
-      
-#include <jsinterop/annotations/JsMethod.h>
-
-      
-#include <jsinterop/annotations/JsConstructor.h>
-
-      
-#include <jsinterop/annotations/JsProperty.h>
 
       
 

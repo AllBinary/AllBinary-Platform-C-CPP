@@ -21,9 +21,9 @@
         #ifndef ORG_ALLBINARY_LOGIC_COMMUNICATION_SMTP_EVENT_MODULES_LOG_LOGUSEREMAILEVENTLISTENERMODULE_H
         #define ORG_ALLBINARY_LOGIC_COMMUNICATION_SMTP_EVENT_MODULES_LOG_LOGUSEREMAILEVENTLISTENERMODULE_H
 
-            #include "../../../../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/logic/communication/log/LogUtil.h>
 

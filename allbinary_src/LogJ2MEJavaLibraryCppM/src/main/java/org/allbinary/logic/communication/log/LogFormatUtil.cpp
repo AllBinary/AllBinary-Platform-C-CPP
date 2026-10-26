@@ -18,9 +18,9 @@
 
 
 
-            #include "../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../java/lang/Throwable.h"
+            #include "java/lang/Throwable.h"
         
 #include <org/allbinary/logic/NullUtil.h>
 
@@ -216,7 +216,7 @@ stringBuffer.append(this->STACK_TRACE);
                         if(exception != this->nullUtil.NULL_OBJECT)
                         
                                     {
-                                    stringBuffer.append(this->exceptionUtil.getStackTrace(exception as Throwable));
+                                    stringBuffer.append(this->exceptionUtil.getStackTrace(*dynamic_cast<Throwable*>(exception)));
     
 
                                     }

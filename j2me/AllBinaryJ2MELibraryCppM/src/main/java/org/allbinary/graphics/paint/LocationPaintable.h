@@ -21,15 +21,9 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_PAINT_LOCATIONPAINTABLE_H
         #define ORG_ALLBINARY_GRAPHICS_PAINT_LOCATIONPAINTABLE_H
 
-            #include "../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-#include <jsinterop/annotations/JsType.h>
-
-      
 #include <javax/microedition/lcdui/Graphics.h>
-
-      
-#include <jsinterop/annotations/JsMethod.h>
 
       
 

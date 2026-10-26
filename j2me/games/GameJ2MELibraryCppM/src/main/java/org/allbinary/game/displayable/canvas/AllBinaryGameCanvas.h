@@ -23,28 +23,14 @@
 
             #include <vector>
         
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../../../java/lang/System.h"
+            #include "java/lang/Integer.h"
         
-            #include "../../../../../java/lang/Integer.h"
+            #include "java/lang/Thread.h"
         
-            #include "../../../../../java/lang/Thread.h"
+            #include "java/lang/Runnable.h"
         
-            #include "../../../../../java/lang/Runnable.h"
-        
-#include <jsinterop/annotations/JsType.h>
-
-      
-#include <java/util/Hashtable.h>
-
-      
-#include <org/allbinary/util/BasicArrayList.h>
-
-      
-#include <org/allbinary/util/BasicArrayListD.h>
-
-      
 #include <javax/microedition/lcdui/ChoiceGroup.h>
 
       
@@ -354,6 +340,9 @@
 #include <org/allbinary/input/motion/gesture/observer/BasicMotionGesturesHandler.h>
 
       
+#include <org/allbinary/logic/ABSystemWrapper.h>
+
+      
 #include <org/allbinary/logic/communication/log/ForcedLogUtil.h>
 
       
@@ -414,6 +403,9 @@
 #include <org/allbinary/time/TimeDelayHelper.h>
 
       
+#include <org/allbinary/util/ABHashtable.h>
+
+      
 #include <org/allbinary/util/BasicArrayList.h>
 
       
@@ -421,15 +413,6 @@
 
       
 #include <org/allbinary/util/BasicArrayListUtil.h>
-
-      
-#include <jsinterop/annotations/JsMethod.h>
-
-      
-#include <jsinterop/annotations/JsConstructor.h>
-
-      
-#include <jsinterop/annotations/JsProperty.h>
 
       
 
@@ -552,7 +535,7 @@ class AllBinaryGameCanvas: public RunnableCanvas, public AllBinaryGameCanvasInte
 
     private: bool isCheating= false;
 
-    private: Hashtable<any, any> hashtable = this->stdUtil.NULL_TABLE;
+    private: ABHashtable<Object*, Object*> hashtable = this->stdUtil.NULL_TABLE;
 
     private: bool isSingleKeyRepeatableProcessing= false;
 
@@ -702,6 +685,8 @@ public: AllBinaryGameCanvas(CommandListener commandListener, AllBinaryGameLayerM
             
     protected: void processorInit();
 
+    protected: void setProcessGameProcessorInit();
+
     protected: void initSpecialPaint();
 
                 //@Throws(Exception.constructor)
@@ -841,11 +826,11 @@ public: AllBinaryGameCanvas(CommandListener commandListener, AllBinaryGameLayerM
 
                 //@Throws(Exception.constructor)
             
-    public: Hashtable<any, any> getLoadStateHashtable();
+    public: ABHashtable<Object*, Object*> getLoadStateHashtable();
 
-    public: void setLoadStateHashtable(Hashtable<any, any> hashtable);
+    public: void setLoadStateHashtable(ABHashtable<Object*, Object*> hashtable);
 
-    public: Hashtable<any, any> getCurrentStateHashtable();
+    public: ABHashtable<Object*, Object*> getCurrentStateHashtable();
 
     public: void paintGameOver(Graphics graphics);
 

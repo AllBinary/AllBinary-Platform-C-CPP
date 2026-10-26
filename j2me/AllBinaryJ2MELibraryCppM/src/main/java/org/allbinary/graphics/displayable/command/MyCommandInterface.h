@@ -21,13 +21,7 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_DISPLAYABLE_COMMAND_MYCOMMANDINTERFACE_H
         #define ORG_ALLBINARY_GRAPHICS_DISPLAYABLE_COMMAND_MYCOMMANDINTERFACE_H
 
-#include <jsinterop/annotations/JsType.h>
-
-      
 #include <javax/microedition/lcdui/Command.h>
-
-      
-#include <jsinterop/annotations/JsMethod.h>
 
       
 

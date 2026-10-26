@@ -18,9 +18,9 @@
 
 
 
-            #include "../../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../../../../../java/lang/Integer.h"
+            #include "java/lang/Integer.h"
         
 #include <javax/microedition/lcdui/Font.h>
 
@@ -182,8 +182,9 @@ this->updateMeasurementProcessor.setNextUnremoveableProcess();
 
     private: int32_t width= 0;
 
-public: PlayerGameNotificationHud(int32_t location, int32_t direction, int32_t bufferZone, BasicColor basicColor){
-            super(location, direction, bufferZone, basicColor);
+public: PlayerGameNotificationHud(int32_t location, int32_t direction, int32_t bufferZone, BasicColor basicColor) : GameNotificationHud(location, direction, bufferZone, basicColor){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -337,7 +338,7 @@ this->circularIndexUtil.setSize(this->permanentGameNotification.getSize());
                 //@Throws(Exception.constructor)
             
     private: void setAndRemove(){
-this->string= this->gameNotification.stringList.removeAt(0) as string;
+this->string= this->gameNotification.stringList.removeAt(0);
     
 this->processor= this->setAndRemoveProcessor;
     
@@ -354,7 +355,7 @@ this->point.setX(this->getX());
 this->point.setY(this->getY());
     
 
-    Integer time = this->gameNotification.timeList.removeAt(0) as Integer;;
+    Integer time = this->gameNotification.timeList.removeAt(0);;
     
 
     int32_t iTime = time.intValue() *1000;;
@@ -370,7 +371,7 @@ this->point.setY(this->getY());
                                 
 this->timeDelayHelper.delay= iTime;
     
-this->setBasicColorP(this->gameNotification.colorList.removeAt(0) as BasicColor);
+this->setBasicColorP(this->gameNotification.colorList.removeAt(0));
     
 }
 
@@ -381,7 +382,7 @@ this->setBasicColorP(this->gameNotification.colorList.removeAt(0) as BasicColor)
 
     int32_t index = this->circularIndexUtil.getIndex();;
     
-this->string= this->permanentGameNotification.stringList.objectArray[index]! as string;
+this->string= this->permanentGameNotification.stringList.objectArray[index];
     
 this->processor= this->nextUnremoveableProcessor;
     
@@ -401,11 +402,11 @@ this->point.setX(this->getX());
 this->point.setY(this->getY());
     
 
-    Integer time = this->permanentGameNotification.timeList.objectArray[index]! as Integer;;
+    Integer time = this->permanentGameNotification.timeList.objectArray[index];;
     
 this->timeDelayHelper.delay= time.intValue() *1000;
     
-this->setBasicColorP(this->permanentGameNotification.colorList.objectArray[index]! as BasicColor);
+this->setBasicColorP(this->permanentGameNotification.colorList.objectArray[index]);
     
 this->circularIndexUtil.next();
     

@@ -20,21 +20,12 @@
 
             #include <vector>
         
-            #include "../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-#include <jsinterop/annotations/JsType.h>
-
-      
 #include <org/allbinary/layer/event/LayerManagerEvent.h>
 
       
 #include <org/allbinary/layer/event/LayerManagerEventHandler.h>
-
-      
-#include <jsinterop/annotations/JsMethod.h>
-
-      
-#include <jsinterop/annotations/JsConstructor.h>
 
       
 
@@ -70,8 +61,9 @@ class AllBinaryLayerManager: public LayerManager {
 
     private: std::vector<LayerProcessor> basicLayerProcessorArray = {};
 
-protected: AllBinaryLayerManager(){
-            super(LayerManagerNoDebug::getInstance());
+protected: AllBinaryLayerManager() : LayerManager(LayerManagerNoDebug::getInstance()){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -165,7 +157,7 @@ this->layerManagerEventHandler.fireEvent(this->createLayerManagerEvent);
                         for (
     int32_t index = this->basicLayerProcessorArray.size();--index >= 0; )
         {
-layerProcessorInterface= this->basicLayerProcessorArray[index]!;
+layerProcessorInterface= this->basicLayerProcessorArray[index];
     
 
                         if(layerProcessorInterface.isProcessorLayer(layerInterface))
@@ -199,7 +191,7 @@ this->layerManagerEventHandler.fireDeleteEvent(this->deleteLayerManagerEvent);
                         for (
     int32_t index = this->basicLayerProcessorArray.size();--index >= 0; )
         {
-layerProcessorInterface= this->basicLayerProcessorArray[index]!;
+layerProcessorInterface= this->basicLayerProcessorArray[index];
     
 layerProcessorInterface.getLayerManager().remove(layerInterface);
     
@@ -226,7 +218,7 @@ super.remove(layerInterface);
                         for (
     int32_t index = 0;index < size; index++)
         {
-layerProcessorInterface= this->basicLayerProcessorArray[index]!;
+layerProcessorInterface= this->basicLayerProcessorArray[index];
     
 layerProcessorInterface.process(this);
     
@@ -251,7 +243,7 @@ layerProcessorInterface.process(this);
                         for (
     int32_t index = 0;index < size; index++)
         {
-layerProcessorInterface= this->basicLayerProcessorArray[index]!;
+layerProcessorInterface= this->basicLayerProcessorArray[index];
     
 layerProcessorInterface.getLayerManager().cleanup();
     

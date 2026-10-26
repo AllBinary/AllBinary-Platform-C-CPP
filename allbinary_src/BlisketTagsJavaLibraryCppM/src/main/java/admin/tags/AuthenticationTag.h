@@ -23,11 +23,11 @@
 
             #include <vector>
         
-            #include "../../java/lang/Class.h"
+            #include "java/lang/Class.h"
         
-            #include "../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../java/lang/Integer.h"
+            #include "java/lang/Integer.h"
         
 #include <java/lang/reflect/Method.h>
 
@@ -113,7 +113,7 @@ class AuthenticationTag: public CustomTagSupport {
 
     private: BasicArrayList roles;
 
-    private: HashMap<any, any> propertiesHashMap;
+    private: HashMap<Object*, Object*> propertiesHashMap;
 
 public: AuthenticationTag();
 

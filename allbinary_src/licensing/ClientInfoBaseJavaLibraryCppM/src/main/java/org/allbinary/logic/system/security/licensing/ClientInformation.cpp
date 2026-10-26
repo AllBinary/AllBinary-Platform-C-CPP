@@ -18,14 +18,8 @@
 
 
 
-            #include "../../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-#include <jsinterop/annotations/JsType.h>
-
-      
-#include <java/util/Hashtable.h>
-
-      
 #include <org/allbinary/TsUtil.h>
 
       
@@ -56,13 +50,10 @@
 #include <org/allbinary/util/BasicArrayListUtil.h>
 
       
-#include <jsinterop/annotations/JsMethod.h>
-
-      
-#include <jsinterop/annotations/JsConstructor.h>
-
-      
 #include <org/allbinary/logic/StdUtil.h>
+
+      
+#include <org/allbinary/util/ABHashtable.h>
 
       
 
@@ -191,7 +182,7 @@ this->init();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->licenseServers.objectArray[index]! as string;
+                        return this->licenseServers.objectArray[index];
     
 }
 
@@ -206,7 +197,7 @@ this->init();
 }
 
 
-    public: Hashtable<any, any> toHashtable(){
+    public: ABHashtable<Object*, Object*> toHashtable(){
 
     AbeClientInformationData abeClientInformationData = AbeClientInformationData::getInstance();;
     
@@ -214,7 +205,7 @@ this->init();
     GenericOperatingSystem genericOperatingSystem = this->getOperatingSystemInterface();;
     
 
-    Hashtable<any, any> clientInfoHashtable = StdUtil::getInstance().createHashtable();;
+    ABHashtable<Object*, Object*> clientInfoHashtable = StdUtil::getInstance().createHashtable();;
     
 clientInfoHashtable.put(abeClientInformationData.NAME, this->name);
     
@@ -304,7 +295,7 @@ clientInfoHashtable.put(abeClientInformationData.HARDWARE, hardwareString);
     int32_t index = size;index >= 0; index--)
         {
 
-    std::string newServerName = list.objectArray[index]! as string;;
+    std::string newServerName = list.objectArray[index];;
     
 
 
@@ -314,7 +305,7 @@ clientInfoHashtable.put(abeClientInformationData.HARDWARE, hardwareString);
     int32_t index2 = currentSize;index2 >= 0; index2--)
         {
 
-    std::string nextOldServerName = this->licenseServers.objectArray[index]! as string;;
+    std::string nextOldServerName = this->licenseServers.objectArray[index];;
     
 
                         if(this->tsUtil.compareTo(newServerName, nextOldServerName) != 0)

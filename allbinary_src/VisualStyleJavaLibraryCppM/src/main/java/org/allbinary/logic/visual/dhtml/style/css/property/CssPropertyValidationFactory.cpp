@@ -18,9 +18,9 @@
 
 
 
-            #include "../../../../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/logic/control/validate/ValidationInterface.h>
 
@@ -61,7 +61,7 @@ class CssPropertyValidationFactory
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return FontFamilyValidation(node) as ValidationInterface;
+                        return FontFamilyValidation(node);
     
 }
 

@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/game/collision/CollidableInterfaceCompositeInterface.h>
 
@@ -58,8 +58,9 @@
 
 class CollidableInterfaceLayerProcessor: public LayerProcessor {
 
-public: CollidableInterfaceLayerProcessor(){
-            super(CollidableInterfaceLayerManager());
+public: CollidableInterfaceLayerProcessor() : LayerProcessor(CollidableInterfaceLayerManager()){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -71,10 +72,10 @@ public: CollidableInterfaceLayerProcessor(){
             
     public: void processAt(AllBinaryLayerManager allBinaryLayerManager, AllBinaryLayer layerInterface, int32_t index){
 
-    CollidableInterfaceCompositeInterface collidableInterfaceCompositeInterface = layerInterface as CollidableInterfaceCompositeInterface;;
+    CollidableInterfaceCompositeInterface collidableInterfaceCompositeInterface = layerInterface;;
     
 
-                        if(collidableInterfaceCompositeInterface.getCollidableInferface().isCollidable(collidableInterfaceCompositeInterface as CollidableCompositeLayer))
+                        if(collidableInterfaceCompositeInterface.getCollidableInferface().isCollidable(collidableInterfaceCompositeInterface))
                         
                                     {
                                     AllBinaryCollisionManager::getInstance().process(this->getLayerManager(), collidableInterfaceCompositeInterface, index);

@@ -21,9 +21,9 @@
         #ifndef ORG_ALLBINARY_BUSINESS_TIME_MODIFIED_TIMELASTMODIFIEDVIEW_H
         #define ORG_ALLBINARY_BUSINESS_TIME_MODIFIED_TIMELASTMODIFIEDVIEW_H
 
-            #include "../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/business/entry/EntryData.h>
 

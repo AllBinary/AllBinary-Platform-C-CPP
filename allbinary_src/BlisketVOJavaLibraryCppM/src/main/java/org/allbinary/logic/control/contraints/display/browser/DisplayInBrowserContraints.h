@@ -21,7 +21,7 @@
         #ifndef ORG_ALLBINARY_LOGIC_CONTROL_CONTRAINTS_DISPLAY_BROWSER_DISPLAYINBROWSERCONTRAINTS_H
         #define ORG_ALLBINARY_LOGIC_CONTROL_CONTRAINTS_DISPLAY_BROWSER_DISPLAYINBROWSERCONTRAINTS_H
 
-            #include "../../../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
 #include <org/w3c/dom/Node.h>
 

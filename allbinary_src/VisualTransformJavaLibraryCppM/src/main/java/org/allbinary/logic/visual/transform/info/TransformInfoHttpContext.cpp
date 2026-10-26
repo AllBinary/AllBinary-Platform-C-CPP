@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
 
@@ -71,8 +71,9 @@ class TransformInfoHttpContext: public TransformInfoHttp {
 
     protected: const LogUtil logUtil = LogUtil::getInstance();
 
-public: TransformInfoHttpContext(HashMap<any, any> databaseHashMap, HashMap<any, any> propertiesHashMap, PageContext pageContext){
-            super(databaseHashMap, propertiesHashMap, pageContext);
+public: TransformInfoHttpContext(HashMap<Object*, Object*> databaseHashMap, HashMap<Object*, Object*> propertiesHashMap, PageContext pageContext) : TransformInfoHttp(databaseHashMap, propertiesHashMap, pageContext){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -102,8 +103,9 @@ this->setStoreName(StringUtil::getInstance().EMPTY_STRING);
 }
 
 
-public: TransformInfoHttpContext(HashMap<any, any> propertiesHashMap, PageContext pageContext){
-            super(propertiesHashMap, pageContext);
+public: TransformInfoHttpContext(HashMap<Object*, Object*> propertiesHashMap, PageContext pageContext) : TransformInfoHttp(propertiesHashMap, pageContext){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.

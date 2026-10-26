@@ -83,8 +83,9 @@ adjustedCircleAnimation.init(innerWidth);
 
     private: int32_t yAdjustment= 0;
 
-public: AdjustedCircleAnimation(int32_t width, int32_t height, BasicColor basicColor){
-            super(width, height, basicColor);
+public: AdjustedCircleAnimation(int32_t width, int32_t height, BasicColor basicColor) : CircleAnimation(width, height, basicColor){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.

@@ -21,7 +21,7 @@
         #ifndef ADMIN_TAGHELPERS_BASICTEXTEMAILHELPER_H
         #define ADMIN_TAGHELPERS_BASICTEXTEMAILHELPER_H
 
-            #include "../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
 
@@ -77,11 +77,11 @@ class BasicTextEmailHelper: public TagHelper {
 
     private: const AbeClientInformationInterface abeClientInformation = ServiceClientInformationInterfaceFactory::getInstance();
 
-    private: HashMap<any, any> hashMap;
+    private: HashMap<Object*, Object*> hashMap;
 
     private: PageContext pageContext;
 
-public: BasicTextEmailHelper(HashMap<any, any> hashMap, PageContext pageContext);
+public: BasicTextEmailHelper(HashMap<Object*, Object*> hashMap, PageContext pageContext);
 
                 //@Throws(Exception.constructor)
             

@@ -21,7 +21,7 @@
         #ifndef TAGS_GENERIC_ADDRESS_BILLING_BILLINGADDRESSTAG_H
         #define TAGS_GENERIC_ADDRESS_BILLING_BILLINGADDRESSTAG_H
 
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <javax/servlet/jsp/JspTagException.h>
 

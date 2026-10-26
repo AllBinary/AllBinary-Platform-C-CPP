@@ -18,8 +18,11 @@
 
 
 
-            #include "../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
+#include <org/allbinary/string/CommonLabels.h>
+
+      
 
 
 
@@ -79,7 +82,7 @@ class UnitWaypointStrings
 
     public: const std::string ALREADY_THERE = "Already There";
 
-    public: const std::string NEXT_PATH_NODE = "Next Path Node";
+    public: const std::string NEXT_PATH_NODE = CommonLabels::getInstance().NEXT +" Path Node";
 
 };
 

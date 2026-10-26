@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../../../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/input/automation/actions/script/condition/processors/BasicProfileActionScriptProcessor.h>
 
@@ -52,8 +52,9 @@
 
 class BasicProfileActionScriptOutput: public BasicProfileActionScriptProcessor, public ProfileActionScriptOutputInterface {
 
-public: BasicProfileActionScriptOutput(std::string label, Node node){
-            super(label, node);
+public: BasicProfileActionScriptOutput(std::string label, Node node) : BasicProfileActionScriptProcessor(label, node){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -61,8 +62,9 @@ public: BasicProfileActionScriptOutput(std::string label, Node node){
 }
 
 
-public: BasicProfileActionScriptOutput(std::string label){
-            super(label);
+public: BasicProfileActionScriptOutput(std::string label) : BasicProfileActionScriptProcessor(label){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.

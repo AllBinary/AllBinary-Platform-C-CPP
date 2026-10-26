@@ -20,7 +20,7 @@
 
             #include <vector>
         
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/media/graphics/geography/map/BasicGeographicMap.h>
 

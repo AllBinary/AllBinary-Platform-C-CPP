@@ -21,7 +21,7 @@
         #ifndef ORG_ALLBINARY_GAME_LAYER_PICKUP_PICKUPLAYERCIRCULARSTATICPOOL_H
         #define ORG_ALLBINARY_GAME_LAYER_PICKUP_PICKUPLAYERCIRCULARSTATICPOOL_H
 
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/layer/AllBinaryLayerCircularPool.h>
 

@@ -18,9 +18,9 @@
 
 
 
-            #include "../../../../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
 
@@ -97,7 +97,7 @@ class UserEmailEventHandlerSingletons
 
     protected: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    private: const HashMap<any, any> userEmailEventHandlerHashMap = StdUtil::getInstance().createHashMap();
+    private: const HashMap<Object*, Object*> userEmailEventHandlerHashMap = StdUtil::getInstance().createHashMap();
 
 private: UserEmailEventHandlerSingletons(){
 
@@ -125,7 +125,7 @@ private: UserEmailEventHandlerSingletons(){
                                     }
                                 
 
-    UserEmailEventHandler userEmailEventHandler = this->userEmailEventHandlerHashMap.get(userEmailEventNameData) as UserEmailEventHandler;;
+    UserEmailEventHandler userEmailEventHandler = this->userEmailEventHandlerHashMap.get(userEmailEventNameData);;
     
 
                         if(userEmailEventHandler == 

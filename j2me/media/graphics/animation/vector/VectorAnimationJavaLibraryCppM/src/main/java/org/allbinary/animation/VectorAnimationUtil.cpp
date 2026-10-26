@@ -20,7 +20,7 @@
 
             #include <vector>
         
-            #include "../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
 #include <org/allbinary/graphics/GPoint.h>
 
@@ -72,7 +72,7 @@ private: VectorAnimationUtil(){
     int32_t size = vector.size();;
     
 
-    std::vector<std::vector<std::vector<int32_t>>> points = Array.from({ length: size }, () => Array.from({ length: pointsPerFrame }, () => new Array(0).fill(2)));;
+    std::vector<std::vector<std::vector<int32_t>>> points = std::vector<std::vector<std::vector<int32_t>>>(size, std::vector<std::vector<int32_t>>(pointsPerFrame, std::vector<int32_t>(2)));;
     
 
     BasicArrayList nextBasicArrayList;;
@@ -87,7 +87,7 @@ private: VectorAnimationUtil(){
                         for (
     int32_t index = 0;index < size; index++)
         {
-nextBasicArrayList= vector.objectArray[index]! as BasicArrayList;
+nextBasicArrayList= vector.objectArray[index];
     
 framePoints= this->toFrameArrayFromPointBasicArrayList(nextBasicArrayList);
     
@@ -98,9 +98,9 @@ framePoints= this->toFrameArrayFromPointBasicArrayList(nextBasicArrayList);
                         for (
     int32_t pointIndex = 0;pointIndex < framePoints.size(); pointIndex++)
         {
-points[index]![pointIndex]![0]= framePoints[pointIndex]![0]!;
+points[index][pointIndex][0]= framePoints[pointIndex][0];
     
-points[index]![pointIndex]![1]= framePoints[pointIndex]![1]!;
+points[index][pointIndex][1]= framePoints[pointIndex][1];
     
 }
 
@@ -120,7 +120,7 @@ points[index]![pointIndex]![1]= framePoints[pointIndex]![1]!;
     int32_t size = vector.size();;
     
 
-    std::vector<std::vector<std::vector<int32_t>>> points = Array.from({ length: size }, () => Array.from({ length: 0 }, () => new Array(0).fill(0)));;
+    std::vector<std::vector<std::vector<int32_t>>> points = std::vector<std::vector<std::vector<int32_t>>>(size, std::vector<std::vector<int32_t>>(0, std::vector<int32_t>(0)));;
     
 
     BasicArrayList nextBasicArrayList;;
@@ -135,11 +135,11 @@ points[index]![pointIndex]![1]= framePoints[pointIndex]![1]!;
                         for (
     int32_t index = 0;index < size; index++)
         {
-nextBasicArrayList= vector.objectArray[index]! as BasicArrayList;
+nextBasicArrayList= vector.objectArray[index];
     
 framePoints= this->toFrameArrayFromPointBasicArrayList(nextBasicArrayList);
     
-points[index]= new Array(framePoints.length).fill(null).map(() => new Array(2).fill(0));
+points[index]= std::vector<std::vector<int32_t>>(framePoints.length, std::vector<int32_t>(2));
     
 
 
@@ -148,9 +148,9 @@ points[index]= new Array(framePoints.length).fill(null).map(() => new Array(2).f
                         for (
     int32_t pointIndex = 0;pointIndex < framePoints.size(); pointIndex++)
         {
-points[index]![pointIndex]![0]= framePoints[pointIndex]![0]!;
+points[index][pointIndex][0]= framePoints[pointIndex][0];
     
-points[index]![pointIndex]![1]= framePoints[pointIndex]![1]!;
+points[index][pointIndex][1]= framePoints[pointIndex][1];
     
 }
 
@@ -167,7 +167,7 @@ points[index]![pointIndex]![1]= framePoints[pointIndex]![1]!;
 
     public: std::vector<std::vector<int32_t>> toFrameArrayFromPointBasicArrayList(BasicArrayList list){
 
-    std::vector<std::vector<int32_t>> points = new Array(list.size()).fill(null).map(() => new Array(2).fill(0));;
+    std::vector<std::vector<int32_t>> points = std::vector<std::vector<int32_t>>(list.size(), std::vector<int32_t>(2));;
     
 
     int32_t size = list.size();;
@@ -180,11 +180,11 @@ points[index]![pointIndex]![1]= framePoints[pointIndex]![1]!;
     int32_t index = 0;index < size; index++)
         {
 
-    GPoint nextPoint = list.objectArray[index]! as GPoint;;
+    GPoint nextPoint = list.objectArray[index];;
     
-points[index]![0]= nextPoint.getX();
+points[index][0]= nextPoint.getX();
     
-points[index]![1]= nextPoint.getY();
+points[index][1]= nextPoint.getY();
     
 }
 

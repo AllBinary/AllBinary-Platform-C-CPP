@@ -21,7 +21,7 @@
         #ifndef ORG_ALLBINARY_ANDROID_INPUT_MOTION_API1_GAMEINPUTMOTIONEVENTPROCESSORAPI1_H
         #define ORG_ALLBINARY_ANDROID_INPUT_MOTION_API1_GAMEINPUTMOTIONEVENTPROCESSORAPI1_H
 
-            #include "../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <android/view/MotionEvent.h>
 

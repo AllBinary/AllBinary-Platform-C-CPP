@@ -21,7 +21,7 @@
         #ifndef ORG_ALLBINARY_STRING_COMMONSEPS_H
         #define ORG_ALLBINARY_STRING_COMMONSEPS_H
 
-            #include "../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
 #include <jsinterop/annotations/JsType.h>
 

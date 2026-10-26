@@ -21,11 +21,8 @@
         #ifndef ORG_ALLBINARY_ANIMATION_FEATUREDANIMATIONINTERFACEFACTORYINTERFACEFACTORY_H
         #define ORG_ALLBINARY_ANIMATION_FEATUREDANIMATIONINTERFACEFACTORYINTERFACEFACTORY_H
 
-            #include "../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-#include <jsinterop/annotations/JsType.h>
-
-      
 #include <org/allbinary/animation/resource/FeatureResourceAnimationInterfaceFactoryInterface.h>
 
       
@@ -57,12 +54,6 @@
 
       
 #include <org/allbinary/util/BasicArrayListD.h>
-
-      
-#include <jsinterop/annotations/JsMethod.h>
-
-      
-#include <jsinterop/annotations/JsConstructor.h>
 
       
 

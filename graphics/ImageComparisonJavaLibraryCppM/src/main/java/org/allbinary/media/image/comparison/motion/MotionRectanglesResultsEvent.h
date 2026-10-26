@@ -21,7 +21,7 @@
         #ifndef ORG_ALLBINARY_MEDIA_IMAGE_COMPARISON_MOTION_MOTIONRECTANGLESRESULTSEVENT_H
         #define ORG_ALLBINARY_MEDIA_IMAGE_COMPARISON_MOTION_MOTIONRECTANGLESRESULTSEVENT_H
 
-            #include "../../../../../../java/lang/Long.h"
+            #include "java/lang/Long.h"
         
 #include <org/allbinary/logic/util/event/AllBinaryEventObject.h>
 

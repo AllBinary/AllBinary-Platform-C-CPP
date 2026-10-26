@@ -21,13 +21,10 @@
         #ifndef ORG_ALLBINARY_CANVAS_FULLSCREENUTIL_H
         #define ORG_ALLBINARY_CANVAS_FULLSCREENUTIL_H
 
-            #include "../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-#include <jsinterop/annotations/JsType.h>
-
-      
 #include <javax/microedition/lcdui/Canvas.h>
 
       
@@ -38,9 +35,6 @@
 
       
 #include <javax/microedition/lcdui/CommandListener.h>
-
-      
-#include <jsinterop/annotations/JsMethod.h>
 
       
 

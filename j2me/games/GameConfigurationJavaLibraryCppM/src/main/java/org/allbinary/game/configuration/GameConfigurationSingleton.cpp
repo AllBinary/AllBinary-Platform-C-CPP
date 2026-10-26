@@ -18,12 +18,12 @@
 
 
 
-            #include "../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-#include <java/util/Hashtable.h>
+#include <org/allbinary/logic/StdUtil.h>
 
       
-#include <org/allbinary/logic/StdUtil.h>
+#include <org/allbinary/util/ABHashtable.h>
 
       
 #include <org/allbinary/util/BasicArrayList.h>
@@ -70,7 +70,7 @@ class GameConfigurationSingleton
 
     private: BasicArrayList list;
 
-    private: Hashtable<any, any> hashtable;
+    private: ABHashtable<Object*, Object*> hashtable;
 
 private: GameConfigurationSingleton(){
 this->list= BasicArrayListD();
@@ -85,7 +85,7 @@ this->hashtable= StdUtil::getInstance().createHashtable();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->hashtable.get(name) as GameConfiguration;
+                        return this->hashtable.get(name);
     
 }
 
@@ -106,7 +106,7 @@ this->list.add(gameConfiguration);
 }
 
 
-    public: Hashtable<any, any> getHashtable(){
+    public: ABHashtable<Object*, Object*> getHashtable(){
 
 
 

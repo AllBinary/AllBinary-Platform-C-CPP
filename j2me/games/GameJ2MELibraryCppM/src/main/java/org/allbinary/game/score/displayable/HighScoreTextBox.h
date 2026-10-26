@@ -21,11 +21,8 @@
         #ifndef ORG_ALLBINARY_GAME_SCORE_DISPLAYABLE_HIGHSCORETEXTBOX_H
         #define ORG_ALLBINARY_GAME_SCORE_DISPLAYABLE_HIGHSCORETEXTBOX_H
 
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-#include <jsinterop/annotations/JsType.h>
-
-      
 #include <javax/microedition/lcdui/CommandListener.h>
 
       
@@ -84,15 +81,6 @@
 
       
 #include <org/allbinary/logic/system/security/licensing/InApplicationPurchaseFactory.h>
-
-      
-#include <jsinterop/annotations/JsMethod.h>
-
-      
-#include <jsinterop/annotations/JsConstructor.h>
-
-      
-#include <jsinterop/annotations/JsProperty.h>
 
       
 

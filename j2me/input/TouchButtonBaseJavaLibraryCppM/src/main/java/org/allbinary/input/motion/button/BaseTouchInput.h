@@ -21,11 +21,8 @@
         #ifndef ORG_ALLBINARY_INPUT_MOTION_BUTTON_BASETOUCHINPUT_H
         #define ORG_ALLBINARY_INPUT_MOTION_BUTTON_BASETOUCHINPUT_H
 
-            #include "../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-#include <jsinterop/annotations/JsType.h>
-
-      
 #include <org/allbinary/string/CommonStrings.h>
 
       
@@ -33,15 +30,6 @@
 
       
 #include <org/allbinary/util/BasicArrayListUtil.h>
-
-      
-#include <jsinterop/annotations/JsMethod.h>
-
-      
-#include <jsinterop/annotations/JsConstructor.h>
-
-      
-#include <jsinterop/annotations/JsProperty.h>
 
       
 

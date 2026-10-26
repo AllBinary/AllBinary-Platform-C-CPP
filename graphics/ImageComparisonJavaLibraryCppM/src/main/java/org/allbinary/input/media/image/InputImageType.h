@@ -21,7 +21,7 @@
         #ifndef ORG_ALLBINARY_INPUT_MEDIA_IMAGE_INPUTIMAGETYPE_H
         #define ORG_ALLBINARY_INPUT_MEDIA_IMAGE_INPUTIMAGETYPE_H
 
-            #include "../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
 #include <java/util/HashMap.h>
 
@@ -58,7 +58,7 @@ class InputImageType
             : public Object
          {
 
-    private: static HashMap<any, any> hashMap = StdUtil::getInstance().createHashMap();
+    private: static HashMap<Object*, Object*> hashMap = StdUtil::getInstance().createHashMap();
 
     private: static const BasicArrayList TYPE_VECTOR = BasicArrayListD();
 

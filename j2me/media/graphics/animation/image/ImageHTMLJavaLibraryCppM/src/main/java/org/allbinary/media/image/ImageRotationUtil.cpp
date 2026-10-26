@@ -18,11 +18,11 @@
 
 
 
-            #include "../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../../java/lang/Math.h"
+            #include "java/lang/Math.h"
         
 #include <javax/microedition/lcdui/Image.h>
 
@@ -99,27 +99,27 @@ private: ImageRotationUtil(){
                         
                                     {
                                     
-    PlaynMutableImage originalHTMLImage = originalImage as PlaynMutableImage;;
+    PlaynMutableImage originalHTMLImage = originalImage;;
     
-originalPlayNImage= originalHTMLImage.getImage() as playn::core::Image;
+originalPlayNImage= originalHTMLImage.getImage();
     
 
                                     }
                                 
                         else {
                             
-    PlaynImmutableImage originalHTMLImage = originalImage as PlaynImmutableImage;;
+    PlaynImmutableImage originalHTMLImage = originalImage;;
     
-originalPlayNImage= originalHTMLImage.getImage() as playn::core::Image;
+originalPlayNImage= originalHTMLImage.getImage();
     
 
                         }
                             
 
-    PlaynMutableImage htmlImage = image as PlaynMutableImage;;
+    PlaynMutableImage htmlImage = image;;
     
 
-    CanvasImage canvasImage = htmlImage.getImage() as CanvasImage;;
+    CanvasImage canvasImage = htmlImage.getImage();;
     
 
     CanvasSurface canvasSurface = htmlImage.getCanvasSurface(canvasImage);;

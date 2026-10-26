@@ -21,7 +21,7 @@
         #ifndef ORG_ALLBINARY_INPUT_MOTION_BUTTON_TOUCHSCREENFACTORY_H
         #define ORG_ALLBINARY_INPUT_MOTION_BUTTON_TOUCHSCREENFACTORY_H
 
-            #include "../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
 
 

@@ -21,7 +21,7 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_OPENGLES_OPENGLFEATUREUTIL_H
         #define ORG_ALLBINARY_GRAPHICS_OPENGLES_OPENGLFEATUREUTIL_H
 
-            #include "../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
 #include <org/allbinary/game/configuration/feature/Features.h>
 

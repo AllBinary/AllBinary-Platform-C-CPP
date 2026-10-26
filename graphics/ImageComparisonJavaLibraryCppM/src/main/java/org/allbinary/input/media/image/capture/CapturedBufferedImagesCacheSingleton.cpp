@@ -18,9 +18,9 @@
 
 
 
-            #include "../../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/logic/communication/log/LogUtil.h>
 
@@ -99,7 +99,7 @@ class CapturedBufferedImagesCacheSingleton
         try {
             logUtil.putF(commonStrings.START, instance, STATIC_BLOCK);
     
-CapturedBufferedImagesCacheSingleton::cacheInterface= CacheInterfaceFactory::getInstance((), ()) as AutomaticCacheInterface;
+CapturedBufferedImagesCacheSingleton::cacheInterface= CacheInterfaceFactory::getInstance((), ());
     
 logUtil.putF(commonStrings.END, instance, STATIC_BLOCK);
     

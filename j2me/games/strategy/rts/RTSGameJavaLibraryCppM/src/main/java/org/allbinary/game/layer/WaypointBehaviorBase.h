@@ -21,11 +21,11 @@
         #ifndef ORG_ALLBINARY_GAME_LAYER_WAYPOINTBEHAVIORBASE_H
         #define ORG_ALLBINARY_GAME_LAYER_WAYPOINTBEHAVIORBASE_H
 
-            #include "../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../../java/lang/RuntimeException.h"
+            #include "java/lang/RuntimeException.h"
         
 #include <org/allbinary/game/layer/special/CollidableDestroyableDamageableLayer.h>
 

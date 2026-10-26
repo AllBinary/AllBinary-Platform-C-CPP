@@ -21,9 +21,9 @@
         #ifndef ADMIN_TAGS_BILLINGADDRESSTAG_H
         #define ADMIN_TAGS_BILLINGADDRESSTAG_H
 
-            #include "../../java/lang/Class.h"
+            #include "java/lang/Class.h"
         
-            #include "../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/lang/reflect/Method.h>
 

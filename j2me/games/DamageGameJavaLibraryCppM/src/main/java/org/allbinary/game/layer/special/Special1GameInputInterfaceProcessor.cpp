@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/game/input/event/GameKeyEvent.h>
 
@@ -49,8 +49,9 @@
 
 class Special1GameInputInterfaceProcessor: public SpecialGameInputInterfaceProcessor {
 
-public: Special1GameInputInterfaceProcessor(SpecialGameInputInterface collidableDestroyableDamageableLayer){
-            super(collidableDestroyableDamageableLayer);
+public: Special1GameInputInterfaceProcessor(SpecialGameInputInterface collidableDestroyableDamageableLayer) : SpecialGameInputInterfaceProcessor(collidableDestroyableDamageableLayer){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.

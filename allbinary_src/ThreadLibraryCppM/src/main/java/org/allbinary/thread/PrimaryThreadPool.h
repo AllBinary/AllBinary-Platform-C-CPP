@@ -21,9 +21,9 @@
         #ifndef ORG_ALLBINARY_THREAD_PRIMARYTHREADPOOL_H
         #define ORG_ALLBINARY_THREAD_PRIMARYTHREADPOOL_H
 
-            #include "../../../java/lang/System.h"
+            #include "java/lang/System.h"
         
-            #include "../../../java/lang/Runnable.h"
+            #include "java/lang/Runnable.h"
         
 #include <org/allbinary/logic/string/StringMaker.h>
 

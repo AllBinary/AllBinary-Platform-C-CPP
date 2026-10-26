@@ -21,9 +21,6 @@
         #ifndef ORG_ALLBINARY_ANIMATION_VECTOR_CIRCLEANIMATION_H
         #define ORG_ALLBINARY_ANIMATION_VECTOR_CIRCLEANIMATION_H
 
-#include <jsinterop/annotations/JsType.h>
-
-      
 #include <javax/microedition/lcdui/Graphics.h>
 
       
@@ -37,15 +34,6 @@
 
       
 #include <org/allbinary/math/AngleFactory.h>
-
-      
-#include <jsinterop/annotations/JsMethod.h>
-
-      
-#include <jsinterop/annotations/JsConstructor.h>
-
-      
-#include <jsinterop/annotations/JsProperty.h>
 
       
 

@@ -21,12 +21,6 @@
         #ifndef ORG_ALLBINARY_INPUT_ALLBINARYSENSORLISTENER_H
         #define ORG_ALLBINARY_INPUT_ALLBINARYSENSORLISTENER_H
 
-#include <jsinterop/annotations/JsType.h>
-
-      
-#include <jsinterop/annotations/JsMethod.h>
-
-      
 
 
 

@@ -21,15 +21,6 @@
         #ifndef ORG_ALLBINARY_GAME_TRACKING_TRACKINGEVENT_H
         #define ORG_ALLBINARY_GAME_TRACKING_TRACKINGEVENT_H
 
-#include <jsinterop/annotations/JsType.h>
-
-      
-#include <jsinterop/annotations/JsMethod.h>
-
-      
-#include <jsinterop/annotations/JsConstructor.h>
-
-      
 #include <org/allbinary/layer/AllBinaryLayer.h>
 
       

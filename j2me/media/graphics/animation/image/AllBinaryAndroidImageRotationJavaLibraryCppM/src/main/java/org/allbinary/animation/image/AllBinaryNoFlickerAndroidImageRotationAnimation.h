@@ -23,7 +23,7 @@
 
             #include <vector>
         
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <android/graphics/Matrix.h>
 
@@ -88,7 +88,7 @@ class AllBinaryNoFlickerAndroidImageRotationAnimation: public ImageBaseRotationA
 
     private: Image originalImage;
 
-    private: const std::vector<Image> twoImages = new Array(2);
+    private: const std::vector<Image> twoImages = std::vector<Image>(2);
 
     private: Image imageToShow;
 

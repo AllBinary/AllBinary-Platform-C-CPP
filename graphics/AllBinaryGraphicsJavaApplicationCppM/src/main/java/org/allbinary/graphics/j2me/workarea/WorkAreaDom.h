@@ -21,9 +21,9 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_J2ME_WORKAREA_WORKAREADOM_H
         #define ORG_ALLBINARY_GRAPHICS_J2ME_WORKAREA_WORKAREADOM_H
 
-            #include "../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/dom/DomHelper.h>
 

@@ -21,15 +21,9 @@
         #ifndef ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_MENULISTENER_H
         #define ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_MENULISTENER_H
 
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-#include <jsinterop/annotations/JsType.h>
-
-      
 #include <org/allbinary/game/input/GameKeyEventSourceInterface.h>
-
-      
-#include <jsinterop/annotations/JsMethod.h>
 
       
 

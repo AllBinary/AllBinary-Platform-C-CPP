@@ -7,7 +7,7 @@
         #ifndef ORG_APACHE_XMLRPC_XMLRPCCLIENT_H
         #define ORG_APACHE_XMLRPC_XMLRPCCLIENT_H
 
-            #include "../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
 #include <java/io/IOException.h>
 

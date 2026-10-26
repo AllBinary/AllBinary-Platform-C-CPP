@@ -21,9 +21,9 @@
         #ifndef ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_INFO_OBJECTCONFIG_TRANSFORMINFOOBJECTCONFIG_H
         #define ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_INFO_OBJECTCONFIG_TRANSFORMINFOOBJECTCONFIG_H
 
-            #include "../../../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/util/BasicArrayList.h>
 
@@ -40,7 +40,7 @@
 #include <org/allbinary/data/tree/dom/document/DomDocumentHelper.h>
 
       
-#include <org/allbinary/logic/StdUtil.h>
+#include <org/allbinary/data/tree/dom/document/XmlDocumentHelper.h>
 
       
 #include <org/allbinary/logic/communication/log/LogUtil.h>

@@ -21,14 +21,14 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_COLOR_BASICCOLORCACHEFACTORY_H
         #define ORG_ALLBINARY_GRAPHICS_COLOR_BASICCOLORCACHEFACTORY_H
 
-            #include "../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../java/lang/Integer.h"
+            #include "java/lang/Integer.h"
         
-#include <java/util/Hashtable.h>
+#include <org/allbinary/logic/StdUtil.h>
 
       
-#include <org/allbinary/logic/StdUtil.h>
+#include <org/allbinary/util/ABHashtable.h>
 
       
 
@@ -60,7 +60,7 @@ class BasicColorCacheFactory
 
     public: static BasicColorCacheFactory getInstance();
 
-    private: const Hashtable<any, any> hashtable = StdUtil::getInstance().createHashtable();
+    private: const ABHashtable<Object*, Object*> hashtable = StdUtil::getInstance().createHashtable();
 
 private: BasicColorCacheFactory();
 

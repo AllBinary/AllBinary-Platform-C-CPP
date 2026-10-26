@@ -21,9 +21,15 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_OPENGLES_SHADER_SHADER_H
         #define ORG_ALLBINARY_GRAPHICS_OPENGLES_SHADER_SHADER_H
 
-            #include "../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
+#include <org/allbinary/logic/string/StringUtil.h>
+
+      
 #include <org/allbinary/util/BasicArrayList.h>
+
+      
+#include <org/allbinary/util/BasicArrayListUtil.h>
 
       
 
@@ -49,11 +55,11 @@ class Shader
             : public Object
          {
 
-    public: std::string shaderName;
+    public: std::string shaderName = StringUtil::getInstance().EMPTY_STRING;
 
-    public: BasicArrayList shaderStringList;
+    public: BasicArrayList shaderStringList = BasicArrayListUtil::getInstance().getImmutableInstance();
 
-    public: std::string shaderAsString;
+    public: std::string shaderAsString = StringUtil::getInstance().EMPTY_STRING;
 
     public: int32_t shaderHandle= 0;
 

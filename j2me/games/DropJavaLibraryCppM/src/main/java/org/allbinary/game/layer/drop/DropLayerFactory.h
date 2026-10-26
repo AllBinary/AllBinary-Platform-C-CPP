@@ -21,11 +21,8 @@
         #ifndef ORG_ALLBINARY_GAME_LAYER_DROP_DROPLAYERFACTORY_H
         #define ORG_ALLBINARY_GAME_LAYER_DROP_DROPLAYERFACTORY_H
 
-            #include "../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-#include <jsinterop/annotations/JsType.h>
-
-      
 #include <org/allbinary/game/layer/pickup/PickedUpLayerInterfaceFactoryInterface.h>
 
       
@@ -36,12 +33,6 @@
 
       
 #include <org/allbinary/util/BasicArrayListUtil.h>
-
-      
-#include <jsinterop/annotations/JsMethod.h>
-
-      
-#include <jsinterop/annotations/JsConstructor.h>
 
       
 

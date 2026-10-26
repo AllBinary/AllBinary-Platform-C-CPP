@@ -18,7 +18,9 @@
 
 
 
-            #include "../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
+        
+            #include "java/lang/Math.h"
         
 #include <org/allbinary/graphics/displayable/DisplayInfoSingleton.h>
 
@@ -69,9 +71,9 @@ public: TouchButtonLocationHelper(){
 
     DisplayInfoSingleton displayInfo = DisplayInfoSingleton::getInstance();;
     
-this->totalColumns= displayInfo.getLastWidth() /buttonSize;
+this->totalColumns= Math::round(displayInfo.getLastWidth() /buttonSize);
     
-this->totalRows= displayInfo.getLastHeight() /buttonSize;
+this->totalRows= Math::round(displayInfo.getLastHeight() /buttonSize);
     
 this->columnsRemainder= displayInfo.getLastWidth() % buttonSize;
     

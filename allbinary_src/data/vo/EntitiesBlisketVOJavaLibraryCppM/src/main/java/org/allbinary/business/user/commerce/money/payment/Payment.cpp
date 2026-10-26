@@ -18,11 +18,11 @@
 
 
 
-            #include "../../../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../../../../../java/lang/Integer.h"
+            #include "java/lang/Integer.h"
         
 #include <java/util/HashMap.h>
 
@@ -114,24 +114,24 @@ class Payment
 
     private: bool isDefault = false;
 
-public: Payment(HashMap<any, any> payment){
-this->name= payment.get(PaymentData::NAME) as string;
+public: Payment(HashMap<Object*, Object*> payment){
+this->name= payment.get(PaymentData::NAME);
     
-this->type= payment.get(PaymentData::TYPE) as string;
+this->type= payment.get(PaymentData::TYPE);
     
-this->expiration= payment.get(PaymentData::EXPIRATION) as string;
+this->expiration= payment.get(PaymentData::EXPIRATION);
     
-this->encryption= payment.get(EntryData::getInstance().ENCRYPTION) as string;
+this->encryption= payment.get(EntryData::getInstance().ENCRYPTION);
     
-this->number= SuperCrypt(Integer(this->encryption).intValue()).decrypt(payment.get(PaymentData::NUMBER) as string) as string;
+this->number= SuperCrypt(Integer(this->encryption).intValue()).decrypt(payment.get(PaymentData::NUMBER));
     
-this->id= payment.get(PaymentData::ID) as string;
-    
-
-    std::string def = payment.get(EntryData::getInstance().DEFAULT) as string;;
+this->id= payment.get(PaymentData::ID);
     
 
-                        if(true && def.compareTo(EntryData::getInstance().DEFAULT) == 0)
+    std::string def = payment.get(EntryData::getInstance().DEFAULT);;
+    
+
+                        if(true && def.compare(EntryData::getInstance().DEFAULT) == 0)
                         
                                     {
                                     this->isDefault= true;
@@ -145,25 +145,25 @@ this->id= payment.get(PaymentData::ID) as string;
 
                         }
                             
-this->tenderType= payment.get(PaymentData::TENDERTYPE) as string;
+this->tenderType= payment.get(PaymentData::TENDERTYPE);
     
-this->transactionType= payment.get(PaymentData::TRANSACTIONTYPE) as string;
+this->transactionType= payment.get(PaymentData::TRANSACTIONTYPE);
     
-this->aba= payment.get(PaymentData::ABA) as string;
+this->aba= payment.get(PaymentData::ABA);
     
-this->account= payment.get(PaymentData::ACCOUNT) as string;
+this->account= payment.get(PaymentData::ACCOUNT);
     
-this->accountType= payment.get(PaymentData::ACCOUNTTYPE) as string;
+this->accountType= payment.get(PaymentData::ACCOUNTTYPE);
     
-this->authorizationCode= payment.get(PaymentData::AUTHORIZATIONCODE) as string;
+this->authorizationCode= payment.get(PaymentData::AUTHORIZATIONCODE);
     
-this->checkNumber= payment.get(PaymentData::CHECKNUMBER) as string;
+this->checkNumber= payment.get(PaymentData::CHECKNUMBER);
     
-this->checkType= payment.get(PaymentData::CHECKTYPE) as string;
+this->checkType= payment.get(PaymentData::CHECKTYPE);
     
-this->driversLicense= payment.get(PaymentData::DRIVERSLICENSE) as string;
+this->driversLicense= payment.get(PaymentData::DRIVERSLICENSE);
     
-this->magneticInkCheckReader= payment.get(PaymentData::MAGNETICINKCHECKREADER) as string;
+this->magneticInkCheckReader= payment.get(PaymentData::MAGNETICINKCHECKREADER);
     
 }
 
@@ -212,7 +212,7 @@ public: Payment(){
     Boolean aFalse = Boolean::FALSE;;
     
 
-                        if(false || this->name.compareTo(stringUtil.EMPTY_STRING) == 0)
+                        if(false || this->name.compare(stringUtil.EMPTY_STRING) == 0)
                         
                                     {
                                     
@@ -225,7 +225,7 @@ public: Payment(){
                                     }
                                 
 
-                        if(false || this->type.compareTo(stringUtil.EMPTY_STRING) == 0)
+                        if(false || this->type.compare(stringUtil.EMPTY_STRING) == 0)
                         
                                     {
                                     
@@ -238,7 +238,7 @@ public: Payment(){
                                     }
                                 
 
-                        if(false || this->expiration.compareTo(stringUtil.EMPTY_STRING) == 0)
+                        if(false || this->expiration.compare(stringUtil.EMPTY_STRING) == 0)
                         
                                     {
                                     
@@ -251,7 +251,7 @@ public: Payment(){
                                     }
                                 
 
-                        if(false || this->number.compareTo(stringUtil.EMPTY_STRING) == 0)
+                        if(false || this->number.compare(stringUtil.EMPTY_STRING) == 0)
                         
                                     {
                                     
@@ -560,9 +560,9 @@ this->number= value;
 }
 
 
-    public: HashMap<any, any> toHashMap(){
+    public: HashMap<Object*, Object*> toHashMap(){
 
-    HashMap<any, any> hashMap = StdUtil::getInstance().createHashMap();;
+    HashMap<Object*, Object*> hashMap = StdUtil::getInstance().createHashMap();;
     
 hashMap.put(PaymentData::NAME, this->name);
     
@@ -618,7 +618,7 @@ hashMap.put(PaymentData::MAGNETICINKCHECKREADER, this->magneticInkCheckReader);
             
     public: Node toXmlNode(Document document){
 
-    HashMap<any, any> hashMap = this->toHashMap();;
+    HashMap<Object*, Object*> hashMap = this->toHashMap();;
     
 
     Node node = ModDomHelper::createNameValueNodes(document, PaymentData::PAYMENT, hashMap);;

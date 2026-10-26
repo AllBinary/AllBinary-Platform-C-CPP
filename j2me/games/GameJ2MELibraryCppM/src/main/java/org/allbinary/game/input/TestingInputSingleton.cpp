@@ -20,7 +20,7 @@
 
             #include <vector>
         
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <javax/microedition/lcdui/Canvas.h>
 
@@ -93,10 +93,11 @@ class TestingInputSingleton: public AllBinaryGameLayer, public GameInputInterfac
 }
 
 
-    protected: const std::vector<GameInputProcessor> inputProcessorArray = new Array(InputFactory::getInstance().MAX);
+    protected: const std::vector<GameInputProcessor> inputProcessorArray = std::vector<GameInputProcessor>(InputFactory::getInstance().MAX);
 
-private: TestingInputSingleton(){
-            super(StringUtil::getInstance().EMPTY_STRING, RectangleFactory::SINGLETON, ViewPosition::getInstanceD());
+private: TestingInputSingleton() : AllBinaryGameLayer(StringUtil::getInstance().EMPTY_STRING, RectangleFactory::SINGLETON, ViewPosition::getInstanceD()){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -221,11 +222,11 @@ GameInputProcessorUtil::init(this->inputProcessorArray);
                         for (
     int32_t index = 0;index < size; index++)
         {
-gameKeyEvent= (list.objectArray[index]! as GameKeyEvent);
+gameKeyEvent= (list.objectArray[index]);
     
 key= gameKeyEvent.getKey();
     
-this->inputProcessorArray[key]!.processEvent(allbinaryLayerManager, GameKeyEvent::NONE);
+this->inputProcessorArray[key].processEvent(allbinaryLayerManager, GameKeyEvent::NONE);
     
 }
 

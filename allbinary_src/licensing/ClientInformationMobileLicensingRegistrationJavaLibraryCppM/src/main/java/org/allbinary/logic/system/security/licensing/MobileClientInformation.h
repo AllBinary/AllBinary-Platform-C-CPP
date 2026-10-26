@@ -21,14 +21,8 @@
         #ifndef ORG_ALLBINARY_LOGIC_SYSTEM_SECURITY_LICENSING_MOBILECLIENTINFORMATION_H
         #define ORG_ALLBINARY_LOGIC_SYSTEM_SECURITY_LICENSING_MOBILECLIENTINFORMATION_H
 
-            #include "../../../../../../java/lang/Integer.h"
+            #include "java/lang/Integer.h"
         
-#include <jsinterop/annotations/JsType.h>
-
-      
-#include <java/util/Hashtable.h>
-
-      
 #include <org/allbinary/logic/string/StringMaker.h>
 
       
@@ -41,13 +35,7 @@
 #include <org/allbinary/string/CommonStrings.h>
 
       
-#include <jsinterop/annotations/JsMethod.h>
-
-      
-#include <jsinterop/annotations/JsConstructor.h>
-
-      
-#include <jsinterop/annotations/JsProperty.h>
+#include <org/allbinary/util/ABHashtable.h>
 
       
 
@@ -79,7 +67,7 @@ class MobileClientInformation: public AbeClientInformation {
 
 public: MobileClientInformation(std::string name, std::string version, std::string specialName, std::string shortName);
 
-    public: Hashtable<any, any> toHashtable();
+    public: ABHashtable<Object*, Object*> toHashtable();
 
 };
 

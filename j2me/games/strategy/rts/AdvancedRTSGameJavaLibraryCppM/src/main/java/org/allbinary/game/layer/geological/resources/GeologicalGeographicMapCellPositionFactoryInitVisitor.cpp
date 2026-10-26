@@ -18,9 +18,9 @@
 
 
 
-            #include "../../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/game/layer/AllBinaryTiledLayer.h>
 
@@ -59,7 +59,7 @@ class GeologicalGeographicMapCellPositionFactoryInitVisitor
             
     public: void visit(AllBinaryTiledLayer tiledLayer, GeographicMapCellPosition cellPosition){
 
-    GeologicalGeographicMapCellPosition geologicalGeographicMapCellPosition = (cellPosition as GeologicalGeographicMapCellPosition);;
+    GeologicalGeographicMapCellPosition geologicalGeographicMapCellPosition = (cellPosition);;
     
 geologicalGeographicMapCellPosition.getGeologicalResource().init();
     

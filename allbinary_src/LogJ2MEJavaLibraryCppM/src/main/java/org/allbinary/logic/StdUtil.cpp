@@ -18,12 +18,15 @@
 
 
 
-            #include "../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-#include <java/util/Hashtable.h>
+#include <org/allbinary/util/ABHashtable.h>
 
       
-#include <java/util/Stack.h>
+#include <org/allbinary/util/ABStack.h>
+
+      
+#include <org/allbinary/util/ABVector.h>
 
       
 
@@ -61,24 +64,36 @@
 }
 
 
-    /*actual*/ public: const Hashtable<any, any> NULL_TABLE = this->createHashtable();
+    /*actual*/ public: const ABVector<Object*> EMPTY_VECTOR = this->createVector();
 
-    public: Stack<any> createStack(){
+    /*actual*/ public: const ABHashtable<Object*, Object*> NULL_TABLE = this->createHashtable();
+
+    public: ABStack<Object*> createStack(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return Stack<any>();
+                        return ABStack<Object*>();
     
 }
 
 
-    public: Hashtable<any, any> createHashtable(){
+    public: ABVector<Object*> createVector(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return Hashtable<any, any>();
+                        return ABVector<Object*>();
+    
+}
+
+
+    public: ABHashtable<Object*, Object*> createHashtable(){
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return ABHashtable<Object*, Object*>();
     
 }
 

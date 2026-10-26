@@ -21,11 +21,11 @@
         #ifndef ORG_ALLBINARY_THREAD_THREADUTIL_H
         #define ORG_ALLBINARY_THREAD_THREADUTIL_H
 
-            #include "../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../java/lang/Thread.h"
+            #include "java/lang/Thread.h"
         
 #include <org/allbinary/logic/communication/log/LogUtil.h>
 

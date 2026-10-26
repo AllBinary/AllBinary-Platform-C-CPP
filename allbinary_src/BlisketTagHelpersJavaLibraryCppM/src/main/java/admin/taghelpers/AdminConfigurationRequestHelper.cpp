@@ -18,7 +18,7 @@
 
 
 
-            #include "../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
 
@@ -64,7 +64,7 @@ class AdminConfigurationRequestHelper: public ModifyTable {
 
     private: HttpServletRequest request;
 
-public: AdminConfigurationRequestHelper(HashMap<any, any> hashMap, PageContext pageContext){
+public: AdminConfigurationRequestHelper(HashMap<Object*, Object*> hashMap, PageContext pageContext){
 
                         if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGS))
                         
@@ -74,7 +74,7 @@ public: AdminConfigurationRequestHelper(HashMap<any, any> hashMap, PageContext p
 
                                     }
                                 
-this->request= pageContext.getRequest() as HttpServletRequest;
+this->request= pageContext.getRequest();
     
 }
 
@@ -95,7 +95,7 @@ this->request= pageContext.getRequest() as HttpServletRequest;
     std::string success = "Successfully inserted AdminConfiguration";;
     
 
-    AdminConfigurationInterface adminConfigurationInterface = AdminConfiguration(this->request) as AdminConfigurationInterface;;
+    AdminConfigurationInterface adminConfigurationInterface = AdminConfiguration(this->request);;
     
 adminConfigurationInterface.write();
     
@@ -196,7 +196,7 @@ adminConfigurationInterface.write();
     std::string success = "Updated AdminConfiguration Successful";;
     
 
-    AdminConfigurationInterface adminConfigurationInterface = AdminConfiguration(this->request) as AdminConfigurationInterface;;
+    AdminConfigurationInterface adminConfigurationInterface = AdminConfiguration(this->request);;
     
 
                         if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGS))

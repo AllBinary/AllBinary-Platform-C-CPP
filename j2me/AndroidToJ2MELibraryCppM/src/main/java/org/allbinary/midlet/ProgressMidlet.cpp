@@ -18,13 +18,10 @@
 
 
 
-            #include "../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../java/lang/Runnable.h"
+            #include "java/lang/Runnable.h"
         
-#include <jsinterop/annotations/JsType.h>
-
-      
 #include <org/allbinary/TsUtil.h>
 
       
@@ -49,15 +46,6 @@
 #include <org/allbinary/thread/ThreadPool.h>
 
       
-#include <jsinterop/annotations/JsMethod.h>
-
-      
-#include <jsinterop/annotations/JsConstructor.h>
-
-      
-#include <jsinterop/annotations/JsProperty.h>
-
-      
 
 
 
@@ -79,7 +67,7 @@
         #include "AllBinaryMidlet.h"
 #include "MidletExitProcessorFactory.h"
 #include "ExitRunnable.h"
-
+//AndroidToJ2ME
 class ProgressMidlet: public AllBinaryMidlet {
 
     public: AbeClientInformationInterface abeClientInformation;

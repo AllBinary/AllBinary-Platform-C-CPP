@@ -21,7 +21,7 @@
         #ifndef ORG_ALLBINARY_BUSINESS_USER_GROUP_GROUPDATA_H
         #define ORG_ALLBINARY_BUSINESS_USER_GROUP_GROUPDATA_H
 
-            #include "../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
 
 

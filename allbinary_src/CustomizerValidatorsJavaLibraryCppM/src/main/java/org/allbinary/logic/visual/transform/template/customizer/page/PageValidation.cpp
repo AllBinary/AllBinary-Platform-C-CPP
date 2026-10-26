@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
 
@@ -93,13 +93,13 @@ this->title= TitleValidation(node);
 }
 
 
-public: PageValidation(HashMap<any, any> hashMap){
+public: PageValidation(HashMap<Object*, Object*> hashMap){
 this->getFormData(hashMap);
     
 }
 
 
-    public: void getFormData(HashMap<any, any> hashMap){
+    public: void getFormData(HashMap<Object*, Object*> hashMap){
 this->title= TitleValidation(hashMap);
     
 }

@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/game/layer/special/CollidableDestroyableDamageableLayer.h>
 
@@ -127,9 +127,9 @@ super.removeListener(eventListenerInterface);
 
         try {
             
-    CollidableDestroyableDamageableLayer collidableDestroyableDamageableLayer = this->list.objectArray[index]! as CollidableDestroyableDamageableLayer;;
+    CollidableDestroyableDamageableLayer collidableDestroyableDamageableLayer = this->list.objectArray[index];;
     
-collidableDestroyableDamageableLayer.onDestroyed(eventObject as DestroyedEvent);
+collidableDestroyableDamageableLayer.onDestroyed(eventObject);
     
 
                 //: 
@@ -150,9 +150,9 @@ super.fireEvent(eventObject);
             
     protected: void process(AllBinaryEventObject eventObject, EventListenerInterface eventListenerInterface){
 
-    DestroyedEventListenerInterface destroyedEventListenerInterface = eventListenerInterface as DestroyedEventListenerInterface;;
+    DestroyedEventListenerInterface destroyedEventListenerInterface = eventListenerInterface;;
     
-destroyedEventListenerInterface.onDestroyed(eventObject as DestroyedEvent);
+destroyedEventListenerInterface.onDestroyed(eventObject);
     
 }
 

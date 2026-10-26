@@ -21,15 +21,12 @@
         #ifndef ORG_ALLBINARY_MIDLET_EXITRUNNABLE_H
         #define ORG_ALLBINARY_MIDLET_EXITRUNNABLE_H
 
-            #include "../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../java/lang/Runnable.h"
+            #include "java/lang/Runnable.h"
         
-#include <jsinterop/annotations/JsType.h>
-
-      
 #include <javax/microedition/lcdui/NullCanvas.h>
 
       
@@ -40,15 +37,6 @@
 
       
 #include <org/allbinary/string/CommonStrings.h>
-
-      
-#include <jsinterop/annotations/JsMethod.h>
-
-      
-#include <jsinterop/annotations/JsConstructor.h>
-
-      
-#include <jsinterop/annotations/JsProperty.h>
 
       
 

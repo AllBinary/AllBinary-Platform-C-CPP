@@ -18,13 +18,10 @@
 
 
 
-            #include "../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-#include <jsinterop/annotations/JsType.h>
-
-      
 #include <javax/microedition/lcdui/Image.h>
 
       
@@ -34,13 +31,22 @@
 #include <org/allbinary/animation/image/BaseImageAnimationFactory.h>
 
       
+#include <org/allbinary/logic/communication/log/LogUtil.h>
+
+      
+#include <org/allbinary/logic/string/StringMaker.h>
+
+      
 #include <org/allbinary/media/ScaleProperties.h>
 
       
 #include <org/allbinary/media/image/ImageJ2MEScaleUtil.h>
 
       
-#include <jsinterop/annotations/JsMethod.h>
+#include <org/allbinary/string/CommonLabels.h>
+
+      
+#include <org/allbinary/string/CommonStrings.h>
 
       
 
@@ -106,7 +112,13 @@ class AnimationFactoryImageScaleUtil
                                     }
                                 
                         else {
-                            scaledImage= this->imageScaleUtil.scale(image, static_cast<int32_t>((scaleX *width)), static_cast<int32_t>((scaleY *height)));
+                            
+    int32_t scaledWidth = static_cast<int32_t>((scaleX *width));;
+    
+
+    int32_t scaledHeight = static_cast<int32_t>((scaleY *height));;
+    
+scaledImage= this->imageScaleUtil.scale(image, scaledWidth, scaledHeight);
     
 
                         }

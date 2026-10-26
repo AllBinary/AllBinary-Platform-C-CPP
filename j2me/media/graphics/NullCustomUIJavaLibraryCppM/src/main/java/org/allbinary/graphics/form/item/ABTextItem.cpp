@@ -4,19 +4,10 @@
 
 
 
-#include <jsinterop/annotations/JsType.h>
-
-      
 #include <javax/microedition/lcdui/Graphics.h>
 
       
 #include <org/allbinary/graphics/color/BasicColor.h>
-
-      
-#include <jsinterop/annotations/JsMethod.h>
-
-      
-#include <jsinterop/annotations/JsConstructor.h>
 
       
 
@@ -43,8 +34,9 @@
 
 class ABTextItem: public CustomCustomItem, public ABCustomItemInterface {
 
-public: ABTextItem(std::string label, int32_t layout, std::string altText, BasicColor backgroundBasicColor, BasicColor foregroundBasicColor){
-            super(label, backgroundBasicColor, foregroundBasicColor);
+public: ABTextItem(std::string label, int32_t layout, std::string altText, BasicColor backgroundBasicColor, BasicColor foregroundBasicColor) : CustomCustomItem(label, backgroundBasicColor, foregroundBasicColor){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.

@@ -21,7 +21,7 @@
         #ifndef ORG_ALLBINARY_GAME_LAYER_SPECIAL_SPECIALGAMEINPUTFACTORY_H
         #define ORG_ALLBINARY_GAME_LAYER_SPECIAL_SPECIALGAMEINPUTFACTORY_H
 
-            #include "../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
 
 

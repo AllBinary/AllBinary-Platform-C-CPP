@@ -18,9 +18,9 @@
 
 
 
-            #include "../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/logic/communication/log/LogUtil.h>
 
@@ -84,7 +84,7 @@ private: AbKeys(){
             this->logUtil.putF("Getting Key: " +keyName, this, "getKey");
     
 
-                        if(keyName.compareTo("DirectX 8") == 0 || keyName.compareTo("DirectX") == 0 || keyName.compareTo("Low Level") == 0 || keyName.compareTo("System Drivers") == 0)
+                        if(keyName.compare("DirectX 8") == 0 || keyName.compare("DirectX") == 0 || keyName.compare("Low Level") == 0 || keyName.compare("System Drivers") == 0)
                         
                                     {
                                     

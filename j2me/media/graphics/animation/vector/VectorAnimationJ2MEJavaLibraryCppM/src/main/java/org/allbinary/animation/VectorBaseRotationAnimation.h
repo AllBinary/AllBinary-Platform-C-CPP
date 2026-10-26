@@ -23,11 +23,8 @@
 
             #include <vector>
         
-            #include "../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-#include <jsinterop/annotations/JsType.h>
-
-      
 #include <javax/microedition/lcdui/Graphics.h>
 
       
@@ -37,9 +34,6 @@
 #include <org/allbinary/logic/NullUtil.h>
 
       
-#include <org/allbinary/logic/communication/log/LogUtil.h>
-
-      
 #include <org/allbinary/logic/math/PrimitiveIntUtil.h>
 
       
@@ -47,15 +41,6 @@
 
       
 #include <org/allbinary/util/CircularIndexUtil.h>
-
-      
-#include <jsinterop/annotations/JsMethod.h>
-
-      
-#include <jsinterop/annotations/JsConstructor.h>
-
-      
-#include <jsinterop/annotations/JsProperty.h>
 
       
 
@@ -81,8 +66,6 @@
 #include "AnimationBehavior.h"
 
 class VectorBaseRotationAnimation: public RotationAnimation, public VectorAnimationInterface {
-
-    protected: const LogUtil logUtil = LogUtil::getInstance();
 
     private: std::vector<std::vector<std::vector<int32_t>>> currentPoints = NullUtil::getInstance().NULL_INT_ARRAY_ARRAY_ARRAY;
 

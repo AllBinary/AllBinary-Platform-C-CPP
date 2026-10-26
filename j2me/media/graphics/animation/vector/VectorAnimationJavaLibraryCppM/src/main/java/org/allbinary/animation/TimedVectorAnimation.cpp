@@ -54,8 +54,9 @@ class TimedVectorAnimation: public VectorAnimation {
 
     private: TimeDelayHelper timeElapsedHelper = TimeDelayHelper(200);
 
-public: TimedVectorAnimation(std::vector<std::vector<std::vector<int32_t>>> currentPoints, BasicColor basicColor, AnimationBehavior animationBehavior){
-            super(currentPoints, basicColor, animationBehavior);
+public: TimedVectorAnimation(std::vector<std::vector<std::vector<int32_t>>> currentPoints, BasicColor basicColor, AnimationBehavior animationBehavior) : VectorAnimation(currentPoints, basicColor, animationBehavior){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.

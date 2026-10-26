@@ -20,7 +20,7 @@
 
             #include <vector>
         
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <javax/microedition/khronos/opengles/GL.h>
 
@@ -69,8 +69,9 @@ class CompoundIndexedAnimation: public IndexedAnimation, public CompoundAnimatio
 
     private: std::vector<Animation> animationInterfaceArray;
 
-public: CompoundIndexedAnimation(std::vector<Animation> animationInterfaceArray, AnimationBehavior animationBehavior){
-            super(animationBehavior);
+public: CompoundIndexedAnimation(std::vector<Animation> animationInterfaceArray, AnimationBehavior animationBehavior) : IndexedAnimation(animationBehavior){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -84,7 +85,7 @@ this->circularIndexUtil= CircularIndexUtil::createInstance(this->animationInterf
 
     public: void setFrame(int32_t index){
 
-    IndexedAnimation indexedAnimation = this->animationInterfaceArray[this->circularIndexUtil.getIndex()]! as IndexedAnimation;;
+    IndexedAnimation indexedAnimation = this->animationInterfaceArray[this->circularIndexUtil.getIndex()];;
     
 indexedAnimation.setFrame(index);
     
@@ -93,7 +94,7 @@ indexedAnimation.setFrame(index);
 
     public: int32_t getFrame(){
 
-    IndexedAnimation indexedAnimation = this->animationInterfaceArray[this->circularIndexUtil.getIndex()]! as IndexedAnimation;;
+    IndexedAnimation indexedAnimation = this->animationInterfaceArray[this->circularIndexUtil.getIndex()];;
     
 
 
@@ -106,7 +107,7 @@ indexedAnimation.setFrame(index);
 
     public: int32_t getSize(){
 
-    IndexedAnimation indexedAnimation = this->animationInterfaceArray[this->circularIndexUtil.getIndex()]! as IndexedAnimation;;
+    IndexedAnimation indexedAnimation = this->animationInterfaceArray[this->circularIndexUtil.getIndex()];;
     
 
 
@@ -119,7 +120,7 @@ indexedAnimation.setFrame(index);
 
     public: void previousFrame(){
 
-    IndexedAnimation indexedAnimation = this->animationInterfaceArray[this->circularIndexUtil.getIndex()]! as IndexedAnimation;;
+    IndexedAnimation indexedAnimation = this->animationInterfaceArray[this->circularIndexUtil.getIndex()];;
     
 indexedAnimation.previousFrame();
     
@@ -143,19 +144,19 @@ indexedAnimation.previousFrame();
                 //@Throws(Exception.constructor)
             
     public: void nextFrame(){
-this->animationInterfaceArray[this->circularIndexUtil.getIndex()]!.nextFrame();
+this->animationInterfaceArray[this->circularIndexUtil.getIndex()].nextFrame();
     
 }
 
 
     public: void paintXY(Graphics graphics, int32_t x, int32_t y){
-this->animationInterfaceArray[this->circularIndexUtil.getIndex()]!.paintXY(graphics, x, y);
+this->animationInterfaceArray[this->circularIndexUtil.getIndex()].paintXY(graphics, x, y);
     
 }
 
 
     public: void paintThreedXYZ(Graphics graphics, int32_t x, int32_t y, int32_t z){
-this->animationInterfaceArray[this->circularIndexUtil.getIndex()]!.paintThreedXYZ(graphics, x, y, z);
+this->animationInterfaceArray[this->circularIndexUtil.getIndex()].paintThreedXYZ(graphics, x, y, z);
     
 }
 
@@ -165,7 +166,7 @@ this->animationInterfaceArray[this->circularIndexUtil.getIndex()]!.paintThreedXY
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->animationInterfaceArray[this->circularIndexUtil.getIndex()]! as IndexedAnimation;
+                        return this->animationInterfaceArray[this->circularIndexUtil.getIndex()];
     
 }
 
@@ -229,7 +230,7 @@ this->animationInterfaceArray= animationInterfaceArray;
                         for (
     int32_t index = this->animationInterfaceArray.size();--index >= 0; )
         {
-this->animationInterfaceArray[index]!.set(gl);
+this->animationInterfaceArray[index].set(gl);
     
 }
 

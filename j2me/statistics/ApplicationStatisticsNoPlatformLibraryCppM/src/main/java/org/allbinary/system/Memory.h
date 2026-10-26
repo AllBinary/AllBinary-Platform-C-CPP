@@ -21,9 +21,9 @@
         #ifndef ORG_ALLBINARY_SYSTEM_MEMORY_H
         #define ORG_ALLBINARY_SYSTEM_MEMORY_H
 
-            #include "../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../java/lang/RuntimeException.h"
+            #include "java/lang/RuntimeException.h"
         
 #include <org/allbinary/logic/string/StringMaker.h>
 

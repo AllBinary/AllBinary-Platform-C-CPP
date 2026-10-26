@@ -20,17 +20,20 @@
 
             #include <vector>
         
-            #include "../../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-#include <java/awt.h>
+#include <java/awt/Dimension.h>
+
+      
+#include <java/awt/Rectangle.h>
+
+      
+#include <java/awt/Toolkit.h>
 
       
 #include <java/awt/image/BufferedImage.h>
-
-      
-#include <java/util/Hashtable.h>
 
       
 #include <org/allbinary/input/automation/robot/InputRobotFactory.h>
@@ -43,6 +46,9 @@
 
       
 #include <org/allbinary/string/CommonStrings.h>
+
+      
+#include <org/allbinary/util/ABHashtable.h>
 
       
 
@@ -63,10 +69,7 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "Toolkit.h"
-#include "Dimension.h"
-#include "Rectangle.h"
-
+        
 class ScreenScavangerRobot
             : public Object
          {
@@ -91,16 +94,16 @@ this->logUtil.putF(this->commonStrings.START, this, "getScreenAsBufferedImages")
     Rectangle rectScreenSize = Rectangle(dimScreenSize);;
     
 
-    Hashtable<any, any> robotHashtable = InputRobotFactory::getInstance().get();;
+    ABHashtable<Object*, Object*> robotHashtable = InputRobotFactory::getInstance().get();;
     
 
-    std::vector<BufferedImage> bufferedImageArray = new Array(1);;
+    std::vector<BufferedImage> bufferedImageArray = std::vector<BufferedImage>(1);;
     
 
     int32_t index = 0;;
     
 
-    InputRobotInterface inputRobotInterface = robotHashtable.get("Java Robot") as InputRobotInterface;;
+    InputRobotInterface inputRobotInterface = robotHashtable.get("Java Robot");;
     
 bufferedImageArray[index]= inputRobotInterface.createScreenCapture(rectScreenSize);
     

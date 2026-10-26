@@ -52,8 +52,9 @@ class TouchButtonTurnRightResource: public TouchButtonResource {
 }
 
 
-private: TouchButtonTurnRightResource(){
-            super("/touch_button_turn_right_arrow_64_by_64.png", "/touch_button_turn_right_arrow_hint_64_by_64.png");
+private: TouchButtonTurnRightResource() : TouchButtonResource("/touch_button_turn_right_arrow_64_by_64.png", "/touch_button_turn_right_arrow_hint_64_by_64.png"){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.

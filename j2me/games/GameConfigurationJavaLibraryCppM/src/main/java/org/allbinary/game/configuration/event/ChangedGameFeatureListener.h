@@ -21,13 +21,7 @@
         #ifndef ORG_ALLBINARY_GAME_CONFIGURATION_EVENT_CHANGEDGAMEFEATURELISTENER_H
         #define ORG_ALLBINARY_GAME_CONFIGURATION_EVENT_CHANGEDGAMEFEATURELISTENER_H
 
-#include <jsinterop/annotations/JsType.h>
-
-      
 #include <org/allbinary/game/configuration/GameConfiguration.h>
-
-      
-#include <jsinterop/annotations/JsMethod.h>
 
       
 

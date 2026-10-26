@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/util/BasicArrayList.h>
 
@@ -85,10 +85,10 @@ UserRoleFactory::getInstance();
     int32_t index = 0;index < size; index++)
         {
 
-    UserRole userRole = roleVector.get(index) as UserRole;;
+    UserRole userRole = roleVector.get(index);;
     
 
-                        if(role.compareTo(userRole.toString()) == 0)
+                        if(role.compare(userRole.toString()) == 0)
                         
                                     {
                                     
@@ -125,8 +125,9 @@ UserRoleFactory::getInstance();
 }
 
 
-protected: UserRoleB(BasicUserRole aBasicUserRole, UserFactoryInterface aUserFactoryInterface){
-            super(aBasicUserRole, aUserFactoryInterface);
+protected: UserRoleB(BasicUserRole aBasicUserRole, UserFactoryInterface aUserFactoryInterface) : UserRole(aBasicUserRole, aUserFactoryInterface){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.

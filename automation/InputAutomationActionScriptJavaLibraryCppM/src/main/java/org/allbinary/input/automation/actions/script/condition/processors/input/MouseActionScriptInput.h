@@ -21,11 +21,11 @@
         #ifndef ORG_ALLBINARY_INPUT_AUTOMATION_ACTIONS_SCRIPT_CONDITION_PROCESSORS_INPUT_MOUSEACTIONSCRIPTINPUT_H
         #define ORG_ALLBINARY_INPUT_AUTOMATION_ACTIONS_SCRIPT_CONDITION_PROCESSORS_INPUT_MOUSEACTIONSCRIPTINPUT_H
 
-            #include "../../../../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../../../../../../../java/lang/Integer.h"
+            #include "java/lang/Integer.h"
         
-            #include "../../../../../../../../../java/lang/Long.h"
+            #include "java/lang/Long.h"
         
 #include <java/awt.h>
 
@@ -117,7 +117,7 @@ public: MouseActionScriptInput();
 
     public: void showDialog();
 
-    public: HashMap<any, any> toHashMap();
+    public: HashMap<Object*, Object*> toHashMap();
 
                 //@Throws(Exception.constructor)
             

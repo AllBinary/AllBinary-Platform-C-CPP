@@ -18,13 +18,10 @@
 
 
 
-            #include "../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-#include <java/util/Hashtable.h>
-
-      
 #include <org/allbinary/game/combat/damage/DamageFloaters.h>
 
       
@@ -59,6 +56,9 @@
 
       
 #include <org/allbinary/logic/StdUtil.h>
+
+      
+#include <org/allbinary/util/ABHashtable.h>
 
       
 
@@ -149,7 +149,7 @@ this->damageFloatersPaintableInterface= damageFloaters;
                         if(Features::getInstance().isFeature(GameFeatureFactory::getInstance().HEALTH_BARS))
                         
                                     {
-                                    healthBar= HealthBar(buildingLayer, buildingLayer.getHealthInterface(), HealthBarTwodAnimation(buildingLayer as AllBinaryLayer, BasicHudFactory::getInstance().BOTTOMLEFT),  -1);
+                                    healthBar= HealthBar(buildingLayer, buildingLayer.getHealthInterface(), HealthBarTwodAnimation(buildingLayer, BasicHudFactory::getInstance().BOTTOMLEFT),  -1);
     
 
                                     }
@@ -163,7 +163,7 @@ this->damageFloatersPaintableInterface= damageFloaters;
 }
 
 
-    public: Hashtable<any, any> getHashtable(){
+    public: ABHashtable<Object*, Object*> getHashtable(){
 
 
 

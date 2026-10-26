@@ -21,9 +21,9 @@
         #ifndef ORG_ALLBINARY_THREAD_NULLTHREAD_H
         #define ORG_ALLBINARY_THREAD_NULLTHREAD_H
 
-            #include "../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../java/lang/Thread.h"
+            #include "java/lang/Thread.h"
         
 
 

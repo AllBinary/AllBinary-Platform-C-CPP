@@ -18,21 +18,12 @@
 
 
 
-            #include "../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-#include <jsinterop/annotations/JsType.h>
-
-      
 #include <org/allbinary/logic/util/cache/BaseCircularPool.h>
 
       
 #include <org/allbinary/util/CircularIndexUtil.h>
-
-      
-#include <jsinterop/annotations/JsMethod.h>
-
-      
-#include <jsinterop/annotations/JsConstructor.h>
 
       
 
@@ -66,7 +57,7 @@ protected: AllBinaryLayerCircularPool(){
     public: void initAllBinaryLayerCircularPool(AllBinaryLayerFactoryInterface allbinaryLayerFactoryInterface, int32_t total){
 this->circularIndexUtil= CircularIndexUtil::createInstance(total);
     
-this->OBJECT_ARRAY= new Array(total);
+this->OBJECT_ARRAY= std::vector<AllBinaryLayer>(total);
     
 
 

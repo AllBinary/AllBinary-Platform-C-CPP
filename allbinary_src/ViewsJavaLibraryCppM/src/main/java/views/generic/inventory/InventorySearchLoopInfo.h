@@ -21,7 +21,7 @@
         #ifndef VIEWS_GENERIC_INVENTORY_INVENTORYSEARCHLOOPINFO_H
         #define VIEWS_GENERIC_INVENTORY_INVENTORYSEARCHLOOPINFO_H
 
-            #include "../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
 #include <org/allbinary/logic/string/StringMaker.h>
 

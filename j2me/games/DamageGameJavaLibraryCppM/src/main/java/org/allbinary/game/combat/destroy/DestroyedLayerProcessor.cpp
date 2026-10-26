@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/game/combat/destroy/event/DestroyEventCircularStaticPool.h>
 
@@ -130,7 +130,7 @@ private: DestroyedLayerProcessor(){
                                 )
                         
                                     {
-                                    layerInterface= layerInterfaceCanBeNull as AllBinaryLayer;
+                                    layerInterface= *dynamic_cast<AllBinaryLayer*>(layerInterfaceCanBeNull);
     
 allBinaryLayerManager.remove(layerInterface);
     

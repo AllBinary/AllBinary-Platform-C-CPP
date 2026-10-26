@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../java/lang/Integer.h"
+            #include "java/lang/Integer.h"
         
 #include <javax/microedition/lcdui/Font.h>
 

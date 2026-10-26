@@ -18,13 +18,10 @@
 
 
 
-            #include "../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-#include <jsinterop/annotations/JsType.h>
-
-      
 #include <org/allbinary/logic/communication/log/PreLogUtil.h>
 
       
@@ -41,12 +38,6 @@
 
       
 #include <org/allbinary/util/BasicArrayListD.h>
-
-      
-#include <jsinterop/annotations/JsMethod.h>
-
-      
-#include <jsinterop/annotations/JsConstructor.h>
 
       
 
@@ -124,7 +115,7 @@ PreLogUtil::put(this->commonStrings.EXCEPTION, this, this->commonStrings.ADD);
                         if(this->list.size() > 0)
                         
                                     {
-                                    sound= this->list.removeAt(0) as Sound;
+                                    sound= this->list.removeAt(0);
     
 
                         if(sound != 

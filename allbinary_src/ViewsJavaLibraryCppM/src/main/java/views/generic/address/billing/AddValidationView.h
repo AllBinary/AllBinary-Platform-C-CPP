@@ -21,7 +21,7 @@
         #ifndef VIEWS_GENERIC_ADDRESS_BILLING_ADDVALIDATIONVIEW_H
         #define VIEWS_GENERIC_ADDRESS_BILLING_ADDVALIDATIONVIEW_H
 
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/business/user/address/StreetAddress.h>
 

@@ -36,7 +36,7 @@ class OpenGLBitmap: public PlatformBitmapBase {
     public: Bitmap bitmap;
 
 public: OpenGLBitmap(Object* bitmap){
-this->bitmap= bitmap as Bitmap;
+this->bitmap= *dynamic_cast<Bitmap*>(bitmap);
     
 }
 

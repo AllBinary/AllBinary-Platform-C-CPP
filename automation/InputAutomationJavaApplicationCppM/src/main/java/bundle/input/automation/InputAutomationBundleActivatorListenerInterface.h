@@ -21,7 +21,7 @@
         #ifndef BUNDLE_INPUT_AUTOMATION_INPUTAUTOMATIONBUNDLEACTIVATORLISTENERINTERFACE_H
         #define BUNDLE_INPUT_AUTOMATION_INPUTAUTOMATIONBUNDLEACTIVATORLISTENERINTERFACE_H
 
-            #include "../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 
 

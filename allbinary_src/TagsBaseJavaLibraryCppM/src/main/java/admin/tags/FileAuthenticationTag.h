@@ -21,9 +21,9 @@
         #ifndef ADMIN_TAGS_FILEAUTHENTICATIONTAG_H
         #define ADMIN_TAGS_FILEAUTHENTICATIONTAG_H
 
-            #include "../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../java/lang/Integer.h"
+            #include "java/lang/Integer.h"
         
 #include <java/util/Calendar.h>
 

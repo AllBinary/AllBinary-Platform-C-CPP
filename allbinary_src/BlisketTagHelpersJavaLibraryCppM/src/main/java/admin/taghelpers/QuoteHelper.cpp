@@ -18,9 +18,9 @@
 
 
 
-            #include "../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../java/lang/Integer.h"
+            #include "java/lang/Integer.h"
         
 #include <java/util/HashMap.h>
 
@@ -138,9 +138,9 @@ class QuoteHelper: public BasicTable {
 
     private: Portion portion;
 
-public: QuoteHelper(HashMap<any, any> hashMap, PageContext pageContext){
+public: QuoteHelper(HashMap<Object*, Object*> hashMap, PageContext pageContext){
 
-    std::string storeName = hashMap.get(StoreFrontData::getInstance().NAME) as string;;
+    std::string storeName = hashMap.get(StoreFrontData::getInstance().NAME);;
     
 
                         if(true)
@@ -186,7 +186,7 @@ stringBuffer.append("\n\nThank You For Your Business.");
     std::string userEmailTextBody = stringBuffer.toString();;
     
 
-    BasicEmailInfo basicEmailInfo = StoreEmailInfo(this->storeFrontInterface, userEmailSubject, userEmailTextBody) as BasicEmailInfo;;
+    BasicEmailInfo basicEmailInfo = StoreEmailInfo(this->storeFrontInterface, userEmailSubject, userEmailTextBody);;
     
 
     EmailInfo emailInfo = EmailInfo(basicEmailInfo);;
@@ -236,7 +236,7 @@ stringBuffer.append(quoteRequest.getComments());
     std::string adminEmailTextBody = stringBuffer.toString();;
     
 
-    BasicEmailInfo basicEmailInfo = StoreEmailInfo(this->storeFrontInterface, adminEmailSubject, adminEmailTextBody) as BasicEmailInfo;;
+    BasicEmailInfo basicEmailInfo = StoreEmailInfo(this->storeFrontInterface, adminEmailSubject, adminEmailTextBody);;
     
 
     EmailInfo emailInfo = EmailInfo(basicEmailInfo);;
@@ -282,7 +282,7 @@ adminUserEmailEventHandler.receiveEmailInfo(UserEmailEventNameData::QUOTEREQUEST
     int32_t index = 0;index < size; index++)
         {
 
-    int32_t nextId = (get as Integer).intValue();;
+    int32_t nextId = (get).intValue();;
     
 
                         if(id < nextId)

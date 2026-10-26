@@ -7,7 +7,7 @@
         #ifndef ORG_ALLBINARY_GAME_LAYER_WEAPON_TEMPEXPLOSIONWEAPONLAYER_H
         #define ORG_ALLBINARY_GAME_LAYER_WEAPON_TEMPEXPLOSIONWEAPONLAYER_H
 
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/animation/Animation.h>
 

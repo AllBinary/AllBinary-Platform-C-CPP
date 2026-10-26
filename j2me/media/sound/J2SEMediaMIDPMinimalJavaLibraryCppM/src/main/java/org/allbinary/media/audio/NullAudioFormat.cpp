@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
 #include <javax/sound/sampled/AudioFormat.h>
 

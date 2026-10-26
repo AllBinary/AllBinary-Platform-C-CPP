@@ -18,12 +18,9 @@
 
 
 
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/io/IOException.h>
-
-      
-#include <java/util/Hashtable.h>
 
       
 #include <org/allbinary/util/BasicArrayList.h>
@@ -33,9 +30,6 @@
 
       
 #include <org/allbinary/init/crypt/jcehelper/CryptInterface.h>
-
-      
-#include <org/allbinary/logic/StdUtil.h>
 
       
 #include <org/allbinary/logic/communication/log/LogUtil.h>
@@ -51,6 +45,9 @@
 
       
 #include <org/allbinary/logic/system/security/licensing/AbeClientInformationInterface.h>
+
+      
+#include <org/allbinary/util/ABHashtable.h>
 
       
 #include <org/apache/xmlrpc/XmlRpcClient.h>
@@ -84,8 +81,9 @@ class XmlRpcRemoteHighScoresClient: public XmlRpcAbeClient {
 
     private: std::string page;
 
-public: XmlRpcRemoteHighScoresClient(AbeClientInformationInterface clientInfo, std::string page, std::string remoteMethod){
-            super(clientInfo, remoteMethod);
+public: XmlRpcRemoteHighScoresClient(AbeClientInformationInterface clientInfo, std::string page, std::string remoteMethod) : XmlRpcAbeClient(clientInfo, remoteMethod){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -136,7 +134,7 @@ xmlRpcClient.setBasicAuthentication(
                             nullptr);
     
 
-    Hashtable<any, any> hashtable = anyType as Hashtable<any, any>;;
+    ABHashtable<Object*, Object*> hashtable = *dynamic_cast<ABHashtable<Object*, Object*>*>(anyType);;
     
 this->logUtil.putF(CLIENT_INFO +hashtable.toString(), this, this->commonStrings.GET);
     

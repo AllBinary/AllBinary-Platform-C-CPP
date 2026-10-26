@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
 #include <javax/microedition/lcdui/Image.h>
 
@@ -106,7 +106,7 @@ private: OpenGLESImageExclusionUtil(){
                         for (
     int32_t index = 0;index < size; index++)
         {
-name= this->list.get(index) as string;
+name= this->list.get(index);
     
 
                         if(imageName.startsWith(name))

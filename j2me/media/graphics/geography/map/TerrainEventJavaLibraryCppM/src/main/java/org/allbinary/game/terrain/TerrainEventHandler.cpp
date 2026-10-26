@@ -18,11 +18,8 @@
 
 
 
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-#include <java/util/Hashtable.h>
-
-      
 #include <org/allbinary/logic/StdUtil.h>
 
       
@@ -36,6 +33,9 @@
 
       
 #include <org/allbinary/logic/util/event/handler/BasicEventHandler.h>
+
+      
+#include <org/allbinary/util/ABHashtable.h>
 
       
 #include <org/allbinary/util/BasicArrayList.h>
@@ -68,7 +68,7 @@
 
 class TerrainEventHandler: public BasicEventHandler {
 
-    private: static Hashtable<any, any> hashtable = StdUtil::getInstance().NULL_TABLE;
+    private: static ABHashtable<Object*, Object*> hashtable = StdUtil::getInstance().NULL_TABLE;
 
     public: static void init(){
 TerrainEventHandler::hashtable= StdUtil::getInstance().createHashtable();
@@ -97,7 +97,7 @@ TerrainEventHandler::hashtable.put(anyType, eventHandlerCanBeNull);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return eventHandlerCanBeNull as TerrainEventHandler;
+                        return *dynamic_cast<TerrainEventHandler*>(eventHandlerCanBeNull);
     
 }
 
@@ -150,9 +150,9 @@ super.removeListener(eventListenerInterface);
 
         try {
             
-    TerrainEventListener terrainEventListener = this->list.get(index) as TerrainEventListener;;
+    TerrainEventListener terrainEventListener = this->list.get(index);;
     
-terrainEventListener.onTerrainEvent(eventObject as TerrainEvent);
+terrainEventListener.onTerrainEvent(eventObject);
     
 
                 //: 
@@ -173,9 +173,9 @@ super.fireEvent(eventObject);
             
     protected: void process(AllBinaryEventObject eventObject, EventListenerInterface eventListenerInterface){
 
-    TerrainEventListenerInterface terrainEventListenerInterface = eventListenerInterface as TerrainEventListenerInterface;;
+    TerrainEventListenerInterface terrainEventListenerInterface = eventListenerInterface;;
     
-terrainEventListenerInterface.onTerrainEvent(eventObject as TerrainEvent);
+terrainEventListenerInterface.onTerrainEvent(eventObject);
     
 }
 

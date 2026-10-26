@@ -21,9 +21,9 @@
         #ifndef ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_INFO_TRANSFORMINFOHTTPFACTORY_H
         #define ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_INFO_TRANSFORMINFOHTTPFACTORY_H
 
-            #include "../../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
 
@@ -77,7 +77,7 @@ class TransformInfoHttpFactory
 
                 //@Throws(Exception.constructor)
             
-    public: static TransformInfoInterface getInstance(HashMap<any, any> propertiesHashMap, PageContext pageContext);
+    public: static TransformInfoInterface getInstance(HashMap<Object*, Object*> propertiesHashMap, PageContext pageContext);
 
 private: TransformInfoHttpFactory();
 

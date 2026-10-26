@@ -21,12 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_CONFIGURATION_FEATURE_INGAMEFEATURECHOICEGROUPS_H
         #define ORG_ALLBINARY_GAME_CONFIGURATION_FEATURE_INGAMEFEATURECHOICEGROUPS_H
 
-            #include "../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-#include <java/util/Hashtable.h>
+#include <org/allbinary/logic/StdUtil.h>
 
       
-#include <org/allbinary/logic/StdUtil.h>
+#include <org/allbinary/util/ABHashtable.h>
 
       
 #include <org/allbinary/util/BasicArrayList.h>
@@ -63,11 +63,11 @@ class InGameFeatureChoiceGroups
 
     public: static InGameFeatureChoiceGroups getMultipleInstance();
 
-    private: Hashtable<any, any> hashtable = StdUtil::getInstance().createHashtable();
+    private: ABHashtable<Object*, Object*> hashtable = StdUtil::getInstance().createHashtable();
 
 private: InGameFeatureChoiceGroups();
 
-    public: Hashtable<any, any> get();
+    public: ABHashtable<Object*, Object*> get();
 
     public: void add(std::string name, BasicArrayList list);
 

@@ -21,13 +21,10 @@
         #ifndef ORG_ALLBINARY_GAME_AG_LAYER_WEAPON_MINE_MINECOUNTEDPICKEDUPLAYERINTERFACEFACTORY_H
         #define ORG_ALLBINARY_GAME_AG_LAYER_WEAPON_MINE_MINECOUNTEDPICKEDUPLAYERINTERFACEFACTORY_H
 
-            #include "../../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../../../../../java/lang/Integer.h"
+            #include "java/lang/Integer.h"
         
-#include <java/util/Hashtable.h>
-
-      
 #include <org/allbinary/animation/FeaturedAnimationInterfaceFactoryInterfaceFactory.h>
 
       
@@ -56,6 +53,9 @@
 
       
 #include <org/allbinary/logic/math/SmallIntegerSingletonFactory.h>
+
+      
+#include <org/allbinary/util/ABHashtable.h>
 
       
 
@@ -101,7 +101,7 @@ private: MineCountedPickedUpLayerInterfaceFactory();
 
                 //@Throws(Exception.constructor)
             
-    public: AllBinaryLayer getNextInstance(Hashtable<any, any> hashtable, int32_t x, int32_t y, int32_t z);
+    public: AllBinaryLayer getNextInstance(ABHashtable<Object*, Object*> hashtable, int32_t x, int32_t y, int32_t z);
 
 };
 

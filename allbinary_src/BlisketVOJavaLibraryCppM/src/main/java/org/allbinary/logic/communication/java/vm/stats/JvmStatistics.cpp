@@ -18,13 +18,13 @@
 
 
 
-            #include "../../../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../../../java/lang/Runtime.h"
+            #include "java/lang/Runtime.h"
         
-            #include "../../../../../../../java/lang/Long.h"
+            #include "java/lang/Long.h"
         
-            #include "../../../../../../../java/lang/Thread.h"
+            #include "java/lang/Thread.h"
         
 
 

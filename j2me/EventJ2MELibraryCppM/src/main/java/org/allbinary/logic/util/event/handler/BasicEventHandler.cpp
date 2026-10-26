@@ -18,9 +18,9 @@
 
 
 
-            #include "../../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <jsinterop/annotations/JsType.h>
 
@@ -116,7 +116,7 @@ this->eventListenerInterfaceList= BasicArrayListD();
                         for (
     int32_t index = 0;index < size; index++)
         {
-eventListenerInterface= vector.get(index) as EventListenerInterface;
+eventListenerInterface= vector.get(index);
     
 this->addListenerInterface(eventListenerInterface);
     
@@ -139,7 +139,7 @@ this->addListenerInterface(eventListenerInterface);
                         for (
     int32_t index = 0;index < size; index++)
         {
-eventListenerInterface= vector.get(index) as EventListenerInterface;
+eventListenerInterface= vector.get(index);
     
 this->removeListener(eventListenerInterface);
     
@@ -200,7 +200,7 @@ this->eventListenerInterfaceList.remove(eventListenerInterface);
         {
 
         try {
-            eventListenerInterface= this->eventListenerInterfaceList.get(index) as EventListenerInterface;
+            eventListenerInterface= this->eventListenerInterfaceList.get(index);
     
 this->process(eventObject, eventListenerInterface);
     
@@ -256,7 +256,7 @@ stringBuffer.appendint(this->eventListenerInterfaceList.size());
         {
 
         try {
-            eventListenerInterface= this->eventListenerInterfaceList.get(index) as EventListenerInterface;
+            eventListenerInterface= this->eventListenerInterfaceList.get(index);
     
 stringBuffer.append(this->eventStrings.LISTENER_LABEL);
     

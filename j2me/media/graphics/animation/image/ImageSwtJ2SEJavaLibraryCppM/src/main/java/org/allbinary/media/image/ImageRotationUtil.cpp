@@ -18,9 +18,9 @@
 
 
 
-            #include "../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <javax/microedition/lcdui/Image.h>
 
@@ -103,7 +103,7 @@ private: ImageRotationUtil(){
                         
                                     {
                                     
-    OpenGLESImage openGLESImage = (image as OpenGLESImage);;
+    OpenGLESImage openGLESImage = (image);;
     
 openGLESImage.openGLESImageProperties.angle= totalAngle;
     
@@ -126,7 +126,7 @@ openGLESImage.openGLESImageProperties.angle= totalAngle;
                                     }
                                 
 
-    org::eclipse::swt::graphics::Image originalSwtImage = (originalImage2.getImage() as org::eclipse::swt::graphics::Image);;
+    org::eclipse::swt::graphics::Image originalSwtImage = (originalImage2.getImage());;
     
 
     GC gc = 
@@ -143,9 +143,9 @@ openGLESImage.openGLESImageProperties.angle= totalAngle;
                         
                                     {
                                     
-    SwtMutableImage swtImage = image as SwtMutableImage;;
+    SwtMutableImage swtImage = image;;
     
-copySwtImage= swtImage.getImage() as org::eclipse::swt::graphics::Image;
+copySwtImage= swtImage.getImage();
     
 gc= swtImage.getGc();
     

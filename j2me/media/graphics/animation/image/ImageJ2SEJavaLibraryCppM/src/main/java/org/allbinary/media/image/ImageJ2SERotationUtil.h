@@ -23,9 +23,9 @@
 
             #include <vector>
         
-            #include "../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../java/lang/Math.h"
+            #include "java/lang/Math.h"
         
 #include <java/awt/Graphics2D.h>
 

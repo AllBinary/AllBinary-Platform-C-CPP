@@ -21,7 +21,7 @@
         #ifndef ADMIN_TAGHELPERS_INITHELPER_H
         #define ADMIN_TAGHELPERS_INITHELPER_H
 
-            #include "../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
 
@@ -59,7 +59,7 @@ class InitHelper: public BasicTable {
 
     protected: const LogUtil logUtil = LogUtil::getInstance();
 
-public: InitHelper(HashMap<any, any> hashMap, PageContext pageContext);
+public: InitHelper(HashMap<Object*, Object*> hashMap, PageContext pageContext);
 
     public: std::string drop();
 

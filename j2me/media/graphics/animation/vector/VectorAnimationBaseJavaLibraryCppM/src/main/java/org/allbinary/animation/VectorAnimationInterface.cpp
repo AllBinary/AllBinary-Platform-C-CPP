@@ -20,13 +20,7 @@
 
             #include <vector>
         
-#include <jsinterop/annotations/JsType.h>
-
-      
 #include <org/allbinary/graphics/color/ColorCompositeInterface.h>
-
-      
-#include <jsinterop/annotations/JsMethod.h>
 
       
 

@@ -21,18 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_INPUT_GAMEINPUTINTERFACE_H
         #define ORG_ALLBINARY_GAME_INPUT_GAMEINPUTINTERFACE_H
 
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-#include <jsinterop/annotations/JsType.h>
-
-      
 #include <org/allbinary/layer/AllBinaryLayerManager.h>
 
       
 #include <org/allbinary/layer/NamedInterface.h>
-
-      
-#include <jsinterop/annotations/JsMethod.h>
 
       
 

@@ -20,9 +20,9 @@
 
             #include <vector>
         
-            #include "../../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/business/category/CategoryInterface.h>
 
@@ -89,10 +89,10 @@ this->categoryInterface= categoryInterface;
     int32_t i = 0;i < size; i++)
         {
 
-    CategoryInterface childCategoryInterface = childArray[i]! as CategoryInterface;;
+    CategoryInterface childCategoryInterface = childArray[i];;
     
 
-    Node childCategoryNode = StoreThemeCategoriesView(childCategoryInterface as StoreThemeCategoryInterface).toXmlNode(document);;
+    Node childCategoryNode = StoreThemeCategoriesView(childCategoryInterface).toXmlNode(document);;
     
 node.appendChild(childCategoryNode);
     

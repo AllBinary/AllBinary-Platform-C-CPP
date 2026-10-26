@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <javax/microedition/lcdui/Graphics.h>
 
@@ -58,8 +58,9 @@ class AdjustedImageBaseRotationAnimation: public ImageBaseRotationAnimation {
 
     private: int32_t dy= 0;
 
-public: AdjustedImageBaseRotationAnimation(Image image, AngleInfo angleInfo, int16_t totalAngle, int32_t dx, int32_t dy, AnimationBehavior animationBehavior){
-            super(image, angleInfo, totalAngle, animationBehavior);
+public: AdjustedImageBaseRotationAnimation(Image image, AngleInfo angleInfo, int16_t totalAngle, int32_t dx, int32_t dy, AnimationBehavior animationBehavior) : ImageBaseRotationAnimation(image, angleInfo, totalAngle, animationBehavior){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.

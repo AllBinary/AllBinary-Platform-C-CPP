@@ -21,7 +21,7 @@
         #ifndef ORG_ALLBINARY_BUSINESS_USER_COMMERCE_MONEY_PAYMENT_GATEWAY_PAYMENTGATEWAYINTERFACE_H
         #define ORG_ALLBINARY_BUSINESS_USER_COMMERCE_MONEY_PAYMENT_GATEWAY_PAYMENTGATEWAYINTERFACE_H
 
-            #include "../../../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
 
@@ -194,7 +194,7 @@ class PaymentGatewayInterface: public TableMappingInterface {
 
                 //@Throws(Exception.constructor)
             
-    HashMap<any, any> toHashMap(bool isEncrypted);
+    HashMap<Object*, Object*> toHashMap(bool isEncrypted);
 
     BasicArrayList toVector(bool isEncrypted);
 

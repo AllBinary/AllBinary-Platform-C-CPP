@@ -21,7 +21,7 @@
         #ifndef ORG_ALLBINARY_LOGIC_COMMUNICATION_HTTP_REQUEST_MULTIPARTREQUESTPARAMSDATA_H
         #define ORG_ALLBINARY_LOGIC_COMMUNICATION_HTTP_REQUEST_MULTIPARTREQUESTPARAMSDATA_H
 
-            #include "../../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
 
 

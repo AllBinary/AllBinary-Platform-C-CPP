@@ -21,9 +21,9 @@
         #ifndef ORG_ALLBINARY_LOGIC_COMMUNICATION_SMTP_CONFIGURATION_USER_EVENT_USEREMAILEVENTSCONFIGURATION_H
         #define ORG_ALLBINARY_LOGIC_COMMUNICATION_SMTP_CONFIGURATION_USER_EVENT_USEREMAILEVENTSCONFIGURATION_H
 
-            #include "../../../../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
 
@@ -79,15 +79,15 @@ class UserEmailEventsConfiguration
 
     protected: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    private: HashMap<any, any> emailEventHashMap;
+    private: HashMap<Object*, Object*> emailEventHashMap;
 
 public: UserEmailEventsConfiguration();
 
-public: UserEmailEventsConfiguration(HashMap<any, any> hashMap);
+public: UserEmailEventsConfiguration(HashMap<Object*, Object*> hashMap);
 
     private: void init();
 
-    public: HashMap<any, any> getEventConfigurationHashMap();
+    public: HashMap<Object*, Object*> getEventConfigurationHashMap();
 
     public: void addUserEmailEventConfiguration(UserEmailEventConfigurationInterface userEmailEventConfigurationInterface);
 

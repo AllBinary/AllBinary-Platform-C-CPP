@@ -21,9 +21,9 @@
         #ifndef ORG_ALLBINARY_LOGIC_UTIL_CACHE_CACHEINTERFACEFACTORY_H
         #define ORG_ALLBINARY_LOGIC_UTIL_CACHE_CACHEINTERFACEFACTORY_H
 
-            #include "../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 
 

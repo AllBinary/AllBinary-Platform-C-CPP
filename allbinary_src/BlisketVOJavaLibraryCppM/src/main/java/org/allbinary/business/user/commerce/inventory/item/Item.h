@@ -21,7 +21,7 @@
         #ifndef ORG_ALLBINARY_BUSINESS_USER_COMMERCE_INVENTORY_ITEM_ITEM_H
         #define ORG_ALLBINARY_BUSINESS_USER_COMMERCE_INVENTORY_ITEM_ITEM_H
 
-            #include "../../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
 
@@ -87,11 +87,11 @@ class Item: public BasicItem, public OrderItemInterface {
 
     private: std::string special;
 
-public: Item(HashMap<any, any> itemHashMap);
+public: Item(HashMap<Object*, Object*> itemHashMap);
 
 public: Item();
 
-    private: void setData(HashMap<any, any> itemHashMap);
+    private: void setData(HashMap<Object*, Object*> itemHashMap);
 
     public: void setGroup(std::string value);
 
@@ -117,7 +117,7 @@ public: Item();
 
     public: std::string getSpecial();
 
-    public: HashMap<any, any> toHashMap();
+    public: HashMap<Object*, Object*> toHashMap();
 
 };
 

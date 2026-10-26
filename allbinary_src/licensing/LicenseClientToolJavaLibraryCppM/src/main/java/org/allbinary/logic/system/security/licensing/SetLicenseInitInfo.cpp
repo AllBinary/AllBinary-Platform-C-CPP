@@ -20,11 +20,11 @@
 
             #include <vector>
         
-            #include "../../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../../../../java/lang/System.h"
+            #include "java/lang/System.h"
         
 #include <java/io/BufferedReader.h>
 
@@ -106,7 +106,7 @@ LicenseInitInfoUtil::getInstance().setFilePath(PrintLicenseInitInfo::PATH +PATH_
                         for (
     int32_t index = 1;index < options.size(); index++)
         {
-this->vector.add(options[index]!);
+this->vector.add(options[index]);
     
 }
 

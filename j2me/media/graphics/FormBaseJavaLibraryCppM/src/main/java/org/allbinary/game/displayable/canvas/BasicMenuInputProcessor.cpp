@@ -18,11 +18,8 @@
 
 
 
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-#include <jsinterop/annotations/JsType.h>
-
-      
 #include <javax/microedition/lcdui/Canvas.h>
 
       
@@ -45,15 +42,6 @@
 
       
 #include <org/allbinary/util/BasicArrayListD.h>
-
-      
-#include <jsinterop/annotations/JsMethod.h>
-
-      
-#include <jsinterop/annotations/JsConstructor.h>
-
-      
-#include <jsinterop/annotations/JsProperty.h>
 
       
 
@@ -81,8 +69,9 @@ class BasicMenuInputProcessor: public PlayerGameInput, public BaseMotionGestureE
 
     private: Canvas canvas = NullCanvas::NULL_CANVAS;
 
-protected: BasicMenuInputProcessor(BasicArrayList gameKeyEventList, int32_t playerInputId, Canvas gameCanvas){
-            super(gameKeyEventList, BasicArrayListD(), playerInputId);
+protected: BasicMenuInputProcessor(BasicArrayList gameKeyEventList, int32_t playerInputId, Canvas gameCanvas) : PlayerGameInput(gameKeyEventList, BasicArrayListD(), playerInputId){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -113,7 +102,7 @@ this->canvas= canvas;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->canvas as MyCanvas;
+                        return this->canvas;
     
 }
 

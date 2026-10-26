@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../../../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
 
@@ -99,8 +99,9 @@ class GenericProfileActionScript: public DefaultMutableTreeNode, public ProfileA
 
     private: BasicArrayList profileActionConditionInterfaceVector;
 
-public: GenericProfileActionScript(GenericProfileActionJPanel genericProfileActionJPanel, Node node){
-            super(NAME);
+public: GenericProfileActionScript(GenericProfileActionJPanel genericProfileActionJPanel, Node node) : DefaultMutableTreeNode(NAME){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -185,9 +186,9 @@ this->remove(profileActionScriptNodeInterface);
 }
 
 
-    public: HashMap<any, any> toHashMap(){
+    public: HashMap<Object*, Object*> toHashMap(){
 
-    HashMap<any, any> hashMap = StdUtil::getInstance().createHashMap();;
+    HashMap<Object*, Object*> hashMap = StdUtil::getInstance().createHashMap();;
     
 this->logUtil.putF("HashMap: " +hashMap.toString(), this, "toHashMap()");
     
@@ -236,7 +237,7 @@ this->profileActionConditionInterfaceVector= profileActionConditionInterfaceVect
     int32_t index = 0;index < size; index++)
         {
 
-    ProfileActionScriptConditionInterface profileActionConditionInterface = vector.get(index) as ProfileActionScriptConditionInterface;;
+    ProfileActionScriptConditionInterface profileActionConditionInterface = vector.get(index);;
     
 node.appendChild(profileActionConditionInterface.toXmlNode(document));
     

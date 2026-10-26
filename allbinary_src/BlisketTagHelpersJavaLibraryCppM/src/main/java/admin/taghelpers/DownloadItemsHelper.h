@@ -21,7 +21,7 @@
         #ifndef ADMIN_TAGHELPERS_DOWNLOADITEMSHELPER_H
         #define ADMIN_TAGHELPERS_DOWNLOADITEMSHELPER_H
 
-            #include "../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
 
@@ -67,7 +67,7 @@ class DownloadItemsHelper: public BasicTable {
 
     private: Portion portion;
 
-public: DownloadItemsHelper(HashMap<any, any> hashMap, PageContext pageContext);
+public: DownloadItemsHelper(HashMap<Object*, Object*> hashMap, PageContext pageContext);
 
     public: std::string create();
 

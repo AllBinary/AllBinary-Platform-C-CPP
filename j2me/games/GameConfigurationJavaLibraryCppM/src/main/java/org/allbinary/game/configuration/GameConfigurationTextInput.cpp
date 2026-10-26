@@ -18,11 +18,8 @@
 
 
 
-            #include "../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-#include <java/util/Hashtable.h>
-
-      
 #include <javax/microedition/lcdui/TextField.h>
 
       
@@ -30,6 +27,9 @@
 
       
 #include <org/allbinary/logic/string/StringUtil.h>
+
+      
+#include <org/allbinary/util/ABHashtable.h>
 
       
 
@@ -55,7 +55,7 @@ class GameConfigurationTextInput
             : public Object
          {
 
-    private: static Hashtable<any, any> hashtable = StdUtil::getInstance().createHashtable();
+    private: static ABHashtable<Object*, Object*> hashtable = StdUtil::getInstance().createHashtable();
 
     public: static GameConfigurationTextInput SIMULATOR_IP = GameConfigurationTextInput("IP: ", "192.168.1.3");
 
@@ -66,14 +66,14 @@ class GameConfigurationTextInput
     Object* anyType = textField.getLabel();;
     
 
-    GameConfigurationTextInput gameConfigurationTextInput = GameConfigurationTextInput::hashtable.get(anyType) as GameConfigurationTextInput;;
+    GameConfigurationTextInput gameConfigurationTextInput = GameConfigurationTextInput::hashtable.get(anyType);;
     
 gameConfigurationTextInput.setText(textField.getString());
     
 }
 
 
-    public: static Hashtable<any, any> getHashtable(){
+    public: static ABHashtable<Object*, Object*> getHashtable(){
 
 
 

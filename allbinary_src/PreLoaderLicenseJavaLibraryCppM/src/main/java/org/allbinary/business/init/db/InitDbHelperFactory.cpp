@@ -20,9 +20,9 @@
 
             #include <vector>
         
-            #include "../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../java/lang/Class.h"
+            #include "java/lang/Class.h"
         
 #include <org/allbinary/logic/system/loader/AbeFactory.h>
 
@@ -63,10 +63,10 @@ class InitDbHelperFactory
             
     public: static Object* getInstance(AbeClientInformationInterface abeClientInformation, DatabaseConnectionInfoInterface databaseConnectionInfoInterface){
 
-    std::vector<Object*> params = new Array(1);;
+    std::vector<Object*> params = std::vector<Object*>(1);;
     
 
-    std::vector<Function> classes = new Array(1);;
+    std::vector<Class*> classes = std::vector<Class>(1);;
     
 classes[0]= 
                                     //Otherwise - expression - AssignExpr - value - ClassExpr

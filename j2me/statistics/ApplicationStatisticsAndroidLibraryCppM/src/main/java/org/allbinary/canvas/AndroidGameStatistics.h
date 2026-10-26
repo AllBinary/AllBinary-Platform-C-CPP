@@ -23,7 +23,7 @@
 
             #include <vector>
         
-            #include "../../../java/lang/Long.h"
+            #include "java/lang/Long.h"
         
 #include <android/view/View.h>
 
@@ -66,7 +66,7 @@ class AndroidGameStatistics: public BaseGameStatistics {
 
     private: int64_t totalOnDraws= 0;
 
-    private: const std::vector<std::string> ANDROID_STRING_ARRAY = new Array(14);
+    private: const std::vector<std::string> ANDROID_STRING_ARRAY = std::vector<std::string>(14);
 
 public: AndroidGameStatistics();
 

@@ -7,9 +7,9 @@
         #ifndef ORG_ALLBINARY_DEVICE_OPENGLESGRAPHICS_H
         #define ORG_ALLBINARY_DEVICE_OPENGLESGRAPHICS_H
 
-            #include "../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../java/lang/RuntimeException.h"
+            #include "java/lang/RuntimeException.h"
         
 #include <javax/microedition/khronos/opengles/GL.h>
 

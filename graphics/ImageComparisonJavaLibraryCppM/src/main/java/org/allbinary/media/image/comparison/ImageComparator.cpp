@@ -18,15 +18,15 @@
 
 
 
-            #include "../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../../../java/lang/Math.h"
+            #include "java/lang/Math.h"
         
-            #include "../../../../../java/lang/Integer.h"
+            #include "java/lang/Integer.h"
         
-            #include "../../../../../java/lang/Long.h"
+            #include "java/lang/Long.h"
         
 #include <java/awt.h>
 
@@ -100,10 +100,10 @@ this->imageComparatorConstraintsInterface= imageComparatorConstraintsInterface;
                         
                                     {
                                     
-    int32_t rgb1 = imageComparisonInfo.getBufferedImages()[0]!.getRGB(point.getX(), point.getY());;
+    int32_t rgb1 = imageComparisonInfo.getBufferedImages()[0].getRGB(point.getX(), point.getY());;
     
 
-    int32_t rgb2 = imageComparisonInfo.getBufferedImages()[1]!.getRGB(point.getX(), point.getY());;
+    int32_t rgb2 = imageComparisonInfo.getBufferedImages()[1].getRGB(point.getX(), point.getY());;
     
 
     AutomaticCacheInterface automaticCacheInterface = ColorCacheFactory::getInstance();;
@@ -112,7 +112,7 @@ this->imageComparatorConstraintsInterface= imageComparatorConstraintsInterface;
     Integer colorInteger = Integer::valueOf(rgb1);;
     
 
-    ColorCacheable colorCacheable = automaticCacheInterface.get(colorInteger) as ColorCacheable;;
+    ColorCacheable colorCacheable = automaticCacheInterface.get(colorInteger);;
     
 
     Color color = colorCacheable.getColor();;
@@ -121,7 +121,7 @@ this->imageComparatorConstraintsInterface= imageComparatorConstraintsInterface;
     Integer colorInteger2 = Integer::valueOf(rgb2);;
     
 
-    ColorCacheable colorCacheable2 = automaticCacheInterface.get(colorInteger) as ColorCacheable;;
+    ColorCacheable colorCacheable2 = automaticCacheInterface.get(colorInteger);;
     
 
     Color color2 = colorCacheable.getColor();;

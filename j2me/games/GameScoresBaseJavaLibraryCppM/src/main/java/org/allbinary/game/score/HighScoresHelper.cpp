@@ -20,13 +20,7 @@
 
             #include <vector>
         
-#include <jsinterop/annotations/JsType.h>
-
-      
 #include <org/allbinary/util/CircularIndexUtil.h>
-
-      
-#include <jsinterop/annotations/JsMethod.h>
 
       
 
@@ -76,7 +70,7 @@ this->circularIndexUtil.setSize(this->highScoresArrayP.size());
         {
 this->circularIndexUtil.next();
     
-highScores= this->highScoresArrayP[this->circularIndexUtil.getIndex()]!;
+highScores= this->highScoresArrayP[this->circularIndexUtil.getIndex()];
     
 index++;
     
@@ -120,7 +114,7 @@ this->lastIndex= this->circularIndexUtil.getIndex();
                         for (
     int32_t index = this->highScoresArrayP.size() -1;index >= 0; index--)
         {
-highScores= this->highScoresArrayP[index]!;
+highScores= this->highScoresArrayP[index];
     
 
                         if(highScores.getTotal() > 0)

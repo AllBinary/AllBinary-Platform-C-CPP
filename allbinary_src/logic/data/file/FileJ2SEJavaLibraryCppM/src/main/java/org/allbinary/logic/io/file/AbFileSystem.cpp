@@ -20,9 +20,9 @@
 
             #include <vector>
         
-            #include "../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/io/File.h>
 
@@ -139,7 +139,7 @@ class AbFileSystem
 
     public: std::string readAsString(std::string fileName){
 
-    std::vector<int8_t> bytes = new Array(1000000);;
+    std::vector<int8_t> bytes = std::vector<int8_t>(1000000);;
     
 
 
@@ -210,7 +210,7 @@ this->logUtil.put(this->commonStrings.EXCEPTION, this, "readAsString", e);
                         
                                     {
                                     
-    InputStream inputStream = (closeable as InputStream);;
+    InputStream inputStream = (*dynamic_cast<InputStream*>(closeable));;
     
 inputStream.close();
     

@@ -21,9 +21,9 @@
         #ifndef ORG_ALLBINARY_BUSINESS_USER_COMMERCE_INVENTORY_ITEM_ITEMFACTORYUNUSED_H
         #define ORG_ALLBINARY_BUSINESS_USER_COMMERCE_INVENTORY_ITEM_ITEMFACTORYUNUSED_H
 
-            #include "../../../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
 
@@ -66,7 +66,7 @@ class ItemFactoryUnused
 
                 //@Throws(MoneyException.constructor)
             
-    public: static TableMappingInterface getInstance(HashMap<any, any> hashMap);
+    public: static TableMappingInterface getInstance(HashMap<Object*, Object*> hashMap);
 
                 //@Throws(Exception.constructor, MoneyException.constructor)
             

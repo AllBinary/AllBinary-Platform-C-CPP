@@ -20,9 +20,9 @@
 
             #include <vector>
         
-            #include "../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/eclipse/swt/SWT.h>
 
@@ -151,7 +151,7 @@ this->logUtil.put(this->commonStrings.EXCEPTION, this, this->commonStrings.CONST
     int32_t size = bufferedImageArray.size();;
     
 
-    std::vector<org::eclipse::swt::graphics::Image> scaledBufferedImageArray = new Array(size);;
+    std::vector<org::eclipse::swt::graphics::Image> scaledBufferedImageArray = std::vector<org::eclipse::swt::graphics::Image>(size);;
     
 
     org::eclipse::swt::graphics::Image bufferedImage;;
@@ -166,7 +166,7 @@ this->logUtil.put(this->commonStrings.EXCEPTION, this, this->commonStrings.CONST
                         for (
     int32_t index = 0;index < size; index++)
         {
-bufferedImage= bufferedImageArray[index]!;
+bufferedImage= bufferedImageArray[index];
     
 imageData= bufferedImage.getImageData();
     
@@ -196,7 +196,7 @@ scaledBufferedImageArray[index]= this->createBufferedImage5(bufferedImage, newWi
     int32_t size = bufferedImageArray.size();;
     
 
-    std::vector<org::eclipse::swt::graphics::Image> scaledBufferedImageArray = new Array(size);;
+    std::vector<org::eclipse::swt::graphics::Image> scaledBufferedImageArray = std::vector<org::eclipse::swt::graphics::Image>(size);;
     
 
     org::eclipse::swt::graphics::Image bufferedImage;;
@@ -211,7 +211,7 @@ scaledBufferedImageArray[index]= this->createBufferedImage5(bufferedImage, newWi
                         for (
     int32_t index = 0;index < size; index++)
         {
-bufferedImage= bufferedImageArray[index]!;
+bufferedImage= bufferedImageArray[index];
     
 imageData= bufferedImage.getImageData();
     
@@ -241,7 +241,7 @@ scaledBufferedImageArray[index]= this->createBufferedImage5(bufferedImage, newWi
     int32_t size = bufferedImageArray.size();;
     
 
-    std::vector<org::eclipse::swt::graphics::Image> scaledBufferedImageArray = new Array(size);;
+    std::vector<org::eclipse::swt::graphics::Image> scaledBufferedImageArray = std::vector<org::eclipse::swt::graphics::Image>(size);;
     
 
 
@@ -250,7 +250,7 @@ scaledBufferedImageArray[index]= this->createBufferedImage5(bufferedImage, newWi
                         for (
     int32_t index = 0;index < size; index++)
         {
-scaledBufferedImageArray[index]= this->createBufferedImage5(bufferedImageArray[index]!, width, height, scale);
+scaledBufferedImageArray[index]= this->createBufferedImage5(bufferedImageArray[index], width, height, scale);
     
 }
 

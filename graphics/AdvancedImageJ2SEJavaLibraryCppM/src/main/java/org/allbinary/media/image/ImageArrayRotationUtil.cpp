@@ -20,9 +20,9 @@
 
             #include <vector>
         
-            #include "../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../java/lang/Integer.h"
+            #include "java/lang/Integer.h"
         
 #include <java/awt/image/BufferedImage.h>
 
@@ -125,7 +125,7 @@ class ImageArrayRotationUtil
         {
 this->logUtil.putF(this->TOTAL_ANGLE +totalAngle, this, this->commonStrings.RUN);
     
-generatedBufferedImage= ImageJ2SERotationUtil::getInstance().getRotatedImage(bufferedImageArray[index]!, totalAngle.intValue());
+generatedBufferedImage= ImageJ2SERotationUtil::getInstance().getRotatedImage(bufferedImageArray[index], totalAngle.intValue());
     
 visitor.visit(generatedBufferedImage, input, index);
     

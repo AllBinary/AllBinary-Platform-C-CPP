@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../../../../java/lang/Long.h"
+            #include "java/lang/Long.h"
         
 #include <org/allbinary/logic/util/event/AllBinaryEventObject.h>
 
@@ -49,8 +49,9 @@ class MotionRectanglesResultsEvent: public AllBinaryEventObject {
 
     private: MotionRectangles motionRectangles;
 
-public: MotionRectanglesResultsEvent(Object* anyType, Long frame, MotionRectangles motionRectangles){
-            super(anyType);
+public: MotionRectanglesResultsEvent(Object* anyType, Long frame, MotionRectangles motionRectangles) : AllBinaryEventObject(anyType){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.

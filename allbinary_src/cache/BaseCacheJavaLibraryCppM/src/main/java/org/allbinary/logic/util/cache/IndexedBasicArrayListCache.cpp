@@ -20,7 +20,7 @@
 
             #include <vector>
         
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <jsinterop/annotations/JsType.h>
 
@@ -121,7 +121,7 @@ this->size= size;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->list.objectArray[index]!;
+                        return this->list.objectArray[index];
     
 }
 

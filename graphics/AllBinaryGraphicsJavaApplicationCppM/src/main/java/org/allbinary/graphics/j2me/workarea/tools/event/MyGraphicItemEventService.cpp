@@ -20,11 +20,11 @@
 
             #include <vector>
         
-            #include "../../../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../../../java/lang/Class.h"
+            #include "java/lang/Class.h"
         
-            #include "../../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 
 
@@ -67,14 +67,14 @@ class MyGraphicItemEventService
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
     public: static void addListener(MyGraphicItemEventListener listener){
-MyGraphicItemEventService::listenerList.add(listener.constructor as Class<any>, listener as java::util::EventListener);
+MyGraphicItemEventService::listenerList.add(listener.getClass(), listener);
     
 }
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
     public: static void removeListener(MyGraphicItemEventListener listener){
-MyGraphicItemEventService::listenerList.remove(listener.constructor as Class<any>, listener as java::util::EventListener);
+MyGraphicItemEventService::listenerList.remove(listener.getClass(), listener);
     
 }
 
@@ -94,14 +94,14 @@ MyGraphicItemEventService::listenerList.remove(listener.constructor as Class<any
     int32_t i = 0;i < listeners.size(); )
         {
 
-                        if(listeners[i] == listeners[i +1]!.constructor)
+                        if(listeners[i] == listeners[i +1].getClass())
                         
                                     {
                                     
                         if(evt.getCommand().compareTo(MyGraphicItemEventService::SELECT) == 0)
                         
                                     {
-                                     = listeners[i +1]! as MyGraphicItemEventListener
+                                     = listeners[i +1]
 .
                     highlight(evt);
     
@@ -112,7 +112,7 @@ MyGraphicItemEventService::listenerList.remove(listener.constructor as Class<any
                         if(evt.getCommand().compareTo(MyGraphicItemEventService::DESELECT) == 0)
                         
                                     {
-                                     = listeners[i +1]! as MyGraphicItemEventListener
+                                     = listeners[i +1]
 .
                     deselect(evt);
     
@@ -123,7 +123,7 @@ MyGraphicItemEventService::listenerList.remove(listener.constructor as Class<any
                         if(evt.getCommand().compareTo(MyGraphicItemEventService::DELETE) == 0)
                         
                                     {
-                                     = listeners[i +1]! as MyGraphicItemEventListener
+                                     = listeners[i +1]
 .
                     delete(evt);
     
@@ -134,7 +134,7 @@ MyGraphicItemEventService::listenerList.remove(listener.constructor as Class<any
                         if(evt.getCommand().compareTo(MyGraphicItemEventService::DUPLICATE) == 0)
                         
                                     {
-                                     = listeners[i +1]! as MyGraphicItemEventListener
+                                     = listeners[i +1]
 .
                     duplicate(evt);
     
@@ -145,7 +145,7 @@ MyGraphicItemEventService::listenerList.remove(listener.constructor as Class<any
                         if(evt.getCommand().compareTo(MyGraphicItemEventService::ROTATE) == 0)
                         
                                     {
-                                     = listeners[i +1]! as MyGraphicItemEventListener
+                                     = listeners[i +1]
 .
                     rotate(evt);
     

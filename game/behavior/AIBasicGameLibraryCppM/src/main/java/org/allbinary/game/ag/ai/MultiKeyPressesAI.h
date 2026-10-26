@@ -23,13 +23,10 @@
 
             #include <vector>
         
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../../../java/lang/Integer.h"
+            #include "java/lang/Integer.h"
         
-#include <java/util/Hashtable.h>
-
-      
 #include <org/allbinary/game/input/GameInput.h>
 
       
@@ -46,6 +43,9 @@
 
       
 #include <org/allbinary/time/TimeDelayHelper.h>
+
+      
+#include <org/allbinary/util/ABHashtable.h>
 
       
 
@@ -74,7 +74,7 @@ class MultiKeyPressesAI: public KeyPressesAI {
 
     private: const GameTickTimeDelayHelper gameTickTimeDelayHelper = GameTickTimeDelayHelperFactory::getInstance();
 
-public: MultiKeyPressesAI(Hashtable<any, any> hashtable, AllBinaryLayer ownerLayerInterface, GameInput gameInput);
+public: MultiKeyPressesAI(ABHashtable<Object*, Object*> hashtable, AllBinaryLayer ownerLayerInterface, GameInput gameInput);
 
                 //@Throws(Exception.constructor)
             

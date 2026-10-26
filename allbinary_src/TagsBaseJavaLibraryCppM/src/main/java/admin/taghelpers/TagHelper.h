@@ -21,7 +21,7 @@
         #ifndef ADMIN_TAGHELPERS_TAGHELPER_H
         #define ADMIN_TAGHELPERS_TAGHELPER_H
 
-            #include "../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
 #include <org/allbinary/string/CommonStrings.h>
 

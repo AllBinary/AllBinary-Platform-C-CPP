@@ -20,9 +20,9 @@
 
             #include <vector>
         
-            #include "../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/awt/image/BufferedImage.h>
 
@@ -58,7 +58,8 @@ class ImageProcessorInput
     private: std::vector<File> files;
 
 public: ImageProcessorInput(std::vector<File> files, std::vector<BufferedImage> bufferedImageArray){
-            super();
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.

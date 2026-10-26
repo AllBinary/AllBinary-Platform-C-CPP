@@ -20,13 +20,10 @@
 
             #include <vector>
         
-            #include "../../../../java/lang/Throwable.h"
+            #include "java/lang/Throwable.h"
         
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-#include <jsinterop/annotations/JsType.h>
-
-      
 #include <javax/microedition/lcdui/Graphics.h>
 
       
@@ -54,15 +51,6 @@
 #include <org/allbinary/util/CircularIndexUtil.h>
 
       
-#include <jsinterop/annotations/JsMethod.h>
-
-      
-#include <jsinterop/annotations/JsConstructor.h>
-
-      
-#include <jsinterop/annotations/JsProperty.h>
-
-      
 
 
 
@@ -86,8 +74,9 @@ class ImageBaseRotationAnimation: public RotationAnimation {
 
     private: Image image;
 
-public: ImageBaseRotationAnimation(Image image, AngleInfo angleInfo, int16_t totalAngle, AnimationBehavior animationBehavior){
-            super(angleInfo, CircularIndexUtil::createInstance(totalAngle /angleInfo.getAngleIncrementInfo().getAngleIncrement()), animationBehavior);
+public: ImageBaseRotationAnimation(Image image, AngleInfo angleInfo, int16_t totalAngle, AnimationBehavior animationBehavior) : RotationAnimation(angleInfo, CircularIndexUtil::createInstance(totalAngle /angleInfo.getAngleIncrementInfo().getAngleIncrement()), animationBehavior){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.

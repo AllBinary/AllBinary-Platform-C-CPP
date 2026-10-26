@@ -21,7 +21,7 @@
         #ifndef ORG_ALLBINARY_LOGIC_JAVA_CHARACTERS_CHARACTERSETDATA_H
         #define ORG_ALLBINARY_LOGIC_JAVA_CHARACTERS_CHARACTERSETDATA_H
 
-            #include "../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
 
 

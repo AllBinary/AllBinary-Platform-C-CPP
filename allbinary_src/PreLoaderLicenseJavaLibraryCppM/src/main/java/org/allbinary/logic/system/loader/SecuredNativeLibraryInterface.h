@@ -21,7 +21,7 @@
         #ifndef ORG_ALLBINARY_LOGIC_SYSTEM_LOADER_SECUREDNATIVELIBRARYINTERFACE_H
         #define ORG_ALLBINARY_LOGIC_SYSTEM_LOADER_SECUREDNATIVELIBRARYINTERFACE_H
 
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 
 

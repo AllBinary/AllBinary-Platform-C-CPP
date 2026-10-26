@@ -20,11 +20,11 @@
 
             #include <vector>
         
-            #include "../../../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../../../java/lang/Integer.h"
+            #include "java/lang/Integer.h"
         
-            #include "../../../../../../../java/lang/Float.h"
+            #include "java/lang/Float.h"
         
 #include <java/io/Serializable.h>
 
@@ -77,7 +77,7 @@ class Basket
             : public Object
         : public BasketInterface, public Serializable {
 
-    private: HashMap<any, any> items = StdUtil::getInstance().createHashMap();
+    private: HashMap<Object*, Object*> items = StdUtil::getInstance().createHashMap();
 
 public: Basket(){
 }
@@ -141,7 +141,7 @@ this->items.remove(id);
 
     public: std::string getTotalWeight(){
 
-    HashMap<any, any> itemsAndNumberInBasket = this->getItems();;
+    HashMap<Object*, Object*> itemsAndNumberInBasket = this->getItems();;
     
 
     Money totalWeight = Money();;
@@ -217,7 +217,7 @@ totalWeight.add(weightFloat.toString());
 }
 
 
-    public: HashMap<any, any> getItems(){
+    public: HashMap<Object*, Object*> getItems(){
 
 
 
@@ -229,7 +229,7 @@ totalWeight.add(weightFloat.toString());
 
     public: Integer getNumberOf(std::string product){
 
-    std::string numStr = this->items.get(product) as string;;
+    std::string numStr = this->items.get(product);;
     
 
 
@@ -244,7 +244,7 @@ totalWeight.add(weightFloat.toString());
             
     public: Money getSubTotal(){
 
-    HashMap<any, any> itemsAndNumberInBasket = this->getItems();;
+    HashMap<Object*, Object*> itemsAndNumberInBasket = this->getItems();;
     
 
     Money subTotal = Money();;
@@ -260,7 +260,7 @@ totalWeight.add(weightFloat.toString());
     InventoryEntityFactory inventoryEntityFactory = InventoryEntityFactory::getInstance();;
     
 
-    InventoryEntity inventoryEntity = inventoryEntityFactory.getInventoryEntityInstance() as InventoryEntity;;
+    InventoryEntity inventoryEntity = inventoryEntityFactory.getInventoryEntityInstance();;
     
 
     std::vector<Object*> itemArray = items.toArray();;

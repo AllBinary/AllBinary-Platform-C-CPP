@@ -21,9 +21,9 @@
         #ifndef ORG_ALLBINARY_BUSINESS_INSTALLER_INITIALIZECLOUD_H
         #define ORG_ALLBINARY_BUSINESS_INSTALLER_INITIALIZECLOUD_H
 
-            #include "../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/globals/PATH_GLOBALS.h>
 

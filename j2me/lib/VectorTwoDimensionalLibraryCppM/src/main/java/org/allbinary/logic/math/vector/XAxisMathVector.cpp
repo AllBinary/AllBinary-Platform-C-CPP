@@ -44,8 +44,9 @@
 
 class XAxisMathVector: public MathVector {
 
-public: XAxisMathVector(BasicDecimal magnitudeBasicDecimal, int32_t direction){
-            super(magnitudeBasicDecimal, direction);
+public: XAxisMathVector(BasicDecimal magnitudeBasicDecimal, int32_t direction) : MathVector(magnitudeBasicDecimal, direction){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.

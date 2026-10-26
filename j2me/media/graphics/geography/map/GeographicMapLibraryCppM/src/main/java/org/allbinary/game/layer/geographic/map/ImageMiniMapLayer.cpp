@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <javax/microedition/lcdui/Graphics.h>
 
@@ -65,8 +65,9 @@ class ImageMiniMapLayer: public MiniMapLayer {
 
     private: Image image = NullImage::NULL_IMAGE;
 
-public: ImageMiniMapLayer(BasicGeographicMap geographicMapInterface, ViewPositionBase viewPosition){
-            super(geographicMapInterface, viewPosition);
+public: ImageMiniMapLayer(BasicGeographicMap geographicMapInterface, ViewPositionBase viewPosition) : MiniMapLayer(geographicMapInterface, viewPosition){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.

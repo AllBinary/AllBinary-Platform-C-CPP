@@ -9,7 +9,7 @@
 
             #include <vector>
         
-            #include "../../../../../java/lang/System.h"
+            #include "java/lang/System.h"
         
 #include <org/allbinary/TsUtil.h>
 

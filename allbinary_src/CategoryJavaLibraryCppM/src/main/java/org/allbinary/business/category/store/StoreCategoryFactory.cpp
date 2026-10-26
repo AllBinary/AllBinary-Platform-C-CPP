@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/business/category/Category.h>
 
@@ -100,13 +100,13 @@ this->transformInfoInterface= transformInfoInterface;
 
         try {
             
-    CategoryPropertiesFactoryInterface categoryPropertiesFactoryInterface = RootStoreCategoryPropertiesFactory(this->transformInfoInterface) as CategoryPropertiesFactoryInterface;;
+    CategoryPropertiesFactoryInterface categoryPropertiesFactoryInterface = RootStoreCategoryPropertiesFactory(this->transformInfoInterface);;
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return Category(categoryPropertiesFactoryInterface) as CategoryInterface;
+                        return Category(categoryPropertiesFactoryInterface);
     
 
                 //: 
@@ -139,13 +139,13 @@ this->transformInfoInterface= transformInfoInterface;
     int32_t level = CategoryUtil::getPathLevel(categoryPath);;
     
 
-    CategoryPropertiesFactoryInterface categoryPropertiesFactoryInterface = RootStoreCategoryPropertiesFactory(this->transformInfoInterface, categoryPath) as CategoryPropertiesFactoryInterface;;
+    CategoryPropertiesFactoryInterface categoryPropertiesFactoryInterface = RootStoreCategoryPropertiesFactory(this->transformInfoInterface, categoryPath);;
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return Category(categoryPropertiesFactoryInterface, level) as CategoryInterface;
+                        return Category(categoryPropertiesFactoryInterface, level);
     
 
                 //: 
@@ -175,7 +175,7 @@ this->transformInfoInterface= transformInfoInterface;
 
         try {
             
-    CategoryPropertiesFactoryInterface categoryPropertiesFactoryInterface = RootStoreCategoryPropertiesFactory(this->transformInfoInterface, node) as CategoryPropertiesFactoryInterface;;
+    CategoryPropertiesFactoryInterface categoryPropertiesFactoryInterface = RootStoreCategoryPropertiesFactory(this->transformInfoInterface, node);;
     
 
     AbPath categoryPath = AbPath(CategoryUtil::getNameFromNode(node), StringUtil::getInstance().EMPTY_STRING);;
@@ -187,7 +187,7 @@ this->transformInfoInterface= transformInfoInterface;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return Category(categoryPropertiesFactoryInterface, level) as CategoryInterface;
+                        return Category(categoryPropertiesFactoryInterface, level);
     
 
                 //: 

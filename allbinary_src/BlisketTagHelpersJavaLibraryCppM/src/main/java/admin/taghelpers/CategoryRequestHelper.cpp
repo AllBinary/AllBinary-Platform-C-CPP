@@ -20,7 +20,7 @@
 
             #include <vector>
         
-            #include "../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
 
@@ -73,6 +73,9 @@
 #include <org/allbinary/data/tree/dom/document/DomDocumentHelper.h>
 
       
+#include <org/allbinary/data/tree/dom/document/XmlDocumentHelper.h>
+
+      
 #include <org/allbinary/logic/communication/log/LogUtil.h>
 
       
@@ -122,7 +125,7 @@ class CategoryRequestHelper: public ModifyTable {
 
     private: PageContext pageContext;
 
-    private: HashMap<any, any> hashMap;
+    private: HashMap<Object*, Object*> hashMap;
 
     private: HttpServletRequest request;
 
@@ -134,10 +137,10 @@ class CategoryRequestHelper: public ModifyTable {
 
     private: TransformInfoInterface transformInfoInterface;
 
-public: CategoryRequestHelper(HashMap<any, any> hashMap, PageContext pageContext){
+public: CategoryRequestHelper(HashMap<Object*, Object*> hashMap, PageContext pageContext){
 
         try {
-            this->request= pageContext.getRequest() as HttpServletRequest;
+            this->request= pageContext.getRequest();
     
 this->pageContext= pageContext;
     
@@ -186,7 +189,7 @@ this->getXmlData();
                         
                                     {
                                     
-    std::string xmlRequest = keyArray[0]! as string;;
+    std::string xmlRequest = keyArray[0];;
     
 
     int32_t index = 1;;
@@ -194,7 +197,7 @@ this->getXmlData();
 
         while(index < size && !xmlRequest.startsWith(CategoryRequestHelper::categoryRequest))
         {
-xmlRequest= keyArray[index]! as string;
+xmlRequest= keyArray[index];
     
 
                         if(xmlRequest.startsWith(CategoryRequestHelper::categoryRequest))
@@ -222,7 +225,7 @@ xmlRequest= keyArray[index]! as string;
                         if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().TAGHELPER))
                         
                                     {
-                                    this->logUtil.putF(DomDocumentHelper::toString(document), this, "getXmlData()");
+                                    this->logUtil.putF(XmlDocumentHelper::toString(document), this, "getXmlData()");
     
 
                                     }
@@ -235,7 +238,7 @@ this->setCategoryLoader(requestNode);
 
     Node categoryNode = DomSearchHelper::getNode(categoryData.NAME, parentCategoryNode.getChildNodes());;
     
-this->categoryInterface= StoreCategoryFactory(this->transformInfoInterface).getRootInstanceFromNode(categoryNode) as CategoryInterface;
+this->categoryInterface= StoreCategoryFactory(this->transformInfoInterface).getRootInstanceFromNode(categoryNode);
     
 this->categoryInterface= this->categoryLoaderInterface.get(this->categoryInterface);
     
@@ -268,7 +271,7 @@ this->logUtil.putF("Loaded Parent Category", this, "getXmlData()");
 
                                     }
                                 
-this->childCategoryInterface= StoreCategoryFactory(this->transformInfoInterface).getInstance(childCategoryNode) as CategoryInterface;
+this->childCategoryInterface= StoreCategoryFactory(this->transformInfoInterface).getInstance(childCategoryNode);
     
 
                         if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().TAGHELPER))
@@ -333,7 +336,7 @@ this->logUtil.putF("Loaded Child Category", this, "getXmlData()");
                                     
     StoreFrontInterface storeFrontInterface = StoreFrontFactory::getInstance(storeName);;
     
-this->transformInfoInterface= TransformInfoBasic(storeFrontInterface, this->hashMap, this->pageContext) as TransformInfoInterface;
+this->transformInfoInterface= TransformInfoBasic(storeFrontInterface, this->hashMap, this->pageContext);
     
 
                         if(this->transformInfoInterface == 
@@ -523,7 +526,7 @@ this->categoryLoaderInterface.delete(this->categoryInterface, this->childCategor
     Document document = CategoryComponent(this->childCategoryInterface).toXmlDoc();;
     
 
-    std::string xmlString = DomDocumentHelper::toString(document);;
+    std::string xmlString = XmlDocumentHelper::toString(document);;
     
 
                         if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGS))

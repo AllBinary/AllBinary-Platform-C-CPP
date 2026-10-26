@@ -20,9 +20,9 @@
 
             #include <vector>
         
-            #include "../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <javax/microedition/lcdui/Font.h>
 
@@ -148,7 +148,7 @@ this->offsetY= 0;
     char aChar;;
     
 
-    std::vector<int32_t> offsetXArray = new Array(size);;
+    std::vector<int32_t> offsetXArray = std::vector<int32_t>(size);;
     
 
 
@@ -279,7 +279,7 @@ PreLogUtil::put(StringMaker().append("Exception: stringLength: ").appendint(stri
                         
                                     {
                                     
-        while(currentLength > 0 && stringArray[index]![offset +currentLength] != ' ')
+        while(currentLength > 0 && stringArray[index][offset +currentLength] != ' ')
         {
 currentLength--;
     

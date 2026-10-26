@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
 #include <org/allbinary/media/graphics/geography/map/GeographicMapCellPosition.h>
 

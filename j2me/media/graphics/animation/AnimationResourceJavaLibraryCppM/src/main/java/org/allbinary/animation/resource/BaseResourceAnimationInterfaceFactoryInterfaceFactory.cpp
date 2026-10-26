@@ -20,16 +20,10 @@
 
             #include <vector>
         
-            #include "../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-#include <jsinterop/annotations/JsType.h>
-
-      
-#include <java/util/Hashtable.h>
-
-      
 #include <org/allbinary/animation/BasicAnimationInterfaceFactoryInterface.h>
 
       
@@ -60,13 +54,7 @@
 #include <org/allbinary/string/CommonStrings.h>
 
       
-#include <jsinterop/annotations/JsMethod.h>
-
-      
-#include <jsinterop/annotations/JsConstructor.h>
-
-      
-#include <jsinterop/annotations/JsProperty.h>
+#include <org/allbinary/util/ABHashtable.h>
 
       
 
@@ -97,17 +85,17 @@ class BaseResourceAnimationInterfaceFactoryInterfaceFactory
 
     protected: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    private: Hashtable<any, any> hashtable;
+    private: ABHashtable<Object*, Object*> hashtable;
 
-    private: Hashtable<any, any> rectangleHashtable;
+    private: ABHashtable<Object*, Object*> rectangleHashtable;
 
-    private: Hashtable<any, any> rectangleArrayOfArraysHashtable;
+    private: ABHashtable<Object*, Object*> rectangleArrayOfArraysHashtable;
 
     private: std::string name;
 
     private: bool initialized= false;
 
-public: BaseResourceAnimationInterfaceFactoryInterfaceFactory(std::string name, Hashtable<any, any> hashtable, Hashtable<any, any> rectangleHashtable, Hashtable<any, any> rectangleArrayHashtable){
+public: BaseResourceAnimationInterfaceFactoryInterfaceFactory(std::string name, ABHashtable<Object*, Object*> hashtable, ABHashtable<Object*, Object*> rectangleHashtable, ABHashtable<Object*, Object*> rectangleArrayHashtable){
 this->hashtable= hashtable;
     
 this->rectangleHashtable= rectangleHashtable;
@@ -193,7 +181,7 @@ this->hashtable.put(resource, animationInterfaceFactoryInterface);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return basicAnimationInterfaceFactoryInterfaceCanBeNull as BasicAnimationInterfaceFactoryInterface;
+                        return *dynamic_cast<BasicAnimationInterfaceFactoryInterface*>(basicAnimationInterfaceFactoryInterfaceCanBeNull);
     
 }
 
@@ -223,7 +211,7 @@ this->hashtable.put(resource, animationInterfaceFactoryInterface);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return rectangleCanBeNull as Rectangle;
+                        return *dynamic_cast<Rectangle*>(rectangleCanBeNull);
     
 }
 
@@ -240,11 +228,36 @@ this->rectangleHashtable.put(resource, rectangle);
             
     public: std::vector<std::vector<Rectangle>> getRectangleArrayOfArrays(std::string resource){
 
+    Object* valueCanBeNull = this->rectangleArrayOfArraysHashtable.get(resource);;
+    
+
+                        if(valueCanBeNull != 
+                                    nullptr
+                                )
+                        
+                                    {
+                                    
+    std::vector<std::vector<Rectangle>> rectangleArrayOfArrays = valueCanBeNull as std::vector<Rectangle>[];;
+    
+
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->rectangleArrayOfArraysHashtable.get(resource)as std::vector<Rectangle>[];
+                        return rectangleArrayOfArrays;
     
+
+                                    }
+                                
+                        else {
+                            
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return RectangleFactory::ARRAY_OF_ARRAYS;
+    
+
+                        }
+                            
 }
 
 
@@ -301,12 +314,12 @@ this->rectangleArrayOfArraysHashtable.put(resource, rectangleArrayOfArrays);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return StringMaker().append(this->constructor.name.toString()!).append(CommonSeps::getInstance().SEMICOLON).append(CommonSeps::getInstance().SPACE).append(this->name).toString();;
+                        return StringMaker().append(this->constructor.name.toString()).append(CommonSeps::getInstance().SEMICOLON).append(CommonSeps::getInstance().SPACE).append(this->name).toString();;
     
 }
 
 
-    public: Hashtable<any, any> getHashtable(){
+    public: ABHashtable<Object*, Object*> getHashtable(){
 
 
 
@@ -316,7 +329,7 @@ this->rectangleArrayOfArraysHashtable.put(resource, rectangleArrayOfArrays);
 }
 
 
-    public: Hashtable<any, any> getRectangleHashtable(){
+    public: ABHashtable<Object*, Object*> getRectangleHashtable(){
 
 
 
@@ -326,7 +339,7 @@ this->rectangleArrayOfArraysHashtable.put(resource, rectangleArrayOfArrays);
 }
 
 
-    public: Hashtable<any, any> getRectangleArrayOfArraysHashtable(){
+    public: ABHashtable<Object*, Object*> getRectangleArrayOfArraysHashtable(){
 
 
 

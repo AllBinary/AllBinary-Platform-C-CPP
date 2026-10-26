@@ -18,13 +18,7 @@
 
 
 
-#include <jsinterop/annotations/JsType.h>
-
-      
 #include <org/allbinary/graphics/paint/Paintable.h>
-
-      
-#include <jsinterop/annotations/JsMethod.h>
 
       
 

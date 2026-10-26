@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
 
@@ -47,7 +47,7 @@ class PaymentGatewayInterfaceFactoryInterface {
 
                 //@Throws(Exception.constructor)
             
-    PaymentGatewayInterface getInstance(HashMap<any, any> hashMap)
+    PaymentGatewayInterface getInstance(HashMap<Object*, Object*> hashMap)
 
 };
 

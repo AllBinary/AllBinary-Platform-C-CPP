@@ -23,19 +23,10 @@
 
             #include <vector>
         
-#include <jsinterop/annotations/JsType.h>
-
-      
 #include <org/allbinary/game/input/LocalPlayerInputIdFactory.h>
 
       
 #include <org/allbinary/logic/util/event/EventListenerInterface.h>
-
-      
-#include <jsinterop/annotations/JsMethod.h>
-
-      
-#include <jsinterop/annotations/JsConstructor.h>
 
       
 

@@ -18,11 +18,8 @@
 
 
 
-            #include "../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-#include <jsinterop/annotations/JsType.h>
-
-      
 #include <org/allbinary/game/configuration/feature/Features.h>
 
       
@@ -39,15 +36,6 @@
 
       
 #include <org/allbinary/util/BasicArrayList.h>
-
-      
-#include <jsinterop/annotations/JsMethod.h>
-
-      
-#include <jsinterop/annotations/JsConstructor.h>
-
-      
-#include <jsinterop/annotations/JsProperty.h>
 
       
 
@@ -168,7 +156,7 @@ this->gameKeyEventList.clear();
                         for (
     int32_t index = list.size();--index >= 0; )
         {
-gameKeyEvent= list.objectArray[index]! as GameKeyEvent;
+gameKeyEvent= list.objectArray[index];
     
 
                         if(gameKeyEvent.getSourceId() != 1)

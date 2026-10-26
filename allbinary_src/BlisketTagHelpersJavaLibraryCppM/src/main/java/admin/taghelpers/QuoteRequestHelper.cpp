@@ -18,7 +18,7 @@
 
 
 
-            #include "../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
 
@@ -86,16 +86,16 @@ class QuoteRequestHelper: public ModifyTable {
 
     private: QuoteRequest quoteRequest;
 
-public: QuoteRequestHelper(HashMap<any, any> hashMap, PageContext pageContext){
+public: QuoteRequestHelper(HashMap<Object*, Object*> hashMap, PageContext pageContext){
 
-    HttpServletRequest request = pageContext.getRequest() as HttpServletRequest;;
+    HttpServletRequest request = pageContext.getRequest();;
     
 this->weblisketSession= WeblisketSession(hashMap, pageContext);
     
 this->quoteRequest= QuoteRequest(this->weblisketSession.getUserName(), request);
     
 
-    std::string storeName = hashMap.get(StoreFrontData::getInstance().NAME) as string;;
+    std::string storeName = hashMap.get(StoreFrontData::getInstance().NAME);;
     
 
                         if(true)
@@ -186,7 +186,7 @@ QuoteRequestEntityFactory::getInstance().getQuoteRequestEntityInstance().insert(
 
         try {
             
-    HashMap<any, any> values = this->quoteRequest.toHashMap();;
+    HashMap<Object*, Object*> values = this->quoteRequest.toHashMap();;
     
 QuoteRequestEntityFactory::getInstance().getQuoteRequestEntityInstance().update(this->quoteRequest.getUserName(), values);
     

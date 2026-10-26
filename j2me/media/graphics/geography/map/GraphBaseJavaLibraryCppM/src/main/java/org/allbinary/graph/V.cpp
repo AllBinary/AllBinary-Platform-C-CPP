@@ -4,14 +4,8 @@
 
 
 
-            #include "../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-#include <jsinterop/annotations/JsType.h>
-
-      
-#include <jsinterop/annotations/JsMethod.h>
-
-      
 
 
 

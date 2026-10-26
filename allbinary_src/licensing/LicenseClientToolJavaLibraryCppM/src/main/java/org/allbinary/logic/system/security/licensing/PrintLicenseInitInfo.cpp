@@ -20,11 +20,11 @@
 
             #include <vector>
         
-            #include "../../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../../../../java/lang/System.h"
+            #include "java/lang/System.h"
         
 #include <org/allbinary/business/init/LicenseInitInfo.h>
 

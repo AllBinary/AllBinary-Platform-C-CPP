@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
 
@@ -91,14 +91,15 @@ class InsertHeaderValidationView: public TopBarView, public ValidationComponentI
 
     private: const std::string LOGOPATH = "logo/";
 
-public: InsertHeaderValidationView(TransformInfoInterface transformInfoInterface){
-            super(transformInfoInterface);
+public: InsertHeaderValidationView(TransformInfoInterface transformInfoInterface) : TopBarView(transformInfoInterface){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
                     
 
-    HashMap<any, any> multipartRequestHashMap = MultipartRequestParams(this->getPageContext()).toHashMap();;
+    HashMap<Object*, Object*> multipartRequestHashMap = MultipartRequestParams(this->getPageContext()).toHashMap();;
     
 
     StoreFrontInterface storeFrontInterface = StoreFrontFactory::getInstance(this->getWeblisketSession().getStoreName());;
@@ -144,7 +145,7 @@ this->heading= HeadingValidation(multipartRequestHashMap);
                         if(isValid == Boolean::TRUE)
                         
                                     {
-                                    CustomizerUtil::getInstance().insert(this->getTransformInfoInterface(), this as DomNodeInterface);
+                                    CustomizerUtil::getInstance().insert(this->getTransformInfoInterface(), this);
     
 
                                     }

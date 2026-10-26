@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
 #include <org/allbinary/util/BasicArrayList.h>
 
@@ -87,7 +87,7 @@ TsUtil::getInstance().hashCode(AcceptableResponseFactory::getInstance().HTML);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->candidateVector.get(index) as string;
+                        return this->candidateVector.get(index);
     
 }
 
@@ -97,7 +97,7 @@ TsUtil::getInstance().hashCode(AcceptableResponseFactory::getInstance().HTML);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->tagNameVector.get(index) as string;
+                        return this->tagNameVector.get(index);
     
 }
 

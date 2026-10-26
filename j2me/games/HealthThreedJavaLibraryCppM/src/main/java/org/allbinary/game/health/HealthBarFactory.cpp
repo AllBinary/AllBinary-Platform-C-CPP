@@ -18,9 +18,9 @@
 
 
 
-            #include "../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/graphics/opengles/OpenGLFeatureUtil.h>
 
@@ -69,7 +69,7 @@ class HealthBarFactory
     FeaturedAnimationInterfaceFactoryInterfaceFactory featuredAnimationInterfaceFactoryInterfaceFactory = FeaturedAnimationInterfaceFactoryInterfaceFactory::getInstance();;
     
 
-    HealthBarAnimationInterfaceFactory healthBarAnimationInterfaceFactory = featuredAnimationInterfaceFactoryInterfaceFactory.get(Health::NAME) as HealthBarAnimationInterfaceFactory;;
+    HealthBarAnimationInterfaceFactory healthBarAnimationInterfaceFactory = featuredAnimationInterfaceFactoryInterfaceFactory.get(Health::NAME);;
     
 
 

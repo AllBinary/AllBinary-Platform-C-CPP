@@ -20,9 +20,6 @@
 
             #include <vector>
         
-#include <jsinterop/annotations/JsType.h>
-
-      
 #include <javax/microedition/lcdui/Font.h>
 
       
@@ -53,6 +50,9 @@
 #include <org/allbinary/graphics/color/BasicColorFactory.h>
 
       
+#include <org/allbinary/graphics/color/BasicColorUtil.h>
+
+      
 #include <org/allbinary/logic/NullUtil.h>
 
       
@@ -75,15 +75,6 @@
 
       
 #include <org/allbinary/util/BasicArrayList.h>
-
-      
-#include <jsinterop/annotations/JsMethod.h>
-
-      
-#include <jsinterop/annotations/JsConstructor.h>
-
-      
-#include <jsinterop/annotations/JsProperty.h>
 
       
 
@@ -133,10 +124,9 @@ class InputMappingHelpPaintable: public HelpPaintable {
 
     private: std::vector<BasicArrayList> keyMappingArray = {};
 
-    private: std::vector<BasicColor> actionBasicColor = {};
+    private: std::vector<BasicColor> actionBasicColor = BasicColorUtil::getInstance().ZERO_ARRAY;
 
-    private: std::vector<std::vector<BasicColor>> inputBasicColorArray = new Array(0).fill(null).map(() => new Array(0).fill(0))
-                                                            ;
+    private: std::vector<std::vector<BasicColor>> inputBasicColorArray = std::vector<std::vector<BasicColor>>(0, std::vector<BasicColor>(0));
 
     private: BasicColor selectedBasicColor;
 
@@ -155,8 +145,7 @@ class UpdateMyFontProperties
 
     std::vector<std::vector<int32_t>> inputDeltaXArray = NullUtil::getInstance().NULL_INT_ARRAY_ARRAY;
 
-    std::vector<std::vector<std::string>> sepArray = new Array(0).fill(null).map(() => new Array(0).fill(0))
-                                                            ;
+    std::vector<std::vector<std::string>> sepArray = std::vector<std::vector<std::string>>(0, std::vector<std::string>(0));
 
     std::vector<std::vector<int32_t>> sepWidthArray = NullUtil::getInstance().NULL_INT_ARRAY_ARRAY;
 
@@ -167,8 +156,9 @@ class UpdateMyFontProperties
             
     private: updateMyFontProperties = UpdateMyFontProperties();
 
-protected: InputMappingHelpPaintable(std::vector<GameInputMapping> gameInputMappingArray, BasicColor backgroundBasicColor, BasicColor basicColor){
-            super("Input Mapping", backgroundBasicColor, basicColor);
+protected: InputMappingHelpPaintable(std::vector<GameInputMapping> gameInputMappingArray, BasicColor backgroundBasicColor, BasicColor basicColor) : HelpPaintable("Input Mapping", backgroundBasicColor, basicColor){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -213,18 +203,17 @@ updateMyFontProperties.charHeight= font.getHeight();
 
     int32_t size = inputInfo.size();;
     
-updateMyFontProperties.actionStringArray= new Array(size);
+updateMyFontProperties.actionStringArray= std::vector<std::string>(size);
     
-updateMyFontProperties.keymappingBeginWidthArray= new Array(size);
+updateMyFontProperties.keymappingBeginWidthArray= std::vector<int32_t>(size);
     
-updateMyFontProperties.actionStringDeltaXArray= new Array(size);
+updateMyFontProperties.actionStringDeltaXArray= std::vector<int32_t>(size);
     
-updateMyFontProperties.inputDeltaXArray= new Array(size).fill(null).map(() => new Array(0).fill(0));
+updateMyFontProperties.inputDeltaXArray= std::vector<std::vector<int32_t>>(size, std::vector<int32_t>(0));
     
-updateMyFontProperties.sepArray= new Array(size).fill(null).map(() => new Array(0).fill(0))
-                                                            ;
+updateMyFontProperties.sepArray= std::vector<std::vector<std::string>>(size, std::vector<std::string>(0));
     
-updateMyFontProperties.sepWidthArray= new Array(size).fill(null).map(() => new Array(0).fill(0));
+updateMyFontProperties.sepWidthArray= std::vector<std::vector<int32_t>>(size, std::vector<int32_t>(0));
     
 
     BasicArrayList list;;
@@ -248,29 +237,29 @@ updateMyFontProperties.sepWidthArray= new Array(size).fill(null).map(() => new A
                         for (
     int32_t index = 0;index < size; index++)
         {
-list= this->keyMappingArray[index]!;
+list= this->keyMappingArray[index];
     
 keyMappings= this->get(list);
     
 stringMaker.delete(0, stringMaker.length());
     
-actionString= stringMaker.append(inputInfo[index]!).append(commonSeps.COLON).append(commonSeps.SPACE).append(commonSeps.SPACE).toString();
+actionString= stringMaker.append(inputInfo[index]).append(commonSeps.COLON).append(commonSeps.SPACE).append(commonSeps.SPACE).toString();
     
 updateMyFontProperties.actionStringArray[index]= actionString;
     
 stringMaker.delete(0, stringMaker.length());
     
-updateMyFontProperties.keymappingBeginWidthArray[index]= (font.stringWidth(stringMaker.append(updateMyFontProperties.actionStringArray[index]!).append(keyMappings).toString())>>1);
+updateMyFontProperties.keymappingBeginWidthArray[index]= (font.stringWidth(stringMaker.append(updateMyFontProperties.actionStringArray[index]).append(keyMappings).toString())>>1);
     
 updateMyFontProperties.actionStringDeltaXArray[index]= font.stringWidth(actionString);
     
 size2= list.size();
     
-updateMyFontProperties.inputDeltaXArray[index]= new Array(size2);
+updateMyFontProperties.inputDeltaXArray[index]= std::vector<int32_t>(size2);
     
-updateMyFontProperties.sepArray[index]= new Array(size2);
+updateMyFontProperties.sepArray[index]= std::vector<std::string>(size2);
     
-updateMyFontProperties.sepWidthArray[index]= new Array(size2);
+updateMyFontProperties.sepWidthArray[index]= std::vector<int32_t>(size2);
     
 
 
@@ -279,11 +268,11 @@ updateMyFontProperties.sepWidthArray[index]= new Array(size2);
                         for (
     int32_t index2 = 0;index2 < size2; index2++)
         {
-input= list.objectArray[index2]! as Input;
+input= list.objectArray[index2];
     
-updateMyFontProperties.inputDeltaXArray[index]![index2]= font.stringWidth(input.getName());
+updateMyFontProperties.inputDeltaXArray[index][index2]= font.stringWidth(input.getName());
     
-updateMyFontProperties.sepArray[index]![index2]= EMPTY_STRING;
+updateMyFontProperties.sepArray[index][index2]= EMPTY_STRING;
     
 
                         if(index2 +1 < list.size())
@@ -293,7 +282,7 @@ updateMyFontProperties.sepArray[index]![index2]= EMPTY_STRING;
                         if(list.size() == 2)
                         
                                     {
-                                    updateMyFontProperties.sepArray[index]![index2]= InputMappingHelpPaintable::AND;
+                                    updateMyFontProperties.sepArray[index][index2]= InputMappingHelpPaintable::AND;
     
 
                                     }
@@ -303,13 +292,13 @@ updateMyFontProperties.sepArray[index]![index2]= EMPTY_STRING;
                         if(index2 +2 == list.size())
                         
                                     {
-                                    updateMyFontProperties.sepArray[index]![index2]= InputMappingHelpPaintable::MORE_THAN_TWO_IN_LIST_AND;
+                                    updateMyFontProperties.sepArray[index][index2]= InputMappingHelpPaintable::MORE_THAN_TWO_IN_LIST_AND;
     
 
                                     }
                                 
                         else {
-                            updateMyFontProperties.sepArray[index]![index2]= InputMappingHelpPaintable::SEP;
+                            updateMyFontProperties.sepArray[index][index2]= InputMappingHelpPaintable::SEP;
     
 
                         }
@@ -321,10 +310,10 @@ updateMyFontProperties.sepArray[index]![index2]= EMPTY_STRING;
                                     }
                                 
 
-                        if(updateMyFontProperties.sepArray[index]![index2] != EMPTY_STRING)
+                        if(updateMyFontProperties.sepArray[index][index2] != EMPTY_STRING)
                         
                                     {
-                                    updateMyFontProperties.sepWidthArray[index]![index2]= font.stringWidth(updateMyFontProperties.sepArray[index]![index2]!);
+                                    updateMyFontProperties.sepWidthArray[index][index2]= font.stringWidth(updateMyFontProperties.sepArray[index][index2]);
     
 
                                     }
@@ -353,17 +342,16 @@ this->logUtil.putF(stringMaker.append(CommonLabels::getInstance().START_LABEL).a
     int32_t size = this->gameInputMappingArray.size();;
     
 
-    std::vector<std::string> keyInfo = new Array(size);;
+    std::vector<std::string> keyInfo = std::vector<std::string>(size);;
     
 
-    std::vector<BasicArrayList> keyMappingArray = new Array(size);;
+    std::vector<BasicArrayList> keyMappingArray = std::vector<BasicArrayList>(size);;
     
 
-    std::vector<BasicColor> actionBasicColor = new Array(size);;
+    std::vector<BasicColor> actionBasicColor = std::vector<BasicColor>(size);;
     
 
-    std::vector<std::vector<BasicColor>> inputBasicColorArray = new Array(size)
-                                                            ;;
+    std::vector<std::vector<BasicColor>> inputBasicColorArray = std::vector<std::vector<BasicColor>>(size);;
     
 
     GameInputMapping gameInputMapping;;
@@ -381,7 +369,7 @@ this->logUtil.putF(stringMaker.append(CommonLabels::getInstance().START_LABEL).a
                         for (
     int32_t index = 0;index < size; index++)
         {
-gameInputMapping= this->gameInputMappingArray[index]!;
+gameInputMapping= this->gameInputMappingArray[index];
     
 gameKey= gameInputMapping.getGameKey();
     
@@ -390,7 +378,7 @@ list= gameKeyMapping.getInputMapping().getMappedInput(gameKey);
 
     int32_t size2 = list.size();;
     
-inputBasicColorArray[index]= new Array(size2);
+inputBasicColorArray[index]= std::vector<BasicColor>(size2);
     
 
 
@@ -399,7 +387,7 @@ inputBasicColorArray[index]= new Array(size2);
                         for (
     int32_t index2 = 0;index2 < size2; index2++)
         {
-inputBasicColorArray[index]![index2]= this->basicColor;
+inputBasicColorArray[index][index2]= this->basicColor;
     
 }
 
@@ -424,7 +412,7 @@ actionBasicColor[index]= this->selectedBasicColor;
     
 this->logUtil.putF(stringMaker.append("Found: selected Input: ").append(this->stringUtil.toString(selectedInput)).toString(), this, this->commonStrings.UPDATE);
     
-inputBasicColorArray[index]![indexOfSelectedInput]= this->selectedBasicColor;
+inputBasicColorArray[index][indexOfSelectedInput]= this->selectedBasicColor;
     
 
                                     }
@@ -474,7 +462,7 @@ this->myFontProcessor= this->updateMyFontProcessor;
                         for (
     int32_t index = 0;index < size; index++)
         {
-key= keyList.objectArray[index]! as Input;
+key= keyList.objectArray[index];
     
 stringBuffer.append(key.getName());
     
@@ -575,19 +563,19 @@ y= (index +3) *this->updateMyFontProperties.charHeight;
     
 deltaX= 0;
     
-list= this->keyMappingArray[index]!;
+list= this->keyMappingArray[index];
     
 size2= list.size();
     
-beginWidth= this->updateMyFontProperties.keymappingBeginWidthArray[index]!;
+beginWidth= this->updateMyFontProperties.keymappingBeginWidthArray[index];
     
-graphics.setColor(this->actionBasicColor[index]!.intValue());
+graphics.setColor(this->actionBasicColor[index].intValue());
     
-actionString= this->updateMyFontProperties.actionStringArray[index]!;
+actionString= this->updateMyFontProperties.actionStringArray[index];
     
 graphics.drawString(actionString, halfWidth -beginWidth +deltaX, y, this->anchor);
     
-deltaX += this->updateMyFontProperties.actionStringDeltaXArray[index]!;
+deltaX += this->updateMyFontProperties.actionStringDeltaXArray[index];
     
 
 
@@ -596,21 +584,21 @@ deltaX += this->updateMyFontProperties.actionStringDeltaXArray[index]!;
                         for (
     int32_t index2 = 0;index2 < size2; index2++)
         {
-input= list.objectArray[index2]! as Input;
+input= list.objectArray[index2];
     
-graphics.setColor(this->inputBasicColorArray[index]![index2]!.intValue());
+graphics.setColor(this->inputBasicColorArray[index][index2].intValue());
     
 graphics.drawString(input.getName(), halfWidth -beginWidth +deltaX, y, this->anchor);
     
-deltaX += this->updateMyFontProperties.inputDeltaXArray[index]![index2]!;
+deltaX += this->updateMyFontProperties.inputDeltaXArray[index][index2];
     
-sep= this->updateMyFontProperties.sepArray[index]![index2]!;
+sep= this->updateMyFontProperties.sepArray[index][index2];
     
 graphics.setColor(this->basicColor.intValue());
     
 graphics.drawString(sep, halfWidth -beginWidth +deltaX, y, this->anchor);
     
-deltaX += this->updateMyFontProperties.sepWidthArray[index]![index2]!;
+deltaX += this->updateMyFontProperties.sepWidthArray[index][index2];
     
 }
 

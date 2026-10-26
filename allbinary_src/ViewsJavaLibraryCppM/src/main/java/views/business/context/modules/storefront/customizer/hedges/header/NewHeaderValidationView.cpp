@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/data/tree/dom/DomNodeInterface.h>
 
@@ -71,8 +71,9 @@ class NewHeaderValidationView: public TopBarView, public ValidationComponentInte
 
     protected: const LogUtil logUtil = LogUtil::getInstance();
 
-public: NewHeaderValidationView(TransformInfoInterface transformInfoInterface){
-            super(transformInfoInterface);
+public: NewHeaderValidationView(TransformInfoInterface transformInfoInterface) : TopBarView(transformInfoInterface){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -97,7 +98,7 @@ this->heading= HeadingValidation();
     public: Boolean isValid(){
 
         try {
-            CustomizerUtil::getInstance().insert(this->getTransformInfoInterface(), this as DomNodeInterface);
+            CustomizerUtil::getInstance().insert(this->getTransformInfoInterface(), this);
     
 
 

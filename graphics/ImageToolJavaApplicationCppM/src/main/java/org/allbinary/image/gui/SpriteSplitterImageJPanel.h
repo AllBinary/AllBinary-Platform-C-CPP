@@ -23,11 +23,11 @@
 
             #include <vector>
         
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../../java/lang/Integer.h"
+            #include "java/lang/Integer.h"
         
-            #include "../../../../java/lang/Thread.h"
+            #include "java/lang/Thread.h"
         
 #include <java/awt.h>
 
@@ -170,11 +170,11 @@ public: SpriteSplitterImageJPanel(ImageProcessorInput imageProcessorInput);
 
     private: javax::swing::JPanel jPanel2;
 
-    private: javax::swing::JComboBox<string> spriteTypeJComboBox;
+    private: javax::swing::JComboBox<std::string> spriteTypeJComboBox;
 
-    private: javax::swing::JComboBox<string> totalAnimationsJComboBox;
+    private: javax::swing::JComboBox<std::string> totalAnimationsJComboBox;
 
-    private: javax::swing::JComboBox<string> totalFramesJComboBox;
+    private: javax::swing::JComboBox<std::string> totalFramesJComboBox;
 
     private: javax::swing::JTextField widthReductionTextField;
 

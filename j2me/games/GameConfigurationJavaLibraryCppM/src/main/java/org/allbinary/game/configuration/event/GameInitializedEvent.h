@@ -21,9 +21,6 @@
         #ifndef ORG_ALLBINARY_GAME_CONFIGURATION_EVENT_GAMEINITIALIZEDEVENT_H
         #define ORG_ALLBINARY_GAME_CONFIGURATION_EVENT_GAMEINITIALIZEDEVENT_H
 
-#include <jsinterop/annotations/JsType.h>
-
-      
 #include <org/allbinary/game/resource/ResourceLoadingLevel.h>
 
       
@@ -31,12 +28,6 @@
 
       
 #include <org/allbinary/logic/util/event/AllBinaryEventObject.h>
-
-      
-#include <jsinterop/annotations/JsMethod.h>
-
-      
-#include <jsinterop/annotations/JsConstructor.h>
 
       
 

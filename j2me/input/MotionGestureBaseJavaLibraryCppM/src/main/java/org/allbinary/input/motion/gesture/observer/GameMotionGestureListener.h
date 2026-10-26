@@ -21,13 +21,10 @@
         #ifndef ORG_ALLBINARY_INPUT_MOTION_GESTURE_OBSERVER_GAMEMOTIONGESTURELISTENER_H
         #define ORG_ALLBINARY_INPUT_MOTION_GESTURE_OBSERVER_GAMEMOTIONGESTURELISTENER_H
 
-            #include "../../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-#include <jsinterop/annotations/JsType.h>
-
-      
 #include <org/allbinary/input/motion/gesture/MotionGestureInput.h>
 
       

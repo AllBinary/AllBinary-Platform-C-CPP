@@ -20,7 +20,7 @@
 
             #include <vector>
         
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <javax/microedition/lcdui/Graphics.h>
 
@@ -60,8 +60,9 @@ class SimultaneousCompoundIndexedAnimation: public IndexedAnimation {
 
     private: std::vector<Animation> animationInterfaceArray;
 
-public: SimultaneousCompoundIndexedAnimation(std::vector<Animation> animationInterfaceArray, AnimationBehavior animationBehavior){
-            super(animationBehavior);
+public: SimultaneousCompoundIndexedAnimation(std::vector<Animation> animationInterfaceArray, AnimationBehavior animationBehavior) : IndexedAnimation(animationBehavior){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -82,7 +83,7 @@ this->animationInterfaceArray= animationInterfaceArray;
                         for (
     int32_t index = this->animationInterfaceArray.size();--index >= 0; )
         {
-indexedAnimation= this->animationInterfaceArray[index]! as IndexedAnimation;
+indexedAnimation= this->animationInterfaceArray[index];
     
 indexedAnimation.setFrame(frameIndex);
     
@@ -93,7 +94,7 @@ indexedAnimation.setFrame(frameIndex);
 
     public: int32_t getFrame(){
 
-    IndexedAnimation indexedAnimation = this->animationInterfaceArray[0]! as IndexedAnimation;;
+    IndexedAnimation indexedAnimation = this->animationInterfaceArray[0];;
     
 
 
@@ -106,7 +107,7 @@ indexedAnimation.setFrame(frameIndex);
 
     public: int32_t getSize(){
 
-    IndexedAnimation indexedAnimation = this->animationInterfaceArray[0]! as IndexedAnimation;;
+    IndexedAnimation indexedAnimation = this->animationInterfaceArray[0];;
     
 
 
@@ -128,7 +129,7 @@ indexedAnimation.setFrame(frameIndex);
                         for (
     int32_t index = this->animationInterfaceArray.size();--index >= 0; )
         {
-indexedAnimation= this->animationInterfaceArray[index]! as IndexedAnimation;
+indexedAnimation= this->animationInterfaceArray[index];
     
 indexedAnimation.previousFrame();
     
@@ -161,7 +162,7 @@ indexedAnimation.previousFrame();
                         for (
     int32_t index = this->animationInterfaceArray.size();--index >= 0; )
         {
-this->animationInterfaceArray[index]!.nextFrame();
+this->animationInterfaceArray[index].nextFrame();
     
 }
 
@@ -179,7 +180,7 @@ this->animationInterfaceArray[index]!.nextFrame();
                         for (
     int32_t index = 0;index < size; index++)
         {
-this->animationInterfaceArray[index]!.paintXY(graphics, x, y);
+this->animationInterfaceArray[index].paintXY(graphics, x, y);
     
 }
 
@@ -197,7 +198,7 @@ this->animationInterfaceArray[index]!.paintXY(graphics, x, y);
                         for (
     int32_t index = 0;index < size; index++)
         {
-this->animationInterfaceArray[index]!.paintThreedXYZ(graphics, x, y, z);
+this->animationInterfaceArray[index].paintThreedXYZ(graphics, x, y, z);
     
 }
 

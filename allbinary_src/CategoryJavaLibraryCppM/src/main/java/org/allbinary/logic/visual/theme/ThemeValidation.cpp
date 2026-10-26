@@ -18,9 +18,9 @@
 
 
 
-            #include "../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
 
@@ -181,11 +181,11 @@ this->init();
 }
 
 
-public: ThemeValidation(TransformInfoInterface transformInfoInterface, HashMap<any, any> hashMap){
+public: ThemeValidation(TransformInfoInterface transformInfoInterface, HashMap<Object*, Object*> hashMap){
 this->transformInfoInterface= transformInfoInterface;
     
 
-    AbPath categoryThemeAbPath = AbPath(hashMap.get(ThemeData::getInstance().PATH) as string, StringUtil::getInstance().EMPTY_STRING);;
+    AbPath categoryThemeAbPath = AbPath(hashMap.get(ThemeData::getInstance().PATH), StringUtil::getInstance().EMPTY_STRING);;
     
 
     AbPathData pathData = AbPathData::getInstance();;
@@ -264,7 +264,7 @@ this->init(storeThemeCategoryInterface);
     CategoryLoaderInterface categoryLoaderInterface = CategoryLoaderFactory::getInstance(categoryFactoryInterface);;
     
 
-    StoreThemeCategoryInterface rootStoreThemeCategoryInterface = categoryFactoryInterface.getRootInstance() as StoreThemeCategoryInterface;;
+    StoreThemeCategoryInterface rootStoreThemeCategoryInterface = categoryFactoryInterface.getRootInstance();;
     
 this->init(rootStoreThemeCategoryInterface);
     
@@ -360,7 +360,7 @@ this->styleValidationInterface= CssStyleValidation(document);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->styleValidationInterface as CssStyleValidation;
+                        return this->styleValidationInterface;
     
 }
 
@@ -535,12 +535,12 @@ vector.add(this->getPreviewImagePath());
 }
 
 
-    public: HashMap<any, any> toHashMap(){
+    public: HashMap<Object*, Object*> toHashMap(){
 
     ThemeData themeData = ThemeData::getInstance();;
     
 
-    HashMap<any, any> hashMap = StdUtil::getInstance().createHashMap();;
+    HashMap<Object*, Object*> hashMap = StdUtil::getInstance().createHashMap();;
     
 hashMap.put(themeData.NAME, this->getName());
     
@@ -566,7 +566,7 @@ hashMap.put(themeData.PREVIEW_IMAGE_PATH, this->getPreviewImagePath());
     Node node = ModDomHelper::createNameValueNodes(document, ThemeData::getInstance().NAME, this->toHashMap());;
     
 
-    DomNodeInterface domNodeInterface = this->getCssStyleValidation() as DomNodeInterface;;
+    DomNodeInterface domNodeInterface = this->getCssStyleValidation();;
     
 node.appendChild(domNodeInterface.toXmlNode(document));
     

@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
 
@@ -78,7 +78,7 @@ public: ThemesValidation(Node node){
 }
 
 
-public: ThemesValidation(HashMap<any, any> hashMap){
+public: ThemesValidation(HashMap<Object*, Object*> hashMap){
 }
 
 
@@ -139,7 +139,7 @@ public: ThemesValidation(HashMap<any, any> hashMap){
     int32_t i = 0;i < size; i++)
         {
 
-    DomNodeInterface themeDomNodeInterface = this->themeVector.get(i) as DomNodeInterface;;
+    DomNodeInterface themeDomNodeInterface = this->themeVector.get(i);;
     
 node.appendChild(themeDomNodeInterface.toXmlNode(document));
     

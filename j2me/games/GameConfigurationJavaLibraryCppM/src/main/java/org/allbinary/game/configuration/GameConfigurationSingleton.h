@@ -21,12 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_CONFIGURATION_GAMECONFIGURATIONSINGLETON_H
         #define ORG_ALLBINARY_GAME_CONFIGURATION_GAMECONFIGURATIONSINGLETON_H
 
-            #include "../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-#include <java/util/Hashtable.h>
+#include <org/allbinary/logic/StdUtil.h>
 
       
-#include <org/allbinary/logic/StdUtil.h>
+#include <org/allbinary/util/ABHashtable.h>
 
       
 #include <org/allbinary/util/BasicArrayList.h>
@@ -65,7 +65,7 @@ class GameConfigurationSingleton
 
     private: BasicArrayList list;
 
-    private: Hashtable<any, any> hashtable;
+    private: ABHashtable<Object*, Object*> hashtable;
 
 private: GameConfigurationSingleton();
 
@@ -75,7 +75,7 @@ private: GameConfigurationSingleton();
 
     public: void add(GameConfiguration gameConfiguration);
 
-    public: Hashtable<any, any> getHashtable();
+    public: ABHashtable<Object*, Object*> getHashtable();
 
 };
 

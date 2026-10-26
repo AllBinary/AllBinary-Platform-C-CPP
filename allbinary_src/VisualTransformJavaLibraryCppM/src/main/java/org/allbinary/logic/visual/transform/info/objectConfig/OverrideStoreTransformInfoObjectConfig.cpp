@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/logic/system/security/licensing/AbeClientInformationInterface.h>
 
@@ -51,8 +51,9 @@
 
 class OverrideStoreTransformInfoObjectConfig: public GenericStoreTransformInfoObjectConfig {
 
-public: OverrideStoreTransformInfoObjectConfig(Object abeClientInformation, Object transformInfoInterface){
-            super(abeClientInformation, transformInfoInterface);
+public: OverrideStoreTransformInfoObjectConfig(Object abeClientInformation, Object transformInfoInterface) : GenericStoreTransformInfoObjectConfig(abeClientInformation, transformInfoInterface){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -60,8 +61,9 @@ public: OverrideStoreTransformInfoObjectConfig(Object abeClientInformation, Obje
 }
 
 
-public: OverrideStoreTransformInfoObjectConfig(Object abeClientInformation, Object transformInfoInterface, Object document){
-            super(abeClientInformation, transformInfoInterface, document);
+public: OverrideStoreTransformInfoObjectConfig(Object abeClientInformation, Object transformInfoInterface, Object document) : GenericStoreTransformInfoObjectConfig(abeClientInformation, transformInfoInterface, document){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -71,8 +73,9 @@ this->setDocument(this->generate(this->toXmlDoc()));
 }
 
 
-public: OverrideStoreTransformInfoObjectConfig(Object abeClientInformation, Object transformInfoInterface, std::string name, std::string type){
-            super(abeClientInformation, transformInfoInterface, name, type);
+public: OverrideStoreTransformInfoObjectConfig(Object abeClientInformation, Object transformInfoInterface, std::string name, std::string type) : GenericStoreTransformInfoObjectConfig(abeClientInformation, transformInfoInterface, name, type){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.

@@ -7,7 +7,7 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_OPENGLES_SHADER_OPENGLOBJECT3DPROCESSOR_H
         #define ORG_ALLBINARY_GRAPHICS_OPENGLES_SHADER_OPENGLOBJECT3DPROCESSOR_H
 
-            #include "../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
 #include <javax/microedition/khronos/opengles/GL10.h>
 

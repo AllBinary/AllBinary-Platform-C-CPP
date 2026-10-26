@@ -18,9 +18,9 @@
 
 
 
-            #include "../../../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
 
@@ -85,7 +85,7 @@ public: EmailServerConfigurationView(Node node){
 
     std::string password = DomNodeHelper::getTextNodeValue(EmailServerConfigurationData::PASSWORD, childNodeList);;
     
-this->emailServerConfigurationInterface= EmailServerConfiguration(accountName, password, server) as EmailServerConfigurationInterface;
+this->emailServerConfigurationInterface= EmailServerConfiguration(accountName, password, server);
     
 }
 
@@ -113,7 +113,7 @@ this->emailServerConfigurationInterface= emailServerConfigurationInterface;
     EmailServerConfigurationMapping emailConfigurationMapping = EmailServerConfigurationMapping(this->emailServerConfigurationInterface);;
     
 
-    HashMap<any, any> hashMap = emailConfigurationMapping.toHashMap();;
+    HashMap<Object*, Object*> hashMap = emailConfigurationMapping.toHashMap();;
     
 
     Node node = ModDomHelper::createNodeWithValueNodes(document, EmailServerConfigurationData::NAME, hashMap);;

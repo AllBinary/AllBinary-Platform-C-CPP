@@ -23,17 +23,20 @@
 
             #include <vector>
         
-            #include "../../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-#include <java/awt.h>
+#include <java/awt/Dimension.h>
+
+      
+#include <java/awt/Rectangle.h>
+
+      
+#include <java/awt/Toolkit.h>
 
       
 #include <java/awt/image/BufferedImage.h>
-
-      
-#include <java/util/Hashtable.h>
 
       
 #include <org/allbinary/input/automation/robot/InputRobotFactory.h>
@@ -46,6 +49,9 @@
 
       
 #include <org/allbinary/string/CommonStrings.h>
+
+      
+#include <org/allbinary/util/ABHashtable.h>
 
       
 
@@ -66,10 +72,7 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "Toolkit.h"
-#include "Dimension.h"
-#include "Rectangle.h"
-
+        
 class ScreenScavangerRobot
             : public Object
          {

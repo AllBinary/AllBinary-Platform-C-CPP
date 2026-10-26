@@ -21,11 +21,11 @@
         #ifndef ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_PATHFINDING_STATICPATHGENERATOR_H
         #define ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_PATHFINDING_STATICPATHGENERATOR_H
 
-            #include "../../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../../../../java/lang/Integer.h"
+            #include "java/lang/Integer.h"
         
 #include <org/allbinary/util/BasicArrayList.h>
 

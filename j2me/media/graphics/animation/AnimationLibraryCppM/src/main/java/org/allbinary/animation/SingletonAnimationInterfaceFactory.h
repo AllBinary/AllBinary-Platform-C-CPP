@@ -21,20 +21,11 @@
         #ifndef ORG_ALLBINARY_ANIMATION_SINGLETONANIMATIONINTERFACEFACTORY_H
         #define ORG_ALLBINARY_ANIMATION_SINGLETONANIMATIONINTERFACEFACTORY_H
 
-            #include "../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-#include <jsinterop/annotations/JsType.h>
-
-      
 #include <org/allbinary/media/ScaleProperties.h>
-
-      
-#include <jsinterop/annotations/JsMethod.h>
-
-      
-#include <jsinterop/annotations/JsConstructor.h>
 
       
 

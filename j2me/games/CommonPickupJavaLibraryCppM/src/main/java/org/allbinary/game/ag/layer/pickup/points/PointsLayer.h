@@ -21,7 +21,7 @@
         #ifndef ORG_ALLBINARY_GAME_AG_LAYER_PICKUP_POINTS_POINTSLAYER_H
         #define ORG_ALLBINARY_GAME_AG_LAYER_PICKUP_POINTS_POINTSLAYER_H
 
-            #include "../../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <javax/microedition/lcdui/Graphics.h>
 

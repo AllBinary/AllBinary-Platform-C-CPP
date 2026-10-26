@@ -21,7 +21,7 @@
         #ifndef ORG_ALLBINARY_GAME_INPUT_MAPSELECTIONGAMEINPUTPROCESSOR_H
         #define ORG_ALLBINARY_GAME_INPUT_MAPSELECTIONGAMEINPUTPROCESSOR_H
 
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <javax/microedition/lcdui/Canvas.h>
 

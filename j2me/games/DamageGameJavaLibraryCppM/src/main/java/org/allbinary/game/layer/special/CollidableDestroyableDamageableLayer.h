@@ -23,13 +23,10 @@
 
             #include <vector>
         
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../../../java/lang/RuntimeException.h"
+            #include "java/lang/RuntimeException.h"
         
-#include <jsinterop/annotations/JsType.h>
-
-      
 #include <javax/microedition/lcdui/Graphics.h>
 
       
@@ -102,15 +99,6 @@
 #include <org/allbinary/view/ViewPositionBase.h>
 
       
-#include <jsinterop/annotations/JsMethod.h>
-
-      
-#include <jsinterop/annotations/JsConstructor.h>
-
-      
-#include <jsinterop/annotations/JsProperty.h>
-
-      
 
 
 
@@ -133,7 +121,7 @@
 
 class CollidableDestroyableDamageableLayer: public CollidableCompositeLayer, public DestroyableInterface, public DamageableInterface, public PickupCompositeInterface, public SpecialGameInputInterface {
 
-    public: static Object* NULL_COLLIDABLE_DESTROYABLE_DAMAGE_LAYER = NullUtil::getInstance().NULL_OBJECT;
+    private: static Object* NULL_COLLIDABLE_DESTROYABLE_DAMAGE_LAYER = NullUtil::getInstance().NULL_OBJECT;
 
     public: static CollidableDestroyableDamageableLayer getNullInstance();
 

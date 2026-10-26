@@ -21,9 +21,9 @@
         #ifndef ORG_ALLBINARY_GAME_LAYER_UNIT_DECALANIMATIONINTERFACEFACTORY_H
         #define ORG_ALLBINARY_GAME_LAYER_UNIT_DECALANIMATIONINTERFACEFACTORY_H
 
-            #include "../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/game/layer/resources/BasicGameResources.h>
 

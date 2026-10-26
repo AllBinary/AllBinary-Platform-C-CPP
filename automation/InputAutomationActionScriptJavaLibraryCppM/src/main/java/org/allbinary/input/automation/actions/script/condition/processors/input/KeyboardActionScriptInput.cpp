@@ -20,11 +20,11 @@
 
             #include <vector>
         
-            #include "../../../../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../../../../../../../java/lang/Integer.h"
+            #include "java/lang/Integer.h"
         
-            #include "../../../../../../../../../java/lang/Long.h"
+            #include "java/lang/Long.h"
         
 #include <java/awt/event/KeyEvent.h>
 
@@ -158,8 +158,9 @@ index++;
 
     private: int32_t delayBetweenKeys= 0;
 
-public: KeyboardActionScriptInput(Node node){
-            super(NAME, node);
+public: KeyboardActionScriptInput(Node node) : BasicProfileActionScriptInput(NAME, node){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -250,7 +251,7 @@ this->setRelease(value.slice(, ).join(''));
                             
 }
 
-this->setKeyArray(vector.toArrayType(new Array(vector.size())) as Integer[]);
+this->setKeyArray(vector.toArrayType(std::vector<Integer>(vector.size())) as Integer[]);
     
 
                                     }
@@ -280,8 +281,9 @@ this->keyboardActionScriptInputJPanel= KeyboardActionScriptInputJPanel(this);
 }
 
 
-public: KeyboardActionScriptInput(){
-            super(NAME);
+public: KeyboardActionScriptInput() : BasicProfileActionScriptInput(NAME){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -452,7 +454,7 @@ this->logUtil.putF(CommonLabels::getInstance().START +text, this, "integerArrayV
                                     
     std::string nextCharString = text.substring(index +2, endIndex);;
     
-this->logUtil.putF("Next Char String: " +nextCharString, this, "integerArrayValue");
+this->logUtil.putF(CommonLabels::getInstance().NEXT +" Char String: " +nextCharString, this, "integerArrayValue");
     
 vector.add(substring.valueOf());
     
@@ -478,7 +480,7 @@ index++;
 }
 
 
-    std::vector<Integer> integerArray = vector.toArrayType(new Array(vector.size())) as Integer[];;
+    std::vector<Integer> integerArray = vector.toArrayType(std::vector<Integer>(vector.size())) as Integer[];;
     
 
 
@@ -489,9 +491,9 @@ index++;
 }
 
 
-    public: HashMap<any, any> toHashMap(){
+    public: HashMap<Object*, Object*> toHashMap(){
 
-    HashMap<any, any> hashMap = StdUtil::getInstance().createHashMap();;
+    HashMap<Object*, Object*> hashMap = StdUtil::getInstance().createHashMap();;
     
 
 

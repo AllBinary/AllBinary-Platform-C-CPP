@@ -18,9 +18,9 @@
 
 
 
-            #include "../../../../../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
 
@@ -73,7 +73,7 @@ public: WizardWebStoreAdminUserFactory(){
 
                 //@Throws(Exception.constructor)
             
-    public: UserInterface getInstance(HashMap<any, any> hashMap){
+    public: UserInterface getInstance(HashMap<Object*, Object*> hashMap){
 
 
 

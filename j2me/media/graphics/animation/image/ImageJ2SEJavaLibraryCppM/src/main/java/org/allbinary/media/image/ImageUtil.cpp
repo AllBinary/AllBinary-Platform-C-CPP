@@ -20,9 +20,9 @@
 
             #include <vector>
         
-            #include "../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/awt/Graphics2D.h>
 
@@ -149,7 +149,7 @@ private: ImageUtil(){
     int32_t size = bufferedImageArray.size();;
     
 
-    std::vector<BufferedImage> scaledBufferedImageArray = new Array(size);;
+    std::vector<BufferedImage> scaledBufferedImageArray = std::vector<BufferedImage>(size);;
     
 
     BufferedImage bufferedImage;;
@@ -161,7 +161,7 @@ private: ImageUtil(){
                         for (
     int32_t index = 0;index < size; index++)
         {
-bufferedImage= bufferedImageArray[index]!;
+bufferedImage= bufferedImageArray[index];
     
 
     int32_t newWidth = static_cast<int32_t>((bufferedImage.getWidth() *percent /100));;
@@ -189,7 +189,7 @@ scaledBufferedImageArray[index]= this->createBufferedImage(bufferedImage, newWid
     int32_t size = bufferedImageArray.size();;
     
 
-    std::vector<BufferedImage> scaledBufferedImageArray = new Array(size);;
+    std::vector<BufferedImage> scaledBufferedImageArray = std::vector<BufferedImage>(size);;
     
 
     BufferedImage bufferedImage;;
@@ -201,7 +201,7 @@ scaledBufferedImageArray[index]= this->createBufferedImage(bufferedImage, newWid
                         for (
     int32_t index = 0;index < size; index++)
         {
-bufferedImage= bufferedImageArray[index]!;
+bufferedImage= bufferedImageArray[index];
     
 
     int32_t newWidth = static_cast<int32_t>((bufferedImage.getWidth() *percent));;
@@ -229,7 +229,7 @@ scaledBufferedImageArray[index]= this->createBufferedImage(bufferedImage, newWid
     int32_t size = bufferedImageArray.size();;
     
 
-    std::vector<BufferedImage> scaledBufferedImageArray = new Array(size);;
+    std::vector<BufferedImage> scaledBufferedImageArray = std::vector<BufferedImage>(size);;
     
 
 
@@ -238,7 +238,7 @@ scaledBufferedImageArray[index]= this->createBufferedImage(bufferedImage, newWid
                         for (
     int32_t index = 0;index < size; index++)
         {
-scaledBufferedImageArray[index]= this->createBufferedImage(bufferedImageArray[index]!, width, height, scale);
+scaledBufferedImageArray[index]= this->createBufferedImage(bufferedImageArray[index], width, height, scale);
     
 }
 
@@ -452,18 +452,18 @@ g2d.dispose();
                         
                                     {
                                     
-    J2SEMutableImage j2seImage = image as J2SEMutableImage;;
+    J2SEMutableImage j2seImage = image;;
     
-bufferedImage= j2seImage.getImage() as BufferedImage;
+bufferedImage= j2seImage.getImage();
     
 
                                     }
                                 
                         else {
                             
-    J2SEImmutableImage j2seImage = image as J2SEImmutableImage;;
+    J2SEImmutableImage j2seImage = image;;
     
-bufferedImage= j2seImage.getImage() as BufferedImage;
+bufferedImage= j2seImage.getImage();
     
 
                         }

@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
 #include <java/util/HashMap.h>
 
@@ -60,14 +60,14 @@ public: FtpConfiguration(){
 }
 
 
-public: FtpConfiguration(HashMap<any, any> hashMap){
-this->ftpServer= hashMap.get(FtpConfigurationData::SERVER) as string;
+public: FtpConfiguration(HashMap<Object*, Object*> hashMap){
+this->ftpServer= hashMap.get(FtpConfigurationData::SERVER);
     
-this->ftpPath= hashMap.get(FtpConfigurationData::PATH) as string;
+this->ftpPath= hashMap.get(FtpConfigurationData::PATH);
     
-this->ftpUserName= hashMap.get(FtpConfigurationData::USERNAME) as string;
+this->ftpUserName= hashMap.get(FtpConfigurationData::USERNAME);
     
-this->ftpPassword= hashMap.get(FtpConfigurationData::PASSWORD) as string;
+this->ftpPassword= hashMap.get(FtpConfigurationData::PASSWORD);
     
 }
 

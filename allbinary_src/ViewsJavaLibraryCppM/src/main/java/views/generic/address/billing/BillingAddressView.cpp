@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <javax/servlet/http/HttpServletRequest.h>
 
@@ -77,13 +77,14 @@ class BillingAddressView: public HttpStoreComponentView, public DomNodeInterface
 
     protected: StreetAddress streetAddress;
 
-public: BillingAddressView(TransformInfoInterface transformInfoInterface){
-            super(transformInfoInterface);
+public: BillingAddressView(TransformInfoInterface transformInfoInterface) : HttpStoreComponentView(transformInfoInterface){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this->request= this->getPageContext().getRequest() as HttpServletRequest;
+this->request= this->getPageContext().getRequest();
     
 }
 
@@ -138,9 +139,9 @@ formNode.appendChild(this->streetAddress.toXmlNode(document));
 
 
     public: void addDomNodeInterfaces(){
-this->addDomNodeInterface(this as DomNodeInterface);
+this->addDomNodeInterface(this);
     
-this->addDomNodeInterface(StatesView() as DomNodeInterface);
+this->addDomNodeInterface(StatesView());
     
 }
 

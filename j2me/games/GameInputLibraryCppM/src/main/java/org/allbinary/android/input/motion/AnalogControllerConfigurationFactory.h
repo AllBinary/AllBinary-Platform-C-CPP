@@ -21,9 +21,9 @@
         #ifndef ORG_ALLBINARY_ANDROID_INPUT_MOTION_ANALOGCONTROLLERCONFIGURATIONFACTORY_H
         #define ORG_ALLBINARY_ANDROID_INPUT_MOTION_ANALOGCONTROLLERCONFIGURATIONFACTORY_H
 
-            #include "../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/android/input/motion/event/AnalogControllerConfigurationEvent.h>
 

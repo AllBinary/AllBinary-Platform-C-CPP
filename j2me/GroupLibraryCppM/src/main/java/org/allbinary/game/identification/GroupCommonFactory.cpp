@@ -18,9 +18,9 @@
 
 
 
-            #include "../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../java/lang/Integer.h"
+            #include "java/lang/Integer.h"
         
 #include <org/allbinary/logic/NullUtil.h>
 
@@ -67,7 +67,7 @@ class GroupCommonFactory
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return GroupCommonFactory::instance() as GroupCommonFactory;
+                        return GroupCommonFactory::instance();
     
 }
 

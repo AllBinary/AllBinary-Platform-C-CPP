@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
 
@@ -84,8 +84,9 @@ class DownloadItemsEntity: public AbSqlBean, public DownloadItemsEntityInterface
 
     protected: const std::string tableName = "downloaditems";
 
-public: DownloadItemsEntity(){
-            super(InventoryDbInitInfo());
+public: DownloadItemsEntity() : AbSqlBean(InventoryDbInitInfo()){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -159,8 +160,8 @@ this->setTableName(this->tableName);
 }
 
 
-    public: void update(HashMap<any, any> updatedValues){
-super.updateWhere(DownloadItemData::ID, updatedValues.get(DownloadItemData::ID) as string, updatedValues);
+    public: void update(HashMap<Object*, Object*> updatedValues){
+super.updateWhere(DownloadItemData::ID, updatedValues.get(DownloadItemData::ID), updatedValues);
     
 }
 
@@ -170,7 +171,7 @@ super.updateWhere(DownloadItemData::ID, updatedValues.get(DownloadItemData::ID) 
     BasicArrayList returnVector = BasicArrayListD();;
     
 
-    HashMap<any, any> keysAndValues = StdUtil::getInstance().createHashMap();;
+    HashMap<Object*, Object*> keysAndValues = StdUtil::getInstance().createHashMap();;
     
 keysAndValues.put(basicItemData.ID, id);
     
@@ -188,7 +189,7 @@ keysAndValues.put(basicItemData.ID, id);
     int32_t index = 0;index < size; index++)
         {
 
-    HashMap<any, any> hashMap = vector.get(index) as HashMap<any, any>;;
+    HashMap<Object*, Object*> hashMap = vector.get(index);;
     
 returnVector.add(DownloadableItem(hashMap));
     
@@ -217,7 +218,7 @@ returnVector.add(DownloadableItem(hashMap));
     BasicArrayList returnVector = BasicArrayListD();;
     
 
-    HashMap<any, any> keysAndValues = StdUtil::getInstance().createHashMap();;
+    HashMap<Object*, Object*> keysAndValues = StdUtil::getInstance().createHashMap();;
     
 keysAndValues.put(basicItemData.ID, id);
     
@@ -237,7 +238,7 @@ keysAndValues.put(DownloadItemData::ID, downloadItemId);
     int32_t index = 0;index < size; index++)
         {
 
-    HashMap<any, any> hashMap = vector.get(index) as HashMap<any, any>;;
+    HashMap<Object*, Object*> hashMap = vector.get(index);;
     
 returnVector.add(DownloadableItem(hashMap));
     

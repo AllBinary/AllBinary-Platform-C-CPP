@@ -21,9 +21,9 @@
         #ifndef ORG_ALLBINARY_IMAGE_IMAGEFACTORY_H
         #define ORG_ALLBINARY_IMAGE_IMAGEFACTORY_H
 
-            #include "../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/io/InputStream.h>
 
@@ -69,6 +69,10 @@ class ImageFactory
                 //@Throws(Exception.constructor)
             
     public: Image createImageFromInputStream(Object* key, InputStream inputStream);
+
+                //@Throws(Exception.constructor)
+            
+    public: Image createImageFromInputStream(InputStream inputStream);
 
 };
 

@@ -21,7 +21,7 @@
         #ifndef ORG_ALLBINARY_LOGIC_COMMUNICATION_SMTP_CONFIGURATION_USER_USEREMAILCONFIGURATION_H
         #define ORG_ALLBINARY_LOGIC_COMMUNICATION_SMTP_CONFIGURATION_USER_USEREMAILCONFIGURATION_H
 
-            #include "../../../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
 #include <java/util/HashMap.h>
 
@@ -70,7 +70,7 @@ class UserEmailConfiguration
 
 public: UserEmailConfiguration();
 
-public: UserEmailConfiguration(HashMap<any, any> hashMap);
+public: UserEmailConfiguration(HashMap<Object*, Object*> hashMap);
 
     public: UserEmailEventsConfigurationInterface getUserEmailEventsConfigurationInterface();
 

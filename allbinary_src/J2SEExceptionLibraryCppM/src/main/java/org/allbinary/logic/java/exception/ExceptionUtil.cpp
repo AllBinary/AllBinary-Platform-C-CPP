@@ -18,11 +18,11 @@
 
 
 
-            #include "../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../java/lang/Throwable.h"
+            #include "java/lang/Throwable.h"
         
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/io/ByteArrayOutputStream.h>
 
@@ -99,7 +99,7 @@ e.printStackTrace(printStream);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return output.toCharArray().slice(0, ).join('');
+                        return std::string(output);
     
 
                                     }

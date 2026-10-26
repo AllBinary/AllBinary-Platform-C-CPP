@@ -21,16 +21,7 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_PAINT_STATEPAINTABLE_H
         #define ORG_ALLBINARY_GRAPHICS_PAINT_STATEPAINTABLE_H
 
-#include <jsinterop/annotations/JsType.h>
-
-      
 #include <org/allbinary/graphics/displayable/StateControlledInterface.h>
-
-      
-#include <jsinterop/annotations/JsMethod.h>
-
-      
-#include <jsinterop/annotations/JsConstructor.h>
 
       
 

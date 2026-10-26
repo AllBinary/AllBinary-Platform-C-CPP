@@ -18,11 +18,11 @@
 
 
 
-            #include "../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../../../java/lang/System.h"
+            #include "java/lang/System.h"
         
 #include <org/allbinary/logic/communication/log/LogUtil.h>
 
@@ -104,7 +104,7 @@ this->logUtil.put(commonStrings.EXCEPTION, this, commonStrings.GET_INSTANCE, e);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return genericOperatingSystem;
+                        return this->genericOperatingSystem;
     
 }
 

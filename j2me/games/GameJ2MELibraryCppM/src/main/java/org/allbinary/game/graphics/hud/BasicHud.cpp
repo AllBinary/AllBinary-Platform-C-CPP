@@ -20,13 +20,10 @@
 
             #include <vector>
         
-            #include "../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-#include <jsinterop/annotations/JsType.h>
-
-      
 #include <javax/microedition/lcdui/Graphics.h>
 
       
@@ -75,9 +72,6 @@
 #include <org/allbinary/logic/communication/log/LogUtil.h>
 
       
-#include <org/allbinary/logic/string/StringMaker.h>
-
-      
 #include <org/allbinary/logic/util/event/AllBinaryEventObject.h>
 
       
@@ -85,15 +79,6 @@
 
       
 #include <org/allbinary/string/CommonStrings.h>
-
-      
-#include <jsinterop/annotations/JsMethod.h>
-
-      
-#include <jsinterop/annotations/JsConstructor.h>
-
-      
-#include <jsinterop/annotations/JsProperty.h>
 
       
 
@@ -133,7 +118,7 @@ class BasicHud
 
     protected: const MyFontProcessor updateMyFontProcessor = UpdateMyFontProcessor(this);
 
-    protected: MyFontProcessor myFontProcessor = updateMyFontProcessor;
+    protected: MyFontProcessor myFontProcessor = this->updateMyFontProcessor;
 
     private: int32_t location= 0;
 

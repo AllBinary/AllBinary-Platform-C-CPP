@@ -18,7 +18,7 @@
 
 
 
-            #include "../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
 
@@ -62,13 +62,13 @@ class WorkFlowHelper: public BasicTable {
 
     protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: HashMap<any, any> hashMap;
+    private: HashMap<Object*, Object*> hashMap;
 
     private: PageContext pageContext;
 
     private: Portion portion;
 
-public: WorkFlowHelper(HashMap<any, any> hashMap, PageContext pageContext){
+public: WorkFlowHelper(HashMap<Object*, Object*> hashMap, PageContext pageContext){
 this->hashMap= hashMap;
     
 this->pageContext= pageContext;

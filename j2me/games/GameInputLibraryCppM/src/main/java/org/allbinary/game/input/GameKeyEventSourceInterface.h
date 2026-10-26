@@ -21,12 +21,6 @@
         #ifndef ORG_ALLBINARY_GAME_INPUT_GAMEKEYEVENTSOURCEINTERFACE_H
         #define ORG_ALLBINARY_GAME_INPUT_GAMEKEYEVENTSOURCEINTERFACE_H
 
-#include <jsinterop/annotations/JsType.h>
-
-      
-#include <jsinterop/annotations/JsMethod.h>
-
-      
 
 
 

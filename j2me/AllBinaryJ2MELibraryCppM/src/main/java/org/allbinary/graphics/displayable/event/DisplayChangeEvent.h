@@ -21,13 +21,7 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_DISPLAYABLE_EVENT_DISPLAYCHANGEEVENT_H
         #define ORG_ALLBINARY_GRAPHICS_DISPLAYABLE_EVENT_DISPLAYCHANGEEVENT_H
 
-#include <jsinterop/annotations/JsType.h>
-
-      
 #include <org/allbinary/logic/util/event/AllBinaryEventObject.h>
-
-      
-#include <jsinterop/annotations/JsConstructor.h>
 
       
 

@@ -21,18 +21,9 @@
         #ifndef ORG_ALLBINARY_GAME_TRACKING_TRACKING_H
         #define ORG_ALLBINARY_GAME_TRACKING_TRACKING_H
 
-            #include "../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
 #include <javax/microedition/lcdui/Graphics.h>
-
-      
-#include <jsinterop/annotations/JsType.h>
-
-      
-#include <jsinterop/annotations/JsMethod.h>
-
-      
-#include <jsinterop/annotations/JsConstructor.h>
 
       
 

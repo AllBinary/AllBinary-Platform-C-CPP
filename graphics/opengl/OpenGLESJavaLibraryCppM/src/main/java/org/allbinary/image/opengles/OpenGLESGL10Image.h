@@ -89,9 +89,33 @@ class OpenGLESGL10Image: public OpenGLESImage {
     const GLUtil glUtil = GLUtil::getInstance();
     const DisplayInfoSingleton displayInfoSingleton = DisplayInfoSingleton::getInstance();
     const FloatBuffer textureVertexFloatBuffer = this->textureVertexFloatBuffer;
-    const std::vector<float> regionTextureRectangleFloatArray = new Array(8);
+    const std::vector<float> regionTextureRectangleFloatArray = std::vector<float>(8);
     const FloatBuffer regionTextureVertexFloatBuffer = ByteBuffer::allocateDirect(4 *4 *2).order(ByteOrder::nativeOrder()).asFloatBuffer();
-    const std::vector<float> regionRectangleFloatArray = {0,0,0,0,0,0,0,0,0,0,0,0};
+    const std::vector<float> regionRectangleFloatArray = {
+                                //Otherwise - values - DoubleLiteralExpr
+
+                                //Otherwise - values - DoubleLiteralExpr
+
+                                //Otherwise - values - DoubleLiteralExpr
+
+                                //Otherwise - values - DoubleLiteralExpr
+
+                                //Otherwise - values - DoubleLiteralExpr
+
+                                //Otherwise - values - DoubleLiteralExpr
+
+                                //Otherwise - values - DoubleLiteralExpr
+
+                                //Otherwise - values - DoubleLiteralExpr
+
+                                //Otherwise - values - DoubleLiteralExpr
+
+                                //Otherwise - values - DoubleLiteralExpr
+
+                                //Otherwise - values - DoubleLiteralExpr
+
+                                //Otherwise - values - DoubleLiteralExpr
+};
     const FloatBuffer regionRectangleVertexFloatBuffer = ByteBuffer::allocateDirect(4 *4 *3).order(ByteOrder::nativeOrder()).asFloatBuffer();
     const OpenGLESImageProperties openGLESImageProperties = this->openGLESImageProperties;
     public: void drawRegion(GL10 gl, int32_t viewHeight, float x_src, float y_src, float width, float height, int32_t x, int32_t y, int32_t z);

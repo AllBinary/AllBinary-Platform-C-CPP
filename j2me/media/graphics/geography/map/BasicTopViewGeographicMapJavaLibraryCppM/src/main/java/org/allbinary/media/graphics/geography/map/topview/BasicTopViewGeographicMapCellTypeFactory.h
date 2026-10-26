@@ -23,9 +23,6 @@
 
             #include <vector>
         
-#include <java/util/Hashtable.h>
-
-      
 #include <org/allbinary/string/CommonStrings.h>
 
       
@@ -39,6 +36,9 @@
 
       
 #include <org/allbinary/media/graphics/geography/map/racetrack/RaceTrackGeographicMapCellType.h>
+
+      
+#include <org/allbinary/util/ABHashtable.h>
 
       
 #include <org/allbinary/util/BasicArrayList.h>
@@ -86,7 +86,7 @@ class BasicTopViewGeographicMapCellTypeFactory: public GeographicMapCellTypeFact
 
     private: int32_t maxTileId;
 
-public: BasicTopViewGeographicMapCellTypeFactory(Hashtable<any, any> tileTypeToTileIdsMap, int32_t maxTileId);
+public: BasicTopViewGeographicMapCellTypeFactory(ABHashtable<Object*, Object*> tileTypeToTileIdsMap, int32_t maxTileId);
 
     public: int32_t getStartType();
 

@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/graphics/PointFactory.h>
 
@@ -102,7 +102,7 @@ private: FeaturedResourceRelativeRelationshipFactory(){
     int32_t index = 0;index < size; index++)
         {
 
-    ResourceRelativeRelationshipFactoryInterface featureInterface = featureReleaseList.objectArray[index]! as ResourceRelativeRelationshipFactoryInterface;;
+    ResourceRelativeRelationshipFactoryInterface featureInterface = featureReleaseList.objectArray[index];;
     
 
                         if(featureInterface.isFeature())
@@ -157,7 +157,7 @@ private: FeaturedResourceRelativeRelationshipFactory(){
     int32_t index = 0;index < size; index++)
         {
 
-    RelativeRelationship relativeRelationship = list.objectArray[index]! as RelativeRelationship;;
+    RelativeRelationship relativeRelationship = list.objectArray[index];;
     
 newList.add(RelativeLayerRelationship(layer, pointFactory.createXY(relativeRelationship.getX(), relativeRelationship.getY()), BasicArrayListUtil::getInstance().getImmutableInstance()));
     

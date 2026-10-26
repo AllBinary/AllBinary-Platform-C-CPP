@@ -21,7 +21,7 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_FORM_ITEM_VALIDATION_TEXTITEMUSERIDENTIFIERVISITOR_H
         #define ORG_ALLBINARY_GRAPHICS_FORM_ITEM_VALIDATION_TEXTITEMUSERIDENTIFIERVISITOR_H
 
-            #include "../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/game/input/TextNotificationUtil.h>
 

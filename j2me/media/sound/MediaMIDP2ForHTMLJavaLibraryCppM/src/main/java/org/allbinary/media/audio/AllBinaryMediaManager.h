@@ -21,11 +21,9 @@
         #ifndef ORG_ALLBINARY_MEDIA_AUDIO_ALLBINARYMEDIAMANAGER_H
         #define ORG_ALLBINARY_MEDIA_AUDIO_ALLBINARYMEDIAMANAGER_H
 
-            #include "../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../java/lang/Exception.h"
-        
-            #include "../../../../java/lang/System.h"
+            #include "java/lang/Exception.h"
         
 #include <javax/microedition/media/Manager.h>
 
@@ -34,6 +32,9 @@
 
       
 #include <javax/microedition/media/Player.h>
+
+      
+#include <org/allbinary/TsUtil.h>
 
       
 #include <org/allbinary/game/configuration/feature/Features.h>

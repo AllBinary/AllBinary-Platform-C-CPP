@@ -21,12 +21,6 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_DISPLAYABLE_SCALABLELISTENER_H
         #define ORG_ALLBINARY_GRAPHICS_DISPLAYABLE_SCALABLELISTENER_H
 
-#include <jsinterop/annotations/JsType.h>
-
-      
-#include <jsinterop/annotations/JsMethod.h>
-
-      
 
 
 

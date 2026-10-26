@@ -20,16 +20,13 @@
 
             #include <vector>
         
-            #include "../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../../java/lang/Integer.h"
+            #include "java/lang/Integer.h"
         
 #include <java/io/InputStream.h>
-
-      
-#include <java/util/Hashtable.h>
 
       
 #include <android/app/Activity.h>
@@ -69,6 +66,9 @@
 
       
 #include <org/allbinary/string/CommonStrings.h>
+
+      
+#include <org/allbinary/util/ABHashtable.h>
 
       
 #include <org/allbinary/util/HashtableUtil.h>
@@ -115,7 +115,7 @@ class ResourceUtil
 
     private: Object* resources = NullUtil::getInstance().NULL_OBJECT;
 
-    private: Hashtable<any, any> hashMap = StdUtil::getInstance().createHashtable();
+    private: ABHashtable<Object*, Object*> hashMap = StdUtil::getInstance().createHashtable();
 
 private: ResourceUtil(){
 }
@@ -132,7 +132,7 @@ this->logUtil.putF(CommonStrings::getInstance().NOT_IMPLEMENTED, this, "setLoadi
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->context as Context;
+                        return this->context;
     
 }
 
@@ -151,7 +151,7 @@ this->context= aContext;
 
     public: Integer getResourceId(std::string resource){
 
-    Integer value = this->hashMap.get(resource) as Integer;;
+    Integer value = this->hashMap.get(resource);;
     
 
                         if(DebugFactory::getInstance() != NoDebug::getInstance())
@@ -207,7 +207,7 @@ this->hashMap.put(resource, value);
     int32_t index = objectArray.size();--index >= 0; )
         {
 
-    Integer integer = this->hashMap.get(objectArray[index]!) as Integer;;
+    Integer integer = this->hashMap.get(objectArray[index]);;
     
 
                         if(resource != objectArray[index])
@@ -248,7 +248,7 @@ this->hashMap.put(resource, value);
 
 
     public: void setResources(Resources resources){
-this->logUtil.putF(StringMaker().append("Resource Loader: ").append(resources->constructor.name.toString()!).toString(), this, "setResources");
+this->logUtil.putF(StringMaker().append("Resource Loader: ").append(resources->constructor.name.toString()).toString(), this, "setResources");
     
 this->resources= resources;
     
@@ -259,13 +259,13 @@ this->resources= resources;
             
     public: InputStream getResourceAsStream(std::string resource){
 
-    Integer integer = this->hashMap.get(resource) as Integer;;
+    Integer integer = this->hashMap.get(resource);;
     
 
     int32_t id = integer.intValue();;
     
 
-    Resources resources = (this->resources as Resources);;
+    Resources resources = (this->resources);;
     
 
     InputStream inputStream = resources->openRawResource(id);;

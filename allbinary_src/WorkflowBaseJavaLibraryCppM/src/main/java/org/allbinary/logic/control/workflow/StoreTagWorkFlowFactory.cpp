@@ -20,11 +20,11 @@
 
             #include <vector>
         
-            #include "../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../java/lang/Class.h"
+            #include "java/lang/Class.h"
         
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
 
@@ -97,11 +97,11 @@ private: StoreTagWorkFlowFactory(){
 
                 //@Throws(Exception.constructor, LicensingException.constructor)
             
-    public: StoreWorkFlowInterface getInstance(AbeClientInformationInterface abeClientInformation, HashMap<any, any> propertiesHashMap, PageContext pageContext){
+    public: StoreWorkFlowInterface getInstance(AbeClientInformationInterface abeClientInformation, HashMap<Object*, Object*> propertiesHashMap, PageContext pageContext){
 
         try {
             
-    std::string workFlowClassName = propertiesHashMap.get(DynamicObjectData::NAME) as string;;
+    std::string workFlowClassName = propertiesHashMap.get(DynamicObjectData::NAME);;
     
 
                         if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().TAGHELPERFACTORY))
@@ -116,7 +116,7 @@ stringBuffer.append(workFlowClassName);
     
 stringBuffer.append("->");
     
-stringBuffer.append(StoreTagWorkFlowFactory::instance.constructor.name.toString()!);
+stringBuffer.append(StoreTagWorkFlowFactory::instance.constructor.name.toString());
     
 
     CommonStrings commonStrings = CommonStrings::getInstance();;
@@ -127,14 +127,14 @@ this->logUtil.putF(stringBuffer.toString(), this, commonStrings.GET_INSTANCE);
                                     }
                                 
 
-    std::vector<Object*> params = new Array(2);;
+    std::vector<Object*> params = std::vector<Object*>(2);;
     
 
-    std::vector<Function> classes = new Array(2);;
+    std::vector<Class*> classes = std::vector<Class>(2);;
     
-classes[0]= propertiesHashMap.constructor;
+classes[0]= propertiesHashMap.getClass();
     
-classes[1]= AbeFactory::getInstance().constructor;
+classes[1]= AbeFactory::getInstance().getClass();
     
 params[0]= propertiesHashMap;
     
@@ -144,7 +144,7 @@ params[1]= pageContext;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return AbeFactory::getInstance().getInstance(abeClientInformation, workFlowClassName, classes, params) as StoreWorkFlowInterface;
+                        return AbeFactory::getInstance().getInstance(abeClientInformation, workFlowClassName, classes, params);
     
 
                 //: 
@@ -155,7 +155,7 @@ params[1]= pageContext;
                         
                                     {
                                     
-    std::string workFlowClassName = propertiesHashMap.get(DynamicObjectData::NAME) as string;;
+    std::string workFlowClassName = propertiesHashMap.get(DynamicObjectData::NAME);;
     
 
     StringMaker stringBuffer = StringMaker();;
@@ -166,7 +166,7 @@ stringBuffer.append(workFlowClassName);
     
 stringBuffer.append("->");
     
-stringBuffer.append(StoreTagWorkFlowFactory::instance.constructor.name.toString()!);
+stringBuffer.append(StoreTagWorkFlowFactory::instance.constructor.name.toString());
     
 
     CommonStrings commonStrings = CommonStrings::getInstance();;
@@ -191,7 +191,7 @@ this->logUtil.put(stringBuffer.toString(), this, commonStrings.GET_INSTANCE, e);
                         
                                     {
                                     
-    std::string workFlowClassName = propertiesHashMap.get(DynamicObjectData::NAME) as string;;
+    std::string workFlowClassName = propertiesHashMap.get(DynamicObjectData::NAME);;
     
 
     StringMaker stringBuffer = StringMaker();;
@@ -202,7 +202,7 @@ stringBuffer.append(workFlowClassName);
     
 stringBuffer.append("->");
     
-stringBuffer.append(StoreTagWorkFlowFactory::instance.constructor.name.toString()!);
+stringBuffer.append(StoreTagWorkFlowFactory::instance.constructor.name.toString());
     
 
     CommonStrings commonStrings = CommonStrings::getInstance();;

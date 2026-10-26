@@ -21,15 +21,9 @@
         #ifndef ORG_ALLBINARY_LOGIC_MATH_VECTOR_AXISMATHVECTORUTIL_H
         #define ORG_ALLBINARY_LOGIC_MATH_VECTOR_AXISMATHVECTORUTIL_H
 
-            #include "../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-#include <jsinterop/annotations/JsType.h>
-
-      
 #include <org/allbinary/math/NoDecimalTrigTable.h>
-
-      
-#include <jsinterop/annotations/JsMethod.h>
 
       
 

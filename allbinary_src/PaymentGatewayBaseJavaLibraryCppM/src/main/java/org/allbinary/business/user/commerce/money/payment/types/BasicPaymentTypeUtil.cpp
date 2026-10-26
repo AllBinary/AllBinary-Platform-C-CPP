@@ -18,9 +18,9 @@
 
 
 
-            #include "../../../../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/util/BasicArrayList.h>
 
@@ -101,7 +101,7 @@ this->paymentTypeVector.add(paymentType);
     int32_t i = 0;i < size; i++)
         {
 
-    BasicPaymentType paymentType = this->paymentTypeVector.get(i) as BasicPaymentType;;
+    BasicPaymentType paymentType = this->paymentTypeVector.get(i);;
     
 
                         if(paymentType.getName().compareTo(paymentTypeString) == 0)
@@ -151,7 +151,7 @@ this->paymentTypeVector.add(paymentType);
     int32_t i = 0;i < size; i++)
         {
 
-    BasicPaymentType paymentType = this->paymentTypeVector.get(i) as BasicPaymentType;;
+    BasicPaymentType paymentType = this->paymentTypeVector.get(i);;
     
 
                         if(!a_PaymentTypeVector.contains(paymentType))

@@ -21,7 +21,7 @@
         #ifndef ORG_ALLBINARY_INPUT_EVENT_VIRTUALKEYBOARDEVENTLISTENERINTERFACE_H
         #define ORG_ALLBINARY_INPUT_EVENT_VIRTUALKEYBOARDEVENTLISTENERINTERFACE_H
 
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/logic/util/event/EventListenerInterface.h>
 

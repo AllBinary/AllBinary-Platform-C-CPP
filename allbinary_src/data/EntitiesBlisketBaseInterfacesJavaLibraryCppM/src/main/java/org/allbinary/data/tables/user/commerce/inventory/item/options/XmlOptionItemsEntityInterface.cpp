@@ -55,7 +55,7 @@ class XmlOptionItemsEntityInterface: public BasicDataTableInterface {
 
     void insert(BasicArrayList values)
 
-    void update(HashMap<any, any> updatedValues)
+    void update(HashMap<Object*, Object*> updatedValues)
 
 };
 

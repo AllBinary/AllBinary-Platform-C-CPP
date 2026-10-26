@@ -21,9 +21,9 @@
         #ifndef ORG_ALLBINARY_LOGIC_STRING_STRINGVALIDATIONJSEUTIL_H
         #define ORG_ALLBINARY_LOGIC_STRING_STRINGVALIDATIONJSEUTIL_H
 
-            #include "../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../java/lang/Character.h"
+            #include "java/lang/Character.h"
         
 
 

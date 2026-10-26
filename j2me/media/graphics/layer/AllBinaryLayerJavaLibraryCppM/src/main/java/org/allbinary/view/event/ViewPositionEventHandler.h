@@ -21,7 +21,7 @@
         #ifndef ORG_ALLBINARY_VIEW_EVENT_VIEWPOSITIONEVENTHANDLER_H
         #define ORG_ALLBINARY_VIEW_EVENT_VIEWPOSITIONEVENTHANDLER_H
 
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/layer/AllBinaryLayer.h>
 

@@ -18,7 +18,7 @@
 
 
 
-            #include "../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
 
@@ -101,7 +101,7 @@ class UserHelper: public Table {
 
     protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: HashMap<any, any> hashMap;
+    private: HashMap<Object*, Object*> hashMap;
 
     private: PageContext pageContext;
 
@@ -111,12 +111,12 @@ class UserHelper: public Table {
 
     private: Portion portion;
 
-public: UserHelper(HashMap<any, any> hashMap, PageContext pageContext){
+public: UserHelper(HashMap<Object*, Object*> hashMap, PageContext pageContext){
 this->hashMap= hashMap;
     
 this->pageContext= pageContext;
     
-this->request= pageContext.getRequest() as HttpServletRequest;
+this->request= pageContext.getRequest();
     
 this->path= URLGLOBALS::getMainPath() +FREEBLISKET_PATH_GLOBALS::getInstance().XSLPATH;
     
@@ -129,7 +129,7 @@ this->portion= Portion(hashMap);
 
         try {
             
-    HashMap<any, any> requestHashMap = RequestParams(this->request).toHashMap();;
+    HashMap<Object*, Object*> requestHashMap = RequestParams(this->request).toHashMap();;
     
 
     UserName userName = UserName(requestHashMap);;
@@ -203,7 +203,7 @@ stringBuffer.append(" from to the user table");
     UserInterface userInterface = NewUserFactory::getInstance(this->request, hashMap);;
     
 
-    std::string enable = this->hashMap.get(EntryData::getInstance().ENABLE) as string;;
+    std::string enable = this->hashMap.get(EntryData::getInstance().ENABLE);;
     
 
                         if(!StringValidationUtil::getInstance().isEmpty(enable))
@@ -271,7 +271,7 @@ UserEntityFactory::getInstance().insert(values);
     UserInterface user = NewUserFactory::getInstance(this->request, hashMap);;
     
 
-    HashMap<any, any> values = user.toHashMap();;
+    HashMap<Object*, Object*> values = user.toHashMap();;
     
 UserEntityFactory::getInstance().update(user.getUserName(), values);
     

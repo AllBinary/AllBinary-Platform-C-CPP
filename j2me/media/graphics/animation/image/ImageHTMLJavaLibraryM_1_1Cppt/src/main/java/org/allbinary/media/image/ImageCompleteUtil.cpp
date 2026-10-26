@@ -18,9 +18,9 @@
 
 
 
-            #include "../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <javax/microedition/lcdui/Image.h>
 
@@ -86,10 +86,10 @@ class ImageCompleteUtil
             
     public: bool isReady(Image image, std::string name, TimeDelayHelper timeDelayHelper){
 
-    PlaynImage playnImage = image as PlaynImage;;
+    PlaynImage playnImage = image;;
     
 
-    playn::core::Image playnCoreImage = playnImage.getImage() as playn::core::Image;;
+    playn::core::Image playnCoreImage = playnImage.getImage();;
     
 
                         if(!playnCoreImage.isReady() || playnCoreImage.width() +playnCoreImage.height() <= 0)

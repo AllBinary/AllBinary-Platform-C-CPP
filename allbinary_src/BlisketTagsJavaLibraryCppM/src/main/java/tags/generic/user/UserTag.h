@@ -21,7 +21,7 @@
         #ifndef TAGS_GENERIC_USER_USERTAG_H
         #define TAGS_GENERIC_USER_USERTAG_H
 
-            #include "../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <javax/servlet/jsp/JspTagException.h>
 

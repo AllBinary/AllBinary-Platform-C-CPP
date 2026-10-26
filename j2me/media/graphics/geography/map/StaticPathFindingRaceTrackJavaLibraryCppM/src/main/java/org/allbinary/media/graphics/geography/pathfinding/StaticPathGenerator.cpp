@@ -18,11 +18,11 @@
 
 
 
-            #include "../../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../../../../java/lang/Integer.h"
+            #include "java/lang/Integer.h"
         
 #include <org/allbinary/util/BasicArrayList.h>
 
@@ -133,7 +133,7 @@ PreLogUtil::put("Using Static Path Finding", this, CommonStrings::getInstance().
                         for (
     int32_t index = 0;index < size; index++)
         {
-basicGeographicMapCellPosition= pathList.get(index) as CellPosition;
+basicGeographicMapCellPosition= pathList.get(index);
     
 geographicMapCellPosition= geographicMapCellPositionFactory.getAt(basicGeographicMapCellPosition.getColumn(), basicGeographicMapCellPosition.getRow());
     
@@ -198,7 +198,7 @@ list.add(geographicMapCellPosition);
                         for (
     int32_t index = 0;index < size; index++)
         {
-pathList= this->getGeographicMapCellPositionListFromBasicGeographicMapCellPositionList(geographicMapCellPositionFactory, basicList.get(index) as BasicArrayList);
+pathList= this->getGeographicMapCellPositionListFromBasicGeographicMapCellPositionList(geographicMapCellPositionFactory, basicList.get(index));
     
 list.add(pathList);
     

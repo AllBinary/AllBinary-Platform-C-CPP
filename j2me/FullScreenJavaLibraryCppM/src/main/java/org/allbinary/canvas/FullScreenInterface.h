@@ -21,7 +21,7 @@
         #ifndef ORG_ALLBINARY_CANVAS_FULLSCREENINTERFACE_H
         #define ORG_ALLBINARY_CANVAS_FULLSCREENINTERFACE_H
 
-            #include "../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 
 

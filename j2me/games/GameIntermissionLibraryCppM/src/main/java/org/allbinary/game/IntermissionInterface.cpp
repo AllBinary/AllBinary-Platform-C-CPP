@@ -18,13 +18,7 @@
 
 
 
-#include <jsinterop/annotations/JsType.h>
-
-      
 #include <org/allbinary/time/TimeDelayHelper.h>
-
-      
-#include <jsinterop/annotations/JsMethod.h>
 
       
 

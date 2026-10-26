@@ -18,9 +18,9 @@
 
 
 
-            #include "../../../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../../../java/lang/Integer.h"
+            #include "java/lang/Integer.h"
         
 #include <javax/servlet/http/HttpServletRequest.h>
 
@@ -81,7 +81,7 @@ public: BasicWeblisketSession(PageContext pageContext){
 this->pageContext= pageContext;
     
 
-    HttpServletRequest request = pageContext.getRequest() as HttpServletRequest;;
+    HttpServletRequest request = pageContext.getRequest();;
     
 this->session= request.getSession(true);
     
@@ -99,7 +99,7 @@ this->session.setAttribute(BasicUserRoleData::NAME.toString(), aRole);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->session.getAttribute(BasicUserRoleData::NAME.toString()) as BasicUserRole;
+                        return this->session.getAttribute(BasicUserRoleData::NAME.toString());
     
 }
 
@@ -151,7 +151,7 @@ this->session.setAttribute(StoreFrontData::getInstance().NAME, value);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->session.getAttribute(org.allbinary.globals.GLOBALS2.WEBAPPPATH) as string;
+                        return this->session.getAttribute(org.allbinary.globals.GLOBALS2.WEBAPPPATH);
     
 }
 
@@ -161,7 +161,7 @@ this->session.setAttribute(StoreFrontData::getInstance().NAME, value);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->session.getAttribute(UserData::USERNAME) as string;
+                        return this->session.getAttribute(UserData::USERNAME);
     
 }
 
@@ -171,7 +171,7 @@ this->session.setAttribute(StoreFrontData::getInstance().NAME, value);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->session.getAttribute(UserData::PASSWORD) as string;
+                        return this->session.getAttribute(UserData::PASSWORD);
     
 }
 
@@ -181,7 +181,7 @@ this->session.setAttribute(StoreFrontData::getInstance().NAME, value);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->session.getAttribute(PaymentGatewayData::NAME.toString()) as string;
+                        return this->session.getAttribute(PaymentGatewayData::NAME.toString());
     
 }
 
@@ -191,7 +191,7 @@ this->session.setAttribute(StoreFrontData::getInstance().NAME, value);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->session.getAttribute(WeblisketSessionData::AUTHENTICATED) as string;
+                        return this->session.getAttribute(WeblisketSessionData::AUTHENTICATED);
     
 }
 
@@ -201,7 +201,7 @@ this->session.setAttribute(StoreFrontData::getInstance().NAME, value);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->session.getAttribute(WeblisketSessionData::ATTEMPTS) as Integer;
+                        return this->session.getAttribute(WeblisketSessionData::ATTEMPTS);
     
 }
 
@@ -211,7 +211,7 @@ this->session.setAttribute(StoreFrontData::getInstance().NAME, value);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->session.getAttribute(WeblisketSessionData::TIMEOUT) as string;
+                        return this->session.getAttribute(WeblisketSessionData::TIMEOUT);
     
 }
 
@@ -221,7 +221,7 @@ this->session.setAttribute(StoreFrontData::getInstance().NAME, value);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->session.getAttribute(StoreFrontData::getInstance().NAME) as string;
+                        return this->session.getAttribute(StoreFrontData::getInstance().NAME);
     
 }
 

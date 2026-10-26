@@ -20,9 +20,9 @@
 
             #include <vector>
         
-            #include "../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <javax/microedition/lcdui/Image.h>
 
@@ -115,18 +115,18 @@ class ImageModifierUtil
                         
                                     {
                                     
-    SwtMutableImage swtImage = image as SwtMutableImage;;
+    SwtMutableImage swtImage = image;;
     
-newBufferedImage= swtImage.getImage() as org::eclipse::swt::graphics::Image;
+newBufferedImage= swtImage.getImage();
     
 
                                     }
                                 
                         else {
                             
-    SwtImmutableImage swtImage = image as SwtImmutableImage;;
+    SwtImmutableImage swtImage = image;;
     
-newBufferedImage= swtImage.getImage() as org::eclipse::swt::graphics::Image;
+newBufferedImage= swtImage.getImage();
     
 
                         }
@@ -220,7 +220,7 @@ imageData.data[index3 +2]= b;
                         
                                     {
                                     
-    OpenGLESImage openGLESImage = (image as OpenGLESImage);;
+    OpenGLESImage openGLESImage = (image);;
     
 openGLESImage.imageProcessor= ModifierOpenGLESImageProcessor::getInstance();
     
@@ -250,18 +250,18 @@ openGLESImage.openGLESImageProperties.bluef= basicColor.getBlueComponent();
                         
                                     {
                                     
-    SwtMutableImage swtImage = image as SwtMutableImage;;
+    SwtMutableImage swtImage = image;;
     
-newBufferedImage= swtImage.getImage() as org::eclipse::swt::graphics::Image;
+newBufferedImage= swtImage.getImage();
     
 
                                     }
                                 
                         else {
                             
-    SwtImmutableImage swtImage = image as SwtImmutableImage;;
+    SwtImmutableImage swtImage = image;;
     
-newBufferedImage= swtImage.getImage() as org::eclipse::swt::graphics::Image;
+newBufferedImage= swtImage.getImage();
     
 
                         }
@@ -340,7 +340,7 @@ imageData.data[index +2]= bx;
                         
                                     {
                                     
-    OpenGLESImage openGLESImage = (image as OpenGLESImage);;
+    OpenGLESImage openGLESImage = (image);;
     
 openGLESImage.imageProcessor= ModifierOpenGLESImageProcessor::getInstance();
     
@@ -375,18 +375,18 @@ this->setAlphaSWT(image, alphaInt);
                         
                                     {
                                     
-    SwtMutableImage swtImage = image as SwtMutableImage;;
+    SwtMutableImage swtImage = image;;
     
-newBufferedImage= swtImage.getImage() as org::eclipse::swt::graphics::Image;
+newBufferedImage= swtImage.getImage();
     
 
                                     }
                                 
                         else {
                             
-    SwtImmutableImage swtImage = image as SwtImmutableImage;;
+    SwtImmutableImage swtImage = image;;
     
-newBufferedImage= swtImage.getImage() as org::eclipse::swt::graphics::Image;
+newBufferedImage= swtImage.getImage();
     
 
                         }
@@ -400,7 +400,7 @@ newBufferedImage.getImageData().alpha= alpha;
 
         try {
             
-    std::vector<Image> newImageArray = new Array(originalImageArray.length);;
+    std::vector<Image> newImageArray = std::vector<Image>(originalImageArray.length);;
     
 
     int32_t size = newImageArray.size();;
@@ -415,7 +415,7 @@ newBufferedImage.getImageData().alpha= alpha;
                         for (
     int32_t index = 0;index < size; index++)
         {
-originalImage= originalImageArray[index]!;
+originalImage= originalImageArray[index];
     
 
     Image image = this->imageCopyUtil.createImage(originalImage);;

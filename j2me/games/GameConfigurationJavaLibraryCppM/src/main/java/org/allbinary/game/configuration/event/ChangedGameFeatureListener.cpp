@@ -18,13 +18,7 @@
 
 
 
-#include <jsinterop/annotations/JsType.h>
-
-      
 #include <org/allbinary/game/configuration/GameConfiguration.h>
-
-      
-#include <jsinterop/annotations/JsMethod.h>
 
       
 

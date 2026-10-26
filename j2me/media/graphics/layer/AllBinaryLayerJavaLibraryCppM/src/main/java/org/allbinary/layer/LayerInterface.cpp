@@ -18,16 +18,10 @@
 
 
 
-#include <jsinterop/annotations/JsType.h>
-
-      
 #include <org/allbinary/game/identification/GroupInterfaceCompositeInterface.h>
 
       
 #include <org/allbinary/graphics/paint/PaintableInterface.h>
-
-      
-#include <jsinterop/annotations/JsMethod.h>
 
       
 

@@ -21,7 +21,7 @@
         #ifndef ORG_ALLBINARY_ANDROIDUTIL_H
         #define ORG_ALLBINARY_ANDROIDUTIL_H
 
-            #include "../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
 
 

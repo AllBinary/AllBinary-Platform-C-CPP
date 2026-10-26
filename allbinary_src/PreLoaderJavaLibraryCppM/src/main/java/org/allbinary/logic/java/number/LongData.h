@@ -21,9 +21,9 @@
         #ifndef ORG_ALLBINARY_LOGIC_JAVA_NUMBER_LONGDATA_H
         #define ORG_ALLBINARY_LOGIC_JAVA_NUMBER_LONGDATA_H
 
-            #include "../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../java/lang/Long.h"
+            #include "java/lang/Long.h"
         
 
 

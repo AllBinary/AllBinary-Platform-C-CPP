@@ -7,11 +7,11 @@
         #ifndef ORG_ALLBINARY_MEDIA_AUDIO_MUSIC_MUSICMANAGER_H
         #define ORG_ALLBINARY_MEDIA_AUDIO_MUSIC_MUSICMANAGER_H
 
-            #include "../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../java/lang/Class.h"
+            #include "java/lang/Class.h"
         
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <android/app/Activity.h>
 
@@ -88,9 +88,9 @@ class MusicManager
             : public Object
          {
 
-    public: static void pause(Activity activity, Function musicServiceClass);
+    public: static void pause(Activity activity, Class* musicServiceClass);
 
-    public: static void resume(Activity activity, Function musicServiceClass);
+    public: static void resume(Activity activity, Class* musicServiceClass);
 
     private: const std::string PLAY = "Play ";
 
@@ -124,11 +124,11 @@ class MusicManager
 
     private: int32_t rightVolume = 100;
 
-    private: Function musicServiceClass;
+    private: Class* musicServiceClass;
 
     private: Intent currentIntent;
 
-public: MusicManager(Function musicServiceClass, BasicArrayList songList);
+public: MusicManager(Class* musicServiceClass, BasicArrayList songList);
 
     public: void nextSong(Sound nextSongSound, int32_t leftVolume, int32_t rightVolume);
 

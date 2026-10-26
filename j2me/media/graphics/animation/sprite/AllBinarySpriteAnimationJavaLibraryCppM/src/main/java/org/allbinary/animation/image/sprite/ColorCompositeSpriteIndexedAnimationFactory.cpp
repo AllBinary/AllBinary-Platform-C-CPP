@@ -20,7 +20,7 @@
 
             #include <vector>
         
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <javax/microedition/lcdui/Image.h>
 
@@ -75,8 +75,9 @@ class ColorCompositeSpriteIndexedAnimationFactory: public BaseImageAnimationFact
 
     private: std::vector<BasicColor> basicColorArray;
 
-public: ColorCompositeSpriteIndexedAnimationFactory(Image image, std::vector<BasicColor> basicColorArray, int32_t width, int32_t height, AnimationBehaviorFactory animationBehaviorFactory){
-            super(image, PrimitiveIntUtil::getArrayInstance(), width, height, 0, 0, animationBehaviorFactory);
+public: ColorCompositeSpriteIndexedAnimationFactory(Image image, std::vector<BasicColor> basicColorArray, int32_t width, int32_t height, AnimationBehaviorFactory animationBehaviorFactory) : BaseImageAnimationFactory(image, PrimitiveIntUtil::getArrayInstance(), width, height, 0, 0, animationBehaviorFactory){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.

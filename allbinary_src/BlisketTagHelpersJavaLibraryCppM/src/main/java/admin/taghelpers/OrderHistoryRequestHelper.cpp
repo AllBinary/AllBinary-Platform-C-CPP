@@ -18,7 +18,7 @@
 
 
 
-            #include "../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
 
@@ -96,8 +96,8 @@ class OrderHistoryRequestHelper: public TagHelper {
 
     private: std::string status;
 
-public: OrderHistoryRequestHelper(HashMap<any, any> hashMap, PageContext pageContext){
-this->request= pageContext.getRequest() as HttpServletRequest;
+public: OrderHistoryRequestHelper(HashMap<Object*, Object*> hashMap, PageContext pageContext){
+this->request= pageContext.getRequest();
     
 this->getFormData();
     
@@ -118,7 +118,7 @@ this->status= this->request.getParameter(OrderHistoryData::STATUS);
 
         try {
             
-                        if(this->groupId.compareTo(CommonPhoneStrings::getInstance().ZERO) != 0)
+                        if(this->groupId.compare(CommonPhoneStrings::getInstance().ZERO) != 0)
                         
                                     {
                                     

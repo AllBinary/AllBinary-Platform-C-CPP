@@ -7,7 +7,7 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_FORM_ITEM_CHOICEGROUPITEM_H
         #define ORG_ALLBINARY_GRAPHICS_FORM_ITEM_CHOICEGROUPITEM_H
 
-            #include "../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
 
 

@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
 
@@ -95,8 +95,9 @@ class DeleteFileValidationView: public DownloadableInventoryItemView, public Val
 
     private: std::string downloadItemId;
 
-public: DeleteFileValidationView(TransformInfoInterface transformInfoInterface){
-            super(transformInfoInterface, StringUtil::getInstance().EMPTY_STRING);
+public: DeleteFileValidationView(TransformInfoInterface transformInfoInterface) : DownloadableInventoryItemView(transformInfoInterface, StringUtil::getInstance().EMPTY_STRING){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -110,7 +111,7 @@ this->getFormData();
             
     public: void getFormData(){
 
-    HashMap<any, any> hashMap = RequestParams(request).toHashMap();;
+    HashMap<Object*, Object*> hashMap = RequestParams(request).toHashMap();;
     
 
                         if(hashMap == 
@@ -126,9 +127,9 @@ this->getFormData();
 
                                     }
                                 
-this->id= hashMap.get(basicItemData.ID) as string;
+this->id= hashMap.get(basicItemData.ID);
     
-this->downloadItemId= hashMap.get(DownloadItemData::ID) as string;
+this->downloadItemId= hashMap.get(DownloadItemData::ID);
     
 }
 

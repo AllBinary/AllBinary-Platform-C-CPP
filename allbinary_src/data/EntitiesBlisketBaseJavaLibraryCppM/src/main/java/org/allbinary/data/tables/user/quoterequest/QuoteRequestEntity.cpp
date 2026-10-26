@@ -18,9 +18,9 @@
 
 
 
-            #include "../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../../../../java/lang/Integer.h"
+            #include "java/lang/Integer.h"
         
 #include <java/util/HashMap.h>
 
@@ -84,8 +84,9 @@ class QuoteRequestEntity: public AbSqlBean, public QuoteRequestEntityInterface {
 
     private: const std::string tableName = "quoterequest";
 
-public: QuoteRequestEntity(){
-            super(UserDbInitInfo());
+public: QuoteRequestEntity() : AbSqlBean(UserDbInitInfo()){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -131,14 +132,14 @@ this->setTableName(this->tableName);
             
     public: QuoteRequest get(std::string userName, int32_t id){
 
-    HashMap<any, any> row = StdUtil::getInstance().createHashMap();;
+    HashMap<Object*, Object*> row = StdUtil::getInstance().createHashMap();;
     
 row.put(UserData::USERNAME, userName);
     
 row.put(QuoteRequestData::getInstance().ID, std::to_string(id));
     
 
-    HashMap<any, any> quoteRequestHashMap = super.getRow(row);;
+    HashMap<Object*, Object*> quoteRequestHashMap = super.getRow(row);;
     
 
                         if(quoteRequestHashMap != 
@@ -291,7 +292,7 @@ stringBuffer.append(this->sqlStrings.END);
 }
 
 
-    public: void update(std::string userName, HashMap<any, any> updatedValues){
+    public: void update(std::string userName, HashMap<Object*, Object*> updatedValues){
 super.updateWhere(UserData::USERNAME, userName, updatedValues);
     
 }

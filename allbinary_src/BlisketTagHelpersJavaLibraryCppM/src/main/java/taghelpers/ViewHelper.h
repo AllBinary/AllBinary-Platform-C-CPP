@@ -21,9 +21,9 @@
         #ifndef TAGHELPERS_VIEWHELPER_H
         #define TAGHELPERS_VIEWHELPER_H
 
-            #include "../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
 
@@ -89,7 +89,7 @@ class ViewHelper
 
     private: TransformInterface componentInterface;
 
-public: ViewHelper(HashMap<any, any> hashMap, PageContext pageContext);
+public: ViewHelper(HashMap<Object*, Object*> hashMap, PageContext pageContext);
 
     public: int32_t NO_TYPE = 0;
 

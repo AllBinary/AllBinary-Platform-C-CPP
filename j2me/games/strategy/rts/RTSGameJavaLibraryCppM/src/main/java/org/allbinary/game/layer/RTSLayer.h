@@ -23,13 +23,10 @@
 
             #include <vector>
         
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../../java/lang/RuntimeException.h"
+            #include "java/lang/RuntimeException.h"
         
-#include <java/util/Hashtable.h>
-
-      
 #include <javax/microedition/lcdui/Graphics.h>
 
       
@@ -156,6 +153,9 @@
 #include <org/allbinary/media/graphics/geography/map/GeographicMapCompositeInterface.h>
 
       
+#include <org/allbinary/util/ABHashtable.h>
+
+      
 #include <org/allbinary/util/BasicArrayList.h>
 
       
@@ -214,7 +214,7 @@ class RTSLayer: public MultiPlayerGameLayer, public TickableInterface, public Ga
 
     public: const bool showMoreCaptionStates = this->debug;
 
-    protected: const std::vector<GameInputProcessor> inputProcessorArray = new Array(InputFactory::getInstance().MAX);
+    protected: const std::vector<GameInputProcessor> inputProcessorArray = std::vector<GameInputProcessor>(InputFactory::getInstance().MAX);
 
     public: RTSLayer2LogHelper rtsLayer2LogHelper = RTSLayer2LogHelper::getInstance();
 
@@ -256,7 +256,7 @@ class RTSLayer: public MultiPlayerGameLayer, public TickableInterface, public Ga
 
     private: std::string rootName;
 
-    protected: const Hashtable<any, any> hashtable = StdUtil::getInstance().createHashtable();
+    protected: const ABHashtable<Object*, Object*> hashtable = StdUtil::getInstance().createHashtable();
 
     private: const int32_t BUILD_VALUE = 63;
 

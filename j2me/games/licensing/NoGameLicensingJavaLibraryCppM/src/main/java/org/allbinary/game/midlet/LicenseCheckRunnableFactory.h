@@ -21,18 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_MIDLET_LICENSECHECKRUNNABLEFACTORY_H
         #define ORG_ALLBINARY_GAME_MIDLET_LICENSECHECKRUNNABLEFACTORY_H
 
-            #include "../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-#include <jsinterop/annotations/JsType.h>
-
-      
 #include <org/allbinary/thread/ABRunnable.h>
 
       
 #include <org/allbinary/thread/NullABRunnable.h>
-
-      
-#include <jsinterop/annotations/JsMethod.h>
 
       
 

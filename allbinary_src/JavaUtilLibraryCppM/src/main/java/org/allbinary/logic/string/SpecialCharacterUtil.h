@@ -21,7 +21,7 @@
         #ifndef ORG_ALLBINARY_LOGIC_STRING_SPECIALCHARACTERUTIL_H
         #define ORG_ALLBINARY_LOGIC_STRING_SPECIALCHARACTERUTIL_H
 
-            #include "../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
 #include <java/util/HashMap.h>
 
@@ -65,7 +65,7 @@ class SpecialCharacterUtil
             : public Object
          {
 
-    public: static HashMap<any, any> getHashMap();
+    public: static HashMap<Object*, Object*> getHashMap();
 
 };
 

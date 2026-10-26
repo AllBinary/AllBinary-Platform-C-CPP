@@ -23,9 +23,9 @@
 
             #include <vector>
         
-            #include "../../../../java/lang/Long.h"
+            #include "java/lang/Long.h"
         
-            #include "../../../../java/lang/Float.h"
+            #include "java/lang/Float.h"
         
 #include <org/allbinary/media/image/analysis/ImageAnalysisResults.h>
 

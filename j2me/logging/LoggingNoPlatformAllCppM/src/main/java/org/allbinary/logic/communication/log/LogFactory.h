@@ -21,9 +21,9 @@
         #ifndef ORG_ALLBINARY_LOGIC_COMMUNICATION_LOG_LOGFACTORY_H
         #define ORG_ALLBINARY_LOGIC_COMMUNICATION_LOG_LOGFACTORY_H
 
-            #include "../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../java/lang/RuntimeException.h"
+            #include "java/lang/RuntimeException.h"
         
 
 

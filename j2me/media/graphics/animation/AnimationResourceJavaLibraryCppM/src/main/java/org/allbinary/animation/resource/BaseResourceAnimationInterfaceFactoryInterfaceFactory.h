@@ -23,16 +23,10 @@
 
             #include <vector>
         
-            #include "../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-#include <jsinterop/annotations/JsType.h>
-
-      
-#include <java/util/Hashtable.h>
-
-      
 #include <org/allbinary/animation/BasicAnimationInterfaceFactoryInterface.h>
 
       
@@ -63,13 +57,7 @@
 #include <org/allbinary/string/CommonStrings.h>
 
       
-#include <jsinterop/annotations/JsMethod.h>
-
-      
-#include <jsinterop/annotations/JsConstructor.h>
-
-      
-#include <jsinterop/annotations/JsProperty.h>
+#include <org/allbinary/util/ABHashtable.h>
 
       
 
@@ -100,17 +88,17 @@ class BaseResourceAnimationInterfaceFactoryInterfaceFactory
 
     protected: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    private: Hashtable<any, any> hashtable;
+    private: ABHashtable<Object*, Object*> hashtable;
 
-    private: Hashtable<any, any> rectangleHashtable;
+    private: ABHashtable<Object*, Object*> rectangleHashtable;
 
-    private: Hashtable<any, any> rectangleArrayOfArraysHashtable;
+    private: ABHashtable<Object*, Object*> rectangleArrayOfArraysHashtable;
 
     private: std::string name;
 
     private: bool initialized= false;
 
-public: BaseResourceAnimationInterfaceFactoryInterfaceFactory(std::string name, Hashtable<any, any> hashtable, Hashtable<any, any> rectangleHashtable, Hashtable<any, any> rectangleArrayHashtable);
+public: BaseResourceAnimationInterfaceFactoryInterfaceFactory(std::string name, ABHashtable<Object*, Object*> hashtable, ABHashtable<Object*, Object*> rectangleHashtable, ABHashtable<Object*, Object*> rectangleArrayHashtable);
 
     public: std::string getName();
 
@@ -152,11 +140,11 @@ public: BaseResourceAnimationInterfaceFactoryInterfaceFactory(std::string name, 
 
     public: std::string toString();
 
-    public: Hashtable<any, any> getHashtable();
+    public: ABHashtable<Object*, Object*> getHashtable();
 
-    public: Hashtable<any, any> getRectangleHashtable();
+    public: ABHashtable<Object*, Object*> getRectangleHashtable();
 
-    public: Hashtable<any, any> getRectangleArrayOfArraysHashtable();
+    public: ABHashtable<Object*, Object*> getRectangleArrayOfArraysHashtable();
 
     protected: void setInitialized(bool initialized);
 

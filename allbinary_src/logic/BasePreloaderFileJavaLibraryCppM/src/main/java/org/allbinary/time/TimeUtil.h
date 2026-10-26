@@ -21,9 +21,9 @@
         #ifndef ORG_ALLBINARY_TIME_TIMEUTIL_H
         #define ORG_ALLBINARY_TIME_TIMEUTIL_H
 
-            #include "../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../java/lang/Integer.h"
+            #include "java/lang/Integer.h"
         
 #include <java/util/Calendar.h>
 

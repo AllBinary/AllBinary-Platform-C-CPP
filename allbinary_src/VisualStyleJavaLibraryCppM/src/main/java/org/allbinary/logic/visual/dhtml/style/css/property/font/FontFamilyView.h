@@ -21,7 +21,7 @@
         #ifndef ORG_ALLBINARY_LOGIC_VISUAL_DHTML_STYLE_CSS_PROPERTY_FONT_FONTFAMILYVIEW_H
         #define ORG_ALLBINARY_LOGIC_VISUAL_DHTML_STYLE_CSS_PROPERTY_FONT_FONTFAMILYVIEW_H
 
-            #include "../../../../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/logic/visual/dhtml/style/css/property/CssPropertyView.h>
 

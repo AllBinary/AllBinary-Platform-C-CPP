@@ -21,7 +21,7 @@
         #ifndef ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_GENERIC_GENERICMODULEFACTORY_H
         #define ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_GENERIC_GENERICMODULEFACTORY_H
 
-            #include "../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/input/automation/module/AbstractInputAutomationFactory.h>
 

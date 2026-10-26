@@ -18,11 +18,8 @@
 
 
 
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-#include <jsinterop/annotations/JsType.h>
-
-      
 #include <javax/microedition/lcdui/Canvas.h>
 
       
@@ -89,15 +86,6 @@
 #include <org/allbinary/util/BasicArrayList.h>
 
       
-#include <jsinterop/annotations/JsMethod.h>
-
-      
-#include <jsinterop/annotations/JsConstructor.h>
-
-      
-#include <jsinterop/annotations/JsProperty.h>
-
-      
 
 
 
@@ -137,8 +125,9 @@ class CommandFormInputProcessor: public BasicMenuInputProcessor {
 
     private: bool hasPressed = false;
 
-public: CommandFormInputProcessor(BasicArrayList gameKeyEventList, int32_t playerInputId, MyCanvas gameCanvas, ScrollSelectionForm form){
-            super(gameKeyEventList, playerInputId, gameCanvas);
+public: CommandFormInputProcessor(BasicArrayList gameKeyEventList, int32_t playerInputId, MyCanvas gameCanvas, ScrollSelectionForm form) : BasicMenuInputProcessor(gameKeyEventList, playerInputId, gameCanvas){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -196,7 +185,7 @@ this->form.processInputKey(key);
 
     private: int32_t processCommand(){
 
-    CommandCurrentSelectionForm commandCurrentSelectionForm = this->form as CommandCurrentSelectionForm;;
+    CommandCurrentSelectionForm commandCurrentSelectionForm = this->form;;
     
 
     Command command = commandCurrentSelectionForm.getSelectedCommand();;
@@ -277,7 +266,7 @@ this->logUtil.putF(command.toString(), this, this->PROCESS_COMMAND);
                         for (
     int32_t index = 0;index < size; index++)
         {
-gameKeyEvent= list.objectArray[index]! as GameKeyEvent;
+gameKeyEvent= list.objectArray[index];
     
 key= gameKeyEvent.getKey();
     
@@ -353,7 +342,7 @@ this->logUtil.put(this->commonStrings.EXCEPTION, this, this->gameInputStrings.PR
                         
                                     {
                                     
-    MotionGestureEvent motionGestureEvent = this->motionGestureEventList.objectArray[lastIndex]! as MotionGestureEvent;;
+    MotionGestureEvent motionGestureEvent = this->motionGestureEventList.objectArray[lastIndex];;
     
 this->processMotionInput(motionGestureEvent);
     

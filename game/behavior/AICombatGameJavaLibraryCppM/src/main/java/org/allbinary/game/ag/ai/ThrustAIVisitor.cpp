@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <javax/microedition/lcdui/Canvas.h>
 
@@ -71,7 +71,7 @@ public: ThrustAIVisitor(){
 
         try {
             
-    BasicAI basicAI = anyType as BasicAI;;
+    BasicAI basicAI = *dynamic_cast<BasicAI*>(anyType);;
     
 basicAI.processKeyAI(Canvas::UP);
     

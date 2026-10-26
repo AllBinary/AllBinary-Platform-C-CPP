@@ -21,9 +21,9 @@
         #ifndef ORG_ALLBINARY_LOGIC_IO_CLOUDSTREAMUTIL_H
         #define ORG_ALLBINARY_LOGIC_IO_CLOUDSTREAMUTIL_H
 
-            #include "../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/io/InputStream.h>
 

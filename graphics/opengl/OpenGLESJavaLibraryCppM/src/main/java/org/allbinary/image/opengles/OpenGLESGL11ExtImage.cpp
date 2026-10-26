@@ -20,7 +20,7 @@
 
             #include <vector>
         
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <javax/microedition/khronos/opengles/GL.h>
 
@@ -83,16 +83,16 @@ class OpenGLESGL11ExtImage: public OpenGLESImage {
 
     private: std::vector<int32_t> rectangle;
 
-public: OpenGLESGL11ExtImage(Image image, PlatformBitmapBaseFactory bitmapFactory, PlatformTextureBaseFactory textureFactory){
-            super(image, bitmapFactory, textureFactory);
+public: OpenGLESGL11ExtImage(Image image, PlatformBitmapBaseFactory bitmapFactory, PlatformTextureBaseFactory textureFactory) : OpenGLESImage(image, bitmapFactory, textureFactory){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this->onDisplayChangeEvent(
-                            nullptr);
+this->onDisplayChangeEvent(DisplayInfoSingleton::getInstance().displayChangeEvent);
     
-this->rectangle= [0,this->getHeight(), this->getWidth(),  -this->getHeight();];
+this->rectangle= {0,this->getHeight(), this->getWidth(),  -this->getHeight();};
     
 }
 
@@ -116,11 +116,10 @@ this->logUtil.put(this->commonStrings.EXCEPTION, this, "onResize", e);
 
 
     public: void set(GL gl){
-this->onDisplayChangeEvent(
-                            nullptr);
+this->onDisplayChangeEvent(DisplayInfoSingleton::getInstance().displayChangeEvent);
     
 
-    GL11 gl11 = gl as GL11;;
+    GL11 gl11 = gl;;
     
 
                         if(super.initTexture(gl11))
@@ -145,9 +144,10 @@ gl.glEnable(GL10::GL_TEXTURE_2D);
     
 gl.glBindTexture(GL10::GL_TEXTURE_2D, this->openGLESImageProperties.textureID);
     
-gl = glgl as GL11Ext
-gl.
-                    glDrawTexfOES(x, this->a -y, z, this->getWidth(), this->getHeight());
+
+    GL11Ext gl11Ext = gl;;
+    
+gl11Ext.glDrawTexfOES(x, (this->a -y), z, this->getWidth(), this->getHeight());
     
 gl.glDisable(GL10::GL_TEXTURE_2D);
     

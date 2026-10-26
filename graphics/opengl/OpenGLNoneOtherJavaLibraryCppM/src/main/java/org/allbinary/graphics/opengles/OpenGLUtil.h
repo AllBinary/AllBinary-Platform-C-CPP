@@ -7,9 +7,9 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_OPENGLES_OPENGLUTIL_H
         #define ORG_ALLBINARY_GRAPHICS_OPENGLES_OPENGLUTIL_H
 
-            #include "../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../java/lang/Runnable.h"
+            #include "java/lang/Runnable.h"
         
 #include <javax/microedition/lcdui/Image.h>
 

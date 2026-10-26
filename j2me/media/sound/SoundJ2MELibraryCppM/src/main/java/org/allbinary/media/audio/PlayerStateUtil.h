@@ -21,7 +21,7 @@
         #ifndef ORG_ALLBINARY_MEDIA_AUDIO_PLAYERSTATEUTIL_H
         #define ORG_ALLBINARY_MEDIA_AUDIO_PLAYERSTATEUTIL_H
 
-            #include "../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
 #include <javax/microedition/media/Player.h>
 

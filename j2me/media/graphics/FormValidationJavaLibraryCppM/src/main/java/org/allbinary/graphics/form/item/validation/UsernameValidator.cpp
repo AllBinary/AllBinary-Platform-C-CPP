@@ -43,8 +43,9 @@
 
 class UsernameValidator: public TextFieldItemValidator {
 
-public: UsernameValidator(ABTextFieldItem textFieldItem, int32_t min, int32_t max, bool allowOnEmpty){
-            super(textFieldItem, min, max, allowOnEmpty);
+public: UsernameValidator(ABTextFieldItem textFieldItem, int32_t min, int32_t max, bool allowOnEmpty) : TextFieldItemValidator(textFieldItem, min, max, allowOnEmpty){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.

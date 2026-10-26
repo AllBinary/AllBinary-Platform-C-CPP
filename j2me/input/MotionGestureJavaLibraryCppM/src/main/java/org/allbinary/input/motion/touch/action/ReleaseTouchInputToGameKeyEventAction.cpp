@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/game/input/GameKey.h>
 
@@ -81,15 +81,16 @@ class ReleaseTouchInputToGameKeyEventAction: public GameKeyCompleteMotionGesture
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return ReleaseTouchInputToGameKeyEventAction::instance() as GameKeyCompleteMotionGestureInputEvent;
+                        return ReleaseTouchInputToGameKeyEventAction::instance();
     
 }
 
 
     private: const GameKey NONE = GameKeyFactory::getInstance().NONE;
 
-private: ReleaseTouchInputToGameKeyEventAction(){
-            super("Release Action", TouchMotionGestureFactory::getInstance().RELEASED, PlatformInputMappingFactory::getInstance().getPersistentInputMappingInstance().getInputMapping());
+private: ReleaseTouchInputToGameKeyEventAction() : GameKeyCompleteMotionGestureInputEvent("Release Action", TouchMotionGestureFactory::getInstance().RELEASED, PlatformInputMappingFactory::getInstance().getPersistentInputMappingInstance().getInputMapping()){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.

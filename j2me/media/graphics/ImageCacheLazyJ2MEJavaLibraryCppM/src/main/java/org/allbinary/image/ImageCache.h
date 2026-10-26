@@ -23,17 +23,12 @@
 
             #include <vector>
         
-            #include "../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../java/lang/RuntimeException.h"
+            #include "java/lang/RuntimeException.h"
         
-            #include "../../../java/lang/System.h"
+            #include "java/lang/Thread.h"
         
-            #include "../../../java/lang/Thread.h"
-        
-#include <jsinterop/annotations/JsType.h>
-
-      
 #include <java/io/InputStream.h>
 
       
@@ -44,6 +39,9 @@
 
       
 #include <org/allbinary/J2MEUtil.h>
+
+      
+#include <org/allbinary/TsUtil.h>
 
       
 #include <org/allbinary/animation/image/LazyImageRotationAnimation.h>
@@ -109,13 +107,7 @@
 #include <org/allbinary/util/BasicArrayListD.h>
 
       
-#include <jsinterop/annotations/JsMethod.h>
-
-      
-#include <jsinterop/annotations/JsConstructor.h>
-
-      
-#include <jsinterop/annotations/JsProperty.h>
+#include <org/allbinary/logic/ABSystemWrapper.h>
 
       
 
@@ -141,12 +133,13 @@
 //#include "FirstProcessor.h"
 //#include "NotHTMLProcessor.h"
 //#include "HTMLEndProcessor.h"
+#include "ImageFactory.h"
 
 class ImageCache: public ImageCacheBase {
 
     public: static const ImageCache NULL_IMAGE_CACHE = ImageCache();
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    private: const TsUtil tsUtil = TsUtil::getInstance();
 
     private: const BaseImageLoadingProcessor concurrentImageLoadingProcessor = ConcurrentImageLoadingProcessor(this);
 

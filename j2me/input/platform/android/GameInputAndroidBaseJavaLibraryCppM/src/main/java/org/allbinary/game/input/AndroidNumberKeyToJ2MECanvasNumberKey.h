@@ -9,7 +9,7 @@
 
             #include <vector>
         
-            #include "../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
 #include <javax/microedition/lcdui/Canvas.h>
 
@@ -40,7 +40,7 @@ class AndroidNumberKeyToJ2MECanvasNumberKey
             : public Object
          {
 
-    private: static const std::vector<int32_t> androidtoJavaMicroEditionKeyMap = new Array(17);
+    private: static const std::vector<int32_t> androidtoJavaMicroEditionKeyMap = std::vector<int32_t>(17);
 
     public: static void init();
 

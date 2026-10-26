@@ -21,9 +21,9 @@
         #ifndef ORG_ALLBINARY_MATH_ANGLEINCREMENTINFO_H
         #define ORG_ALLBINARY_MATH_ANGLEINCREMENTINFO_H
 
-            #include "../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../java/lang/Integer.h"
+            #include "java/lang/Integer.h"
         
 #include <jsinterop/annotations/JsType.h>
 

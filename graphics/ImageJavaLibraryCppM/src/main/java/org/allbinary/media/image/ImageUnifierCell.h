@@ -21,9 +21,9 @@
         #ifndef ORG_ALLBINARY_MEDIA_IMAGE_IMAGEUNIFIERCELL_H
         #define ORG_ALLBINARY_MEDIA_IMAGE_IMAGEUNIFIERCELL_H
 
-            #include "../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../java/lang/Integer.h"
+            #include "java/lang/Integer.h"
         
 
 

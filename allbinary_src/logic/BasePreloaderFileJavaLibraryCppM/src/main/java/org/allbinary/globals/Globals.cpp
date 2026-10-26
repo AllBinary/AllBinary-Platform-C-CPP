@@ -18,9 +18,9 @@
 
 
 
-            #include "../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../java/lang/ClassLoader.h"
+            #include "java/lang/ClassLoader.h"
         
 #include <org/allbinary/logic/communication/log/LogUtil.h>
 
@@ -105,7 +105,7 @@ stringBuffer.append(pathString);
     
 stringBuffer.append(" ClassLoader: ");
     
-stringBuffer.append(classLoader.constructor.name.toString()!);
+stringBuffer.append(classLoader.constructor.name.toString());
     
 this->logUtil.putF(stringBuffer.toString(), this, commonStrings.INIT);
     

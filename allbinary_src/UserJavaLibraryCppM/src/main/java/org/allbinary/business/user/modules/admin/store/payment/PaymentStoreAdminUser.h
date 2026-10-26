@@ -21,7 +21,7 @@
         #ifndef ORG_ALLBINARY_BUSINESS_USER_MODULES_ADMIN_STORE_PAYMENT_PAYMENTSTOREADMINUSER_H
         #define ORG_ALLBINARY_BUSINESS_USER_MODULES_ADMIN_STORE_PAYMENT_PAYMENTSTOREADMINUSER_H
 
-            #include "../../../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
 
@@ -55,7 +55,7 @@ class PaymentStoreAdminUser: public User {
 
 public: PaymentStoreAdminUser();
 
-public: PaymentStoreAdminUser(HashMap<any, any> userHashMap);
+public: PaymentStoreAdminUser(HashMap<Object*, Object*> userHashMap);
 
     public: void validateSession(WeblisketSessionInterface weblisketSession);
 

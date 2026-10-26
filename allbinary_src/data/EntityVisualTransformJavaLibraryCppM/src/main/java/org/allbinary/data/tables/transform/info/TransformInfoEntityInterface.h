@@ -21,7 +21,7 @@
         #ifndef ORG_ALLBINARY_DATA_TABLES_TRANSFORM_INFO_TRANSFORMINFOENTITYINTERFACE_H
         #define ORG_ALLBINARY_DATA_TABLES_TRANSFORM_INFO_TRANSFORMINFOENTITYINTERFACE_H
 
-            #include "../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
 
@@ -64,7 +64,7 @@ class TransformInfoEntityInterface: public BasicDataTableInterface {
 
                 //@Throws(Exception.constructor)
             
-    TransformInfoInterface get(std::string name, HashMap<any, any> propertiesHashMap, PageContext pageContext);
+    TransformInfoInterface get(std::string name, HashMap<Object*, Object*> propertiesHashMap, PageContext pageContext);
 
                 //@Throws(Exception.constructor)
             
@@ -78,7 +78,7 @@ class TransformInfoEntityInterface: public BasicDataTableInterface {
 
     void insert(BasicArrayList values);
 
-    void update(HashMap<any, any> updatedValues);
+    void update(HashMap<Object*, Object*> updatedValues);
 
 };
 

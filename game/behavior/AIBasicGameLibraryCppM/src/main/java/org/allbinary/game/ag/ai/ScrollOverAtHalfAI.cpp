@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/game/ai/BasicAI.h>
 
@@ -56,8 +56,9 @@
         
 class ScrollOverAtHalfAI: public BasicAI {
 
-public: ScrollOverAtHalfAI(AllBinaryLayer ownerLayerInterface, GameInput gameInput){
-            super(ownerLayerInterface, gameInput);
+public: ScrollOverAtHalfAI(AllBinaryLayer ownerLayerInterface, GameInput gameInput) : BasicAI(ownerLayerInterface, gameInput){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.

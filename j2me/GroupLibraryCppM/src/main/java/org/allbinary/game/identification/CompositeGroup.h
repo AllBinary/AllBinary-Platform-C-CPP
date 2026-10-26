@@ -21,7 +21,7 @@
         #ifndef ORG_ALLBINARY_GAME_IDENTIFICATION_COMPOSITEGROUP_H
         #define ORG_ALLBINARY_GAME_IDENTIFICATION_COMPOSITEGROUP_H
 
-            #include "../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
 #include <org/allbinary/logic/communication/log/LogUtil.h>
 

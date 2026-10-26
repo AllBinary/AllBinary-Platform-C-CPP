@@ -21,11 +21,11 @@
         #ifndef ORG_ALLBINARY_GAME_LAYER_MULTIPASSWAYPOINTPATHRUNNABLE_H
         #define ORG_ALLBINARY_GAME_LAYER_MULTIPASSWAYPOINTPATHRUNNABLE_H
 
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../../java/lang/RuntimeException.h"
+            #include "java/lang/RuntimeException.h"
         
-            #include "../../../../java/lang/Runnable.h"
+            #include "java/lang/Runnable.h"
         
 #include <org/allbinary/logic/NullUtil.h>
 

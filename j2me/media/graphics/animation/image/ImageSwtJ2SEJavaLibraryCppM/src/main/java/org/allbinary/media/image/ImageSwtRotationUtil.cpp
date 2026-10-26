@@ -20,7 +20,7 @@
 
             #include <vector>
         
-            #include "../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
 #include <org/allbinary/game/configuration/feature/Features.h>
 
@@ -168,7 +168,7 @@ private: ImageSwtRotationUtil(){
 
     public: std::vector<org::eclipse::swt::graphics::Image> getRotatedImages(org::eclipse::swt::graphics::Image bufferedImage, int32_t numberOfFrames, int32_t totalAngle){
 
-    std::vector<org::eclipse::swt::graphics::Image> bufferedImageArray = new Array(numberOfFrames);;
+    std::vector<org::eclipse::swt::graphics::Image> bufferedImageArray = std::vector<org::eclipse::swt::graphics::Image>(numberOfFrames);;
     
 
     int32_t angle= 0;;
@@ -271,7 +271,7 @@ columnIndex= 0;
 
                                     }
                                 
-nextBufferedImage= bufferedImageArray[index]!;
+nextBufferedImage= bufferedImageArray[index];
     
 imageData= nextBufferedImage.getImageData();
     

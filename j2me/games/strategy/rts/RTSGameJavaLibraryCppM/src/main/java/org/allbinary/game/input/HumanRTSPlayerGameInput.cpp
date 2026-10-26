@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <javax/microedition/lcdui/Graphics.h>
 
@@ -197,8 +197,9 @@ class HumanRTSPlayerGameInput: public RTSPlayerGameInput, public BaseMotionGestu
 
     private: CollidableDestroyableDamageableLayer selectedRtsLayer = CollidableDestroyableDamageableLayer::getNullInstance();
 
-public: HumanRTSPlayerGameInput(AllBinaryGameCanvas gameCanvas, BasicArrayList inputList, int32_t playerInputId, RTSLayerInfoPaintable towerInfoPaintable, RTSPlayerLayerInterface rtsPlayerLayerInterface, LayerPositionFinderInterface layerPositionFinderInterface, SelectRTSLayerVisitorFactoryInterface selectRTSLayerVisitorFactoryInterface, TouchButtonsBuilderFactory touchButtonsBuilderFactory){
-            super(gameCanvas, inputList, playerInputId, towerInfoPaintable, rtsPlayerLayerInterface, layerPositionFinderInterface, selectRTSLayerVisitorFactoryInterface);
+public: HumanRTSPlayerGameInput(AllBinaryGameCanvas gameCanvas, BasicArrayList inputList, int32_t playerInputId, RTSLayerInfoPaintable towerInfoPaintable, RTSPlayerLayerInterface rtsPlayerLayerInterface, LayerPositionFinderInterface layerPositionFinderInterface, SelectRTSLayerVisitorFactoryInterface selectRTSLayerVisitorFactoryInterface, TouchButtonsBuilderFactory touchButtonsBuilderFactory) : RTSPlayerGameInput(gameCanvas, inputList, playerInputId, towerInfoPaintable, rtsPlayerLayerInterface, layerPositionFinderInterface, selectRTSLayerVisitorFactoryInterface){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -219,7 +220,7 @@ BasicMotionGesturesHandler::getInstance().addListenerInterface(this);
             
     public: void setAllBinaryGameLayerManager(AllBinaryGameLayerManager allBinaryGameLayerManager){
 
-    GeographicMapCompositeInterface geographicMapCompositeInterface = allBinaryGameLayerManager as GeographicMapCompositeInterface;;
+    GeographicMapCompositeInterface geographicMapCompositeInterface = allBinaryGameLayerManager;;
     
 
     BasicGeographicMap geographicMapInterface = geographicMapCompositeInterface.getGeographicMapInterface()[0];;
@@ -233,7 +234,7 @@ this->notYoursGameNotificationEvent.setBasicColorP(geographicMapInterface.getFor
             
     private: bool processDraggingMotionInput(AllBinaryLayerManager layerManager){
 
-    MotionGestureEvent motionGestureEvent = this->getMotionGestureInputList().get(this->getMotionGestureInputList().size() -1) as MotionGestureEvent;;
+    MotionGestureEvent motionGestureEvent = this->getMotionGestureInputList().get(this->getMotionGestureInputList().size() -1);;
     
 
     MotionGestureInput motionGestureInput = motionGestureEvent.getMotionGesture();;
@@ -407,7 +408,7 @@ this->logUtil.putF(stringBuffer.toString(), this, this->METHOD);
                         for (
     int32_t index = rtsLayerList.size() -1;index >= 0; index--)
         {
-rtsLayer= rtsLayerList.get(index) as RTSLayer;
+rtsLayer= rtsLayerList.get(index);
     
 stringBuffer.delete(0, stringBuffer.length());
     
@@ -453,7 +454,7 @@ this->getSelectedBuildingPlayerGameInput().addSelectedRTSLayer(rtsLayer);
                         
                                     {
                                     
-    RTSLayer lastRTSLayer = gameLayer as RTSLayer;;
+    RTSLayer lastRTSLayer = gameLayer;;
     
 
                         if(lastRTSLayer.getScrollSelectionForm() != ScrollSelectionForm::getNullScrollSelectionForm())
@@ -485,7 +486,7 @@ this->updatePaintable();
     int32_t index = this->getMotionGestureInputList().size() -1;index >= 0; index--)
         {
 
-    MotionGestureEvent motionGestureEvent = this->getMotionGestureInputList().get(index) as MotionGestureEvent;;
+    MotionGestureEvent motionGestureEvent = this->getMotionGestureInputList().get(index);;
     
 
     MotionGestureInput motionGestureInput = motionGestureEvent.getMotionGesture();;
@@ -641,13 +642,13 @@ GameNotificationEventHandler::getInstance().fireEvent(this->notYoursGameNotifica
     AllBinaryGameCanvas gameCanvas = this->getGameCanvas();;
     
 
-                        if(rtSLayer != CollidableDestroyableDamageableLayer::NULL_COLLIDABLE_DESTROYABLE_DAMAGE_LAYER)
+                        if(rtSLayer != CollidableDestroyableDamageableLayer::getNullInstance())
                         
                                     {
                                     this->getRtsPlayerLayerInterface().add(SelectBuildingSound::getInstance());
     
 
-    RTSLayer rtsLayer = rtSLayer as RTSLayer;;
+    RTSLayer rtsLayer = rtSLayer;;
     
 rtsLayer.select();
     
@@ -759,7 +760,7 @@ this->updatePaintable();
                         
                                     {
                                     
-    GeographicMapCompositeInterface geographicMapCompositeInterface = this->getGameCanvas() as GeographicMapCompositeInterface;;
+    GeographicMapCompositeInterface geographicMapCompositeInterface = this->getGameCanvas();;
     
 
     BasicGeographicMap geographicMapInterface = geographicMapCompositeInterface.getGeographicMapInterface()[0];;
@@ -778,7 +779,7 @@ this->getRTSLayerInfoPaintable().updateRTSLayerInfoSelection(this->multiSelectPa
                         
                                     {
                                     
-    RTSLayer rtsLayer = list.get(0) as RTSLayer;;
+    RTSLayer rtsLayer = list.get(0);;
     
 this->getRTSLayerInfoPaintable().updateRTSLayerInfoSelection(rtsLayer.createHudPaintable());
     

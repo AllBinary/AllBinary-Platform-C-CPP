@@ -21,11 +21,11 @@
         #ifndef ORG_ALLBINARY_LOGIC_COMMUNICATION_LOG_LOGUTIL_H
         #define ORG_ALLBINARY_LOGIC_COMMUNICATION_LOG_LOGUTIL_H
 
-            #include "../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../java/lang/System.h"
+            #include "java/lang/System.h"
         
-            #include "../../../../../java/lang/Integer.h"
+            #include "java/lang/Integer.h"
         
 #include <org/allbinary/TsUtil.h>
 

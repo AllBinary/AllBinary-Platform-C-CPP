@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/logic/communication/log/GuiLog.h>
 
@@ -51,8 +51,9 @@ class GraphicsException: public java::lang::Exception {
 
     private: const GuiLog guiLog = GuiLog::getInstance();
 
-public: GraphicsException(std::string msg, Object* obj, std::string method){
-            super(msg);
+public: GraphicsException(std::string msg, Object* obj, std::string method) : java::lang::Exception(msg){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -72,8 +73,9 @@ this->logUtil.put(msg, obj, method, this);
 }
 
 
-public: GraphicsException(std::string msg, std::string className, std::string method){
-            super(msg);
+public: GraphicsException(std::string msg, std::string className, std::string method) : java::lang::Exception(msg){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.

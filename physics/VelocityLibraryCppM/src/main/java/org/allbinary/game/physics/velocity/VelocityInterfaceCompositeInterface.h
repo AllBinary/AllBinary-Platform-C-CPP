@@ -21,12 +21,6 @@
         #ifndef ORG_ALLBINARY_GAME_PHYSICS_VELOCITY_VELOCITYINTERFACECOMPOSITEINTERFACE_H
         #define ORG_ALLBINARY_GAME_PHYSICS_VELOCITY_VELOCITYINTERFACECOMPOSITEINTERFACE_H
 
-#include <jsinterop/annotations/JsType.h>
-
-      
-#include <jsinterop/annotations/JsMethod.h>
-
-      
 
 
 

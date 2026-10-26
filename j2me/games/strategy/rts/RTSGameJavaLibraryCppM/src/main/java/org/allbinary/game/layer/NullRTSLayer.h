@@ -21,9 +21,9 @@
         #ifndef ORG_ALLBINARY_GAME_LAYER_NULLRTSLAYER_H
         #define ORG_ALLBINARY_GAME_LAYER_NULLRTSLAYER_H
 
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../../java/lang/RuntimeException.h"
+            #include "java/lang/RuntimeException.h"
         
 #include <org/allbinary/game/ag/layer/hud/basic/notification/GameNotificationHud.h>
 

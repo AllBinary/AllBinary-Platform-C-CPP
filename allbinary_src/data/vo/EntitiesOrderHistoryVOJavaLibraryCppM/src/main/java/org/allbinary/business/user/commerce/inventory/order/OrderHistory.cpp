@@ -20,9 +20,9 @@
 
             #include <vector>
         
-            #include "../../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../../../../../java/lang/Long.h"
+            #include "java/lang/Long.h"
         
 //#include <java/util/Date.h>
 
@@ -135,8 +135,9 @@ class OrderHistory: public Order, public OrderHistoryInterface {
 
     private: Money total;
 
-public: OrderHistory(BasketInterface basketInterface){
-            super(basketInterface);
+public: OrderHistory(BasketInterface basketInterface) : Order(basketInterface){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -144,8 +145,9 @@ public: OrderHistory(BasketInterface basketInterface){
 }
 
 
-public: OrderHistory(BasketInterface basketInterface, OrderHistory orderHistory){
-            super(orderHistory.getStoreName(), basketInterface, orderHistory.getId(), orderHistory.getShippingMethod(), orderHistory.getSpecial(), orderHistory.getPaymentMethod());
+public: OrderHistory(BasketInterface basketInterface, OrderHistory orderHistory) : Order(orderHistory.getStoreName(), basketInterface, orderHistory.getId(), orderHistory.getShippingMethod(), orderHistory.getSpecial(), orderHistory.getPaymentMethod()){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -176,56 +178,57 @@ this->taxes= orderHistory.getTaxes();
     
 this->total= orderHistory.getTotal();
     
-super.setUserComments(orderHistory.getUserComments() as string);
+super.setUserComments(orderHistory.getUserComments());
     
-super.setUserCancelComments(orderHistory.getUserCancelComments() as string);
+super.setUserCancelComments(orderHistory.getUserCancelComments());
     
-super.setStoreComments(orderHistory.getStoreComments() as string);
+super.setStoreComments(orderHistory.getStoreComments());
     
-super.setStoreCancelComments(orderHistory.getStoreCancelComments() as string);
+super.setStoreCancelComments(orderHistory.getStoreCancelComments());
     
 }
 
 
-public: OrderHistory(BasketInterface basketInterface, HashMap<any, any> orderHistoryHashMap){
-            super(orderHistoryHashMap.get(StoreFrontData::getInstance().NAME) as string, basketInterface, orderHistoryHashMap.get(OrderData::ID) as string, orderHistoryHashMap.get(ShippingMethodData::NAME) as string, orderHistoryHashMap.get(EntryData::getInstance().SPECIAL) as string, orderHistoryHashMap.get(PaymentData::METHOD) as string);
+public: OrderHistory(BasketInterface basketInterface, HashMap<Object*, Object*> orderHistoryHashMap) : Order(orderHistoryHashMap.get(StoreFrontData::getInstance().NAME), basketInterface, orderHistoryHashMap.get(OrderData::ID), orderHistoryHashMap.get(ShippingMethodData::NAME), orderHistoryHashMap.get(EntryData::getInstance().SPECIAL), orderHistoryHashMap.get(PaymentData::METHOD)){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this->shippingAddress= StreetAddress(orderHistoryHashMap.get(ShippingAddressData::NAME) as string, orderHistoryHashMap.get(ShippingAddressData::STREET) as string, orderHistoryHashMap.get(ShippingAddressData::CITY) as string, orderHistoryHashMap.get(ShippingAddressData::STATE) as string, orderHistoryHashMap.get(ShippingAddressData::CODE) as string, orderHistoryHashMap.get(ShippingAddressData::COUNTRY) as string);
+this->shippingAddress= StreetAddress(orderHistoryHashMap.get(ShippingAddressData::NAME), orderHistoryHashMap.get(ShippingAddressData::STREET), orderHistoryHashMap.get(ShippingAddressData::CITY), orderHistoryHashMap.get(ShippingAddressData::STATE), orderHistoryHashMap.get(ShippingAddressData::CODE), orderHistoryHashMap.get(ShippingAddressData::COUNTRY));
     
-this->billingAddress= StreetAddress(orderHistoryHashMap.get(BillingAddressData::NAME) as string, orderHistoryHashMap.get(BillingAddressData::STREET) as string, orderHistoryHashMap.get(BillingAddressData::CITY) as string, orderHistoryHashMap.get(BillingAddressData::STATE) as string, orderHistoryHashMap.get(BillingAddressData::CODE) as string, orderHistoryHashMap.get(BillingAddressData::COUNTRY) as string);
+this->billingAddress= StreetAddress(orderHistoryHashMap.get(BillingAddressData::NAME), orderHistoryHashMap.get(BillingAddressData::STREET), orderHistoryHashMap.get(BillingAddressData::CITY), orderHistoryHashMap.get(BillingAddressData::STATE), orderHistoryHashMap.get(BillingAddressData::CODE), orderHistoryHashMap.get(BillingAddressData::COUNTRY));
     
 this->payment= Payment(orderHistoryHashMap);
     
-this->userName= orderHistoryHashMap.get(UserData::USERNAME) as string;
+this->userName= orderHistoryHashMap.get(UserData::USERNAME);
     
-this->orderDate= orderHistoryHashMap.get(OrderHistoryData::ORDERDATE) as string;
+this->orderDate= orderHistoryHashMap.get(OrderHistoryData::ORDERDATE);
     
-this->shipDate= orderHistoryHashMap.get(OrderHistoryData::SHIPPEDDATE) as string;
+this->shipDate= orderHistoryHashMap.get(OrderHistoryData::SHIPPEDDATE);
     
-this->transDate= orderHistoryHashMap.get(OrderHistoryData::TRANSDATE) as string;
+this->transDate= orderHistoryHashMap.get(OrderHistoryData::TRANSDATE);
     
-this->cancelDate= orderHistoryHashMap.get(OrderHistoryData::CANCELDATE) as string;
+this->cancelDate= orderHistoryHashMap.get(OrderHistoryData::CANCELDATE);
     
-this->status= orderHistoryHashMap.get(OrderHistoryData::STATUS) as string;
+this->status= orderHistoryHashMap.get(OrderHistoryData::STATUS);
     
-this->subTotal= Money(orderHistoryHashMap.get(OrderHistoryData::SUBTOTAL) as string);
+this->subTotal= Money(orderHistoryHashMap.get(OrderHistoryData::SUBTOTAL));
     
-this->total= Money(orderHistoryHashMap.get(OrderHistoryData::TOTAL) as string);
+this->total= Money(orderHistoryHashMap.get(OrderHistoryData::TOTAL));
     
-this->shippingCost= Money(orderHistoryHashMap.get(OrderHistoryData::SHIPPINGCOST) as string);
+this->shippingCost= Money(orderHistoryHashMap.get(OrderHistoryData::SHIPPINGCOST));
     
-this->taxes= Money(orderHistoryHashMap.get(OrderHistoryData::TAX) as string);
+this->taxes= Money(orderHistoryHashMap.get(OrderHistoryData::TAX));
     
-super.setUserComments(orderHistoryHashMap.get(OrderData::CUSTOMERCOMMENT) as string);
+super.setUserComments(orderHistoryHashMap.get(OrderData::CUSTOMERCOMMENT));
     
-super.setUserCancelComments(orderHistoryHashMap.get(OrderData::CUSTOMERCANCELCOMMENT) as string);
+super.setUserCancelComments(orderHistoryHashMap.get(OrderData::CUSTOMERCANCELCOMMENT));
     
-super.setStoreComments(orderHistoryHashMap.get(OrderData::STORECOMMENT) as string);
+super.setStoreComments(orderHistoryHashMap.get(OrderData::STORECOMMENT));
     
-super.setStoreCancelComments(orderHistoryHashMap.get(OrderData::STORECANCELCOMMENT) as string);
+super.setStoreCancelComments(orderHistoryHashMap.get(OrderData::STORECANCELCOMMENT));
     
 }
 
@@ -438,9 +441,9 @@ this->total= value;
 }
 
 
-    public: HashMap<any, any> toHashMap(){
+    public: HashMap<Object*, Object*> toHashMap(){
 
-    HashMap<any, any> hashMap = StdUtil::getInstance().createHashMap();;
+    HashMap<Object*, Object*> hashMap = StdUtil::getInstance().createHashMap();;
     
 hashMap.put(UserData::USERNAME, this->userName);
     
@@ -483,7 +486,7 @@ hashMap.put(OrderHistoryData::TAX, this->taxes.toString());
             
     public: Node toXmlNode(Document document){
 
-    HashMap<any, any> hashMap = this->toHashMap();;
+    HashMap<Object*, Object*> hashMap = this->toHashMap();;
     
 
     Set keySet = hashMap.keys();;
@@ -523,10 +526,10 @@ node.appendChild(this->payment.toXmlNode(document));
     int32_t i = 0;i < size; i++)
         {
 
-    std::string name = keyArray[i]! as string;;
+    std::string name = keyArray[i];;
     
 
-    std::string value = hashMap.get(name) as string;;
+    std::string value = hashMap.get(name);;
     
 value= StringUtil::getInstance().getNonNull(value);
     

@@ -18,9 +18,9 @@
 
 
 
-            #include "../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <android/content/Context.h>
 
@@ -72,7 +72,7 @@ class FileStreamFactory
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return FileStreamFactory::SINGLETON as FileStreamFactory;
+                        return FileStreamFactory::SINGLETON;
     
 }
 
@@ -127,7 +127,7 @@ this->getContext().deleteFile(fileName);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->context as Context;
+                        return this->context;
     
 }
 

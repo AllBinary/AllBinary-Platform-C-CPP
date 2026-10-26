@@ -23,9 +23,9 @@
 
             #include <vector>
         
-            #include "../../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../../java/lang/Class.h"
+            #include "java/lang/Class.h"
         
 #include <org/allbinary/logic/java/anyType/ConstructorUtil.h>
 
@@ -64,7 +64,7 @@ class ClassUtil
 
     public: static std::string viewAll(Object* anyType, std::string lineBreak);
 
-    public: static std::string viewAll(Function myClass, std::string lineBreak);
+    public: static std::string viewAll(Class* myClass, std::string lineBreak);
 
 private: ClassUtil();
 

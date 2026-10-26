@@ -21,7 +21,7 @@
         #ifndef ORG_ALLBINARY_GAME_AG_AI_THRUSTAIVISITORFACTORY_H
         #define ORG_ALLBINARY_GAME_AG_AI_THRUSTAIVISITORFACTORY_H
 
-            #include "../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
 
 

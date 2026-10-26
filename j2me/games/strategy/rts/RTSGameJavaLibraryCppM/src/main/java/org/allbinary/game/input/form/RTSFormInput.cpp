@@ -20,13 +20,10 @@
 
             #include <vector>
         
-            #include "../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-#include <java/util/Hashtable.h>
-
-      
 #include <org/allbinary/game/identification/GroupCommonFactory.h>
 
       
@@ -84,6 +81,9 @@
 #include <org/allbinary/media/graphics/geography/map/SimpleGeographicMapCellPositionFactory.h>
 
       
+#include <org/allbinary/util/ABHashtable.h>
+
+      
 
 
 
@@ -111,9 +111,9 @@ class RTSFormInput
 
     private: const GroupCommonFactory groupCommonFactory = GroupCommonFactory::getInstance();
 
-    private: const Hashtable<any, any> hashtable = StdUtil::getInstance().createHashtable();
+    private: const ABHashtable<Object*, Object*> hashtable = StdUtil::getInstance().createHashtable();
 
-    protected: const std::vector<CollidableDestroyableDamageableLayer> newUnconstructedRTSLayerInterfaceArray = new Array(7);
+    protected: const std::vector<CollidableDestroyableDamageableLayer> newUnconstructedRTSLayerInterfaceArray = std::vector<CollidableDestroyableDamageableLayer>(7);
 
     protected: std::vector<Group> groupInterfaceArray;
 
@@ -212,7 +212,7 @@ this->processGameSpecific(associatedRtsLayer, rtsPlayerLayerInterface, layerMana
                 //@Throws(Exception.constructor)
             
     public: void process(AllBinaryLayerManager layerManager){
-this->setAllBinaryGameLayerManager(layerManager as AllBinaryGameLayerManager);
+this->setAllBinaryGameLayerManager(layerManager);
     
 }
 
@@ -318,7 +318,7 @@ this->logUtil.putF(StringMaker().append("Point: ").append(StringUtil::getInstanc
             
     protected: CollidableDestroyableDamageableLayer getInstance(AllBinaryLayerManager layerManager, ABCustomItem aItem, GeographicMapCellPosition geographicMapCellPosition){
 
-    LayerInterfaceFactoryImageItem item = aItem as LayerInterfaceFactoryImageItem;;
+    LayerInterfaceFactoryImageItem item = aItem;;
     
 
     LayerInterfaceFactoryInterface layerInterfaceFactoryInterface = item.getLayerInterfaceFactoryInterface();;
@@ -338,7 +338,7 @@ this->logUtil.putF(StringMaker().append("Point: ").append(StringUtil::getInstanc
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return layerInterfaceFactoryInterface.getNextInstance(this->getHashtable(), cellPoint.getX(), cellPoint.getY(), cellPoint.getZ()) as RTSLayer;
+                        return layerInterfaceFactoryInterface.getNextInstance(this->getHashtable(), cellPoint.getX(), cellPoint.getY(), cellPoint.getZ());
     
 
                                     }
@@ -418,7 +418,7 @@ this->selectedStickyItemIndex= selectedStickyItemIndex;
 }
 
 
-    public: Hashtable<any, any> getHashtable(){
+    public: ABHashtable<Object*, Object*> getHashtable(){
 
 
 

@@ -20,9 +20,9 @@
 
             #include <vector>
         
-            #include "../../../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/security/Provider.h>
 
@@ -151,7 +151,7 @@ PreLogUtil::putOE("init Failed", this, commonStrings.INIT, e);
     std::vector<int8_t> encrypted = this->cipher.doFinal(array);;
     
 
-    std::vector<int8_t> result = new Array(ivArray.size() +encrypted.size());;
+    std::vector<int8_t> result = std::vector<int8_t>(ivArray.size() +encrypted.size());;
     
 PreLogUtil::put("ivArray Length: " +ivArray.size(), this, "encrypt");
     
@@ -162,7 +162,7 @@ PreLogUtil::put("ivArray Length: " +ivArray.size(), this, "encrypt");
                         for (
     int32_t index = 0;index < ivArray.size(); index++)
         {
-result[index]= ivArray[index]!;
+result[index]= ivArray[index];
     
 }
 
@@ -173,7 +173,7 @@ result[index]= ivArray[index]!;
                         for (
     int32_t index = 0;index < encrypted.size(); index++)
         {
-result[index +ivArray.size()]= encrypted[index]!;
+result[index +ivArray.size()]= encrypted[index];
     
 }
 
@@ -206,7 +206,7 @@ PreLogUtil::putOE("Encrypt Failed", this, "encrypt", e);
             this->cipher.init(Cipher::DECRYPT_MODE, secretKey);
     
 
-    std::vector<int8_t> ivArray = new Array(8);;
+    std::vector<int8_t> ivArray = std::vector<int8_t>(8);;
     
 
 
@@ -215,14 +215,14 @@ PreLogUtil::putOE("Encrypt Failed", this, "encrypt", e);
                         for (
     int32_t index = 0;index < 8; index++)
         {
-ivArray[index]= array[index]!;
+ivArray[index]= array[index];
     
 }
 
 PreLogUtil::put("ivArray Length: " +ivArray.size(), this, "encrypt");
     
 
-    std::vector<int8_t> result = new Array(array.size() -ivArray.size());;
+    std::vector<int8_t> result = std::vector<int8_t>(array.size() -ivArray.size());;
     
 
 
@@ -231,7 +231,7 @@ PreLogUtil::put("ivArray Length: " +ivArray.size(), this, "encrypt");
                         for (
     int32_t index = ivArray.size();index < array.size(); index++)
         {
-result[index -ivArray.size()]= array[index]!;
+result[index -ivArray.size()]= array[index];
     
 }
 

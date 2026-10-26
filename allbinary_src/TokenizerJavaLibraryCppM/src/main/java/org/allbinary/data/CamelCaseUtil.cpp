@@ -18,11 +18,11 @@
 
 
 
-            #include "../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../java/lang/Character.h"
+            #include "java/lang/Character.h"
         
-            #include "../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/logic/string/StringMaker.h>
 
@@ -124,7 +124,7 @@ tokenizer.getTokensFromString(string, list);
                         for (
     int32_t i = 0;i < size; i++)
         {
-word= list.get(i) as string;
+word= list.get(i);
     
 word= stringValidationUtil.isEmpty(word)
                         ?       

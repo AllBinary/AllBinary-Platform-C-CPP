@@ -18,9 +18,6 @@
 
 
 
-#include <jsinterop/annotations/JsType.h>
-
-      
 #include <org/allbinary/game/configuration/feature/Features.h>
 
       
@@ -46,9 +43,6 @@
 
       
 #include <org/allbinary/util/BasicArrayListD.h>
-
-      
-#include <jsinterop/annotations/JsMethod.h>
 
       
 
@@ -80,7 +74,7 @@ class InGameFeatures: public Init {
     OrientationData orientationData = OrientationData::getInstance();;
     
 
-    BasicArrayList exclusiveOrientationSensorVector = GameFeatureChoiceGroups::getExclusiveInstance().get().get(orientationData.ORIENTATION_SENSOR_INPUT) as BasicArrayList;;
+    BasicArrayList exclusiveOrientationSensorVector = GameFeatureChoiceGroups::getExclusiveInstance().get().get(orientationData.ORIENTATION_SENSOR_INPUT);;
     
 
     InGameFeatureChoiceGroups inGameFeatureChoiceGroups = InGameFeatureChoiceGroups::getExclusiveInstance();;
@@ -107,7 +101,7 @@ class InGameFeatures: public Init {
                                 
                         else {
                             
-    BasicArrayList inGameExclusiveOrientationSensorVector = inGameExclusiveOrientationSensorVectorCanBeNull as BasicArrayList;;
+    BasicArrayList inGameExclusiveOrientationSensorVector = *dynamic_cast<BasicArrayList*>(inGameExclusiveOrientationSensorVectorCanBeNull);;
     
 
                         if(inGameExclusiveOrientationSensorVector.size() == 0)
@@ -188,7 +182,7 @@ InGameFeatureChoiceGroups::getExclusiveInstance().add(orientationData.ORIENTATIO
                                     }
                                 
 
-    BasicArrayList exclusiveOrientationSensorVector = GameFeatureChoiceGroups::getExclusiveInstance().get().get(OrientationData::getInstance().ORIENTATION_SENSOR_INPUT) as BasicArrayList;;
+    BasicArrayList exclusiveOrientationSensorVector = GameFeatureChoiceGroups::getExclusiveInstance().get().get(OrientationData::getInstance().ORIENTATION_SENSOR_INPUT);;
     
 
                         if(exclusiveOrientationSensorVector != 

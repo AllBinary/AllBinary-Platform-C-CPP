@@ -67,13 +67,14 @@ class LeftTouchInputToGameKeyEventAction: public GameKeyCompleteMotionGestureInp
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return LeftTouchInputToGameKeyEventAction::instance() as GameKeyCompleteMotionGestureInputEvent;
+                        return LeftTouchInputToGameKeyEventAction::instance();
     
 }
 
 
-private: LeftTouchInputToGameKeyEventAction(){
-            super("Left Action", TouchMotionGestureFactory::getInstance().LEFT, PlatformInputMappingFactory::getInstance().getPersistentInputMappingInstance().getInputMapping());
+private: LeftTouchInputToGameKeyEventAction() : GameKeyCompleteMotionGestureInputEvent("Left Action", TouchMotionGestureFactory::getInstance().LEFT, PlatformInputMappingFactory::getInstance().getPersistentInputMappingInstance().getInputMapping()){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.

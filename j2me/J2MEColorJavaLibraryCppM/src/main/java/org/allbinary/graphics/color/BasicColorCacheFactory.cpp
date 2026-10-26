@@ -18,14 +18,14 @@
 
 
 
-            #include "../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../java/lang/Integer.h"
+            #include "java/lang/Integer.h"
         
-#include <java/util/Hashtable.h>
+#include <org/allbinary/logic/StdUtil.h>
 
       
-#include <org/allbinary/logic/StdUtil.h>
+#include <org/allbinary/util/ABHashtable.h>
 
       
 
@@ -65,7 +65,7 @@ class BasicColorCacheFactory
 }
 
 
-    private: const Hashtable<any, any> hashtable = StdUtil::getInstance().createHashtable();
+    private: const ABHashtable<Object*, Object*> hashtable = StdUtil::getInstance().createHashtable();
 
 private: BasicColorCacheFactory(){
 }
@@ -80,7 +80,7 @@ this->hashtable.put(Integer(basicDefaultColor.intValue()), basicDefaultColor);
 
     public: BasicColor getAndOrCreate(Integer integer){
 
-    BasicColor basicColor = this->hashtable.get(integer) as BasicColor;;
+    BasicColor basicColor = this->hashtable.get(integer);;
     
 
                         if(basicColor == 

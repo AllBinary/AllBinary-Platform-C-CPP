@@ -21,16 +21,10 @@
         #ifndef ORG_ALLBINARY_GAME_GAMEINFO_H
         #define ORG_ALLBINARY_GAME_GAMEINFO_H
 
-            #include "../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../java/lang/Integer.h"
+            #include "java/lang/Integer.h"
         
-#include <jsinterop/annotations/JsType.h>
-
-      
-#include <java/util/Hashtable.h>
-
-      
 #include <org/allbinary/logic/communication/log/LogUtil.h>
 
       
@@ -43,16 +37,13 @@
 #include <org/allbinary/string/CommonSeps.h>
 
       
-#include <jsinterop/annotations/JsMethod.h>
-
-      
-#include <jsinterop/annotations/JsConstructor.h>
-
-      
-#include <jsinterop/annotations/JsProperty.h>
-
-      
 #include <org/allbinary/logic/StdUtil.h>
+
+      
+#include <org/allbinary/string/CommonLabels.h>
+
+      
+#include <org/allbinary/util/ABHashtable.h>
 
       
 
@@ -122,8 +113,6 @@ public: GameInfo(GameType gameType, GameMode gameMode, PlayerType playerType, in
 
     public: void setCurrentLevel(int32_t currentLevel);
 
-    private: const std::string NEXT = "Next ";
-
     private: const std::string NEXT_GAME_LEVEL = "nextGameLevel";
 
     public: void nextGameLevel();
@@ -132,7 +121,7 @@ public: GameInfo(GameType gameType, GameMode gameMode, PlayerType playerType, in
 
     public: bool isLastLevel();
 
-    public: Hashtable<any, any> toHashtable();
+    public: ABHashtable<Object*, Object*> toHashtable();
 
     public: std::string toString();
 

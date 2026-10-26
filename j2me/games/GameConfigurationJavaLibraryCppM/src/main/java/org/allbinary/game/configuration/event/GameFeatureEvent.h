@@ -21,16 +21,7 @@
         #ifndef ORG_ALLBINARY_GAME_CONFIGURATION_EVENT_GAMEFEATUREEVENT_H
         #define ORG_ALLBINARY_GAME_CONFIGURATION_EVENT_GAMEFEATUREEVENT_H
 
-#include <jsinterop/annotations/JsType.h>
-
-      
 #include <org/allbinary/logic/util/event/AllBinaryEventObject.h>
-
-      
-#include <jsinterop/annotations/JsMethod.h>
-
-      
-#include <jsinterop/annotations/JsConstructor.h>
 
       
 

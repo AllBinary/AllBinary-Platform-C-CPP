@@ -21,9 +21,9 @@
         #ifndef ORG_ALLBINARY_EMULATOR_SWT_SWTPROCESSOR_H
         #define ORG_ALLBINARY_EMULATOR_SWT_SWTPROCESSOR_H
 
-            #include "../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../java/lang/Runnable.h"
+            #include "java/lang/Runnable.h"
         
 #include <org/allbinary/thread/NullRunnable.h>
 

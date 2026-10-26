@@ -21,11 +21,8 @@
         #ifndef ORG_ALLBINARY_LAYER_EVENT_LAYERMANAGEREVENTHANDLER_H
         #define ORG_ALLBINARY_LAYER_EVENT_LAYERMANAGEREVENTHANDLER_H
 
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-#include <jsinterop/annotations/JsType.h>
-
-      
 #include <org/allbinary/logic/util/event/AllBinaryEventObject.h>
 
       
@@ -42,15 +39,6 @@
 
       
 #include <org/allbinary/util/BasicArrayListD.h>
-
-      
-#include <jsinterop/annotations/JsMethod.h>
-
-      
-#include <jsinterop/annotations/JsConstructor.h>
-
-      
-#include <jsinterop/annotations/JsProperty.h>
 
       
 

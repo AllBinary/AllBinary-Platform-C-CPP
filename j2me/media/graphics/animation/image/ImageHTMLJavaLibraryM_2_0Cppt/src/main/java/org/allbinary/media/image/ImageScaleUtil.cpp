@@ -18,9 +18,9 @@
 
 
 
-            #include "../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <javax/microedition/lcdui/Image.h>
 
@@ -37,16 +37,13 @@
 #include <playn/core/Canvas.h>
 
       
+#include <playn/core/CoreImage.h>
+
+      
 #include <playn/core/ImageImpl.h>
 
       
-#include <playn/core/PlayN.h>
-
-      
-#include <playn/html/HtmlGraphics.h>
-
-      
-#include <playn/html/HtmlImage.h>
+#include <playn/html/HTMLPlaynUtil.h>
 
       
 
@@ -84,6 +81,8 @@ class ImageScaleUtil
     
 }
 
+
+    private: const HTMLPlaynUtil playnUtil = HTMLPlaynUtil::getInstance();
 
 private: ImageScaleUtil(){
 }
@@ -142,7 +141,7 @@ private: ImageScaleUtil(){
                         
                                     {
                                     
-    playn::core::Image originalPlayNImage = 
+    CoreImage originalPlayNImage = 
                 null
             ;;
     
@@ -151,35 +150,32 @@ private: ImageScaleUtil(){
                         
                                     {
                                     
-    PlaynMutableImage originalHTMLImage = originalImage as PlaynMutableImage;;
+    PlaynMutableImage originalHTMLImage = originalImage;;
     
-originalPlayNImage= originalHTMLImage.getImage() as playn::core::Image;
+originalPlayNImage= originalHTMLImage.getImage();
     
 
                                     }
                                 
                         else {
                             
-    PlaynImmutableImage originalHTMLImage = originalImage as PlaynImmutableImage;;
+    PlaynImmutableImage originalHTMLImage = originalImage;;
     
-originalPlayNImage= originalHTMLImage.getImage() as playn::core::Image;
+originalPlayNImage= originalHTMLImage.getImage();
     
 
                         }
                             
 
-    PlaynMutableImage htmlImage = image as PlaynMutableImage;;
+    PlaynMutableImage htmlImage = image;;
     
 
-    ImageImpl canvasImage = htmlImage.getImage() as ImageImpl;;
+    ImageImpl canvasImage = htmlImage.getImage();;
     
 
-    PlayN playN = PlayN::getInstance();;
+    Canvas canvas = this->playnUtil.getCanvas(canvasImage);;
     
-
-    Canvas canvas = (graphics as HtmlGraphics).get(canvasImage as HtmlImage);;
-    
-canvas.draw(originalPlayNImage, 0, 0, image.getWidth(), image.getHeight(), 0, 0, originalImage.getWidth(), originalImage.getHeight());
+canvas.drawScale(originalPlayNImage, 0, 0, image.getWidth(), image.getHeight(), 0, 0, originalImage.getWidth(), originalImage.getHeight());
     
 
 

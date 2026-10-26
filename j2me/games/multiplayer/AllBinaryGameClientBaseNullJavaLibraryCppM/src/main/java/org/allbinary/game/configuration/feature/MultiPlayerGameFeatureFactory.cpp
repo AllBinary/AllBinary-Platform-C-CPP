@@ -4,7 +4,7 @@
 
 
 
-            #include "../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
 #include <javax/microedition/lcdui/Canvas.h>
 
@@ -56,7 +56,7 @@ private: MultiPlayerGameFeatureFactory(){
     GameCommandsFactory gameCommandsFactory = GameCommandsFactory::getInstance();;
     
 
-    Canvas canvas = anyType as Canvas;;
+    Canvas canvas = *dynamic_cast<Canvas*>(anyType);;
     
 canvas.addCommand(gameCommandsFactory.QUIT_COMMAND);
     

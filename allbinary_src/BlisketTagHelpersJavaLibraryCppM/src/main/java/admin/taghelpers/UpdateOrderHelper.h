@@ -21,7 +21,7 @@
         #ifndef ADMIN_TAGHELPERS_UPDATEORDERHELPER_H
         #define ADMIN_TAGHELPERS_UPDATEORDERHELPER_H
 
-            #include "../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
 
@@ -168,7 +168,7 @@ class UpdateOrderHelper: public TagHelper {
 
     private: std::string storeCancelComment;
 
-public: UpdateOrderHelper(HashMap<any, any> hashMap, PageContext pageContext);
+public: UpdateOrderHelper(HashMap<Object*, Object*> hashMap, PageContext pageContext);
 
     private: void getFormData();
 

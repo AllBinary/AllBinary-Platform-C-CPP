@@ -55,8 +55,9 @@ class EmailEvent: public EventObject {
 
     private: int32_t attempts= 0;
 
-public: EmailEvent(Object* emailEventHandler, UserEmailEventNameData userEmailEventNameData, EmailInfo emailInfo, int32_t attempts){
-            super(emailEventHandler);
+public: EmailEvent(Object* emailEventHandler, UserEmailEventNameData userEmailEventNameData, EmailInfo emailInfo, int32_t attempts) : EventObject(emailEventHandler){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.

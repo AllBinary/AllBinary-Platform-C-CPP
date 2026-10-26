@@ -21,7 +21,7 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_DRAW_CANVASDRAWLINESTRING_H
         #define ORG_ALLBINARY_GRAPHICS_DRAW_CANVASDRAWLINESTRING_H
 
-            #include "../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
 #include <javax/microedition/lcdui/Font.h>
 

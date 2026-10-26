@@ -20,9 +20,9 @@
 
             #include <vector>
         
-            #include "../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <javax/microedition/lcdui/Graphics.h>
 
@@ -89,7 +89,8 @@ class NullRotationAnimation2: public NullRotationAnimation {
 
 
 : NullRotationAnimation2(){
-            super(AngleInfo::getInstance(AngleFactory::getInstance().QUARTER_TOTAL_ANGLE), CircularIndexUtil::createInstance(4), IndexedAnimationBehavior(1, 250));
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.

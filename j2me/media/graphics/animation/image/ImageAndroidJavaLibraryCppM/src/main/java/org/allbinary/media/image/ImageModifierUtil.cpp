@@ -20,7 +20,7 @@
 
             #include <vector>
         
-            #include "../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
 #include <android/graphics/Paint.h>
 

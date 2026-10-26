@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/awt.h>
 
@@ -61,8 +61,9 @@ class AllMotionRectangles: public MotionRectangles {
 
     private: static const std::string NAME = "allMotionRectangles_";
 
-public: AllMotionRectangles(ImageComparisonResult imageComparisonResult){
-            super(NAME, imageComparisonResult);
+public: AllMotionRectangles(ImageComparisonResult imageComparisonResult) : MotionRectangles(NAME, imageComparisonResult){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -89,7 +90,7 @@ this->createMotionRectangles(imageComparisonResult);
     int32_t index = 0;index < size; index++)
         {
 
-    PixelDelta pixelDelta = vector.get(index) as PixelDelta;;
+    PixelDelta pixelDelta = vector.get(index);;
     
 this->addPixelDeltaToAMotionRectangle(pixelDelta);
     
@@ -115,7 +116,7 @@ this->addPixelDeltaToAMotionRectangle(pixelDelta);
     int32_t index = 0;index < size; index++)
         {
 
-    MotionRectangle motionRectangle = vector.get(index) as MotionRectangle;;
+    MotionRectangle motionRectangle = vector.get(index);;
     
 
                         if(shouldPixelDeltaPartOfMotionRectangle(motionRectangle, pixelDelta))

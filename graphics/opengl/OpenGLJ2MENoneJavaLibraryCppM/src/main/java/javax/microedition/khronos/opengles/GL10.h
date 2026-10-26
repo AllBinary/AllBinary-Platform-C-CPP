@@ -7,9 +7,6 @@
         #ifndef JAVAX_MICROEDITION_KHRONOS_OPENGLES_GL10_H
         #define JAVAX_MICROEDITION_KHRONOS_OPENGLES_GL10_H
 
-#include <jsinterop/annotations/JsType.h>
-
-      
 
 
 

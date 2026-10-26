@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
 
@@ -217,9 +217,9 @@ public: MetaValidation(Document document){
 }
 
 
-    public: HashMap<any, any> toHashMap(){
+    public: HashMap<Object*, Object*> toHashMap(){
 
-    HashMap<any, any> hashMap = StdUtil::getInstance().createHashMap();;
+    HashMap<Object*, Object*> hashMap = StdUtil::getInstance().createHashMap();;
     
 
     HtmlMetaAttributeDataFactory htmlMetaAttributeDataFactory = HtmlMetaAttributeDataFactory::getInstance();;

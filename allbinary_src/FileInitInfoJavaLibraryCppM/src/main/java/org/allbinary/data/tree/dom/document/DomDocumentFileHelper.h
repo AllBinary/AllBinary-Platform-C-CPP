@@ -21,9 +21,9 @@
         #ifndef ORG_ALLBINARY_DATA_TREE_DOM_DOCUMENT_DOMDOCUMENTFILEHELPER_H
         #define ORG_ALLBINARY_DATA_TREE_DOM_DOCUMENT_DOMDOCUMENTFILEHELPER_H
 
-            #include "../../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <javax/xml/transform/Transformer.h>
 

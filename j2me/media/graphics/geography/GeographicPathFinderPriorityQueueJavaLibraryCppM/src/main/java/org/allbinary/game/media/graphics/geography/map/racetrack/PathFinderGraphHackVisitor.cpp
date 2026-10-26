@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/util/BasicArrayList.h>
 
@@ -48,8 +48,9 @@
 //1.4.2
 class PathFinderGraphHackVisitor: public BasePathFinderGraphVisitor {
 
-public: PathFinderGraphHackVisitor(BasicGeographicMap geographicMapInterface, int32_t edgeMinimum, int32_t minPathWeight, int32_t maxPathWeight){
-            super(geographicMapInterface, edgeMinimum, minPathWeight, maxPathWeight);
+public: PathFinderGraphHackVisitor(BasicGeographicMap geographicMapInterface, int32_t edgeMinimum, int32_t minPathWeight, int32_t maxPathWeight) : BasePathFinderGraphVisitor(geographicMapInterface, edgeMinimum, minPathWeight, maxPathWeight){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.

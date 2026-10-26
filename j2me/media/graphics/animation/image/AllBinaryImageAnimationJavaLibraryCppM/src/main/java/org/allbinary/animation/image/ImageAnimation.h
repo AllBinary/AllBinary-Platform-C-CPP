@@ -23,13 +23,10 @@
 
             #include <vector>
         
-            #include "../../../../java/lang/Throwable.h"
+            #include "java/lang/Throwable.h"
         
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-#include <jsinterop/annotations/JsType.h>
-
-      
 #include <javax/microedition/lcdui/Graphics.h>
 
       
@@ -49,12 +46,6 @@
 
       
 #include <org/allbinary/logic/math/PrimitiveIntUtil.h>
-
-      
-#include <jsinterop/annotations/JsMethod.h>
-
-      
-#include <jsinterop/annotations/JsConstructor.h>
 
       
 

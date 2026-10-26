@@ -18,13 +18,13 @@
 
 
 
-            #include "../../../../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../../../../../../java/lang/Integer.h"
+            #include "java/lang/Integer.h"
         
-            #include "../../../../../../../../java/lang/Long.h"
+            #include "java/lang/Long.h"
         
 #include <java/util/HashMap.h>
 
@@ -102,7 +102,7 @@ this->totalInventorySaleValueMoney= Money();
     int32_t index = 0;index < size; index++)
         {
 
-    ItemInterface itemInterface = itemVector.get(index) as ItemInterface;;
+    ItemInterface itemInterface = itemVector.get(index);;
     
 
     int32_t numberInStock = Integer::valueOf(itemInterface.getNumber()).intValue();;
@@ -141,9 +141,9 @@ this->totalInventorySaleValueMoney.add(itemPriceMoney.toString());
 }
 
 
-    public: HashMap<any, any> toHashMap(){
+    public: HashMap<Object*, Object*> toHashMap(){
 
-    HashMap<any, any> hashMap = StdUtil::getInstance().createHashMap();;
+    HashMap<Object*, Object*> hashMap = StdUtil::getInstance().createHashMap();;
     
 hashMap.put(StoreFrontInventoryStatisticsData::getInstance().NUMBEROFITEMS, this->getNumber().toString());
     

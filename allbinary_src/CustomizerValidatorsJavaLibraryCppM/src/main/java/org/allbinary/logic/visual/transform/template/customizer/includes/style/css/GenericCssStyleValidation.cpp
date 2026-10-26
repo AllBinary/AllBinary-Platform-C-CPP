@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../../../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
 
@@ -90,7 +90,7 @@ public: GenericCssStyleValidation(Document document){
 }
 
 
-public: GenericCssStyleValidation(HashMap<any, any> hashMap){
+public: GenericCssStyleValidation(HashMap<Object*, Object*> hashMap){
 this->getFormData(hashMap);
     
 }
@@ -98,7 +98,7 @@ this->getFormData(hashMap);
 
                 //@Throws(Exception.constructor)
             
-    public: void getFormData(HashMap<any, any> hashMap){
+    public: void getFormData(HashMap<Object*, Object*> hashMap){
 }
 
 

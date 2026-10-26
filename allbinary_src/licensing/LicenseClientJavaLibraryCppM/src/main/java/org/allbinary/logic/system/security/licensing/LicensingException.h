@@ -21,7 +21,7 @@
         #ifndef ORG_ALLBINARY_LOGIC_SYSTEM_SECURITY_LICENSING_LICENSINGEXCEPTION_H
         #define ORG_ALLBINARY_LOGIC_SYSTEM_SECURITY_LICENSING_LICENSINGEXCEPTION_H
 
-            #include "../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 
 

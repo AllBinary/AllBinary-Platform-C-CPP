@@ -21,7 +21,7 @@
         #ifndef VIEWS_ADMIN_PAYMENT_GATEWAYS_SELECTNEWVIEW_H
         #define VIEWS_ADMIN_PAYMENT_GATEWAYS_SELECTNEWVIEW_H
 
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/util/BasicArrayList.h>
 

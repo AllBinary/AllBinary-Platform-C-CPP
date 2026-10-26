@@ -60,8 +60,9 @@ class FakeLayerManager: public AllBinaryGameLayerManager, public GeographicMapCo
 
     private: std::vector<GeographicMapCellType> geographicMapCellTypeArray = GeographicMapCellType::NULL_GEOGRAPHIC_MAP_CELL_TYPE_ARRAY;
 
-public: FakeLayerManager(GameInfo gameInfo){
-            super(BasicColorFactory::getInstance().BLACK, BasicColorFactory::getInstance().WHITE, gameInfo);
+public: FakeLayerManager(GameInfo gameInfo) : AllBinaryGameLayerManager(BasicColorFactory::getInstance().BLACK, BasicColorFactory::getInstance().WHITE, gameInfo){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -82,7 +83,7 @@ public: FakeLayerManager(GameInfo gameInfo){
     public: void setGeographicMapInterface(std::vector<BasicGeographicMap> geographicMapInterfaceArray){
 this->geographicMapInterfaceArray= geographicMapInterfaceArray;
     
-this->geographicMapCellTypeArray= new Array(this->geographicMapInterfaceArray.length);
+this->geographicMapCellTypeArray= std::vector<GeographicMapCellType>(this->geographicMapInterfaceArray.length);
     
 }
 

@@ -21,12 +21,6 @@
         #ifndef ORG_ALLBINARY_GAME_CONFIGURATION_FEATURE_SENSORFEATURE_H
         #define ORG_ALLBINARY_GAME_CONFIGURATION_FEATURE_SENSORFEATURE_H
 
-#include <jsinterop/annotations/JsType.h>
-
-      
-#include <jsinterop/annotations/JsConstructor.h>
-
-      
 
 
 

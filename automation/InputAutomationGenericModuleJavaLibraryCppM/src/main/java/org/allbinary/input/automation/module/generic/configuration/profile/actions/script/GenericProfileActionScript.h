@@ -21,7 +21,7 @@
         #ifndef ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_GENERIC_CONFIGURATION_PROFILE_ACTIONS_SCRIPT_GENERICPROFILEACTIONSCRIPT_H
         #define ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_GENERIC_CONFIGURATION_PROFILE_ACTIONS_SCRIPT_GENERICPROFILEACTIONSCRIPT_H
 
-            #include "../../../../../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
 
@@ -110,7 +110,7 @@ public: GenericProfileActionScript(GenericProfileActionJPanel genericProfileActi
 
     public: void removeCondition(ProfileActionScriptNodeInterface profileActionScriptNodeInterface);
 
-    public: HashMap<any, any> toHashMap();
+    public: HashMap<Object*, Object*> toHashMap();
 
     public: BasicArrayList getProfileActionConditionInterfaceVector();
 

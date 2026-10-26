@@ -79,8 +79,9 @@ FileJDialog(javax::swing::JFrame(), true).setVisible(true);
 
     private: FileJDialogListenerInterface finishedListenerInterface;
 
-public: FileJDialog(){
-            super();
+public: FileJDialog() : javax::swing::JDialog(){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -92,8 +93,9 @@ this->getJFileChooser1().setMultiSelectionEnabled(true);
 }
 
 
-public: FileJDialog(java::awt::Frame parent, bool modal){
-            super(parent, modal);
+public: FileJDialog(java::awt::Frame parent, bool modal) : javax::swing::JDialog(parent, modal){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.

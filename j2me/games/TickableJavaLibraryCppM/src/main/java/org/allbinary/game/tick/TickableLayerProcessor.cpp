@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/layer/AllBinaryLayer.h>
 
@@ -52,8 +52,9 @@
 
 class TickableLayerProcessor: public LayerProcessor {
 
-public: TickableLayerProcessor(){
-            super(TickableLayerManager());
+public: TickableLayerProcessor() : LayerProcessor(TickableLayerManager()){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -65,7 +66,7 @@ public: TickableLayerProcessor(){
             
     public: void processAt(AllBinaryLayerManager allBinaryLayerManager, AllBinaryLayer layerInterface, int32_t index){
 
-    TickableInterface tickableInterface = layerInterface as TickableInterface;;
+    TickableInterface tickableInterface = layerInterface;;
     
 tickableInterface.processTick(allBinaryLayerManager);
     

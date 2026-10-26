@@ -18,9 +18,6 @@
 
 
 
-#include <jsinterop/annotations/JsType.h>
-
-      
 #include <javax/microedition/lcdui/Font.h>
 
       
@@ -61,12 +58,6 @@
 
       
 #include <org/allbinary/util/BasicArrayList.h>
-
-      
-#include <jsinterop/annotations/JsMethod.h>
-
-      
-#include <jsinterop/annotations/JsConstructor.h>
 
       
 
@@ -122,7 +113,7 @@ this->myFontProcessor= MyFontProcessor::getInstance();
 
     public: void onEvent(AllBinaryEventObject eventObject){
 
-    ColorChangeEvent colorChangeEvent = eventObject as ColorChangeEvent;;
+    ColorChangeEvent colorChangeEvent = eventObject;;
     
 this->basicColor= colorChangeEvent.getBasicColorP();
     
@@ -182,7 +173,7 @@ graphics.drawString(columnTwoHeading, width -10 -columnTwoHeadingWidth, charHeig
 
         while(vectorIndex < size && charHeight *index < height -(charHeight *2))
         {
-highScore= list.objectArray[vectorIndex]! as HighScore;
+highScore= list.objectArray[vectorIndex];
     
 
     int32_t nextScoreWidth = graphics.getFont().stringWidth(highScore.getScoreString());;
@@ -205,7 +196,7 @@ vectorIndex= 0;
 
         while(vectorIndex < size && charHeight *index < height -(charHeight *2))
         {
-highScore= list.objectArray[vectorIndex]! as HighScore;
+highScore= list.objectArray[vectorIndex];
     
 graphics.drawString(highScore.getName(), 10, charHeight *index, this->anchor);
     

@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <javax/xml/transform/URIResolver.h>
 
@@ -63,16 +63,17 @@
 
 class TransformInfoCustomUriTransformer: public BasicTransformer {
 
-public: TransformInfoCustomUriTransformer(AbeClientInformationInterface abeClientInformation, TransformInfoInterface transformInfoInterface){
-            super(abeClientInformation, transformInfoInterface);
+public: TransformInfoCustomUriTransformer(AbeClientInformationInterface abeClientInformation, TransformInfoInterface transformInfoInterface) : BasicTransformer(abeClientInformation, transformInfoInterface){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
                     
 
-    TransformInfoObjectConfigInterface transformInfoObjectConfigInterface = TransformInfoObjectConfigAndManipulatorFactory::getInstance().getInstance(abeClientInformation, transformInfoInterface) as TransformInfoObjectConfigInterface;;
+    TransformInfoObjectConfigInterface transformInfoObjectConfigInterface = TransformInfoObjectConfigAndManipulatorFactory::getInstance().getInstance(abeClientInformation, transformInfoInterface);;
     
-this->setURIResolver(CustomUriResolver(transformInfoObjectConfigInterface.getImportUriPath(), this->getURIResolver() as BasicUriResolver) as URIResolver);
+this->setURIResolver(CustomUriResolver(transformInfoObjectConfigInterface.getImportUriPath(), this->getURIResolver()));
     
 }
 

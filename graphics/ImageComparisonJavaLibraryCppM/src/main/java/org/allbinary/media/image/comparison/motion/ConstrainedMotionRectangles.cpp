@@ -20,7 +20,7 @@
 
             #include <vector>
         
-            #include "../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/awt/Rectangle.h>
 
@@ -70,8 +70,9 @@ class ConstrainedMotionRectangles: public MotionRectangles {
 
     private: MotionRectangleConstraintsInterface motionRectangleConstraintsInterface;
 
-public: ConstrainedMotionRectangles(MotionRectangleConstraintsInterface motionRectangleConstraintsInterface, MotionRectangles motionRectangles){
-            super(NAME, motionRectangles.getImageComparisonResult());
+public: ConstrainedMotionRectangles(MotionRectangleConstraintsInterface motionRectangleConstraintsInterface, MotionRectangles motionRectangles) : MotionRectangles(NAME, motionRectangles.getImageComparisonResult()){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -109,7 +110,7 @@ this->logUtil.putF("Start - Size Before: " +motionRectangles.getVector().size(),
     int32_t index = 0;index < size; index++)
         {
 
-    MotionRectangle motionRectangle = vector2.get(index) as MotionRectangle;;
+    MotionRectangle motionRectangle = vector2.get(index);;
     
 
     Rectangle rectangle = motionRectangle.getRectangle();;

@@ -45,8 +45,9 @@
         
 class TickableLayerManager: public LayerManager {
 
-public: TickableLayerManager(){
-            super(LayerManagerNoDebug::getInstance());
+public: TickableLayerManager() : LayerManager(LayerManagerNoDebug::getInstance()){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.

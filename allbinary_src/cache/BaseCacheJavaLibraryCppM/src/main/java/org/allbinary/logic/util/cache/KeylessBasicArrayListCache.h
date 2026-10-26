@@ -21,7 +21,7 @@
         #ifndef ORG_ALLBINARY_LOGIC_UTIL_CACHE_KEYLESSBASICARRAYLISTCACHE_H
         #define ORG_ALLBINARY_LOGIC_UTIL_CACHE_KEYLESSBASICARRAYLISTCACHE_H
 
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/logic/communication/log/LogUtil.h>
 

@@ -18,7 +18,7 @@
 
 
 
-            #include "../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
 
@@ -53,7 +53,7 @@ class AdminConfigurationHelper: public BasicTable {
 
     protected: const LogUtil logUtil = LogUtil::getInstance();
 
-public: AdminConfigurationHelper(HashMap<any, any> hashMap, PageContext pageContext){
+public: AdminConfigurationHelper(HashMap<Object*, Object*> hashMap, PageContext pageContext){
 }
 
 

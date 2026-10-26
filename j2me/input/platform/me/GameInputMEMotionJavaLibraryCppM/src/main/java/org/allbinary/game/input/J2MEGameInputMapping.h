@@ -21,7 +21,7 @@
         #ifndef ORG_ALLBINARY_GAME_INPUT_J2MEGAMEINPUTMAPPING_H
         #define ORG_ALLBINARY_GAME_INPUT_J2MEGAMEINPUTMAPPING_H
 
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/game/configuration/persistance/GamePersistanceStrings.h>
 

@@ -18,9 +18,9 @@
 
 
 
-            #include "../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <javax/servlet/jsp/tagext/Tag.h>
 
@@ -96,7 +96,7 @@ stringBuffer.append(" as parent");
     
 stringBuffer.append("and not: ");
     
-stringBuffer.append(parentTag.constructor.name.toString()!);
+stringBuffer.append(parentTag.constructor.name.toString());
     
 
 

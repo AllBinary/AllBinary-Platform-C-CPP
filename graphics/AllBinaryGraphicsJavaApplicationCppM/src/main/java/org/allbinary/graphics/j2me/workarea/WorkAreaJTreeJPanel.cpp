@@ -20,7 +20,7 @@
 
             #include <vector>
         
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <javax/swing.h>
 
@@ -166,7 +166,7 @@ this->workAreaPropertiesJPanel.add(this->workAreaJTree);
                         for (
     int32_t index = 0;index < treePathArray.size(); index++)
         {
-basicArrayList.add(this->getNode(treePathArray[index]!));
+basicArrayList.add(this->getNode(treePathArray[index]));
     
 }
 
@@ -199,7 +199,7 @@ basicArrayList.add(this->getNode(treePathArray[index]!));
                         
                                     {
                                     
-    DefaultMutableTreeNode node = obj[obj.size() -1]! as DefaultMutableTreeNode;;
+    DefaultMutableTreeNode node = obj[obj.size() -1];;
     
 
 
@@ -238,7 +238,7 @@ this->logUtil.putF("size: " +size, this, "deselectAll");
     int32_t index = 0;index < size; index++)
         {
 
-    DefaultMutableTreeNode node = this->highlightedBasicArrayList.get(index) as DefaultMutableTreeNode;;
+    DefaultMutableTreeNode node = this->highlightedBasicArrayList.get(index);;
     
 MyGraphicItemEventService::fire(MyGraphicItemEvent(MyGraphicItemEventSource(MyGraphicItemEventService::DESELECT, node)));
     
@@ -306,7 +306,7 @@ MyCanvasEventService::fire(MyCanvasEvent(MyCanvasEventSource(MyCanvasEventServic
                                     }
                                 
 
-    DefaultMutableTreeNode parent = node.getParent() as DefaultMutableTreeNode;;
+    DefaultMutableTreeNode parent = node.getParent();;
     
 parent.remove(node);
     
@@ -569,7 +569,7 @@ this->logUtil.put(this->commonStrings.EXCEPTION, this, "rotateJMenuItemMousePres
     int32_t index = 0;index < selectedTreePathArray.size(); index++)
         {
 
-    DefaultMutableTreeNode defaultMutableTreeNode = list.get(index) as DefaultMutableTreeNode;;
+    DefaultMutableTreeNode defaultMutableTreeNode = list.get(index);;
     
 
                         if(defaultMutableTreeNode.getUserObject() instanceof CanvasTreeLabel)
@@ -605,7 +605,7 @@ this->logUtil.put(this->commonStrings.EXCEPTION, this, "rotateJMenuItemMousePres
     int32_t index = 0;index < selectedTreePathArray.size(); index++)
         {
 
-    DefaultMutableTreeNode defaultMutableTreeNode = list.get(index) as DefaultMutableTreeNode;;
+    DefaultMutableTreeNode defaultMutableTreeNode = list.get(index);;
     
 
                         if(defaultMutableTreeNode.getUserObject() instanceof CanvasTreeLabel)

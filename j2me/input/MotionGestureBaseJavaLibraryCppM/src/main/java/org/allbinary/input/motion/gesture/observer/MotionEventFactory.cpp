@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
 #include <org/allbinary/game/input/Input.h>
 
@@ -93,7 +93,7 @@ MotionEventFactory::index= TouchMotionGestureFactory::getInstance().LAST_MOTION.
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return MotionGestureEvent(this->source, this->id, TouchMotionGestureFactory::getInstance().NO_MOTION as MotionGestureInput);
+                        return MotionGestureEvent(this->source, this->id, TouchMotionGestureFactory::getInstance().NO_MOTION);
     
 
                                     }
@@ -103,7 +103,7 @@ MotionEventFactory::index= TouchMotionGestureFactory::getInstance().LAST_MOTION.
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return MotionGestureEvent(this->source, this->id, input as MotionGestureInput);
+                        return MotionGestureEvent(this->source, this->id, input);
     
 
                         }

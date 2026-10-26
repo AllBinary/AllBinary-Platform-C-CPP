@@ -55,8 +55,9 @@ class CircleFilledAnimation: public Animation, public ColorCompositeInterface {
 
     private: int32_t height;
 
-public: CircleFilledAnimation(int32_t width, int32_t height, BasicColor basicColor){
-            super();
+public: CircleFilledAnimation(int32_t width, int32_t height, BasicColor basicColor) : Animation(){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.

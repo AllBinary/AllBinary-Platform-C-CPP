@@ -20,11 +20,8 @@
 
             #include <vector>
         
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-#include <jsinterop/annotations/JsType.h>
-
-      
 #include <javax/microedition/lcdui/CommandListener.h>
 
       
@@ -70,15 +67,6 @@
 #include <org/allbinary/logic/system/security/licensing/AbeClientInformationInterface.h>
 
       
-#include <jsinterop/annotations/JsMethod.h>
-
-      
-#include <jsinterop/annotations/JsConstructor.h>
-
-      
-#include <jsinterop/annotations/JsProperty.h>
-
-      
 
 
 
@@ -102,8 +90,9 @@ class CombatGameCanvas: public AllBinaryGameCanvas {
 
     protected: static std::vector<BasicLayerProcessor> basicLayerProcessor = {};
 
-public: CombatGameCanvas(CommandListener cmdListener, AllBinaryGameLayerManager gameLayerManager, HighScoresFactoryInterface highScoresFactoryInterface, BasicBuildGameInitializerFactory gameInitializationInterfaceFactoryInterface, bool buffered){
-            super(cmdListener, gameLayerManager, highScoresFactoryInterface, gameInitializationInterfaceFactoryInterface, buffered);
+public: CombatGameCanvas(CommandListener cmdListener, AllBinaryGameLayerManager gameLayerManager, HighScoresFactoryInterface highScoresFactoryInterface, BasicBuildGameInitializerFactory gameInitializationInterfaceFactoryInterface, bool buffered) : AllBinaryGameCanvas(cmdListener, gameLayerManager, highScoresFactoryInterface, gameInitializationInterfaceFactoryInterface, buffered){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -144,7 +133,7 @@ ProgressCanvasFactory::getInstance().addNormalPortion(portion, "Basic Processors
                         if(features.isFeature(gameFeatureFactory.DROPPED_ITEMS) && features.isFeature(gameFeatureFactory.DROPPED_ITEMS_FROM_DEATH))
                         
                                     {
-                                    CombatGameCanvas::basicLayerProcessor= new Array(2);
+                                    CombatGameCanvas::basicLayerProcessor= std::vector<BasicLayerProcessor>(2);
     
 CombatGameCanvas::basicLayerProcessor[0]= DestroyedLayerProcessor::getInstance();
     
@@ -154,7 +143,7 @@ CombatGameCanvas::basicLayerProcessor[1]= DropLayerProcessor::getInstance();
                                     }
                                 
                         else {
-                            CombatGameCanvas::basicLayerProcessor= new Array(1);
+                            CombatGameCanvas::basicLayerProcessor= std::vector<BasicLayerProcessor>(1);
     
 CombatGameCanvas::basicLayerProcessor[0]= DestroyedLayerProcessor::getInstance();
     
@@ -176,7 +165,7 @@ super.processPlayingGame();
                         for (
     int32_t index = CombatGameCanvas::basicLayerProcessor.size();--index >= 0; )
         {
-CombatGameCanvas::basicLayerProcessor[index]!.process(this->gameLayerManager);
+CombatGameCanvas::basicLayerProcessor[index].process(this->gameLayerManager);
     
 }
 
@@ -195,7 +184,7 @@ super.cleanupGame();
                         for (
     int32_t index = CombatGameCanvas::basicLayerProcessor.size();--index >= 0; )
         {
-CombatGameCanvas::basicLayerProcessor[index]!.getList().clear();
+CombatGameCanvas::basicLayerProcessor[index].getList().clear();
     
 }
 

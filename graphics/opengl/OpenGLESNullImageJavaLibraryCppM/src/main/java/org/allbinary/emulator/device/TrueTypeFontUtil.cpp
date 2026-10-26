@@ -20,7 +20,7 @@
 
             #include <vector>
         
-            #include "../../../../java/lang/RuntimeException.h"
+            #include "java/lang/RuntimeException.h"
         
 #include <javax/microedition/khronos/opengles/GL10.h>
 
@@ -70,8 +70,9 @@ class TrueTypeFontUtil: public TrueTypeFontUtilBase {
 
     public: OpenGLESImage fontImage = OpenGLESImage::NULL_OPENGL_IMAGE;
 
-private: TrueTypeFontUtil(){
-            super(1);
+private: TrueTypeFontUtil() : TrueTypeFontUtilBase(1){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.

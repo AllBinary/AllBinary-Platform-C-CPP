@@ -18,13 +18,12 @@
 
 
 
-            #include "../../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-#include <java/io/ByteArrayOutputStream.h>
-
-      
+            #include "java/lang/System.h"
+        
 #include <java/io/InputStream.h>
 
       
@@ -35,18 +34,6 @@
 
       
 #include <javax/xml/parsers/DocumentBuilderFactory.h>
-
-      
-#include <javax/xml/transform/Transformer.h>
-
-      
-#include <javax/xml/transform/TransformerFactory.h>
-
-      
-#include <javax/xml/transform/dom/DOMSource.h>
-
-      
-#include <javax/xml/transform/stream/StreamResult.h>
 
       
 #include <org/w3c/dom/Document.h>
@@ -74,6 +61,23 @@
 class DomDocumentHelper
             : public Object
          {
+
+    public: static void init(){
+System.setProperty("jdk.xml.maxElementDepth", "0");
+    
+System.setProperty("jdk.xml.xpathExprOpLimit", "0");
+    
+System.setProperty("jdk.xml.xpathTotalOpLimit", "0");
+    
+
+    std::string LIMIT = "500000";;
+    
+System.setProperty("jdk.xml.maxGeneralEntitySizeLimit", LIMIT);
+    
+System.setProperty("jdk.xml.totalEntitySizeLimit", LIMIT);
+    
+}
+
 
     public: static Document create(){
 
@@ -161,48 +165,6 @@ class DomDocumentHelper
 
                         //if statement needs to be on the same line and ternary does not work the same way.
                         return document;
-    
-
-                //: 
-} catch(e) 
-            {
-
-
-
-                            throw e;
-                    
-}
-
-}
-
-
-                //@Throws(Exception.constructor)
-            
-    public: static std::string toString(Document document){
-
-        try {
-            
-    DOMSource domSource = DOMSource(document);;
-    
-
-    ByteArrayOutputStream byteArrayOutputStream = ByteArrayOutputStream();;
-    
-
-    StreamResult streamResult = StreamResult(byteArrayOutputStream);;
-    
-
-    TransformerFactory copyTransformerFactory = TransformerFactory::newInstance();;
-    
-
-    Transformer copyTransformer = copyTransformerFactory.newTransformer();;
-    
-copyTransformer.transform(domSource, streamResult);
-    
-
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return byteArrayOutputStream.toString();;
     
 
                 //: 

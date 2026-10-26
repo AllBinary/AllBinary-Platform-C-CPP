@@ -45,7 +45,7 @@ class AndroidAPI1KeyFactory: public AndroidKeyFactory {
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return AndroidAPI1KeyFactory::instance() as AndroidAPI1KeyFactory;
+                        return AndroidAPI1KeyFactory::instance();
     
 }
 

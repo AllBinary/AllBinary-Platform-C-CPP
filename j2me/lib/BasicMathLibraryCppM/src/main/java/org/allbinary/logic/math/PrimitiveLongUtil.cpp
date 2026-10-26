@@ -20,13 +20,10 @@
 
             #include <vector>
         
-            #include "../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-#include <jsinterop/annotations/JsType.h>
-
-      
 #include <org/allbinary/logic/NullUtil.h>
 
       
@@ -34,15 +31,6 @@
 
       
 #include <org/allbinary/string/CommonStrings.h>
-
-      
-#include <jsinterop/annotations/JsMethod.h>
-
-      
-#include <jsinterop/annotations/JsConstructor.h>
-
-      
-#include <jsinterop/annotations/JsProperty.h>
 
       
 
@@ -135,7 +123,7 @@ this->charArray= std::vector<char>(this->maxDigits);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->primitiveLongSingleton.NUMBER_CHAR_ARRAYS[value]!;
+                        return this->primitiveLongSingleton.NUMBER_CHAR_ARRAYS[value];
     
 
                                     }
@@ -182,7 +170,7 @@ this->charArray= std::vector<char>(this->maxDigits);
                                     }
                                 
                         else {
-                            this->charArray[index++]= this->primitiveLongSingleton.NUMBER_CHAR_ARRAY[digit]!;
+                            this->charArray[index++]= this->primitiveLongSingleton.NUMBER_CHAR_ARRAY[digit];
     
 
                         }

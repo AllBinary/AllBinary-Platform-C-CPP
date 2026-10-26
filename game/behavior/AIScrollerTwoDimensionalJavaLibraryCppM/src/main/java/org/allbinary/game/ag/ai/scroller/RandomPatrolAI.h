@@ -21,11 +21,8 @@
         #ifndef ORG_ALLBINARY_GAME_AG_AI_SCROLLER_RANDOMPATROLAI_H
         #define ORG_ALLBINARY_GAME_AG_AI_SCROLLER_RANDOMPATROLAI_H
 
-            #include "../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-#include <java/util/Hashtable.h>
-
-      
 #include <javax/microedition/lcdui/Canvas.h>
 
       
@@ -39,6 +36,9 @@
 
       
 #include <org/allbinary/layer/AllBinaryLayerManager.h>
+
+      
+#include <org/allbinary/util/ABHashtable.h>
 
       
 
@@ -65,7 +65,7 @@ class RandomPatrolAI: public BasePatrolAI {
 
     private: bool changedDirection = true;
 
-public: RandomPatrolAI(Hashtable<any, any> hashtable, AllBinaryLayer ownerLayerInterface, GameInput gameInput);
+public: RandomPatrolAI(ABHashtable<Object*, Object*> hashtable, AllBinaryLayer ownerLayerInterface, GameInput gameInput);
 
     private: void updateRandomDistance();
 

@@ -18,13 +18,10 @@
 
 
 
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../../java/lang/Integer.h"
+            #include "java/lang/Integer.h"
         
-#include <jsinterop/annotations/JsType.h>
-
-      
 #include <org/allbinary/ai/ArtificialIntelligence.h>
 
       
@@ -59,15 +56,6 @@
 
       
 #include <org/allbinary/string/CommonStrings.h>
-
-      
-#include <jsinterop/annotations/JsMethod.h>
-
-      
-#include <jsinterop/annotations/JsConstructor.h>
-
-      
-#include <jsinterop/annotations/JsProperty.h>
 
       
 
@@ -182,7 +170,7 @@ this->lastKey= lastKey;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->constructor.name.toString()!;;
+                        return this->constructor.name.toString();;
     
 }
 

@@ -21,13 +21,10 @@
         #ifndef ORG_ALLBINARY_GAME_AG_AI_SCROLLER_HORIZONTALSCREENPATROLAI_H
         #define ORG_ALLBINARY_GAME_AG_AI_SCROLLER_HORIZONTALSCREENPATROLAI_H
 
-            #include "../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../../../../java/lang/Integer.h"
+            #include "java/lang/Integer.h"
         
-#include <java/util/Hashtable.h>
-
-      
 #include <javax/microedition/lcdui/Canvas.h>
 
       
@@ -65,6 +62,9 @@
 
       
 #include <org/allbinary/time/TimeDelayHelper.h>
+
+      
+#include <org/allbinary/util/ABHashtable.h>
 
       
 
@@ -106,7 +106,7 @@ class HorizontalScreenPatrolAI: public BasicAI {
 
     private: Sound sound;
 
-public: HorizontalScreenPatrolAI(Hashtable<any, any> hashtable, AllBinaryLayer ownerLayerInterface, GameInput gameInput);
+public: HorizontalScreenPatrolAI(ABHashtable<Object*, Object*> hashtable, AllBinaryLayer ownerLayerInterface, GameInput gameInput);
 
                 //@Throws(Exception.constructor)
             

@@ -18,15 +18,12 @@
 
 
 
-            #include "../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../../java/lang/Thread.h"
+            #include "java/lang/Thread.h"
         
-#include <jsinterop/annotations/JsType.h>
-
-      
 #include <org/allbinary/thread/ARunnable.h>
 
       
@@ -49,12 +46,6 @@
 
       
 #include <org/allbinary/thread/NullRunnable.h>
-
-      
-#include <jsinterop/annotations/JsMethod.h>
-
-      
-#include <jsinterop/annotations/JsProperty.h>
 
       
 

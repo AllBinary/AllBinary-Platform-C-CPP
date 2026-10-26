@@ -21,7 +21,7 @@
         #ifndef ORG_ALLBINARY_GAME_INPUT_FORM_PRIMARYWAYPOINTHELPER_H
         #define ORG_ALLBINARY_GAME_INPUT_FORM_PRIMARYWAYPOINTHELPER_H
 
-            #include "../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
 #include <org/allbinary/game/layer/NullPathFindingLayer.h>
 

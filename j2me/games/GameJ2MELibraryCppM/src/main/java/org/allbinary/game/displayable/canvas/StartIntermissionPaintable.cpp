@@ -20,9 +20,6 @@
 
             #include <vector>
         
-#include <jsinterop/annotations/JsType.h>
-
-      
 #include <javax/microedition/lcdui/Font.h>
 
       
@@ -66,15 +63,6 @@
 
       
 #include <org/allbinary/logic/string/StringUtil.h>
-
-      
-#include <jsinterop/annotations/JsMethod.h>
-
-      
-#include <jsinterop/annotations/JsConstructor.h>
-
-      
-#include <jsinterop/annotations/JsProperty.h>
 
       
 
@@ -134,7 +122,7 @@ this->gameCanvas= gameCanvas;
     
 this->stringArray= stringArray;
     
-this->lastWidth= new Array(this->stringArray.length);
+this->lastWidth= std::vector<int32_t>(this->stringArray.length);
     
 this->setBasicColorP(basicColor);
     
@@ -185,14 +173,14 @@ this->basicSetColorUtil.setBasicColorP3(graphics, this->basicColor, this->color)
                         if(this->hasChanged)
                         
                                     {
-                                    this->lastWidth[index]= (graphics.getFont().stringWidth(this->stringArray[index]!)>>1);
+                                    this->lastWidth[index]= (graphics.getFont().stringWidth(this->stringArray[index])>>1);
     
 
                                     }
                                 
-beginWidth= this->lastWidth[index]!;
+beginWidth= this->lastWidth[index];
     
-graphics.drawString(this->stringArray[index]!, displayInfo.getLastHalfWidth() -beginWidth, displayInfo.getLastHalfHeight() -this->lineYOffsetArray[index], this->anchor);
+graphics.drawString(this->stringArray[index], displayInfo.getLastHalfWidth() -beginWidth, displayInfo.getLastHalfHeight() -this->lineYOffsetArray[index], this->anchor);
     
 }
 

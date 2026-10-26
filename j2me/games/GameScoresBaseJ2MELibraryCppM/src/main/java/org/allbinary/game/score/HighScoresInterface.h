@@ -21,15 +21,9 @@
         #ifndef ORG_ALLBINARY_GAME_SCORE_HIGHSCORESINTERFACE_H
         #define ORG_ALLBINARY_GAME_SCORE_HIGHSCORESINTERFACE_H
 
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-#include <jsinterop/annotations/JsType.h>
-
-      
 #include <org/allbinary/util/BasicArrayList.h>
-
-      
-#include <jsinterop/annotations/JsMethod.h>
 
       
 

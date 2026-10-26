@@ -54,8 +54,9 @@ class GameInputMotionInfoAPI1: public GameInputMotionInfo {
 }
 
 
-private: GameInputMotionInfoAPI1(){
-            super(4, 1);
+private: GameInputMotionInfoAPI1() : GameInputMotionInfo(4, 1){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.

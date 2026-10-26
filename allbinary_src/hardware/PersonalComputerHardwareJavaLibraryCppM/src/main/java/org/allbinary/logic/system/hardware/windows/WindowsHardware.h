@@ -21,13 +21,10 @@
         #ifndef ORG_ALLBINARY_LOGIC_SYSTEM_HARDWARE_WINDOWS_WINDOWSHARDWARE_H
         #define ORG_ALLBINARY_LOGIC_SYSTEM_HARDWARE_WINDOWS_WINDOWSHARDWARE_H
 
-            #include "../../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-#include <java/util/Hashtable.h>
-
-      
 #include <org/allbinary/util/BasicArrayList.h>
 
       
@@ -83,6 +80,9 @@
 
       
 #include <org/allbinary/string/CommonSeps.h>
+
+      
+#include <org/allbinary/util/ABHashtable.h>
 
       
 
@@ -170,7 +170,7 @@ public: WindowsHardware();
 
     public: bool compareTo(HardwareInterface hardwareInterface);
 
-    public: Hashtable<any, any> difference(HardwareInterface hardwareInterface);
+    public: ABHashtable<Object*, Object*> difference(HardwareInterface hardwareInterface);
 
 };
 

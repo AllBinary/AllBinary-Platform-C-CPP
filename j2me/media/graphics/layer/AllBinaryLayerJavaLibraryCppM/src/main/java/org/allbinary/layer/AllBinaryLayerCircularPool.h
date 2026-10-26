@@ -21,21 +21,12 @@
         #ifndef ORG_ALLBINARY_LAYER_ALLBINARYLAYERCIRCULARPOOL_H
         #define ORG_ALLBINARY_LAYER_ALLBINARYLAYERCIRCULARPOOL_H
 
-            #include "../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-#include <jsinterop/annotations/JsType.h>
-
-      
 #include <org/allbinary/logic/util/cache/BaseCircularPool.h>
 
       
 #include <org/allbinary/util/CircularIndexUtil.h>
-
-      
-#include <jsinterop/annotations/JsMethod.h>
-
-      
-#include <jsinterop/annotations/JsConstructor.h>
 
       
 

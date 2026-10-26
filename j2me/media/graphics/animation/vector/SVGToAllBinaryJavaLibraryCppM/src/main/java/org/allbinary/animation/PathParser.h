@@ -9,9 +9,9 @@
 
             #include <vector>
         
-            #include "../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../java/lang/Double.h"
+            #include "java/lang/Double.h"
         
 #include <org/allbinary/util/BasicArrayList.h>
 

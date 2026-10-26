@@ -67,13 +67,14 @@ class RollRightOrientationInputToGameKeyEventAction: public GameKeyCompleteMotio
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return RollRightOrientationInputToGameKeyEventAction::instance() as GameKeyCompleteMotionGestureInputEvent;
+                        return RollRightOrientationInputToGameKeyEventAction::instance();
     
 }
 
 
-private: RollRightOrientationInputToGameKeyEventAction(){
-            super("Roll Right Action", OrientationMotionGestureFactory::getInstance().ROLL_RIGHT, PlatformInputMappingFactory::getInstance().getPersistentInputMappingInstance().getInputMapping());
+private: RollRightOrientationInputToGameKeyEventAction() : GameKeyCompleteMotionGestureInputEvent("Roll Right Action", OrientationMotionGestureFactory::getInstance().ROLL_RIGHT, PlatformInputMappingFactory::getInstance().getPersistentInputMappingInstance().getInputMapping()){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.

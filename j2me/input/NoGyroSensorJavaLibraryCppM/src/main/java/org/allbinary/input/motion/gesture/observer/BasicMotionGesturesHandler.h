@@ -21,11 +21,8 @@
         #ifndef ORG_ALLBINARY_INPUT_MOTION_GESTURE_OBSERVER_BASICMOTIONGESTURESHANDLER_H
         #define ORG_ALLBINARY_INPUT_MOTION_GESTURE_OBSERVER_BASICMOTIONGESTURESHANDLER_H
 
-            #include "../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-#include <jsinterop/annotations/JsType.h>
-
-      
 #include <org/allbinary/logic/util/event/AllBinaryEventObject.h>
 
       
@@ -33,12 +30,6 @@
 
       
 #include <org/allbinary/logic/util/event/handler/BasicEventHandler.h>
-
-      
-#include <jsinterop/annotations/JsMethod.h>
-
-      
-#include <jsinterop/annotations/JsConstructor.h>
 
       
 

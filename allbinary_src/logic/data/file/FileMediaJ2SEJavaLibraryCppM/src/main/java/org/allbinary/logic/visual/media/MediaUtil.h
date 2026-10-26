@@ -9,9 +9,9 @@
 
             #include <vector>
         
-            #include "../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/awt/image/BufferedImage.h>
 
@@ -75,7 +75,7 @@ class MediaUtil
 
     public: static MediaUtil getInstance();
 
-    private: static HashMap<any, any> getImageBufferPropertyHashMap(BufferedImage bufferedImage);
+    private: static HashMap<Object*, Object*> getImageBufferPropertyHashMap(BufferedImage bufferedImage);
 
     protected: const LogUtil logUtil = LogUtil::getInstance();
 

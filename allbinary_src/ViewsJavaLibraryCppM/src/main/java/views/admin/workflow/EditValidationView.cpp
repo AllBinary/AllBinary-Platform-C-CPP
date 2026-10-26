@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/data/tables/workflow/WorkFlowEntityFactory.h>
 
@@ -73,14 +73,15 @@ class EditValidationView: public WorkFlowView, public ValidationComponentInterfa
 
     private: std::string workFlowName;
 
-public: EditValidationView(TransformInfoInterface transformInfoInterface){
-            super(transformInfoInterface);
+public: EditValidationView(TransformInfoInterface transformInfoInterface) : WorkFlowView(transformInfoInterface){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
                     
 
-    TransformInfoHttpInterface httpTransformInfoInterface = this->getTransformInfoInterface() as TransformInfoHttpInterface;;
+    TransformInfoHttpInterface httpTransformInfoInterface = this->getTransformInfoInterface();;
     
 this->workFlowName= httpTransformInfoInterface.getPageContext().getRequest().getParameter(WorkFlowData::getInstance().NAME);
     

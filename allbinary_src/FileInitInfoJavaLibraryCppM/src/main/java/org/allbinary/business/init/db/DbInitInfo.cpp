@@ -20,7 +20,7 @@
 
             #include <vector>
         
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/globals/FREEBLISKET_PATH_GLOBALS.h>
 
@@ -112,8 +112,9 @@ class DbInitInfo: public DbConnectionInfo {
 
     private: bool hasRead = false;
 
-public: DbInitInfo(std::string initFileName, bool read){
-            super();
+public: DbInitInfo(std::string initFileName, bool read) : DbConnectionInfo(){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.

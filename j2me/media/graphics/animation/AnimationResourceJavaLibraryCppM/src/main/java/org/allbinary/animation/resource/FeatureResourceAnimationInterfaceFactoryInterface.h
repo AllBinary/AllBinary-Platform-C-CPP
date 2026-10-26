@@ -21,19 +21,13 @@
         #ifndef ORG_ALLBINARY_ANIMATION_RESOURCE_FEATURERESOURCEANIMATIONINTERFACEFACTORYINTERFACE_H
         #define ORG_ALLBINARY_ANIMATION_RESOURCE_FEATURERESOURCEANIMATIONINTERFACEFACTORYINTERFACE_H
 
-#include <jsinterop/annotations/JsType.h>
-
-      
-#include <java/util/Hashtable.h>
-
-      
 #include <org/allbinary/game/configuration/feature/GameFeatureControlledInterface.h>
 
       
 #include <org/allbinary/game/resource/RectangleResourceFactoryInterface.h>
 
       
-#include <jsinterop/annotations/JsMethod.h>
+#include <org/allbinary/util/ABHashtable.h>
 
       
 
@@ -58,7 +52,7 @@
 
 class FeatureResourceAnimationInterfaceFactoryInterface: public ResourceAnimationInterfaceFactoryInterface, public RectangleResourceFactoryInterface, public GameFeatureControlledInterface {
 
-    Hashtable<any, any> getHashtable();
+    ABHashtable<Object*, Object*> getHashtable();
 
 };
 

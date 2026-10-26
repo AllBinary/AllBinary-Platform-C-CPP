@@ -21,11 +21,11 @@
         #ifndef ORG_ALLBINARY_BUSINESS_USER_QUOTEREQUEST_QUOTEREQUEST_H
         #define ORG_ALLBINARY_BUSINESS_USER_QUOTEREQUEST_QUOTEREQUEST_H
 
-            #include "../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../../../java/lang/Long.h"
+            #include "java/lang/Long.h"
         
 #include <java/util/Calendar.h>
 
@@ -115,7 +115,7 @@ class QuoteRequest
 
 public: QuoteRequest(std::string userName, HttpServletRequest request);
 
-public: QuoteRequest(HashMap<any, any> hashMap);
+public: QuoteRequest(HashMap<Object*, Object*> hashMap);
 
     public: Boolean isValid();
 
@@ -123,7 +123,7 @@ public: QuoteRequest(HashMap<any, any> hashMap);
 
     public: BasicArrayList toVector();
 
-    public: HashMap<any, any> toHashMap();
+    public: HashMap<Object*, Object*> toHashMap();
 
     public: void setUserName(std::string value);
 

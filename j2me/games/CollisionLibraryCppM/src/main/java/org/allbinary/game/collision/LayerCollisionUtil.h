@@ -21,7 +21,7 @@
         #ifndef ORG_ALLBINARY_GAME_COLLISION_LAYERCOLLISIONUTIL_H
         #define ORG_ALLBINARY_GAME_COLLISION_LAYERCOLLISIONUTIL_H
 
-            #include "../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
 #include <org/allbinary/game/configuration/feature/Features.h>
 

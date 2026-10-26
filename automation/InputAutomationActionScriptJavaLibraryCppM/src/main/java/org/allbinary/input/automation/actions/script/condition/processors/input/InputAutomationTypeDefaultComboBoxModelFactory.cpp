@@ -20,9 +20,9 @@
 
             #include <vector>
         
-            #include "../../../../../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/util/Set.h>
 
@@ -79,7 +79,7 @@ class InputAutomationTypeDefaultComboBoxModelFactory
                         for (
     int32_t index = 0;index < size; index++)
         {
-defaultComboBoxModel.addElement(nameArray[index]! as string);
+defaultComboBoxModel.addElement(nameArray[index]);
     
 }
 

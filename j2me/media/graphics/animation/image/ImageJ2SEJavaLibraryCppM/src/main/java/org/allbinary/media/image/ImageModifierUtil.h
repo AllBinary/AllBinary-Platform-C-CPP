@@ -23,9 +23,9 @@
 
             #include <vector>
         
-            #include "../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/awt/image/BufferedImage.h>
 
@@ -84,7 +84,7 @@ class ImageModifierUtil
 
     public: void setBasicColorP(BasicColor basicColor);
 
-    private: const std::vector<int32_t> colorArray = new Array(1);
+    private: const std::vector<int32_t> colorArray = std::vector<int32_t>(1);
 
     public: void setColor(Image unusedOriginalImage, Image image, int32_t imageIndex, BasicColor basicColor);
 

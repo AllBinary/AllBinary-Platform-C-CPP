@@ -21,9 +21,9 @@
         #ifndef ORG_ALLBINARY_BUSINESS_ADVERTISEMENT_AREA_ADVERTISEMENTAREA_H
         #define ORG_ALLBINARY_BUSINESS_ADVERTISEMENT_AREA_ADVERTISEMENTAREA_H
 
-            #include "../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
 
@@ -77,7 +77,7 @@ class AdvertisementArea
 
     private: std::string campaign;
 
-public: AdvertisementArea(HashMap<any, any> hashMap);
+public: AdvertisementArea(HashMap<Object*, Object*> hashMap);
 
     public: std::string getName();
 

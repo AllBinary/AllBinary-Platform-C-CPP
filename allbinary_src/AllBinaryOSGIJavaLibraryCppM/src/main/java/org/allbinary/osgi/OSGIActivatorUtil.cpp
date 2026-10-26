@@ -18,11 +18,14 @@
 
 
 
-            #include "../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-#include <java/util/Hashtable.h>
+#include <org/allbinary/logic/StdUtil.h>
+
+      
+#include <org/allbinary/util/ABHashtable.h>
 
       
 #include <org/osgi/framework/BundleContext.h>
@@ -63,14 +66,14 @@ class OSGIActivatorUtil
                 //@Throws(Exception.constructor)
             
     public: static void registerAsService(BundleContext bundleContext, Object* anyType, std::string serviceName){
-OSGIActivatorUtil::registerAsService(bundleContext, anyType, serviceName, Hashtable<any, any>());
+OSGIActivatorUtil::registerAsService(bundleContext, anyType, serviceName, StdUtil::getInstance().createHashtable());
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public: static void registerAsService(BundleContext bundleContext, Object* anyType, std::string serviceName, Hashtable<any, any> properties){
+    public: static void registerAsService(BundleContext bundleContext, Object* anyType, std::string serviceName, ABHashtable<Object*, Object*> properties){
 
     ServiceRegistration serviceRegistration = bundleContext.registerService(serviceName, anyType, properties);;
     

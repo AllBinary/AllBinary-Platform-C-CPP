@@ -20,11 +20,11 @@
 
             #include <vector>
         
-            #include "../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../../../java/lang/CharSequence.h"
+            #include "java/lang/CharSequence.h"
         
 #include <java/io/ByteArrayOutputStream.h>
 
@@ -434,7 +434,7 @@ index++;
                         for (
     int32_t index = 0;index < size; index++)
         {
-stringMaker.append(stringArray[index]!);
+stringMaker.append(stringArray[index]);
     
 }
 

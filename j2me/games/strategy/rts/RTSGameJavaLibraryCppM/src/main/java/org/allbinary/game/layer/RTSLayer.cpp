@@ -20,13 +20,10 @@
 
             #include <vector>
         
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../../java/lang/RuntimeException.h"
+            #include "java/lang/RuntimeException.h"
         
-#include <java/util/Hashtable.h>
-
-      
 #include <javax/microedition/lcdui/Graphics.h>
 
       
@@ -153,6 +150,9 @@
 #include <org/allbinary/media/graphics/geography/map/GeographicMapCompositeInterface.h>
 
       
+#include <org/allbinary/util/ABHashtable.h>
+
+      
 #include <org/allbinary/util/BasicArrayList.h>
 
       
@@ -262,7 +262,7 @@ class RTSLayer: public MultiPlayerGameLayer, public TickableInterface, public Ga
 
     public: const bool showMoreCaptionStates = this->debug;
 
-    protected: const std::vector<GameInputProcessor> inputProcessorArray = new Array(InputFactory::getInstance().MAX);
+    protected: const std::vector<GameInputProcessor> inputProcessorArray = std::vector<GameInputProcessor>(InputFactory::getInstance().MAX);
 
     public: RTSLayer2LogHelper rtsLayer2LogHelper = RTSLayer2LogHelper::getInstance();
 
@@ -304,7 +304,7 @@ class RTSLayer: public MultiPlayerGameLayer, public TickableInterface, public Ga
 
     private: std::string rootName;
 
-    protected: const Hashtable<any, any> hashtable = StdUtil::getInstance().createHashtable();
+    protected: const ABHashtable<Object*, Object*> hashtable = StdUtil::getInstance().createHashtable();
 
     private: const int32_t BUILD_VALUE = 63;
 
@@ -326,8 +326,9 @@ class RTSLayer: public MultiPlayerGameLayer, public TickableInterface, public Ga
 
     private: bool selected = false;
 
-protected: RTSLayer(RemoteInfo remoteInfo, std::vector<Group> groupInterface, std::string rootName, std::string name, Health healthInterface, RTSFormInput rtsFormInput, AnimationInterfaceFactoryInterface animationInterfaceFactoryInterface, AnimationInterfaceFactoryInterface emptyAnimationInterfaceFactoryInterface, AnimationInterfaceFactoryInterface baseAnimationInterfaceFactoryInterface, AnimationInterfaceFactoryInterface buildAnimationInterfaceFactoryInterface, AnimationInterfaceFactoryInterface verticleBuildAnimationInterfaceFactoryInterface, ProceduralAnimationInterfaceFactoryInterface proceduralAnimationInterfaceFactoryInterface, Rectangle rectangle, int32_t x, int32_t y, ViewPositionBase viewPosition){
-            super(remoteInfo, groupInterface, name, rectangle, viewPosition);
+protected: RTSLayer(RemoteInfo remoteInfo, std::vector<Group> groupInterface, std::string rootName, std::string name, Health healthInterface, RTSFormInput rtsFormInput, AnimationInterfaceFactoryInterface animationInterfaceFactoryInterface, AnimationInterfaceFactoryInterface emptyAnimationInterfaceFactoryInterface, AnimationInterfaceFactoryInterface baseAnimationInterfaceFactoryInterface, AnimationInterfaceFactoryInterface buildAnimationInterfaceFactoryInterface, AnimationInterfaceFactoryInterface verticleBuildAnimationInterfaceFactoryInterface, ProceduralAnimationInterfaceFactoryInterface proceduralAnimationInterfaceFactoryInterface, Rectangle rectangle, int32_t x, int32_t y, ViewPositionBase viewPosition) : MultiPlayerGameLayer(remoteInfo, groupInterface, name, rectangle, viewPosition){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -342,19 +343,19 @@ this->rtsFormInput= rtsFormInput;
     
 this->setPosition(x, y, this->z);
     
-this->verticleBuildAnimationInterface= verticleBuildAnimationInterfaceFactoryInterface.getInstance(0) as IndexedAnimation;
+this->verticleBuildAnimationInterface= verticleBuildAnimationInterfaceFactoryInterface.getInstance(0);
     
 this->buildAnimationInterface= buildAnimationInterfaceFactoryInterface.getInstance(0);
     
 this->baseAnimationInterface= baseAnimationInterfaceFactoryInterface.getInstance(0);
     
-this->emptyAnimationInterface= emptyAnimationInterfaceFactoryInterface.getInstance(0) as IndexedAnimation;
+this->emptyAnimationInterface= emptyAnimationInterfaceFactoryInterface.getInstance(0);
     
-this->indexedButShouldBeRotationAnimationInterface= animationInterfaceFactoryInterface.getInstance(0) as IndexedAnimation;
+this->indexedButShouldBeRotationAnimationInterface= animationInterfaceFactoryInterface.getInstance(0);
     
 this->initAnimationInterface= this->indexedButShouldBeRotationAnimationInterface;
     
-this->destroyAnimationInterface= proceduralAnimationInterfaceFactoryInterface.getInstanceAnimation(this->indexedButShouldBeRotationAnimationInterface) as IndexedAnimation;
+this->destroyAnimationInterface= proceduralAnimationInterfaceFactoryInterface.getInstanceAnimation(this->indexedButShouldBeRotationAnimationInterface);
     
 
     Animation animation = NullAnimationFactory::getFactoryInstance().getInstance(0);;
@@ -380,7 +381,7 @@ this->geographicMapCellPositionAreaBase= GeographicMapCellPositionArea(this);
 super.setAllBinaryGameLayerManager(allBinaryGameLayerManager);
     
 
-    GeographicMapCompositeInterface geographicMapCompositeInterface = this->allBinaryGameLayerManagerP as GeographicMapCompositeInterface;;
+    GeographicMapCompositeInterface geographicMapCompositeInterface = this->allBinaryGameLayerManagerP;;
     
 
     BasicGeographicMap geographicMapInterface = geographicMapCompositeInterface.getGeographicMapInterface()[0];;
@@ -389,7 +390,7 @@ super.setAllBinaryGameLayerManager(allBinaryGameLayerManager);
     AllBinaryTiledLayer tiledLayer = geographicMapInterface.getAllBinaryTiledLayer();;
     
 
-    TileLayerPositionIntoViewPosition viewPosition2 = this->getViewPosition() as TileLayerPositionIntoViewPosition;;
+    TileLayerPositionIntoViewPosition viewPosition2 = this->getViewPosition();;
     
 viewPosition2.setTiledLayer(tiledLayer);
     
@@ -409,7 +410,7 @@ this->geographicMapCellPositionAreaBase.update(geographicMapInterface);
                 //@Throws(Exception.constructor)
             
     public: void construct(RTSPlayerLayerInterface rtsPlayerLayerInterface){
-ViewPositionEventHandler::getInstance().addListener(this as AllBinaryLayer);
+ViewPositionEventHandler::getInstance().addListener(this);
     
 this->animationInterface= this->buildAnimationInterface;
     
@@ -779,12 +780,12 @@ this->animationInterface= animationInterface;
             
     public: void setTarget(PathFindingLayerInterface targetGameLayer){
 
-    int32_t anotherTargetDistance = this->layerDistanceUtil.getDistance(this as AllBinaryLayer, targetGameLayer as AllBinaryLayer);;
+    int32_t anotherTargetDistance = this->layerDistanceUtil.getDistance(this, targetGameLayer);;
     
 
     WaypointBehaviorBase waypointBehaviorBase = this->getWaypointBehavior();;
     
-waypointBehaviorBase.setTargetWithDistance(targetGameLayer as PathFindingLayerInterface, anotherTargetDistance);
+waypointBehaviorBase.setTargetWithDistance(targetGameLayer, anotherTargetDistance);
     
 }
 
@@ -1149,7 +1150,7 @@ ViewPositionEventHandler::getInstance().removeListener(this);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->indexedButShouldBeRotationAnimationInterface as RotationAnimation;
+                        return this->indexedButShouldBeRotationAnimationInterface;
     
 }
 

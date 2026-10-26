@@ -45,8 +45,9 @@
         
 class AbDataInputStream: public DataInputStream {
 
-public: AbDataInputStream(InputStream out){
-            super(out);
+public: AbDataInputStream(InputStream out) : DataInputStream(out){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.

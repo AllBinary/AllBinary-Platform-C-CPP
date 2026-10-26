@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/layer/AllBinaryLayer.h>
 
@@ -124,9 +124,9 @@ super.removeListener(eventListenerInterface);
 
         try {
             
-    AllBinaryLayer layerInterface = this->list.objectArray[index]! as AllBinaryLayer;;
+    AllBinaryLayer layerInterface = this->list.objectArray[index];;
     
-layerInterface.onChangeEvent(eventObject as ViewPositionEvent);
+layerInterface.onChangeEvent(eventObject);
     
 
                 //: 
@@ -147,9 +147,9 @@ super.fireEvent(eventObject);
             
     protected: void process(AllBinaryEventObject eventObject, EventListenerInterface eventListenerInterface){
 
-    ViewPositionEventListenerInterface viewPositionEventListenerInterface = (eventListenerInterface as ViewPositionEventListenerInterface);;
+    ViewPositionEventListenerInterface viewPositionEventListenerInterface = (eventListenerInterface);;
     
-viewPositionEventListenerInterface.onChangeEvent(eventObject as ViewPositionEvent);
+viewPositionEventListenerInterface.onChangeEvent(eventObject);
     
 }
 

@@ -18,9 +18,9 @@
 
 
 
-            #include "../../java/lang/Class.h"
+            #include "java/lang/Class.h"
         
-            #include "../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/lang/reflect/Method.h>
 
@@ -98,7 +98,7 @@ this->xsl= value;
     Object* anyType = CategoryRequestHelperFactory().getInstance(this->getPropertiesHashMap(), this->pageContext);;
     
 
-    Function helperClass = anyType->constructor;;
+    Class* helperClass = anyType->getClass();;
     
 
     Method method = helperClass.getMethod("viewCategory", 
@@ -106,7 +106,7 @@ this->xsl= value;
     
 
     std::string result = method.invoke(anyType, 
-                            nullptr) as string;;
+                            nullptr);;
     
 
 
@@ -160,7 +160,7 @@ this->xsl= value;
     Object* anyType = CategoryRequestHelperFactory().getInstance(this->getPropertiesHashMap(), this->pageContext);;
     
 
-    Function helperClass = anyType->constructor;;
+    Class* helperClass = anyType->getClass();;
     
 
     Method method = helperClass.getMethod("viewCategories", 
@@ -168,7 +168,7 @@ this->xsl= value;
     
 
     std::string result = method.invoke(anyType, 
-                            nullptr) as string;;
+                            nullptr);;
     
 
 

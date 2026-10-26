@@ -20,9 +20,9 @@
 
             #include <vector>
         
-            #include "../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <javax/microedition/lcdui/Image.h>
 
@@ -87,7 +87,7 @@ private: ImageJ2MEScaleUtil(){
             
     public: std::vector<Image> scaleArray(std::vector<Image> images, int32_t width, int32_t height){
 
-    std::vector<Image> scaledImages = new Array(images.length);;
+    std::vector<Image> scaledImages = std::vector<Image>(images.length);;
     
 
 
@@ -96,7 +96,7 @@ private: ImageJ2MEScaleUtil(){
                         for (
     int32_t index = images.size();--index >= 0; )
         {
-scaledImages[index]= this->scale(images[index]!, width, height);
+scaledImages[index]= this->scale(images[index], width, height);
     
 }
 
@@ -122,18 +122,18 @@ scaledImages[index]= this->scale(images[index]!, width, height);
                         
                                     {
                                     
-    PlaynMutableImage originalHTMLImage = image as PlaynMutableImage;;
+    PlaynMutableImage originalHTMLImage = image;;
     
-originalPlayNImage= originalHTMLImage.getImage() as playn::core::Image;
+originalPlayNImage= originalHTMLImage.getImage();
     
 
                                     }
                                 
                         else {
                             
-    PlaynImmutableImage originalHTMLImage = image as PlaynImmutableImage;;
+    PlaynImmutableImage originalHTMLImage = image;;
     
-originalPlayNImage= originalHTMLImage.getImage() as playn::core::Image;
+originalPlayNImage= originalHTMLImage.getImage();
     
 
                         }
@@ -142,10 +142,10 @@ originalPlayNImage= originalHTMLImage.getImage() as playn::core::Image;
     Image scaledImage = Image::createImage(width, height);;
     
 
-    PlaynMutableImage htmlImage = scaledImage as PlaynMutableImage;;
+    PlaynMutableImage htmlImage = scaledImage;;
     
 
-    CanvasImage canvasImage = htmlImage.getImage() as CanvasImage;;
+    CanvasImage canvasImage = htmlImage.getImage();;
     
 
     CanvasSurface canvasSurface = htmlImage.getCanvasSurface(canvasImage);;

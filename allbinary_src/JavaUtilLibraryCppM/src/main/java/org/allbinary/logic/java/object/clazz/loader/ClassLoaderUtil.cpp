@@ -18,11 +18,11 @@
 
 
 
-            #include "../../../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../../../java/lang/ClassLoader.h"
+            #include "java/lang/ClassLoader.h"
         
-            #include "../../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 
 
@@ -63,7 +63,7 @@ class ClassLoaderUtil
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return "ClassLoader: " +classLoader.constructor.name.toString()!;
+                        return "ClassLoader: " +classLoader.constructor.name.toString();
     
 
                                     }

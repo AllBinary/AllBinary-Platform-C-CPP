@@ -18,13 +18,10 @@
 
 
 
-            #include "../../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-#include <java/util/Hashtable.h>
-
-      
 #include <org/allbinary/util/BasicArrayList.h>
 
       
@@ -80,6 +77,9 @@
 
       
 #include <org/allbinary/string/CommonSeps.h>
+
+      
+#include <org/allbinary/util/ABHashtable.h>
 
       
 
@@ -284,7 +284,7 @@ this->monitorInterfaceVector= BasicArrayListD();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->multimediaInterfaceVector.get(index) as MediaInterface;
+                        return this->multimediaInterfaceVector.get(index);
     
 }
 
@@ -294,7 +294,7 @@ this->monitorInterfaceVector= BasicArrayListD();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->bridgeInterfaceVector.get(index) as BridgeInterface;
+                        return this->bridgeInterfaceVector.get(index);
     
 }
 
@@ -304,7 +304,7 @@ this->monitorInterfaceVector= BasicArrayListD();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->cpuInterfaceVector.get(index) as CpuInterface;
+                        return this->cpuInterfaceVector.get(index);
     
 }
 
@@ -314,7 +314,7 @@ this->monitorInterfaceVector= BasicArrayListD();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->ethernetInterfaceVector.get(index) as EthernetInterface;
+                        return this->ethernetInterfaceVector.get(index);
     
 }
 
@@ -324,7 +324,7 @@ this->monitorInterfaceVector= BasicArrayListD();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->fireWireInterfaceVector.get(index) as FireWireInterface;
+                        return this->fireWireInterfaceVector.get(index);
     
 }
 
@@ -334,7 +334,7 @@ this->monitorInterfaceVector= BasicArrayListD();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->hardDriveControllerInterfaceVector.get(index) as HardDriveControllerInterface;
+                        return this->hardDriveControllerInterfaceVector.get(index);
     
 }
 
@@ -344,7 +344,7 @@ this->monitorInterfaceVector= BasicArrayListD();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->hardDriveInterfaceVector.get(index) as HardDriveInterface;
+                        return this->hardDriveInterfaceVector.get(index);
     
 }
 
@@ -354,7 +354,7 @@ this->monitorInterfaceVector= BasicArrayListD();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->macInterfaceVector.get(index) as MachineAccessControlAddressInterface;
+                        return this->macInterfaceVector.get(index);
     
 }
 
@@ -364,7 +364,7 @@ this->monitorInterfaceVector= BasicArrayListD();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->monitorInterfaceVector.get(index) as MonitorInterface;
+                        return this->monitorInterfaceVector.get(index);
     
 }
 
@@ -374,7 +374,7 @@ this->monitorInterfaceVector= BasicArrayListD();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->usbInterfaceVector.get(index) as UsbInterface;
+                        return this->usbInterfaceVector.get(index);
     
 }
 
@@ -384,7 +384,7 @@ this->monitorInterfaceVector= BasicArrayListD();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->videoInterfaceVector.get(index) as VideoInterface;
+                        return this->videoInterfaceVector.get(index);
     
 }
 
@@ -394,7 +394,7 @@ this->monitorInterfaceVector= BasicArrayListD();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->componentInterfaceVector.get(index) as HardwareComponentInterface;
+                        return this->componentInterfaceVector.get(index);
     
 }
 
@@ -414,7 +414,7 @@ this->monitorInterfaceVector= BasicArrayListD();
     int32_t index = 0;index < size; index++)
         {
 
-    HardwareComponentInterface componentInterface = this->componentInterfaceVector.get(index) as HardwareComponentInterface;;
+    HardwareComponentInterface componentInterface = this->componentInterfaceVector.get(index);;
     
 hardwareBuffer.append(componentInterface.toString());
     
@@ -441,7 +441,7 @@ hardwareBuffer.append(CommonSeps::getInstance().NEW_LINE);
 }
 
 
-    public: Hashtable<any, any> difference(HardwareInterface hardwareInterface){
+    public: ABHashtable<Object*, Object*> difference(HardwareInterface hardwareInterface){
 
 
 

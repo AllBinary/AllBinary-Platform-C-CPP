@@ -18,13 +18,13 @@
 
 
 
-            #include "../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../java/lang/Throwable.h"
+            #include "java/lang/Throwable.h"
         
-            #include "../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../java/lang/System.h"
+            #include "java/lang/System.h"
         
 #include <java/io/BufferedReader.h>
 
@@ -301,10 +301,10 @@ console.log("Error Creating Backup: " +e);
                         specialMessage= NULL_STRING.toCharArray();
                                 
 
-                        if(anyType->constructor.name.toString()! != 
+                        if(anyType->constructor.name.toString() != 
                                     nullptr
                                 )
-                        className= anyType->constructor.name.toString()!;
+                        className= anyType->constructor.name.toString();
                                 
 
     std::string message = LogFormatUtil::getInstance().get(className, functionName, specialMessage, exception);;

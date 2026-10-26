@@ -21,7 +21,7 @@
         #ifndef WORKFLOWS_TEMPLATE_DATA_PROPERTIES_H
         #define WORKFLOWS_TEMPLATE_DATA_PROPERTIES_H
 
-            #include "../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
 #include <java/util/HashMap.h>
 
@@ -65,11 +65,11 @@ class Properties
 
     protected: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    private: HashMap<any, any> propertiesHashMap;
+    private: HashMap<Object*, Object*> propertiesHashMap;
 
 public: Properties();
 
-    protected: HashMap<any, any> getPropertiesHashMap();
+    protected: HashMap<Object*, Object*> getPropertiesHashMap();
 
     public: int32_t doEndTag();
 

@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
 
 
@@ -46,7 +46,7 @@ class GameKeyEventUtil
 
     public: static int32_t getKey(Object* anyType){
 
-    GameKeyEvent gameKeyEvent = anyType as GameKeyEvent;;
+    GameKeyEvent gameKeyEvent = *dynamic_cast<GameKeyEvent*>(anyType);;
     
 
 

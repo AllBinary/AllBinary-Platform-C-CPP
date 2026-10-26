@@ -21,9 +21,9 @@
         #ifndef ORG_APACHE_XMLRPC_NULLXMLRPCHANDLER_H
         #define ORG_APACHE_XMLRPC_NULLXMLRPCHANDLER_H
 
-            #include "../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/util/BasicArrayList.h>
 

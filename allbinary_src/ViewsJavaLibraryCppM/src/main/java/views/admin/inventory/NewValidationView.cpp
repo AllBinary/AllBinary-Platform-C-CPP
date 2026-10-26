@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/business/user/commerce/inventory/item/BasicItem.h>
 
@@ -63,13 +63,14 @@
 
 class NewValidationView: public InventoryItemView, public ValidationComponentInterface {
 
-public: NewValidationView(TransformInfoInterface transformInfoInterface){
-            super(transformInfoInterface, StringUtil::getInstance().EMPTY_STRING);
+public: NewValidationView(TransformInfoInterface transformInfoInterface) : InventoryItemView(transformInfoInterface, StringUtil::getInstance().EMPTY_STRING){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this->itemInterface= BasicItem() as ItemInterface;
+this->itemInterface= BasicItem();
     
 }
 

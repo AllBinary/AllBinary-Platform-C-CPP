@@ -21,7 +21,7 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_CANVAS_TRANSITION_PROGRESS_LAZYPROGRESSCANVAS_H
         #define ORG_ALLBINARY_GRAPHICS_CANVAS_TRANSITION_PROGRESS_LAZYPROGRESSCANVAS_H
 
-            #include "../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/canvas/Processor.h>
 
@@ -33,9 +33,6 @@
 
       
 #include <org/allbinary/image/ImageCacheFactory.h>
-
-      
-#include <org/allbinary/logic/communication/log/LogUtil.h>
 
       
 
@@ -60,9 +57,7 @@
 
 class LazyProgressCanvas: public ProgressCanvas {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
-
-protected: LazyProgressCanvas(std::string title, BasicColor backgroundBasicColor, BasicColor foregroundBasicColor);
+public: LazyProgressCanvas(std::string title, BasicColor backgroundBasicColor, BasicColor foregroundBasicColor);
 
     public: void start();
 

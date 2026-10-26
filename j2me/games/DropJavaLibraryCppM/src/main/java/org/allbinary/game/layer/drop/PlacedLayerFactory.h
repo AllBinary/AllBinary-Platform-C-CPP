@@ -7,7 +7,7 @@
         #ifndef ORG_ALLBINARY_GAME_LAYER_DROP_PLACEDLAYERFACTORY_H
         #define ORG_ALLBINARY_GAME_LAYER_DROP_PLACEDLAYERFACTORY_H
 
-            #include "../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
 #include <org/allbinary/layer/AllBinaryLayerFactoryInterface.h>
 

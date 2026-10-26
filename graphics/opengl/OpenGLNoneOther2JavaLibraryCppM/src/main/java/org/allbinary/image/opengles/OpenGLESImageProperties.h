@@ -21,7 +21,7 @@
         #ifndef ORG_ALLBINARY_IMAGE_OPENGLES_OPENGLESIMAGEPROPERTIES_H
         #define ORG_ALLBINARY_IMAGE_OPENGLES_OPENGLESIMAGEPROPERTIES_H
 
-            #include "../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
 
 

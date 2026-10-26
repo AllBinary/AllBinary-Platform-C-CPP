@@ -20,13 +20,13 @@
 
             #include <vector>
         
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../../java/lang/RuntimeException.h"
+            #include "java/lang/RuntimeException.h"
         
-            #include "../../../../java/lang/IllegalArgumentException.h"
+            #include "java/lang/IllegalArgumentException.h"
         
-            #include "../../../../java/lang/Math.h"
+            #include "java/lang/Math.h"
         
 #include <org/allbinary/thread/ARunnable.h>
 
@@ -328,7 +328,7 @@ this->setVolumeF((leftVolume) /100.0);
 
     private: float getVolume(){
 
-    FloatControl masterGainFloatControl = clip.getControl(FloatControl::Type.MASTER_GAIN) as FloatControl;;
+    FloatControl masterGainFloatControl = clip.getControl(FloatControl::Type.MASTER_GAIN);;
     
 
 
@@ -353,7 +353,7 @@ this->setVolumeF((leftVolume) /100.0);
                                     }
                                 
 
-    FloatControl masterGainFloatControl = this->clip.getControl(FloatControl::Type.MASTER_GAIN) as FloatControl;;
+    FloatControl masterGainFloatControl = this->clip.getControl(FloatControl::Type.MASTER_GAIN);;
     
 masterGainFloatControl.setValue(20 *Math::log10(volume));
     
@@ -386,7 +386,7 @@ masterGainFloatControl.setValue(20 *Math::log10(volume));
     int32_t index = 0;index < size; index++)
         {
 
-    PlayerListener listener = this->listenersList.get(size) as PlayerListener;;
+    PlayerListener listener = this->listenersList.get(size);;
     
 listener.playerUpdate(this, PlayerListener::END_OF_MEDIA, 
                             nullptr);

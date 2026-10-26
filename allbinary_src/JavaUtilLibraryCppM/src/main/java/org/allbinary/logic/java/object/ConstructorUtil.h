@@ -23,9 +23,9 @@
 
             #include <vector>
         
-            #include "../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../java/lang/Class.h"
+            #include "java/lang/Class.h"
         
 #include <java/lang/reflect/Constructor.h>
 
@@ -59,7 +59,7 @@ class ConstructorUtil
             : public Object
          {
 
-    public: static std::string viewAll(Function myClass, std::string lineBreak);
+    public: static std::string viewAll(Class* myClass, std::string lineBreak);
 
     public: static std::string view(Constructor constructor, std::string lineBreak);
 

@@ -20,7 +20,7 @@
 
             #include <hilog/log.h>
         
-            #include "../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
 
 
@@ -111,7 +111,7 @@ private: LogUtil(){
 
     std::string className = this->LABEL;;
     
-className= anyType->constructor.name.toString()!;
+className= anyType->constructor.name.toString();
     
 
     std::string message = this->logFormatUtil.get(className, functionName, specialMessage, exception);;

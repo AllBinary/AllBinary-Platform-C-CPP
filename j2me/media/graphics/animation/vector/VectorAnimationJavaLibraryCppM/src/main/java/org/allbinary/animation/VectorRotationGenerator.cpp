@@ -20,9 +20,9 @@
 
             #include <vector>
         
-            #include "../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/graphics/PointFactory.h>
 
@@ -138,7 +138,7 @@ private: VectorRotationGenerator(){
                         for (
     int32_t index = 0;index < size; index++)
         {
-pointBasicArrayList.add(pointFactory.createXY(points[index]![0]!, points[index]![1]!));
+pointBasicArrayList.add(pointFactory.createXY(points[index][0], points[index][1]));
     
 }
 

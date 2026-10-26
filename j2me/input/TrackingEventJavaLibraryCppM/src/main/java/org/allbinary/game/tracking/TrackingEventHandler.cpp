@@ -18,11 +18,8 @@
 
 
 
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-#include <jsinterop/annotations/JsType.h>
-
-      
 #include <org/allbinary/logic/util/event/AllBinaryEventObject.h>
 
       
@@ -30,12 +27,6 @@
 
       
 #include <org/allbinary/logic/util/event/handler/BasicEventHandler.h>
-
-      
-#include <jsinterop/annotations/JsMethod.h>
-
-      
-#include <jsinterop/annotations/JsConstructor.h>
 
       
 
@@ -81,9 +72,9 @@ private: TrackingEventHandler(){
             
     protected: void process(AllBinaryEventObject eventObject, EventListenerInterface eventListenerInterface){
 
-    TrackingEventListenerInterface trackingEventListenerInterface = eventListenerInterface as TrackingEventListenerInterface;;
+    TrackingEventListenerInterface trackingEventListenerInterface = eventListenerInterface;;
     
-trackingEventListenerInterface.onMovement(eventObject as TrackingEvent);
+trackingEventListenerInterface.onMovement(eventObject);
     
 }
 

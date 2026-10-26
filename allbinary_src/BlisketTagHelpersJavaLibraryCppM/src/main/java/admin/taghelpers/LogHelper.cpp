@@ -18,7 +18,7 @@
 
 
 
-            #include "../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
 
@@ -67,7 +67,7 @@ class LogHelper: public BasicTable {
 
     private: Portion portion;
 
-public: LogHelper(HashMap<any, any> hashMap, PageContext pageContext){
+public: LogHelper(HashMap<Object*, Object*> hashMap, PageContext pageContext){
 this->portion= Portion(hashMap);
     
 }

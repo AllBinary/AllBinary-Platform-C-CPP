@@ -18,11 +18,11 @@
 
 
 
-            #include "../../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../../../../java/lang/Integer.h"
+            #include "java/lang/Integer.h"
         
 #include <java/awt.h>
 
@@ -82,7 +82,7 @@ class GraphicsAnalysisUtil
     AutomaticCacheInterface automaticCacheInterface = ColorCacheFactory::getInstance();;
     
 
-    ColorCacheable colorCacheable = automaticCacheInterface.get(colorInteger) as ColorCacheable;;
+    ColorCacheable colorCacheable = automaticCacheInterface.get(colorInteger);;
     
 
     Color color = colorCacheable.getColor();;

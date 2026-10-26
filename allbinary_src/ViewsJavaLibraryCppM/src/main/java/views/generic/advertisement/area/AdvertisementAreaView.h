@@ -21,7 +21,7 @@
         #ifndef VIEWS_GENERIC_ADVERTISEMENT_AREA_ADVERTISEMENTAREAVIEW_H
         #define VIEWS_GENERIC_ADVERTISEMENT_AREA_ADVERTISEMENTAREAVIEW_H
 
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/business/advertisement/area/AdvertisementAreaData.h>
 

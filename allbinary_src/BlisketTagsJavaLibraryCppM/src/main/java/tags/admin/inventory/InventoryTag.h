@@ -21,7 +21,7 @@
         #ifndef TAGS_ADMIN_INVENTORY_INVENTORYTAG_H
         #define TAGS_ADMIN_INVENTORY_INVENTORYTAG_H
 
-            #include "../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <javax/servlet/jsp/JspTagException.h>
 

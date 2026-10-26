@@ -21,7 +21,7 @@
         #ifndef ORG_ALLBINARY_LOGIC_IO_FILE_DIRECTORY_TRACKEDSTRINGS_H
         #define ORG_ALLBINARY_LOGIC_IO_FILE_DIRECTORY_TRACKEDSTRINGS_H
 
-            #include "../../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
 
 
@@ -69,6 +69,8 @@ class TrackedStrings
     public: const std::string ERROR_UNMATCH_OPTION = "--error-unmatch";
 
     public: const std::string PATHSPEC_SEPARATOR = "--";
+
+    public: const std::string SEP_BY_NULL_CHAR_INSTEAD_OF_NEW_LINE = "-z";
 
 };
 

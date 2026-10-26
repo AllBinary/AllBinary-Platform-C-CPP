@@ -20,7 +20,7 @@
 
             #include <vector>
         
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <javax/microedition/khronos/opengles/GL.h>
 
@@ -64,9 +64,6 @@
 #include <org/allbinary/string/CommonSeps.h>
 
       
-#include <org/allbinary/string/CommonStrings.h>
-
-      
 #include <org/allbinary/logic/string/StringMaker.h>
 
       
@@ -102,8 +99,6 @@ class LazyImageRotationAnimation: public RotationAnimation {
 
     protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const CommonStrings commonStrings = CommonStrings::getInstance();
-
     public: int32_t layoutIndex;
 
     public: int32_t instanceId;
@@ -116,8 +111,9 @@ class LazyImageRotationAnimation: public RotationAnimation {
 
     public: ScaleProperties scaleProperties = ScaleProperties::instance();
 
-public: LazyImageRotationAnimation(int32_t layoutIndex, int32_t instanceId, ScaleProperties scaleProperties, BaseImageAnimationFactory animationInterfaceFactoryInterface, AnimationBehavior animationBehavior){
-            super(AngleInfo::getInstance(AngleFactory::getInstance().QUARTER_TOTAL_ANGLE), CircularIndexUtil::createInstance(4), animationBehavior);
+public: LazyImageRotationAnimation(int32_t layoutIndex, int32_t instanceId, ScaleProperties scaleProperties, BaseImageAnimationFactory animationInterfaceFactoryInterface, AnimationBehavior animationBehavior) : RotationAnimation(AngleInfo::getInstance(AngleFactory::getInstance().QUARTER_TOTAL_ANGLE), CircularIndexUtil::createInstance(4), animationBehavior){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -135,16 +131,33 @@ imageCache.add(this);
     
 this->scaleProperties= scaleProperties;
     
-this->NULL_INDEX_ANIMATION= NullRotationAnimationFactory::getFactoryInstance().getInstance(0) as IndexedAnimation;
+this->NULL_INDEX_ANIMATION= NullRotationAnimationFactory::getFactoryInstance().getInstance(0);
     
-this->animation= class extends RotationAnimation
-                                {
-                                
-    int32_t index= 0;
+
+//inner=true member= isStatic=
+class ActualRotationAnimation: public RotationAnimation {
+
+    private: LazyImageRotationAnimation lazyImageRotationAnimation;
+
+    private: int32_t index= 0;
+
+public: ActualRotationAnimation(LazyImageRotationAnimation lazyImageRotationAnimation) : RotationAnimation(AngleInfo::getInstance(AngleFactory::getInstance().QUARTER_TOTAL_ANGLE), CircularIndexUtil::createInstance(4), animationBehavior){
+
+                        //super/this constructor call is in the constructor initializer list.
+                    
+
+                            //For kotlin this is before the body of the constructor.
+                    
+this->lazyImageRotationAnimation= lazyImageRotationAnimation;
+    
+}
+
+
     public: void setFrame(int32_t index){
 this->index= index;
     
 }
+
 
     public: int32_t getFrame(){
 
@@ -155,12 +168,13 @@ this->index= index;
     
 }
 
+
     public: void paintXY(Graphics graphics, int32_t x, int32_t y){
 
         try {
             ImageCacheFactory::getInstance().insertFirst(this);
     
-animation= NULL_INDEX_ANIMATION;
+this->lazyImageRotationAnimation.animation= this->lazyImageRotationAnimation.NULL_INDEX_ANIMATION;
     
 
                 //: 
@@ -174,13 +188,14 @@ logUtil.put(this->commonStrings.EXCEPTION, this, this->commonStrings.PROCESS, e)
 }
 
 }
+
 
     public: void paintThreedXYZ(Graphics graphics, int32_t x, int32_t y, int32_t z){
 
         try {
             ImageCacheFactory::getInstance().insertFirst(this);
     
-animation= NULL_INDEX_ANIMATION;
+this->lazyImageRotationAnimation.animation= this->lazyImageRotationAnimation.NULL_INDEX_ANIMATION;
     
 
                 //: 
@@ -195,8 +210,14 @@ logUtil.put(this->commonStrings.EXCEPTION, this, this->commonStrings.PROCESS, e)
 
 }
 
-                                }
-                            ;
+
+};
+
+            
+
+                    //Otherwise - statement - EmptyStmt
+
+this->animation= ActualRotationAnimation(this);
     
 }
 
@@ -209,7 +230,7 @@ logUtil.put(this->commonStrings.EXCEPTION, this, this->commonStrings.PROCESS, e)
     
 this->animationInterfaceFactoryInterface.setInitialScale(this->scaleProperties);
     
-this->animation= this->animationInterfaceFactoryInterface.getInstance(this->instanceId) as IndexedAnimation;
+this->animation= this->animationInterfaceFactoryInterface.getInstance(this->instanceId);
     
 this->animation.setState(animation);
     
@@ -217,7 +238,7 @@ this->animation.setState(animation);
                 //: 
 } catch(e) 
             {
-this->logUtil.put(commonStrings.EXCEPTION, this, SET_REAL_ANIMATION, e);
+this->logUtil.put(this->commonStrings.EXCEPTION, this, LazyImageRotationAnimation::SET_REAL_ANIMATION, e);
     
 }
 
@@ -273,49 +294,55 @@ this->animation.setMaxScale(maxScaleX, maxScaleY);
 
 
     public: void nextRotation(){
-animation = this->animationanimation as RotationAnimation
-animation.
-                    nextRotation();
+
+    RotationAnimation rotationAnimation = (this->animation);;
+    
+rotationAnimation.nextRotation();
     
 }
 
 
     public: void previousRotation(){
-animation = this->animationanimation as RotationAnimation
-animation.
-                    previousRotation();
+
+    RotationAnimation rotationAnimation = (this->animation);;
+    
+rotationAnimation.previousRotation();
     
 }
 
 
     public: void nextRotationX(){
-animation = this->animationanimation as RotationAnimation
-animation.
-                    nextRotationX();
+
+    RotationAnimation rotationAnimation = (this->animation);;
+    
+rotationAnimation.nextRotationX();
     
 }
 
 
     public: void previousRotationX(){
-animation = this->animationanimation as RotationAnimation
-animation.
-                    previousRotationX();
+
+    RotationAnimation rotationAnimation = (this->animation);;
+    
+rotationAnimation.previousRotationX();
     
 }
 
 
     public: void nextRotationZ(){
-animation = this->animationanimation as RotationAnimation
-animation.
-                    nextRotationZ();
+
+    RotationAnimation rotationAnimation = (this->animation);;
+    
+rotationAnimation.nextRotationZ();
     
 }
 
 
     public: void previousRotationZ(){
-animation = this->animationanimation as RotationAnimation
-animation.
-                    previousRotationZ();
+
+    RotationAnimation rotationAnimation = (this->animation);;
+    
+rotationAnimation.previousRotationZ();
     
 }
 
@@ -499,7 +526,7 @@ this->animation.setSequence(sequence);
                 //: 
 } catch(e) 
             {
-this->logUtil.put(commonStrings.EXCEPTION, this, this->commonStrings.PROCESS, e);
+this->logUtil.put(this->commonStrings.EXCEPTION, this, this->commonStrings.PROCESS, e);
     
 }
 
@@ -515,7 +542,7 @@ this->logUtil.put(commonStrings.EXCEPTION, this, this->commonStrings.PROCESS, e)
                 //: 
 } catch(e) 
             {
-this->logUtil.put(commonStrings.EXCEPTION, this, this->commonStrings.PROCESS, e);
+this->logUtil.put(this->commonStrings.EXCEPTION, this, this->commonStrings.PROCESS, e);
     
 }
 

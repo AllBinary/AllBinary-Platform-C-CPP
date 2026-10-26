@@ -53,8 +53,9 @@ class JOGL11: public JOGL10, public javax::microedition::khronos::opengles::GL11
 
     private: GL2 gl11;
 
-public: JOGL11(GL gl){
-            this(gl, gl as com::jogamp::opengl::GL2);
+public: JOGL11(GL gl) : JOGL11(gl, gl){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -62,8 +63,9 @@ public: JOGL11(GL gl){
 }
 
 
-public: JOGL11(GL gl, com::jogamp::opengl::GL2 gl2){
-            super(gl, gl2);
+public: JOGL11(GL gl, com::jogamp::opengl::GL2 gl2) : JOGL10(gl, gl2){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.

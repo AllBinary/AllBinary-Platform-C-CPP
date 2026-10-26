@@ -18,9 +18,9 @@
 
 
 
-            #include "../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../java/lang/Long.h"
+            #include "java/lang/Long.h"
         
 #include <java/awt/image/BufferedImage.h>
 
@@ -112,7 +112,7 @@ this->frame= frame;
 
     StringMaker stringBuffer = StringMaker();;
     
-stringBuffer.append(this->constructor.name.toString()!);
+stringBuffer.append(this->constructor.name.toString());
     
 stringBuffer.append(" Frame: ");
     

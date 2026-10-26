@@ -21,7 +21,7 @@
         #ifndef ORG_ALLBINARY_GAME_COMBAT_DESTROY_EVENT_DESTROYEVENTFACTORY_H
         #define ORG_ALLBINARY_GAME_COMBAT_DESTROY_EVENT_DESTROYEVENTFACTORY_H
 
-            #include "../../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
 #include <org/allbinary/game/displayable/canvas/AllBinaryGameCanvas.h>
 

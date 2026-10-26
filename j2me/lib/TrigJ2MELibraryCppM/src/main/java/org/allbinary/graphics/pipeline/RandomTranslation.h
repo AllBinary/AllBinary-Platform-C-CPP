@@ -21,9 +21,9 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_PIPELINE_RANDOMTRANSLATION_H
         #define ORG_ALLBINARY_GRAPHICS_PIPELINE_RANDOMTRANSLATION_H
 
-            #include "../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/game/rand/MyRandomFactory.h>
 

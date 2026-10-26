@@ -21,9 +21,9 @@
         #ifndef ORG_ALLBINARY_LOGIC_CONTROL_WORKFLOW_STOREWORKFLOWWRAPPER_H
         #define ORG_ALLBINARY_LOGIC_CONTROL_WORKFLOW_STOREWORKFLOWWRAPPER_H
 
-            #include "../../../../../java/lang/Class.h"
+            #include "java/lang/Class.h"
         
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/lang/reflect/Method.h>
 

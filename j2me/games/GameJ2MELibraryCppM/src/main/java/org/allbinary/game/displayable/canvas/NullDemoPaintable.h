@@ -21,7 +21,7 @@
         #ifndef ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_NULLDEMOPAINTABLE_H
         #define ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_NULLDEMOPAINTABLE_H
 
-            #include "../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
 
 

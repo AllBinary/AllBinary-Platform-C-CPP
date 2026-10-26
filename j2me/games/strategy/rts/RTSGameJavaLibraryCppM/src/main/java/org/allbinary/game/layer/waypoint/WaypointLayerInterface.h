@@ -21,7 +21,7 @@
         #ifndef ORG_ALLBINARY_GAME_LAYER_WAYPOINT_WAYPOINTLAYERINTERFACE_H
         #define ORG_ALLBINARY_GAME_LAYER_WAYPOINT_WAYPOINTLAYERINTERFACE_H
 
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/animation/caption/CaptionAnimationHelperBase.h>
 

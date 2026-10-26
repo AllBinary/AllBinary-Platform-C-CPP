@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
 #include <java/util/HashMap.h>
 
@@ -53,7 +53,7 @@ class BufferedImageInfoFactory
             : public Object
          {
 
-    private: static HashMap<any, any> hashMap = StdUtil::getInstance().createHashMap();
+    private: static HashMap<Object*, Object*> hashMap = StdUtil::getInstance().createHashMap();
 
     public: static BufferedImageInfo getInstance(int32_t width, int32_t height, int32_t type){
 
@@ -69,7 +69,7 @@ stringbuffer.appendint(type);
     std::string key = stringbuffer.toString();;
     
 
-    BufferedImageInfo bufferedImageInfo = BufferedImageInfoFactory::hashMap.get(key) as BufferedImageInfo;;
+    BufferedImageInfo bufferedImageInfo = BufferedImageInfoFactory::hashMap.get(key);;
     
 
                         if(bufferedImageInfo == 

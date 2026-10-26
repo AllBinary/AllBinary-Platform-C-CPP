@@ -20,13 +20,13 @@
 
             #include <vector>
         
-            #include "../../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../../../../java/lang/Integer.h"
+            #include "java/lang/Integer.h"
         
-            #include "../../../../../../java/lang/Double.h"
+            #include "java/lang/Double.h"
         
 #include <java/util/HashMap.h>
 
@@ -38,6 +38,9 @@
 
       
 #include <org/allbinary/graphics/GPoint.h>
+
+      
+#include <org/allbinary/graphics/GraphicsStrings.h>
 
       
 #include <org/allbinary/graphics/PointFactory.h>
@@ -113,11 +116,9 @@ class CanvasDom
 
     public: static const std::string REAL_SIZE = "realSize";
 
-    public: static const std::string WIDTH = "width";
+    private: const GraphicsStrings graphicsStrings = GraphicsStrings::getInstance();
 
-    public: static const std::string HEIGHT = "height";
-
-    private: HashMap<any, any> graphicItemHashMap;
+    private: HashMap<Object*, Object*> graphicItemHashMap;
 
     private: double angle;
 
@@ -136,7 +137,7 @@ this->dimension= IntegerDimension(0, 0);
     std::string name = canvasNode.getNodeName();;
     
 
-                        if(name.compareTo(CanvasDom::FRAME) == 0)
+                        if(name.compare(CanvasDom::FRAME) == 0)
                         
                                     {
                                     this->graphicItemHashMap= StdUtil::getInstance().createHashMap();
@@ -278,7 +279,7 @@ this->angle= canvasJPanel.getAngle();
 }
 
 
-    public: HashMap<any, any> getGraphicItemHashMap(){
+    public: HashMap<Object*, Object*> getGraphicItemHashMap(){
 
 
 
@@ -315,21 +316,21 @@ this->grid.grid= PointFactory::getInstance().createXY(gridX, gridY);
     org::w3c::dom::Document document = WorkAreaJPanel::getDocument();;
     
 
-    Node pointNode = document.createElement(pointName) as Node;;
+    Node pointNode = document.createElement(pointName);;
     
 
-    Node xNode = document.createElement(this->X) as Node;;
+    Node xNode = document.createElement(this->X);;
     
 
-    Node xTextNode = document.createTextNode(std::to_string(getX)) as Node;;
+    Node xTextNode = document.createTextNode(std::to_string(getX));;
     
 xNode.appendChild(xTextNode);
     
 
-    Node yNode = document.createElement(this->Y) as Node;;
+    Node yNode = document.createElement(this->Y);;
     
 
-    Node yTextNode = document.createTextNode(std::to_string(getY)) as Node;;
+    Node yTextNode = document.createTextNode(std::to_string(getY));;
     
 yNode.appendChild(yTextNode);
     
@@ -353,57 +354,57 @@ pointNode.appendChild(yNode);
     org::w3c::dom::Document document = WorkAreaJPanel::getDocument();;
     
 
-    Node frameNode = document.createElement(this->FRAME) as Node;;
+    Node frameNode = document.createElement(this->FRAME);;
     
 
-    Node angleNode = document.createElement(this->ROTATE) as Node;;
+    Node angleNode = document.createElement(this->ROTATE);;
     
 
-    Node angleTextNode = document.createTextNode(number(this->getAngle()).toString()) as Node;;
+    Node angleTextNode = document.createTextNode(number(this->getAngle()).toString());;
     
 angleNode.appendChild(angleTextNode);
     
 
-    Node sizeNode = this->getPointNode(PointFactory::getInstance().createXY(this->getDimension().getWidth(), this->getDimension().getHeight()), this->SIZE) as Node;;
+    Node sizeNode = this->getPointNode(PointFactory::getInstance().createXY(this->getDimension().getWidth(), this->getDimension().getHeight()), this->SIZE);;
     
 
-    Node zoomNode = document.createElement(this->ZOOM) as Node;;
+    Node zoomNode = document.createElement(this->ZOOM);;
     
 
-    Node zoomTextNode = document.createTextNode(Integer(this->getGrid().getZoom()).toString()) as Node;;
+    Node zoomTextNode = document.createTextNode(Integer(this->getGrid().getZoom()).toString());;
     
 zoomNode.appendChild(zoomTextNode);
     
 
-    Node gridNode = document.createElement(this->GRID) as Node;;
+    Node gridNode = document.createElement(this->GRID);;
     
 
-    Node gridSizeNode = this->getPointNode(this->getGrid().grid, this->SIZE) as Node;;
+    Node gridSizeNode = this->getPointNode(this->getGrid().grid, this->SIZE);;
     
 gridNode.appendChild(gridSizeNode);
     
 
-    Node enableNode = document.createElement(this->ENABLED) as Node;;
+    Node enableNode = document.createElement(this->ENABLED);;
     
 
-    Node enableTextNode = document.createTextNode(.toString()) as Node;;
+    Node enableTextNode = document.createTextNode(.toString());;
     
 enableNode.appendChild(enableTextNode);
     
 gridNode.appendChild(enableNode);
     
 
-    Node possibleNode = document.createElement(this->POSSIBLE) as Node;;
+    Node possibleNode = document.createElement(this->POSSIBLE);;
     
 
-    Node possibleTextNode = document.createTextNode(.toString()) as Node;;
+    Node possibleTextNode = document.createTextNode(.toString());;
     
 possibleNode.appendChild(possibleTextNode);
     
 gridNode.appendChild(possibleNode);
     
 
-    Node realSizeNode = document.createElement(REAL_SIZE) as Node;;
+    Node realSizeNode = document.createElement(REAL_SIZE);;
     
 
     VectorCenterGenerator vectorCenterGenerator = VectorCenterGenerator();;
@@ -411,20 +412,20 @@ gridNode.appendChild(possibleNode);
 vectorCenterGenerator.calculate(this->getGraphicItemHashMap());
     
 
-    Node widthNode = document.createElement(WIDTH) as Node;;
+    Node widthNode = document.createElement(this->graphicsStrings.WIDTH);;
     
 
-    Node widthTextNode = document.createTextNode(std::to_string(getWidth)) as Node;;
+    Node widthTextNode = document.createTextNode(std::to_string(getWidth));;
     
 widthNode.appendChild(widthTextNode);
     
 realSizeNode.appendChild(widthNode);
     
 
-    Node heightNode = document.createElement(HEIGHT) as Node;;
+    Node heightNode = document.createElement(this->graphicsStrings.HEIGHT);;
     
 
-    Node heightTextNode = document.createTextNode(std::to_string(getHeight)) as Node;;
+    Node heightTextNode = document.createTextNode(std::to_string(getHeight));;
     
 heightNode.appendChild(heightTextNode);
     
@@ -441,7 +442,7 @@ frameNode.appendChild(gridNode);
 frameNode.appendChild(realSizeNode);
     
 
-    Node graphicItemNode = document.createElement(this->GRAPHICITEMS) as Node;;
+    Node graphicItemNode = document.createElement(this->GRAPHICITEMS);;
     
 
     std::vector<Object*> graphicItemArray = this->getGraphicItemHashMap().keys().();;
@@ -457,7 +458,7 @@ frameNode.appendChild(realSizeNode);
     int32_t index = 0;index < size; index++)
         {
 
-    GraphicItemInterface item = this->graphicItemHashMap.get(graphicItemArray[index]!) as GraphicItemInterface;;
+    GraphicItemInterface item = this->graphicItemHashMap.get(graphicItemArray[index]);;
     
 
                         if(item.getName() == LinesGraphicItem::getStaticName())

@@ -21,12 +21,12 @@
         #ifndef ORG_PLATFORM_THREEDOBJRESOURCES_H
         #define ORG_PLATFORM_THREEDOBJRESOURCES_H
 
-            #include "../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-#include <java/util/Hashtable.h>
+#include <org/allbinary/logic/StdUtil.h>
 
       
-#include <org/allbinary/logic/StdUtil.h>
+#include <org/allbinary/util/ABHashtable.h>
 
       
 
@@ -56,7 +56,7 @@ class ThreedObjResources
 
     public: static ThreedObjResources getInstance();
 
-    public: const Hashtable<any, any> hashtable = StdUtil::getInstance().createHashtable();
+    public: const ABHashtable<Object*, Object*> hashtable = StdUtil::getInstance().createHashtable();
 
     public: std::string get(std::string resourceName);
 

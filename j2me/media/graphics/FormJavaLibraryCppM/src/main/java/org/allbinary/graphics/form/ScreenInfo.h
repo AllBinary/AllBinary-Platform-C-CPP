@@ -7,7 +7,7 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_FORM_SCREENINFO_H
         #define ORG_ALLBINARY_GRAPHICS_FORM_SCREENINFO_H
 
-            #include "../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
 
 

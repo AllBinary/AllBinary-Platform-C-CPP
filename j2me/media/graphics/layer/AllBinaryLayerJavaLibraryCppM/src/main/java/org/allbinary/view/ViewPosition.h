@@ -21,16 +21,7 @@
         #ifndef ORG_ALLBINARY_VIEW_VIEWPOSITION_H
         #define ORG_ALLBINARY_VIEW_VIEWPOSITION_H
 
-#include <jsinterop/annotations/JsType.h>
-
-      
 #include <org/allbinary/layer/AllBinaryLayer.h>
-
-      
-#include <jsinterop/annotations/JsMethod.h>
-
-      
-#include <jsinterop/annotations/JsConstructor.h>
 
       
 

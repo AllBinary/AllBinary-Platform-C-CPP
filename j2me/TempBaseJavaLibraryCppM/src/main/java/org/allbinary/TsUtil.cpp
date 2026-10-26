@@ -18,9 +18,13 @@
 
 
 
-            #include "../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../java/lang/InterruptedException.h"
+            #include "java/lang/InterruptedException.h"
+        
+            #include "java/lang/Float.h"
+        
+            #include "java/lang/Double.h"
         
 
 
@@ -40,7 +44,7 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        
+        //TempBase
 class TsUtil
             : public Object
          {
@@ -53,6 +57,26 @@ class TsUtil
 
                         //if statement needs to be on the same line and ternary does not work the same way.
                         return TsUtil::instance();
+    
+}
+
+
+    public: double longBitsToDouble(int64_t bits){
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return Double.longBitsToDouble(bits);;
+    
+}
+
+
+    public: float intBitsToFloat(int32_t bits){
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return Float.intBitsToFloat(bits);;
     
 }
 
@@ -74,6 +98,16 @@ class TsUtil
     Object* anyType = any;;
     
 ;
+    
+}
+
+
+    public: int32_t compareTo(std::string a, std::string b){
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return a.compare(b);;
     
 }
 

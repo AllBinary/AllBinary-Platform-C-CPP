@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
 #include <org/allbinary/game/input/InputFactory.h>
 
@@ -84,7 +84,7 @@ class BasicTouchInputFactory
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return BasicTouchInputFactory::instance() as BasicTouchInputFactory;
+                        return BasicTouchInputFactory::instance();
     
 }
 
@@ -170,7 +170,7 @@ this->logUtil.putF(StringMaker().append(CommonLabels::getInstance().START).appen
     int32_t index = list.size() -1;index >= 0; index--)
         {
 
-    TouchButtonInput touchButtonInput = list.get(index) as TouchButtonInput;;
+    TouchButtonInput touchButtonInput = list.get(index);;
     
 touchButtonInput.update(inputToGameKeyMapping);
     

@@ -20,7 +20,7 @@
 
             #include <vector>
         
-            #include "../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/io/ByteArrayInputStream.h>
 
@@ -105,8 +105,9 @@ class CompoundContextTransformInfoObjectConfig: public GenericStoreTransformInfo
 
     protected: const LogUtil logUtil = LogUtil::getInstance();
 
-public: CompoundContextTransformInfoObjectConfig(Object abeClientInformation, Object transformInfoInterface){
-            super(abeClientInformation, transformInfoInterface);
+public: CompoundContextTransformInfoObjectConfig(Object abeClientInformation, Object transformInfoInterface) : GenericStoreTransformInfoObjectConfig(abeClientInformation, transformInfoInterface){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -114,8 +115,9 @@ public: CompoundContextTransformInfoObjectConfig(Object abeClientInformation, Ob
 }
 
 
-public: CompoundContextTransformInfoObjectConfig(Object abeClientInformation, Object transformInfoInterface, Object document){
-            super(abeClientInformation, transformInfoInterface, document);
+public: CompoundContextTransformInfoObjectConfig(Object abeClientInformation, Object transformInfoInterface, Object document) : GenericStoreTransformInfoObjectConfig(abeClientInformation, transformInfoInterface, document){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -125,8 +127,9 @@ this->setDocument(this->generate(this->toXmlDoc()));
 }
 
 
-public: CompoundContextTransformInfoObjectConfig(Object abeClientInformation, Object transformInfoInterface, std::string name, std::string type){
-            super(abeClientInformation, transformInfoInterface, name, type);
+public: CompoundContextTransformInfoObjectConfig(Object abeClientInformation, Object transformInfoInterface, std::string name, std::string type) : GenericStoreTransformInfoObjectConfig(abeClientInformation, transformInfoInterface, name, type){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -143,10 +146,10 @@ this->setDocument(this->generate(this->toXmlDoc()));
     std::string storeName = this->getTransformInfoInterface().getStoreName();;
     
 
-    TransformInfoHttpInterface httpTransformInfoInterface = this->getTransformInfoInterface() as TransformInfoHttpInterface;;
+    TransformInfoHttpInterface httpTransformInfoInterface = this->getTransformInfoInterface();;
     
 
-    std::string templateNameOverride = StringUtil::getInstance().getNonNull(httpTransformInfoInterface.getPropertiesHashMap().get(TransformInfoData::getInstance().PARTIAL) as string);;
+    std::string templateNameOverride = StringUtil::getInstance().getNonNull(httpTransformInfoInterface.getPropertiesHashMap().get(TransformInfoData::getInstance().PARTIAL));;
     
 
     StringMaker stringBuffer = StringMaker();;
@@ -194,7 +197,7 @@ stringBuffer.append(RootTransformInfoData::NAME);
     int32_t index = 0;index < size; index++)
         {
 
-    TransformInfoDomNode objectConfigTransformInfoDomNode = viewVector.get(index) as TransformInfoDomNode;;
+    TransformInfoDomNode objectConfigTransformInfoDomNode = viewVector.get(index);;
     
 
     std::string templateKey = objectConfigTransformInfoDomNode.getReplaceKey();;

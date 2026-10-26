@@ -21,9 +21,9 @@
         #ifndef ORG_ALLBINARY_BUSINESS_CATEGORY_STORE_THEME_STORETHEMECATEGORYFACTORY_H
         #define ORG_ALLBINARY_BUSINESS_CATEGORY_STORE_THEME_STORETHEMECATEGORYFACTORY_H
 
-            #include "../../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
 
@@ -110,9 +110,9 @@ public: StoreThemeCategoryFactory(TransformInfoInterface transformInfoInterface)
 
     public: CategoryInterface getInstance(CategoryInterface rootCategoryInterface, CategoryInterface parentCategoryInterface, Node node);
 
-    public: CategoryInterface getInstance(HashMap<any, any> categoryPropertiesHashMap, int32_t level);
+    public: CategoryInterface getInstance(HashMap<Object*, Object*> categoryPropertiesHashMap, int32_t level);
 
-    public: CategoryInterface getInstance(CategoryInterface rootCategoryInterface, CategoryInterface parentCategoryInterface, HashMap<any, any> categoryPropertiesHashMap);
+    public: CategoryInterface getInstance(CategoryInterface rootCategoryInterface, CategoryInterface parentCategoryInterface, HashMap<Object*, Object*> categoryPropertiesHashMap);
 
 };
 

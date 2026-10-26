@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/business/init/InitInfoEntity.h>
 
@@ -145,8 +145,9 @@ class InitDbCrypted: public AbDatabaseManagement {
 
     private: const std::string SQL_FILE = "initWeblisket.sql";
 
-public: InitDbCrypted(DatabaseConnectionInfoInterface databaseConnectionInfoInterface){
-            super(databaseConnectionInfoInterface as DbConnectionInfo);
+public: InitDbCrypted(DatabaseConnectionInfoInterface databaseConnectionInfoInterface) : AbDatabaseManagement(databaseConnectionInfoInterface){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.

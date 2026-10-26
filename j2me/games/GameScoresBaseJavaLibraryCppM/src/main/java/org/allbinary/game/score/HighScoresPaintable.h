@@ -21,9 +21,6 @@
         #ifndef ORG_ALLBINARY_GAME_SCORE_HIGHSCORESPAINTABLE_H
         #define ORG_ALLBINARY_GAME_SCORE_HIGHSCORESPAINTABLE_H
 
-#include <jsinterop/annotations/JsType.h>
-
-      
 #include <javax/microedition/lcdui/Font.h>
 
       
@@ -64,12 +61,6 @@
 
       
 #include <org/allbinary/util/BasicArrayList.h>
-
-      
-#include <jsinterop/annotations/JsMethod.h>
-
-      
-#include <jsinterop/annotations/JsConstructor.h>
 
       
 

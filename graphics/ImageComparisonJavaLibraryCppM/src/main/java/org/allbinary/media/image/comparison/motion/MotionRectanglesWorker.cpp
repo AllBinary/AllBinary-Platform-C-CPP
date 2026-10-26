@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/util/BasicArrayList.h>
 
@@ -114,7 +114,7 @@ this->run();
 
 
     public: void onEvent(AllBinaryEventObject allBinaryEventObject){
-this->onImageComparisonResultsEvent(allBinaryEventObject as ImageComparisonResultsEvent);
+this->onImageComparisonResultsEvent(allBinaryEventObject);
     
 }
 
@@ -150,10 +150,10 @@ this->setRunning(true);
 timeHelper.setStartTimeTNT();
     
 
-    ImageComparisonResultsEvent imageComparisonResultsEvent = this->imageComparisonInfoVector.get(0) as ImageComparisonResultsEvent;;
+    ImageComparisonResultsEvent imageComparisonResultsEvent = this->imageComparisonInfoVector.get(0);;
     
 
-    ImageComparisonResult imageComparisonInfo = imageComparisonResultsEvent.getImageComparisonResult() as ImageComparisonResult;;
+    ImageComparisonResult imageComparisonInfo = imageComparisonResultsEvent.getImageComparisonResult();;
     
 this->logUtil.putF(imageComparisonInfo.toString(), this, this->commonStrings.RUN);
     
@@ -174,7 +174,7 @@ constrainedMotionRectangles.applyMotionRectangleConstraints(consolidatedMotionRe
     
 ConstrainedMotionRectanglesResultsCacheSingleton::getInstance().add(MotionRectanglesResultsFrameCacheable(constrainedMotionRectangles, imageComparisonInfo.getFrameTwo()));
     
-this->fireEvent(MotionRectanglesResultsEvent(this, imageComparisonInfo.getFrameTwo(), constrainedMotionRectangles as MotionRectangles));
+this->fireEvent(MotionRectanglesResultsEvent(this, imageComparisonInfo.getFrameTwo(), constrainedMotionRectangles));
     
 this->imageComparisonInfoVector.remove(imageComparisonResultsEvent);
     

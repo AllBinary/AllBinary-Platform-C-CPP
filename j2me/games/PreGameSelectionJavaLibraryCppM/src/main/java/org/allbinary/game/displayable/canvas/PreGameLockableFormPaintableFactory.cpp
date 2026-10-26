@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/graphics/form/ItemPaintable.h>
 
@@ -69,7 +69,7 @@ this->lockedIndex= lockedIndex;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return PreGameLockablePaintable(paintableForm as ScrollCurrentSelectionForm, this->lockedIndex);
+                        return PreGameLockablePaintable(paintableForm, this->lockedIndex);
     
 }
 

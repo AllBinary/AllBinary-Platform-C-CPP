@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 
 
@@ -44,8 +44,9 @@
 
 class BasicArrayListResetablePool: public AbstractArrayListPool {
 
-public: BasicArrayListResetablePool(CacheableInterfaceFactoryInterface cacheableInterfaceFactoryInterface){
-            super(cacheableInterfaceFactoryInterface);
+public: BasicArrayListResetablePool(CacheableInterfaceFactoryInterface cacheableInterfaceFactoryInterface) : AbstractArrayListPool(cacheableInterfaceFactoryInterface){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -71,7 +72,7 @@ public: BasicArrayListResetablePool(CacheableInterfaceFactoryInterface cacheable
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->buffers.removeAt(size -1) as CacheableInterface;
+                        return this->buffers.removeAt(size -1);
     
 
                                     }

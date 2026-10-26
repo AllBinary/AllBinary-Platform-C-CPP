@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../../../../../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
 
@@ -70,8 +70,9 @@ public: EditCssStyleValidation(){
 }
 
 
-public: EditCssStyleValidation(Document document){
-            super(document);
+public: EditCssStyleValidation(Document document) : CssStyleValidation(document){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -79,8 +80,9 @@ public: EditCssStyleValidation(Document document){
 }
 
 
-public: EditCssStyleValidation(HashMap<any, any> hashMap){
-            super(hashMap);
+public: EditCssStyleValidation(HashMap<Object*, Object*> hashMap) : CssStyleValidation(hashMap){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -152,7 +154,7 @@ styleNode.appendChild(ColorsView().toXmlNode(document));
     int32_t i = 0;i < size; i++)
         {
 
-    DomNodeInterface styleDomNodeInterface = cssStyleElementVector.get(i) as DomNodeInterface;;
+    DomNodeInterface styleDomNodeInterface = cssStyleElementVector.get(i);;
     
 styleNode.appendChild(styleDomNodeInterface.toXmlNode(document));
     

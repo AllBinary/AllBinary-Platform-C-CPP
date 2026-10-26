@@ -18,7 +18,7 @@
 
 
 
-            #include "../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/lang/reflect/Method.h>
 
@@ -77,7 +77,7 @@ class StoreFrontTag: public CustomTagSupport {
 
     private: std::string storeName;
 
-    private: HashMap<any, any> propertiesHashMap;
+    private: HashMap<Object*, Object*> propertiesHashMap;
 
 public: StoreFrontTag(){
 }
@@ -109,7 +109,7 @@ this->storeName= value;
     
 
     std::string result = method.invoke(anyType, 
-                            nullptr) as string;;
+                            nullptr);;
     
 
 
@@ -168,7 +168,7 @@ this->storeName= value;
     
 
     std::string result = method.invoke(anyType, 
-                            nullptr) as string;;
+                            nullptr);;
     
 
 
@@ -227,7 +227,7 @@ this->storeName= value;
 this->propertiesHashMap.put(StoreFrontData::getInstance().NAME, this->storeName);
     
 
-                        if(this->command.compareTo(org.allbinary.globals.GLOBALS2.GETCURRENTLOCATION) == 0)
+                        if(this->command.compare(org.allbinary.globals.GLOBALS2.GETCURRENTLOCATION) == 0)
                         
                                     {
                                     pageContext.getOut().print(this->getCurrentLocation());
@@ -236,7 +236,7 @@ this->propertiesHashMap.put(StoreFrontData::getInstance().NAME, this->storeName)
                                     }
                                 
                              else 
-                        if(this->command.compareTo(org.allbinary.globals.GLOBALS2.GETCURRENTHOMELOCATION) == 0)
+                        if(this->command.compare(org.allbinary.globals.GLOBALS2.GETCURRENTHOMELOCATION) == 0)
                         
                                     {
                                     pageContext.getOut().print(this->getCurrentHomeLocation());

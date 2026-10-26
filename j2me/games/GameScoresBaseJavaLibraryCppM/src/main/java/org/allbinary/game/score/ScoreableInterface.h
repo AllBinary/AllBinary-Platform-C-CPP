@@ -21,12 +21,6 @@
         #ifndef ORG_ALLBINARY_GAME_SCORE_SCOREABLEINTERFACE_H
         #define ORG_ALLBINARY_GAME_SCORE_SCOREABLEINTERFACE_H
 
-#include <jsinterop/annotations/JsType.h>
-
-      
-#include <jsinterop/annotations/JsMethod.h>
-
-      
 
 
 

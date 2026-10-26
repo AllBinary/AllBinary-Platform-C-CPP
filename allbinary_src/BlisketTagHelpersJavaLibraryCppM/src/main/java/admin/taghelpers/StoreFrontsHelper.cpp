@@ -18,7 +18,7 @@
 
 
 
-            #include "../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
 
@@ -89,7 +89,7 @@ class StoreFrontsHelper: public BasicTable {
 
     private: Portion portion;
 
-public: StoreFrontsHelper(HashMap<any, any> hashMap, PageContext pageContext){
+public: StoreFrontsHelper(HashMap<Object*, Object*> hashMap, PageContext pageContext){
 this->portion= Portion(hashMap);
     
 }
@@ -320,7 +320,7 @@ storeSelect.addAttribute(StoreFrontsHelper::CLASS, StoreFrontsHelper::TEXT);
     int32_t index = 0;index < size; index++)
         {
 
-    std::string storeName = storeNamesVector.get(index) as string;;
+    std::string storeName = storeNamesVector.get(index);;
     
 storeSelect.addOption(storeName);
     

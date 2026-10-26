@@ -21,9 +21,9 @@
         #ifndef ORG_ALLBINARY_BUSINESS_CATEGORY_PROPERTIES_CATEGORYPROPERTIES_H
         #define ORG_ALLBINARY_BUSINESS_CATEGORY_PROPERTIES_CATEGORYPROPERTIES_H
 
-            #include "../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
 
@@ -110,7 +110,7 @@ public: CategoryProperties(std::string name);
 
 public: CategoryProperties(Node node);
 
-public: CategoryProperties(HashMap<any, any> categoryPropertiesHashMap);
+public: CategoryProperties(HashMap<Object*, Object*> categoryPropertiesHashMap);
 
     public: bool isRealRoot();
 
@@ -134,7 +134,7 @@ public: CategoryProperties(HashMap<any, any> categoryPropertiesHashMap);
 
     public: Boolean isValid();
 
-    public: HashMap<any, any> toHashMap();
+    public: HashMap<Object*, Object*> toHashMap();
 
     public: BasicArrayList toVector();
 

@@ -18,20 +18,8 @@
 
 
 
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-#include <jsinterop/annotations/JsConstructor.h>
-
-      
-#include <jsinterop/annotations/JsMethod.h>
-
-      
-#include <jsinterop/annotations/JsProperty.h>
-
-      
-#include <jsinterop/annotations/JsType.h>
-
-      
 #include <org/allbinary/game/collision/CollidableHelperFactory.h>
 
       
@@ -99,7 +87,7 @@ class CollidableWeaponBehavior: public CollidableDestroyableDamageableBehavior {
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return CollidableWeaponBehavior::NULL_COLLIDABLE_WEAPON_BEHAVIOR as CollidableWeaponBehavior;
+                        return CollidableWeaponBehavior::NULL_COLLIDABLE_WEAPON_BEHAVIOR;
     
 }
 
@@ -108,8 +96,9 @@ class CollidableWeaponBehavior: public CollidableDestroyableDamageableBehavior {
 
     protected: CollisionHelper collisionHelper;
 
-public: CollidableWeaponBehavior(bool collidable){
-            super(collidable);
+public: CollidableWeaponBehavior(bool collidable) : CollidableDestroyableDamageableBehavior(collidable){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -173,11 +162,11 @@ this->collided= true;
 
     public: bool isCollisionInterface(CollidableCompositeLayer ownerLayer, CollidableInterfaceCompositeInterface collidableInterfaceCompositeInterface){
 
-                        if(this->collisionHelper.isCollidable(collidableInterfaceCompositeInterface as CollidableCompositeLayer))
+                        if(this->collisionHelper.isCollidable(collidableInterfaceCompositeInterface))
                         
                                     {
                                     
-    AllBinaryLayer layerInterface = collidableInterfaceCompositeInterface as unknown as AllBinaryLayer;;
+    AllBinaryLayer layerInterface = collidableInterfaceCompositeInterface as unknown;;
     
 
                         if(ownerLayer.getGroupInterface()[0] != layerInterface.getGroupInterface()[0])
@@ -215,10 +204,10 @@ this->collided= true;
             
     public: void collideInterface(CollidableCompositeLayer ownerLayer, CollidableInterfaceCompositeInterface collidableInterfaceCompositeInterface){
 
-    DamageableInterface ownerDamageableInterface = ownerLayer as unknown as DamageableInterface;;
+    DamageableInterface ownerDamageableInterface = ownerLayer as unknown;;
     
 
-    DamageableInterface damageableInterface = collidableInterfaceCompositeInterface as unknown as DamageableInterface;;
+    DamageableInterface damageableInterface = collidableInterfaceCompositeInterface as unknown;;
     
 this->damageUtil.process(ownerDamageableInterface, damageableInterface);
     

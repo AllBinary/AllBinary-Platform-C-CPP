@@ -21,9 +21,9 @@
         #ifndef ORG_ALLBINARY_MIDLET_MIDLETEXITPROCESSOR_H
         #define ORG_ALLBINARY_MIDLET_MIDLETEXITPROCESSOR_H
 
-            #include "../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../java/lang/System.h"
+            #include "java/lang/System.h"
         
 #include <javax/microedition/midlet/MIDlet.h>
 

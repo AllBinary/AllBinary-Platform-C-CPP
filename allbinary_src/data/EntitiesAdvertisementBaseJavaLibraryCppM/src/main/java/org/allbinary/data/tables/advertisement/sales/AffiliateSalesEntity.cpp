@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
 
@@ -73,8 +73,9 @@ class AffiliateSalesEntity: public AbSqlBean, public AffiliateSalesEntityInterfa
 
     protected: const std::string tableName = "affiliate";
 
-public: AffiliateSalesEntity(){
-            super(UserDbInitInfo());
+public: AffiliateSalesEntity() : AbSqlBean(UserDbInitInfo()){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -153,8 +154,8 @@ stringBuffer.append(entryData.ID).append(this->sqlTypeStrings.MAX_BIG_INT_UNSIGN
 }
 
 
-    public: void update(HashMap<any, any> updatedValues){
-super.updateWhere(EntryData::getInstance().ID, updatedValues.get(EntryData::getInstance().ID) as string, updatedValues);
+    public: void update(HashMap<Object*, Object*> updatedValues){
+super.updateWhere(EntryData::getInstance().ID, updatedValues.get(EntryData::getInstance().ID), updatedValues);
     
 }
 

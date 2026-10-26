@@ -21,13 +21,10 @@
         #ifndef ORG_ALLBINARY_GAME_AG_AI_DIVEANDDIRECTIONALTRACKINGAIFACTORY_H
         #define ORG_ALLBINARY_GAME_AG_AI_DIVEANDDIRECTIONALTRACKINGAIFACTORY_H
 
-            #include "../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-#include <java/util/Hashtable.h>
-
-      
 #include <org/allbinary/ai/ArtificialIntelligenceInterface.h>
 
       
@@ -47,6 +44,9 @@
 
       
 #include <org/allbinary/logic/util/visitor/Visitor.h>
+
+      
+#include <org/allbinary/util/ABHashtable.h>
 
       
 
@@ -78,7 +78,7 @@ class DiveAndDirectionalTrackingAIFactory
 
                 //@Throws(Exception.constructor)
             
-    public: ArtificialIntelligenceInterface getInstance(Hashtable<any, any> hashtable, AllBinaryLayer ownerLayerInterface, GameInput gameInput);
+    public: ArtificialIntelligenceInterface getInstance(ABHashtable<Object*, Object*> hashtable, AllBinaryLayer ownerLayerInterface, GameInput gameInput);
 
 };
 

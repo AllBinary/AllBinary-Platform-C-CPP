@@ -18,9 +18,9 @@
 
 
 
-            #include "../../../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/data/tables/user/commerce/inventory/order/OrderHistoryEntity.h>
 
@@ -68,7 +68,7 @@ class OrderHistoryFactory
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return orderHistoryEntityInterface.getOrder(id) as OrderHistory;
+                        return orderHistoryEntityInterface.getOrder(id);
     
 
                 //: 

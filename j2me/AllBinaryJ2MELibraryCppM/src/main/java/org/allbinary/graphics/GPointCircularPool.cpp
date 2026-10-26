@@ -49,7 +49,7 @@ class GPointCircularPool: public BaseCircularPool {
 public: GPointCircularPool(int32_t size){
 this->circularIndexUtil= CircularIndexUtil::createInstance(size);
     
-this->OBJECT_ARRAY= new Array(size);
+this->OBJECT_ARRAY= std::vector<Object*>(size);
     
 
 

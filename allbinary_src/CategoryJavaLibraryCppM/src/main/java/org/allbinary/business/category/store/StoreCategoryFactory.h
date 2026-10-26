@@ -21,7 +21,7 @@
         #ifndef ORG_ALLBINARY_BUSINESS_CATEGORY_STORE_STORECATEGORYFACTORY_H
         #define ORG_ALLBINARY_BUSINESS_CATEGORY_STORE_STORECATEGORYFACTORY_H
 
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/business/category/Category.h>
 

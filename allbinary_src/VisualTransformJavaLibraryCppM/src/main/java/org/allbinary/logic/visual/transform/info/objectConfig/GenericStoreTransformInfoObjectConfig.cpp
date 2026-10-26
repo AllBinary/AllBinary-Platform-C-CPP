@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
 
@@ -27,6 +27,9 @@
 
       
 #include <org/allbinary/data/tree/dom/document/DomDocumentHelper.h>
+
+      
+#include <org/allbinary/data/tree/dom/document/XmlDocumentHelper.h>
 
       
 #include <org/allbinary/logic/StdUtil.h>
@@ -101,8 +104,9 @@ class GenericStoreTransformInfoObjectConfig: public TransformInfoObjectConfig {
 
     protected: AbeClientInformationInterface abeClientInformation;
 
-public: GenericStoreTransformInfoObjectConfig(Object abeClientInformation, Object transformInfoInterface){
-            super(transformInfoInterface);
+public: GenericStoreTransformInfoObjectConfig(Object abeClientInformation, Object transformInfoInterface) : TransformInfoObjectConfig(transformInfoInterface){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -112,8 +116,9 @@ this->abeClientInformation= abeClientInformation;
 }
 
 
-public: GenericStoreTransformInfoObjectConfig(Object abeClientInformation, Object transformInfoInterface, Object document){
-            super(transformInfoInterface, document);
+public: GenericStoreTransformInfoObjectConfig(Object abeClientInformation, Object transformInfoInterface, Object document) : TransformInfoObjectConfig(transformInfoInterface, document){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -125,8 +130,9 @@ this->setDocument(this->generate(this->toXmlDoc()));
 }
 
 
-public: GenericStoreTransformInfoObjectConfig(Object abeClientInformation, Object transformInfoInterface, std::string name, std::string type){
-            super(transformInfoInterface, name, type);
+public: GenericStoreTransformInfoObjectConfig(Object abeClientInformation, Object transformInfoInterface, std::string name, std::string type) : TransformInfoObjectConfig(transformInfoInterface, name, type){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -173,13 +179,13 @@ this->logUtil.putF(stringBuffer.toString(), this, "generate()");
                                     }
                                 
 
-    TransformInfoHttp transformInfoHttpStoreInterface = this->getTransformInfoInterface() as TransformInfoHttp;;
+    TransformInfoHttp transformInfoHttpStoreInterface = this->getTransformInfoInterface();;
     
 
-    std::string objectConfigDocumentString = DomDocumentHelper::toString(objectConfigDocument);;
+    std::string objectConfigDocumentString = XmlDocumentHelper::toString(objectConfigDocument);;
     
 
-    HashMap<any, any> replaceHashMap = this->createReplaceHashMap(transformInfoHttpStoreInterface, objectConfigDocumentString);;
+    HashMap<Object*, Object*> replaceHashMap = this->createReplaceHashMap(transformInfoHttpStoreInterface, objectConfigDocumentString);;
     
 
 
@@ -192,12 +198,12 @@ this->logUtil.putF(stringBuffer.toString(), this, "generate()");
 
                 //@Throws(Exception.constructor)
             
-    private: HashMap<any, any> createReplaceHashMap(TransformInfoHttp transformInfoHttpStoreInterface, std::string objectConfigDocumentString){
+    private: HashMap<Object*, Object*> createReplaceHashMap(TransformInfoHttp transformInfoHttpStoreInterface, std::string objectConfigDocumentString){
 
     std::string storeName = transformInfoHttpStoreInterface.getStoreName();;
     
 
-    HashMap<any, any> hashMap = this->createHashMap(transformInfoHttpStoreInterface, objectConfigDocumentString);;
+    HashMap<Object*, Object*> hashMap = this->createHashMap(transformInfoHttpStoreInterface, objectConfigDocumentString);;
     
 
     TransformInfoObjectConfigData transformInfoObjectConfigData = TransformInfoObjectConfigData::getInstance();;
@@ -220,18 +226,18 @@ hashMap.put(transformInfoObjectConfigData.VARKEY +TransformInfoData::getInstance
 
                 //@Throws(Exception.constructor)
             
-    private: HashMap<any, any> createHashMap(TransformInfoHttp transformInfoHttpStoreInterface, std::string objectConfigDocumentString){
+    private: HashMap<Object*, Object*> createHashMap(TransformInfoHttp transformInfoHttpStoreInterface, std::string objectConfigDocumentString){
 
-    HashMap<any, any> hashMap = StdUtil::getInstance().createHashMap();;
+    HashMap<Object*, Object*> hashMap = StdUtil::getInstance().createHashMap();;
     
 
     std::string storeName = transformInfoHttpStoreInterface.getStoreName();;
     
 
-    HashMap<any, any> propertiesHashMap = transformInfoHttpStoreInterface.getPropertiesHashMap();;
+    HashMap<Object*, Object*> propertiesHashMap = transformInfoHttpStoreInterface.getPropertiesHashMap();;
     
 
-    std::string templateNameOverride = StringUtil::getInstance().getNonNull(propertiesHashMap.get(TransformInfoData::getInstance().PARTIAL) as string);;
+    std::string templateNameOverride = StringUtil::getInstance().getNonNull(propertiesHashMap.get(TransformInfoData::getInstance().PARTIAL));;
     
 
                         if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEW))
@@ -282,7 +288,7 @@ hashMap.put(templateNameKey, selectedTemplate);
 
                 //@Throws(Exception.constructor)
             
-    private: Document generate(std::string objectConfigDocumentString, HashMap<any, any> hashMap){
+    private: Document generate(std::string objectConfigDocumentString, HashMap<Object*, Object*> hashMap){
 
     Replace replace = Replace(hashMap);;
     
@@ -293,7 +299,7 @@ hashMap.put(templateNameKey, selectedTemplate);
                         if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEW))
                         
                                     {
-                                    this->logUtil.putF("Final ObjectConfig: " +DomDocumentHelper::toString(newObjectConfigDocument), this, "generate()");
+                                    this->logUtil.putF("Final ObjectConfig: " +XmlDocumentHelper::toString(newObjectConfigDocument), this, "generate()");
     
 
                                     }

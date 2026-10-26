@@ -20,20 +20,8 @@
 
             #include <vector>
         
-            #include "../../../../java/lang/Integer.h"
+            #include "java/lang/Integer.h"
         
-#include <jsinterop/annotations/JsConstructor.h>
-
-      
-#include <jsinterop/annotations/JsMethod.h>
-
-      
-#include <jsinterop/annotations/JsProperty.h>
-
-      
-#include <jsinterop/annotations/JsType.h>
-
-      
 #include <org/allbinary/game/GameInfo.h>
 
       
@@ -104,7 +92,7 @@ class AllBinaryGameLayerManager: public AllBinaryLayerManager {
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return AllBinaryGameLayerManager::NULL_ALLBINARY_LAYER_MANAGER as AllBinaryGameLayerManager;
+                        return AllBinaryGameLayerManager::NULL_ALLBINARY_LAYER_MANAGER;
     
 }
 
@@ -204,7 +192,7 @@ this->gameInfo= gameInfo;
 
     public: void setLayerProcessorList(BasicArrayList list){
 
-    std::vector<LayerProcessor> layerProcessorInterfaceArray = new Array(list.size());;
+    std::vector<LayerProcessor> layerProcessorInterfaceArray = std::vector<LayerProcessor>(list.size());;
     
 
     int32_t size = layerProcessorInterfaceArray.size();;
@@ -216,7 +204,7 @@ this->gameInfo= gameInfo;
                         for (
     int32_t index = 0;index < size; index++)
         {
-layerProcessorInterfaceArray[index]= list.objectArray[index]! as LayerProcessor;
+layerProcessorInterfaceArray[index]= list.objectArray[index];
     
 }
 

@@ -4,7 +4,7 @@
 
 
 
-            #include "../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
 #include <org/allbinary/util/BasicArrayList.h>
 
@@ -62,7 +62,7 @@ private: AnalogLocationInputFactory(){
                         if(playerInputId < this->list.size())
                         
                                     {
-                                    analogLocationInput= this->list.get(playerInputId) as AnalogLocationInput;
+                                    analogLocationInput= this->list.get(playerInputId);
     
 
                                     }
@@ -86,7 +86,7 @@ this->list.add(analogLocationInput);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->list.get(playerInputId) as AnalogLocationInput;
+                        return this->list.get(playerInputId);
     
 }
 

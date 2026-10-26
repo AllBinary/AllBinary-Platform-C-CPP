@@ -20,11 +20,11 @@
 
             #include <vector>
         
-            #include "../../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../../../../java/lang/Integer.h"
+            #include "java/lang/Integer.h"
         
 #include <org/allbinary/game/layer/AllBinaryTiledLayer.h>
 
@@ -155,7 +155,7 @@ this->setForegroundBasicColor(foregroundBasicColor);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->geographicMapCellTypeFactory.get(this->cellTypeIdToGeographicMapCellType[cellTypeId]!);;
+                        return this->geographicMapCellTypeFactory.get(this->cellTypeIdToGeographicMapCellType[cellTypeId]);;
     
 }
 
@@ -165,7 +165,7 @@ this->setForegroundBasicColor(foregroundBasicColor);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->cellTypeIdToGeographicMapCellType[cellTypeId]!;
+                        return this->cellTypeIdToGeographicMapCellType[cellTypeId];
     
 }
 

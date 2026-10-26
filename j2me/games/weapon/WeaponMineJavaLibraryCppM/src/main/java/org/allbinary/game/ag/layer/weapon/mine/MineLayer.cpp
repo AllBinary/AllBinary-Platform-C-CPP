@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/ag/weapon/media/audio/DropWeaponSound.h>
 
@@ -77,8 +77,9 @@ class MineLayer: public SimpleWeaponLayer {
 
     private: static const std::string NAME = "MineLayer";
 
-public: MineLayer(ViewPositionBase viewPosition){
-            super(MineLayer::NAME, RemoteInfo::REMOTE_INFO,  -1, NoMovementFactory::getInstance().getMovmentInstance(), FeaturedAnimationInterfaceFactoryInterfaceFactory::getInstance().get(MineWeaponResources::getInstance().RESOURCE).getInstance(0), SimpleWeaponLayer::createDestroyed(), Rectangle(PointFactory::getInstance().ZERO_ZERO, 10, 10), viewPosition);
+public: MineLayer(ViewPositionBase viewPosition) : SimpleWeaponLayer(MineLayer::NAME, RemoteInfo::REMOTE_INFO,  -1, NoMovementFactory::getInstance().getMovmentInstance(), FeaturedAnimationInterfaceFactoryInterfaceFactory::getInstance().get(MineWeaponResources::getInstance().RESOURCE).getInstance(0), SimpleWeaponLayer::createDestroyed(), Rectangle(PointFactory::getInstance().ZERO_ZERO, 10, 10), viewPosition){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -91,7 +92,7 @@ public: MineLayer(ViewPositionBase viewPosition){
     public: void initXYZ(int32_t x, int32_t y, int32_t z){
 this->setPosition(x +5, y +5, z);
     
-this->viewPositionEventHandler.addListener(this as AllBinaryLayer);
+this->viewPositionEventHandler.addListener(this);
     
 SecondaryPlayerQueueFactory::getInstance().add(DropWeaponSound::getInstance());
     

@@ -18,23 +18,14 @@
 
 
 
-            #include "../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../java/lang/Runnable.h"
+            #include "java/lang/Runnable.h"
         
-#include <jsinterop/annotations/JsType.h>
-
-      
 #include <org/eclipse/swt/widgets/Display.h>
 
       
 #include <org/allbinary/thread/NullRunnable.h>
-
-      
-#include <jsinterop/annotations/JsMethod.h>
-
-      
-#include <jsinterop/annotations/JsProperty.h>
 
       
 

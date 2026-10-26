@@ -20,11 +20,11 @@
 
             #include <vector>
         
-            #include "../../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../../../../java/lang/RuntimeException.h"
+            #include "java/lang/RuntimeException.h"
         
 #include <org/osgi/framework/BundleActivator.h>
 
@@ -109,7 +109,7 @@ this->init();
                 //@Throws(Exception.constructor)
             
     public: void registerAsService(BundleContext bundleContext){
-OSGIActivatorUtil::registerAsService(bundleContext, getServiceFactory(), InputAutomationRobotServiceInterface.constructor.toString()!);
+OSGIActivatorUtil::registerAsService(bundleContext, getServiceFactory(), InputAutomationRobotServiceInterface.constructor.toString());
     
 }
 
@@ -118,7 +118,7 @@ OSGIActivatorUtil::registerAsService(bundleContext, getServiceFactory(), InputAu
             
     private: InputAutomationRobotChangeListener getInputAutomationRobotChangeListener(BundleContext context){
 
-    ServiceReference serviceReference = context.getServiceReference(InputAutomationRobotChangeListener.constructor.toString()!);;
+    ServiceReference serviceReference = context.getServiceReference(InputAutomationRobotChangeListener.constructor.toString());;
     
 
                         if(serviceReference != 
@@ -127,7 +127,7 @@ OSGIActivatorUtil::registerAsService(bundleContext, getServiceFactory(), InputAu
                         
                                     {
                                     
-    InputAutomationRobotChangeListener inputAutomationRobotChangeListener = context.getService(serviceReference) as InputAutomationRobotChangeListener;;
+    InputAutomationRobotChangeListener inputAutomationRobotChangeListener = context.getService(serviceReference);;
     
 
                         if(inputAutomationRobotChangeListener == 
@@ -146,7 +146,7 @@ OSGIActivatorUtil::registerAsService(bundleContext, getServiceFactory(), InputAu
                                     }
                                 
                         else {
-                            this->logUtil.putF("No ServiceReference: " +InputAutomationRobotChangeListener.constructor.toString()!, this, "getInputAutomationRobotChangeListener");
+                            this->logUtil.putF("No ServiceReference: " +InputAutomationRobotChangeListener.constructor.toString(), this, "getInputAutomationRobotChangeListener");
     
 
 
@@ -182,7 +182,7 @@ OSGIActivatorUtil::registerAsService(bundleContext, getServiceFactory(), InputAu
     int32_t index = 0;index < this->getInputRobotInterface().length; index++)
         {
 
-    InputAutomationRobotChangeEvent inputAutomationRobotChangeEvent = InputAutomationRobotUtil::getChangeEvent(this->getInputRobotInterface()[index]!);;
+    InputAutomationRobotChangeEvent inputAutomationRobotChangeEvent = InputAutomationRobotUtil::getChangeEvent(this->getInputRobotInterface()[index]);;
     
 inputAutomationRobotChangeListener.onAdd(inputAutomationRobotChangeEvent);
     
@@ -224,7 +224,7 @@ this->logUtil.putF(this->commonStrings.EXCEPTION, this, "addModules");
     int32_t index = 0;index < this->getInputRobotInterface().length; index++)
         {
 
-    InputAutomationRobotChangeEvent inputAutomationRobotChangeEvent = InputAutomationRobotUtil::getChangeEvent(this->getInputRobotInterface()[index]!);;
+    InputAutomationRobotChangeEvent inputAutomationRobotChangeEvent = InputAutomationRobotUtil::getChangeEvent(this->getInputRobotInterface()[index]);;
     
 inputAutomationRobotChangeListener.onRemove(inputAutomationRobotChangeEvent);
     

@@ -18,9 +18,9 @@
 
 
 
-            #include "../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
 
@@ -65,19 +65,19 @@ class CategoryPropertiesFactory
     private: CategoryPropertiesInterface categoryPropertiesInterface;
 
 public: CategoryPropertiesFactory(std::string name){
-this->categoryPropertiesInterface= CategoryProperties(name) as CategoryPropertiesInterface;
+this->categoryPropertiesInterface= CategoryProperties(name);
     
 }
 
 
 public: CategoryPropertiesFactory(Node node){
-this->categoryPropertiesInterface= CategoryProperties(node) as CategoryPropertiesInterface;
+this->categoryPropertiesInterface= CategoryProperties(node);
     
 }
 
 
-public: CategoryPropertiesFactory(HashMap<any, any> categoryPropertiesHashMap){
-this->categoryPropertiesInterface= CategoryProperties(categoryPropertiesHashMap) as CategoryPropertiesInterface;
+public: CategoryPropertiesFactory(HashMap<Object*, Object*> categoryPropertiesHashMap){
+this->categoryPropertiesInterface= CategoryProperties(categoryPropertiesHashMap);
     
 }
 
@@ -89,7 +89,7 @@ this->categoryPropertiesInterface= CategoryProperties(categoryPropertiesHashMap)
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->categoryPropertiesInterface as CategoryPropertiesInterface;
+                        return this->categoryPropertiesInterface;
     
 
                 //: 

@@ -62,14 +62,15 @@ class LurchRotationAI: public LurchAI {
 
     private: IndexedAnimation rotationAnimationInterface;
 
-public: LurchRotationAI(AllBinaryLayer ownerLayerInterface, GameInput gameInput){
-            super(ownerLayerInterface, gameInput);
+public: LurchRotationAI(AllBinaryLayer ownerLayerInterface, GameInput gameInput) : LurchAI(ownerLayerInterface, gameInput){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
                     
 
-    RotationAnimationInterfaceCompositeInterface rotationAnimationInterfaceCompositeInterface = this->getOwnerLayerInterface() as RotationAnimationInterfaceCompositeInterface;;
+    RotationAnimationInterfaceCompositeInterface rotationAnimationInterfaceCompositeInterface = this->getOwnerLayerInterface();;
     
 this->rotationAnimationInterface= rotationAnimationInterfaceCompositeInterface.getRotationAnimationInterface();
     
@@ -92,13 +93,13 @@ this->update();
                         
                                     {
                                     
-    RotationAnimationInterface rotationAnimationInterface = this->rotationAnimationInterface as RotationAnimationInterface;;
+    RotationAnimationInterface rotationAnimationInterface = this->rotationAnimationInterface;;
     
 
     AngleIncrementInfo angleIncrementInfo = rotationAnimationInterface.getAngleInfoP().getAngleIncrementInfo();;
     
 
-    RotationAnimationInterfaceCompositeInterface rotationAnimationInterfaceCompositeInterface = this->getOwnerLayerInterface() as RotationAnimationInterfaceCompositeInterface;;
+    RotationAnimationInterfaceCompositeInterface rotationAnimationInterfaceCompositeInterface = this->getOwnerLayerInterface();;
     
 rotationAnimationInterfaceCompositeInterface.setFrame(angleIncrementInfo.RIGHT_FRAME.intValue());
     
@@ -110,13 +111,13 @@ rotationAnimationInterfaceCompositeInterface.setFrame(angleIncrementInfo.RIGHT_F
                         
                                     {
                                     
-    RotationAnimationInterface rotationAnimationInterface = this->rotationAnimationInterface as RotationAnimationInterface;;
+    RotationAnimationInterface rotationAnimationInterface = this->rotationAnimationInterface;;
     
 
     AngleIncrementInfo angleIncrementInfo = rotationAnimationInterface.getAngleInfoP().getAngleIncrementInfo();;
     
 
-    RotationAnimationInterfaceCompositeInterface rotationAnimationInterfaceCompositeInterface = this->getOwnerLayerInterface() as RotationAnimationInterfaceCompositeInterface;;
+    RotationAnimationInterfaceCompositeInterface rotationAnimationInterfaceCompositeInterface = this->getOwnerLayerInterface();;
     
 rotationAnimationInterfaceCompositeInterface.setFrame(angleIncrementInfo.LEFT_FRAME.intValue());
     

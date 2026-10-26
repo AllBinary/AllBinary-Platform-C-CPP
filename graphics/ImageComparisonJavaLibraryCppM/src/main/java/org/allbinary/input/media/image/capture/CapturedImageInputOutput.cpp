@@ -18,11 +18,11 @@
 
 
 
-            #include "../../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../../../../java/lang/Long.h"
+            #include "java/lang/Long.h"
         
 #include <java/awt/image/BufferedImage.h>
 
@@ -93,7 +93,7 @@ class CapturedImageInputOutput
     CommonStrings commonStrings = CommonStrings::getInstance();;
     
 
-    BufferedImageFrameCacheable capturedBufferedImageCacheable = ((getInstance as AutomaticCacheInterface).get(frame) as BufferedImageFrameCacheable);;
+    BufferedImageFrameCacheable capturedBufferedImageCacheable = ((getInstance).get(frame));;
     
 this->logUtil.putF(("Saving: " +capturedBufferedImageCacheable.toString()), this, commonStrings.SAVE);
     

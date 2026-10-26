@@ -21,7 +21,7 @@
         #ifndef ORG_ALLBINARY_BUSINESS_ERROR_ERRORDATA_H
         #define ORG_ALLBINARY_BUSINESS_ERROR_ERRORDATA_H
 
-            #include "../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
 
 

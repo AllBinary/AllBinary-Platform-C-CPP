@@ -21,7 +21,7 @@
         #ifndef ORG_ALLBINARY_MATH_RECTANGLECOLLISIONUTIL_H
         #define ORG_ALLBINARY_MATH_RECTANGLECOLLISIONUTIL_H
 
-            #include "../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
 #include <jsinterop/annotations/JsType.h>
 

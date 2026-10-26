@@ -18,16 +18,10 @@
 
 
 
-            #include "../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-#include <org/allbinary/util/BasicArrayList.h>
-
-      
-#include <org/allbinary/util/BasicArrayListD.h>
-
-      
 #include <org/allbinary/business/context/modules/storefront/StoreFrontInterface.h>
 
       
@@ -214,7 +208,7 @@ stringBuffer.append(PATH_GLOBALS::getInstance().BACKUP_PATH);
                         for (
     int32_t index = 0;index < size; index++)
         {
-nextStore= storeFrontNamesBasicArrayList.get(index) as string;
+nextStore= storeFrontNamesBasicArrayList.get(index);
     
 stringBuffer.delete(0, stringBuffer.length());
     
@@ -301,7 +295,7 @@ stringBuffer.append(PATH_GLOBALS::getInstance().BACKUP_PATH);
                         for (
     int32_t index = 0;index < size; index++)
         {
-nextStore= storeFrontNamesBasicArrayList.get(index) as string;
+nextStore= storeFrontNamesBasicArrayList.get(index);
     
 storeFrontInterface= storeFrontsEntity.getStoreFrontInterface(nextStore);
     
@@ -384,7 +378,7 @@ stringBuffer.append(PATH_GLOBALS::getInstance().BACKUP_PATH);
                         for (
     int32_t index = 0;index < size; index++)
         {
-nextStore= storeFrontNamesBasicArrayList.get(index) as string;
+nextStore= storeFrontNamesBasicArrayList.get(index);
     
 PreLogUtil::put("Backup Store Jsps: " +nextStore, this, "backupJsps()");
     

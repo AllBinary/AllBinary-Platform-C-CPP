@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/game/ai/BasicAI.h>
 
@@ -68,7 +68,7 @@ public: LastKeyAIVisitor(){
 
         try {
             
-    BasicAI basicAI = anyType as BasicAI;;
+    BasicAI basicAI = *dynamic_cast<BasicAI*>(anyType);;
     
 
     int32_t key = basicAI.getLastKey();;

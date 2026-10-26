@@ -21,7 +21,7 @@
         #ifndef ORG_ALLBINARY_INPUT_AUTOMATION_ROBOT_TEMPINPUTROBOTNAMES_H
         #define ORG_ALLBINARY_INPUT_AUTOMATION_ROBOT_TEMPINPUTROBOTNAMES_H
 
-            #include "../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
 
 

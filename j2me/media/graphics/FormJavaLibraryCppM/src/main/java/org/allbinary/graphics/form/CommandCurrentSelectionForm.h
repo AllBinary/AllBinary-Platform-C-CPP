@@ -23,11 +23,8 @@
 
             #include <vector>
         
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-#include <jsinterop/annotations/JsType.h>
-
-      
 #include <javax/microedition/lcdui/Command.h>
 
       
@@ -64,15 +61,6 @@
 #include <org/allbinary/graphics/form/item/ABCustomItem.h>
 
       
-#include <jsinterop/annotations/JsMethod.h>
-
-      
-#include <jsinterop/annotations/JsConstructor.h>
-
-      
-#include <jsinterop/annotations/JsProperty.h>
-
-      
 
 
 
@@ -96,9 +84,9 @@
 
 class CommandCurrentSelectionForm: public ScrollCurrentSelectionForm, public UpdateMyFontInterface {
 
-    protected: const std::vector<Animation> selectedAnimationArray = new Array(16);
+    protected: const std::vector<Animation> selectedAnimationArray = std::vector<Animation>(16);
 
-    protected: const std::vector<Animation> unSelectedAnimationArray = new Array(16);
+    protected: const std::vector<Animation> unSelectedAnimationArray = std::vector<Animation>(16);
 
 public: CommandCurrentSelectionForm(std::string title, std::vector<ABCustomItem> items, int32_t border, bool moveForSmallScreen, BasicColor backgroundBasicColor, BasicColor foregroundBasicColor);
 

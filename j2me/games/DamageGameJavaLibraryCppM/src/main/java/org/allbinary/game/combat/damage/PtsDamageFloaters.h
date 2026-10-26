@@ -90,11 +90,11 @@ class PtsDamageFloaters: public DamageFloaters {
 
     private: AllBinaryLayer layerInterface;
 
-    private: std::vector<int32_t> lastDamage = new Array(5);
+    private: std::vector<int32_t> lastDamage = std::vector<int32_t>(5);
 
-    private: std::vector<std::vector<char>> lastDamageString = new Array(5).fill(null).map(() => new Array(0).fill(0));
+    private: std::vector<std::vector<char>> lastDamageString = std::vector<std::vector<char>>(5, std::vector<char>(0));
 
-    private: std::vector<int32_t> lastDamageStringSizeArray = new Array(5);
+    private: std::vector<int32_t> lastDamageStringSizeArray = std::vector<int32_t>(5);
 
     private: CircularIndexUtil circularIndexUtil = CircularIndexUtil::createInstance(5);
 

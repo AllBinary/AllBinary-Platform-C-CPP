@@ -4,11 +4,11 @@
 
 
 
-            #include "../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../java/lang/Class.h"
+            #include "java/lang/Class.h"
         
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <android/app/Activity.h>
 
@@ -85,12 +85,12 @@ class MusicManager
             : public Object
          {
 
-    public: static void pause(Activity activity, Function musicServiceClass){
+    public: static void pause(Activity activity, Class* musicServiceClass){
 
     CommonStateStrings commonStateStrings = CommonStateStrings::getInstance();;
     
 
-    Intent musicPauseIntent = Intent(activity as Context, musicServiceClass);;
+    Intent musicPauseIntent = Intent(activity, musicServiceClass);;
     
 musicPauseIntent.putExtra(commonStateStrings.ON_START_COMMAND, 1);
     
@@ -99,9 +99,9 @@ activity.startService(musicPauseIntent);
 }
 
 
-    public: static void resume(Activity activity, Function musicServiceClass){
+    public: static void resume(Activity activity, Class* musicServiceClass){
 
-                        if(AndroidServicesUtil::getInstance().isServiceRunning(musicServiceClass.toString()!))
+                        if(AndroidServicesUtil::getInstance().isServiceRunning(musicServiceClass.toString()))
                         
                                     {
                                     
@@ -152,11 +152,11 @@ activity.startService(musicResumeIntent);
 
     private: int32_t rightVolume = 100;
 
-    private: Function musicServiceClass;
+    private: Class* musicServiceClass;
 
     private: Intent currentIntent;
 
-public: MusicManager(Function musicServiceClass, BasicArrayList songList){
+public: MusicManager(Class* musicServiceClass, BasicArrayList songList){
 PreLogUtil::put(this->commonStateStrings.CONTEXT +this->resourceUtil.getContext(), this, this->commonStrings.CONSTRUCTOR);
     
 this->musicServiceClass= musicServiceClass;
@@ -231,7 +231,7 @@ this->timeDelayHelper.delay= 0;
                         
                                     {
                                     
-                        if(this->androidServicesUtil.isServiceRunning(this->musicServiceClass.toString()!))
+                        if(this->androidServicesUtil.isServiceRunning(this->musicServiceClass.toString()))
                         
                                     {
                                     
@@ -258,7 +258,7 @@ this->timeDelayHelper.delay= 0;
     int32_t index = this->songList.size();--index >= 0; )
         {
 
-    Sound sound = this->songList.get(index) as Sound;;
+    Sound sound = this->songList.get(index);;
     
 
     int64_t duration = sound.getDuration();;
@@ -279,7 +279,7 @@ PreLogUtil::put(StringMaker().append(this->PLAY).append(sound.getResource()).app
                         if(this->nextSongSound == NoSound::getInstance())
                         
                                     {
-                                    this->currentSongSound= this->basicArrayListUtil.getRandom(this->songList) as Sound;
+                                    this->currentSongSound= this->basicArrayListUtil.getRandom(this->songList);
     
 
                                     }

@@ -21,7 +21,7 @@
         #ifndef ORG_ALLBINARY_MEDIA_SCALEPROPERTIES_H
         #define ORG_ALLBINARY_MEDIA_SCALEPROPERTIES_H
 
-            #include "../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
 #include <org/allbinary/logic/string/StringMaker.h>
 

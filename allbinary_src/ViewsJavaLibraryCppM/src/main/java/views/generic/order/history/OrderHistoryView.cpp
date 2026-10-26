@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/util/BasicArrayList.h>
 
@@ -100,13 +100,14 @@ class OrderHistoryView: public HttpStoreComponentView, public DomNodeInterface {
 
     private: std::string cancelled;
 
-public: OrderHistoryView(TransformInfoInterface transformInfoInterface){
-            super(transformInfoInterface);
+public: OrderHistoryView(TransformInfoInterface transformInfoInterface) : HttpStoreComponentView(transformInfoInterface){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this->request= this->getPageContext().getRequest() as HttpServletRequest;
+this->request= this->getPageContext().getRequest();
     
 this->preprocessing= this->request.getParameter(OrderHistoryData::PREPROCESSINGNAME);
     
@@ -146,7 +147,7 @@ this->cancelled= this->request.getParameter(OrderHistoryData::CANCELLEDNAME);
     int32_t index = 0;index < size; index++)
         {
 
-    OrderHistory orderHistory = orderReviewVector.get(index) as OrderHistory;;
+    OrderHistory orderHistory = orderReviewVector.get(index);;
     
 
     Node orderHistoryNode = orderHistory.toXmlNode(document);;
@@ -209,7 +210,7 @@ node.appendChild(ModDomHelper::createNameValueNodes(document, GLOBALS2::VIEWNAME
 
 
     public: void addDomNodeInterfaces(){
-this->addDomNodeInterface(this as DomNodeInterface);
+this->addDomNodeInterface(this);
     
 }
 

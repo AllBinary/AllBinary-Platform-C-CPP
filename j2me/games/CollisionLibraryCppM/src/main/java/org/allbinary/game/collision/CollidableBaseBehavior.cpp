@@ -18,13 +18,10 @@
 
 
 
-            #include "../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-#include <jsinterop/annotations/JsType.h>
-
-      
 #include <javax/microedition/lcdui/Graphics.h>
 
       
@@ -44,15 +41,6 @@
 
       
 #include <org/allbinary/string/CommonStrings.h>
-
-      
-#include <jsinterop/annotations/JsMethod.h>
-
-      
-#include <jsinterop/annotations/JsConstructor.h>
-
-      
-#include <jsinterop/annotations/JsProperty.h>
 
       
 
@@ -106,7 +94,7 @@ this->collidable= collidable;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->constructor.name.toString()!;;
+                        return this->constructor.name.toString();;
     
 }
 
@@ -133,7 +121,7 @@ this->collidable= collidable;
 
 
 
-                            throw Exception(StringMaker().append(this->commonStrings.NOT_IMPLEMENTED).append(CommonLabels::getInstance().COLON_SEP).append(this->constructor.name.toString()!).toString());
+                            throw Exception(StringMaker().append(this->commonStrings.NOT_IMPLEMENTED).append(CommonLabels::getInstance().COLON_SEP).append(this->constructor.name.toString()).toString());
                     
 }
 
@@ -153,7 +141,7 @@ this->collidable= collidable;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->layerCollisionUtil.isCollision(ownerLayer, collidableInterfaceCompositeInterface as unknown as AllBinaryLayer);;
+                        return this->layerCollisionUtil.isCollision(ownerLayer, collidableInterfaceCompositeInterface as unknown);;
     
 }
 

@@ -18,22 +18,10 @@
 
 
 
-#include <jsinterop/annotations/JsType.h>
-
-      
 #include <org/allbinary/logic/string/StringMaker.h>
 
       
 #include <org/allbinary/logic/string/StringUtil.h>
-
-      
-#include <jsinterop/annotations/JsMethod.h>
-
-      
-#include <jsinterop/annotations/JsConstructor.h>
-
-      
-#include <jsinterop/annotations/JsProperty.h>
 
       
 
@@ -60,8 +48,9 @@ class GameKey: public Input {
 
     public: static const GameKey NULL_GAME_KEY = GameKey( -1, StringUtil::getInstance().NULL_STRING);
 
-: GameKey(int32_t key, std::string name){
-            super(key, name);
+: GameKey(int32_t key, std::string name) : Input(key, name){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.

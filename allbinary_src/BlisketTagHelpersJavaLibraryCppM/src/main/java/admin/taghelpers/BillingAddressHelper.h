@@ -21,9 +21,9 @@
         #ifndef ADMIN_TAGHELPERS_BILLINGADDRESSHELPER_H
         #define ADMIN_TAGHELPERS_BILLINGADDRESSHELPER_H
 
-            #include "../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../java/lang/Integer.h"
+            #include "java/lang/Integer.h"
         
 #include <java/util/HashMap.h>
 
@@ -103,7 +103,7 @@ class BillingAddressHelper: public Table {
 
     private: Portion portion;
 
-public: BillingAddressHelper(HashMap<any, any> hashMap, PageContext pageContext);
+public: BillingAddressHelper(HashMap<Object*, Object*> hashMap, PageContext pageContext);
 
     private: void getAddressForm();
 

@@ -20,7 +20,7 @@
 
             #include <vector>
         
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <javax/microedition/lcdui/Graphics.h>
 
@@ -57,8 +57,9 @@ class AdjustedLeftToRightImageAnimation: public LeftToRightImageAnimation {
 
     private: int32_t dy= 0;
 
-public: AdjustedLeftToRightImageAnimation(Image image, std::vector<int32_t> sequenceArray, int32_t dx, int32_t dy, AnimationBehavior animationBehavior){
-            super(image, sequenceArray, animationBehavior);
+public: AdjustedLeftToRightImageAnimation(Image image, std::vector<int32_t> sequenceArray, int32_t dx, int32_t dy, AnimationBehavior animationBehavior) : LeftToRightImageAnimation(image, sequenceArray, animationBehavior){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.

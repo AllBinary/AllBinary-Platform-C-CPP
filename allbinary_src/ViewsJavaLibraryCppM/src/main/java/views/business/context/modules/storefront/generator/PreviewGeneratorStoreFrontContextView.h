@@ -21,7 +21,7 @@
         #ifndef VIEWS_BUSINESS_CONTEXT_MODULES_STOREFRONT_GENERATOR_PREVIEWGENERATORSTOREFRONTCONTEXTVIEW_H
         #define VIEWS_BUSINESS_CONTEXT_MODULES_STOREFRONT_GENERATOR_PREVIEWGENERATORSTOREFRONTCONTEXTVIEW_H
 
-            #include "../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/logic/communication/log/LogUtil.h>
 

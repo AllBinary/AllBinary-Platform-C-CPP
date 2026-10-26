@@ -20,19 +20,13 @@
 
             #include <vector>
         
-            #include "../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../java/lang/Integer.h"
+            #include "java/lang/Integer.h"
         
 #include <java/util/HashMap.h>
-
-      
-#include <java/util/ListIterator.h>
-
-      
-#include <org/allbinary/util/BasicArrayList.h>
 
       
 #include <org/allbinary/util/BasicArrayListD.h>
@@ -65,7 +59,7 @@
 #include <org/allbinary/data/tree/dom/ModDomHelper.h>
 
       
-#include <org/allbinary/data/tree/dom/document/DomDocumentHelper.h>
+#include <org/allbinary/data/tree/dom/document/XmlDocumentHelper.h>
 
       
 #include <org/allbinary/logic/communication/log/LogUtil.h>
@@ -207,7 +201,7 @@ class InventorySearchUtil
     int32_t index = 0;index < size; index++)
         {
 
-    std::string subStore = subStoreVector.get(index) as string;;
+    std::string subStore = subStoreVector.get(index);;
     
 
     BasicArrayList substoreIdColumn = inventorySearchUtil.getColumnWhereLike(inventoryEntityInterface, subStore, basicItemData.ID);;
@@ -242,7 +236,7 @@ inventoryNode.appendChild(ModDomHelper::createNameValueNodes(viewDocumentInterfa
 inventoryNode.appendChild(ModDomHelper::createNameValueNodes(viewDocumentInterface.getDoc(), SearchData::TOTAL_NUMBER_ITEMS, this->commonPhoneStrings.ZERO));
     
 
-    std::string success = DomDocumentHelper::toString(viewDocumentInterface.getDoc());;
+    std::string success = XmlDocumentHelper::toString(viewDocumentInterface.getDoc());;
     
 
                         if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().PRODUCTSEARCHLOGGING))
@@ -284,10 +278,10 @@ inventoryNode.appendChild(ModDomHelper::createNameValueNodes(viewDocumentInterfa
     int32_t savedPagesInRange = 0;;
     
 
-    HashMap<any, any> columnValueHashMap = searchParams.get();;
+    HashMap<Object*, Object*> columnValueHashMap = searchParams.get();;
     
 
-    std::string keyword = Replace("-", CommonSeps::getInstance().SPACE).all(columnValueHashMap.get(basicItemData.KEYWORDS) as string);;
+    std::string keyword = Replace("-", CommonSeps::getInstance().SPACE).all(columnValueHashMap.get(basicItemData.KEYWORDS));;
     
 
                         if(StringValidationUtil::getInstance().isEmpty(keyword))
@@ -322,13 +316,13 @@ inventoryNode.appendChild(ModDomHelper::createNameValueNodes(viewDocumentInterfa
     int32_t MAXPAGES = 100;;
     
 
-    std::vector<std::string> productListingPages = new Array(MAXPAGES);;
+    std::vector<std::string> productListingPages = std::vector<std::string>(MAXPAGES);;
     
 
-    std::vector<Document> documents = new Array(MAXPAGES);;
+    std::vector<Document> documents = std::vector<Document>(MAXPAGES);;
     
 
-    std::vector<Node> inventoryNodes = new Array(MAXPAGES);;
+    std::vector<Node> inventoryNodes = std::vector<Node>(MAXPAGES);;
     
 keyword= keyword.toUpperCase();
     
@@ -517,9 +511,9 @@ savedPagesInRange++;
                                     
     Document tempDocument = documents[index];;
     
-inventoryNodes[index]!.appendChild(ModDomHelper::createNameValueNodes(tempDocument, SearchData::TOTAL_NUMBER_PAGES, Integer(lastPage +1).toString()));
+inventoryNodes[index].appendChild(ModDomHelper::createNameValueNodes(tempDocument, SearchData::TOTAL_NUMBER_PAGES, Integer(lastPage +1).toString()));
     
-inventoryNodes[index]!.appendChild(ModDomHelper::createNameValueNodes(tempDocument, SearchData::TOTAL_NUMBER_ITEMS, Integer(numberOfResults).toString()));
+inventoryNodes[index].appendChild(ModDomHelper::createNameValueNodes(tempDocument, SearchData::TOTAL_NUMBER_ITEMS, Integer(numberOfResults).toString()));
     
 
 
@@ -545,13 +539,13 @@ stringBuffer.append(searchRequest.getFileBaseName());
 
                                     }
                                 
-inventoryNodes[index]!.appendChild(ModDomHelper::createNameValueNodes(tempDocument, SearchData::PAGE_INFO, std::to_string(pageIndex)stringBuffer.toString()));
+inventoryNodes[index].appendChild(ModDomHelper::createNameValueNodes(tempDocument, SearchData::PAGE_INFO, std::to_string(pageIndex)stringBuffer.toString()));
     
 
                                     }
                                 
                         else {
-                            inventoryNodes[index]!.appendChild(ModDomHelper::createNameValueNodes(tempDocument, SearchData::PAGE_INFO, std::to_string(pageIndex)SearchData::SEARCH));
+                            inventoryNodes[index].appendChild(ModDomHelper::createNameValueNodes(tempDocument, SearchData::PAGE_INFO, std::to_string(pageIndex)SearchData::SEARCH));
     
 
                         }
@@ -559,9 +553,9 @@ inventoryNodes[index]!.appendChild(ModDomHelper::createNameValueNodes(tempDocume
 }
 
 
-    std::string success = DomDocumentHelper::toString(tempDocument);;
+    std::string success = XmlDocumentHelper::toString(tempDocument);;
     
-productListingPages[index]= StoreTransformer(abeClientInformation, TransformInfoHttpSearch(searchRequest) as TransformInfoInterface).translate(success);
+productListingPages[index]= StoreTransformer(abeClientInformation, TransformInfoHttpSearch(searchRequest)).translate(success);
     
 
                                     }

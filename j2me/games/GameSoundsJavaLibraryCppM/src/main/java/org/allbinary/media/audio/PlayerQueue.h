@@ -21,13 +21,10 @@
         #ifndef ORG_ALLBINARY_MEDIA_AUDIO_PLAYERQUEUE_H
         #define ORG_ALLBINARY_MEDIA_AUDIO_PLAYERQUEUE_H
 
-            #include "../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-#include <jsinterop/annotations/JsType.h>
-
-      
 #include <org/allbinary/logic/communication/log/PreLogUtil.h>
 
       
@@ -44,12 +41,6 @@
 
       
 #include <org/allbinary/util/BasicArrayListD.h>
-
-      
-#include <jsinterop/annotations/JsMethod.h>
-
-      
-#include <jsinterop/annotations/JsConstructor.h>
 
       
 

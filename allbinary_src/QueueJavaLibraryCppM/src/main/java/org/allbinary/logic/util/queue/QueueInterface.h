@@ -21,7 +21,7 @@
         #ifndef ORG_ALLBINARY_LOGIC_UTIL_QUEUE_QUEUEINTERFACE_H
         #define ORG_ALLBINARY_LOGIC_UTIL_QUEUE_QUEUEINTERFACE_H
 
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 
 

@@ -18,9 +18,9 @@
 
 
 
-            #include "../../java/lang/Class.h"
+            #include "java/lang/Class.h"
         
-            #include "../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/lang/reflect/Method.h>
 
@@ -95,7 +95,7 @@ this->storeName= storeName;
     Object* anyType = QuoteHelperFactory().getInstance(this->getPropertiesHashMap(), pageContext);;
     
 
-    Function helperClass = anyType->constructor;;
+    Class* helperClass = anyType->getClass();;
     
 
     Method method = helperClass.getMethod("email", 
@@ -103,7 +103,7 @@ this->storeName= storeName;
     
 
     std::string result = method.invoke(anyType, 
-                            nullptr) as string;;
+                            nullptr);;
     
 
 

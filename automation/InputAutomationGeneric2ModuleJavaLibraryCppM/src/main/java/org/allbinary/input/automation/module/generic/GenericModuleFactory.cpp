@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/input/automation/module/AbstractInputAutomationFactory.h>
 
@@ -69,8 +69,9 @@ class GenericModuleFactory: public AbstractInputAutomationFactory {
 
     private: static std::string NAME = "Generic" +InputAutomationModuleData::MODULE_NAME_END;
 
-public: GenericModuleFactory(){
-            super(NAME, GenericModuleConfigurationJPanel());
+public: GenericModuleFactory() : AbstractInputAutomationFactory(NAME, GenericModuleConfigurationJPanel()){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -83,16 +84,16 @@ public: GenericModuleFactory(){
 
     public: RunnableInterface getInstance(){
 
-    GenericProfile genericProfile = (getConfigurationJPanel as GenericModuleConfigurationJPanel).getSelectedGenericProfile();;
+    GenericProfile genericProfile = (getConfigurationJPanel).getSelectedGenericProfile();;
     
 
-    InputAutomationActionInterface inputAutomationActionInterface = GenericInputAutomationAction() as InputAutomationActionInterface;;
+    InputAutomationActionInterface inputAutomationActionInterface = GenericInputAutomationAction();;
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return GenericInputAutomationWorker(inputAutomationActionInterface, genericProfile, NoMotionRectangleConstraints(), NoImageComparatorConstraints()) as RunnableInterface;
+                        return GenericInputAutomationWorker(inputAutomationActionInterface, genericProfile, NoMotionRectangleConstraints(), NoImageComparatorConstraints());
     
 }
 

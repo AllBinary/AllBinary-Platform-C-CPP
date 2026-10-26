@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
 #include <org/allbinary/logic/string/StringUtil.h>
 
@@ -58,6 +58,8 @@ class OpenGLCapabilities
 }
 
 
+    public: const bool CUSTOM_GL_SURFACE_VIEW = true;
+
     public: const std::string VERSION_1_0 = "1.0";
 
     public: const std::string VERSION_1_1 = "1.1";
@@ -81,6 +83,16 @@ class OpenGLCapabilities
     public: int32_t maxTextureSize = 64;
 
 private: OpenGLCapabilities(){
+}
+
+
+    public: bool isInitialized(){
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return true;
+    
 }
 
 

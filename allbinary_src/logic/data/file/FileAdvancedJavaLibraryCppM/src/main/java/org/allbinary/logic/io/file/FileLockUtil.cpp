@@ -18,9 +18,9 @@
 
 
 
-            #include "../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/nio/channels/FileChannel.h>
 
@@ -105,7 +105,7 @@ private: FileLockUtil(){
     int32_t index = 0;index < size; index++)
         {
 
-    AbFile file = vector.get(index) as AbFile;;
+    AbFile file = vector.get(index);;
     
 
     FileLock fileLock = this->getLock(file);;

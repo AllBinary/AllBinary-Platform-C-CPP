@@ -21,15 +21,9 @@
         #ifndef ORG_ALLBINARY_GAME_INPUT_EVENT_DOWNGAMEKEYEVENTLISTENERINTERFACE_H
         #define ORG_ALLBINARY_GAME_INPUT_EVENT_DOWNGAMEKEYEVENTLISTENERINTERFACE_H
 
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-#include <jsinterop/annotations/JsType.h>
-
-      
 #include <org/allbinary/logic/util/event/EventListenerInterface.h>
-
-      
-#include <jsinterop/annotations/JsMethod.h>
 
       
 

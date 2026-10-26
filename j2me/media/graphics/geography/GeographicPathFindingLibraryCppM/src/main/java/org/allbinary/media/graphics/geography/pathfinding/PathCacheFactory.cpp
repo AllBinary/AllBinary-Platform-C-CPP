@@ -18,16 +18,16 @@
 
 
 
-            #include "../../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../../../../java/lang/Integer.h"
+            #include "java/lang/Integer.h"
         
-#include <java/util/Hashtable.h>
+#include <org/allbinary/logic/StdUtil.h>
 
       
-#include <org/allbinary/logic/StdUtil.h>
+#include <org/allbinary/util/ABHashtable.h>
 
       
 #include <org/allbinary/util/BasicArrayList.h>
@@ -73,7 +73,7 @@ class PathCacheFactory
 
     private: const BasicArrayListUtil basicArrayListUtil = BasicArrayListUtil::getInstance();
 
-    private: Hashtable<any, any> hashtable = StdUtil::getInstance().createHashtable();
+    private: const ABHashtable<Object*, Object*> hashtable = StdUtil::getInstance().createHashtable();
 
 private: PathCacheFactory(){
 }
@@ -84,7 +84,7 @@ private: PathCacheFactory(){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->hashtable.length;;
+                        return this->hashtable.size();;
     
 }
 
@@ -107,7 +107,7 @@ this->hashtable.remove(pathId);
 this->hashtable.clear();
     
 
-                        if(this->hashtable.length > 0)
+                        if(this->hashtable.size() > 0)
                         
                                     {
                                     
@@ -142,7 +142,7 @@ this->hashtable.clear();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return listCanBeNull as BasicArrayList;
+                        return *dynamic_cast<BasicArrayList*>(listCanBeNull);
     
 }
 

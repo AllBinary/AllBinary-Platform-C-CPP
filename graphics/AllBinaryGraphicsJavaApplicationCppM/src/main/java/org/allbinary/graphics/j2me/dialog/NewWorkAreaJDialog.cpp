@@ -20,9 +20,9 @@
 
             #include <vector>
         
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../../../java/lang/Integer.h"
+            #include "java/lang/Integer.h"
         
 #include <java/awt.h>
 
@@ -102,8 +102,9 @@ class NewWorkAreaJDialog: public javax::swing::JDialog {
 
     private: JTextField nameJTextField;
 
-public: NewWorkAreaJDialog(MyFrame parent, bool modal, Dimension dimension, std::string newName){
-            super(parent as java::awt::Frame, modal);
+public: NewWorkAreaJDialog(MyFrame parent, bool modal, Dimension dimension, std::string newName) : javax::swing::JDialog(parent, modal){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -206,7 +207,7 @@ this->show();
     
 workAreaJPanel.setLayout(GridLayout(1, 1));
     
-this->parent.add(workAreaJPanel as WorkAreaJPanelInterface);
+this->parent.add(workAreaJPanel);
     
 this->dispose();
     

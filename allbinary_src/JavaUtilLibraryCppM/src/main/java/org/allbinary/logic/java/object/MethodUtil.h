@@ -23,9 +23,9 @@
 
             #include <vector>
         
-            #include "../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../java/lang/Class.h"
+            #include "java/lang/Class.h"
         
 #include <java/lang/reflect/Method.h>
 
@@ -57,7 +57,7 @@ class MethodUtil
             : public Object
          {
 
-    public: static std::string viewAll(Function myClass, std::string lineBreak);
+    public: static std::string viewAll(Class* myClass, std::string lineBreak);
 
 private: MethodUtil();
 

@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <javax/microedition/khronos/opengles/GL10.h>
 
@@ -82,8 +82,9 @@ class HealthBarThreedAnimation: public HealthBarAnimation {
 
     private: const BasicColorFactory basicColorFactory = BasicColorFactory::getInstance();
 
-public: HealthBarThreedAnimation(AllBinaryLayer layerInterface, int32_t location){
-            super(layerInterface, location);
+public: HealthBarThreedAnimation(AllBinaryLayer layerInterface, int32_t location) : HealthBarAnimation(layerInterface, location){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -198,7 +199,7 @@ this->updateSize();
 
     public: void paintThreedXYZ(Graphics graphics, int32_t x, int32_t y, int32_t z){
 
-    OpenGLESGraphics openGLESGraphics = graphics as OpenGLESGraphics;;
+    OpenGLESGraphics openGLESGraphics = graphics;;
     
 
     GL10 gl = openGLESGraphics.getGl10();;

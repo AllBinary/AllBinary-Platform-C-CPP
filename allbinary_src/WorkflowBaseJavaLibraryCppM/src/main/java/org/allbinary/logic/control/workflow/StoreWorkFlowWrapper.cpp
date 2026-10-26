@@ -18,9 +18,9 @@
 
 
 
-            #include "../../../../../java/lang/Class.h"
+            #include "java/lang/Class.h"
         
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/lang/reflect/Method.h>
 
@@ -55,8 +55,9 @@ class StoreWorkFlowWrapper: public WorkFlowWrapper {
 
     protected: const LogUtil logUtil = LogUtil::getInstance();
 
-public: StoreWorkFlowWrapper(Object* anyType){
-            super(anyType);
+public: StoreWorkFlowWrapper(Object* anyType) : WorkFlowWrapper(anyType){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -70,7 +71,7 @@ public: StoreWorkFlowWrapper(Object* anyType){
 
         try {
             
-    Function helperClass = this->getWorkFlowObject().constructor;;
+    Class* helperClass = this->getWorkFlowObject().getClass();;
     
 
     Method method = helperClass.getMethod("getStoreName", 
@@ -78,7 +79,7 @@ public: StoreWorkFlowWrapper(Object* anyType){
     
 
     std::string result = method.invoke(this->getWorkFlowObject(), 
-                            nullptr) as string;;
+                            nullptr);;
     
 
 

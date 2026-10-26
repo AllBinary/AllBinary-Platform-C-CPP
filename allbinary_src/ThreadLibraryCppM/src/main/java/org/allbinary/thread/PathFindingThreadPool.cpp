@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../java/lang/Runnable.h"
+            #include "java/lang/Runnable.h"
         
 
 
@@ -55,8 +55,9 @@ class PathFindingThreadPool: public ThreadPool {
 }
 
 
-public: PathFindingThreadPool(std::string poolName, int32_t numThreads, int32_t priority){
-            super(poolName, numThreads, ThreadPool::NORMAL_PRIORITY);
+public: PathFindingThreadPool(std::string poolName, int32_t numThreads, int32_t priority) : ThreadPool(poolName, numThreads, ThreadPool::NORMAL_PRIORITY){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.

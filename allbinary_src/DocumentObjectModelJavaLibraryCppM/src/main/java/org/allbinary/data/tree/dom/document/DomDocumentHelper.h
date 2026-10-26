@@ -21,13 +21,12 @@
         #ifndef ORG_ALLBINARY_DATA_TREE_DOM_DOCUMENT_DOMDOCUMENTHELPER_H
         #define ORG_ALLBINARY_DATA_TREE_DOM_DOCUMENT_DOMDOCUMENTHELPER_H
 
-            #include "../../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-#include <java/io/ByteArrayOutputStream.h>
-
-      
+            #include "java/lang/System.h"
+        
 #include <java/io/InputStream.h>
 
       
@@ -38,18 +37,6 @@
 
       
 #include <javax/xml/parsers/DocumentBuilderFactory.h>
-
-      
-#include <javax/xml/transform/Transformer.h>
-
-      
-#include <javax/xml/transform/TransformerFactory.h>
-
-      
-#include <javax/xml/transform/dom/DOMSource.h>
-
-      
-#include <javax/xml/transform/stream/StreamResult.h>
 
       
 #include <org/w3c/dom/Document.h>
@@ -78,6 +65,8 @@ class DomDocumentHelper
             : public Object
          {
 
+    public: static void init();
+
     public: static Document create();
 
                 //@Throws(Exception.constructor)
@@ -87,10 +76,6 @@ class DomDocumentHelper
                 //@Throws(Exception.constructor)
             
     public: static Document create(std::string xmlString);
-
-                //@Throws(Exception.constructor)
-            
-    public: static std::string toString(Document document);
 
 private: DomDocumentHelper();
 

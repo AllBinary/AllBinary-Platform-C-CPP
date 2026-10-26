@@ -21,7 +21,7 @@
         #ifndef ORG_ALLBINARY_LOGIC_COMMUNICATION_JAVA_VM_STATS_JVMSTATISTICSMAPPING_H
         #define ORG_ALLBINARY_LOGIC_COMMUNICATION_JAVA_VM_STATS_JVMSTATISTICSMAPPING_H
 
-            #include "../../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
 
@@ -63,7 +63,7 @@ class JvmStatisticsMapping: public JvmStatistics, public TableMappingInterface {
 
 public: JvmStatisticsMapping();
 
-    public: HashMap<any, any> toHashMap();
+    public: HashMap<Object*, Object*> toHashMap();
 
                 //@Throws(Exception.constructor)
             

@@ -20,11 +20,11 @@
 
             #include <vector>
         
-            #include "../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../../../java/lang/System.h"
+            #include "java/lang/System.h"
         
 #include <java/io/IOException.h>
 
@@ -82,7 +82,7 @@ this->jarURL= jarURL;
 
     public: void show(){
 
-    std::vector<int8_t> cache = new Array(1024);;
+    std::vector<int8_t> cache = std::vector<int8_t>(1024);;
     
 
         try {
@@ -124,9 +124,9 @@ offset += i;
                         
                                     {
                                     
-    std::vector<int8_t> newcache = new Array(cache.size() +1024);;
+    std::vector<int8_t> newcache = std::vector<int8_t>(cache.size() +1024);;
     
-std::copy(cache.begin() + 0, cache.begin() + 0 + length, newcache.begin() + 0);
+System.arraycopy(cache, 0, newcache, 0, cache.size());
     
 cache= newcache;
     
@@ -136,9 +136,9 @@ cache= newcache;
 }
 
 
-    std::vector<int8_t> tmp = new Array(offset);;
+    std::vector<int8_t> tmp = std::vector<int8_t>(offset);;
     
-std::copy(cache.begin() + 0, cache.begin() + 0 + offset, tmp.begin() + 0);
+System.arraycopy(cache, 0, tmp, 0, offset);
     
 console.log(entry.getName());
     

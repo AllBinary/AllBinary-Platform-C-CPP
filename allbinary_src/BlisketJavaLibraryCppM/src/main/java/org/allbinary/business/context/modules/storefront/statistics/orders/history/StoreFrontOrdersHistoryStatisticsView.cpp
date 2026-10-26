@@ -18,9 +18,9 @@
 
 
 
-            #include "../../../../../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
 
@@ -74,7 +74,7 @@ this->storeFrontOrdersHistoryStatisticsInterface= storeFrontOrdersHistoryStatist
             
     public: Node toXmlNode(Document document){
 
-    HashMap<any, any> hashMap = this->storeFrontOrdersHistoryStatisticsInterface.toHashMap();;
+    HashMap<Object*, Object*> hashMap = this->storeFrontOrdersHistoryStatisticsInterface.toHashMap();;
     
 
     Node node = ModDomHelper::createNameValueNodes(document, StoreFrontOrdersHistoryStatisticsData::getInstance().NAME, hashMap);;

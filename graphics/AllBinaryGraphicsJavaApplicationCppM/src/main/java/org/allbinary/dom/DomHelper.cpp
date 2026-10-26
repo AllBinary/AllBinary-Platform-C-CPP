@@ -18,9 +18,9 @@
 
 
 
-            #include "../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/io/ByteArrayOutputStream.h>
 
@@ -424,7 +424,7 @@ this->logUtil.putF("NodeName: " +node.getNodeName(), this, "searchNodeList");
     int32_t index = 0;index < numberOfNodes; index++)
         {
 
-    Node node = nodeList.get(index) as Node;;
+    Node node = nodeList.get(index);;
     
 this->logUtil.putF("NodeName: " +node.getNodeName(), this, "searchNodeList");
     

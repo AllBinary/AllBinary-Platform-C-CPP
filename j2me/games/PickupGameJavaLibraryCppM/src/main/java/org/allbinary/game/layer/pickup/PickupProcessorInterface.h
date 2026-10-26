@@ -21,15 +21,9 @@
         #ifndef ORG_ALLBINARY_GAME_LAYER_PICKUP_PICKUPPROCESSORINTERFACE_H
         #define ORG_ALLBINARY_GAME_LAYER_PICKUP_PICKUPPROCESSORINTERFACE_H
 
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-#include <jsinterop/annotations/JsType.h>
-
-      
 #include <org/allbinary/layer/AllBinaryLayer.h>
-
-      
-#include <jsinterop/annotations/JsMethod.h>
 
       
 

@@ -18,9 +18,9 @@
 
 
 
-            #include "../../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/data/tree/dom/DomNodeHelper.h>
 
@@ -29,6 +29,9 @@
 
       
 #include <org/allbinary/logic/communication/log/LogUtil.h>
+
+      
+#include <org/allbinary/string/CommonLabels.h>
 
       
 #include <org/w3c/dom/Attr.h>
@@ -99,7 +102,7 @@ private: TransformInfoPropertiesFactory(){
     NamedNodeMap attributes = node.getAttributes();;
     
 
-    Attr attrNode = attributes.getNamedItem(transformInfoData.NAME) as Attr;;
+    Attr attrNode = attributes.getNamedItem(transformInfoData.NAME);;
     
 
     std::string name = attrNode.getValue();;
@@ -108,7 +111,7 @@ private: TransformInfoPropertiesFactory(){
                         if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEW))
                         
                                     {
-                                    this->logUtil.putF("Next View Name: " +name, this, "toTransformInfoPropertiesHashMap()");
+                                    this->logUtil.putF(CommonLabels::getInstance().NEXT +" View Name: " +name, this, "toTransformInfoPropertiesHashMap()");
     
 
                                     }

@@ -21,7 +21,7 @@
         #ifndef ORG_ALLBINARY_GAME_AG_LAYER_PICKUP_POINTS_POINTSRESOURCES_H
         #define ORG_ALLBINARY_GAME_AG_LAYER_PICKUP_POINTS_POINTSRESOURCES_H
 
-            #include "../../../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
 
 

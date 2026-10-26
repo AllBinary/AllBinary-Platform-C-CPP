@@ -7,7 +7,7 @@
         #ifndef JAVA_LANG_ANNOTATION_ANNOTATION_H
         #define JAVA_LANG_ANNOTATION_ANNOTATION_H
 
-            #include "../../../java/lang/Class.h"
+            #include "java/lang/Class.h"
         
 
 
@@ -30,7 +30,7 @@
         
 class Annotation {
 
-    Function annotationType();
+    Class* annotationType();
 
 };
 

@@ -23,7 +23,7 @@
 
             #include <hilog/log.h>
         
-            #include "../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/android/AndroidInfoFactory.h>
 

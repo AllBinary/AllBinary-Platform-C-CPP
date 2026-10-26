@@ -21,9 +21,9 @@
         #ifndef ORG_ALLBINARY_BUSINESS_CATEGORY_PROPERTIES_ROOT_STORE_ROOTSTORECATEGORYPROPERTIESFACTORY_H
         #define ORG_ALLBINARY_BUSINESS_CATEGORY_PROPERTIES_ROOT_STORE_ROOTSTORECATEGORYPROPERTIESFACTORY_H
 
-            #include "../../../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
 
@@ -83,7 +83,7 @@ public: RootStoreCategoryPropertiesFactory(TransformInfoInterface transformInfoI
 
 public: RootStoreCategoryPropertiesFactory(TransformInfoInterface transformInfoInterface, Node node);
 
-public: RootStoreCategoryPropertiesFactory(TransformInfoInterface transformInfoInterface, HashMap<any, any> categoryPropertiesHashMap);
+public: RootStoreCategoryPropertiesFactory(TransformInfoInterface transformInfoInterface, HashMap<Object*, Object*> categoryPropertiesHashMap);
 
     public: CategoryPropertiesInterface getInstance();
 

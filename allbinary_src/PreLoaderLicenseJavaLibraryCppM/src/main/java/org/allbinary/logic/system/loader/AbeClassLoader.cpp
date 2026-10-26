@@ -20,13 +20,13 @@
 
             #include <vector>
         
-            #include "../../../../../java/lang/Class.h"
+            #include "java/lang/Class.h"
         
-            #include "../../../../../java/lang/ClassLoader.h"
+            #include "java/lang/ClassLoader.h"
         
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../../../java/lang/ClassNotFoundException.h"
+            #include "java/lang/ClassNotFoundException.h"
         
 #include <java/io/FileInputStream.h>
 
@@ -97,8 +97,9 @@ class AbeClassLoader: public ClassLoader {
 
     private: std::string key;
 
-public: AbeClassLoader(ClassLoader parent, std::string key){
-            super(parent);
+public: AbeClassLoader(ClassLoader parent, std::string key) : ClassLoader(parent){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -110,12 +111,12 @@ AbeClassLoader::PATH= org.allbinary.globals.URLGLOBALS.getWebappPath() +"WEB-INF
 }
 
 
-    protected: Function findLoadedClass1(std::string name){
+    protected: Class* findLoadedClass1(std::string name){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return AbeClassLoader::classes.get(name) as Class<any>;
+                        return AbeClassLoader::classes.get(name);
     
 }
 
@@ -123,7 +124,7 @@ AbeClassLoader::PATH= org.allbinary.globals.URLGLOBALS.getWebappPath() +"WEB-INF
                 //@Throws(ClassNotFoundException.constructor)
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: Function loadClass(std::string name){
+    public: Class* loadClass(std::string name){
 
 
 
@@ -136,7 +137,7 @@ AbeClassLoader::PATH= org.allbinary.globals.URLGLOBALS.getWebappPath() +"WEB-INF
                 //@Throws(ClassNotFoundException.constructor)
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: Function loadClass(std::string name, bool resolve){
+    public: Class* loadClass(std::string name, bool resolve){
 
     std::string loadedWith = "findLoadedClass1";;
     
@@ -146,7 +147,7 @@ AbeClassLoader::PATH= org.allbinary.globals.URLGLOBALS.getWebappPath() +"WEB-INF
 
         try {
             
-    Function myClass = this->findLoadedClass1(name);;
+    Class* myClass = this->findLoadedClass1(name);;
     
 
                         if(myClass == 
@@ -159,7 +160,7 @@ AbeClassLoader::PATH= org.allbinary.globals.URLGLOBALS.getWebappPath() +"WEB-INF
             loadedWith= "super.loadClass";
     
 
-    Function normalClass = super.loadClass(name, resolve);;
+    Class* normalClass = super.loadClass(name, resolve);;
     
 
                         if(normalClass != 
@@ -363,14 +364,14 @@ StreamUtil::getInstance().close(in);
                 //@Throws(ClassNotFoundException.constructor)
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: Function oldLoadClass(std::string name, bool resolve){
+    public: Class* oldLoadClass(std::string name, bool resolve){
 
     std::string loadedWith = "findLoadedClass1";;
     
 
         try {
             
-    Function myClass = this->findLoadedClass1(name);;
+    Class* myClass = this->findLoadedClass1(name);;
     
 
                         if(myClass == 
@@ -383,7 +384,7 @@ StreamUtil::getInstance().close(in);
             loadedWith= "super.loadClass";
     
 
-    Function normalClass = super.loadClass(name, resolve);;
+    Class* normalClass = super.loadClass(name, resolve);;
     
 
                         if(normalClass != 

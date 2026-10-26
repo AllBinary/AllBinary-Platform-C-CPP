@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
 
@@ -191,7 +191,7 @@ class PaymentGatewayInterface: public TableMappingInterface {
 
                 //@Throws(Exception.constructor)
             
-    HashMap<any, any> toHashMap(bool isEncrypted)
+    HashMap<Object*, Object*> toHashMap(bool isEncrypted)
 
     BasicArrayList toVector(bool isEncrypted)
 

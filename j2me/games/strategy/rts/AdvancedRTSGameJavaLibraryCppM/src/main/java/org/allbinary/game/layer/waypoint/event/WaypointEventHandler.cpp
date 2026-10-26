@@ -17,7 +17,7 @@
 
 
 
-            #include "../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/game/layer/RTSLayerEvent.h>
 
@@ -61,9 +61,9 @@ public: WaypointEventHandler(){
             
     protected: void process(AllBinaryEventObject eventObject, EventListenerInterface eventListenerInterface){
 
-    WaypointEventListenerInterface waypointEventListenerInterface = (eventListenerInterface as WaypointEventListenerInterface);;
+    WaypointEventListenerInterface waypointEventListenerInterface = (eventListenerInterface);;
     
-waypointEventListenerInterface.onWaypointEvent(eventObject as RTSLayerEvent);
+waypointEventListenerInterface.onWaypointEvent(eventObject);
     
 }
 

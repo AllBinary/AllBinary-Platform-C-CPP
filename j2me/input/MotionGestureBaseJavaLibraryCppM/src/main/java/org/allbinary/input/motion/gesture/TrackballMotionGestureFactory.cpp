@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
 #include <org/allbinary/game/input/InputFactory.h>
 
@@ -66,7 +66,7 @@ class TrackballMotionGestureFactory
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return TrackballMotionGestureFactory::instance() as TrackballMotionGestureFactory;
+                        return TrackballMotionGestureFactory::instance();
     
 }
 

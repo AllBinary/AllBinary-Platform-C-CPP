@@ -21,7 +21,7 @@
         #ifndef ADMIN_TAGHELPERS_USERHELPER_H
         #define ADMIN_TAGHELPERS_USERHELPER_H
 
-            #include "../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
 
@@ -104,7 +104,7 @@ class UserHelper: public Table {
 
     protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: HashMap<any, any> hashMap;
+    private: HashMap<Object*, Object*> hashMap;
 
     private: PageContext pageContext;
 
@@ -114,7 +114,7 @@ class UserHelper: public Table {
 
     private: Portion portion;
 
-public: UserHelper(HashMap<any, any> hashMap, PageContext pageContext);
+public: UserHelper(HashMap<Object*, Object*> hashMap, PageContext pageContext);
 
     public: std::string delete_();
 

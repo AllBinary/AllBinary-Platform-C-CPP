@@ -18,15 +18,15 @@
 
 
 
-            #include "../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../java/lang/ClassLoader.h"
+            #include "java/lang/ClassLoader.h"
         
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../../java/lang/Integer.h"
+            #include "java/lang/Integer.h"
         
-            #include "../../../../java/lang/Thread.h"
+            #include "java/lang/Thread.h"
         
 #include <java/io/InputStream.h>
 
@@ -96,7 +96,7 @@ this->logUtil.putF(CommonStrings::getInstance().NOT_IMPLEMENTED, this, "setLoadi
 
 
     public: void setClassLoader(ClassLoader classLoader){
-this->logUtil.putF(StringMaker().append("Resource Loader: ").append(classLoader->constructor.name.toString()!).toString(), this, "setClassLoader");
+this->logUtil.putF(StringMaker().append("Resource Loader: ").append(classLoader->constructor.name.toString()).toString(), this, "setClassLoader");
     
 ResourceUtil::classLoader= classLoader;
     
@@ -174,7 +174,7 @@ ResourceUtil::classLoader= classLoader;
                                     }
                                 
 
-    ClassLoader classLoader = ResourceUtil::classLoader as ClassLoader;;
+    ClassLoader classLoader = ResourceUtil::classLoader;;
     
 inputStream= classLoader->getResourceAsStream(resourcePath);
     

@@ -7,7 +7,7 @@
         #ifndef ORG_ALLBINARY_GAME_INPUT_PLATFORMKEYFACTORY_H
         #define ORG_ALLBINARY_GAME_INPUT_PLATFORMKEYFACTORY_H
 
-            #include "../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
 #include <org/allbinary/logic/NullUtil.h>
 

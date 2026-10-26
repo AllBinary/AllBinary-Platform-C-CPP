@@ -23,13 +23,8 @@
 
             #include <vector>
         
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../../java/lang/RuntimeException.h"
-        
-#include <jsinterop/annotations/JsType.h>
-
-      
 #include <javax/microedition/lcdui/Canvas.h>
 
       
@@ -54,6 +49,9 @@
 #include <org/allbinary/logic/NullUtil.h>
 
       
+#include <org/allbinary/logic/communication/log/LogUtil.h>
+
+      
 #include <org/allbinary/logic/string/StringMaker.h>
 
       
@@ -69,13 +67,7 @@
 #include <org/allbinary/string/CommonSeps.h>
 
       
-#include <jsinterop/annotations/JsMethod.h>
-
-      
-#include <jsinterop/annotations/JsConstructor.h>
-
-      
-#include <jsinterop/annotations/JsProperty.h>
+#include <org/allbinary/string/CommonStrings.h>
 
       
 
@@ -112,7 +104,7 @@
 
 class ScrollSelectionForm: public PaintableForm {
 
-    private: static ScrollSelectionForm createForm(std::string title, std::vector<ABCustomItem> items, ItemPaintableFactory formPaintableFactory, int32_t border, BasicColor backgroundBasicColor, BasicColor foregroundBasicColor);
+    private: static PaintableForm createForm(std::string title, std::vector<ABCustomItem> items, ItemPaintableFactory formPaintableFactory, int32_t border, BasicColor backgroundBasicColor, BasicColor foregroundBasicColor);
 
     private: static Object* NULL_SCROLL_SELECTION_FORM = NullUtil::getInstance().NULL_OBJECT;
 

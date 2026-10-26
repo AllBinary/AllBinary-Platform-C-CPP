@@ -18,15 +18,6 @@
 
 
 
-#include <jsinterop/annotations/JsType.h>
-
-      
-#include <jsinterop/annotations/JsMethod.h>
-
-      
-#include <jsinterop/annotations/JsConstructor.h>
-
-      
 #include <org/allbinary/layer/AllBinaryLayer.h>
 
       
@@ -60,8 +51,9 @@ class TrackingEvent: public AllBinaryEventObject {
 
     private: AllBinaryLayer layerInterface = AllBinaryLayer::NULL_ALLBINARY_LAYER;
 
-public: TrackingEvent(Object* allBinaryLayerInterface){
-            super(allBinaryLayerInterface);
+public: TrackingEvent(Object* allBinaryLayerInterface) : AllBinaryEventObject(allBinaryLayerInterface){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -70,7 +62,7 @@ public: TrackingEvent(Object* allBinaryLayerInterface){
                         if(allBinaryLayerInterface != TrackingEventHandler::getInstance())
                         
                                     {
-                                    this->setLayerInterface(allBinaryLayerInterface as AllBinaryLayer);
+                                    this->setLayerInterface(*dynamic_cast<AllBinaryLayer*>(allBinaryLayerInterface));
     
 
                                     }

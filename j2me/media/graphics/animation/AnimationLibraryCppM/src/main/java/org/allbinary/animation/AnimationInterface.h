@@ -21,18 +21,12 @@
         #ifndef ORG_ALLBINARY_ANIMATION_ANIMATIONINTERFACE_H
         #define ORG_ALLBINARY_ANIMATION_ANIMATIONINTERFACE_H
 
-            #include "../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-#include <jsinterop/annotations/JsType.h>
-
-      
 #include <javax/microedition/lcdui/Graphics.h>
 
       
 #include <org/allbinary/graphics/paint/LocationPaintableInterface.h>
-
-      
-#include <jsinterop/annotations/JsMethod.h>
 
       
 

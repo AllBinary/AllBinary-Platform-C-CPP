@@ -20,9 +20,9 @@
 
             #include <vector>
         
-            #include "../../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <bundle/input/automation/module/InputAutomationModuleService.h>
 
@@ -84,7 +84,7 @@ public: InputAutomationModuleOSGIServiceVisitor(){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->visit(anyType as OSGIServiceInterface);;
+                        return this->visit(*dynamic_cast<OSGIServiceInterface*>(anyType));;
     
 }
 
@@ -93,7 +93,7 @@ public: InputAutomationModuleOSGIServiceVisitor(){
 
         try {
             
-    InputAutomationModuleService inputAutomationModuleService = osgiServiceInterface as InputAutomationModuleService;;
+    InputAutomationModuleService inputAutomationModuleService = osgiServiceInterface;;
     
 
     std::vector<InputAutomationModuleFactoryInterface> inputAutomationModuleInterfaceArray = inputAutomationModuleService.getInputAutomationModuleInterfaceArray();;
@@ -105,7 +105,7 @@ public: InputAutomationModuleOSGIServiceVisitor(){
                         for (
     int32_t index = 0;index < inputAutomationModuleInterfaceArray.size(); index++)
         {
-InputAutomationJFrame::getInstance().onAdd(InputAutomationConfigurationUtil::getChangeEvent(inputAutomationModuleInterfaceArray[index]!));
+InputAutomationJFrame::getInstance().onAdd(InputAutomationConfigurationUtil::getChangeEvent(inputAutomationModuleInterfaceArray[index]));
     
 }
 

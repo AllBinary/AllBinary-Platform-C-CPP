@@ -20,7 +20,7 @@
 
             #include <vector>
         
-            #include "../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
 #include <org/allbinary/logic/string/StringMaker.h>
 
@@ -59,7 +59,7 @@ class IntArrayUtil
                         for (
     int32_t index = 0;index < array.size(); index++)
         {
-stringBuffer.appendint(array[index]!);
+stringBuffer.appendint(array[index]);
     
 
                         if(index < array.size())
@@ -99,12 +99,12 @@ stringBuffer.append("{");
 
 
                         for (
-    int32_t index2 = 0;index2 < array[index]!.size(); index2++)
+    int32_t index2 = 0;index2 < array[index].size(); index2++)
         {
-stringBuffer.appendint(array[index]![index2]!);
+stringBuffer.appendint(array[index][index2]);
     
 
-                        if(index2 < array[index]!.size() -1)
+                        if(index2 < array[index].size() -1)
                         
                                     {
                                     stringBuffer.append(", ");
@@ -154,7 +154,7 @@ stringBuffer.append("{");
 
 
                         for (
-    int32_t index2 = 0;index2 < array[index]!.size(); index2++)
+    int32_t index2 = 0;index2 < array[index].size(); index2++)
         {
 stringBuffer.append("{");
     
@@ -163,12 +163,12 @@ stringBuffer.append("{");
 
 
                         for (
-    int32_t index3 = 0;index3 < array[index]![index2]!.length; index3++)
+    int32_t index3 = 0;index3 < array[index][index2].length; index3++)
         {
-stringBuffer.appendint(array[index]![index2]![index3]!);
+stringBuffer.appendint(array[index][index2][index3]);
     
 
-                        if(index3 < array[index]![index2]!.length -1)
+                        if(index3 < array[index][index2].length -1)
                         
                                     {
                                     stringBuffer.append(", ");
@@ -181,7 +181,7 @@ stringBuffer.appendint(array[index]![index2]![index3]!);
 stringBuffer.append("}");
     
 
-                        if(index2 < array[index]!.size() -1)
+                        if(index2 < array[index].size() -1)
                         
                                     {
                                     stringBuffer.append(", ");

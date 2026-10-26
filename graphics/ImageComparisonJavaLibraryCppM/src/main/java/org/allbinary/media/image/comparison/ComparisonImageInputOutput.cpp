@@ -20,11 +20,11 @@
 
             #include <vector>
         
-            #include "../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../../../java/lang/Long.h"
+            #include "java/lang/Long.h"
         
 #include <java/awt/image/BufferedImage.h>
 
@@ -105,7 +105,7 @@ public: ComparisonImageInputOutput(){
                         
                                     {
                                     
-    ImageComparisonResultFrameCacheable imageComparisonResultFrameCacheable = (getInstance as AutomaticCacheInterface).get(frame) as ImageComparisonResultFrameCacheable;;
+    ImageComparisonResultFrameCacheable imageComparisonResultFrameCacheable = (getInstance).get(frame);;
     
 
                         if(imageComparisonResultFrameCacheable != 
@@ -186,18 +186,18 @@ this->logUtil.putF("Comparison Image File Path 1: " +filePath1, this, commonStri
 this->logUtil.putF("Comparison Image File Path 2: " +filePath2, this, commonStrings.SAVE);
     
 
-    std::vector<BufferedImage> bufferedImageArray = new Array(2);;
+    std::vector<BufferedImage> bufferedImageArray = std::vector<BufferedImage>(2);;
     
-bufferedImageArray[0]= bufferedImageCacheables[0]!.getBufferedImage();
+bufferedImageArray[0]= bufferedImageCacheables[0].getBufferedImage();
     
-bufferedImageArray[1]= bufferedImageCacheables[1]!.getBufferedImage();
+bufferedImageArray[1]= bufferedImageCacheables[1].getBufferedImage();
     
 
     ImagePersistanceUtil imagePersistanceUtil = ImagePersistanceUtil::getInstance();;
     
-imagePersistanceUtil.saveWithImageIO(filePath1, bufferedImageArray[0]!);
+imagePersistanceUtil.saveWithImageIO(filePath1, bufferedImageArray[0]);
     
-imagePersistanceUtil.saveWithImageIO(filePath2, bufferedImageArray[1]!);
+imagePersistanceUtil.saveWithImageIO(filePath2, bufferedImageArray[1]);
     
 }
 

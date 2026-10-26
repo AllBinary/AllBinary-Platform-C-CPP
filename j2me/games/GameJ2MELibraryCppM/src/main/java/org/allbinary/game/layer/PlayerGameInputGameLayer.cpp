@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <javax/microedition/lcdui/Graphics.h>
 
@@ -74,8 +74,9 @@ class PlayerGameInputGameLayer: public AllBinaryGameLayer, public PlayerGameInpu
 
     private: PlayerGameInput playerGameInput;
 
-public: PlayerGameInputGameLayer(int32_t playerInputId){
-            super(StringUtil::getInstance().EMPTY_STRING, Rectangle(PointFactory::getInstance().ZERO_ZERO, 0, 0), StaticViewPosition(0, 0, 0));
+public: PlayerGameInputGameLayer(int32_t playerInputId) : AllBinaryGameLayer(StringUtil::getInstance().EMPTY_STRING, Rectangle(PointFactory::getInstance().ZERO_ZERO, 0, 0), StaticViewPosition(0, 0, 0)){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.

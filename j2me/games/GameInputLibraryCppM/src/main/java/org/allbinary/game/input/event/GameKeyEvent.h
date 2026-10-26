@@ -21,9 +21,6 @@
         #ifndef ORG_ALLBINARY_GAME_INPUT_EVENT_GAMEKEYEVENT_H
         #define ORG_ALLBINARY_GAME_INPUT_EVENT_GAMEKEYEVENT_H
 
-#include <jsinterop/annotations/JsType.h>
-
-      
 #include <org/allbinary/logic/NullUtil.h>
 
       
@@ -31,15 +28,6 @@
 
       
 #include <org/allbinary/logic/util/event/AllBinaryEventObject.h>
-
-      
-#include <jsinterop/annotations/JsMethod.h>
-
-      
-#include <jsinterop/annotations/JsConstructor.h>
-
-      
-#include <jsinterop/annotations/JsProperty.h>
 
       
 

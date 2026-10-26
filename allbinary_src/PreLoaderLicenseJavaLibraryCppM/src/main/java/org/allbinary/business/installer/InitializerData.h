@@ -21,7 +21,7 @@
         #ifndef ORG_ALLBINARY_BUSINESS_INSTALLER_INITIALIZERDATA_H
         #define ORG_ALLBINARY_BUSINESS_INSTALLER_INITIALIZERDATA_H
 
-            #include "../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
 #include <org/allbinary/logic/string/StringMaker.h>
 

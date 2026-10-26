@@ -10,7 +10,7 @@
                 *  You may obtain the AllBinary Open License Version 1 legal agreement from
                 *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
                 *  
-                *  Created By: Travis Berthelot  
+                *  Created By: Travis Berthelot   
         */
         
         /* Generated Code Do Not Modify */
@@ -23,7 +23,7 @@
 
             #include <vector>
         
-            #include "../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
 
 
@@ -54,7 +54,7 @@ class AngleIncrementInfoFactory
 
     public: static AngleIncrementInfoFactory getInstance();
 
-    private: const std::vector<AngleIncrementInfo> angleIncrementInfo = new Array(static_cast<int32_t>(AngleFactory::getInstance().TOTAL_ANGLE));
+    private: const std::vector<AngleIncrementInfo> angleIncrementInfo = std::vector<AngleIncrementInfo>(static_cast<int32_t>(AngleFactory::getInstance().TOTAL_ANGLE));
 
     public: AngleIncrementInfo getAt(int16_t angleIncrement);
 

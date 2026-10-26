@@ -21,7 +21,7 @@
         #ifndef ORG_ALLBINARY_BUSINESS_USER_COMMERCE_INVENTORY_BASKET_BASKETINTERFACE_H
         #define ORG_ALLBINARY_BUSINESS_USER_COMMERCE_INVENTORY_BASKET_BASKETINTERFACE_H
 
-            #include "../../../../../../../java/lang/Integer.h"
+            #include "java/lang/Integer.h"
         
 #include <java/util/HashMap.h>
 
@@ -68,7 +68,7 @@ class BasketInterface {
 
     Set getIds();
 
-    HashMap<any, any> getItems();
+    HashMap<Object*, Object*> getItems();
 
     Integer getNumberOf(std::string product);
 

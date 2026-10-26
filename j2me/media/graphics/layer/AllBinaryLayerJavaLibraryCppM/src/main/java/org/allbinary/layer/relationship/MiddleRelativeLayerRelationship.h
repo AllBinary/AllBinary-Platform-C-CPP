@@ -21,7 +21,7 @@
         #ifndef ORG_ALLBINARY_LAYER_RELATIONSHIP_MIDDLERELATIVELAYERRELATIONSHIP_H
         #define ORG_ALLBINARY_LAYER_RELATIONSHIP_MIDDLERELATIVELAYERRELATIONSHIP_H
 
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/graphics/PointFactory.h>
 

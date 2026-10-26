@@ -18,13 +18,10 @@
 
 
 
-            #include "../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../../../../java/lang/Math.h"
+            #include "java/lang/Math.h"
         
-#include <java/util/Hashtable.h>
-
-      
 #include <javax/microedition/lcdui/Canvas.h>
 
       
@@ -67,6 +64,9 @@
 #include <org/allbinary/logic/util/event/EventStrings.h>
 
       
+#include <org/allbinary/util/ABHashtable.h>
+
+      
 #include <org/allbinary/util/BasicArrayList.h>
 
       
@@ -101,8 +101,9 @@ class PacePatrolAI: public BasePatrolAI, public TrackingEventListenerInterface {
 
     protected: bool isFollowLimitedByTerrain = false;
 
-public: PacePatrolAI(Hashtable<any, any> hashtable, AllBinaryLayer ownerLayerInterface, GameInput gameInput){
-            super(hashtable, ownerLayerInterface, gameInput);
+public: PacePatrolAI(ABHashtable<Object*, Object*> hashtable, AllBinaryLayer ownerLayerInterface, GameInput gameInput) : BasePatrolAI(hashtable, ownerLayerInterface, gameInput){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -211,7 +212,7 @@ super.processKeyAI(Canvas::KEY_NUM1);
                         for (
     int32_t index = 0;index < size; index++)
         {
-lastTrackingEvent= this->trackingList.get(0) as TrackingEvent;
+lastTrackingEvent= this->trackingList.get(0);
     
 lastTrackingLayerInterface= lastTrackingEvent.getLayerInterface();
     
@@ -241,7 +242,7 @@ lastTrackingLayerInterface= lastTrackingEvent.getLayerInterface();
                         if(absXDistance < getFiringDistance() /2)
                         
                                     {
-                                    directionCompositeInterface= this->getOwnerLayerInterface() as DirectionCompositeInterface;
+                                    directionCompositeInterface= this->getOwnerLayerInterface();
     
 
                         if(xDistance < 0 && directionCompositeInterface.getDirection() == directionFactory.RIGHT)

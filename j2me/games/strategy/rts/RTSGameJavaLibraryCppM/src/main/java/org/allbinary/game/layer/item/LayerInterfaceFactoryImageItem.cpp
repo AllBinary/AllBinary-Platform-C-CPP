@@ -20,7 +20,7 @@
 
             #include <vector>
         
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <javax/microedition/lcdui/Graphics.h>
 
@@ -65,8 +65,9 @@ class LayerInterfaceFactoryImageItem: public ABCustomImageItem {
 
     private: LayerInterfaceFactoryInterface layerInterfaceFactoryInterface;
 
-public: LayerInterfaceFactoryImageItem(std::string label, Image img, int32_t layout, std::string altText, BasicColor basicColor, std::vector<Animation> animationArray, LayerInterfaceFactoryInterface layerInterfaceFactoryInterface){
-            super(label, img, layout, altText, basicColor, 0);
+public: LayerInterfaceFactoryImageItem(std::string label, Image img, int32_t layout, std::string altText, BasicColor basicColor, std::vector<Animation> animationArray, LayerInterfaceFactoryInterface layerInterfaceFactoryInterface) : ABCustomImageItem(label, img, layout, altText, basicColor, 0){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -98,7 +99,7 @@ super.paintXY(graphics, x, y);
                         for (
     int32_t index = this->animationArray.size();--index >= 0; )
         {
-this->animationArray[index]!.paintXY(graphics, x, y);
+this->animationArray[index].paintXY(graphics, x, y);
     
 }
 

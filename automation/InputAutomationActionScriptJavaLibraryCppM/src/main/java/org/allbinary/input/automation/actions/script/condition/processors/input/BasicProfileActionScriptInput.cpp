@@ -18,14 +18,11 @@
 
 
 
-            #include "../../../../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../../../../../../../java/lang/Integer.h"
+            #include "java/lang/Integer.h"
         
 #include <java/util/HashMap.h>
-
-      
-#include <java/util/Hashtable.h>
 
       
 #include <java/util/Iterator.h>
@@ -64,6 +61,9 @@
 #include <org/allbinary/logic/string/StringUtil.h>
 
       
+#include <org/allbinary/util/ABHashtable.h>
+
+      
 #include <org/w3c/dom/Document.h>
 
       
@@ -99,8 +99,9 @@ class BasicProfileActionScriptInput: public BasicProfileActionScriptProcessor, p
 
     private: int32_t time= 0;
 
-public: BasicProfileActionScriptInput(std::string label, Node node){
-            super(label, node);
+public: BasicProfileActionScriptInput(std::string label, Node node) : BasicProfileActionScriptProcessor(label, node){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -141,8 +142,9 @@ this->setInputRobotInterface(InputRobotFactory::getInstance().get(inputTypeStrin
 }
 
 
-public: BasicProfileActionScriptInput(std::string label){
-            super(label);
+public: BasicProfileActionScriptInput(std::string label) : BasicProfileActionScriptProcessor(label){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -153,7 +155,7 @@ this->logUtil.putF(this->commonStrings.START +label, this, this->commonStrings.C
     InputRobotFactory inputRobotFactory = InputRobotFactory::getInstance();;
     
 
-    Hashtable<any, any> hashtable = inputRobotFactory.get() as Hashtable<any, any>;;
+    ABHashtable<Object*, Object*> hashtable = inputRobotFactory.get();;
     
 
     Set set = hashtable.keys();;
@@ -161,7 +163,7 @@ this->logUtil.putF(this->commonStrings.START +label, this, this->commonStrings.C
 
     Iterator iterator = set.iterator();;
     
-this->setInputRobotInterface(inputRobotFactory.get(iterator.next() as string));
+this->setInputRobotInterface(inputRobotFactory.get(iterator.next()));
     
 this->setTime(0);
     
@@ -184,9 +186,9 @@ this->time= time;
 }
 
 
-    public: HashMap<any, any> BasicProfileActionScriptInput_toHashMap(){
+    public: HashMap<Object*, Object*> BasicProfileActionScriptInput_toHashMap(){
 
-    HashMap<any, any> hashMap = StdUtil::getInstance().createHashMap();;
+    HashMap<Object*, Object*> hashMap = StdUtil::getInstance().createHashMap();;
     
 hashMap.put(GenericProfileActionScriptInputData::TYPE, this->getInputRobotInterface().getName());
     

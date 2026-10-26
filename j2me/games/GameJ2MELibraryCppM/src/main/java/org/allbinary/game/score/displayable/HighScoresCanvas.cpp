@@ -20,13 +20,8 @@
 
             #include <vector>
         
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../../../java/lang/System.h"
-        
-#include <jsinterop/annotations/JsType.h>
-
-      
 #include <javax/microedition/lcdui/Command.h>
 
       
@@ -114,13 +109,7 @@
 #include <org/allbinary/thread/SecondaryThreadPool.h>
 
       
-#include <jsinterop/annotations/JsMethod.h>
-
-      
-#include <jsinterop/annotations/JsConstructor.h>
-
-      
-#include <jsinterop/annotations/JsProperty.h>
+#include <org/allbinary/logic/ABSystemWrapper.h>
 
       
 
@@ -168,8 +157,9 @@ class HighScoresCanvas: public GameCommandCanvas, public HighScoresResultsListen
 
     private: bool hasPainted = false;
 
-public: HighScoresCanvas(CommandListener commandListener, AllBinaryGameLayerManager allBinaryGameLayerManager, GameInfo gameInfo, HighScoresPaintable paintable, HighScoresFactoryInterface highScoresFactoryInterface, HighScoresCanvasInputProcessorFactoryInterface highScoresCanvasInputProcessorFactoryInterface){
-            super(commandListener, HighScoresCanvas::NAME, allBinaryGameLayerManager.getBackgroundBasicColor(), allBinaryGameLayerManager.getForegroundBasicColor());
+public: HighScoresCanvas(CommandListener commandListener, AllBinaryGameLayerManager allBinaryGameLayerManager, GameInfo gameInfo, HighScoresPaintable paintable, HighScoresFactoryInterface highScoresFactoryInterface, HighScoresCanvasInputProcessorFactoryInterface highScoresCanvasInputProcessorFactoryInterface) : GameCommandCanvas(commandListener, HighScoresCanvas::NAME, allBinaryGameLayerManager.getBackgroundBasicColor(), allBinaryGameLayerManager.getForegroundBasicColor()){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -253,7 +243,13 @@ highScoresCanvas.hasPainted= false;
 
     StringMaker stringMaker = StringMaker();;
     
-logUtil.putF(stringMaker.append("HighScoresCanvas - Request repaint to be sure: ").appendlong(Date.now()).toString(), this, commonStrings.RUN);
+
+    ABSystemWrapper systemWrapper = ABSystemWrapper::getInstance();;
+    
+
+    int64_t currentTimeMillis = systemWrapper.currentTimeMillis();;
+    
+logUtil.putF(stringMaker.append("HighScoresCanvas - Request repaint to be sure: ").appendlong(currentTimeMillis).toString(), this, commonStrings.RUN);
     
 highScoresCanvas.repaintBehavior.onChangeRepaint(highScoresCanvas);
     
@@ -271,7 +267,7 @@ highScoresCanvas.repaintBehavior.onChangeRepaint(highScoresCanvas);
                                 
 stringMaker.delete(0, stringMaker.length());
     
-logUtil.putF(stringMaker.append("HighScoresCanvas - Now that the canvas has completed repaint go ahead and fetch the scores: ").appendlong(Date.now()).toString(), this, commonStrings.RUN);
+logUtil.putF(stringMaker.append("HighScoresCanvas - Now that the canvas has completed repaint go ahead and fetch the scores: ").appendlong(currentTimeMillis).toString(), this, commonStrings.RUN);
     
 highScoresCanvas.executeUpdate();
     
@@ -441,7 +437,7 @@ this->logUtil.putF(StringMaker().append(this->commonStrings.START).append(this->
                         if(highScoresArray.size() > 0)
                         
                                     {
-                                    this->getHighScoresPaintable().setHighScores(highScoresArray[index]!);
+                                    this->getHighScoresPaintable().setHighScores(highScoresArray[index]);
     
 
                                     }
@@ -460,7 +456,7 @@ this->logUtil.putF(StringMaker().append(this->commonStrings.START).append(this->
     
 this->addCommand(gameCommandsFactory.CLOSE_AND_SHOW_GAME_CANVAS);
     
-this->addCommand(this->highScoreCommandsFactory.HIGH_SCORE_COMMANDS[nextIndex]!);
+this->addCommand(this->highScoreCommandsFactory.HIGH_SCORE_COMMANDS[nextIndex]);
     
 
                                     }

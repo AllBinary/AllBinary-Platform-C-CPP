@@ -21,13 +21,7 @@
         #ifndef ORG_ALLBINARY_VIEW_EVENT_VIEWPOSITIONEVENT_H
         #define ORG_ALLBINARY_VIEW_EVENT_VIEWPOSITIONEVENT_H
 
-#include <jsinterop/annotations/JsType.h>
-
-      
 #include <org/allbinary/logic/util/event/AllBinaryEventObject.h>
-
-      
-#include <jsinterop/annotations/JsConstructor.h>
 
       
 

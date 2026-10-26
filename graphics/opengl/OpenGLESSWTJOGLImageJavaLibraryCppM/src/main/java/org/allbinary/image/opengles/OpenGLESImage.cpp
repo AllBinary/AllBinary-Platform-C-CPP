@@ -20,7 +20,7 @@
 
             #include <vector>
         
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <javax/microedition/khronos/opengles/GL.h>
 
@@ -113,8 +113,9 @@ class OpenGLESImage: public Image, public OpenGLSurfaceChangedInterface {
 
     public: const OpenGLESImageProperties openGLESImageProperties = OpenGLESImageProperties();
 
-public: OpenGLESImage(Image image, PlatformBitmapBaseFactory bitmapFactory, PlatformTextureBaseFactory textureFactory){
-            super(image.getName(), PostLoadImageProcessor::NULL_POST_LOAD_IMAGE_PROCESSOR);
+public: OpenGLESImage(Image image, PlatformBitmapBaseFactory bitmapFactory, PlatformTextureBaseFactory textureFactory) : Image(image.getName(), PostLoadImageProcessor::NULL_POST_LOAD_IMAGE_PROCESSOR){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -169,7 +170,7 @@ this->platformImage= OpenGLESPostLoadPlatformImage::getInstance();
                                     OpenGLESImage::texture2dList.add(this);
     
 
-    std::vector<int32_t> textures = new Array(1);;
+    std::vector<int32_t> textures = std::vector<int32_t>(1);;
     
 gl.glEnable(GL10::GL_TEXTURE_2D);
     
@@ -186,7 +187,7 @@ gl.glDeleteTextures(1, textures, 0);
                                 
 gl.glGenTextures(1, textures, 0);
     
-this->openGLESImageProperties.textureID= textures[0]!;
+this->openGLESImageProperties.textureID= textures[0];
     
 gl.glBindTexture(GL10::GL_TEXTURE_2D, this->openGLESImageProperties.textureID);
     

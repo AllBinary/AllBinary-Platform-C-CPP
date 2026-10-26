@@ -17,7 +17,7 @@
 
 
 
-            #include "../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/logic/util/event/AllBinaryEventObject.h>
 
@@ -70,7 +70,7 @@ private: TechEventHandler(){
             
     protected: void process(AllBinaryEventObject eventObject, EventListenerInterface eventListenerInterface){
 
-    TechEventListenerInterface techEventListenerInterface = (eventListenerInterface as TechEventListenerInterface);;
+    TechEventListenerInterface techEventListenerInterface = (eventListenerInterface);;
     
 techEventListenerInterface.onTechEvent(eventObject);
     

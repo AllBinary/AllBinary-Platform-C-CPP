@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/io/IOException.h>
 
@@ -182,10 +182,10 @@ class DownloadFileServlet: public HttpServlet {
                                     }
                                 
 
-    HashMap<any, any> hashMap = StdUtil::getInstance().createHashMap();;
+    HashMap<Object*, Object*> hashMap = StdUtil::getInstance().createHashMap();;
     
 
-    AuthenticationHelper authenticationHelper = AuthenticationHelperFactory().getInstance(hashMap, request) as AuthenticationHelper;;
+    AuthenticationHelper authenticationHelper = AuthenticationHelperFactory().getInstance(hashMap, request);;
     
 
                         if(authenticationHelper.isAuthenticated())
@@ -228,7 +228,7 @@ stringBuffer.append(CommonSeps::getInstance().QUOTE);
     
 response.setHeader("Content-Disposition", stringBuffer.toString());
     
-StreamUtil::getInstance().get(inputStream, response.getOutputStream(), new Array(16348));
+StreamUtil::getInstance().get(inputStream, response.getOutputStream(), std::vector<int8_t>(16348));
     
 
                                     }

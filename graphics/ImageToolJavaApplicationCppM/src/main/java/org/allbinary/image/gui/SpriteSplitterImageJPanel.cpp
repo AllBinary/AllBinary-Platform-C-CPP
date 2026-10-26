@@ -20,11 +20,11 @@
 
             #include <vector>
         
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../../java/lang/Integer.h"
+            #include "java/lang/Integer.h"
         
-            #include "../../../../java/lang/Thread.h"
+            #include "java/lang/Thread.h"
         
 #include <java/awt.h>
 
@@ -119,8 +119,9 @@ class SpriteSplitterImageJPanel: public javax::swing::JPanel, public ImageProces
 
     private: BufferedImage result;
 
-public: SpriteSplitterImageJPanel(ImageProcessorInput imageProcessorInput){
-            super();
+public: SpriteSplitterImageJPanel(ImageProcessorInput imageProcessorInput) : javax::swing::JPanel(){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -146,13 +147,13 @@ class extends Thread
     SpriteSplitterUtil spriteSplitterUtil = SpriteSplitterUtil::getInstance();;
     
 
-    std::string spriteType = spriteTypeJComboBox.getSelectedItem() as string;;
+    std::string spriteType = spriteTypeJComboBox.getSelectedItem();;
     
 
-    Integer totalFrames = Integer::valueOf(totalFramesJComboBox.getSelectedItem() as string);;
+    Integer totalFrames = Integer::valueOf(totalFramesJComboBox.getSelectedItem());;
     
 
-    Integer totalAnimations = Integer::valueOf(totalAnimationsJComboBox.getSelectedItem() as string);;
+    Integer totalAnimations = Integer::valueOf(totalAnimationsJComboBox.getSelectedItem());;
     
 
     int32_t widthReduction = Integer::valueOf(widthReductionTextField.getText());;
@@ -232,7 +233,7 @@ this->totalFramesJComboBox= javax::swing::JComboBox<>();
     int32_t size = 70;;
     
 
-    std::vector<std::string> animationStringArray2 = new Array(size -1);;
+    std::vector<std::string> animationStringArray2 = std::vector<std::string>(size -1);;
     
 
 
@@ -252,7 +253,7 @@ this->jLabel2= javax::swing::JLabel();
 this->totalAnimationsJComboBox= javax::swing::JComboBox<>();
     
 
-    std::vector<std::string> animationStringArray = new Array(size -1);;
+    std::vector<std::string> animationStringArray = std::vector<std::string>(size -1);;
     
 
 
@@ -437,9 +438,9 @@ this->process();
 
     SpriteSplitterUtil spriteSplitterUtil = SpriteSplitterUtil::getInstance();;
     
-this->jLabel1.setText(spriteSplitterUtil.ANIMATIONS_LABELS[this->spriteTypeJComboBox.getSelectedIndex()]!);
+this->jLabel1.setText(spriteSplitterUtil.ANIMATIONS_LABELS[this->spriteTypeJComboBox.getSelectedIndex()]);
     
-this->jLabel2.setText(spriteSplitterUtil.ANIMATIONS_LABELS[this->spriteTypeJComboBox.getSelectedIndex() +1]!);
+this->jLabel2.setText(spriteSplitterUtil.ANIMATIONS_LABELS[this->spriteTypeJComboBox.getSelectedIndex() +1]);
     
 }
 
@@ -488,11 +489,11 @@ this->jLabel2.setText(spriteSplitterUtil.ANIMATIONS_LABELS[this->spriteTypeJComb
 
     private: javax::swing::JPanel jPanel2;
 
-    private: javax::swing::JComboBox<string> spriteTypeJComboBox;
+    private: javax::swing::JComboBox<std::string> spriteTypeJComboBox;
 
-    private: javax::swing::JComboBox<string> totalAnimationsJComboBox;
+    private: javax::swing::JComboBox<std::string> totalAnimationsJComboBox;
 
-    private: javax::swing::JComboBox<string> totalFramesJComboBox;
+    private: javax::swing::JComboBox<std::string> totalFramesJComboBox;
 
     private: javax::swing::JTextField widthReductionTextField;
 
@@ -544,7 +545,7 @@ file= File(filePath);
                                     }
                                 
 
-    bool isWritten = ImageIO::write(this->result as RenderedImage, imageStrings.PNG, file);;
+    bool isWritten = ImageIO::write(this->result, imageStrings.PNG, file);;
     
 this->logUtil.putF(StringMaker().append("File: ").append(StringUtil::getInstance().toString(file)).append(" Wrote: ").appendboolean(isWritten).toString(), this, this->commonStrings.RUN);
     

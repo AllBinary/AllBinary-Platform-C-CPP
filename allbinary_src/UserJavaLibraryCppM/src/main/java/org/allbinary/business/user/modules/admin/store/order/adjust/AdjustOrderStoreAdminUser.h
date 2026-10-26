@@ -21,7 +21,7 @@
         #ifndef ORG_ALLBINARY_BUSINESS_USER_MODULES_ADMIN_STORE_ORDER_ADJUST_ADJUSTORDERSTOREADMINUSER_H
         #define ORG_ALLBINARY_BUSINESS_USER_MODULES_ADMIN_STORE_ORDER_ADJUST_ADJUSTORDERSTOREADMINUSER_H
 
-            #include "../../../../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
 
@@ -55,7 +55,7 @@ class AdjustOrderStoreAdminUser: public User {
 
 public: AdjustOrderStoreAdminUser();
 
-public: AdjustOrderStoreAdminUser(HashMap<any, any> userHashMap);
+public: AdjustOrderStoreAdminUser(HashMap<Object*, Object*> userHashMap);
 
     public: void validateSession(WeblisketSessionInterface weblisketSession);
 

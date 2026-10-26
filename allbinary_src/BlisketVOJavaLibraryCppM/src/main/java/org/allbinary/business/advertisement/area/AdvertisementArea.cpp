@@ -18,9 +18,9 @@
 
 
 
-            #include "../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
 
@@ -74,22 +74,22 @@ class AdvertisementArea
 
     private: std::string campaign;
 
-public: AdvertisementArea(HashMap<any, any> hashMap){
-this->name= hashMap.get(AdvertisementAreaData::getInstance().NAME) as string;
+public: AdvertisementArea(HashMap<Object*, Object*> hashMap){
+this->name= hashMap.get(AdvertisementAreaData::getInstance().NAME);
     
-this->storeName= hashMap.get(StoreFrontData::getInstance().NAME) as string;
+this->storeName= hashMap.get(StoreFrontData::getInstance().NAME);
     
-this->description= hashMap.get(AdvertisementAreaData::getInstance().DESCRIPTION) as string;
+this->description= hashMap.get(AdvertisementAreaData::getInstance().DESCRIPTION);
     
 
-    std::string constraintsDomString = hashMap.get(AdvertisementAreaData::getInstance().CONSTRAINTS) as string;;
+    std::string constraintsDomString = hashMap.get(AdvertisementAreaData::getInstance().CONSTRAINTS);;
     
 
     Document document = DomDocumentHelper::create(constraintsDomString);;
     
 this->advertisementAreaConstraintsInterface= AdvertisementAreaConstraints(document);
     
-this->campaign= hashMap.get(AdvertisementCampaignData::getInstance().NAME) as string;
+this->campaign= hashMap.get(AdvertisementCampaignData::getInstance().NAME);
     
 }
 

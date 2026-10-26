@@ -20,7 +20,7 @@
 
             #include <vector>
         
-            #include "../../../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
 #include <javax/microedition/lcdui/game/TiledLayer.h>
 
@@ -57,7 +57,7 @@ class TiledLayerFactory
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return TiledLayer(mapArray[0]!.size(), mapArray.size(), raceTrackData.getTileSetImage(), raceTrackData.getCellWidth(), raceTrackData.getCellHeight());
+                        return TiledLayer(mapArray[0].size(), mapArray.size(), raceTrackData.getTileSetImage(), raceTrackData.getCellWidth(), raceTrackData.getCellHeight());
     
 }
 
@@ -70,7 +70,7 @@ class TiledLayerFactory
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return TiledLayer(mapArray[0]!.size(), mapArray.size(), raceTrackData.getMiniTileSetImage(), raceTrackData.getMiniCellWidth(), raceTrackData.getMiniCellHeight());
+                        return TiledLayer(mapArray[0].size(), mapArray.size(), raceTrackData.getMiniTileSetImage(), raceTrackData.getMiniCellWidth(), raceTrackData.getMiniCellHeight());
     
 }
 

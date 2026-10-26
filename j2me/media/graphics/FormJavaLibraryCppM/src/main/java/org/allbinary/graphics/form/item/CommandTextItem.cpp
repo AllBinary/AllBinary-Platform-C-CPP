@@ -48,8 +48,9 @@ class CommandTextItem: public ABTextItem {
 
     private: Command command;
 
-public: CommandTextItem(Command command, int32_t layout, std::string altText, BasicColor backgroundBasicColor, BasicColor foregroundBasicColor){
-            super(command.getLabel(), layout, altText, backgroundBasicColor, foregroundBasicColor);
+public: CommandTextItem(Command command, int32_t layout, std::string altText, BasicColor backgroundBasicColor, BasicColor foregroundBasicColor) : ABTextItem(command.getLabel(), layout, altText, backgroundBasicColor, foregroundBasicColor){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.

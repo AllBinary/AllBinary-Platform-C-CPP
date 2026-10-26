@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/business/context/modules/storefront/StoreFrontFactory.h>
 
@@ -71,13 +71,14 @@ class StoreFrontStatisticsComponent: public HttpStoreComponentView {
 
     private: DomNodeInterface domNodeInterface;
 
-public: StoreFrontStatisticsComponent(TransformInfoInterface transformInfoInterface){
-            super(transformInfoInterface);
+public: StoreFrontStatisticsComponent(TransformInfoInterface transformInfoInterface) : HttpStoreComponentView(transformInfoInterface){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this->newStoreFrontInterface= StoreFrontFactory::getInstance(transformInfoInterface.getStoreName()) as StoreFrontInterface;
+this->newStoreFrontInterface= StoreFrontFactory::getInstance(transformInfoInterface.getStoreName());
     
 this->domNodeInterface= RealTimeStoreFrontStatisticsView(RealTimeStoreFrontStatistics(this->newStoreFrontInterface), this->getWeblisketSession().getRole());
     
@@ -85,7 +86,7 @@ this->domNodeInterface= RealTimeStoreFrontStatisticsView(RealTimeStoreFrontStati
 
 
     public: void addDomNodeInterfaces(){
-this->addDomNodeInterface(this->domNodeInterface as DomNodeInterface);
+this->addDomNodeInterface(this->domNodeInterface);
     
 }
 

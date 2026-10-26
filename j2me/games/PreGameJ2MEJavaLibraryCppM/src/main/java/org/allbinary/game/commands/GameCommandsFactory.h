@@ -21,30 +21,21 @@
         #ifndef ORG_ALLBINARY_GAME_COMMANDS_GAMECOMMANDSFACTORY_H
         #define ORG_ALLBINARY_GAME_COMMANDS_GAMECOMMANDSFACTORY_H
 
-            #include "../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-#include <jsinterop/annotations/JsType.h>
-
-      
 #include <javax/microedition/lcdui/Command.h>
 
       
 #include <org/allbinary/graphics/displayable/CanvasStrings.h>
 
       
+#include <org/allbinary/logic/NullUtil.h>
+
+      
 #include <org/allbinary/logic/string/StringUtil.h>
 
       
 #include <org/allbinary/string/CommonStrings.h>
-
-      
-#include <jsinterop/annotations/JsMethod.h>
-
-      
-#include <jsinterop/annotations/JsConstructor.h>
-
-      
-#include <jsinterop/annotations/JsProperty.h>
 
       
 
@@ -70,7 +61,7 @@ class GameCommandsFactory
             : public Object
          {
 
-    private: static GameCommandsFactory instance() { return GameCommandsFactory(); }
+    private: static Object* instance = NullUtil::getInstance().NULL_OBJECT;
 
     public: static GameCommandsFactory getInstance();
 

@@ -46,8 +46,9 @@
 
 class SourceCollisionHelper: public CollisionHelper {
 
-public: SourceCollisionHelper(AllBinaryLayer layerInterface){
-            super(layerInterface);
+public: SourceCollisionHelper(AllBinaryLayer layerInterface) : CollisionHelper(layerInterface){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.

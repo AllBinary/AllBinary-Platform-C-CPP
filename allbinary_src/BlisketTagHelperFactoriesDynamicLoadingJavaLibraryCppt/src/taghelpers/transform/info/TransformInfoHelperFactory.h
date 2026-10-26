@@ -21,7 +21,7 @@
         #ifndef TAGHELPERS_TRANSFORM_INFO_TRANSFORMINFOHELPERFACTORY_H
         #define TAGHELPERS_TRANSFORM_INFO_TRANSFORMINFOHELPERFACTORY_H
 
-            #include "../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
 #include <java/util/HashMap.h>
 
@@ -69,7 +69,7 @@ public: TransformInfoHelperFactory();
 
                 //@Throws(LicensingException.constructor)
             
-    public: Object* getInstance(HashMap<any, any> hashMap, PageContext pageContext);
+    public: Object* getInstance(HashMap<Object*, Object*> hashMap, PageContext pageContext);
 
 };
 

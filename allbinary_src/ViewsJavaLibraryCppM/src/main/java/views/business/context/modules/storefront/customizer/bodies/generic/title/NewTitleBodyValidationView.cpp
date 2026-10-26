@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/data/tree/dom/DomNodeInterface.h>
 
@@ -71,8 +71,9 @@ class NewTitleBodyValidationView: public TitleBodyCustomizerView, public Validat
 
     protected: const LogUtil logUtil = LogUtil::getInstance();
 
-public: NewTitleBodyValidationView(TransformInfoInterface transformInfoInterface){
-            super(transformInfoInterface);
+public: NewTitleBodyValidationView(TransformInfoInterface transformInfoInterface) : TitleBodyCustomizerView(transformInfoInterface){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -118,7 +119,7 @@ this->titleBody= TitleBodyValidation();
 
 
                             {
-                            CustomizerUtil::getInstance().insert(this->getTransformInfoInterface(), this->titleBody as DomNodeInterface);
+                            CustomizerUtil::getInstance().insert(this->getTransformInfoInterface(), this->titleBody);
     
 
                             }

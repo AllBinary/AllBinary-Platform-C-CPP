@@ -20,28 +20,14 @@
 
             #include <vector>
         
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../../../java/lang/System.h"
+            #include "java/lang/Integer.h"
         
-            #include "../../../../../java/lang/Integer.h"
+            #include "java/lang/Thread.h"
         
-            #include "../../../../../java/lang/Thread.h"
+            #include "java/lang/Runnable.h"
         
-            #include "../../../../../java/lang/Runnable.h"
-        
-#include <jsinterop/annotations/JsType.h>
-
-      
-#include <java/util/Hashtable.h>
-
-      
-#include <org/allbinary/util/BasicArrayList.h>
-
-      
-#include <org/allbinary/util/BasicArrayListD.h>
-
-      
 #include <javax/microedition/lcdui/ChoiceGroup.h>
 
       
@@ -351,6 +337,9 @@
 #include <org/allbinary/input/motion/gesture/observer/BasicMotionGesturesHandler.h>
 
       
+#include <org/allbinary/logic/ABSystemWrapper.h>
+
+      
 #include <org/allbinary/logic/communication/log/ForcedLogUtil.h>
 
       
@@ -411,6 +400,9 @@
 #include <org/allbinary/time/TimeDelayHelper.h>
 
       
+#include <org/allbinary/util/ABHashtable.h>
+
+      
 #include <org/allbinary/util/BasicArrayList.h>
 
       
@@ -418,15 +410,6 @@
 
       
 #include <org/allbinary/util/BasicArrayListUtil.h>
-
-      
-#include <jsinterop/annotations/JsMethod.h>
-
-      
-#include <jsinterop/annotations/JsConstructor.h>
-
-      
-#include <jsinterop/annotations/JsProperty.h>
 
       
 
@@ -549,7 +532,7 @@ class AllBinaryGameCanvas: public RunnableCanvas, public AllBinaryGameCanvasInte
 
     private: bool isCheating= false;
 
-    private: Hashtable<any, any> hashtable = this->stdUtil.NULL_TABLE;
+    private: ABHashtable<Object*, Object*> hashtable = this->stdUtil.NULL_TABLE;
 
     private: bool isSingleKeyRepeatableProcessing= false;
 
@@ -631,8 +614,9 @@ class AllBinaryGameCanvas: public RunnableCanvas, public AllBinaryGameCanvasInte
 
     protected: int32_t fontHeightP= 0;
 
-public: AllBinaryGameCanvas(CommandListener commandListener, AllBinaryGameLayerManager gameLayerManager, HighScoresFactoryInterface highScoresFactoryInterface, BasicBuildGameInitializerFactory gameInitializationInterfaceFactoryInterface, bool buffered){
-            super(commandListener, CanvasStrings::getInstance().EMPTY_CHILD_NAME_LIST, true);
+public: AllBinaryGameCanvas(CommandListener commandListener, AllBinaryGameLayerManager gameLayerManager, HighScoresFactoryInterface highScoresFactoryInterface, BasicBuildGameInitializerFactory gameInitializationInterfaceFactoryInterface, bool buffered) : RunnableCanvas(commandListener, CanvasStrings::getInstance().EMPTY_CHILD_NAME_LIST, true){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -691,7 +675,7 @@ this->myFormUtil.updateMeasurement(graphics);
     Rectangle popupMenuRectangle = this->myFormUtil.getPopupMenuRectangle();;
     
 
-    BasicPopupMenuPaintable basicPopupMenuPaintable = (this->getOpenMenuPaintable() as BasicPopupMenuPaintable);;
+    BasicPopupMenuPaintable basicPopupMenuPaintable = (this->getOpenMenuPaintable());;
     
 basicPopupMenuPaintable.init(popupMenuRectangle);
     
@@ -700,7 +684,7 @@ basicPopupMenuPaintable.init(popupMenuRectangle);
                         
                                     {
                                     
-    PopupMenuInputProcessor popupMenuInputProcessor = (this->getPopupMenuInputProcessor() as PopupMenuInputProcessor);;
+    PopupMenuInputProcessor popupMenuInputProcessor = (this->getPopupMenuInputProcessor());;
     
 popupMenuInputProcessor.init(popupMenuRectangle);
     
@@ -915,7 +899,7 @@ this->setMenuForm(CommandCurrentSelectionFormFactory::getInstance(StringUtil::ge
                         if(features.isFeature(this->touchFeatureFactory.TOUCH_ENABLED))
                         
                                     {
-                                    this->mainMenuInputProcessor= PopupCommandFormInputProcessor(BasicArrayListD(),  -1, this, scrollSelectionForm, this->getPopupMenuInputProcessor() as PopupMenuInputProcessor);
+                                    this->mainMenuInputProcessor= PopupCommandFormInputProcessor(BasicArrayListD(),  -1, this, scrollSelectionForm, this->getPopupMenuInputProcessor());
     
 
                                     }
@@ -987,7 +971,7 @@ scrollSelectionForm.deleteAll();
                         for (
     int32_t index = 0;index < size; index++)
         {
-scrollSelectionForm.append(items[index]!);
+scrollSelectionForm.append(items[index]);
     
 }
 
@@ -1012,7 +996,7 @@ super.pause();
     
 this->touchButtonFactory.toggle(this->isPaused(), BasicArrayListUtil::getInstance().getImmutableInstance());
     
-System.gc();
+this->tsUtil.gc();
     
 }
 
@@ -1023,7 +1007,7 @@ this->logUtil.putF(this->commonStrings.START, this, this->gameStrings.UNPAUSE);
     
 this->closeMenu();
     
-System.gc();
+this->tsUtil.gc();
     
 super.unPause();
     
@@ -1160,6 +1144,12 @@ this->secondaryPlayerQueue.clear();
     protected: void processorInit(){
 this->setMainStateProcessor(Processor::getInstance());
     
+this->setProcessGameProcessorInit();
+    
+}
+
+
+    protected: void setProcessGameProcessorInit(){
 this->setProcessGameProcessor(GameProcessor(this));
     
 }
@@ -1536,13 +1526,13 @@ this->logUtil.putF(StringMaker().append(this->commonLabels.ITEM_LABEL).append(it
                         if(gameFeatureUtil.isExclusive(itemLabel))
                         
                                     {
-                                    gameFeatureUtil.updateExclusiveForChoiceGroup(item as ChoiceGroup);
+                                    gameFeatureUtil.updateExclusiveForChoiceGroup(item);
     
 
                                     }
                                 
                         else {
-                            gameFeatureUtil.updateMultiple(item as ChoiceGroup);
+                            gameFeatureUtil.updateMultiple(item);
     
 
                         }
@@ -1784,7 +1774,7 @@ this->logUtil.putF("Remove PlayerInput Listeners", this, "removeAllGameKeyInputL
     int32_t index = this->localPlayerGameInputList.size() -1;index >= 0; index--)
         {
 
-    PlayerGameInput playerGameInput = this->localPlayerGameInputList.get(index) as PlayerGameInput;;
+    PlayerGameInput playerGameInput = this->localPlayerGameInputList.get(index);;
     
 this->removeKeyInputListener(playerGameInput);
     
@@ -2011,7 +2001,7 @@ PreLogUtil::put(StringMaker().append(this->gameInputStrings.ENABLE_PLAYER_GAME_I
                         for (
     int32_t index = this->localPlayerGameInputList.size() -1;index >= 0; index--)
         {
-playerGameInput= this->localPlayerGameInputList.get(index) as PlayerGameInput;
+playerGameInput= this->localPlayerGameInputList.get(index);
     
 PreLogUtil::put(StringMaker().append(this->gameInputStrings.ENABLE_PLAYER_GAME_INPUT).append(playerGameInput.toString()).toString(), this, this->BUILD_GAME);
     
@@ -2044,16 +2034,16 @@ this->gameCanvasStartListener= gameCanvasStartListener;
 this->logUtil.putF(this->commonStrings.START, this, this->commonStrings.LOAD);
     
 
-    Hashtable<any, any> hashtable = this->getLoadStateHashtable();;
+    ABHashtable<Object*, Object*> hashtable = this->getLoadStateHashtable();;
     
 
                         if(hashtable != 
                                     nullptr
-                                 && hashtable.length > 0)
+                                 && hashtable.size() > 0)
                         
                                     {
                                     
-    std::string levelAsString = hashtable.get(GameInfo::LEVEL_NAME) as string;;
+    std::string levelAsString = hashtable.get(GameInfo::LEVEL_NAME);;
     
 
     int32_t level = Integer::valueOf(levelAsString).intValue();;
@@ -2071,7 +2061,7 @@ gameInfo.setCurrentLevel(level);
 
                 //@Throws(Exception.constructor)
             
-    public: Hashtable<any, any> getLoadStateHashtable(){
+    public: ABHashtable<Object*, Object*> getLoadStateHashtable(){
 this->logUtil.putF(StringMaker().append(this->commonLabels.START_LABEL).append(this->stringUtil.toString(this->hashtable)).toString(), this, "getLoadStateHashtable");
     
 
@@ -2083,7 +2073,7 @@ this->logUtil.putF(StringMaker().append(this->commonLabels.START_LABEL).append(t
 }
 
 
-    public: void setLoadStateHashtable(Hashtable<any, any> hashtable){
+    public: void setLoadStateHashtable(ABHashtable<Object*, Object*> hashtable){
 this->logUtil.putF(StringMaker().append(this->commonLabels.START_LABEL).append(this->stringUtil.toString(hashtable)).toString(), this, "setLoadStateHashtable");
     
 this->hashtable= hashtable;
@@ -2091,9 +2081,9 @@ this->hashtable= hashtable;
 }
 
 
-    public: Hashtable<any, any> getCurrentStateHashtable(){
+    public: ABHashtable<Object*, Object*> getCurrentStateHashtable(){
 
-    Hashtable<any, any> hashtable = this->stdUtil.createHashtable();;
+    ABHashtable<Object*, Object*> hashtable = this->stdUtil.createHashtable();;
     
 
     int32_t level = this->gameLayerManager.getGameInfo().getCurrentLevel();;
@@ -2869,7 +2859,7 @@ this->highScoresPaintable= highScoresPaintable;
                         for (
     int32_t index = this->localPlayerGameInputList.size() -1;index >= 0; index--)
         {
-playerGameInput= this->localPlayerGameInputList.get(index) as PlayerGameInput;
+playerGameInput= this->localPlayerGameInputList.get(index);
     
 this->gameKeyEventHandler.removeListener(playerGameInput);
     

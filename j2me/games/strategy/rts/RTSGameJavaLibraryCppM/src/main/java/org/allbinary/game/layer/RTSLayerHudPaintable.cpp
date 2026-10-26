@@ -122,7 +122,7 @@ this->costY1= (this->y +((this->weaponProperties.size() +1) *this->fontHeight));
 this->setName(this->getRtsLayer().getName());
     
 
-    BasicWeaponPart partInterface = this->getRtsLayer().getPartInterfaceArray()[0]! as BasicWeaponPart;;
+    BasicWeaponPart partInterface = this->getRtsLayer().getPartInterfaceArray()[0];;
     
 this->weaponProperties= partInterface.getWeaponProperties().toStringArray();
     
@@ -144,7 +144,7 @@ super.paint(graphics);
                         for (
     int32_t index = 0;index < size; index++)
         {
-graphics.drawString(this->weaponProperties[index]!, this->textX, this->y +((index +1) *this->fontHeight), 0);
+graphics.drawString(this->weaponProperties[index], this->textX, this->y +((index +1) *this->fontHeight), 0);
     
 }
 

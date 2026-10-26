@@ -21,12 +21,6 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_PAINT_PROCESSPAINTABLE_H
         #define ORG_ALLBINARY_GRAPHICS_PAINT_PROCESSPAINTABLE_H
 
-#include <jsinterop/annotations/JsType.h>
-
-      
-#include <jsinterop/annotations/JsMethod.h>
-
-      
 
 
 

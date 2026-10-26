@@ -21,13 +21,13 @@
         #ifndef ORG_ALLBINARY_INPUT_AUTOMATION_ABSTRACTINPUTROBOT_H
         #define ORG_ALLBINARY_INPUT_AUTOMATION_ABSTRACTINPUTROBOT_H
 
-            #include "../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../../java/lang/RuntimeException.h"
+            #include "java/lang/RuntimeException.h"
         
-            #include "../../../../java/lang/Integer.h"
+            #include "java/lang/Integer.h"
         
 #include <java/awt.h>
 

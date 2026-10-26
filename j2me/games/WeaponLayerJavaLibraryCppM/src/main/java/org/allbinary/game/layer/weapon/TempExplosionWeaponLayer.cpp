@@ -4,7 +4,7 @@
 
 
 
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/animation/Animation.h>
 
@@ -59,8 +59,9 @@ class TempExplosionWeaponLayer: public SimpleWeaponLayer {
 
     private: const TimeDelayHelper timeDelayHelper = TimeDelayHelper(0);
 
-public: TempExplosionWeaponLayer(std::string name, Movement movement, Animation animationInterface, Rectangle rectangle, ViewPositionBase viewPosition, int32_t timeDelay){
-            super(name, RemoteInfo::REMOTE_INFO,  -1, movement, animationInterface, SimpleWeaponLayer::createDestroyed(), rectangle, viewPosition);
+public: TempExplosionWeaponLayer(std::string name, Movement movement, Animation animationInterface, Rectangle rectangle, ViewPositionBase viewPosition, int32_t timeDelay) : SimpleWeaponLayer(name, RemoteInfo::REMOTE_INFO,  -1, movement, animationInterface, SimpleWeaponLayer::createDestroyed(), rectangle, viewPosition){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.

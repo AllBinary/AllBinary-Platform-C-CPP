@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/game/input/event/GameKeyEvent.h>
 
@@ -49,8 +49,9 @@
 
 class ScrollMapDownGameInputProcessor: public ScrollMapGameInputProcessor {
 
-public: ScrollMapDownGameInputProcessor(ScrollMapPlayerGameInput scrollMapPlayerGameInput){
-            super(scrollMapPlayerGameInput);
+public: ScrollMapDownGameInputProcessor(ScrollMapPlayerGameInput scrollMapPlayerGameInput) : ScrollMapGameInputProcessor(scrollMapPlayerGameInput){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.

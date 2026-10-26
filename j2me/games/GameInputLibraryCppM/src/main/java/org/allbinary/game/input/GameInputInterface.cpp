@@ -18,18 +18,12 @@
 
 
 
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-#include <jsinterop/annotations/JsType.h>
-
-      
 #include <org/allbinary/layer/AllBinaryLayerManager.h>
 
       
 #include <org/allbinary/layer/NamedInterface.h>
-
-      
-#include <jsinterop/annotations/JsMethod.h>
 
       
 

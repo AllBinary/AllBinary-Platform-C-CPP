@@ -20,9 +20,9 @@
 
             #include <vector>
         
-            #include "../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/util/BasicArrayList.h>
 
@@ -117,7 +117,7 @@ this->logUtil.putF("Processing " +vector.size() +" Services", this, this->common
                         for (
     int32_t index = 0;index < size; index++)
         {
-osgiServiceInterface= vector.get(index) as OSGIServiceInterface;
+osgiServiceInterface= vector.get(index);
     
 
                         if(!getOsgiServiceVisitorInterface().visit(osgiServiceInterface))

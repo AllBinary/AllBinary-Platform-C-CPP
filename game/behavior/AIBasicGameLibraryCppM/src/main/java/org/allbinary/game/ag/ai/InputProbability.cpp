@@ -20,13 +20,10 @@
 
             #include <vector>
         
-            #include "../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../java/lang/Integer.h"
+            #include "java/lang/Integer.h"
         
-#include <java/util/Hashtable.h>
-
-      
 #include <org/allbinary/logic/StdUtil.h>
 
       
@@ -34,6 +31,9 @@
 
       
 #include <org/allbinary/time/TimeDelayHelper.h>
+
+      
+#include <org/allbinary/util/ABHashtable.h>
 
       
 
@@ -121,9 +121,9 @@ this->timeDelayHelper= timeDelayHelper;
 }
 
 
-    public: Hashtable<any, any> toHashtable(){
+    public: ABHashtable<Object*, Object*> toHashtable(){
 
-    Hashtable<any, any> hashtable = StdUtil::getInstance().createHashtable();;
+    ABHashtable<Object*, Object*> hashtable = StdUtil::getInstance().createHashtable();;
     
 hashtable.put(InputProbability::INPUT_PROBABILITY, this);
     

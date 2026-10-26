@@ -20,7 +20,7 @@
 
             #include <vector>
         
-            #include "../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
 #include <javax/microedition/khronos/opengles/GL.h>
 
@@ -103,7 +103,7 @@ class ChoiceGroupImageUtil
                         for (
     int32_t index = 0;index < size; index++)
         {
-imageArray[index]= preResourceImageUtil.encapsulate(imageArray[index]!);
+imageArray[index]= preResourceImageUtil.encapsulate(imageArray[index]);
     
 }
 
@@ -142,7 +142,7 @@ choiceGroupFactory.init(imageArray);
                         for (
     int32_t index = 0;index < size; index++)
         {
-preResourceImageUtil.updateGL(gl, imageArray[index]!);
+preResourceImageUtil.updateGL(gl, imageArray[index]);
     
 }
 
@@ -181,7 +181,7 @@ choiceGroupFactory.init(imageArray);
                         for (
     int32_t index = 0;index < size; index++)
         {
-preResourceImageUtil.update(graphics, imageArray[index]!);
+preResourceImageUtil.update(graphics, imageArray[index]);
     
 }
 

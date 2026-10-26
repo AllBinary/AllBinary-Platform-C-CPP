@@ -18,20 +18,14 @@
 
 
 
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../../../java/lang/Long.h"
+            #include "java/lang/Long.h"
         
 #include <java/util/Enumeration.h>
 
       
-#include <java/util/Hashtable.h>
-
-      
 #include <org/allbinary/util/BasicArrayList.h>
-
-      
-#include <org/allbinary/util/BasicArrayListD.h>
 
       
 #include <org/allbinary/game/GameInfo.h>
@@ -52,13 +46,22 @@
 #include <org/allbinary/logic/communication/log/LogUtil.h>
 
       
+#include <org/allbinary/logic/string/StringMaker.h>
+
+      
 #include <org/allbinary/logic/system/SoftwareInformation.h>
 
       
 #include <org/allbinary/logic/system/security/licensing/AbeClientInformationInterface.h>
 
       
+#include <org/allbinary/string/CommonLabels.h>
+
+      
 #include <org/allbinary/string/CommonStrings.h>
+
+      
+#include <org/allbinary/util/ABHashtable.h>
 
       
 #include <org/allbinary/util/EnumerationUtil.h>
@@ -88,7 +91,7 @@
 
 class RemoteHighScores: public HighScores {
 
-    private: static const Hashtable<any, any> hashTable = StdUtil::getInstance().createHashtable();
+    private: static const ABHashtable<Object*, Object*> hashTable = StdUtil::getInstance().createHashtable();
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
     public: static HighScores getInstance(AbeClientInformationInterface abeClientInformation, SoftwareInformation softwareInformation, GameInfo gameInfo, std::string heading, std::string columnTwoHeading, Boolean isAscending){
@@ -109,7 +112,7 @@ class RemoteHighScores: public HighScores {
 
         try {
             
-    HighScores highScores = RemoteHighScores::hashTable.get(gameInfo) as HighScores;;
+    HighScores highScores = RemoteHighScores::hashTable.get(gameInfo);;
     
 
                         if(highScores == 
@@ -162,8 +165,9 @@ logUtil.put(commonStrings.EXCEPTION, RemoteErrorHighScoresSingletonFactory::getI
 
     public: const std::string ASCENDING = "ASCENDING";
 
-private: RemoteHighScores(AbeClientInformationInterface abeClientInformation, SoftwareInformation softwareInformation, GameInfo gameInfo, std::string heading, std::string columnTwoHeading, Boolean ascending, bool preload){
-            super(gameInfo.toString(), heading, columnTwoHeading);
+private: RemoteHighScores(AbeClientInformationInterface abeClientInformation, SoftwareInformation softwareInformation, GameInfo gameInfo, std::string heading, std::string columnTwoHeading, Boolean ascending, bool preload) : HighScores(gameInfo.toString(), heading, columnTwoHeading){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -192,11 +196,11 @@ RemoteHighScoresSubmissionProcessorFactory::getInstance().process(this, this->ab
 }
 
 
-    public: void update(Hashtable<any, any> hashtable){
+    public: void update(ABHashtable<Object*, Object*> hashtable){
 this->getList().clear();
     
 
-    BasicArrayList vector = hashtable.get(RemoteHighScoresData::getInstance().HIGH_SCORES) as BasicArrayList;;
+    BasicArrayList vector = hashtable.get(RemoteHighScoresData::getInstance().HIGH_SCORES);;
     
 
                         if(vector != 
@@ -215,13 +219,13 @@ this->getList().clear();
     int32_t index = 0;index < size; index++)
         {
 
-    BasicArrayList highScoreVector = vector.get(index) as BasicArrayList;;
+    BasicArrayList highScoreVector = vector.get(index);;
     
 
-    std::string displayName = highScoreVector.get(0) as string;;
+    std::string displayName = highScoreVector.get(0);;
     
 
-    std::string score = highScoreVector.get(1) as string;;
+    std::string score = highScoreVector.get(1);;
     
 
     int64_t longScore = Long::parseLong(score);;
@@ -239,13 +243,13 @@ this->getList().add(highScore);
                                 
                         else {
                             
-    std::string NEXT_ELEMENT = "NextElement: ";;
+    std::string NEXT_ELEMENT = StringMaker().append(CommonLabels::getInstance().NEXT).append("Element: ").toString();;
     
 
     CommonStrings commonStrings = CommonStrings::getInstance();;
     
 
-    Enumeration<any> enumeration = hashtable.elements();;
+    Enumeration<Object*> enumeration = hashtable.elements();;
     
 
     Object* nextElement;;
@@ -253,7 +257,7 @@ this->getList().add(highScore);
 
         while(this->enumerationUtil.hasMoreElements(enumeration))
         {
-nextElement= this->enumerationUtil.nextElement(enumeration)!;
+nextElement= this->enumerationUtil.nextElement(enumeration);
     
 this->logUtil.putF(NEXT_ELEMENT +nextElement, this, commonStrings.PROCESS);
     

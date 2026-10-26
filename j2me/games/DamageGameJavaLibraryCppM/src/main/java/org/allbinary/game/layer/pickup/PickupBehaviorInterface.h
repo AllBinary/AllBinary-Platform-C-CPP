@@ -21,7 +21,7 @@
         #ifndef ORG_ALLBINARY_GAME_LAYER_PICKUP_PICKUPBEHAVIORINTERFACE_H
         #define ORG_ALLBINARY_GAME_LAYER_PICKUP_PICKUPBEHAVIORINTERFACE_H
 
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 
 

@@ -18,9 +18,9 @@
 
 
 
-            #include "../../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <javax/servlet/jsp/PageContext.h>
 
@@ -63,7 +63,7 @@ class TransformStoreDocumentFactory
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return TransformStoreDocument(pageContext, weblisketSession) as TransformDocumentInterface;
+                        return TransformStoreDocument(pageContext, weblisketSession);
     
 }
 
@@ -75,7 +75,7 @@ class TransformStoreDocumentFactory
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return TransformStoreDocument(searchRequest) as TransformDocumentInterface;
+                        return TransformStoreDocument(searchRequest);
     
 }
 

@@ -21,11 +21,11 @@
         #ifndef ORG_ALLBINARY_INPUT_AUTOMATION_ACTIONS_SCRIPT_CONDITION_PROCESSORS_INPUT_MOUSEINPUTAUTOMATIONPROCESSOR_H
         #define ORG_ALLBINARY_INPUT_AUTOMATION_ACTIONS_SCRIPT_CONDITION_PROCESSORS_INPUT_MOUSEINPUTAUTOMATIONPROCESSOR_H
 
-            #include "../../../../../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../../../../../../../java/lang/Thread.h"
+            #include "java/lang/Thread.h"
         
 #include <org/allbinary/input/automation/robot/InputRobotInterface.h>
 

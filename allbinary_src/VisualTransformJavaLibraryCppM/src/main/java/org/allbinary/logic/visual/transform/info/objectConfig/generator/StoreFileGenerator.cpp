@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/io/ByteArrayInputStream.h>
 
@@ -120,7 +120,7 @@ class StoreFileGenerator: public TransformInfoObjectConfigGenerator {
 
 public: StoreFileGenerator(TransformInfoInterface transformInfoInterface){
 
-    TransformInfoHttpInterface httpTransformInfoInterface = transformInfoInterface as TransformInfoHttpInterface;;
+    TransformInfoHttpInterface httpTransformInfoInterface = transformInfoInterface;;
     
 
     WeblisketSession weblisketSession = WeblisketSession(httpTransformInfoInterface.getPropertiesHashMap(), httpTransformInfoInterface.getPageContext());;
@@ -138,7 +138,7 @@ stringBuffer.append(AbPathData::getInstance().SEPARATOR);
     AbPath abPath = AbPath(stringBuffer.toString(), StringUtil::getInstance().EMPTY_STRING);;
     
 
-    std::string fileName = httpTransformInfoInterface.getPropertiesHashMap().get(InputOutputTypeData::getInstance().FILE) as string;;
+    std::string fileName = httpTransformInfoInterface.getPropertiesHashMap().get(InputOutputTypeData::getInstance().FILE);;
     
 
     StringValidationUtil stringValidationUtil = StringValidationUtil::getInstance();;
@@ -148,12 +148,12 @@ stringBuffer.append(AbPathData::getInstance().SEPARATOR);
                         
                                     {
                                     
-    TransformInfoHttpStoreInterface transformInfoHttpStoreInterface = transformInfoInterface as TransformInfoHttpStoreInterface;;
+    TransformInfoHttpStoreInterface transformInfoHttpStoreInterface = transformInfoInterface;;
     
 fileName= transformInfoInterface.getName().substring(transformInfoHttpStoreInterface.getStoreName().length() +1);
     
 
-    HashMap<any, any> outputMappingHashMap = StdUtil::getInstance().createHashMap();;
+    HashMap<Object*, Object*> outputMappingHashMap = StdUtil::getInstance().createHashMap();;
     
 outputMappingHashMap.put(TransformInfosData::getInstance().PREVIEW, "Preview");
     
@@ -182,7 +182,7 @@ fileName= replace.all(fileName);
                                     }
                                 
 
-    std::string tempOutput = httpTransformInfoInterface.getPropertiesHashMap().get(InputOutputTypeData::getInstance().NAME) as string;;
+    std::string tempOutput = httpTransformInfoInterface.getPropertiesHashMap().get(InputOutputTypeData::getInstance().NAME);;
     
 
                         if(stringValidationUtil.isEmpty(tempOutput))

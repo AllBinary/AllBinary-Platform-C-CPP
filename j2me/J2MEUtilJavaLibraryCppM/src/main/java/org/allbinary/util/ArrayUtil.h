@@ -9,11 +9,11 @@
 
             #include <vector>
         
-            #include "../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../java/lang/Class.h"
+            #include "java/lang/Class.h"
         
-            #include "../../../java/lang/System.h"
+            #include "java/lang/System.h"
         
 #include <jsinterop/annotations/JsType.h>
 
@@ -64,7 +64,7 @@ class ArrayUtil
 
     public: std::vector<Object*> copyOf(std::vector<Object*> original, int32_t newLength);
 
-    public: std::vector<Object*> copyOfType(std::vector<Object*> original, int32_t newLength, Function newType);
+    public: std::vector<Object*> copyOfType(std::vector<Object*> original, int32_t newLength, Class* newType);
 
     public: std::vector<int8_t> copyOfbyte(std::vector<int8_t> original, int32_t newLength);
 

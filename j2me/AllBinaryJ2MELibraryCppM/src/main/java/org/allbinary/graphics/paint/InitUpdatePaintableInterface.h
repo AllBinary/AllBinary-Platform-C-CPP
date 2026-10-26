@@ -21,9 +21,6 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_PAINT_INITUPDATEPAINTABLEINTERFACE_H
         #define ORG_ALLBINARY_GRAPHICS_PAINT_INITUPDATEPAINTABLEINTERFACE_H
 
-#include <jsinterop/annotations/JsType.h>
-
-      
 #include <org/allbinary/init/InitInterface.h>
 
       

@@ -18,16 +18,10 @@
 
 
 
-#include <jsinterop/annotations/JsType.h>
-
-      
 #include <javax/microedition/lcdui/Displayable.h>
 
       
 #include <javax/microedition/midlet/MIDlet.h>
-
-      
-#include <jsinterop/annotations/JsMethod.h>
 
       
 

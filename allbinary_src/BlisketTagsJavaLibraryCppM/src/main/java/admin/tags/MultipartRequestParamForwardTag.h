@@ -21,7 +21,7 @@
         #ifndef ADMIN_TAGS_MULTIPARTREQUESTPARAMFORWARDTAG_H
         #define ADMIN_TAGS_MULTIPARTREQUESTPARAMFORWARDTAG_H
 
-            #include "../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
 

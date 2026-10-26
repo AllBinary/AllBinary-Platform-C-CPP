@@ -4,16 +4,14 @@
 
 
 
-            #include "../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../java/lang/System.h"
-        
-#include <jsinterop/annotations/JsType.h>
+#include <javax/microedition/lcdui/Graphics.h>
 
       
-#include <javax/microedition/lcdui/Graphics.h>
+#include <org/allbinary/TsUtil.h>
 
       
 #include <org/allbinary/logic/communication/log/LogUtil.h>
@@ -31,13 +29,7 @@
 #include <org/allbinary/util/BasicArrayListD.h>
 
       
-#include <jsinterop/annotations/JsMethod.h>
-
-      
-#include <jsinterop/annotations/JsConstructor.h>
-
-      
-#include <jsinterop/annotations/JsProperty.h>
+#include <org/allbinary/logic/ABSystemWrapper.h>
 
       
 
@@ -69,6 +61,10 @@ class LayerManager
     protected: const LogUtil logUtil = LogUtil::getInstance();
 
     protected: const CommonStrings commonStrings = CommonStrings::getInstance();
+
+    private: const ABSystemWrapper systemWrapper = ABSystemWrapper::getInstance();
+
+    private: const TsUtil tsUtil = TsUtil::getInstance();
 
     private: LayerManagerLoggingBase layerManagerLogging;
 
@@ -117,7 +113,7 @@ this->layerManagerLogging= layerManagerLogging;
                         for (
     int32_t index = 0;index < size; index++)
         {
-nextLayerInterface= this->list.get(index) as AllBinaryLayer;
+nextLayerInterface= this->list.get(index);
     
 
                         if(layerInterface.getZP() > nextLayerInterface.getZP())
@@ -160,7 +156,7 @@ this->list.add(layerInterface);
                         for (
     int32_t index = 0;index < size; index++)
         {
-nextLayerInterface= this->list.get(index) as AllBinaryLayer;
+nextLayerInterface= this->list.get(index);
     
 
                         if(layerInterface.getZP() > nextLayerInterface.getZP())
@@ -231,7 +227,7 @@ this->layerManagerLogging.removeResult(this, layerInterface, result);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->list.objectArray[index]! as Layer;
+                        return this->list.objectArray[index];
     
 }
 
@@ -260,9 +256,9 @@ this->list.clear();
     
 this->layerManagerLogging.clear();
     
-System.gc();
+this->tsUtil.gc();
     
-System.gc();
+this->tsUtil.gc();
     
 
 
@@ -287,7 +283,7 @@ System.gc();
                         for (
     int32_t index = this->list.size();--index >= 0; )
         {
-comp= this->list.objectArray[index]! as Layer;
+comp= this->list.objectArray[index];
     
 
                         if(comp != 

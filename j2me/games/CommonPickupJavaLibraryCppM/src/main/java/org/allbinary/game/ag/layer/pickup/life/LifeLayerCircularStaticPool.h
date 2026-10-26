@@ -21,7 +21,7 @@
         #ifndef ORG_ALLBINARY_GAME_AG_LAYER_PICKUP_LIFE_LIFELAYERCIRCULARSTATICPOOL_H
         #define ORG_ALLBINARY_GAME_AG_LAYER_PICKUP_LIFE_LIFELAYERCIRCULARSTATICPOOL_H
 
-            #include "../../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/game/ag/life/Life.h>
 

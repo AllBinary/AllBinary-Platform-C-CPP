@@ -18,9 +18,9 @@
 
 
 
-            #include "../../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/game/input/CompleteMotionGestureInputEventHandler.h>
 
@@ -106,14 +106,14 @@ CompleteMotionGestureInputEventHandler::getInstance().addListener(GameKeyFromMot
     int32_t index = size -1;index >= 0; index--)
         {
 
-    MotionGestureToMotionGestureActionAssociation association = commandActionsList.objectArray[index]! as MotionGestureToMotionGestureActionAssociation;;
+    MotionGestureToMotionGestureActionAssociation association = commandActionsList.objectArray[index];;
     
 
                         if(association.isMotionGestureArrayEquals(list) == true)
                         
                                     {
                                     
-    GameKeyCompleteMotionGestureInputEvent completeMotionGestureInputEvent = association.getCommandAction() as GameKeyCompleteMotionGestureInputEvent;;
+    GameKeyCompleteMotionGestureInputEvent completeMotionGestureInputEvent = association.getCommandAction();;
     
 CompleteMotionGestureInputEventHandler::getInstance().fireEvent(completeMotionGestureInputEvent);
     

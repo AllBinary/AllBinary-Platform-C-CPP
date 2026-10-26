@@ -18,11 +18,8 @@
 
 
 
-            #include "../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-#include <jsinterop/annotations/JsType.h>
-
-      
 #include <org/allbinary/graphics/PointFactory.h>
 
       
@@ -33,9 +30,6 @@
 
       
 #include <org/allbinary/logic/communication/log/LogUtil.h>
-
-      
-#include <jsinterop/annotations/JsMethod.h>
 
       
 

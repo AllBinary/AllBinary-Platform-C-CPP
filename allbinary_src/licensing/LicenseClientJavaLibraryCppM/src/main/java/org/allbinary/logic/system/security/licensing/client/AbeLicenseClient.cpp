@@ -18,9 +18,9 @@
 
 
 
-            #include "../../../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/business/init/LicenseInitInfo.h>
 
@@ -96,7 +96,7 @@ public: AbeLicenseClient(){
     
 
     AbeLicenseInterface abeLicenseInterface = xmlRpcAbeLicenseClient.get(
-                            nullptr) as AbeLicenseInterface;;
+                            nullptr);;
     
 
     std::string licenseId = abeLicenseInterface.getLicenseId();;

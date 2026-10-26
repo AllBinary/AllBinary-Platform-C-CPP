@@ -21,7 +21,7 @@
         #ifndef ORG_ALLBINARY_LOGIC_SYSTEM_SECURITY_LICENSING_LOCKABLEFEATUREFACTORY_H
         #define ORG_ALLBINARY_LOGIC_SYSTEM_SECURITY_LICENSING_LOCKABLEFEATUREFACTORY_H
 
-            #include "../../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
 #include <org/allbinary/util/BasicArrayList.h>
 

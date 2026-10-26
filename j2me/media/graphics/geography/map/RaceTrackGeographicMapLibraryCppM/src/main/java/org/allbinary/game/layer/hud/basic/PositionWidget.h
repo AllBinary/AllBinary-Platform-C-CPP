@@ -21,9 +21,9 @@
         #ifndef ORG_ALLBINARY_GAME_LAYER_HUD_BASIC_POSITIONWIDGET_H
         #define ORG_ALLBINARY_GAME_LAYER_HUD_BASIC_POSITIONWIDGET_H
 
-            #include "../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../../../../java/lang/Integer.h"
+            #include "java/lang/Integer.h"
         
 #include <javax/microedition/lcdui/Graphics.h>
 

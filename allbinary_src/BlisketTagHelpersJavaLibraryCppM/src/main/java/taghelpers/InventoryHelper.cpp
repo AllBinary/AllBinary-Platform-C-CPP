@@ -18,7 +18,7 @@
 
 
 
-            #include "../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
 
@@ -114,16 +114,16 @@ class InventoryHelper: public TagHelper {
 
     private: SearchRequest searchRequest;
 
-public: InventoryHelper(HashMap<any, any> propertiesHashMap, PageContext pageContext){
-this->response= pageContext.getResponse() as HttpServletResponse;
+public: InventoryHelper(HashMap<Object*, Object*> propertiesHashMap, PageContext pageContext){
+this->response= pageContext.getResponse();
     
-this->request= pageContext.getRequest() as HttpServletRequest;
-    
-
-    std::string storeName = propertiesHashMap.get(StoreFrontData::getInstance().NAME) as string;;
+this->request= pageContext.getRequest();
     
 
-    std::string xslFile = propertiesHashMap.get(TransformInfoData::getInstance().TEMPLATEFILENAME) as string;;
+    std::string storeName = propertiesHashMap.get(StoreFrontData::getInstance().NAME);;
+    
+
+    std::string xslFile = propertiesHashMap.get(TransformInfoData::getInstance().TEMPLATEFILENAME);;
     
 
                         if(true)
@@ -212,10 +212,10 @@ this->id= this->request.getParameter(basicItemData.ID);
     StringUtil stringUtil = StringUtil::getInstance();;
     
 
-    std::string keywords = this->searchRequest.getParams().get().get(basicItemData.KEYWORDS) as string;;
+    std::string keywords = this->searchRequest.getParams().get().get(basicItemData.KEYWORDS);;
     
 
-                        if(false || keywords.compareTo(stringUtil.EMPTY_STRING) == 0)
+                        if(false || keywords.compare(stringUtil.EMPTY_STRING) == 0)
                         
                                     {
                                     

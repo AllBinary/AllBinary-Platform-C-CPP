@@ -21,15 +21,9 @@
         #ifndef ORG_ALLBINARY_GAME_LAYER_HUD_EVENT_GAMENOTIFICATIONLISTENERINTERFACE_H
         #define ORG_ALLBINARY_GAME_LAYER_HUD_EVENT_GAMENOTIFICATIONLISTENERINTERFACE_H
 
-            #include "../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-#include <jsinterop/annotations/JsType.h>
-
-      
 #include <org/allbinary/logic/util/event/EventListenerInterface.h>
-
-      
-#include <jsinterop/annotations/JsMethod.h>
 
       
 

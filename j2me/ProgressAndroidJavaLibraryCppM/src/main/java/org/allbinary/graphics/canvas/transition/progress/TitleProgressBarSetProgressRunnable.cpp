@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/string/CommonStrings.h>
 
@@ -54,8 +54,9 @@ class TitleProgressBarSetProgressRunnable: public ProgressRunnable {
 
     protected: const LogUtil logUtil = LogUtil::getInstance();
 
-public: TitleProgressBarSetProgressRunnable(Activity midletActivity, ProgressCanvas progressCanvas){
-            super(midletActivity, progressCanvas);
+public: TitleProgressBarSetProgressRunnable(Activity midletActivity, ProgressCanvas progressCanvas) : ProgressRunnable(midletActivity, progressCanvas){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.

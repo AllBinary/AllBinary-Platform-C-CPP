@@ -21,9 +21,9 @@
         #ifndef ORG_ALLBINARY_BUSINESS_USER_MODULES_ADMIN_CONFIGURATION_ADMINCONFIGURATION_H
         #define ORG_ALLBINARY_BUSINESS_USER_MODULES_ADMIN_CONFIGURATION_ADMINCONFIGURATION_H
 
-            #include "../../../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
 
@@ -96,11 +96,11 @@ public: AdminConfiguration();
 
 public: AdminConfiguration(HttpServletRequest request);
 
-public: AdminConfiguration(HashMap<any, any> storeHashMap);
+public: AdminConfiguration(HashMap<Object*, Object*> storeHashMap);
 
                 //@Throws(Exception.constructor)
             
-    private: void getFormData(HashMap<any, any> storeHashMap);
+    private: void getFormData(HashMap<Object*, Object*> storeHashMap);
 
                 //@Throws(Exception.constructor)
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.

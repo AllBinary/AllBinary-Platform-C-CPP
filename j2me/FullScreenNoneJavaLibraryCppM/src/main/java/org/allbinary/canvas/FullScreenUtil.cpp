@@ -18,13 +18,10 @@
 
 
 
-            #include "../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-#include <jsinterop/annotations/JsType.h>
-
-      
 #include <javax/microedition/lcdui/Canvas.h>
 
       
@@ -35,9 +32,6 @@
 
       
 #include <org/allbinary/game/configuration/feature/MainFeatureFactory.h>
-
-      
-#include <jsinterop/annotations/JsMethod.h>
 
       
 

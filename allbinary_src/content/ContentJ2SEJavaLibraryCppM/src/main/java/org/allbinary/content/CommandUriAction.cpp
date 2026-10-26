@@ -18,13 +18,10 @@
 
 
 
-            #include "../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-#include <java/util/Hashtable.h>
-
-      
 #include <javax/microedition/lcdui/Command.h>
 
       
@@ -35,6 +32,9 @@
 
       
 #include <org/allbinary/string/CommonStrings.h>
+
+      
+#include <org/allbinary/util/ABHashtable.h>
 
       
 
@@ -77,7 +77,7 @@ class CommandUriAction
 
     protected: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    private: Hashtable<any, any> hashtable = StdUtil::getInstance().createHashtable();
+    private: ABHashtable<Object*, Object*> hashtable = StdUtil::getInstance().createHashtable();
 
     public: void add(Command command, std::string url){
 this->hashtable.put(command, url);
@@ -101,7 +101,7 @@ this->logUtil.put(this->commonStrings.EXCEPTION, this, this->commonStrings.PROCE
 
     public: Intent getIntent(Command command){
 
-    std::string url = this->hashtable.get(command) as string;;
+    std::string url = this->hashtable.get(command);;
     
 
 

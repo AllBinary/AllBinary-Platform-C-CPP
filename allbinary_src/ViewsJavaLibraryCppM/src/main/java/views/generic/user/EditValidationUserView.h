@@ -21,7 +21,7 @@
         #ifndef VIEWS_GENERIC_USER_EDITVALIDATIONUSERVIEW_H
         #define VIEWS_GENERIC_USER_EDITVALIDATIONUSERVIEW_H
 
-            #include "../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/business/user/username/UserName.h>
 

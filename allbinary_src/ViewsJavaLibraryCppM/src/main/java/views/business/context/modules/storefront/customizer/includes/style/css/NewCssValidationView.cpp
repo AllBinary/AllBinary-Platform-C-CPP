@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/data/tree/dom/DomNodeInterface.h>
 
@@ -71,8 +71,9 @@ class NewCssValidationView: public CssCustomizerView, public ValidationComponent
 
     protected: const LogUtil logUtil = LogUtil::getInstance();
 
-public: NewCssValidationView(TransformInfoInterface transformInfoInterface){
-            super(transformInfoInterface);
+public: NewCssValidationView(TransformInfoInterface transformInfoInterface) : CssCustomizerView(transformInfoInterface){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -100,7 +101,7 @@ this->styleValidationInterface= GenericCssStyleValidation();
             
 
                             {
-                            CustomizerUtil::getInstance().insert(this->getTransformInfoInterface(), this->styleValidationInterface as DomNodeInterface);
+                            CustomizerUtil::getInstance().insert(this->getTransformInfoInterface(), this->styleValidationInterface);
     
 
                             }

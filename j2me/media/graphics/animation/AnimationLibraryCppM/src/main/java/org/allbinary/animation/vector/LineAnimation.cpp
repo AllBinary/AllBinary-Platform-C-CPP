@@ -59,11 +59,11 @@
         
 class LineAnimation: public Animation, public ColorCompositeInterface, public PositionInterface {
 
-    private: std::vector<std::vector<int32_t>> newLine = new Array(2).fill(null).map(() => new Array(2).fill(0));
+    private: std::vector<std::vector<int32_t>> newLine = std::vector<std::vector<int32_t>>(2, std::vector<int32_t>(2));
 
     private: std::vector<std::vector<int32_t>> tempLine = NullUtil::getInstance().NULL_INT_ARRAY_ARRAY;
 
-    private: std::vector<std::vector<int32_t>> line = new Array(2).fill(null).map(() => new Array(2).fill(0));
+    private: std::vector<std::vector<int32_t>> line = std::vector<std::vector<int32_t>>(2, std::vector<int32_t>(2));
 
 public: LineAnimation(BasicColor basicColor){
 this->setBasicColorP(basicColor);
@@ -72,13 +72,13 @@ this->setBasicColorP(basicColor);
 
 
     public: void init(int32_t x, int32_t y){
-this->newLine[0]![0]= x;
+this->newLine[0][0]= x;
     
-this->newLine[0]![1]= y;
+this->newLine[0][1]= y;
     
-this->newLine[1]![0]= x;
+this->newLine[1][0]= x;
     
-this->newLine[1]![1]= y;
+this->newLine[1][1]= y;
     
 this->tempLine= this->line;
     
@@ -90,13 +90,13 @@ this->newLine= this->tempLine;
 
 
     public: void setPosition(int32_t x, int32_t y, int32_t z){
-this->newLine[0]![0]= this->line[1]![0]!;
+this->newLine[0][0]= this->line[1][0];
     
-this->newLine[0]![1]= this->line[1]![1]!;
+this->newLine[0][1]= this->line[1][1];
     
-this->newLine[1]![0]= x;
+this->newLine[1][0]= x;
     
-this->newLine[1]![1]= y;
+this->newLine[1][1]= y;
     
 this->tempLine= this->line;
     
@@ -113,7 +113,7 @@ this->newLine= this->tempLine;
     
 this->basicSetColorUtil.setBasicColorP3(graphics, this->getBasicColorP(), this->getColor());
     
-graphics.drawLine(currentLine[0]![0]!, currentLine[0]![1]!, currentLine[1]![0]!, currentLine[1]![1]!);
+graphics.drawLine(currentLine[0][0], currentLine[0][1], currentLine[1][0], currentLine[1][1]);
     
 }
 

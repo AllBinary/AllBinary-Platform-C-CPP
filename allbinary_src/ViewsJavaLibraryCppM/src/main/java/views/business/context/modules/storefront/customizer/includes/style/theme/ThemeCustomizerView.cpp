@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/data/tree/dom/DomNodeInterface.h>
 
@@ -60,8 +60,9 @@ class ThemeCustomizerView: public HttpStoreComponentView {
 
     protected: ValidationInterface validationInterface;
 
-public: ThemeCustomizerView(TransformInfoInterface transformInfoInterface){
-            super(transformInfoInterface);
+public: ThemeCustomizerView(TransformInfoInterface transformInfoInterface) : HttpStoreComponentView(transformInfoInterface){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -72,7 +73,7 @@ public: ThemeCustomizerView(TransformInfoInterface transformInfoInterface){
                 //@Throws(Exception.constructor)
             
     public: void addDomNodeInterfaces(){
-this->addDomNodeInterface(this->validationInterface as DomNodeInterface);
+this->addDomNodeInterface(this->validationInterface);
     
 }
 

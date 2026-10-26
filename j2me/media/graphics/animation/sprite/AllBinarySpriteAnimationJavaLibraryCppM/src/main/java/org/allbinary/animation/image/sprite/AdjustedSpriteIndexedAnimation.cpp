@@ -20,7 +20,7 @@
 
             #include <vector>
         
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <javax/microedition/lcdui/Graphics.h>
 
@@ -66,8 +66,9 @@ class AdjustedSpriteIndexedAnimation: public SpriteIndexedAnimation {
 
     private: int32_t dy;
 
-public: AdjustedSpriteIndexedAnimation(Sprite sprite, Image image, std::vector<BasicColor> basicColorArray, int32_t dx, int32_t dy, AnimationBehavior animationBehavior){
-            super(sprite, image, basicColorArray, animationBehavior);
+public: AdjustedSpriteIndexedAnimation(Sprite sprite, Image image, std::vector<BasicColor> basicColorArray, int32_t dx, int32_t dy, AnimationBehavior animationBehavior) : SpriteIndexedAnimation(sprite, image, basicColorArray, animationBehavior){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.

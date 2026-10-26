@@ -21,15 +21,9 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_FORM_ITEMPAINTABLE_H
         #define ORG_ALLBINARY_GRAPHICS_FORM_ITEMPAINTABLE_H
 
-            #include "../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-#include <jsinterop/annotations/JsType.h>
-
-      
 #include <javax/microedition/lcdui/Graphics.h>
-
-      
-#include <jsinterop/annotations/JsMethod.h>
 
       
 

@@ -21,11 +21,8 @@
         #ifndef ORG_ALLBINARY_GAME_TICK_OPTIMIZEDTICKABLELAYERPROCESSOR_H
         #define ORG_ALLBINARY_GAME_TICK_OPTIMIZEDTICKABLELAYERPROCESSOR_H
 
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-#include <jsinterop/annotations/JsType.h>
-
-      
 #include <org/allbinary/game/layer/AllBinaryGameLayer.h>
 
       

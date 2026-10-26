@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/game/input/TextNotificationUtil.h>
 
@@ -67,7 +67,7 @@ public: TextItemNumberVisitor(){
 
     public: Object* visit(Object* anyType){
 
-    std::string value = anyType as string;;
+    std::string value = anyType;;
     
 
                         if(value.size() < 2)

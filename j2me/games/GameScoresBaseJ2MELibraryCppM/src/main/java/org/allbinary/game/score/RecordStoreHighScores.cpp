@@ -20,7 +20,7 @@
 
             #include <vector>
         
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/io/ByteArrayInputStream.h>
 
@@ -32,9 +32,6 @@
 
       
 #include <java/io/IOException.h>
-
-      
-#include <java/util/Hashtable.h>
 
       
 #include <javax/microedition/rms/RecordComparator.h>
@@ -91,6 +88,9 @@
 #include <org/allbinary/string/CommonStrings.h>
 
       
+#include <org/allbinary/util/ABHashtable.h>
+
+      
 #include <org/allbinary/util/BasicArrayList.h>
 
       
@@ -121,7 +121,7 @@
 
 class RecordStoreHighScores: public HighScores {
 
-    private: static const Hashtable<any, any> hashTable = StdUtil::getInstance().createHashtable();
+    private: static const ABHashtable<Object*, Object*> hashTable = StdUtil::getInstance().createHashtable();
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
     public: static HighScores getInstance(AbeClientInformationInterface abeClientInformation, GameInfo gameInfo, std::string highScoreName, std::string heading, std::string columnTwoHeading, RecordComparator recordComparatorInterface){
@@ -152,7 +152,7 @@ RecordStoreHighScores::hashTable.put(highScores.getName(), highScores);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return highScoresCanBeNull as HighScores;
+                        return *dynamic_cast<HighScores*>(highScoresCanBeNull);
     
 }
 
@@ -175,8 +175,9 @@ RecordStoreHighScores::hashTable.put(highScores.getName(), highScores);
 
     private: RecordComparator recordComparatorInterface;
 
-private: RecordStoreHighScores(AbeClientInformationInterface abeClientInformation, GameInfo gameInfo, std::string name, std::string heading, std::string columnTwoHeading, RecordComparator recordComparatorInterface){
-            super(name, heading, columnTwoHeading);
+private: RecordStoreHighScores(AbeClientInformationInterface abeClientInformation, GameInfo gameInfo, std::string name, std::string heading, std::string columnTwoHeading, RecordComparator recordComparatorInterface) : HighScores(name, heading, columnTwoHeading){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -296,7 +297,7 @@ this->logUtil.put(this->commonStrings.EXCEPTION, this, this->commonStrings.ADD, 
     RecordEnumeration recordEnum = recordStore.enumerateRecords(NullRecordFilter::NULL_RECORD_FILTER, NullRecordComparator::NULL_RECORD_COMPARATOR, true);;
     
 
-    ScoreComparator scoreComparator = (this->recordComparatorInterface as ScoreComparator);;
+    ScoreComparator scoreComparator = (this->recordComparatorInterface);;
     
 
     HighScore bestHighScore = HighScore( -1, "none", GameInfo::NONE, scoreComparator.getBestScore());;
@@ -475,7 +476,7 @@ inputStream= DataInputStream(byteArrayInputStream);
     int32_t index = 0;index < size; index++)
         {
 
-    HighScore highScore = list.objectArray[index]! as HighScore;;
+    HighScore highScore = list.objectArray[index];;
     
 
                         if(this->recordComparatorInterface.compare(newHighScore.getAsBytes(), highScore.getAsBytes()) == RecordComparator::PRECEDES)
@@ -637,7 +638,7 @@ this->logUtil.put(this->commonStrings.EXCEPTION, this, this->commonStrings.LOAD,
     int32_t index = 0;index < size; index++)
         {
 
-    HighScore highScore = list.objectArray[index]! as HighScore;;
+    HighScore highScore = list.objectArray[index];;
     
 
                         if(this->recordComparatorInterface.compare(newHighScore.getAsBytes(), highScore.getAsBytes()) == RecordComparator::FOLLOWS)
@@ -703,7 +704,7 @@ stringBuffer.append(super.toString());
     int32_t index = 0;index < size; index++)
         {
 
-    HighScore highScore = list.objectArray[index]! as HighScore;;
+    HighScore highScore = list.objectArray[index];;
     
 stringBuffer.append(highScore.getScoreString());
     

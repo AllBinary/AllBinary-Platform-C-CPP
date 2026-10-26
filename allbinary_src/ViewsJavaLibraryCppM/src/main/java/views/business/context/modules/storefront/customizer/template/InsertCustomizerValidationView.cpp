@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
 
@@ -111,8 +111,9 @@ class InsertCustomizerValidationView: public HttpStoreComponentView, public Vali
 
     private: std::string viewName;
 
-public: InsertCustomizerValidationView(TransformInfoInterface transformInfoInterface){
-            super(transformInfoInterface);
+public: InsertCustomizerValidationView(TransformInfoInterface transformInfoInterface) : HttpStoreComponentView(transformInfoInterface){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -127,9 +128,9 @@ public: InsertCustomizerValidationView(TransformInfoInterface transformInfoInter
                                     }
                                 
 
-    HashMap<any, any> requestHashMap = RequestParams(this->getPageContext()).toHashMap();;
+    HashMap<Object*, Object*> requestHashMap = RequestParams(this->getPageContext()).toHashMap();;
     
-this->viewName= requestHashMap.get(TransformInfoData::getInstance().NAME) as string;
+this->viewName= requestHashMap.get(TransformInfoData::getInstance().NAME);
     
 }
 
@@ -194,7 +195,7 @@ this->logUtil.putF(stringBuffer.toString(), this, this->commonStrings.IS_VALID);
     int32_t index = 0;index < size; index++)
         {
 
-    TransformInfo transformInfo = componentVector.get(index) as TransformInfo;;
+    TransformInfo transformInfo = componentVector.get(index);;
     
 
     std::string transformInfoName = transformInfo.getName();;
@@ -322,7 +323,7 @@ this->logUtil.putF(stringBuffer.toString(), this, this->commonStrings.IS_VALID);
 componentInterface.getTransformInfoInterface().setObjectConfigInterface(templateViewObjectConfig);
     
 
-    HashMap<any, any> updatedTransformInfoHashMap = componentInterface.getTransformInfoInterface().toHashMap();;
+    HashMap<Object*, Object*> updatedTransformInfoHashMap = componentInterface.getTransformInfoInterface().toHashMap();;
     
 TransformInfoEntityBuilder::getInstance().update(updatedTransformInfoHashMap);
     

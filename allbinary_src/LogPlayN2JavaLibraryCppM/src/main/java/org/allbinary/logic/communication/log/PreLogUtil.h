@@ -21,10 +21,13 @@
         #ifndef ORG_ALLBINARY_LOGIC_COMMUNICATION_LOG_PRELOGUTIL_H
         #define ORG_ALLBINARY_LOGIC_COMMUNICATION_LOG_PRELOGUTIL_H
 
-            #include "../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../java/lang/Throwable.h"
+            #include "java/lang/Throwable.h"
         
+#include <jsinterop/annotations/JsType.h>
+
+      
 #include <org/allbinary/string/CommonSeps.h>
 
       

@@ -23,13 +23,7 @@
 
             #include <vector>
         
-#include <jsinterop/annotations/JsType.h>
-
-      
 #include <org/allbinary/util/CircularIndexUtil.h>
-
-      
-#include <jsinterop/annotations/JsMethod.h>
 
       
 

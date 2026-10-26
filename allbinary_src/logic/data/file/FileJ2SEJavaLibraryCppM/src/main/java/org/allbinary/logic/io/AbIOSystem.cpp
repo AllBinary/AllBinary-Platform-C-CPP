@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
 
 
@@ -69,7 +69,7 @@ class AbIOSystem
 
     public: bool isType(std::string type){
 
-                        if(this->type.compareTo(type) == 0)
+                        if(this->type.compare(type) == 0)
                         
                                     {
                                     

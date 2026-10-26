@@ -4,11 +4,11 @@
 
 
 
-            #include "../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../../java/lang/Runnable.h"
+            #include "java/lang/Runnable.h"
         
 #include <javax/microedition/khronos/opengles/GL10.h>
 
@@ -195,7 +195,7 @@ graphics.update();
     
 progressCanvas.update(graphics);
     
-getInstance = OpenGLImageCacheFactory::getInstance()getInstance as OpenGLImageCache
+getInstance = OpenGLImageCacheFactory::getInstance()getInstance
 getInstance.
                     update(gl);
     
@@ -303,7 +303,7 @@ this->displayInfoSingleton.add(this->canvasStrings.SCALED_IMAGES);
                         for (
     int32_t index = 0;index < size; index++)
         {
-runnable= this->runnableList.get(index) as Runnable;
+runnable= this->runnableList.get(index);
     
 runnable.run();
     
@@ -323,7 +323,7 @@ this->runnableList.clear();
     int32_t size = this->list.size();;
     
 
-    Object* image;;
+    OpenGLESImage image;;
     
 
 
@@ -334,9 +334,7 @@ this->runnableList.clear();
         {
 image= this->list.get(index2);
     
-image = imageimage as OpenGLESImage
-image.
-                    set(gl);
+image.set(gl);
     
 }
 

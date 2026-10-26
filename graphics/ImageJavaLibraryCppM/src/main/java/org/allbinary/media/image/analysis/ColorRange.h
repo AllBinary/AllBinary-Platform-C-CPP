@@ -21,7 +21,7 @@
         #ifndef ORG_ALLBINARY_MEDIA_IMAGE_ANALYSIS_COLORRANGE_H
         #define ORG_ALLBINARY_MEDIA_IMAGE_ANALYSIS_COLORRANGE_H
 
-            #include "../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
 #include <java/awt.h>
 

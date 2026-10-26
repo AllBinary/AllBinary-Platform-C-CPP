@@ -20,9 +20,9 @@
 
             #include <hilog/log.h>
         
-            #include "../../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/io/Closeable.h>
 
@@ -31,9 +31,6 @@
 
       
 #include <java/io/LineNumberReader.h>
-
-      
-#include <java/util/Hashtable.h>
 
       
 #include <org/allbinary/logic/io/NullCloseable.h>
@@ -61,6 +58,9 @@
 
       
 #include <org/allbinary/string/CommonStrings.h>
+
+      
+#include <org/allbinary/util/ABHashtable.h>
 
       
 #include <org/allbinary/util/BasicArrayList.h>
@@ -205,7 +205,7 @@ this->componentInterfaceVector.add(UnknownHardware(nextLine));
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->componentInterfaceVector.get(index) as HardwareComponentInterface;
+                        return this->componentInterfaceVector.get(index);
     
 }
 
@@ -225,7 +225,7 @@ this->componentInterfaceVector.add(UnknownHardware(nextLine));
     int32_t index = 0;index < size; index++)
         {
 
-    HardwareComponentInterface componentInterface = this->componentInterfaceVector.get(index) as HardwareComponentInterface;;
+    HardwareComponentInterface componentInterface = this->componentInterfaceVector.get(index);;
     
 stringBuilder.append(componentInterface.toString());
     
@@ -252,7 +252,7 @@ stringBuilder.append(CommonSeps::getInstance().NEW_LINE);
 }
 
 
-    public: Hashtable<any, any> difference(HardwareInterface hardwareInterface){
+    public: ABHashtable<Object*, Object*> difference(HardwareInterface hardwareInterface){
 
 
 

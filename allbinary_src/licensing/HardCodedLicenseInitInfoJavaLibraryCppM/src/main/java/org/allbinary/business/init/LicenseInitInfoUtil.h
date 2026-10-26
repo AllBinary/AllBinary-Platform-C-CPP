@@ -21,9 +21,9 @@
         #ifndef ORG_ALLBINARY_BUSINESS_INIT_LICENSEINITINFOUTIL_H
         #define ORG_ALLBINARY_BUSINESS_INIT_LICENSEINITINFOUTIL_H
 
-            #include "../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 
 

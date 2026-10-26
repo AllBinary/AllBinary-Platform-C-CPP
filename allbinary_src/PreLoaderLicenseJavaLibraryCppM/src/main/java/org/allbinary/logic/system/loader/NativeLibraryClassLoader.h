@@ -21,7 +21,7 @@
         #ifndef ORG_ALLBINARY_LOGIC_SYSTEM_LOADER_NATIVELIBRARYCLASSLOADER_H
         #define ORG_ALLBINARY_LOGIC_SYSTEM_LOADER_NATIVELIBRARYCLASSLOADER_H
 
-            #include "../../../../../java/lang/ClassLoader.h"
+            #include "java/lang/ClassLoader.h"
         
 
 

@@ -21,9 +21,6 @@
         #ifndef ORG_ALLBINARY_GAME_RESOURCE_RESOURCEINITIALIZATION_H
         #define ORG_ALLBINARY_GAME_RESOURCE_RESOURCEINITIALIZATION_H
 
-#include <jsinterop/annotations/JsType.h>
-
-      
 #include <org/allbinary/init/Init.h>
 
       

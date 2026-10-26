@@ -20,13 +20,8 @@
 
             #include <vector>
         
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../../java/lang/RuntimeException.h"
-        
-#include <jsinterop/annotations/JsType.h>
-
-      
 #include <javax/microedition/lcdui/Canvas.h>
 
       
@@ -51,6 +46,9 @@
 #include <org/allbinary/logic/NullUtil.h>
 
       
+#include <org/allbinary/logic/communication/log/LogUtil.h>
+
+      
 #include <org/allbinary/logic/string/StringMaker.h>
 
       
@@ -66,13 +64,7 @@
 #include <org/allbinary/string/CommonSeps.h>
 
       
-#include <jsinterop/annotations/JsMethod.h>
-
-      
-#include <jsinterop/annotations/JsConstructor.h>
-
-      
-#include <jsinterop/annotations/JsProperty.h>
+#include <org/allbinary/string/CommonStrings.h>
 
       
 
@@ -109,7 +101,7 @@
 
 class ScrollSelectionForm: public PaintableForm {
 
-    private: static ScrollSelectionForm createForm(std::string title, std::vector<ABCustomItem> items, ItemPaintableFactory formPaintableFactory, int32_t border, BasicColor backgroundBasicColor, BasicColor foregroundBasicColor){
+    private: static PaintableForm createForm(std::string title, std::vector<ABCustomItem> items, ItemPaintableFactory formPaintableFactory, int32_t border, BasicColor backgroundBasicColor, BasicColor foregroundBasicColor){
 
         try {
             
@@ -127,10 +119,19 @@ class ScrollSelectionForm: public PaintableForm {
                                 
                         else {
                             
+    CommonStrings commonStrings = CommonStrings::getInstance();;
+    
+
+    LogUtil logUtil = LogUtil::getInstance();;
+    
+logUtil.putF(commonStrings.EXCEPTION, logUtil, commonStrings.EXCEPTION);
+    
 
 
-                            throw RuntimeException();
-                    
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return PaintableForm::getNullPaintableForm();;
+    
 
                         }
                             
@@ -139,10 +140,19 @@ class ScrollSelectionForm: public PaintableForm {
 } catch(e) 
             {
 
+    CommonStrings commonStrings = CommonStrings::getInstance();;
+    
+
+    LogUtil logUtil = LogUtil::getInstance();;
+    
+logUtil.put(commonStrings.EXCEPTION, logUtil, commonStrings.EXCEPTION, e);
+    
 
 
-                            throw RuntimeException();
-                    
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return PaintableForm::getNullPaintableForm();;
+    
 }
 
 }
@@ -164,7 +174,7 @@ class ScrollSelectionForm: public PaintableForm {
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return ScrollSelectionForm::NULL_SCROLL_SELECTION_FORM as ScrollSelectionForm;
+                        return ScrollSelectionForm::NULL_SCROLL_SELECTION_FORM;
     
 }
 
@@ -185,7 +195,7 @@ class ScrollSelectionForm: public PaintableForm {
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return ScrollSelectionForm::NULL_SCROLL_SELECTION_HORIZONTAL_FORM as ScrollSelectionForm;
+                        return ScrollSelectionForm::NULL_SCROLL_SELECTION_HORIZONTAL_FORM;
     
 }
 
@@ -380,8 +390,9 @@ this->scrollSelectionForm= multipleScrollSelectionForm;
 
     private: int32_t adjustedExtraBorder;
 
-public: ScrollSelectionForm(std::string title, std::vector<ABCustomItem> items, ItemPaintableFactory formPaintableFactory, int32_t border, int32_t adjustedExtraBorder, BasicColor backgroundBasicColor, BasicColor foregroundBasicColor){
-            super(title, items, backgroundBasicColor, foregroundBasicColor);
+public: ScrollSelectionForm(std::string title, std::vector<ABCustomItem> items, ItemPaintableFactory formPaintableFactory, int32_t border, int32_t adjustedExtraBorder, BasicColor backgroundBasicColor, BasicColor foregroundBasicColor) : PaintableForm(title, items, backgroundBasicColor, foregroundBasicColor){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -583,7 +594,7 @@ this->formTypeItemIndexDx= ScrollSelectionFormTempHorizontalDx(this);
                         for (
     int32_t index = 0;index < size; index++)
         {
-nextItem= this->get(index) as ABCustomItem;
+nextItem= this->get(index);
     
 
                         if(nextItem == item)

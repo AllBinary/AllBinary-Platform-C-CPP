@@ -18,13 +18,13 @@
 
 
 
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../../../java/lang/Integer.h"
+            #include "java/lang/Integer.h"
         
-            #include "../../../../../java/lang/Thread.h"
+            #include "java/lang/Thread.h"
         
-            #include "../../../../../java/lang/Runnable.h"
+            #include "java/lang/Runnable.h"
         
 #include <java/awt.h>
 
@@ -169,7 +169,7 @@ this->selectedFrame= 0;
     
 this->propertiesJPanel.set(this->workAreaJTreeJPanel);
     
-this->canvasHolderJPanel.add(canvasJPanel as Component);
+this->canvasHolderJPanel.add(canvasJPanel);
     
 
                 //: 
@@ -208,7 +208,7 @@ this->initMyComponents(dimension);
     int32_t index = 0;index < numberOfFrames; index++)
         {
 
-    Node node = canvasNodeList.get(index) as Node;;
+    Node node = canvasNodeList.get(index);;
     
 
     CanvasJPanel canvasJPanel = CanvasJPanel(this->workAreaJTreeJPanel, this->getSize(), CanvasDom(node));;
@@ -219,7 +219,7 @@ this->canvasJPanelList.add(canvasJPanel);
 
 this->selectedFrame= 0;
     
-this->canvasHolderJPanel.add(this->getCurrentFrame() as Component);
+this->canvasHolderJPanel.add(this->getCurrentFrame());
     
 this->propertiesJPanel.set(this->workAreaJTreeJPanel);
     
@@ -324,14 +324,14 @@ gridBagLayout.setConstraints(this->propertiesJPanel, gridBagConstraints);
     
 this->innerJPanel.add(this->propertiesJPanel);
     
-MyCanvasEventService::addListener(this as MyCanvasEventListener);
+MyCanvasEventService::addListener(this);
     
 }
 
 
-    private: HashMap<any, any> getCanvasHashMap(){
+    private: HashMap<Object*, Object*> getCanvasHashMap(){
 
-    HashMap<any, any> canvasJPanelHashMap = StdUtil::getInstance().createHashMap();;
+    HashMap<Object*, Object*> canvasJPanelHashMap = StdUtil::getInstance().createHashMap();;
     
 
     int32_t size = this->canvasJPanelList.size();;
@@ -344,7 +344,7 @@ MyCanvasEventService::addListener(this as MyCanvasEventListener);
     int32_t index = 0;index < size; index++)
         {
 
-    CanvasJPanel canvasJPanel = this->canvasJPanelList.get(index) as CanvasJPanel;;
+    CanvasJPanel canvasJPanel = this->canvasJPanelList.get(index);;
     
 canvasJPanelHashMap.put(canvasJPanel.getTreeNode(), Integer(index));
     
@@ -407,7 +407,7 @@ this->canvasHolderJPanel.removeAll();
 
 
     public: void enableCanvas(){
-this->canvasHolderJPanel.add(this->getCurrentFrame() as Component);
+this->canvasHolderJPanel.add(this->getCurrentFrame());
     
 }
 
@@ -457,7 +457,7 @@ super.setVisible(true);
     int32_t index = 0;index < size; index++)
         {
 
-    CanvasJPanel canvasJPanel = this->canvasJPanelList.get(index) as CanvasJPanel;;
+    CanvasJPanel canvasJPanel = this->canvasJPanelList.get(index);;
     
 canvasJPanel.getGrid().setZoom(canvasJPanel.getGrid().getZoom() +factor);
     
@@ -471,7 +471,7 @@ canvasJPanel.getGrid().setZoom(canvasJPanel.getGrid().getZoom() +factor);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->canvasJPanelList.get(this->selectedFrame) as CanvasJPanel;
+                        return this->canvasJPanelList.get(this->selectedFrame);
     
 }
 
@@ -497,17 +497,17 @@ this->select(this->canvasJPanelList.size() -1);
             
     private: void duplicate(MutableTreeNode treeNode){
 
-    HashMap<any, any> canvasJPanelHashMap = this->getCanvasHashMap();;
+    HashMap<Object*, Object*> canvasJPanelHashMap = this->getCanvasHashMap();;
     
 
                         if(canvasJPanelHashMap.containsKey(treeNode))
                         
                                     {
                                     
-    Integer frameInteger = canvasJPanelHashMap.get(treeNode) as Integer;;
+    Integer frameInteger = canvasJPanelHashMap.get(treeNode);;
     
 
-    CanvasJPanel canvasJPanel = this->canvasJPanelList.get(frameInteger.intValue()) as CanvasJPanel;;
+    CanvasJPanel canvasJPanel = this->canvasJPanelList.get(frameInteger.intValue());;
     
 this->initDuplicate(canvasJPanel.duplicate());
     
@@ -531,7 +531,7 @@ this->initDuplicate(canvasJPanel.duplicate());
     int32_t index = 1;index < increments; index++)
         {
 
-    CanvasJPanel canvasJPanel = this->getCurrentFrame() as CanvasJPanel;;
+    CanvasJPanel canvasJPanel = this->getCurrentFrame();;
     
 
     CanvasJPanel newCanvasJPanel = canvasJPanel.duplicate();;
@@ -547,7 +547,7 @@ this->initDuplicate(newCanvasJPanel);
 
     public: void explodeAll(){
 
-    CanvasJPanel canvasJPanel = this->getCurrentFrame() as CanvasJPanel;;
+    CanvasJPanel canvasJPanel = this->getCurrentFrame();;
     
 canvasJPanel.explodeAll();
     
@@ -565,7 +565,7 @@ canvasJPanel.explodeAll();
     int32_t index = 1;index < numberOfFrames; index++)
         {
 
-    CanvasJPanel canvasJPanel = this->getCurrentFrame() as CanvasJPanel;;
+    CanvasJPanel canvasJPanel = this->getCurrentFrame();;
     
 
     CanvasJPanel newCanvasJPanel = canvasJPanel.duplicate();;
@@ -583,7 +583,7 @@ this->initDuplicate(newCanvasJPanel);
             
     public: void autoMirror(){
 
-    CanvasJPanel canvasJPanel = this->getCurrentFrame() as CanvasJPanel;;
+    CanvasJPanel canvasJPanel = this->getCurrentFrame();;
     
 
     CanvasJPanel newCanvasJPanel = canvasJPanel.duplicate();;
@@ -602,7 +602,7 @@ this->initDuplicate(newCanvasJPanel);
                         
                                     {
                                     
-    CanvasJPanel canvasJPanel = this->canvasJPanelList.get(index) as CanvasJPanel;;
+    CanvasJPanel canvasJPanel = this->canvasJPanelList.get(index);;
     
 
                         if(canvasJPanel != 
@@ -633,10 +633,10 @@ canvasJPanel.repaint();
 
     private: void select(MutableTreeNode treeNode){
 
-    HashMap<any, any> canvasJPanelHashMap = this->getCanvasHashMap();;
+    HashMap<Object*, Object*> canvasJPanelHashMap = this->getCanvasHashMap();;
     
 
-    Integer frameInteger = canvasJPanelHashMap.get(treeNode) as Integer;;
+    Integer frameInteger = canvasJPanelHashMap.get(treeNode);;
     
 
                         if(frameInteger != 
@@ -682,7 +682,7 @@ nameNode.appendChild(nameTextNode);
     int32_t index = 0;index < size; index++)
         {
 
-    CanvasJPanel canvasJPanel = this->canvasJPanelList.get(index) as CanvasJPanel;;
+    CanvasJPanel canvasJPanel = this->canvasJPanelList.get(index);;
     
 framesNode.appendChild(canvasJPanel.toDom());
     
@@ -768,7 +768,7 @@ this->getCurrentFrame().keyPressed(keyEvent);
 
     public: void delete_(MyCanvasEvent evt){
 
-    HashMap<any, any> canvasJPanelHashMap = this->getCanvasHashMap();;
+    HashMap<Object*, Object*> canvasJPanelHashMap = this->getCanvasHashMap();;
     
 
                         if(canvasJPanelHashMap.containsKey(evt.getTreeNode()))
@@ -777,7 +777,7 @@ this->getCurrentFrame().keyPressed(keyEvent);
                                     this->canvasHolderJPanel.removeAll();
     
 
-    Integer frameInt = canvasJPanelHashMap.get(evt.getTreeNode()) as Integer;;
+    Integer frameInt = canvasJPanelHashMap.get(evt.getTreeNode());;
     
 this->canvasJPanelList.remove(frameInt.intValue());
     
@@ -807,16 +807,16 @@ StatusFactory::getInstance().setStatus("Frame Selected");
 
     public: void rotate(MyCanvasEvent evt){
 
-    HashMap<any, any> canvasJPanelHashMap = this->getCanvasHashMap();;
+    HashMap<Object*, Object*> canvasJPanelHashMap = this->getCanvasHashMap();;
     
 
     MutableTreeNode treeNode = evt.getTreeNode();;
     
 
-    Integer frameInt = canvasJPanelHashMap.get(evt.getTreeNode()) as Integer;;
+    Integer frameInt = canvasJPanelHashMap.get(evt.getTreeNode());;
     
 
-    CanvasJPanel canvasJPanel = this->canvasJPanelList.get(frameInt.intValue()) as CanvasJPanel;;
+    CanvasJPanel canvasJPanel = this->canvasJPanelList.get(frameInt.intValue());;
     
 
                         if(canvasJPanel != 
@@ -854,7 +854,7 @@ this->autoExplode(10, 0);
             
     public: void center(){
 
-    CanvasJPanel canvasJPanel = this->getCurrentFrame() as CanvasJPanel;;
+    CanvasJPanel canvasJPanel = this->getCurrentFrame();;
     
 canvasJPanel.center();
     

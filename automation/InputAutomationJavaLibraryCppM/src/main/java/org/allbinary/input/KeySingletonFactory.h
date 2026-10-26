@@ -23,16 +23,13 @@
 
             #include <vector>
         
-            #include "../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../java/lang/Integer.h"
+            #include "java/lang/Integer.h"
         
 #include <java/awt/event/KeyEvent.h>
-
-      
-#include <java/util/Hashtable.h>
 
       
 #include <org/allbinary/logic/StdUtil.h>
@@ -42,6 +39,9 @@
 
       
 #include <org/allbinary/string/CommonStrings.h>
+
+      
+#include <org/allbinary/util/ABHashtable.h>
 
       
 
@@ -67,7 +67,7 @@ class KeySingletonFactory
             : public Object
          {
 
-    private: static Hashtable<any, any> keyStringHashtable = StdUtil::getInstance().createHashtable();
+    private: static ABHashtable<Object*, Object*> keyStringHashtable = StdUtil::getInstance().createHashtable();
 
     private: static std::vector<Integer> keyArray = 
                                                         {
@@ -77,7 +77,7 @@ class KeySingletonFactory
                     static int32_t initResult;
                 static int32_t init();
             
-    public: static Hashtable<any, any> getHashtable();
+    public: static ABHashtable<Object*, Object*> getHashtable();
 
     public: static Integer getInstance(int32_t index);
 

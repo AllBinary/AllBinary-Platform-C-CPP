@@ -18,9 +18,9 @@
 
 
 
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../../../java/lang/Integer.h"
+            #include "java/lang/Integer.h"
         
 #include <javax/microedition/lcdui/Canvas.h>
 
@@ -101,26 +101,27 @@ class HorizontaRotationManeuverAI: public BasicAI, public ArtificialIntelligence
 
     private: VelocityInterface velocityInterface;
 
-public: HorizontaRotationManeuverAI(AllBinaryLayer ownerLayerInterface, GameInput gameInput){
-            super(ownerLayerInterface, gameInput);
+public: HorizontaRotationManeuverAI(AllBinaryLayer ownerLayerInterface, GameInput gameInput) : BasicAI(ownerLayerInterface, gameInput){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
                     
 
-    RotationAnimationInterfaceCompositeInterface rotationAnimationInterfaceCompositeInterface = this->getOwnerLayerInterface() as unknown as RotationAnimationInterfaceCompositeInterface;;
+    RotationAnimationInterfaceCompositeInterface rotationAnimationInterfaceCompositeInterface = this->getOwnerLayerInterface() as unknown;;
     
 this->rotationAnimationInterface= rotationAnimationInterfaceCompositeInterface.getRotationAnimationInterface();
     
 
-    VelocityInterfaceCompositeInterface velocityInterfaceCompositeInterface = this->getOwnerLayerInterface() as unknown as VelocityInterfaceCompositeInterface;;
+    VelocityInterfaceCompositeInterface velocityInterfaceCompositeInterface = this->getOwnerLayerInterface() as unknown;;
     
 this->baseVelocityInterface= velocityInterfaceCompositeInterface.getVelocityProperties();
     
-this->velocityInterface= this->baseVelocityInterface as unknown as VelocityInterface;
+this->velocityInterface= this->baseVelocityInterface as unknown;
     
 
-    RotationAnimationInterface rotationAnimationInterface = this->rotationAnimationInterface as unknown as RotationAnimationInterface;;
+    RotationAnimationInterface rotationAnimationInterface = this->rotationAnimationInterface as unknown;;
     
 
     AngleIncrementInfo angleIncrementInfo = rotationAnimationInterface.getAngleInfoP().getAngleIncrementInfo();;
@@ -132,13 +133,13 @@ rotationAnimationInterfaceCompositeInterface.setFrame(angleIncrementInfo.RIGHT_F
 
     public: void transition(){
 
-    RotationAnimationInterface rotationAnimationInterface = this->rotationAnimationInterface as unknown as RotationAnimationInterface;;
+    RotationAnimationInterface rotationAnimationInterface = this->rotationAnimationInterface as unknown;;
     
 
     AngleIncrementInfo angleIncrementInfo = rotationAnimationInterface.getAngleInfoP().getAngleIncrementInfo();;
     
 
-    RotationAnimationInterfaceCompositeInterface rotationAnimationInterfaceCompositeInterface = this->getOwnerLayerInterface() as unknown as RotationAnimationInterfaceCompositeInterface;;
+    RotationAnimationInterfaceCompositeInterface rotationAnimationInterfaceCompositeInterface = this->getOwnerLayerInterface() as unknown;;
     
 rotationAnimationInterfaceCompositeInterface.setFrame(angleIncrementInfo.RIGHT_FRAME.intValue());
     
@@ -154,7 +155,7 @@ allbinaryLayer.setPosition(allbinaryLayer.getXP(), 1, allbinaryLayer.getZP());
             
     public: void processAI(AllBinaryLayerManager allBinaryLayerManager){
 
-    RotationAnimationInterface rotationAnimationInterface = (this->rotationAnimationInterface as unknown as RotationAnimationInterface);;
+    RotationAnimationInterface rotationAnimationInterface = (this->rotationAnimationInterface as unknown);;
     
 
     AngleIncrementInfo angleIncrementInfo = rotationAnimationInterface.getAngleInfoP().getAngleIncrementInfo();;
@@ -231,7 +232,7 @@ this->circularIndexUtil.next();
 
     protected: void reverse(){
 
-    RotationAnimationInterface rotationAnimationInterface = this->rotationAnimationInterface as unknown as RotationAnimationInterface;;
+    RotationAnimationInterface rotationAnimationInterface = this->rotationAnimationInterface as unknown;;
     
 
     AngleIncrementInfo angleIncrementInfo = rotationAnimationInterface.getAngleInfoP().getAngleIncrementInfo();;
@@ -244,7 +245,7 @@ this->circularIndexUtil.next();
                         
                                     {
                                     
-    RotationAnimationInterfaceCompositeInterface rotationAnimationInterfaceCompositeInterface = this->getOwnerLayerInterface() as unknown as RotationAnimationInterfaceCompositeInterface;;
+    RotationAnimationInterfaceCompositeInterface rotationAnimationInterfaceCompositeInterface = this->getOwnerLayerInterface() as unknown;;
     
 rotationAnimationInterfaceCompositeInterface.setFrame(angleIncrementInfo.RIGHT_FRAME.intValue());
     
@@ -258,7 +259,7 @@ this->baseVelocityInterface.zero();
                         
                                     {
                                     
-    RotationAnimationInterfaceCompositeInterface rotationAnimationInterfaceCompositeInterface = this->getOwnerLayerInterface() as unknown as RotationAnimationInterfaceCompositeInterface;;
+    RotationAnimationInterfaceCompositeInterface rotationAnimationInterfaceCompositeInterface = this->getOwnerLayerInterface() as unknown;;
     
 rotationAnimationInterfaceCompositeInterface.setFrame(angleIncrementInfo.LEFT_FRAME.intValue());
     

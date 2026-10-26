@@ -21,7 +21,7 @@
         #ifndef ORG_ALLBINARY_GAME_AG_LAYER_PICKUP_LIFE_LIFERESOURCES_H
         #define ORG_ALLBINARY_GAME_AG_LAYER_PICKUP_LIFE_LIFERESOURCES_H
 
-            #include "../../../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
 
 

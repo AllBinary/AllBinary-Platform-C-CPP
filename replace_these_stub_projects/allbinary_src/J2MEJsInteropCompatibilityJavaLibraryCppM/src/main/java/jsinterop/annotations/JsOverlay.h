@@ -7,7 +7,7 @@
         #ifndef JSINTEROP_ANNOTATIONS_JSOVERLAY_H
         #define JSINTEROP_ANNOTATIONS_JSOVERLAY_H
 
-            #include "../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
 
 

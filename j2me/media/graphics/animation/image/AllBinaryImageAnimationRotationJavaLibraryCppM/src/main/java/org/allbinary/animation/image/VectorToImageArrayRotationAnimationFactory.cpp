@@ -20,7 +20,7 @@
 
             #include <vector>
         
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <javax/microedition/lcdui/Image.h>
 
@@ -91,8 +91,9 @@ class VectorToImageArrayRotationAnimationFactory: public BaseImageAnimationFacto
 
     private: int32_t angleIncrement= 0;
 
-public: VectorToImageArrayRotationAnimationFactory(VectorInfo vectorInfo, BasicColor basicColor, AnimationBehaviorFactory animationBehaviorFactory){
-            super(AnimationFrameToImageUtil::getInstance().getInstanceTranslate(vectorInfo.getWidth(), vectorInfo.getHeight(), VectorAnimation::createVectorAnimation(vectorInfo.getPoints(), basicColor, animationBehaviorFactory.getOrCreateInstance())), PrimitiveIntUtil::getArrayInstance(), 0, 0, 0, 0, animationBehaviorFactory);
+public: VectorToImageArrayRotationAnimationFactory(VectorInfo vectorInfo, BasicColor basicColor, AnimationBehaviorFactory animationBehaviorFactory) : BaseImageAnimationFactory(AnimationFrameToImageUtil::getInstance().getInstanceTranslate(vectorInfo.getWidth(), vectorInfo.getHeight(), VectorAnimation::createVectorAnimation(vectorInfo.getPoints(), basicColor, animationBehaviorFactory.getOrCreateInstance())), PrimitiveIntUtil::getArrayInstance(), 0, 0, 0, 0, animationBehaviorFactory){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.

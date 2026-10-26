@@ -42,8 +42,9 @@
         
 class AbFileItemFactory: public DefaultFileItemFactory {
 
-public: AbFileItemFactory(){
-            super();
+public: AbFileItemFactory() : DefaultFileItemFactory(){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.

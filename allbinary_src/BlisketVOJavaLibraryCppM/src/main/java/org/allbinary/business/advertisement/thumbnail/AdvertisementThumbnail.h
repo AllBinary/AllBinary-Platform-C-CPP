@@ -21,7 +21,7 @@
         #ifndef ORG_ALLBINARY_BUSINESS_ADVERTISEMENT_THUMBNAIL_ADVERTISEMENTTHUMBNAIL_H
         #define ORG_ALLBINARY_BUSINESS_ADVERTISEMENT_THUMBNAIL_ADVERTISEMENTTHUMBNAIL_H
 
-            #include "../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
 #include <org/allbinary/logic/control/contraints/size/TwoDimensionalConstraintInterface.h>
 

@@ -21,9 +21,9 @@
         #ifndef ORG_ALLBINARY_BUSINESS_CATEGORY_PROPERTIES_ROOT_STORE_ROOTSTORECATEGORYPROPERTIES_H
         #define ORG_ALLBINARY_BUSINESS_CATEGORY_PROPERTIES_ROOT_STORE_ROOTSTORECATEGORYPROPERTIES_H
 
-            #include "../../../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
 
@@ -139,7 +139,7 @@ public: RootStoreCategoryProperties(TransformInfoInterface transformInfoInterfac
 
 public: RootStoreCategoryProperties(TransformInfoInterface transformInfoInterface, Node node);
 
-public: RootStoreCategoryProperties(TransformInfoInterface transformInfoInterface, HashMap<any, any> categoryPropertiesHashMap);
+public: RootStoreCategoryProperties(TransformInfoInterface transformInfoInterface, HashMap<Object*, Object*> categoryPropertiesHashMap);
 
                 //@Throws(Exception.constructor)
             
@@ -171,7 +171,7 @@ public: RootStoreCategoryProperties(TransformInfoInterface transformInfoInterfac
 
     public: Boolean isValid();
 
-    public: HashMap<any, any> toHashMap();
+    public: HashMap<Object*, Object*> toHashMap();
 
     public: BasicArrayList toVector();
 

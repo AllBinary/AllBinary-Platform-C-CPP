@@ -21,7 +21,7 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_J2ME_WORKAREA_TOOLS_POINTS_H
         #define ORG_ALLBINARY_GRAPHICS_J2ME_WORKAREA_TOOLS_POINTS_H
 
-            #include "../../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
 #include <org/allbinary/util/BasicArrayList.h>
 

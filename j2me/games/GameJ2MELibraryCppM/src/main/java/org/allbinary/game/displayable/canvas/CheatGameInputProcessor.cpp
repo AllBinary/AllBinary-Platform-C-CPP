@@ -18,11 +18,8 @@
 
 
 
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-#include <jsinterop/annotations/JsType.h>
-
-      
 #include <org/allbinary/game/input/GameKeyFactory.h>
 
       
@@ -53,15 +50,6 @@
 #include <org/allbinary/util/BasicArrayListD.h>
 
       
-#include <jsinterop/annotations/JsMethod.h>
-
-      
-#include <jsinterop/annotations/JsConstructor.h>
-
-      
-#include <jsinterop/annotations/JsProperty.h>
-
-      
 
 
 
@@ -90,8 +78,9 @@ class CheatGameInputProcessor: public PlayerGameInput {
 
     private: AllBinaryGameCanvas gameCanvas;
 
-public: CheatGameInputProcessor(AllBinaryGameCanvas gameCanvas){
-            super(BasicArrayListD(), BasicArrayListD(),  -1);
+public: CheatGameInputProcessor(AllBinaryGameCanvas gameCanvas) : PlayerGameInput(BasicArrayListD(), BasicArrayListD(),  -1){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.

@@ -18,16 +18,10 @@
 
 
 
-#include <jsinterop/annotations/JsType.h>
-
-      
 #include <javax/microedition/lcdui/Command.h>
 
       
 #include <javax/microedition/lcdui/CommandListener.h>
-
-      
-#include <jsinterop/annotations/JsMethod.h>
 
       
 

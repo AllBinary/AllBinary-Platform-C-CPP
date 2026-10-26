@@ -20,9 +20,9 @@
 
             #include <vector>
         
-            #include "../../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/io/File.h>
 
@@ -86,13 +86,13 @@ class InputAutomationModuleConfigurations
 
     protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: HashMap<any, any> hashMap;
+    private: HashMap<Object*, Object*> hashMap;
 
 public: InputAutomationModuleConfigurations(AbeClientInformationInterface abeClientInformation, File file){
-this->setHashMap(HashMap<any, any>());
+this->setHashMap(HashMap<Object*, Object*>());
     
 
-    std::vector<int8_t> bytes = new Array(100000);;
+    std::vector<int8_t> bytes = std::vector<int8_t>(100000);;
     
 
     FileInputStream idFile = FileInputStream(file);;
@@ -142,7 +142,7 @@ this->add(InputAutomationModuleConfiguration(abeClientInformation, node));
 
 
 public: InputAutomationModuleConfigurations(AbeClientInformationInterface abeClientInformation, Document document){
-this->setHashMap(HashMap<any, any>());
+this->setHashMap(HashMap<Object*, Object*>());
     
 
     NodeList nameNodeList = document.getElementsByTagName(InputAutomationModuleData::NAME);;
@@ -167,10 +167,10 @@ this->add(InputAutomationModuleConfiguration(abeClientInformation, node));
 
 
 public: InputAutomationModuleConfigurations(List<InputAutomationModuleConfiguration> inputAutomationModuleConfigurationList){
-this->setHashMap(HashMap<any, any>());
+this->setHashMap(HashMap<Object*, Object*>());
     
 
-    int32_t size = inputAutomationModuleConfigurationList.length;;
+    int32_t size = inputAutomationModuleConfigurationList.size;;
     
 
     InputAutomationModuleConfiguration inputAutomationModuleConfiguration;;
@@ -192,7 +192,7 @@ this->add(inputAutomationModuleConfiguration);
 
 
 public: InputAutomationModuleConfigurations(){
-this->setHashMap(HashMap<any, any>());
+this->setHashMap(HashMap<Object*, Object*>());
     
 }
 
@@ -209,7 +209,7 @@ this->getHashMap().remove(inputAutomationModuleConfiguration.getClassName());
 }
 
 
-    public: HashMap<any, any> getHashMap(){
+    public: HashMap<Object*, Object*> getHashMap(){
 
 
 
@@ -219,7 +219,7 @@ this->getHashMap().remove(inputAutomationModuleConfiguration.getClassName());
 }
 
 
-    public: void setHashMap(HashMap<any, any> hashMap){
+    public: void setHashMap(HashMap<Object*, Object*> hashMap){
 this->hashMap= hashMap;
     
 }

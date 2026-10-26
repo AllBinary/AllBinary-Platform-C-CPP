@@ -21,9 +21,9 @@
         #ifndef ORG_ALLBINARY_BUSINESS_USER_MODULES_ADMIN_STORE_WEB_WORKFLOW_EDITOR_WORKFLOWEDITORWEBSTOREADMINUSERFACTORY_H
         #define ORG_ALLBINARY_BUSINESS_USER_MODULES_ADMIN_STORE_WEB_WORKFLOW_EDITOR_WORKFLOWEDITORWEBSTOREADMINUSERFACTORY_H
 
-            #include "../../../../../../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
 
@@ -66,7 +66,7 @@ public: WorkflowEditorWebStoreAdminUserFactory();
 
                 //@Throws(Exception.constructor)
             
-    public: UserInterface getInstance(HashMap<any, any> hashMap);
+    public: UserInterface getInstance(HashMap<Object*, Object*> hashMap);
 
 };
 

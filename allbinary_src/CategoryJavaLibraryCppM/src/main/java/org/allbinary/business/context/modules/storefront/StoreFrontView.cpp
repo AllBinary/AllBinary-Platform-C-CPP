@@ -18,9 +18,9 @@
 
 
 
-            #include "../../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
 
@@ -97,7 +97,7 @@ this->storeFrontInterface= storeFrontInterface;
             
     public: Node toXmlNode(Document document){
 
-    HashMap<any, any> hashMap = this->storeFrontInterface.toHashMap();;
+    HashMap<Object*, Object*> hashMap = this->storeFrontInterface.toHashMap();;
     
 
     StoreFrontData storeFrontData = StoreFrontData::getInstance();;

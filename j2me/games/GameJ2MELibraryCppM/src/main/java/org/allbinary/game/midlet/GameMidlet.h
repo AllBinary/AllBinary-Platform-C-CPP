@@ -21,17 +21,11 @@
         #ifndef ORG_ALLBINARY_GAME_MIDLET_GAMEMIDLET_H
         #define ORG_ALLBINARY_GAME_MIDLET_GAMEMIDLET_H
 
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../../java/lang/Thread.h"
+            #include "java/lang/Thread.h"
         
-#include <jsinterop/annotations/JsType.h>
-
-      
 #include <java/util/Enumeration.h>
-
-      
-#include <java/util/Hashtable.h>
 
       
 #include <javax/microedition/lcdui/Canvas.h>
@@ -292,16 +286,10 @@
 #include <org/allbinary/util/EnumerationUtil.h>
 
       
-#include <jsinterop/annotations/JsMethod.h>
-
-      
-#include <jsinterop/annotations/JsConstructor.h>
-
-      
-#include <jsinterop/annotations/JsProperty.h>
-
-      
 #include <org/allbinary/logic/StdUtil.h>
+
+      
+#include <org/allbinary/util/ABHashtable.h>
 
       
 
@@ -466,7 +454,7 @@ public: GameMidlet(ClientInformationFactory clientInformationFactory);
 
                 //@Throws(Exception.constructor)
             
-    public: Hashtable<any, any> getCurrentStateHashtable();
+    public: ABHashtable<Object*, Object*> getCurrentStateHashtable();
 
     public: void setLoadGameForm(LoadGameForm loadGameForm);
 

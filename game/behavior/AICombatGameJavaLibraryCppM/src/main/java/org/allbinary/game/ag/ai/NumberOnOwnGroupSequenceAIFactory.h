@@ -23,15 +23,12 @@
 
             #include <vector>
         
-            #include "../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../../../java/lang/Integer.h"
+            #include "java/lang/Integer.h"
         
-#include <java/util/Hashtable.h>
-
-      
 #include <org/allbinary/ai/ArtificialIntelligenceInterface.h>
 
       
@@ -48,6 +45,9 @@
 
       
 #include <org/allbinary/string/CommonStrings.h>
+
+      
+#include <org/allbinary/util/ABHashtable.h>
 
       
 #include <org/allbinary/util/BasicArrayList.h>
@@ -85,7 +85,7 @@ class NumberOnOwnGroupSequenceAIFactory
 
                 //@Throws(Exception.constructor)
             
-    public: ArtificialIntelligenceInterface getInstance(Hashtable<any, any> hashtable, std::vector<ArtificialIntelligenceInterface> artificialIntelligenceInterface, AllBinaryLayer ownerLayerInterface, GameInput gameInput);
+    public: ArtificialIntelligenceInterface getInstance(ABHashtable<Object*, Object*> hashtable, std::vector<ArtificialIntelligenceInterface> artificialIntelligenceInterface, AllBinaryLayer ownerLayerInterface, GameInput gameInput);
 
 };
 

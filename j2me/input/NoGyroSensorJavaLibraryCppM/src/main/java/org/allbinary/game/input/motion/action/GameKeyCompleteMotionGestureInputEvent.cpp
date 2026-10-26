@@ -61,8 +61,9 @@ class GameKeyCompleteMotionGestureInputEvent: public CompleteMotionGestureInputE
 
     private: GameKeyEvent gameKeyEvent = GameKeyEvent::NONE;
 
-public: GameKeyCompleteMotionGestureInputEvent(std::string name, MotionGestureInput motionGestureInput, InputToGameKeyMapping inputToGameKeyMapping){
-            super(name, motionGestureInput);
+public: GameKeyCompleteMotionGestureInputEvent(std::string name, MotionGestureInput motionGestureInput, InputToGameKeyMapping inputToGameKeyMapping) : CompleteMotionGestureInputEvent(name, motionGestureInput){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.

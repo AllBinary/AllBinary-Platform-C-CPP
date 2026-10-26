@@ -7,7 +7,7 @@
         #ifndef ORG_APACHE_XMLRPC_XMLRPCHANDLER_H
         #define ORG_APACHE_XMLRPC_XMLRPCHANDLER_H
 
-            #include "../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/util/BasicArrayList.h>
 

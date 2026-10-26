@@ -21,9 +21,9 @@
         #ifndef ORG_ALLBINARY_BUSINESS_USER_COMMERCE_MONEY_PAYMENT_GATEWAY_PAYMENTGATEWAY_H
         #define ORG_ALLBINARY_BUSINESS_USER_COMMERCE_MONEY_PAYMENT_GATEWAY_PAYMENTGATEWAY_H
 
-            #include "../../../../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
 
@@ -149,9 +149,9 @@ class PaymentGateway
 
     private: std::string timeEntered;
 
-public: PaymentGateway(HashMap<any, any> hashMap);
+public: PaymentGateway(HashMap<Object*, Object*> hashMap);
 
-    public: void getFormData(HashMap<any, any> hashMap);
+    public: void getFormData(HashMap<Object*, Object*> hashMap);
 
     public: std::string getStoreName();
 
@@ -291,11 +291,11 @@ public: PaymentGateway(HashMap<any, any> hashMap);
 
                 //@Throws(Exception.constructor)
             
-    public: HashMap<any, any> toHashMap();
+    public: HashMap<Object*, Object*> toHashMap();
 
                 //@Throws(Exception.constructor)
             
-    public: HashMap<any, any> toHashMap(bool isEncrypted);
+    public: HashMap<Object*, Object*> toHashMap(bool isEncrypted);
 
     public: BasicArrayList toVector();
 

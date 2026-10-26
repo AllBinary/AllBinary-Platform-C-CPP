@@ -56,8 +56,9 @@ class UpgradeSound: public CompositeSound {
 }
 
 
-private: UpgradeSound(){
-            super("resource:/wav/upgrade.wav");
+private: UpgradeSound() : CompositeSound("resource:/wav/upgrade.wav"){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.

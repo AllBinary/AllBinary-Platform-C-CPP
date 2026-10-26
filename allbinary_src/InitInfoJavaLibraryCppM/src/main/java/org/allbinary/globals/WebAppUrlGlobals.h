@@ -21,7 +21,7 @@
         #ifndef ORG_ALLBINARY_GLOBALS_WEBAPPURLGLOBALS_H
         #define ORG_ALLBINARY_GLOBALS_WEBAPPURLGLOBALS_H
 
-            #include "../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/business/init/InitInfo.h>
 

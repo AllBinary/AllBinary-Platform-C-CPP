@@ -21,7 +21,7 @@
         #ifndef TAGHELPERS_TRANSFORM_INFO_TRANSFORMINFOHELPER_H
         #define TAGHELPERS_TRANSFORM_INFO_TRANSFORMINFOHELPER_H
 
-            #include "../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
 
@@ -69,7 +69,7 @@ class TransformInfoHelper: public BasicTable {
 
     private: Portion portion;
 
-public: TransformInfoHelper(HashMap<any, any> hashMap, PageContext pageContext);
+public: TransformInfoHelper(HashMap<Object*, Object*> hashMap, PageContext pageContext);
 
     public: std::string drop();
 

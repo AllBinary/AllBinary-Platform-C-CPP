@@ -18,11 +18,11 @@
 
 
 
-            #include "../../../../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../../../../../../java/lang/Long.h"
+            #include "java/lang/Long.h"
         
 #include <java/util/Calendar.h>
 
@@ -140,29 +140,29 @@ this->retries= EMPTY_STRING;
 }
 
 
-public: DownloadableItem(HashMap<any, any> hashMap){
-this->id= hashMap.get(DownloadItemData::ID) as string;
+public: DownloadableItem(HashMap<Object*, Object*> hashMap){
+this->id= hashMap.get(DownloadItemData::ID);
     
-this->basicItemId= hashMap.get(BasicItemData::getInstance().ID) as string;
+this->basicItemId= hashMap.get(BasicItemData::getInstance().ID);
     
-this->enabled= hashMap.get(EntryData::getInstance().ENABLE) as string;
+this->enabled= hashMap.get(EntryData::getInstance().ENABLE);
     
-this->system= hashMap.get(DownloadItemData::SYSTEM) as string;
+this->system= hashMap.get(DownloadItemData::SYSTEM);
     
-this->platform= hashMap.get(DownloadItemData::PLATFORM) as string;
+this->platform= hashMap.get(DownloadItemData::PLATFORM);
     
-this->specialName= hashMap.get(DownloadItemData::SPECIAL_NAME) as string;
+this->specialName= hashMap.get(DownloadItemData::SPECIAL_NAME);
     
-this->version= hashMap.get(DownloadItemData::VERSION) as string;
+this->version= hashMap.get(DownloadItemData::VERSION);
     
-this->changes= hashMap.get(DownloadItemData::CHANGES) as string;
+this->changes= hashMap.get(DownloadItemData::CHANGES);
     
-this->licenseFile= hashMap.get(DownloadItemData::LICENSE_FILE) as string;
+this->licenseFile= hashMap.get(DownloadItemData::LICENSE_FILE);
     
-this->file= hashMap.get(DownloadItemData::FILE) as string;
+this->file= hashMap.get(DownloadItemData::FILE);
     
 
-    std::string value = hashMap.get(DownloadItemData::SIZE) as string;;
+    std::string value = hashMap.get(DownloadItemData::SIZE);;
     
 
                         if(!StringValidationUtil::getInstance().isEmpty(value))
@@ -180,7 +180,7 @@ this->file= hashMap.get(DownloadItemData::FILE) as string;
                         }
                             
 
-    std::string validTime = hashMap.get(DownloadItemData::VALID_TIME) as string;;
+    std::string validTime = hashMap.get(DownloadItemData::VALID_TIME);;
     
 
                         if(!StringValidationUtil::getInstance().isEmpty(validTime))
@@ -193,22 +193,22 @@ this->file= hashMap.get(DownloadItemData::FILE) as string;
                                 
                         else {
                             
-    std::string totalYears = hashMap.get(DownloadItemData::VALID_TIME_YEARS) as string;;
+    std::string totalYears = hashMap.get(DownloadItemData::VALID_TIME_YEARS);;
     
 
-    std::string totalMonths = hashMap.get(DownloadItemData::VALID_TIME_MONTHS) as string;;
+    std::string totalMonths = hashMap.get(DownloadItemData::VALID_TIME_MONTHS);;
     
 
-    std::string totalDays = hashMap.get(DownloadItemData::VALID_TIME_DAYS) as string;;
+    std::string totalDays = hashMap.get(DownloadItemData::VALID_TIME_DAYS);;
     
 
-    std::string totalHours = hashMap.get(DownloadItemData::VALID_TIME_HOURS) as string;;
+    std::string totalHours = hashMap.get(DownloadItemData::VALID_TIME_HOURS);;
     
 
-    std::string totalMinutes = hashMap.get(DownloadItemData::VALID_TIME_MINUTES) as string;;
+    std::string totalMinutes = hashMap.get(DownloadItemData::VALID_TIME_MINUTES);;
     
 
-    std::string totalSeconds = hashMap.get(DownloadItemData::VALID_TIME_SECONDS) as string;;
+    std::string totalSeconds = hashMap.get(DownloadItemData::VALID_TIME_SECONDS);;
     
 
     int64_t totalTime = TimeUtil::getInstance().getTotalTime(totalYears, totalMonths, totalDays, totalHours, totalMinutes, totalSeconds);;
@@ -218,7 +218,7 @@ this->validTime= Long(totalTime);
 
                         }
                             
-this->retries= hashMap.get(DownloadItemData::RETRIES) as string;
+this->retries= hashMap.get(DownloadItemData::RETRIES);
     
 }
 
@@ -272,9 +272,9 @@ values.add(time);
 }
 
 
-    public: HashMap<any, any> toHashMap(){
+    public: HashMap<Object*, Object*> toHashMap(){
 
-    HashMap<any, any> values = StdUtil::getInstance().createHashMap();;
+    HashMap<Object*, Object*> values = StdUtil::getInstance().createHashMap();;
     
 values.put(DownloadItemData::ID, this->getId());
     

@@ -20,11 +20,8 @@
 
             #include <vector>
         
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-#include <jsinterop/annotations/JsType.h>
-
-      
 #include <javax/microedition/lcdui/CommandListener.h>
 
       
@@ -41,12 +38,6 @@
 
       
 #include <org/allbinary/graphics/paint/Paintable.h>
-
-      
-#include <jsinterop/annotations/JsMethod.h>
-
-      
-#include <jsinterop/annotations/JsConstructor.h>
 
       
 
@@ -75,8 +66,9 @@ class BasicPaintablesCanvas: public GameCommandCanvas {
 
     private: ColorFillBasePaintable colorFillPaintable;
 
-public: BasicPaintablesCanvas(CommandListener cmdListener, std::string name, AllBinaryGameLayerManager allBinaryGameLayerManager, std::vector<Paintable> paintableArray){
-            super(cmdListener, name, allBinaryGameLayerManager.getBackgroundBasicColor(), allBinaryGameLayerManager.getForegroundBasicColor());
+public: BasicPaintablesCanvas(CommandListener cmdListener, std::string name, AllBinaryGameLayerManager allBinaryGameLayerManager, std::vector<Paintable> paintableArray) : GameCommandCanvas(cmdListener, name, allBinaryGameLayerManager.getBackgroundBasicColor(), allBinaryGameLayerManager.getForegroundBasicColor()){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -100,7 +92,7 @@ graphics.setColor(this->foregroundColor);
                         for (
     int32_t index = this->paintableArray.size() -1;index >= 0; index--)
         {
-this->paintableArray[index]!.paint(graphics);
+this->paintableArray[index].paint(graphics);
     
 }
 

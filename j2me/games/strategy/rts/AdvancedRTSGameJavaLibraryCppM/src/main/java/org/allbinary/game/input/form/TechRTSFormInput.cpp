@@ -20,7 +20,7 @@
 
             #include <vector>
         
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/game/layer/RTSGameStrings.h>
 
@@ -117,8 +117,9 @@ class TechRTSFormInput: public RTSFormInput {
 
     protected: GameNotificationEvent noMoneyGameNotificationEvent;
 
-public: TechRTSFormInput(std::vector<Group> groupInterface){
-            super(groupInterface);
+public: TechRTSFormInput(std::vector<Group> groupInterface) : RTSFormInput(groupInterface){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -137,7 +138,7 @@ this->noMoneyGameNotificationEvent= GameNotificationEvent(this, RTSGameStrings::
 super.setAllBinaryGameLayerManager(allBinaryGameLayerManager);
     
 
-    GeographicMapCompositeInterface geographicMapCompositeInterface = allBinaryGameLayerManager as GeographicMapCompositeInterface;;
+    GeographicMapCompositeInterface geographicMapCompositeInterface = allBinaryGameLayerManager;;
     
 
     BasicGeographicMap geographicMapInterface = geographicMapCompositeInterface.getGeographicMapInterface()[0];;
@@ -159,7 +160,7 @@ super.process(layerManager);
     StringMaker stringMaker = StringMaker();;
     
 
-    TechnologyRTSInterfaceImageItem technologyRTSInterfaceImageItem = item as TechnologyRTSInterfaceImageItem;;
+    TechnologyRTSInterfaceImageItem technologyRTSInterfaceImageItem = item;;
     
 
     RTSInterface rtsInterface = technologyRTSInterfaceImageItem.getRtsInterface();;

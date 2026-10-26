@@ -18,17 +18,8 @@
 
 
 
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-#include <jsinterop/annotations/JsType.h>
-
-      
-#include <jsinterop/annotations/JsMethod.h>
-
-      
-#include <jsinterop/annotations/JsConstructor.h>
-
-      
 
 
 
@@ -53,8 +44,9 @@
 
 class CompositeSound: public Sound {
 
-protected: CompositeSound(std::string resource){
-            super(resource);
+protected: CompositeSound(std::string resource) : Sound(resource){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.

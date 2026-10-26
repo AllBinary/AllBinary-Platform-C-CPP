@@ -20,7 +20,7 @@
 
             #include <vector>
         
-            #include "../../../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
 #include <java/util/HashMap.h>
 
@@ -142,7 +142,7 @@ this->GLOBALS_UPDATE= commonStrings.UPDATE +SPACE;
     std::vector<std::string> ONE_EMPTY_STRING_ARRAY = StringUtil::getInstance().ONE_EMPTY_STRING_ARRAY;;
     
 
-    HashMap<any, any> hashMap = StdUtil::getInstance().createHashMap();;
+    HashMap<Object*, Object*> hashMap = StdUtil::getInstance().createHashMap();;
     
 hashMap.put(
                                                 {

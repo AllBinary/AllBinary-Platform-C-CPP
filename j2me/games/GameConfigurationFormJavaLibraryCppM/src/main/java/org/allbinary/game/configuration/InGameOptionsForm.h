@@ -21,11 +21,8 @@
         #ifndef ORG_ALLBINARY_GAME_CONFIGURATION_INGAMEOPTIONSFORM_H
         #define ORG_ALLBINARY_GAME_CONFIGURATION_INGAMEOPTIONSFORM_H
 
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-#include <jsinterop/annotations/JsType.h>
-
-      
 #include <javax/microedition/lcdui/Choice.h>
 
       
@@ -51,15 +48,6 @@
 
       
 #include <org/allbinary/logic/string/StringUtil.h>
-
-      
-#include <jsinterop/annotations/JsMethod.h>
-
-      
-#include <jsinterop/annotations/JsConstructor.h>
-
-      
-#include <jsinterop/annotations/JsProperty.h>
 
       
 

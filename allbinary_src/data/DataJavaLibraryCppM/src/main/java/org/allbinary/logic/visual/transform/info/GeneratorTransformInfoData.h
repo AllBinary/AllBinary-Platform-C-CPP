@@ -21,7 +21,7 @@
         #ifndef ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_INFO_GENERATORTRANSFORMINFODATA_H
         #define ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_INFO_GENERATORTRANSFORMINFODATA_H
 
-            #include "../../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
 
 

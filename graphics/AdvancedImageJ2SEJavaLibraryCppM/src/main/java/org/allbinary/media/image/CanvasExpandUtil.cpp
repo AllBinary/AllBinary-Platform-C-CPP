@@ -20,9 +20,9 @@
 
             #include <vector>
         
-            #include "../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/awt/image/BufferedImage.h>
 
@@ -85,7 +85,7 @@ class CanvasExpandUtil
     std::vector<BufferedImage> bufferedImageArray = imageProcessorInput.getBufferedImageArray();;
     
 
-    std::vector<BufferedImage> subBufferedImageArray = new Array(bufferedImageArray.length);;
+    std::vector<BufferedImage> subBufferedImageArray = std::vector<BufferedImage>(bufferedImageArray.length);;
     
 
     int32_t size = bufferedImageArray.size();;
@@ -100,11 +100,11 @@ class CanvasExpandUtil
                         for (
     int32_t index = 0;index < size; index++)
         {
-bufferedImage= bufferedImageArray[index]!;
+bufferedImage= bufferedImageArray[index];
     
 subBufferedImageArray[index]= imageUtil.createBufferedImage(bufferedImage, bufferedImage.getWidth() +increaseX, bufferedImage.getHeight() +increaseY, false);
     
-visitor.visit(subBufferedImageArray[index]!, this->stringUtil.EMPTY_STRING, index);
+visitor.visit(subBufferedImageArray[index], this->stringUtil.EMPTY_STRING, index);
     
 }
 

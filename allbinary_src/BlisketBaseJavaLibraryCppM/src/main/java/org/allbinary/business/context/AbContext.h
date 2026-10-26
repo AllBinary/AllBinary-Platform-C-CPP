@@ -21,7 +21,7 @@
         #ifndef ORG_ALLBINARY_BUSINESS_CONTEXT_ABCONTEXT_H
         #define ORG_ALLBINARY_BUSINESS_CONTEXT_ABCONTEXT_H
 
-            #include "../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
 #include <java/util/HashMap.h>
 
@@ -68,17 +68,17 @@ class AbContext
 
     protected: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    private: HashMap<any, any> propertiesHashMap;
+    private: HashMap<Object*, Object*> propertiesHashMap;
 
     private: PageContext pageContext;
 
-public: AbContext(HashMap<any, any> propertiesHashMap, PageContext pageContext);
+public: AbContext(HashMap<Object*, Object*> propertiesHashMap, PageContext pageContext);
 
     public: WeblisketSessionInterface getWeblisketSession();
 
     public: PageContext getPageContext();
 
-    public: HashMap<any, any> getPropertiesHashMap();
+    public: HashMap<Object*, Object*> getPropertiesHashMap();
 
 };
 

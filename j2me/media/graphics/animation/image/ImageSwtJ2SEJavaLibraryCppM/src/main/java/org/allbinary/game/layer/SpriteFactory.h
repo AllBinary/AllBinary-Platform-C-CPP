@@ -21,7 +21,7 @@
         #ifndef ORG_ALLBINARY_GAME_LAYER_SPRITEFACTORY_H
         #define ORG_ALLBINARY_GAME_LAYER_SPRITEFACTORY_H
 
-            #include "../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
 #include <javax/microedition/lcdui/Image.h>
 

@@ -18,11 +18,8 @@
 
 
 
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-#include <jsinterop/annotations/JsType.h>
-
-      
 #include <javax/microedition/khronos/opengles/GL.h>
 
       
@@ -86,15 +83,6 @@
 #include <org/allbinary/view/ViewPositionBase.h>
 
       
-#include <jsinterop/annotations/JsMethod.h>
-
-      
-#include <jsinterop/annotations/JsConstructor.h>
-
-      
-#include <jsinterop/annotations/JsProperty.h>
-
-      
 
 
 
@@ -149,8 +137,9 @@ class WeaponLayer: public MultiPlayerGameLayer, public TickableInterface {
 
     private: int32_t multiPlayerType;
 
-protected: WeaponLayer(std::string name, RemoteInfo remoteInfo, int32_t multiPlayerType, Movement movement, Animation animationInterface, Animation destroyedAnimationInterface, Rectangle rectangle, ViewPositionBase viewPosition){
-            super(remoteInfo, BasicGroupFactory::getInstance().NONE_ARRAY, name, rectangle, viewPosition);
+protected: WeaponLayer(std::string name, RemoteInfo remoteInfo, int32_t multiPlayerType, Movement movement, Animation animationInterface, Animation destroyedAnimationInterface, Rectangle rectangle, ViewPositionBase viewPosition) : MultiPlayerGameLayer(remoteInfo, BasicGroupFactory::getInstance().NONE_ARRAY, name, rectangle, viewPosition){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -173,7 +162,7 @@ this->multiPlayerType= multiPlayerType;
     public: void setCollidableInferface(CollidableBaseBehavior collidableInferface){
 super.setCollidableInferface(collidableInferface);
     
-this->collidableWeaponBehavior= this->getCollidableInferface() as CollidableWeaponBehavior;
+this->collidableWeaponBehavior= this->getCollidableInferface();
     
 }
 
@@ -261,7 +250,7 @@ this->movement.init(weaponProperties.getSpeed(), angle, otherAngle);
                         
                                     {
                                     
-    IndexedAnimation indexedAnimationInterface = this->getAnimationInterface() as IndexedAnimation;;
+    IndexedAnimation indexedAnimationInterface = this->getAnimationInterface();;
     
 
     int32_t currentFrame = indexedAnimationInterface.getFrame();;
@@ -286,7 +275,7 @@ this->movement.init(weaponProperties.getSpeed(), angle, otherAngle);
                                 
                         else {
                             
-    CollidableWeaponBehavior collidableWeaponBehavior = this->getCollidableInferface() as CollidableWeaponBehavior;;
+    CollidableWeaponBehavior collidableWeaponBehavior = this->getCollidableInferface();;
     
 
                         if(collidableWeaponBehavior.isCollided())

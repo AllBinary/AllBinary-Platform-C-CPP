@@ -21,11 +21,11 @@
         #ifndef ORG_ALLBINARY_DATA_RESOURCE_RESOURCEUTIL_H
         #define ORG_ALLBINARY_DATA_RESOURCE_RESOURCEUTIL_H
 
-            #include "../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../../java/lang/Integer.h"
+            #include "java/lang/Integer.h"
         
 #include <java/io/InputStream.h>
 

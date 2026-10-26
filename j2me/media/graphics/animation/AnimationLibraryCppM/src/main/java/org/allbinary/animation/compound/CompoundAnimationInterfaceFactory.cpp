@@ -20,13 +20,10 @@
 
             #include <vector>
         
-            #include "../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-#include <jsinterop/annotations/JsType.h>
-
-      
 #include <org/allbinary/animation/Animation.h>
 
       
@@ -43,15 +40,6 @@
 
       
 #include <org/allbinary/media/ScaleProperties.h>
-
-      
-#include <jsinterop/annotations/JsMethod.h>
-
-      
-#include <jsinterop/annotations/JsConstructor.h>
-
-      
-#include <jsinterop/annotations/JsProperty.h>
 
       
 
@@ -105,7 +93,7 @@ this->animationBehaviorFactory= animationBehaviorFactory;
                         for (
     int32_t index = 0;index < size; index++)
         {
-animationInterfaceArray[index]= this->basicAnimationInterfaceFactoryInterfaceArrayP[index]!.getInstance(instanceId);
+animationInterfaceArray[index]= this->basicAnimationInterfaceFactoryInterfaceArrayP[index].getInstance(instanceId);
     
 }
 
@@ -159,7 +147,7 @@ animationInterfaceArray[index]= this->basicAnimationInterfaceFactoryInterfaceArr
                         for (
     int32_t index = 0;index < size; index++)
         {
-this->basicAnimationInterfaceFactoryInterfaceArrayP[index]!.setInitialScale(scaleProperties);
+this->basicAnimationInterfaceFactoryInterfaceArrayP[index].setInitialScale(scaleProperties);
     
 }
 

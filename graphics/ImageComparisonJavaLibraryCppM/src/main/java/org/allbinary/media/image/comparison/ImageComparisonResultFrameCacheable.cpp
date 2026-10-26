@@ -18,9 +18,9 @@
 
 
 
-            #include "../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../java/lang/Long.h"
+            #include "java/lang/Long.h"
         
 #include <org/allbinary/logic/string/StringMaker.h>
 
@@ -110,7 +110,7 @@ this->imageComparisonResult= imageComparisonResult;
 
     StringMaker stringBuffer = StringMaker();;
     
-stringBuffer.append(this->constructor.name.toString()!);
+stringBuffer.append(this->constructor.name.toString());
     
 stringBuffer.append(" Frame: ");
     

@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
 #include <java/util/HashMap.h>
 
@@ -49,7 +49,7 @@ class HtmlTag
             : public Object
          {
 
-    protected: HashMap<any, any> otherAttributes;
+    protected: HashMap<Object*, Object*> otherAttributes;
 
 public: HtmlTag(){
 this->otherAttributes= StdUtil::getInstance().createHashMap();

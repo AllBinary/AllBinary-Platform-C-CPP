@@ -18,7 +18,7 @@
 
 
 
-            #include "../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/io.h>
 
@@ -97,7 +97,7 @@ super.init(config);
     PrintWriter out = response.getWriter();;
     
 
-    WorkFlowInterface workflowInterface = RequestWorkFlowFactory::getInstance(request as ServletRequest, response as ServletResponse, this->getServletConfig(), this->getServletContext());;
+    WorkFlowInterface workflowInterface = RequestWorkFlowFactory::getInstance(request, response, this->getServletConfig(), this->getServletContext());;
     
 
                         if(workflowInterface != 

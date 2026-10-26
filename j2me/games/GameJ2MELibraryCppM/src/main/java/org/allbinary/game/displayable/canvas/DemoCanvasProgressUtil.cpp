@@ -20,7 +20,7 @@
 
             #include <vector>
         
-            #include "../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
 #include <org/allbinary/graphics/canvas/transition/progress/ProgressCanvas.h>
 
@@ -71,7 +71,7 @@ DemoCanvasProgressUtil::showProgressOptionallyInTheBackground(demoCanvas, false)
 progressCanvas.startBackground(background);
     
 
-    std::vector<PaintableInterface> paintableArray = new Array(2);;
+    std::vector<PaintableInterface> paintableArray = std::vector<PaintableInterface>(2);;
     
 paintableArray[0]= progressCanvas;
     

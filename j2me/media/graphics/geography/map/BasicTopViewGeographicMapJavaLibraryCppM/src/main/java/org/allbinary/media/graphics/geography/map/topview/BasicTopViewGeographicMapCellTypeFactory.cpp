@@ -20,9 +20,6 @@
 
             #include <vector>
         
-#include <java/util/Hashtable.h>
-
-      
 #include <org/allbinary/string/CommonStrings.h>
 
       
@@ -36,6 +33,9 @@
 
       
 #include <org/allbinary/media/graphics/geography/map/racetrack/RaceTrackGeographicMapCellType.h>
+
+      
+#include <org/allbinary/util/ABHashtable.h>
 
       
 #include <org/allbinary/util/BasicArrayList.h>
@@ -83,7 +83,7 @@ class BasicTopViewGeographicMapCellTypeFactory: public GeographicMapCellTypeFact
 
     private: int32_t maxTileId;
 
-public: BasicTopViewGeographicMapCellTypeFactory(Hashtable<any, any> tileTypeToTileIdsMap, int32_t maxTileId){
+public: BasicTopViewGeographicMapCellTypeFactory(ABHashtable<Object*, Object*> tileTypeToTileIdsMap, int32_t maxTileId){
 
     CommonStrings commonStrings = CommonStrings::getInstance();;
     
@@ -161,9 +161,9 @@ this->maxTileId= maxTileId;
                         for (
     int32_t index = 0;index < size; index++)
         {
-key= keyArray[index]! as string;
+key= keyArray[index];
     
-idsWithTypeList= tileTypeToTileIdsMap.get(key) as BasicArrayList;
+idsWithTypeList= tileTypeToTileIdsMap.get(key);
     
 
                         if(key === basicTopViewGeographicMapStrings.WALL)
@@ -320,7 +320,7 @@ type= this->maxTileId -2;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->FLOOR_CELL_TYPE.getTypes()[0]!;
+                        return this->FLOOR_CELL_TYPE.getTypes()[0];
     
 }
 

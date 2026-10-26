@@ -18,9 +18,9 @@
 
 
 
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../../../java/lang/Integer.h"
+            #include "java/lang/Integer.h"
         
 #include <org/allbinary/game/layer/PathFindingLayerInterface.h>
 
@@ -74,8 +74,9 @@ class WorkWaypoint: public Waypoint {
 
     public: static const Integer ID = SmallIntegerSingletonFactory::getInstance().getAt(25);
 
-public: WorkWaypoint(PathFindingLayerInterface ownerLayer){
-            super(ownerLayer, WorkSound::getInstance());
+public: WorkWaypoint(PathFindingLayerInterface ownerLayer) : Waypoint(ownerLayer, WorkSound::getInstance()){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -125,7 +126,7 @@ public: WorkWaypoint(PathFindingLayerInterface ownerLayer){
                         for (
     int32_t index = occupyList.size();--index >= 0; )
         {
-geologicalGeographicMapCellPosition= occupyList.get(index) as GeologicalGeographicMapCellPosition;
+geologicalGeographicMapCellPosition= occupyList.get(index);
     
 geologicalResource= geologicalGeographicMapCellPosition.getGeologicalResource();
     
@@ -148,7 +149,7 @@ unitLayer.setLoad(maxResourceLoad);
 }
 
 
-    WaypointInfoHudPaintable waypointInfoHudPaintable = this->ownerLayer.getHudPaintable() as WaypointInfoHudPaintable;;
+    WaypointInfoHudPaintable waypointInfoHudPaintable = this->ownerLayer.getHudPaintable();;
     
 
                         if(this->ownerLayer == waypointInfoHudPaintable.getRtsLayer())
@@ -164,7 +165,7 @@ unitLayer.setLoad(maxResourceLoad);
                         
                                     {
                                     
-    UnitWaypointBehavior unitWaypointBehavior = unitLayer.getWaypointBehavior() as UnitWaypointBehavior;;
+    UnitWaypointBehavior unitWaypointBehavior = unitLayer.getWaypointBehavior();;
     
 
     RTSLayer rtsLayer;;
@@ -172,7 +173,7 @@ unitLayer.setLoad(maxResourceLoad);
 
         while(this->getConnectedWaypointList().size() > 0)
         {
-rtsLayer= this->getConnectedWaypointList().get(0) as RTSLayer;
+rtsLayer= this->getConnectedWaypointList().get(0);
     
 
                         if(rtsLayer.isDestroyed())

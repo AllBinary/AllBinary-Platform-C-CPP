@@ -57,8 +57,9 @@ class LogTableEntity: public AbSqlBean, public LogTableEntityInterface {
 
     private: const std::string tableName = "log";
 
-public: LogTableEntity(){
-            super(LogDbInitInfo());
+public: LogTableEntity() : AbSqlBean(LogDbInitInfo()){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.

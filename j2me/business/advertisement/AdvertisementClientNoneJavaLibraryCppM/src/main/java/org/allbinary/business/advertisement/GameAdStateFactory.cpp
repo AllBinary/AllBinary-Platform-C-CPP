@@ -6,20 +6,14 @@
 
             #include <vector>
         
-            #include "../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-#include <jsinterop/annotations/JsType.h>
-
-      
 #include <org/allbinary/game/GameAdState.h>
 
       
 #include <org/allbinary/logic/system/SoftwareInformation.h>
-
-      
-#include <jsinterop/annotations/JsMethod.h>
 
       
 
@@ -80,13 +74,13 @@ class GameAdStateFactory
                 //@Throws(Exception.constructor)
             
     public: GameAdStateBase getInstanceForApp(SoftwareInformation softwareInformation){
-this->gameAdState= this->gameAdStateArray[0]!;
+this->gameAdState= this->gameAdStateArray[0];
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->gameAdStateArray[0]!;
+                        return this->gameAdStateArray[0];
     
 }
 

@@ -21,9 +21,9 @@
         #ifndef ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_TRANSFORMFACTORY_H
         #define ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_TRANSFORMFACTORY_H
 
-            #include "../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
 
@@ -104,7 +104,7 @@ private: TransformFactory();
 
                 //@Throws(Exception.constructor)
             
-    public: TransformInterface getInstance(AbeClientInformationInterface abeClientInformation, HashMap<any, any> propertiesHashMap, PageContext pageContext);
+    public: TransformInterface getInstance(AbeClientInformationInterface abeClientInformation, HashMap<Object*, Object*> propertiesHashMap, PageContext pageContext);
 
                 //@Throws(Exception.constructor)
             

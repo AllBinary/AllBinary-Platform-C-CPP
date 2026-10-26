@@ -21,9 +21,9 @@
         #ifndef ORG_ALLBINARY_BUSINESS_CONTEXT_MODULES_STOREFRONTS_BASICSTOREFRONT_H
         #define ORG_ALLBINARY_BUSINESS_CONTEXT_MODULES_STOREFRONTS_BASICSTOREFRONT_H
 
-            #include "../../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
 
@@ -131,7 +131,7 @@ class BasicStoreFront
 
 public: BasicStoreFront();
 
-public: BasicStoreFront(HashMap<any, any> storeHashMap);
+public: BasicStoreFront(HashMap<Object*, Object*> storeHashMap);
 
     public: std::string getTestHtmlPath();
 

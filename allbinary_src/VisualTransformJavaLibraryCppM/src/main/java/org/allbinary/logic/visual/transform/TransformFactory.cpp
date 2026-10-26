@@ -18,9 +18,9 @@
 
 
 
-            #include "../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
 
@@ -120,7 +120,7 @@ private: TransformFactory(){
                                     }
                                 
 
-    TransformInfoHttpInterface ownerTransformInfoHttpInterface = ownerTransformInfoInterface as TransformInfoHttpInterface;;
+    TransformInfoHttpInterface ownerTransformInfoHttpInterface = ownerTransformInfoInterface;;
     
 
     TransformInfoEntity transformInfoEntity = TransformInfoEntityBuilder::getInstance();;
@@ -160,7 +160,7 @@ transformInfoInterface.setChild();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return anyType as TransformInterface;
+                        return *dynamic_cast<TransformInterface*>(anyType);
     
 
                 //: 
@@ -187,7 +187,7 @@ transformInfoInterface.setChild();
 
                 //@Throws(Exception.constructor)
             
-    public: TransformInterface getInstance(AbeClientInformationInterface abeClientInformation, HashMap<any, any> propertiesHashMap, PageContext pageContext){
+    public: TransformInterface getInstance(AbeClientInformationInterface abeClientInformation, HashMap<Object*, Object*> propertiesHashMap, PageContext pageContext){
 
         try {
             
@@ -206,7 +206,7 @@ transformInfoInterface.setChild();
     TransformInfoEntity transformInfoEntity = TransformInfoEntityBuilder::getInstance();;
     
 
-    TransformInfoInterface transformInfoInterface = transformInfoEntity.get(propertiesHashMap.get(transformInfoData.NAME) as string, propertiesHashMap, pageContext);;
+    TransformInfoInterface transformInfoInterface = transformInfoEntity.get(propertiesHashMap.get(transformInfoData.NAME), propertiesHashMap, pageContext);;
     
 
                         if(transformInfoInterface != 
@@ -220,7 +220,7 @@ transformInfoInterface.setChild();
                                     }
                                 
                         else {
-                            transformInfoInterface= TransformInfoHttpFactory::getInstance(propertiesHashMap, pageContext) as TransformInfoInterface;
+                            transformInfoInterface= TransformInfoHttpFactory::getInstance(propertiesHashMap, pageContext);
     
 
                         }
@@ -241,7 +241,7 @@ transformInfoInterface.setChild();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return anyType as TransformInterface;
+                        return *dynamic_cast<TransformInterface*>(anyType);
     
 
                 //: 
@@ -256,7 +256,7 @@ transformInfoInterface.setChild();
     
 stringBuffer.append("Failed To Get Instance: ");
     
-stringBuffer.append(propertiesHashMap.get(TransformInfoData::getInstance().NAME) as string);
+stringBuffer.append(propertiesHashMap.get(TransformInfoData::getInstance().NAME));
     
 stringBuffer.append("->TransformFactory");
     
@@ -305,7 +305,7 @@ this->logUtil.put(stringBuffer.toString(), this, this->commonStrings.GET_INSTANC
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return anyType as TransformInterface;
+                        return *dynamic_cast<TransformInterface*>(anyType);
     
 
                 //: 

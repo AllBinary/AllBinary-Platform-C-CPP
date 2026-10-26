@@ -21,15 +21,9 @@
         #ifndef ORG_ALLBINARY_MIDLET_MIDLETFACTORYINTERFACE_H
         #define ORG_ALLBINARY_MIDLET_MIDLETFACTORYINTERFACE_H
 
-            #include "../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-#include <jsinterop/annotations/JsType.h>
-
-      
 #include <javax/microedition/midlet/MIDlet.h>
-
-      
-#include <jsinterop/annotations/JsMethod.h>
 
       
 

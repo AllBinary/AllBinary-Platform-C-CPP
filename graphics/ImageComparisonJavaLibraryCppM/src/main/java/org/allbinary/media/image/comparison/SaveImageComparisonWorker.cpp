@@ -18,9 +18,9 @@
 
 
 
-            #include "../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/util/BasicArrayList.h>
 
@@ -94,7 +94,7 @@ this->run();
 
 
     public: void onEvent(AllBinaryEventObject allBinaryEventObject){
-this->onImageComparisonResultsEvent(allBinaryEventObject as ImageComparisonResultsEvent);
+this->onImageComparisonResultsEvent(allBinaryEventObject);
     
 }
 
@@ -130,7 +130,7 @@ this->setRunning(true);
 timeHelper.setStartTimeTNT();
     
 
-    ImageComparisonResultsEvent imageComparisonResultsEvent = this->imageComparisonInfoVector.get(0) as ImageComparisonResultsEvent;;
+    ImageComparisonResultsEvent imageComparisonResultsEvent = this->imageComparisonInfoVector.get(0);;
     
 
     ImageComparisonResult imageComparisonInfo = imageComparisonResultsEvent.getImageComparisonResult();;

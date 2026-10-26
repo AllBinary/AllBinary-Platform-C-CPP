@@ -18,7 +18,7 @@
 
 
 
-            #include "../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <javax/servlet/jsp/JspTagException.h>
 
@@ -136,7 +136,7 @@ URLGLOBALS::init(urlGlobals);
                         
                                     {
                                     
-                        if(this->command.compareTo(GLOBALS2::SET) == 0)
+                        if(this->command.compare(GLOBALS2::SET) == 0)
                         
                                     {
                                     this->setCustomLoaderWebappPath();

@@ -20,9 +20,6 @@
 
             #include <vector>
         
-#include <jsinterop/annotations/JsType.h>
-
-      
 #include <javax/microedition/khronos/egl/EGLConfig.h>
 
       
@@ -36,15 +33,6 @@
 
       
 #include <org/allbinary/string/CommonSeps.h>
-
-      
-#include <jsinterop/annotations/JsMethod.h>
-
-      
-#include <jsinterop/annotations/JsConstructor.h>
-
-      
-#include <jsinterop/annotations/JsProperty.h>
 
       
 
@@ -101,11 +89,11 @@ class CompositeShaderUpdater: public ShaderUpdater {
 public: CompositeShaderUpdater(std::vector<std::string> uniformBlockArray, std::vector<std::string> uniformArray, std::vector<std::string> attributeArray, std::vector<int32_t> attributeHandleArray){
 this->uniformBlockArray= uniformBlockArray;
     
-this->uniformBlockHandleArray= new Array(this->uniformBlockArray.length);
+this->uniformBlockHandleArray= std::vector<int32_t>(this->uniformBlockArray.length);
     
 this->uniformArray= uniformArray;
     
-this->uniformHandleArray= new Array(this->uniformArray.length);
+this->uniformHandleArray= std::vector<int32_t>(this->uniformArray.length);
     
 this->attributeArray= attributeArray;
     

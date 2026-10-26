@@ -21,7 +21,7 @@
         #ifndef ORG_ALLBINARY_AI_ARTIFICIALINTELLIGENCECOMPOSITEINTERFACE_H
         #define ORG_ALLBINARY_AI_ARTIFICIALINTELLIGENCECOMPOSITEINTERFACE_H
 
-            #include "../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 
 

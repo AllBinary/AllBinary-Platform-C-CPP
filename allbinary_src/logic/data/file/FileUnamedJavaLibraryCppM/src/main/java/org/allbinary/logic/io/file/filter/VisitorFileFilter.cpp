@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
 #include <java/io/File.h>
 
@@ -71,7 +71,7 @@ this->booleanVisitorInterface= booleanVisitorInterface;
     AbFile abFile = FileWrapperUtil::wrapFile(file);;
     
 
-    bool isFileAcceptable = visit = this->booleanVisitorInterface.visit(abFile)visit as Boolean
+    bool isFileAcceptable = visit = this->booleanVisitorInterface.visit(abFile)visit
 visit.
                     .valueOf();;
     
@@ -86,7 +86,7 @@ visit.
 
     public: bool accept(AbFile file){
 
-    bool isFileAcceptable = visit = this->booleanVisitorInterface.visit(file)visit as Boolean
+    bool isFileAcceptable = visit = this->booleanVisitorInterface.visit(file)visit
 visit.
                     .valueOf();;
     

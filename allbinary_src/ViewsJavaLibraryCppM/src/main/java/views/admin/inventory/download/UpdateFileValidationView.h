@@ -21,9 +21,9 @@
         #ifndef VIEWS_ADMIN_INVENTORY_DOWNLOAD_UPDATEFILEVALIDATIONVIEW_H
         #define VIEWS_ADMIN_INVENTORY_DOWNLOAD_UPDATEFILEVALIDATIONVIEW_H
 
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../../java/lang/Long.h"
+            #include "java/lang/Long.h"
         
 #include <java/util/HashMap.h>
 

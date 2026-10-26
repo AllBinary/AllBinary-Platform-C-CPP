@@ -67,13 +67,14 @@ class UpOrientationInputToGameKeyEventAction: public GameKeyCompleteMotionGestur
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return UpOrientationInputToGameKeyEventAction::instance() as GameKeyCompleteMotionGestureInputEvent;
+                        return UpOrientationInputToGameKeyEventAction::instance();
     
 }
 
 
-private: UpOrientationInputToGameKeyEventAction(){
-            super("Up Action", OrientationMotionGestureFactory::getInstance().UP, PlatformInputMappingFactory::getInstance().getPersistentInputMappingInstance().getInputMapping());
+private: UpOrientationInputToGameKeyEventAction() : GameKeyCompleteMotionGestureInputEvent("Up Action", OrientationMotionGestureFactory::getInstance().UP, PlatformInputMappingFactory::getInstance().getPersistentInputMappingInstance().getInputMapping()){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.

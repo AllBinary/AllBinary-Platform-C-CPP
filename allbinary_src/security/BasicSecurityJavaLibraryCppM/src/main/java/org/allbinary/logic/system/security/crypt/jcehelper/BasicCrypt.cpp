@@ -20,9 +20,9 @@
 
             #include <vector>
         
-            #include "../../../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/TsUtil.h>
 
@@ -156,7 +156,7 @@ PreLogUtil::putOE("decrypt Failed", this, "decrypt", e);
                         for (
     int32_t index = 0;index < this->key.size(); index++)
         {
-value= this->key[index]!;
+value= this->key[index];
     
 array= this->byteUtil.xor(array, value);
     

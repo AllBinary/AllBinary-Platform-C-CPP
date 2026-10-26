@@ -21,9 +21,9 @@
         #ifndef ORG_ALLBINARY_LOGIC_MATH_J2SEMATH_H
         #define ORG_ALLBINARY_LOGIC_MATH_J2SEMATH_H
 
-            #include "../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../java/lang/Math.h"
+            #include "java/lang/Math.h"
         
 
 

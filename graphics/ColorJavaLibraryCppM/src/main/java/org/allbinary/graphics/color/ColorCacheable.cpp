@@ -18,9 +18,9 @@
 
 
 
-            #include "../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../java/lang/Integer.h"
+            #include "java/lang/Integer.h"
         
 #include <java/awt.h>
 
@@ -59,7 +59,7 @@ class ColorCacheable
 public: ColorCacheable(Object* key){
 this->key= key;
     
-this->color= Color((key as Integer).intValue());
+this->color= Color((key).intValue());
     
 }
 

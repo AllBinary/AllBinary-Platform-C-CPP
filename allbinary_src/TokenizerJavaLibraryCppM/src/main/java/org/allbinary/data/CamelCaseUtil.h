@@ -21,11 +21,11 @@
         #ifndef ORG_ALLBINARY_DATA_CAMELCASEUTIL_H
         #define ORG_ALLBINARY_DATA_CAMELCASEUTIL_H
 
-            #include "../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../java/lang/Character.h"
+            #include "java/lang/Character.h"
         
-            #include "../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/logic/string/StringMaker.h>
 

@@ -10,7 +10,7 @@
                 *  You may obtain the AllBinary Open License Version 1 legal agreement from
                 *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
                 *  
-                *  Created By: Travis Berthelot  
+                *  Created By: Travis Berthelot   
         */
         
         /* Generated Code Do Not Modify */
@@ -23,9 +23,9 @@
 
             #include <vector>
         
-            #include "../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <javax/microedition/lcdui/Image.h>
 
@@ -39,7 +39,22 @@
 #include <org/microemu/device/playn/PlaynMutableImage.h>
 
       
+#include <playn/core/Canvas.h>
+
+      
+#include <playn/core/CoreImage.h>
+
+      
 #include <playn/core/ImageImpl.h>
+
+      
+#include <playn/core/PlayN.h>
+
+      
+#include <playn/html/HtmlGraphics.h>
+
+      
+#include <playn/html/HtmlImage.h>
 
       
 

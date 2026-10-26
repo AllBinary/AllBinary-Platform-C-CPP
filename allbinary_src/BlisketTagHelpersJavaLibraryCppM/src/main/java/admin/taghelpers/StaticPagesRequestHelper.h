@@ -21,7 +21,7 @@
         #ifndef ADMIN_TAGHELPERS_STATICPAGESREQUESTHELPER_H
         #define ADMIN_TAGHELPERS_STATICPAGESREQUESTHELPER_H
 
-            #include "../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
 
@@ -141,7 +141,7 @@ class StaticPagesRequestHelper: public AbContext, public TagHelperInterface {
 
     private: std::string xslFile;
 
-public: StaticPagesRequestHelper(HashMap<any, any> propertiesHashMap, PageContext pageContext);
+public: StaticPagesRequestHelper(HashMap<Object*, Object*> propertiesHashMap, PageContext pageContext);
 
     private: void getFormData();
 

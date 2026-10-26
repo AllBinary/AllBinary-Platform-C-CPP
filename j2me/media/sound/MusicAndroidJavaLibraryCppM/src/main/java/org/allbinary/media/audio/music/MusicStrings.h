@@ -21,7 +21,7 @@
         #ifndef ORG_ALLBINARY_MEDIA_AUDIO_MUSIC_MUSICSTRINGS_H
         #define ORG_ALLBINARY_MEDIA_AUDIO_MUSIC_MUSICSTRINGS_H
 
-            #include "../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
 
 

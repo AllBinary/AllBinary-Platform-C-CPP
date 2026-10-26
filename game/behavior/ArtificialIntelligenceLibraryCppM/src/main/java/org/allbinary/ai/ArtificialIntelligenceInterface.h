@@ -21,18 +21,12 @@
         #ifndef ORG_ALLBINARY_AI_ARTIFICIALINTELLIGENCEINTERFACE_H
         #define ORG_ALLBINARY_AI_ARTIFICIALINTELLIGENCEINTERFACE_H
 
-            #include "../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-#include <jsinterop/annotations/JsType.h>
-
-      
 #include <org/allbinary/graphics/IdentifierInterface.h>
 
       
 #include <org/allbinary/layer/AllBinaryLayerManager.h>
-
-      
-#include <jsinterop/annotations/JsMethod.h>
 
       
 

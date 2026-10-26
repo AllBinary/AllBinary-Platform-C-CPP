@@ -21,9 +21,9 @@
         #ifndef ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_NOGEOGRAPHICMAPCELLPOSITIONFACTORYINITVISITOR_H
         #define ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_NOGEOGRAPHICMAPCELLPOSITIONFACTORYINITVISITOR_H
 
-            #include "../../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/game/layer/AllBinaryTiledLayer.h>
 

@@ -20,9 +20,9 @@
 
             #include <vector>
         
-            #include "../../../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../../../java/lang/Integer.h"
+            #include "java/lang/Integer.h"
         
 #include <org/allbinary/logic/communication/log/LogUtil.h>
 
@@ -99,7 +99,7 @@ public: BasicTopViewGeographicMapCellType(std::string name, BasicArrayList types
     int32_t size = types.size();;
     
 
-    std::vector<int32_t> typeArray = new Array(size);;
+    std::vector<int32_t> typeArray = std::vector<int32_t>(size);;
     
 
     Integer typeAsInteger;;
@@ -114,7 +114,7 @@ public: BasicTopViewGeographicMapCellType(std::string name, BasicArrayList types
                         for (
     int32_t index = 0;index < size; index++)
         {
-typeAsInteger= (types.get(index) as Integer);
+typeAsInteger= (types.get(index));
     
 type= typeAsInteger.intValue();
     
@@ -215,7 +215,7 @@ this->types= typeArray;
                         for (
     int32_t index = 0;index < size; index++)
         {
-stringMaker.appendint(this->types[index]!).append(CommonSeps::getInstance().COMMA);
+stringMaker.appendint(this->types[index]).append(CommonSeps::getInstance().COMMA);
     
 }
 

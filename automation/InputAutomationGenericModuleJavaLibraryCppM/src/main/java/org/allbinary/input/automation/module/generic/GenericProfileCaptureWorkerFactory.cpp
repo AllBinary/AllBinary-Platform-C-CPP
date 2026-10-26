@@ -18,9 +18,9 @@
 
 
 
-            #include "../../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/util/BasicArrayList.h>
 
@@ -84,7 +84,7 @@ class GenericProfileCaptureWorkerFactory
     int32_t index = 0;index < size; index++)
         {
 
-    GenericProfileDataWorkerType genericProfileDataWorkerType = vector.get(index) as GenericProfileDataWorkerType;;
+    GenericProfileDataWorkerType genericProfileDataWorkerType = vector.get(index);;
     
 
                         if(genericProfileDataWorkerType == GenericProfileDataWorkerType::SCREEN_CAPTURE)
@@ -107,7 +107,7 @@ class GenericProfileCaptureWorkerFactory
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return SavedCaptureImagesWorker(genericProfileDataWorkerType as SavedCaptureGenericProfileDataWorkerType);
+                        return SavedCaptureImagesWorker(genericProfileDataWorkerType);
     
 
                                     }

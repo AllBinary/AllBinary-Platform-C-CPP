@@ -53,8 +53,9 @@ class TileLayerPositionIntoViewPosition: public ViewPosition {
 
     private: Layer tiledLayer = NullLayer::getInstance();
 
-public: TileLayerPositionIntoViewPosition(){
-            super(0, 0, 0);
+public: TileLayerPositionIntoViewPosition() : ViewPosition(0, 0, 0){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.

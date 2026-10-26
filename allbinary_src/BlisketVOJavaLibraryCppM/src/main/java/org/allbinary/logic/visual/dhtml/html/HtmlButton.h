@@ -21,7 +21,7 @@
         #ifndef ORG_ALLBINARY_LOGIC_VISUAL_DHTML_HTML_HTMLBUTTON_H
         #define ORG_ALLBINARY_LOGIC_VISUAL_DHTML_HTML_HTMLBUTTON_H
 
-            #include "../../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
 
 

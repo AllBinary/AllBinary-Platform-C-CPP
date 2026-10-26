@@ -21,7 +21,7 @@
         #ifndef ORG_ALLBINARY_GAME_AG_LAYER_WEAPON_MINE_MINELAYER_H
         #define ORG_ALLBINARY_GAME_AG_LAYER_WEAPON_MINE_MINELAYER_H
 
-            #include "../../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/ag/weapon/media/audio/DropWeaponSound.h>
 

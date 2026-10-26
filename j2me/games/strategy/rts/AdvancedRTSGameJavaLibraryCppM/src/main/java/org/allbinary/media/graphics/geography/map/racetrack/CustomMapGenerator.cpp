@@ -20,7 +20,7 @@
 
             #include <vector>
         
-            #include "../../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/game/layer/AdvancedRTSGameLayer.h>
 
@@ -81,12 +81,12 @@ this->geographicMapCellTypeFactory= this->raceTrackGeographicMap.getGeographicMa
     std::vector<std::vector<int32_t>> mapArray = raceTrackGeographicMap.getRaceTrackData().getMapArray();;
     
 
-    int32_t size2 = mapArray[0]!.size();;
+    int32_t size2 = mapArray[0].size();;
     
-this->customMapArray= new Array(mapArray.length).fill(null).map(() => new Array(size2).fill(0));
+this->customMapArray= std::vector<std::vector<int32_t>>(mapArray.length, std::vector<int32_t>(size2));
     
 
-                        if(mapArray.size() != this->customMapArray.size() || mapArray[0]!.size() != this->customMapArray[0]!.size())
+                        if(mapArray.size() != this->customMapArray.size() || mapArray[0].size() != this->customMapArray[0].size())
                         
                                     {
                                     
@@ -107,7 +107,7 @@ this->customMapArray= new Array(mapArray.length).fill(null).map(() => new Array(
     std::vector<std::vector<int32_t>> mapArray = this->raceTrackGeographicMap.getRaceTrackData().getMapArray();;
     
 
-    int32_t startIndex2 = mapArray[0]!.size() -1;;
+    int32_t startIndex2 = mapArray[0].size() -1;;
     
 
 
@@ -123,7 +123,7 @@ this->customMapArray= new Array(mapArray.length).fill(null).map(() => new Array(
                         for (
     int32_t index2 = startIndex2;index2 >= 0; index2--)
         {
-this->customMapArray[index]![index2]= this->getCustomType(index2, index, mapArray[index]![index2]!);
+this->customMapArray[index][index2]= this->getCustomType(index2, index, mapArray[index][index2]);
     
 }
 
@@ -167,7 +167,7 @@ this->customMapArray[index]![index2]= this->getCustomType(index2, index, mapArra
                                     }
                                 
 
-    AdvancedRTSGameLayer rtsLayer = layer as AdvancedRTSGameLayer;;
+    AdvancedRTSGameLayer rtsLayer = layer;;
     
 
                         if(!(rtsLayer.getType() == WaypointLayer::getStaticType()))

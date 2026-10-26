@@ -21,7 +21,7 @@
         #ifndef ORG_ALLBINARY_BUSINESS_INSTALLER_INITDBCRYPTED_H
         #define ORG_ALLBINARY_BUSINESS_INSTALLER_INITDBCRYPTED_H
 
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/business/init/InitInfoEntity.h>
 

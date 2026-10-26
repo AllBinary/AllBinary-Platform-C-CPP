@@ -21,15 +21,12 @@
         #ifndef ORG_ALLBINARY_INPUT_MOTION_GESTURE_MOTIONGESTURERECOGNIZER_H
         #define ORG_ALLBINARY_INPUT_MOTION_GESTURE_MOTIONGESTURERECOGNIZER_H
 
-            #include "../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../../../java/lang/Math.h"
+            #include "java/lang/Math.h"
         
-#include <jsinterop/annotations/JsType.h>
-
-      
 #include <org/allbinary/graphics/GPoint.h>
 
       

@@ -23,13 +23,13 @@
 
             #include <vector>
         
-            #include "../../../../../java/lang/Class.h"
+            #include "java/lang/Class.h"
         
-            #include "../../../../../java/lang/ClassLoader.h"
+            #include "java/lang/ClassLoader.h"
         
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../../../java/lang/ClassNotFoundException.h"
+            #include "java/lang/ClassNotFoundException.h"
         
 #include <java/io/FileInputStream.h>
 
@@ -102,24 +102,24 @@ class AbeClassLoader: public ClassLoader {
 
 public: AbeClassLoader(ClassLoader parent, std::string key);
 
-    protected: Function findLoadedClass1(std::string name);
+    protected: Class* findLoadedClass1(std::string name);
 
                 //@Throws(ClassNotFoundException.constructor)
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: Function loadClass(std::string name);
+    public: Class* loadClass(std::string name);
 
                 //@Throws(ClassNotFoundException.constructor)
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: Function loadClass(std::string name, bool resolve);
+    public: Class* loadClass(std::string name, bool resolve);
 
     private: std::vector<int8_t> loadClassBytesFromFile(std::string name);
 
                 //@Throws(ClassNotFoundException.constructor)
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: Function oldLoadClass(std::string name, bool resolve);
+    public: Class* oldLoadClass(std::string name, bool resolve);
 
 };
 

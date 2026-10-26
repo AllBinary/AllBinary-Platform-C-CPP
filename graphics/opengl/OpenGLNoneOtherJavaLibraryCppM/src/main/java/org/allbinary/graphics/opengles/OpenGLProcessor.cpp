@@ -4,9 +4,12 @@
 
 
 
-            #include "../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
 #include <javax/microedition/khronos/opengles/GL10.h>
+
+      
+#include <org/allbinary/logic/communication/log/LogUtil.h>
 
       
 #include <org/allbinary/string/CommonStrings.h>
@@ -34,6 +37,8 @@
 class OpenGLProcessor
             : public Object
          {
+
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
     protected: const CommonStrings commonStrings = CommonStrings::getInstance();
 

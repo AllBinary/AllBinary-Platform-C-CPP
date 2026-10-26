@@ -21,7 +21,7 @@
         #ifndef ORG_ALLBINARY_DATA_TREE_CATEGORY_CATEGORYLOADER_H
         #define ORG_ALLBINARY_DATA_TREE_CATEGORY_CATEGORYLOADER_H
 
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/business/category/CategoryData.h>
 

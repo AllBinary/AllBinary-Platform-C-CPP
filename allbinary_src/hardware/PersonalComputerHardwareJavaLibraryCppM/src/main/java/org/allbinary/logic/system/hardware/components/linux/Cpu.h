@@ -21,9 +21,9 @@
         #ifndef ORG_ALLBINARY_LOGIC_SYSTEM_HARDWARE_COMPONENTS_LINUX_CPU_H
         #define ORG_ALLBINARY_LOGIC_SYSTEM_HARDWARE_COMPONENTS_LINUX_CPU_H
 
-            #include "../../../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/io/FileReader.h>
 
@@ -106,7 +106,7 @@ class Cpu
 
     private: const std::string CPUFILE = "/proc/cpuinfo";
 
-    private: HashMap<any, any> cpuHashMap;
+    private: HashMap<Object*, Object*> cpuHashMap;
 
 public: Cpu(std::string filePath);
 

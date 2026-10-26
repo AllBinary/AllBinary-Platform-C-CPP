@@ -18,9 +18,9 @@
 
 
 
-            #include "../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
 
@@ -84,7 +84,7 @@ class RequestWorkFlowFactory
             
     public: static WorkFlowInterface getInstance(ServletRequest request, ServletResponse response, ServletConfig servletConfig, ServletContext servletContext){
 
-    HttpServletRequest httpRequest = request as HttpServletRequest;;
+    HttpServletRequest httpRequest = request;;
     
 
     std::string requestCommand = httpRequest.getPathInfo();;
@@ -109,9 +109,9 @@ class RequestWorkFlowFactory
 
                 //@Throws(Exception.constructor, LicensingException.constructor)
             
-    public: static WorkFlowInterface getInstance(HashMap<any, any> hashMap, PageContext pageContext){
+    public: static WorkFlowInterface getInstance(HashMap<Object*, Object*> hashMap, PageContext pageContext){
 
-    std::string workFlowName = pageContext.getRequest().getParameter(WorkFlowData::getInstance().NAME) as string;;
+    std::string workFlowName = pageContext.getRequest().getParameter(WorkFlowData::getInstance().NAME);;
     
 
     WeblisketSession weblisketSession = WeblisketSession(hashMap, pageContext);;

@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/game/layer/AllBinaryGameLayer.h>
 
@@ -59,8 +59,9 @@ class OscillateVelocityMovement: public BasicConstantVelocityMovement {
 
     private: bool oscillatePositive= false;
 
-public: OscillateVelocityMovement(BasicDecimal speedBasicDecimal, int32_t oscillateMin, int32_t oscillateMax){
-            super(speedBasicDecimal, VelocityProperties(static_cast<int32_t>(speedBasicDecimal.getUnscaled()), static_cast<int32_t>(speedBasicDecimal.getUnscaled())));
+public: OscillateVelocityMovement(BasicDecimal speedBasicDecimal, int32_t oscillateMin, int32_t oscillateMax) : BasicConstantVelocityMovement(speedBasicDecimal, VelocityProperties(static_cast<int32_t>(speedBasicDecimal.getUnscaled()), static_cast<int32_t>(speedBasicDecimal.getUnscaled()))){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.

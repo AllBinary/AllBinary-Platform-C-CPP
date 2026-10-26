@@ -18,9 +18,9 @@
 
 
 
-            #include "../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../java/lang/Class.h"
+            #include "java/lang/Class.h"
         
 #include <org/allbinary/string/CommonStrings.h>
 
@@ -118,15 +118,15 @@ this->exception= exception;
     std::string className = CommonStrings::getInstance().EMPTY;;
     
 
-    Function clazz = this->anyType.constructor;;
+    Class* clazz = this->anyType->getClass();;
     
 
-                        if(clazz.toString()! != 
+                        if(clazz.toString() != 
                                     nullptr
                                 )
                         
                                     {
-                                    className= clazz.toString()!;
+                                    className= clazz.toString();
     
 
                                     }

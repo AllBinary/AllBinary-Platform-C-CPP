@@ -23,11 +23,11 @@
 
             #include <vector>
         
-            #include "../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../java/lang/Class.h"
+            #include "java/lang/Class.h"
         
-            #include "../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
 
@@ -78,15 +78,15 @@ class HelperFactory
 
                 //@Throws(LicensingException.constructor)
             
-    public: static Object* getInstance(AbeClientInformationInterface abeClientInformation, std::string factoryName, std::string className, HashMap<any, any> hashMap, HttpServletRequest httpServletRequest);
+    public: static Object* getInstance(AbeClientInformationInterface abeClientInformation, std::string factoryName, std::string className, HashMap<Object*, Object*> hashMap, HttpServletRequest httpServletRequest);
 
                 //@Throws(LicensingException.constructor)
             
-    public: static Object* getInstance(AbeClientInformationInterface abeClientInformation, std::string factoryName, std::string className, HashMap<any, any> hashMap, PageContext pageContext);
+    public: static Object* getInstance(AbeClientInformationInterface abeClientInformation, std::string factoryName, std::string className, HashMap<Object*, Object*> hashMap, PageContext pageContext);
 
                 //@Throws(LicensingException.constructor)
             
-    public: static Object* getInstance(AbeClientInformationInterface abeClientInformation, std::string factoryName, std::string className, HashMap<any, any> hashMap, HashMap<any, any> specialhashMap, PageContext pageContext);
+    public: static Object* getInstance(AbeClientInformationInterface abeClientInformation, std::string factoryName, std::string className, HashMap<Object*, Object*> hashMap, HashMap<Object*, Object*> specialhashMap, PageContext pageContext);
 
                 //@Throws(LicensingException.constructor)
             

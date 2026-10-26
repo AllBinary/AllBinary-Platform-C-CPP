@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../../../../../../../java/lang/Long.h"
+            #include "java/lang/Long.h"
         
 #include <org/allbinary/business/user/commerce/money/Money.h>
 

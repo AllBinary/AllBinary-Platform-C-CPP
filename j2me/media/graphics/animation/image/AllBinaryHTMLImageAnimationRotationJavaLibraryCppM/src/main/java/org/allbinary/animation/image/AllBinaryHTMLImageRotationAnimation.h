@@ -23,7 +23,7 @@
 
             #include <vector>
         
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <javax/microedition/lcdui/Graphics.h>
 
@@ -88,9 +88,9 @@ class AllBinaryHTMLImageRotationAnimation: public ImageBaseRotationAnimation {
 
     private: Image originalImage;
 
-    private: const std::vector<Image> twoImages = new Array(2);
+    private: const std::vector<Image> twoImages = std::vector<Image>(2);
 
-    private: const std::vector<CanvasSurface> canvasSurfaceArray = new Array(2);
+    private: const std::vector<CanvasSurface> canvasSurfaceArray = std::vector<CanvasSurface>(2);
 
     private: Image imageToShow;
 

@@ -7,7 +7,7 @@
         #ifndef JSINTEROP_ANNOTATIONS_JSNULLABLE_H
         #define JSINTEROP_ANNOTATIONS_JSNULLABLE_H
 
-            #include "../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
 
 

@@ -23,13 +23,13 @@
 
             #include <vector>
         
-            #include "../../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../../../../java/lang/System.h"
+            #include "java/lang/System.h"
         
-            #include "../../../../../../java/lang/Thread.h"
+            #include "java/lang/Thread.h"
         
 #include <java/io/File.h>
 
@@ -159,7 +159,7 @@ public: InputAutomationNewBundleRunnable(InputAutomationBundleActivator inputAut
 
                 //@Throws(Exception.constructor)
             
-    private: HashMap<any, any> getAllJarSymbolicNameHashMap();
+    private: HashMap<Object*, Object*> getAllJarSymbolicNameHashMap();
 
     private: BasicArrayList getJarModuleFileBasicArrayList();
 

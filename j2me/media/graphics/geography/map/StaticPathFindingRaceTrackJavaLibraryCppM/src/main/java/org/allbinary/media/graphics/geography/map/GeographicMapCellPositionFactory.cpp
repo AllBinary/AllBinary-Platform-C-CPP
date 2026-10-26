@@ -18,11 +18,8 @@
 
 
 
-            #include "../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-#include <java/util/Hashtable.h>
-
-      
 #include <org/allbinary/string/CommonStrings.h>
 
       
@@ -36,6 +33,9 @@
 
       
 #include <org/allbinary/logic/string/StringMaker.h>
+
+      
+#include <org/allbinary/util/ABHashtable.h>
 
       
 
@@ -62,9 +62,9 @@
 
 class GeographicMapCellPositionFactory: public GeographicMapCellPositionBaseFactory {
 
-    private: static const Hashtable<any, any> hashtable = StdUtil::getInstance().createHashtable();
+    private: static const ABHashtable<Object*, Object*> hashtable = StdUtil::getInstance().createHashtable();
 
-    public: static Hashtable<any, any> getHashtable(){
+    public: static ABHashtable<Object*, Object*> getHashtable(){
 
 
 
@@ -104,7 +104,7 @@ GeographicMapCellPositionFactory::hashtable.put(allBinaryTiledLayer.getDataId(),
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return geographicMapCellPositionFactoryCanBeNull as BasicGeographicMapCellPositionFactory;
+                        return *dynamic_cast<BasicGeographicMapCellPositionFactory*>(geographicMapCellPositionFactoryCanBeNull);
     
 
                                     }
@@ -116,7 +116,7 @@ GeographicMapCellPositionFactory::hashtable.put(allBinaryTiledLayer.getDataId(),
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return geographicMapCellPositionFactoryCanBeNull as BasicGeographicMapCellPositionFactory;
+                        return *dynamic_cast<BasicGeographicMapCellPositionFactory*>(geographicMapCellPositionFactoryCanBeNull);
     
 
                         }

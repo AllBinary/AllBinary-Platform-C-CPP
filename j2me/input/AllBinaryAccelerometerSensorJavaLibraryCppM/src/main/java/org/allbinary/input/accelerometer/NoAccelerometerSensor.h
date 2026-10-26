@@ -21,7 +21,7 @@
         #ifndef ORG_ALLBINARY_INPUT_ACCELEROMETER_NOACCELEROMETERSENSOR_H
         #define ORG_ALLBINARY_INPUT_ACCELEROMETER_NOACCELEROMETERSENSOR_H
 
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/input/gyro/AllBinaryOrientationSensor.h>
 

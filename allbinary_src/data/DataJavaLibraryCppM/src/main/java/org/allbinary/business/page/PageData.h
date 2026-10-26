@@ -21,7 +21,7 @@
         #ifndef ORG_ALLBINARY_BUSINESS_PAGE_PAGEDATA_H
         #define ORG_ALLBINARY_BUSINESS_PAGE_PAGEDATA_H
 
-            #include "../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
 
 

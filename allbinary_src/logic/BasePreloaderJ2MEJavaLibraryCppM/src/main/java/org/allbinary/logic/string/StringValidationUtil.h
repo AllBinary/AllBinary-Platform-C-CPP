@@ -21,18 +21,9 @@
         #ifndef ORG_ALLBINARY_LOGIC_STRING_STRINGVALIDATIONUTIL_H
         #define ORG_ALLBINARY_LOGIC_STRING_STRINGVALIDATIONUTIL_H
 
-            #include "../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-#include <jsinterop/annotations/JsType.h>
-
-      
 #include <org/allbinary/TsUtil.h>
-
-      
-#include <jsinterop/annotations/JsMethod.h>
-
-      
-#include <jsinterop/annotations/JsConstructor.h>
 
       
 

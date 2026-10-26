@@ -18,11 +18,8 @@
 
 
 
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-#include <jsinterop/annotations/JsType.h>
-
-      
 #include <javax/microedition/lcdui/Canvas.h>
 
       
@@ -68,12 +65,6 @@
 #include <org/allbinary/util/BasicArrayList.h>
 
       
-#include <jsinterop/annotations/JsMethod.h>
-
-      
-#include <jsinterop/annotations/JsConstructor.h>
-
-      
 
 
 
@@ -105,8 +96,9 @@ class PopupMenuInputProcessor: public BasicMenuInputProcessor {
 
     private: Rectangle rectangle;
 
-public: PopupMenuInputProcessor(BasicArrayList gameKeyEventList, int32_t playerInputId, MyCanvas gameCanvas, Rectangle rectangle){
-            super(gameKeyEventList, playerInputId, gameCanvas);
+public: PopupMenuInputProcessor(BasicArrayList gameKeyEventList, int32_t playerInputId, MyCanvas gameCanvas, Rectangle rectangle) : BasicMenuInputProcessor(gameKeyEventList, playerInputId, gameCanvas){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -130,7 +122,7 @@ this->rectangle= rectangle;
                         
                                     {
                                     
-    AllBinaryGameCanvas gameCanvas = this->getCanvas() as AllBinaryGameCanvas;;
+    AllBinaryGameCanvas gameCanvas = this->getCanvas();;
     
 gameCanvas.toggleMenu();
     
@@ -179,7 +171,7 @@ gameCanvas.toggleMenu();
                         for (
     int32_t index = 0;index < size; index++)
         {
-gameKeyEvent= list.objectArray[index]! as GameKeyEvent;
+gameKeyEvent= list.objectArray[index];
     
 
                         if(gameKeyEvent != 
@@ -257,7 +249,7 @@ this->logUtil.put(this->commonStrings.EXCEPTION, this, GameInputStrings::getInst
                         
                                     {
                                     
-    MotionGestureEvent motionGestureEvent = this->motionGestureEventList.objectArray[lastIndex]! as MotionGestureEvent;;
+    MotionGestureEvent motionGestureEvent = this->motionGestureEventList.objectArray[lastIndex];;
     
 this->processMotionInput(motionGestureEvent);
     
@@ -320,7 +312,7 @@ this->motionGestureEventList.clear();
                         
                                     {
                                     
-    AllBinaryGameCanvas gameCanvas = this->getCanvas() as AllBinaryGameCanvas;;
+    AllBinaryGameCanvas gameCanvas = this->getCanvas();;
     
 gameCanvas.toggleMenu();
     

@@ -21,11 +21,8 @@
         #ifndef ORG_ALLBINARY_ANIMATION_TEXT_CUSTOMTEXTANIMATION_H
         #define ORG_ALLBINARY_ANIMATION_TEXT_CUSTOMTEXTANIMATION_H
 
-            #include "../../../../java/lang/RuntimeException.h"
+            #include "java/lang/RuntimeException.h"
         
-#include <jsinterop/annotations/JsType.h>
-
-      
 #include <javax/microedition/lcdui/Font.h>
 
       
@@ -39,15 +36,6 @@
 
       
 #include <org/allbinary/logic/string/StringUtil.h>
-
-      
-#include <jsinterop/annotations/JsMethod.h>
-
-      
-#include <jsinterop/annotations/JsConstructor.h>
-
-      
-#include <jsinterop/annotations/JsProperty.h>
 
       
 

@@ -21,16 +21,10 @@
         #ifndef ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_ALLBINARYGAMECANVASINTERFACE_H
         #define ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_ALLBINARYGAMECANVASINTERFACE_H
 
-#include <jsinterop/annotations/JsType.h>
-
-      
 #include <org/allbinary/game/layer/AllBinaryGameLayerManager.h>
 
       
 #include <org/allbinary/graphics/displayable/DisplayableInterface.h>
-
-      
-#include <jsinterop/annotations/JsMethod.h>
 
       
 

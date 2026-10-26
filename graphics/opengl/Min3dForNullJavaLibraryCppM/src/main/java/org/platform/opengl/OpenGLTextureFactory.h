@@ -7,7 +7,7 @@
         #ifndef ORG_PLATFORM_OPENGL_OPENGLTEXTUREFACTORY_H
         #define ORG_PLATFORM_OPENGL_OPENGLTEXTUREFACTORY_H
 
-            #include "../../../java/lang/RuntimeException.h"
+            #include "java/lang/RuntimeException.h"
         
 #include <javax/microedition/khronos/opengles/GL10.h>
 

@@ -21,16 +21,7 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_FONT_UPDATEMYFONTPROCESSOR_H
         #define ORG_ALLBINARY_GRAPHICS_FONT_UPDATEMYFONTPROCESSOR_H
 
-#include <jsinterop/annotations/JsType.h>
-
-      
 #include <javax/microedition/lcdui/Graphics.h>
-
-      
-#include <jsinterop/annotations/JsMethod.h>
-
-      
-#include <jsinterop/annotations/JsConstructor.h>
 
       
 

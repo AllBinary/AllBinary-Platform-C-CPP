@@ -18,11 +18,11 @@
 
 
 
-            #include "../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../../java/lang/Long.h"
+            #include "java/lang/Long.h"
         
 #include <java/io/IOException.h>
 
@@ -81,7 +81,7 @@ class UniqueIdGenerator
     private: std::string name;
 
 public: UniqueIdGenerator(){
-this->idGeneratorEntity= IdGeneratorEntityFactory::getInstance() as IdGeneratorEntity;
+this->idGeneratorEntity= IdGeneratorEntityFactory::getInstance();
     
 }
 

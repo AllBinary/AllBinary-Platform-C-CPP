@@ -18,15 +18,9 @@
 
 
 
-            #include "../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-#include <jsinterop/annotations/JsType.h>
-
-      
 #include <org/allbinary/logic/NullUtil.h>
-
-      
-#include <jsinterop/annotations/JsMethod.h>
 
       
 
@@ -71,7 +65,7 @@ class PlatformKeyFactory
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return PlatformKeyFactory::instance() as PlatformKeyFactory;
+                        return PlatformKeyFactory::instance();
     
 }
 

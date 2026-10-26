@@ -20,11 +20,17 @@
 
             #include <vector>
         
-            #include "../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../java/lang/ClassLoader.h"
+            #include "java/lang/ClassLoader.h"
         
-            #include "../../java/lang/InterruptedException.h"
+            #include "java/lang/InterruptedException.h"
+        
+            #include "java/lang/System.h"
+        
+            #include "java/lang/Float.h"
+        
+            #include "java/lang/Double.h"
         
 #include <javax/microedition/lcdui/Displayable.h>
 
@@ -65,7 +71,7 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        
+        //SWT
 class TsUtil
             : public Object
          {
@@ -78,6 +84,26 @@ class TsUtil
 
                         //if statement needs to be on the same line and ternary does not work the same way.
                         return TsUtil::instance();
+    
+}
+
+
+    public: double longBitsToDouble(int64_t bits){
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return Double.longBitsToDouble(bits);;
+    
+}
+
+
+    public: float intBitsToFloat(int32_t bits){
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return Float.intBitsToFloat(bits);;
     
 }
 
@@ -107,7 +133,7 @@ class TsUtil
             
     public: std::vector<int8_t> getRecord(Object* anyType, int32_t recordId){
 
-    RecordStore recordStore = anyType as RecordStore;;
+    RecordStore recordStore = *dynamic_cast<RecordStore*>(anyType);;
     
 
     std::vector<int8_t> data;;
@@ -119,7 +145,7 @@ class TsUtil
 
         //mutex.withLock
         
-data= new Array(recordStore.getRecordSize(recordId));
+data= std::vector<int8_t>(recordStore.getRecordSize(recordId));
     
 recordStore.getRecord(recordId, data, 0);
     
@@ -146,7 +172,7 @@ recordStore.getRecord(recordId, data, 0);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return a.compareTo(b);;
+                        return a.compare(b);;
     
 }
 
@@ -235,6 +261,12 @@ recordStore.getRecord(recordId, data, 0);
 
                         }
                             
+}
+
+
+    public: void gc(){
+System.gc();
+    
 }
 
 

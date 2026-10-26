@@ -18,11 +18,8 @@
 
 
 
-            #include "../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-#include <jsinterop/annotations/JsType.h>
-
-      
 #include <org/allbinary/game/input/CompleteMotionGestureInputEvent.h>
 
       
@@ -45,12 +42,6 @@
 
       
 #include <org/allbinary/string/CommonStrings.h>
-
-      
-#include <jsinterop/annotations/JsMethod.h>
-
-      
-#include <jsinterop/annotations/JsConstructor.h>
 
       
 
@@ -85,8 +76,9 @@ class GameKeyCompleteMotionGestureInputEvent: public CompleteMotionGestureInputE
 
     private: InputToGameKeyMapping inputToGameKeyMapping;
 
-public: GameKeyCompleteMotionGestureInputEvent(std::string name, MotionGestureInput motionGestureInput, InputToGameKeyMapping inputToGameKeyMapping){
-            super(name, motionGestureInput);
+public: GameKeyCompleteMotionGestureInputEvent(std::string name, MotionGestureInput motionGestureInput, InputToGameKeyMapping inputToGameKeyMapping) : CompleteMotionGestureInputEvent(name, motionGestureInput){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.

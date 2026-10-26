@@ -20,11 +20,11 @@
 
             #include <vector>
         
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../../../java/lang/System.h"
+            #include "java/lang/System.h"
         
-            #include "../../../../../java/lang/Integer.h"
+            #include "java/lang/Integer.h"
         
 #include <org/allbinary/thread/ARunnable.h>
 
@@ -110,10 +110,11 @@ dialog.setVisible(true);
 
     protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: HashMap<any, any> hashMap = StdUtil::getInstance().createHashMap();
+    private: HashMap<Object*, Object*> hashMap = StdUtil::getInstance().createHashMap();
 
-public: RotateJDialog(java::awt::Frame parent, bool modal){
-            super(parent, modal);
+public: RotateJDialog(java::awt::Frame parent, bool modal) : javax::swing::JDialog(parent, modal){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -189,7 +190,7 @@ pack();
     
 this->hashMap.put(Integer::valueOf(1)Integer::valueOf(this->totalRotationJTextField.getText()));
     
-getParent = this->getParent()getParent as HashMapJDialogListenerInterface
+getParent = this->getParent()getParent
 getParent.
                     onHashMap(this->hashMap);
     

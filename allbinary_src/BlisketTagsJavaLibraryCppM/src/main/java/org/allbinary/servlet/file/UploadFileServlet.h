@@ -23,7 +23,7 @@
 
             #include <vector>
         
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/io/IOException.h>
 
@@ -122,7 +122,7 @@ class UploadFileServlet: public HttpServlet {
 
     protected: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    protected: HashMap<any, any> requestHashMap;
+    protected: HashMap<Object*, Object*> requestHashMap;
 
     private: std::string fileName;
 

@@ -20,19 +20,10 @@
 
             #include <vector>
         
-            #include "../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../java/lang/Integer.h"
+            #include "java/lang/Integer.h"
         
-#include <jsinterop/annotations/JsType.h>
-
-      
-#include <jsinterop/annotations/JsMethod.h>
-
-      
-#include <jsinterop/annotations/JsProperty.h>
-
-      
 
 
 
@@ -95,14 +86,14 @@ class ResourceLoadingLevelFactory
     int32_t index = 0;index < this->RESOURCE_LOADING_LEVEL_ARRAY.size(); index++)
         {
 
-                        if(level == this->RESOURCE_LOADING_LEVEL_ARRAY[index]!.getLevel())
+                        if(level == this->RESOURCE_LOADING_LEVEL_ARRAY[index].getLevel())
                         
                                     {
                                     
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->RESOURCE_LOADING_LEVEL_ARRAY[index]!.getName();;
+                        return this->RESOURCE_LOADING_LEVEL_ARRAY[index].getName();;
     
 
                                     }

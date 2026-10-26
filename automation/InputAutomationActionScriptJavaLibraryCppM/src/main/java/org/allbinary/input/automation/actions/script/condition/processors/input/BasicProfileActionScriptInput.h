@@ -21,14 +21,11 @@
         #ifndef ORG_ALLBINARY_INPUT_AUTOMATION_ACTIONS_SCRIPT_CONDITION_PROCESSORS_INPUT_BASICPROFILEACTIONSCRIPTINPUT_H
         #define ORG_ALLBINARY_INPUT_AUTOMATION_ACTIONS_SCRIPT_CONDITION_PROCESSORS_INPUT_BASICPROFILEACTIONSCRIPTINPUT_H
 
-            #include "../../../../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../../../../../../../java/lang/Integer.h"
+            #include "java/lang/Integer.h"
         
 #include <java/util/HashMap.h>
-
-      
-#include <java/util/Hashtable.h>
 
       
 #include <java/util/Iterator.h>
@@ -65,6 +62,9 @@
 
       
 #include <org/allbinary/logic/string/StringUtil.h>
+
+      
+#include <org/allbinary/util/ABHashtable.h>
 
       
 #include <org/w3c/dom/Document.h>
@@ -110,7 +110,7 @@ public: BasicProfileActionScriptInput(std::string label);
 
     public: void setTime(int32_t time);
 
-    public: HashMap<any, any> BasicProfileActionScriptInput_toHashMap();
+    public: HashMap<Object*, Object*> BasicProfileActionScriptInput_toHashMap();
 
                 //@Throws(Exception.constructor)
             

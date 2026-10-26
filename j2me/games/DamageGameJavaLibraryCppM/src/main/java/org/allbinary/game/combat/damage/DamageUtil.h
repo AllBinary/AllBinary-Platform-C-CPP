@@ -21,13 +21,10 @@
         #ifndef ORG_ALLBINARY_GAME_COMBAT_DAMAGE_DAMAGEUTIL_H
         #define ORG_ALLBINARY_GAME_COMBAT_DAMAGE_DAMAGEUTIL_H
 
-            #include "../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-#include <jsinterop/annotations/JsType.h>
-
-      
 #include <org/allbinary/game/layer/CollidableCompositeLayer.h>
 
       
@@ -38,15 +35,6 @@
 
       
 #include <org/allbinary/logic/string/StringMaker.h>
-
-      
-#include <jsinterop/annotations/JsMethod.h>
-
-      
-#include <jsinterop/annotations/JsConstructor.h>
-
-      
-#include <jsinterop/annotations/JsProperty.h>
 
       
 

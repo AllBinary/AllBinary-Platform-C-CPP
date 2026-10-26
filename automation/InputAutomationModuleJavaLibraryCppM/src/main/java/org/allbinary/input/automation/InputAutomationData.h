@@ -21,7 +21,7 @@
         #ifndef ORG_ALLBINARY_INPUT_AUTOMATION_INPUTAUTOMATIONDATA_H
         #define ORG_ALLBINARY_INPUT_AUTOMATION_INPUTAUTOMATIONDATA_H
 
-            #include "../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
 
 

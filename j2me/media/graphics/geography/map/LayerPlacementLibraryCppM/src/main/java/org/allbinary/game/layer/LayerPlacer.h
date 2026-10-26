@@ -21,14 +21,11 @@
         #ifndef ORG_ALLBINARY_GAME_LAYER_LAYERPLACER_H
         #define ORG_ALLBINARY_GAME_LAYER_LAYERPLACER_H
 
-            #include "../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/util/Enumeration.h>
-
-      
-#include <java/util/Hashtable.h>
 
       
 #include <org/allbinary/graphics/GPoint.h>
@@ -44,6 +41,9 @@
 
       
 #include <org/allbinary/layer/LayerInterfaceVisitor.h>
+
+      
+#include <org/allbinary/util/ABHashtable.h>
 
       
 #include <org/allbinary/util/BasicArrayList.h>

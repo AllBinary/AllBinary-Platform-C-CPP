@@ -21,9 +21,9 @@
         #ifndef ORG_ALLBINARY_INPUT_AUTOMATION_ACTIONS_SCRIPT_CONDITION_PROFILEACTIONSCRIPTCONDITIONINTERFACE_H
         #define ORG_ALLBINARY_INPUT_AUTOMATION_ACTIONS_SCRIPT_CONDITION_PROFILEACTIONSCRIPTCONDITIONINTERFACE_H
 
-            #include "../../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../../../../../java/lang/Long.h"
+            #include "java/lang/Long.h"
         
 #include <org/allbinary/input/automation/actions/script/ProfileActionScriptItemInterface.h>
 

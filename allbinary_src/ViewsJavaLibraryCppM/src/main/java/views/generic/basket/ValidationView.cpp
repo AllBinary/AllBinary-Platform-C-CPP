@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/globals/MESSAGES.h>
 
@@ -57,8 +57,9 @@
 
 class ValidationView: public BasketView, public ValidationComponentInterface {
 
-public: ValidationView(TransformInfoInterface transformInfoInterface){
-            super(transformInfoInterface);
+public: ValidationView(TransformInfoInterface transformInfoInterface) : BasketView(transformInfoInterface){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.

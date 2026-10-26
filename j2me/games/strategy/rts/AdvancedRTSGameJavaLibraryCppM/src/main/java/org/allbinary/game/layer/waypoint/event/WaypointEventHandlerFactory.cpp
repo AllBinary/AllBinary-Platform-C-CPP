@@ -20,7 +20,7 @@
 
             #include <vector>
         
-            #include "../../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
 #include <org/allbinary/game/identification/Group.h>
 
@@ -59,7 +59,7 @@ class WaypointEventHandlerFactory
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return WaypointEventHandlerFactory::eventHandlerArray[static_cast<int32_t>(groupInterface.getGroupId();)]!;
+                        return WaypointEventHandlerFactory::eventHandlerArray[static_cast<int32_t>(groupInterface.getGroupId();)];
     
 }
 
@@ -72,7 +72,7 @@ class WaypointEventHandlerFactory
                         for (
     int32_t index = WaypointEventHandlerFactory::eventHandlerArray.size() -1;index >= 0; index--)
         {
-WaypointEventHandlerFactory::eventHandlerArray[index]!.removeAllListeners();
+WaypointEventHandlerFactory::eventHandlerArray[index].removeAllListeners();
     
 }
 

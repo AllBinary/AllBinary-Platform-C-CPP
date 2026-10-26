@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/util/BasicArrayList.h>
 
@@ -124,10 +124,10 @@ this->list.clear();
             
     public: bool isDropAllowedAt(GeographicMapCellPosition geographicMapCellPosition){
 
-    RaceTrackGeographicMapCellType raceTrackGeographicMapCellType = this->raceTrackGeographicMap.getCellTypeAt(geographicMapCellPosition) as RaceTrackGeographicMapCellType;;
+    RaceTrackGeographicMapCellType raceTrackGeographicMapCellType = this->raceTrackGeographicMap.getCellTypeAt(geographicMapCellPosition);;
     
 
-    RaceTrackGeographicMapCellTypeFactory raceTrackGeographicMapCellTypeFactory = this->raceTrackGeographicMapCellTypeFactory as RaceTrackGeographicMapCellTypeFactory;;
+    RaceTrackGeographicMapCellTypeFactory raceTrackGeographicMapCellTypeFactory = this->raceTrackGeographicMapCellTypeFactory;;
     
 
                         if(raceTrackGeographicMapCellType == raceTrackGeographicMapCellTypeFactory.HORIZONTAL_STRAIGHT_ROAD_CELL_TYPE || raceTrackGeographicMapCellType == raceTrackGeographicMapCellTypeFactory.VERTICAL_STRAIGHT_ROAD_CELL_TYPE)
@@ -157,11 +157,11 @@ this->list.clear();
 this->init();
     
 
-    BaseRaceTrackGeographicMap baseRaceTrackGeographicMap = geographicMapInterface as BaseRaceTrackGeographicMap;;
+    BaseRaceTrackGeographicMap baseRaceTrackGeographicMap = geographicMapInterface;;
     
 this->raceTrackGeographicMap= baseRaceTrackGeographicMap;
     
-this->raceTrackGeographicMapCellTypeFactory= baseRaceTrackGeographicMap.getGeographicMapCellTypeFactory() as RaceTrackGeographicMapCellTypeFactory;
+this->raceTrackGeographicMapCellTypeFactory= baseRaceTrackGeographicMap.getGeographicMapCellTypeFactory();
     
 
     GeographicMapCellHistory roadGeographicMapCellHistory = RaceTrackRoadsGeographicMapCellHistoryFactory::getInstance();;
@@ -188,14 +188,14 @@ this->raceTrackGeographicMapCellTypeFactory= baseRaceTrackGeographicMap.getGeogr
                         for (
     int32_t index = lastIndex;index > 0; index--)
         {
-geographicMapCellPosition= trackedList.get(index) as GeographicMapCellPosition;
+geographicMapCellPosition= trackedList.get(index);
     
 total= 0;
     
 ahead= index;
     
 
-        while(this->isDropAllowedAt(trackedList.get(ahead) as GeographicMapCellPosition))
+        while(this->isDropAllowedAt(trackedList.get(ahead)))
         {
 total++;
     

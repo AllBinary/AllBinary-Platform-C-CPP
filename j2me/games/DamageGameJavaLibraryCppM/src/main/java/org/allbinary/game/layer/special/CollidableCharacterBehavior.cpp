@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/game/collision/CollidableInterfaceCompositeInterface.h>
 
@@ -61,8 +61,9 @@
 
 class CollidableCharacterBehavior: public CollidableDestroyableDamageableBehavior {
 
-public: CollidableCharacterBehavior(bool collidable){
-            super(collidable);
+public: CollidableCharacterBehavior(bool collidable) : CollidableDestroyableDamageableBehavior(collidable){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -84,9 +85,9 @@ public: CollidableCharacterBehavior(bool collidable){
                         
                                     {
                                     
-    CollidableDestroyableDamageableLayer collidableDestroyableDamageableLayer = ownerLayer as CollidableDestroyableDamageableLayer;;
+    CollidableDestroyableDamageableLayer collidableDestroyableDamageableLayer = ownerLayer;;
     
-collidableDestroyableDamageableLayer.getPickupBehavior().doPickupLayer(collidableInterfaceCompositeInterface as PickedUpLayerInterface);
+collidableDestroyableDamageableLayer.getPickupBehavior().doPickupLayer(collidableInterfaceCompositeInterface);
     
 
                                     }

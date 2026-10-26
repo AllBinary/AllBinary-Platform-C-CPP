@@ -20,7 +20,7 @@
 
             #include <vector>
         
-            #include "../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
 #include <org/allbinary/game/input/analog/AnalogLocationInputFactory.h>
 
@@ -72,11 +72,11 @@ class LocalPlayerInputIdFactory
 
     private: const int32_t MAX_FAST_DEVICEID = 65;
 
-    private: const std::vector<int32_t> deviceIdToplayerId = new Array(this->MAX_FAST_DEVICEID);
+    private: const std::vector<int32_t> deviceIdToplayerId = std::vector<int32_t>(this->MAX_FAST_DEVICEID);
 
-    private: const std::vector<int32_t> playerIdToDeviceId = new Array(this->MAX_NUMBER_OF_PLAYERS);
+    private: const std::vector<int32_t> playerIdToDeviceId = std::vector<int32_t>(this->MAX_NUMBER_OF_PLAYERS);
 
-    private: const std::vector<bool> playersInPlay = new Array(this->MAX_NUMBER_OF_PLAYERS);
+    private: const std::vector<bool> playersInPlay = std::vector<bool>(this->MAX_NUMBER_OF_PLAYERS);
 
     private: int32_t totalDevicesMapped = 0;
 
@@ -100,7 +100,7 @@ this->deviceIdToplayerId[index]=  -1;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->playerIdToDeviceId[playerInputId]!;
+                        return this->playerIdToDeviceId[playerInputId];
     
 }
 
@@ -228,7 +228,7 @@ this->logUtil.putF(StringMaker().append("Added DeviceId: ").appendint(deviceId).
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->playersInPlay[playerInputId]!;
+                        return this->playersInPlay[playerInputId];
     
 }
 

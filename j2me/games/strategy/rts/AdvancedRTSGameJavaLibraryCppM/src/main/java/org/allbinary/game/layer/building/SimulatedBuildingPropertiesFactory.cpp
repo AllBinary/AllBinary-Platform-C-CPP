@@ -18,11 +18,8 @@
 
 
 
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-#include <java/util/Hashtable.h>
-
-      
 #include <org/allbinary/game/combat/damage/DamageFloaters.h>
 
       
@@ -39,6 +36,9 @@
 
       
 #include <org/allbinary/logic/StdUtil.h>
+
+      
+#include <org/allbinary/util/ABHashtable.h>
 
       
 
@@ -113,7 +113,7 @@ this->damageFloatersPaintableInterface= damageFloaters;
 }
 
 
-    public: Hashtable<any, any> getHashtable(){
+    public: ABHashtable<Object*, Object*> getHashtable(){
 
 
 

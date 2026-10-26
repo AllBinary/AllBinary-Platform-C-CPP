@@ -18,9 +18,9 @@
 
 
 
-            #include "../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../java/lang/Integer.h"
+            #include "java/lang/Integer.h"
         
 #include <java/util/HashMap.h>
 
@@ -73,7 +73,7 @@ class StoreTagWorkFlowHelper: public TagHelper {
 
     private: StoreWorkFlowInterface storeWorkFlowInterface;
 
-public: StoreTagWorkFlowHelper(HashMap<any, any> hashMap, PageContext pageContext){
+public: StoreTagWorkFlowHelper(HashMap<Object*, Object*> hashMap, PageContext pageContext){
 
                         if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().TAGHELPER))
                         

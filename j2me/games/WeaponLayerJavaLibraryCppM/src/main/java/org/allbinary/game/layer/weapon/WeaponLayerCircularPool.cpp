@@ -18,11 +18,8 @@
 
 
 
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-#include <jsinterop/annotations/JsType.h>
-
-      
 #include <org/allbinary/game/combat/weapon/WeaponProperties.h>
 
       
@@ -33,12 +30,6 @@
 
       
 #include <org/allbinary/layer/AllBinaryLayerCircularPool.h>
-
-      
-#include <jsinterop/annotations/JsMethod.h>
-
-      
-#include <jsinterop/annotations/JsConstructor.h>
 
       
 
@@ -71,7 +62,7 @@ public: WeaponLayerCircularPool(){
             
     public: WeaponLayer getInstanceWeaponLayer(AllBinaryLayer sourceLayerInterface, int32_t x, int32_t y, int32_t z, int32_t angle, int32_t otherAngle, WeaponProperties weaponProperties, ScoreableInterface scoreable){
 
-    WeaponLayer weaponLayer = super.getNextInstance() as WeaponLayer;;
+    WeaponLayer weaponLayer = super.getNextInstance();;
     
 weaponLayer.initXYZ(x, y, z);
     

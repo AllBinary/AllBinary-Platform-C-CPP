@@ -18,11 +18,8 @@
 
 
 
-            #include "../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-#include <jsinterop/annotations/JsType.h>
-
-      
 #include <javax/microedition/lcdui/CommandListener.h>
 
       
@@ -95,15 +92,6 @@
 #include <org/allbinary/thread/ThreadPool.h>
 
       
-#include <jsinterop/annotations/JsMethod.h>
-
-      
-#include <jsinterop/annotations/JsConstructor.h>
-
-      
-#include <jsinterop/annotations/JsProperty.h>
-
-      
 
 
 
@@ -123,6 +111,7 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         //#include "ProgressPaintable.h"
+#include "ProgressEndListener.h"
 
 class ProgressCanvas: public RunnableCanvas, public PaintableInterface, public UpdateMyFontInterface {
 
@@ -190,8 +179,11 @@ this->pathFindingThreadPool.runAPriorityTask();
 
     public: Processor inGameProcessor = Processor::getInstance();
 
-: ProgressCanvas(std::string title, BasicColor backgroundBasicColor, BasicColor foregroundBasicColor){
-            super(NullCommandListener::NULL_COMMAND_LISTENER, CanvasStrings::getInstance().EMPTY_CHILD_NAME_LIST, false);
+    public: ProgressEndListener progressEndListener = ProgressEndListener::instance();
+
+: ProgressCanvas(std::string title, BasicColor backgroundBasicColor, BasicColor foregroundBasicColor) : RunnableCanvas(NullCommandListener::NULL_COMMAND_LISTENER, CanvasStrings::getInstance().EMPTY_CHILD_NAME_LIST, false){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -297,6 +289,8 @@ this->inGame();
 
 
     public: void inGame(){
+this->progressEndListener.onEndEvent();
+    
 this->inGameProcessor= this->IN_GAME_PROCESSOR;
     
 }
@@ -315,9 +309,34 @@ this->paintable= NullPaintable::getInstance();
 
 
     public: void endFromInitialLazyLoadingComplete(){
+this->progressEndListener.onEndEvent();
+    
 this->gauge.setValue(this->getMaxValue());
     
 this->inGameProcessor= this->IN_GAME_PROCESSOR;
+    
+}
+
+
+    public: bool isInGame(){
+
+                        if(this->inGameProcessor == this->IN_GAME_PROCESSOR)
+                        
+                                    {
+                                    
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return true;
+    
+
+                                    }
+                                
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return false;
     
 }
 

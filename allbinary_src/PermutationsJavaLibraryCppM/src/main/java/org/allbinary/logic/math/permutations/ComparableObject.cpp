@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
 #include <org/allbinary/TsUtil.h>
 
@@ -45,7 +45,7 @@
 
 class ComparableObject
             : public Object
-        : public Comparable<any> {
+        : public Comparable<Object*> {
 
     public: int32_t compareTo(Object* anyType){
 

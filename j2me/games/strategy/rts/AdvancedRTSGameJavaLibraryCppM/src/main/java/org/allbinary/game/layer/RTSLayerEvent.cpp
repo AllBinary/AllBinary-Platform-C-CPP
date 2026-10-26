@@ -48,8 +48,9 @@ class RTSLayerEvent: public AllBinaryEventObject {
 
     private: PathFindingLayerInterface rtsLayer = NullPathFindingLayer::NULL_PATH_FINDING_LAYER;
 
-public: RTSLayerEvent(PathFindingLayerInterface rtsLayer){
-            super(rtsLayer);
+public: RTSLayerEvent(PathFindingLayerInterface rtsLayer) : AllBinaryEventObject(rtsLayer){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.

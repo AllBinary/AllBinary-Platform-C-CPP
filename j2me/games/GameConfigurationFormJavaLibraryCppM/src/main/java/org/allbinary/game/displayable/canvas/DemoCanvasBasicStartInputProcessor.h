@@ -21,7 +21,7 @@
         #ifndef ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_DEMOCANVASBASICSTARTINPUTPROCESSOR_H
         #define ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_DEMOCANVASBASICSTARTINPUTPROCESSOR_H
 
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <javax/microedition/lcdui/NullCanvas.h>
 

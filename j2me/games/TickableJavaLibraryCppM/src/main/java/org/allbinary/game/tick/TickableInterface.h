@@ -21,14 +21,8 @@
         #ifndef ORG_ALLBINARY_GAME_TICK_TICKABLEINTERFACE_H
         #define ORG_ALLBINARY_GAME_TICK_TICKABLEINTERFACE_H
 
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-#include <jsinterop/annotations/JsType.h>
-
-      
-#include <jsinterop/annotations/JsMethod.h>
-
-      
 #include <org/allbinary/layer/AllBinaryLayerManager.h>
 
       

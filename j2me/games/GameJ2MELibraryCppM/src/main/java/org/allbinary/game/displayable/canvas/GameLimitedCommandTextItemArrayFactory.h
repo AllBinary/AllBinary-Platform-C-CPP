@@ -21,18 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_GAMELIMITEDCOMMANDTEXTITEMARRAYFACTORY_H
         #define ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_GAMELIMITEDCOMMANDTEXTITEMARRAYFACTORY_H
 
-            #include "../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-#include <jsinterop/annotations/JsType.h>
-
-      
 #include <org/allbinary/graphics/form/item/CommandTextItemArrayFactory.h>
 
       
 #include <org/allbinary/graphics/form/item/LimitCommandsVisitor.h>
-
-      
-#include <jsinterop/annotations/JsMethod.h>
 
       
 

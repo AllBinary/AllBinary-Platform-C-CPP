@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
 #include <org/allbinary/util/BasicArrayList.h>
 
@@ -88,10 +88,10 @@ mediaFileType= mediaFileType.toLowerCase();
     int32_t index = this->list.size() -1;index >= 0; index--)
         {
 
-    std::string name = this->list.objectArray[index]! as string;;
+    std::string name = this->list.objectArray[index];;
     
 
-                        if(mediaFileType.compareTo(name) == 0)
+                        if(mediaFileType.compare(name) == 0)
                         
                                     {
                                     

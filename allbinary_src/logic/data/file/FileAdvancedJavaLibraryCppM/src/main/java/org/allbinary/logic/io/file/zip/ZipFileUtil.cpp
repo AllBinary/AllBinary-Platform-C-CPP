@@ -20,9 +20,9 @@
 
             #include <vector>
         
-            #include "../../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/util/zip/ZipEntry.h>
 
@@ -132,7 +132,7 @@ zipFile.createNewFile();
     StringMaker stringBuffer = StringMaker();;
     
 
-    std::vector<int8_t> byteArray = new Array(16384);;
+    std::vector<int8_t> byteArray = std::vector<int8_t>(16384);;
     
 
     AbFileInputStream fileInputStream;;
@@ -151,7 +151,7 @@ zipFile.createNewFile();
     int32_t i = 0;i < size; i++)
         {
 
-    AbFile file = fileBasicArrayList.get(i) as AbFile;;
+    AbFile file = fileBasicArrayList.get(i);;
     
 
                         if(file.isDirectory())
@@ -218,7 +218,7 @@ this->logUtil.put(this->commonStrings.EXCEPTION, this, "create", e);
             
     public: void unzip(std::string path, AbFile zipFile, std::string fileName){
 
-    std::vector<int8_t> buffer = new Array(16384);;
+    std::vector<int8_t> buffer = std::vector<int8_t>(16384);;
     
 
     ZipInputStream inputStream = 

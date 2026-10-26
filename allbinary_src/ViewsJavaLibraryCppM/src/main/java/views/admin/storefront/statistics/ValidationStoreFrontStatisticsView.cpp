@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/business/context/modules/storefront/StoreFrontInterface.h>
 
@@ -67,8 +67,9 @@ class ValidationStoreFrontStatisticsView: public StoreFrontStatisticsComponent, 
 
     protected: StoreFrontInterface newStoreFrontInterface;
 
-public: ValidationStoreFrontStatisticsView(TransformInfoInterface transformInfoInterface){
-            super(transformInfoInterface);
+public: ValidationStoreFrontStatisticsView(TransformInfoInterface transformInfoInterface) : StoreFrontStatisticsComponent(transformInfoInterface){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.

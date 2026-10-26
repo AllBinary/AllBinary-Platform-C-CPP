@@ -59,8 +59,9 @@ class GeographicMapCellPositionEvent: public AllBinaryEventObject {
 
     private: CellPosition geographicMapCellPosition = CellPositionFactory::getInstance().NONE;
 
-public: GeographicMapCellPositionEvent(Object* anyType, CellPosition geographicMapCellPosition){
-            super(anyType);
+public: GeographicMapCellPositionEvent(Object* anyType, CellPosition geographicMapCellPosition) : AllBinaryEventObject(anyType){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -87,7 +88,7 @@ this->geographicMapCellPosition= geographicMapCellPosition;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->geographicMapCellPosition as GeographicMapCellPosition;
+                        return this->geographicMapCellPosition;
     
 }
 

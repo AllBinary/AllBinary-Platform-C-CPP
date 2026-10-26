@@ -18,9 +18,9 @@
 
 
 
-            #include "../../../../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../../../../../../../java/lang/Long.h"
+            #include "java/lang/Long.h"
         
 #include <java/util/Calendar.h>
 
@@ -111,8 +111,9 @@ class PaymentGatewayEntity: public AbSqlBean, public PaymentGatewayEntityInterfa
 
     private: const std::string tableName = "paymentgateways";
 
-public: PaymentGatewayEntity(){
-            super(UserDbInitInfo());
+public: PaymentGatewayEntity() : AbSqlBean(UserDbInitInfo()){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -201,7 +202,7 @@ super.insert(vector);
 paymentGatewayInterface.setLastModified(time);
     
 
-    HashMap<any, any> whereKeyValuePairs = StdUtil::getInstance().createHashMap();;
+    HashMap<Object*, Object*> whereKeyValuePairs = StdUtil::getInstance().createHashMap();;
     
 whereKeyValuePairs.put(StoreFrontData::getInstance().NAME.toString(), paymentGatewayInterface.getStoreName());
     
@@ -222,7 +223,7 @@ whereKeyValuePairs.put(PaymentGatewayData::NAME.toString(), paymentGatewayInterf
                                     }
                                 
 
-    HashMap<any, any> updateHashMap = PaymentGatewayEncryptedMapping(paymentGatewayInterface).toHashMap();;
+    HashMap<Object*, Object*> updateHashMap = PaymentGatewayEncryptedMapping(paymentGatewayInterface).toHashMap();;
     
 super.updateWhere(whereKeyValuePairs, updateHashMap);
     
@@ -257,10 +258,10 @@ super.updateWhere(whereKeyValuePairs, updateHashMap);
 
         try {
             
-    HashMap<any, any> paymentGatewayHashMap = StdUtil::getInstance().createHashMap();;
+    HashMap<Object*, Object*> paymentGatewayHashMap = StdUtil::getInstance().createHashMap();;
     
 
-    HashMap<any, any> whereKeyAndValue = StdUtil::getInstance().createHashMap();;
+    HashMap<Object*, Object*> whereKeyAndValue = StdUtil::getInstance().createHashMap();;
     
 whereKeyAndValue.put(StoreFrontData::getInstance().NAME.toString(), storeName);
     
@@ -275,37 +276,37 @@ paymentGatewayHashMap= super.getRow(whereKeyAndValue);
                         
                                     {
                                     
-    std::string userName = paymentGatewayHashMap.get(UserData::USERNAME.toString()) as string;;
+    std::string userName = paymentGatewayHashMap.get(UserData::USERNAME.toString());;
     
 
-    std::string password = paymentGatewayHashMap.get(UserData::PASSWORD.toString()) as string;;
+    std::string password = paymentGatewayHashMap.get(UserData::PASSWORD.toString());;
     
 
-    std::string special1 = paymentGatewayHashMap.get(PaymentGatewayData::SPECIAL1.toString()) as string;;
+    std::string special1 = paymentGatewayHashMap.get(PaymentGatewayData::SPECIAL1.toString());;
     
 
-    std::string special2 = paymentGatewayHashMap.get(PaymentGatewayData::SPECIAL2.toString()) as string;;
+    std::string special2 = paymentGatewayHashMap.get(PaymentGatewayData::SPECIAL2.toString());;
     
 
-    std::string special3 = paymentGatewayHashMap.get(PaymentGatewayData::SPECIAL3.toString()) as string;;
+    std::string special3 = paymentGatewayHashMap.get(PaymentGatewayData::SPECIAL3.toString());;
     
 
-    std::string special4 = paymentGatewayHashMap.get(PaymentGatewayData::SPECIAL4.toString()) as string;;
+    std::string special4 = paymentGatewayHashMap.get(PaymentGatewayData::SPECIAL4.toString());;
     
 
-    std::string special5 = paymentGatewayHashMap.get(PaymentGatewayData::SPECIAL5.toString()) as string;;
+    std::string special5 = paymentGatewayHashMap.get(PaymentGatewayData::SPECIAL5.toString());;
     
 
-    std::string special6 = paymentGatewayHashMap.get(PaymentGatewayData::SPECIAL6.toString()) as string;;
+    std::string special6 = paymentGatewayHashMap.get(PaymentGatewayData::SPECIAL6.toString());;
     
 
-    std::string special7 = paymentGatewayHashMap.get(PaymentGatewayData::SPECIAL7.toString()) as string;;
+    std::string special7 = paymentGatewayHashMap.get(PaymentGatewayData::SPECIAL7.toString());;
     
 
-    std::string special8 = paymentGatewayHashMap.get(PaymentGatewayData::SPECIAL8.toString()) as string;;
+    std::string special8 = paymentGatewayHashMap.get(PaymentGatewayData::SPECIAL8.toString());;
     
 
-    std::string special9 = paymentGatewayHashMap.get(PaymentGatewayData::SPECIAL9.toString()) as string;;
+    std::string special9 = paymentGatewayHashMap.get(PaymentGatewayData::SPECIAL9.toString());;
     
 
     SuperCrypt superCrypt = SuperCrypt(PaymentGatewayData::CRYPTNUM);;
@@ -415,7 +416,7 @@ paymentGatewayNameVector= super.getColumnWhere(PaymentGatewayData::NAME.toString
     int32_t i = 0;i < size; i++)
         {
 
-    std::string paymentTypeString = paymentGatewayNameVector.get(i) as string;;
+    std::string paymentTypeString = paymentGatewayNameVector.get(i);;
     
 
     BasicPaymentType paymentType = BasicPaymentTypeUtil::getInstance().get(paymentTypeString);;
@@ -480,7 +481,7 @@ paymentGatewayVector.add(paymentType);
 
         try {
             
-    HashMap<any, any> whereHashMap = StdUtil::getInstance().createHashMap();;
+    HashMap<Object*, Object*> whereHashMap = StdUtil::getInstance().createHashMap();;
     
 whereHashMap.put(StoreFrontData::getInstance().NAME.toString(), storeName);
     

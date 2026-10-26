@@ -21,7 +21,7 @@
         #ifndef ADMIN_TAGHELPERS_ORDERHELPER_H
         #define ADMIN_TAGHELPERS_ORDERHELPER_H
 
-            #include "../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
 
@@ -111,13 +111,13 @@ class OrderHelper: public TagHelper {
 
     private: StoreFrontInterface storeFrontInterface;
 
-    private: HashMap<any, any> propertiesHashMap;
+    private: HashMap<Object*, Object*> propertiesHashMap;
 
     private: PageContext pageContext;
 
     private: HttpServletRequest request;
 
-public: OrderHelper(HashMap<any, any> propertiesHashMap, PageContext pageContext);
+public: OrderHelper(HashMap<Object*, Object*> propertiesHashMap, PageContext pageContext);
 
     public: Boolean setPaymentGateway();
 

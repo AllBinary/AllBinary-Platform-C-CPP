@@ -21,7 +21,7 @@
         #ifndef ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_INFO_TRANSFORMINFOINTERFACE_H
         #define ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_INFO_TRANSFORMINFOINTERFACE_H
 
-            #include "../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
 
@@ -63,7 +63,7 @@ class TransformInfoInterface: public TableMappingInterface {
 
                 //@Throws(Exception.constructor)
             
-    void override(HashMap<any, any> hashMap);
+    void override(HashMap<Object*, Object*> hashMap);
 
     std::string getName();
 

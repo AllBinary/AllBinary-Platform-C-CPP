@@ -20,18 +20,9 @@
 
             #include <vector>
         
-            #include "../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-#include <jsinterop/annotations/JsType.h>
-
-      
 #include <org/allbinary/logic/NullUtil.h>
-
-      
-#include <jsinterop/annotations/JsMethod.h>
-
-      
-#include <jsinterop/annotations/JsProperty.h>
 
       
 
@@ -74,7 +65,7 @@ class BasicGroupFactory
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return BasicGroupFactory::instance() as BasicGroupFactory;
+                        return BasicGroupFactory::instance();
     
 }
 

@@ -21,7 +21,7 @@
         #ifndef ORG_ALLBINARY_DATA_TABLES_ADVERTISEMENT_CAMPAIGN_INTERNAL_ADVERTISEMENTCAMPAIGNINTERNALENTITY_H
         #define ORG_ALLBINARY_DATA_TABLES_ADVERTISEMENT_CAMPAIGN_INTERNAL_ADVERTISEMENTCAMPAIGNINTERNALENTITY_H
 
-            #include "../../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
 
@@ -105,7 +105,7 @@ public: AdvertisementCampaignInternalEntity();
 
     public: AdvertisementCampaignInterface get(std::string storeName, std::string name);
 
-    public: void update(HashMap<any, any> updatedValues);
+    public: void update(HashMap<Object*, Object*> updatedValues);
 
     public: std::string createTableStatement();
 

@@ -20,7 +20,7 @@
 
             #include <vector>
         
-            #include "../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
 
@@ -107,13 +107,14 @@ class BasketView: public HttpStoreComponentView, public DomNodeInterface {
 
     private: HttpServletRequest request;
 
-public: BasketView(TransformInfoInterface transformInfoInterface){
-            super(transformInfoInterface);
+public: BasketView(TransformInfoInterface transformInfoInterface) : HttpStoreComponentView(transformInfoInterface){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this->request= this->getPageContext().getRequest() as HttpServletRequest;
+this->request= this->getPageContext().getRequest();
     
 }
 
@@ -133,7 +134,7 @@ this->request= this->getPageContext().getRequest() as HttpServletRequest;
     Node basketNode = document.createElement(BasketData::BASKET);;
     
 
-    HashMap<any, any> itemsAndNumberInBasket = basketInterface.getItems();;
+    HashMap<Object*, Object*> itemsAndNumberInBasket = basketInterface.getItems();;
     
 
     int32_t numberOfResults = 1;;
@@ -262,7 +263,7 @@ basketNode.appendChild(subTotalNode);
 
 
     public: void addDomNodeInterfaces(){
-this->addDomNodeInterface(this as DomNodeInterface);
+this->addDomNodeInterface(this);
     
 }
 

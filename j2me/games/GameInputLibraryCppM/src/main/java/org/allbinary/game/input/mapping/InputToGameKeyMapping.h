@@ -23,13 +23,10 @@
 
             #include <vector>
         
-            #include "../../../../../java/lang/Throwable.h"
+            #include "java/lang/Throwable.h"
         
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-#include <jsinterop/annotations/JsType.h>
-
-      
 #include <javax/microedition/lcdui/Canvas.h>
 
       
@@ -69,15 +66,6 @@
 #include <org/allbinary/util/BasicArrayListD.h>
 
       
-#include <jsinterop/annotations/JsMethod.h>
-
-      
-#include <jsinterop/annotations/JsConstructor.h>
-
-      
-#include <jsinterop/annotations/JsProperty.h>
-
-      
 
 
 
@@ -111,7 +99,7 @@ class InputToGameKeyMapping: public InputMapping {
                                                             this->gameKeyFactory.UP,this->gameKeyFactory.DOWN,this->gameKeyFactory.LEFT,this->gameKeyFactory.RIGHT
                                                         };
 
-    private: const std::vector<GameKey> platformToGameKeyMapping = new Array(InputFactory::getInstance().MAX);
+    private: const std::vector<GameKey> platformToGameKeyMapping = std::vector<GameKey>(InputFactory::getInstance().MAX);
 
     protected: std::vector<GameKey> negativePlatformToGameKeyMapping = {};
 

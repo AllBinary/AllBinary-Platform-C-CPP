@@ -18,9 +18,9 @@
 
 
 
-            #include "../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../java/lang/Throwable.h"
+            #include "java/lang/Throwable.h"
         
 #include <jsinterop/annotations/JsType.h>
 
@@ -177,7 +177,7 @@ playN.log().debug(this->LOG_SUCCESS +message);
                                 )
                         
                                     {
-                                    playN.log().error(this->LOG_SUCCESS +message, exception as Throwable);
+                                    playN.log().error(this->LOG_SUCCESS +message, *dynamic_cast<Throwable*>(exception));
     
 
                                     }

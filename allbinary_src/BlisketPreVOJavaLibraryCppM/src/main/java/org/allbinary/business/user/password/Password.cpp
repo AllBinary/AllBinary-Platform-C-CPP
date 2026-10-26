@@ -18,11 +18,11 @@
 
 
 
-            #include "../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../../../java/lang/Integer.h"
+            #include "java/lang/Integer.h"
         
 #include <java/util/HashMap.h>
 
@@ -225,11 +225,11 @@ vector.add(SuperCrypt(random).encrypt(this->password));
 }
 
 
-    public: HashMap<any, any> toHashMap(std::string secret){
+    public: HashMap<Object*, Object*> toHashMap(std::string secret){
 this->password= StringUtil::getInstance().getNonNull(this->password);
     
 
-    HashMap<any, any> values = StdUtil::getInstance().createHashMap();;
+    HashMap<Object*, Object*> values = StdUtil::getInstance().createHashMap();;
     
 
     int32_t random = Random().nextInt(SuperCrypt::KEYMAX);;

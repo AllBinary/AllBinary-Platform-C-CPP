@@ -21,9 +21,9 @@
         #ifndef ORG_ALLBINARY_GAME_HEALTH_HEALTHBARFACTORY_H
         #define ORG_ALLBINARY_GAME_HEALTH_HEALTHBARFACTORY_H
 
-            #include "../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/graphics/opengles/OpenGLFeatureUtil.h>
 

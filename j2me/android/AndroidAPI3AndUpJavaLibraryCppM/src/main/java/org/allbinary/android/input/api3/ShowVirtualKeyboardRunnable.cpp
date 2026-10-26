@@ -18,11 +18,11 @@
 
 
 
-            #include "../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../../../java/lang/Runnable.h"
+            #include "java/lang/Runnable.h"
         
 #include <android/app/Activity.h>
 
@@ -85,10 +85,10 @@ this->activity= activity;
 
         try {
             
-    InputMethodManager inputMethodManager = this->activity.getSystemService(Context::INPUT_METHOD_SERVICE) as unknown as InputMethodManager;;
+    InputMethodManager inputMethodManager = this->activity.getSystemService(Context::INPUT_METHOD_SERVICE) as unknown;;
     
 
-    ViewCompositeInterface viewCompositeInterface = this->activity as unknown as ViewCompositeInterface;;
+    ViewCompositeInterface viewCompositeInterface = this->activity as unknown;;
     
 
                         if(viewCompositeInterface == 

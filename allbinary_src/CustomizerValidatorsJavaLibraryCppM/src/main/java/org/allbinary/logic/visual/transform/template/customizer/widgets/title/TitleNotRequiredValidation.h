@@ -21,7 +21,7 @@
         #ifndef ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_TEMPLATE_CUSTOMIZER_WIDGETS_TITLE_TITLENOTREQUIREDVALIDATION_H
         #define ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_TEMPLATE_CUSTOMIZER_WIDGETS_TITLE_TITLENOTREQUIREDVALIDATION_H
 
-            #include "../../../../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
 
@@ -73,7 +73,7 @@ public: TitleNotRequiredValidation();
 
 public: TitleNotRequiredValidation(Node node);
 
-public: TitleNotRequiredValidation(HashMap<any, any> hashMap);
+public: TitleNotRequiredValidation(HashMap<Object*, Object*> hashMap);
 
     public: Boolean isValid();
 

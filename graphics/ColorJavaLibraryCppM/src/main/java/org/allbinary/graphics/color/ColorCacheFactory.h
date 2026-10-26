@@ -21,9 +21,9 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_COLOR_COLORCACHEFACTORY_H
         #define ORG_ALLBINARY_GRAPHICS_COLOR_COLORCACHEFACTORY_H
 
-            #include "../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/logic/communication/log/LogUtil.h>
 

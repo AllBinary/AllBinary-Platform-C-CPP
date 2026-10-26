@@ -4,9 +4,9 @@
 
 
 
-            #include "../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../java/lang/RuntimeException.h"
+            #include "java/lang/RuntimeException.h"
         
 #include <java/util/Stack.h>
 
@@ -50,7 +50,7 @@ public: NullCanvas(){
 }
 
 
-    public: Stack<any> getCommandStack(){
+    public: Stack<Object*> getCommandStack(){
 
 
 

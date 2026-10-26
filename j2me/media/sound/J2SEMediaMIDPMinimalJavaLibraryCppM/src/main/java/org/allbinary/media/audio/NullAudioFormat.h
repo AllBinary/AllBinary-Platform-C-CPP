@@ -21,7 +21,7 @@
         #ifndef ORG_ALLBINARY_MEDIA_AUDIO_NULLAUDIOFORMAT_H
         #define ORG_ALLBINARY_MEDIA_AUDIO_NULLAUDIOFORMAT_H
 
-            #include "../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
 #include <javax/sound/sampled/AudioFormat.h>
 

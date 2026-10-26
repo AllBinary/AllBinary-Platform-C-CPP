@@ -21,11 +21,11 @@
         #ifndef ORG_ALLBINARY_MEDIA_IMAGE_IMAGESCALEUTIL_H
         #define ORG_ALLBINARY_MEDIA_IMAGE_IMAGESCALEUTIL_H
 
-            #include "../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../../java/lang/Float.h"
+            #include "java/lang/Float.h"
         
 #include <android/graphics/Bitmap.h>
 

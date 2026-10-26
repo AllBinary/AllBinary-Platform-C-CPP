@@ -18,9 +18,9 @@
 
 
 
-            #include "../../../../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../../../../../../../java/lang/Long.h"
+            #include "java/lang/Long.h"
         
 #include <java/util/Calendar.h>
 
@@ -93,8 +93,9 @@ class TransactionResultEntity: public AbSqlBean, public TransactionResultEntityI
 
     private: const std::string tableName = "vresults";
 
-public: TransactionResultEntity(){
-            super(UserDbInitInfo());
+public: TransactionResultEntity() : AbSqlBean(UserDbInitInfo()){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -108,9 +109,9 @@ this->setTableName(this->tableName);
 
         try {
             
-    HashMap<any, any> whereHashMap = StdUtil::getInstance().createHashMap();;
+    HashMap<Object*, Object*> whereHashMap = StdUtil::getInstance().createHashMap();;
     
-whereHashMap.put(OrderData::ID, orderNumber as string);
+whereHashMap.put(OrderData::ID, orderNumber);
     
 whereHashMap.put(UserData::USERNAME, userName);
     
@@ -198,10 +199,10 @@ super.insert(values);
 
         try {
             
-    HashMap<any, any> resultHashMap = StdUtil::getInstance().createHashMap();;
+    HashMap<Object*, Object*> resultHashMap = StdUtil::getInstance().createHashMap();;
     
 
-    HashMap<any, any> updateKeyAndValue = StdUtil::getInstance().createHashMap();;
+    HashMap<Object*, Object*> updateKeyAndValue = StdUtil::getInstance().createHashMap();;
     
 updateKeyAndValue.put(OrderData::ID, orderNumber);
     
@@ -229,7 +230,7 @@ resultHashMap= super.getRow(updateKeyAndValue);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return transactionResult as TransactionResultInterface;
+                        return transactionResult;
     
 
                                     }

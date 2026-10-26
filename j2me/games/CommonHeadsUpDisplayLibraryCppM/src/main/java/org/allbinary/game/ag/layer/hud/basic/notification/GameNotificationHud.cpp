@@ -18,9 +18,9 @@
 
 
 
-            #include "../../../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../../../../../../java/lang/Integer.h"
+            #include "java/lang/Integer.h"
         
 #include <javax/microedition/lcdui/Graphics.h>
 
@@ -76,8 +76,9 @@ class GameNotificationHud: public BasicHud, public GameNotificationListenerInter
 
     public: static const GameNotificationHud NULL_GAME_NOTIFICATION = GameNotificationHud(BasicHudFactory::getInstance().TOPCENTER, BasicHudFactory::getInstance().HORIZONTAL, 0, BasicColorFactory::getInstance().RED);
 
-public: GameNotificationHud(int32_t location, int32_t direction, int32_t bufferZone, BasicColor basicColor){
-            super(location, direction, bufferZone, basicColor);
+public: GameNotificationHud(int32_t location, int32_t direction, int32_t bufferZone, BasicColor basicColor) : BasicHud(location, direction, bufferZone, basicColor){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.

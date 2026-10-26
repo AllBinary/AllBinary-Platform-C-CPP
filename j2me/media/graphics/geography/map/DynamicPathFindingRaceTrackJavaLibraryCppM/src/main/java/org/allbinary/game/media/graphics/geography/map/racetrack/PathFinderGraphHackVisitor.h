@@ -23,7 +23,7 @@
 
             #include <vector>
         
-            #include "../../../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/jgrapht/GraphPath.h>
 
@@ -85,6 +85,7 @@
         #include "BasePathFinderGraphVisitor.h"
 #include "CellPositionArray.h"
 
+template<typename V, typename E>
 class PathFinderGraphHackVisitor: public BasePathFinderGraphVisitor<V, E> {
 
     protected: const LogUtil logUtil = LogUtil::getInstance();

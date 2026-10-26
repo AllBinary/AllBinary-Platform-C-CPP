@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
 #include <org/allbinary/logic/string/StringUtil.h>
 
@@ -73,7 +73,7 @@ class ProgressCanvasFactory
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return ProgressCanvasFactory::PROGRESS_FORM_SCREEN as ProgressCanvas;
+                        return ProgressCanvasFactory::PROGRESS_FORM_SCREEN;
     
 }
 

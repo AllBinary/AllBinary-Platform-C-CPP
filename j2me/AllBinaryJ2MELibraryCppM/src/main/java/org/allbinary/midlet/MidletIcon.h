@@ -21,7 +21,7 @@
         #ifndef ORG_ALLBINARY_MIDLET_MIDLETICON_H
         #define ORG_ALLBINARY_MIDLET_MIDLETICON_H
 
-            #include "../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
 
 

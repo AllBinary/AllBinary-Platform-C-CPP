@@ -18,9 +18,9 @@
 
 
 
-            #include "../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <javax/microedition/lcdui/Font.h>
 
@@ -103,7 +103,7 @@ this->maxLength= maxLength;
     ABToGBUtil abToGBUtil = ABToGBUtil::getInstance();;
     
 
-    AllBinaryGameCanvas abCanvas = abToGBUtil.abCanvas as AllBinaryGameCanvas;;
+    AllBinaryGameCanvas abCanvas = abToGBUtil.abCanvas;;
     
 
     Font font = Font::getFont(Font::FACE_SYSTEM, Font::STYLE_PLAIN, this->scaleProperties.scaleHeight);;

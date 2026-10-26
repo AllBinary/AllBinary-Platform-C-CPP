@@ -18,18 +18,9 @@
 
 
 
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-#include <jsinterop/annotations/JsType.h>
-
-      
 #include <org/allbinary/game/layer/CollidableCompositeLayer.h>
-
-      
-#include <jsinterop/annotations/JsMethod.h>
-
-      
-#include <jsinterop/annotations/JsConstructor.h>
 
       
 
@@ -55,8 +46,9 @@
 
 class CollidableNeverCollideBehavior: public CollidableBaseBehavior {
 
-: CollidableNeverCollideBehavior(bool isCollidable){
-            super(isCollidable);
+: CollidableNeverCollideBehavior(bool isCollidable) : CollidableBaseBehavior(isCollidable){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.

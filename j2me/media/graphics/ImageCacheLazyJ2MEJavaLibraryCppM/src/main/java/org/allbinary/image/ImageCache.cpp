@@ -20,17 +20,12 @@
 
             #include <vector>
         
-            #include "../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../java/lang/RuntimeException.h"
+            #include "java/lang/RuntimeException.h"
         
-            #include "../../../java/lang/System.h"
+            #include "java/lang/Thread.h"
         
-            #include "../../../java/lang/Thread.h"
-        
-#include <jsinterop/annotations/JsType.h>
-
-      
 #include <java/io/InputStream.h>
 
       
@@ -41,6 +36,9 @@
 
       
 #include <org/allbinary/J2MEUtil.h>
+
+      
+#include <org/allbinary/TsUtil.h>
 
       
 #include <org/allbinary/animation/image/LazyImageRotationAnimation.h>
@@ -106,13 +104,7 @@
 #include <org/allbinary/util/BasicArrayListD.h>
 
       
-#include <jsinterop/annotations/JsMethod.h>
-
-      
-#include <jsinterop/annotations/JsConstructor.h>
-
-      
-#include <jsinterop/annotations/JsProperty.h>
+#include <org/allbinary/logic/ABSystemWrapper.h>
 
       
 
@@ -138,12 +130,13 @@
 //#include "FirstProcessor.h"
 //#include "NotHTMLProcessor.h"
 //#include "HTMLEndProcessor.h"
+#include "ImageFactory.h"
 
 class ImageCache: public ImageCacheBase {
 
     public: static const ImageCache NULL_IMAGE_CACHE = ImageCache();
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    private: const TsUtil tsUtil = TsUtil::getInstance();
 
     private: const BaseImageLoadingProcessor concurrentImageLoadingProcessor = ConcurrentImageLoadingProcessor(this);
 
@@ -297,7 +290,7 @@ this->endProcessor= NotHTMLEndProcessor();
     
 
         try {
-            runTask();
+            this->runTask();
     
 
                 //: 
@@ -328,7 +321,7 @@ logUtil.putF(this->commonStrings.EXCEPTION, this, this->commonStrings.END_METHOD
     ABToGBUtil abToGBUtil = ABToGBUtil::getInstance();;
     
 
-    AllBinaryGameCanvas abCanvas = abToGBUtil.abCanvas as AllBinaryGameCanvas;;
+    AllBinaryGameCanvas abCanvas = abToGBUtil.abCanvas;;
     
 
         while(this->loadNowList.isEmpty() && (!abCanvas.isInitialized() || (abCanvas.isInitialized() && this->hasAnyLazyAnimationFactories)) && !this->progressEnded)
@@ -406,7 +399,7 @@ this->firstTime= false;
                                     }
                                 
                         else {
-                            lazyImageRotationAnimation= this->loadAfterList.get(0) as LazyImageRotationAnimation;
+                            lazyImageRotationAnimation= this->loadAfterList.get(0);
     
 
                         if(this->loadImageForLazyAnimation(lazyImageRotationAnimation))
@@ -424,7 +417,7 @@ this->firstTime= false;
                                     }
                                 
                         else {
-                            lazyImageRotationAnimation= this->loadSoonList.get(0) as LazyImageRotationAnimation;
+                            lazyImageRotationAnimation= this->loadSoonList.get(0);
     
 
                         if(this->loadImageForLazyAnimation(lazyImageRotationAnimation))
@@ -447,7 +440,7 @@ this->firstTime= false;
 
                                     }
                                 
-lazyImageRotationAnimation= this->loadNowList.get(0) as LazyImageRotationAnimation;
+lazyImageRotationAnimation= this->loadNowList.get(0);
     
 
 
@@ -586,7 +579,7 @@ this->loadImageForAnimation();
         
 
                         if(!this->loadAfterList.isEmpty())
-                        lazyImageRotationAnimation= this->loadAfterList.removeAt(0) as LazyImageRotationAnimation;
+                        lazyImageRotationAnimation= this->loadAfterList.removeAt(0);
                                 
 
 
@@ -664,7 +657,7 @@ this->loadImageForAnimation();
 
                                     }
                                 
-image= this->loadList.removeAt(0) as Image;
+image= this->loadList.removeAt(0);
     
 
 
@@ -700,6 +693,10 @@ this->loadImage(image);
                         if(image.setReady())
                         
                                     {
+                                    
+                        if(image.isReady())
+                        
+                                    {
                                     this->totalLoaded++;
     
 
@@ -708,6 +705,9 @@ this->loadImage(image);
                         //if statement needs to be on the same line and ternary does not work the same way.
                         return true;
     
+
+                                    }
+                                
 
                                     }
                                 
@@ -769,10 +769,10 @@ image.init(image2.getImage());
             
     protected: Image creatImage(std::string key){
 
-    InputStream inputStream = resourceUtil.getResourceAsStream(key);;
+    InputStream inputStream = this->resourceUtil.getResourceAsStream(key);;
     
 
-    Image image = Image::createImage(inputStream);;
+    Image image = ImageFactory::getInstance().createImageFromInputStream(inputStream);;
     
 image.setName(key);
     
@@ -804,7 +804,7 @@ image.setName(key);
                         if(this->volume > 32000)
                         
                                     {
-                                    System.gc();
+                                    this->tsUtil.gc();
     
 this->volume= 0;
     
@@ -832,7 +832,7 @@ this->nextIndex++;
 
                                     }
                                 
-this->listOfList[foundIndex]!.add(image);
+this->listOfList[foundIndex].add(image);
     
 
                                     }
@@ -876,9 +876,9 @@ this->logUtil.put("Exception: Trying Again After GC", this, this->commonStrings.
     
 this->logUtil.putF(StringMaker().append("InputStream: ").append(StringUtil::getInstance().toString(inputStream)).toString(), this, this->commonStrings.GET);
     
-System.gc();
+this->tsUtil.gc();
     
-System.gc();
+this->tsUtil.gc();
     
 this->logUtil.putF(Memory::getInfo(), this, this->commonStrings.GET);
     
@@ -971,7 +971,7 @@ this->logUtil.putF(StringMaker().append("unable to find key: ").append(StringUti
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->creatImage(key as string);;
+                        return this->creatImage(key);;
     
 
                                     }
@@ -990,7 +990,7 @@ this->runTask();
     int32_t height = gdLazyResources.imageResourceHeightArray[index];;
     
 
-    Image image = this->createImageLater(key as string, width, height);;
+    Image image = this->createImageLater(key, width, height);;
     
 
         
@@ -1050,7 +1050,7 @@ this->loadList.add(image);
                         for (
     int32_t index = 0;index < size; index++)
         {
-lazyImageRotationAnimation2= this->loadAfterList.get(index) as LazyImageRotationAnimation;
+lazyImageRotationAnimation2= this->loadAfterList.get(index);
     
 
                         if(lazyImageRotationAnimation2.instanceId == lazyImageRotationAnimation.instanceId)

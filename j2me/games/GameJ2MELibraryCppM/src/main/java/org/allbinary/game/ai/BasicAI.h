@@ -21,13 +21,10 @@
         #ifndef ORG_ALLBINARY_GAME_AI_BASICAI_H
         #define ORG_ALLBINARY_GAME_AI_BASICAI_H
 
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../../java/lang/Integer.h"
+            #include "java/lang/Integer.h"
         
-#include <jsinterop/annotations/JsType.h>
-
-      
 #include <org/allbinary/ai/ArtificialIntelligence.h>
 
       
@@ -62,15 +59,6 @@
 
       
 #include <org/allbinary/string/CommonStrings.h>
-
-      
-#include <jsinterop/annotations/JsMethod.h>
-
-      
-#include <jsinterop/annotations/JsConstructor.h>
-
-      
-#include <jsinterop/annotations/JsProperty.h>
 
       
 

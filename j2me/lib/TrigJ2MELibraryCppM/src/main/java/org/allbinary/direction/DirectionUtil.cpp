@@ -20,21 +20,12 @@
 
             #include <vector>
         
-            #include "../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-#include <jsinterop/annotations/JsType.h>
-
-      
 #include <org/allbinary/math/Angle.h>
 
       
 #include <org/allbinary/math/AngleFactory.h>
-
-      
-#include <jsinterop/annotations/JsMethod.h>
-
-      
-#include <jsinterop/annotations/JsConstructor.h>
 
       
 
@@ -74,9 +65,9 @@ class DirectionUtil
 }
 
 
-    private: std::vector<Angle> directionArray = new Array(10);
+    private: std::vector<Angle> directionArray = std::vector<Angle>(10);
 
-    private: std::vector<Angle> directionArray2 = new Array(10);
+    private: std::vector<Angle> directionArray2 = std::vector<Angle>(10);
 
 private: DirectionUtil(){
 
@@ -109,7 +100,7 @@ this->directionArray2[directionFactory.DOWN.getValue()]= angleFactory.DOWN;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->directionArray2[direction.getValue()]!;
+                        return this->directionArray2[direction.getValue()];
     
 }
 
@@ -119,7 +110,7 @@ this->directionArray2[directionFactory.DOWN.getValue()]= angleFactory.DOWN;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->directionArray[direction.getValue()]!;
+                        return this->directionArray[direction.getValue()];
     
 }
 

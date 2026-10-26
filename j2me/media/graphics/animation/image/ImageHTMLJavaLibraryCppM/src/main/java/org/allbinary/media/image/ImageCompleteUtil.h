@@ -23,20 +23,14 @@
 
             #include <vector>
         
-            #include "../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-#include <java/util/Hashtable.h>
-
-      
 #include <javax/microedition/lcdui/Image.h>
 
       
 #include <org/allbinary/image/GameFeatureImageCacheFactory.h>
-
-      
-#include <org/allbinary/string/CommonStrings.h>
 
       
 #include <org/allbinary/logic/communication/log/PreLogUtil.h>
@@ -69,7 +63,8 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        
+        #include "Hashtable.h"
+
 class ImageCompleteUtil
             : public Object
          {

@@ -18,9 +18,9 @@
 
 
 
-            #include "../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/business/category/CategoryData.h>
 
@@ -76,7 +76,7 @@ this->categoryPropertiesInterface= categoryPropertiesInterface;
     Node categoryNode = document.createElement(CategoryData::getInstance().NAME);;
     
 
-    Element newCategoryNode = categoryNode as Element;;
+    Element newCategoryNode = categoryNode;;
     
 newCategoryNode.setAttribute(CategoryData::getInstance().LABEL, this->categoryPropertiesInterface.getValue());
     

@@ -21,7 +21,7 @@
         #ifndef ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_INFO_TRANSFORMINFOHTTPSTORE_H
         #define ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_INFO_TRANSFORMINFOHTTPSTORE_H
 
-            #include "../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
 
@@ -78,11 +78,11 @@ class TransformInfoHttpStore: public TransformInfoHttp, public TransformInfoHttp
 
     protected: const LogUtil logUtil = LogUtil::getInstance();
 
-public: TransformInfoHttpStore(HashMap<any, any> propertiesHashMap, PageContext pageContext);
+public: TransformInfoHttpStore(HashMap<Object*, Object*> propertiesHashMap, PageContext pageContext);
 
-public: TransformInfoHttpStore(HashMap<any, any> databaseHashMap, HashMap<any, any> propertiesHashMap, PageContext pageContext);
+public: TransformInfoHttpStore(HashMap<Object*, Object*> databaseHashMap, HashMap<Object*, Object*> propertiesHashMap, PageContext pageContext);
 
-public: TransformInfoHttpStore(StoreFrontInterface storeFrontInterface, HashMap<any, any> propertiesHashMap, PageContext pageContext);
+public: TransformInfoHttpStore(StoreFrontInterface storeFrontInterface, HashMap<Object*, Object*> propertiesHashMap, PageContext pageContext);
 
                 //@Throws(Exception.constructor)
             

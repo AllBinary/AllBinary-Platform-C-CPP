@@ -20,16 +20,13 @@
 
             #include <vector>
         
-            #include "../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../java/lang/RuntimeException.h"
+            #include "java/lang/RuntimeException.h"
         
 #include <java/io/InputStream.h>
-
-      
-#include <java/util/Hashtable.h>
 
       
 #include <javax/microedition/lcdui/Image.h>
@@ -51,6 +48,9 @@
 
       
 #include <org/allbinary/string/CommonSeps.h>
+
+      
+#include <org/allbinary/util/ABHashtable.h>
 
       
 #include <org/allbinary/util/BasicArrayList.h>
@@ -87,17 +87,17 @@ class ImageCacheBase
 
     protected: const ImageFactory imageFactory = ImageFactory::getInstance();
 
-    protected: const Hashtable<any, any> hashtable = StdUtil::getInstance().createHashtable();
+    protected: const ABHashtable<Object*, Object*> hashtable = StdUtil::getInstance().createHashtable();
 
     protected: const int32_t SIZE = 128;
 
-    protected: const std::vector<int32_t> widths = new Array(this->SIZE);
+    protected: const std::vector<int32_t> widths = std::vector<int32_t>(this->SIZE);
 
-    protected: const std::vector<int32_t> heights = new Array(this->SIZE);
+    protected: const std::vector<int32_t> heights = std::vector<int32_t>(this->SIZE);
 
-    protected: const std::vector<BasicArrayList> listOfList = new Array(this->SIZE);
+    protected: const std::vector<BasicArrayList> listOfList = std::vector<BasicArrayList>(this->SIZE);
 
-    protected: const std::vector<BasicArrayList> availableListOfList = new Array(this->SIZE);
+    protected: const std::vector<BasicArrayList> availableListOfList = std::vector<BasicArrayList>(this->SIZE);
 
     protected: int32_t volume = 0;
 
@@ -152,7 +152,7 @@ this->availableListOfList[index]= BasicArrayListD();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return imageCanBeNull as Image;
+                        return *dynamic_cast<Image*>(imageCanBeNull);
     
 }
 
@@ -165,9 +165,9 @@ this->availableListOfList[index]= BasicArrayListD();
                         for (
     int32_t index = this->listOfList.size() -1;index >= 0; index--)
         {
-this->availableListOfList[index]!.clear();
+this->availableListOfList[index].clear();
     
-this->availableListOfList[index]!.addAllList(this->listOfList[index]!);
+this->availableListOfList[index].addAllList(this->listOfList[index]);
     
 }
 
@@ -222,7 +222,7 @@ this->logUtil.putF(StringMaker().append("ImageCache: ").append(this->toString())
                         
                                     {
                                     
-                        if(this->availableListOfList[foundIndex]!.size() > 0)
+                        if(this->availableListOfList[foundIndex].size() > 0)
                         
                                     {
                                     
@@ -232,7 +232,7 @@ this->logUtil.putF(StringMaker().append("ImageCache: ").append(this->toString())
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return list.removeAt(list.size() -1) as Image;
+                        return list.removeAt(list.size() -1);
     
 
                                     }
@@ -313,10 +313,10 @@ this->logUtil.putF(StringMaker().append("ImageCache: ").append(this->toString())
     int32_t height = this->heights[index];;
     
 
-    int32_t total = this->listOfList[index]!.size();;
+    int32_t total = this->listOfList[index].size();;
     
 
-    int32_t totalAvailable = this->availableListOfList[index]!.size();;
+    int32_t totalAvailable = this->availableListOfList[index].size();;
     
 stringBuffer.append(" w: ");
     
@@ -347,7 +347,7 @@ stringBuffer.appendint(totalAvailable);
 }
 
 
-    public: Hashtable<any, any> getHashtableP(){
+    public: ABHashtable<Object*, Object*> getHashtableP(){
 
 
 

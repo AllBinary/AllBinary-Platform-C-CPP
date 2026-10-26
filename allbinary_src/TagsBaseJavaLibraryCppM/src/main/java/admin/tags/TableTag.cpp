@@ -18,11 +18,11 @@
 
 
 
-            #include "../../java/lang/Class.h"
+            #include "java/lang/Class.h"
         
-            #include "../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../java/lang/Integer.h"
+            #include "java/lang/Integer.h"
         
 #include <java/lang/reflect/Method.h>
 
@@ -122,7 +122,7 @@ this->enabled= enabled;
                         
                                     {
                                     
-                        if(BooleanUtil::getInstance().getFromString(this->enabled) || this->enabled.compareTo("on") == 0)
+                        if(BooleanUtil::getInstance().getFromString(this->enabled) || this->enabled.compare("on") == 0)
                         
                                     {
                                     
@@ -219,7 +219,7 @@ this->total= total;
     Object* anyType = this->getTagHelperFactoryInterface().getInstance(this->getPropertiesHashMap(), pageContext);;
     
 
-    Function addressHelperClass = anyType->constructor;;
+    Class* addressHelperClass = anyType->getClass();;
     
 
     Method method = addressHelperClass.getMethod("drop", 
@@ -227,7 +227,7 @@ this->total= total;
     
 
     std::string result = method.invoke(anyType, 
-                            nullptr) as string;;
+                            nullptr);;
     
 
 
@@ -271,7 +271,7 @@ this->total= total;
     Object* anyType = this->getTagHelperFactoryInterface().getInstance(this->getPropertiesHashMap(), pageContext);;
     
 
-    Function addressHelperClass = anyType->constructor;;
+    Class* addressHelperClass = anyType->getClass();;
     
 
     Method method = addressHelperClass.getMethod("create", 
@@ -279,7 +279,7 @@ this->total= total;
     
 
     std::string result = method.invoke(anyType, 
-                            nullptr) as string;;
+                            nullptr);;
     
 
 
@@ -323,7 +323,7 @@ this->total= total;
     Object* anyType = this->getTagHelperFactoryInterface().getInstance(this->getPropertiesHashMap(), pageContext);;
     
 
-    Function addressHelperClass = anyType->constructor;;
+    Class* addressHelperClass = anyType->getClass();;
     
 
     Method method = addressHelperClass.getMethod("restore", 
@@ -331,7 +331,7 @@ this->total= total;
     
 
     std::string result = method.invoke(anyType, 
-                            nullptr) as string;;
+                            nullptr);;
     
 
 
@@ -375,7 +375,7 @@ this->total= total;
     Object* anyType = this->getTagHelperFactoryInterface().getInstance(this->getPropertiesHashMap(), pageContext);;
     
 
-    Function addressHelperClass = anyType->constructor;;
+    Class* addressHelperClass = anyType->getClass();;
     
 
     Method method = addressHelperClass.getMethod("backup", 
@@ -383,7 +383,7 @@ this->total= total;
     
 
     std::string result = method.invoke(anyType, 
-                            nullptr) as string;;
+                            nullptr);;
     
 
 
@@ -424,7 +424,7 @@ this->total= total;
 
         try {
             
-    Function helperClass = this->requestObject.constructor;;
+    Class* helperClass = this->requestObject->getClass();;
     
 
     Method method = helperClass.getMethod("insert", 
@@ -432,7 +432,7 @@ this->total= total;
     
 
     std::string result = method.invoke(this->requestObject, 
-                            nullptr) as string;;
+                            nullptr);;
     
 
 
@@ -473,7 +473,7 @@ this->total= total;
 
         try {
             
-    Function helperClass = this->requestObject.constructor;;
+    Class* helperClass = this->requestObject->getClass();;
     
 
     Method method = helperClass.getMethod(commonStrings.delete_, 
@@ -481,7 +481,7 @@ this->total= total;
     
 
     std::string result = method.invoke(this->requestObject, 
-                            nullptr) as string;;
+                            nullptr);;
     
 
 
@@ -522,7 +522,7 @@ this->total= total;
 
         try {
             
-    Function helperClass = this->requestObject.constructor;;
+    Class* helperClass = this->requestObject->getClass();;
     
 
     Method method = helperClass.getMethod("update", 
@@ -530,7 +530,7 @@ this->total= total;
     
 
     std::string result = method.invoke(this->requestObject, 
-                            nullptr) as string;;
+                            nullptr);;
     
 
 
@@ -575,14 +575,14 @@ this->total= total;
                         
                                     {
                                     
-    HttpServletRequest request = this->pageContext.getRequest() as HttpServletRequest;;
+    HttpServletRequest request = this->pageContext.getRequest();;
     
 
     StringMaker stringBuffer = StringMaker();;
     
 stringBuffer.append("TableTag Helper: ");
     
-stringBuffer.append(this->getTagHelperFactoryInterface().constructor.name.toString()!);
+stringBuffer.append(this->getTagHelperFactoryInterface().constructor.name.toString());
     
 stringBuffer.append(" Request URI: ");
     
@@ -603,7 +603,7 @@ this->logUtil.putF(stringBuffer.toString(), this, this->tagStrings.DO_START_TAG)
                         if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().JSPTAG))
                         
                                     {
-                                    this->logUtil.putF("TableTag RequestHelper: " +this->getTagRequestHelperFactoryInterface().constructor.name.toString()!, this, this->tagStrings.DO_START_TAG);
+                                    this->logUtil.putF("TableTag RequestHelper: " +this->getTagRequestHelperFactoryInterface().constructor.name.toString(), this, this->tagStrings.DO_START_TAG);
     
 
                                     }

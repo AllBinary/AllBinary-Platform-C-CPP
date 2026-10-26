@@ -20,7 +20,7 @@
 
             #include <vector>
         
-            #include "../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
 #include <org/allbinary/logic/NullUtil.h>
 
@@ -67,12 +67,12 @@ class GameKeyMappingFactory
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return GameKeyMappingFactory::instance() as GameKeyMappingFactory;
+                        return GameKeyMappingFactory::instance();
     
 }
 
 
-    private: std::vector<GameKey> intKeyToGameKey = new Array(InputFactory::getInstance().MAX);
+    private: std::vector<GameKey> intKeyToGameKey = std::vector<GameKey>(InputFactory::getInstance().MAX);
 
 private: GameKeyMappingFactory(){
 
@@ -134,7 +134,7 @@ this->setGameKey(gameKeyFactory.LEVEL_UP);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->intKeyToGameKey[key]!;
+                        return this->intKeyToGameKey[key];
     
 }
 

@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/game/collision/CollidableHelperFactory.h>
 
@@ -72,8 +72,9 @@ class CollidableDamageWeaponBehavior: public CollidableDestroyableDamageableBeha
 
     protected: CollisionHelper collisionHelper;
 
-public: CollidableDamageWeaponBehavior(bool collidable){
-            super(collidable);
+public: CollidableDamageWeaponBehavior(bool collidable) : CollidableDestroyableDamageableBehavior(collidable){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -137,11 +138,11 @@ this->collided= true;
 
     public: bool isCollisionInterface(CollidableCompositeLayer ownerLayer, CollidableInterfaceCompositeInterface collidableInterfaceCompositeInterface){
 
-                        if(this->collisionHelper.isCollidable(collidableInterfaceCompositeInterface as CollidableCompositeLayer))
+                        if(this->collisionHelper.isCollidable(collidableInterfaceCompositeInterface))
                         
                                     {
                                     
-    AllBinaryLayer layerInterface = collidableInterfaceCompositeInterface as AllBinaryLayer;;
+    AllBinaryLayer layerInterface = collidableInterfaceCompositeInterface;;
     
 
                         if(ownerLayer.getGroupInterface()[0] != layerInterface.getGroupInterface()[0])
@@ -178,7 +179,7 @@ this->collided= true;
                 //@Throws(Exception.constructor)
             
     public: void collideInterface(CollidableCompositeLayer ownerLayer, CollidableInterfaceCompositeInterface collidableInterfaceCompositeInterface){
-this->damageUtil.process(ownerLayer as DamageableInterface, collidableInterfaceCompositeInterface as DamageableInterface);
+this->damageUtil.process(ownerLayer, collidableInterfaceCompositeInterface);
     
 this->collided= true;
     

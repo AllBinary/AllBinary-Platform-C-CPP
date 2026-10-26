@@ -20,16 +20,7 @@
 
             #include <vector>
         
-#include <jsinterop/annotations/JsType.h>
-
-      
 #include <org/allbinary/thirdparty/store/LongArrayIdentifierInterface.h>
-
-      
-#include <jsinterop/annotations/JsMethod.h>
-
-      
-#include <jsinterop/annotations/JsConstructor.h>
 
       
 
@@ -56,8 +47,9 @@ class StoreAppClientInformation: public AbeClientInformation, public LongArrayId
 
     private: std::vector<int64_t> longArrayIdentifier;
 
-public: StoreAppClientInformation(std::string name, std::string version, std::string specialName, std::string shortName, std::vector<int64_t> longArrayIdentifier){
-            super(name, version, specialName, shortName);
+public: StoreAppClientInformation(std::string name, std::string version, std::string specialName, std::string shortName, std::vector<int64_t> longArrayIdentifier) : AbeClientInformation(name, version, specialName, shortName){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.

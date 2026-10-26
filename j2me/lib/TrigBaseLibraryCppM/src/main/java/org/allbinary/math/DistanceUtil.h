@@ -21,7 +21,7 @@
         #ifndef ORG_ALLBINARY_MATH_DISTANCEUTIL_H
         #define ORG_ALLBINARY_MATH_DISTANCEUTIL_H
 
-            #include "../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
 #include <org/allbinary/logic/math/MathUtil.h>
 

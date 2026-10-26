@@ -21,9 +21,9 @@
         #ifndef ORG_ALLBINARY_ANIMATION_TRANSITION_RUNATENDANIMATIONLISTENER_H
         #define ORG_ALLBINARY_ANIMATION_TRANSITION_RUNATENDANIMATIONLISTENER_H
 
-            #include "../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../java/lang/Runnable.h"
+            #include "java/lang/Runnable.h"
         
 
 

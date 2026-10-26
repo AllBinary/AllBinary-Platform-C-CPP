@@ -20,11 +20,11 @@
 
             #include <vector>
         
-            #include "../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../../../../java/lang/IllegalArgumentException.h"
+            #include "java/lang/IllegalArgumentException.h"
         
-            #include "../../../../../../java/lang/Integer.h"
+            #include "java/lang/Integer.h"
         
 #include <javax/microedition/lcdui/Graphics.h>
 
@@ -155,14 +155,15 @@ AndroidBasicTitleProgressBar::background= background;
 
     private: int32_t portion = 0;
 
-    private: const std::vector<Image> IMAGE = new Array(4);
+    private: const std::vector<Image> IMAGE = std::vector<Image>(4);
 
     private: Image image = NullImage::NULL_IMAGE;
 
     private: Animation animation = NullAnimationFactory::getFactoryInstance().getInstance(0);
 
-: AndroidBasicTitleProgressBar(std::string title, BasicColor backgroundBasicColor, BasicColor foregroundBasicColor){
-            super(title, backgroundBasicColor, foregroundBasicColor);
+: AndroidBasicTitleProgressBar(std::string title, BasicColor backgroundBasicColor, BasicColor foregroundBasicColor) : ProgressCanvas(title, backgroundBasicColor, foregroundBasicColor){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -621,7 +622,7 @@ this->image= GameFeatureImageCacheFactory::getInstance().getWithKey(AndroidBasic
                         if(this->IMAGE[index] != NullImage::NULL_IMAGE)
                         
                                     {
-                                    this->IMAGE[index]= preResourceImageUtil.encapsulate(this->IMAGE[index]!);
+                                    this->IMAGE[index]= preResourceImageUtil.encapsulate(this->IMAGE[index]);
     
 
                                     }
@@ -659,7 +660,7 @@ this->image= GameFeatureImageCacheFactory::getInstance().getWithKey(AndroidBasic
                         if(this->IMAGE[index] != NullImage::NULL_IMAGE)
                         
                                     {
-                                    preResourceImageUtil.update(graphics, this->IMAGE[index]!);
+                                    preResourceImageUtil.update(graphics, this->IMAGE[index]);
     
 
                                     }
@@ -679,13 +680,13 @@ this->image= GameFeatureImageCacheFactory::getInstance().getWithKey(AndroidBasic
                         if(Features::getInstance().isFeature(MainFeatureFactory::getInstance().FULL_SCREEN))
                         
                                     {
-                                    image= this->IMAGE[index]!;
+                                    image= this->IMAGE[index];
     
 
                                     }
                                 
                         else {
-                            image= this->IMAGE[index +1]!;
+                            image= this->IMAGE[index +1];
     
 
                         }

@@ -21,9 +21,9 @@
         #ifndef ADMIN_TAGHELPERS_INVENTORYITEMVIEWPARENTTAGHELPER_H
         #define ADMIN_TAGHELPERS_INVENTORYITEMVIEWPARENTTAGHELPER_H
 
-            #include "../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/logic/communication/http/request/RequestMapInterface.h>
 

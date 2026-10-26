@@ -21,7 +21,7 @@
         #ifndef ORG_ALLBINARY_GAME_LAYER_BUILDING_EVENT_BUILDINGEVENTHANDLER_H
         #define ORG_ALLBINARY_GAME_LAYER_BUILDING_EVENT_BUILDINGEVENTHANDLER_H
 
-            #include "../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/game/layer/RTSLayerEvent.h>
 

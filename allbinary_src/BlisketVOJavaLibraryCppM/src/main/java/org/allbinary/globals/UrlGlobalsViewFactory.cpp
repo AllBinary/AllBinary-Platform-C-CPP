@@ -18,9 +18,9 @@
 
 
 
-            #include "../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/data/tree/dom/DomNodeInterface.h>
 
@@ -65,7 +65,7 @@ class UrlGlobalsViewFactory
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return UrlGlobalsView() as DomNodeInterface;
+                        return UrlGlobalsView();
     
 
                 //: 

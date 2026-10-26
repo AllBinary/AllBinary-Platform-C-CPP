@@ -21,7 +21,7 @@
         #ifndef VIEWS_BUSINESS_CONTEXT_ROOTCONTEXTVIEW_H
         #define VIEWS_BUSINESS_CONTEXT_ROOTCONTEXTVIEW_H
 
-            #include "../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/util/BasicArrayList.h>
 

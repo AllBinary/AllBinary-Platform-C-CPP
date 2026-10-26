@@ -20,7 +20,7 @@
 
             #include <vector>
         
-            #include "../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
 
 
@@ -84,7 +84,7 @@ private: J2MEKeyFactory(){
                         for (
     int32_t index = gameKeyArray.size();--index >= 0; )
         {
-inputFactory.add(gameKeyArray[index]!.getId(), gameKeyArray[index]!);
+inputFactory.add(gameKeyArray[index].getId(), gameKeyArray[index]);
     
 }
 

@@ -18,11 +18,9 @@
 
 
 
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../../java/lang/System.h"
-        
-            #include "../../../../java/lang/Long.h"
+            #include "java/lang/Long.h"
         
 #include <javax/microedition/lcdui/CommandListener.h>
 
@@ -37,6 +35,12 @@
 
       
 #include <org/allbinary/graphics/displayable/screen/CommandForm.h>
+
+      
+#include <org/allbinary/logic/ABSystemWrapper.h>
+
+      
+#include <org/allbinary/logic/MEUtil.h>
 
       
 
@@ -86,8 +90,11 @@ SaveGameForm::FORM= SaveGameForm(commandListener, title, backgrounBasicColor, fo
 }
 
 
-private: SaveGameForm(CommandListener commandListener, std::string title, BasicColor backgrounBasicColor, BasicColor foregroundBasicColor){
-            super(commandListener, title, backgrounBasicColor, foregroundBasicColor);
+    private: const MEUtil meUtil = MEUtil::getInstance();
+
+private: SaveGameForm(CommandListener commandListener, std::string title, BasicColor backgrounBasicColor, BasicColor foregroundBasicColor) : CommandForm(commandListener, title, backgrounBasicColor, foregroundBasicColor){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -97,7 +104,7 @@ this->logUtil.putF(this->commonStrings.START, this, this->commonStrings.CONSTRUC
 
     std::string timeString = std::to_string(currentTimeMillis);;
     
-this->append(TextField("Name: ", timeString, 30, TextField::ANY));
+this->meUtil.appendItem(this, TextField("Name: ", timeString, 30, TextField::ANY));
     
 this->initCommands(commandListener);
     

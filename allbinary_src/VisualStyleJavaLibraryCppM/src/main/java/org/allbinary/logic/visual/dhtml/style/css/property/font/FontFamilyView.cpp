@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/logic/visual/dhtml/style/css/property/CssPropertyView.h>
 
@@ -48,8 +48,9 @@
 
 class FontFamilyView: public CssPropertyView {
 
-public: FontFamilyView(){
-            super(FontFamilyData::getInstance().VALUE);
+public: FontFamilyView() : CssPropertyView(FontFamilyData::getInstance().VALUE){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -57,8 +58,9 @@ public: FontFamilyView(){
 }
 
 
-public: FontFamilyView(Node node){
-            super(node);
+public: FontFamilyView(Node node) : CssPropertyView(node){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.

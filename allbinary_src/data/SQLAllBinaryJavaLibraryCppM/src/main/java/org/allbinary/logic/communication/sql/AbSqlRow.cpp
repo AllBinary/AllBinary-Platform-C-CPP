@@ -20,7 +20,7 @@
 
             #include <vector>
         
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/sql/ResultSet.h>
 
@@ -110,8 +110,9 @@ class AbSqlRow: public AbSqlColumn {
 
     private: const std::string INSERT_END = "')";
 
-public: AbSqlRow(DbConnectionInfo databaseConnectionInfoInterface){
-            super(databaseConnectionInfoInterface);
+public: AbSqlRow(DbConnectionInfo databaseConnectionInfoInterface) : AbSqlColumn(databaseConnectionInfoInterface){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -148,7 +149,7 @@ public: AbSqlRow(DbConnectionInfo databaseConnectionInfoInterface){
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: void updateWhere(std::string key, std::string value, HashMap<any, any> updatedKeyValuePairs){
+    public: void updateWhere(std::string key, std::string value, HashMap<Object*, Object*> updatedKeyValuePairs){
 
     StringMaker stringBuffer = StringMaker();;
     
@@ -174,7 +175,7 @@ stringBuffer.append(this->sqlStrings.SET);
     int32_t i = 0;i < size; i++)
         {
 
-    std::string columnName = keyArray[i]!.toString();;
+    std::string columnName = keyArray[i].toString();;
     
 stringBuffer.append(this->commonSeps.SPACE);
     
@@ -183,7 +184,7 @@ stringBuffer.append(columnName);
 stringBuffer.append(this->EQUAL_QUOTE);
     
 
-    std::string columnValue = updatedKeyValuePairs.get(columnName) as string;;
+    std::string columnValue = updatedKeyValuePairs.get(columnName);;
     
 
                         if(false)
@@ -260,7 +261,7 @@ this->executeSQLStatement(sqlStatement);
                 //@Throws(Exception.constructor)
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: void updateWhere(HashMap<any, any> whereKeyValuePairs, HashMap<any, any> updatedKeyValuePairs){
+    public: void updateWhere(HashMap<Object*, Object*> whereKeyValuePairs, HashMap<Object*, Object*> updatedKeyValuePairs){
 
     StringMaker stringBuffer = StringMaker();;
     
@@ -286,7 +287,7 @@ stringBuffer.append(this->sqlStrings.SET);
     int32_t i = 0;i < size; i++)
         {
 
-    std::string columnName = keyArray[i]!.toString();;
+    std::string columnName = keyArray[i].toString();;
     
 stringBuffer.append(this->commonSeps.SPACE);
     
@@ -304,7 +305,7 @@ stringBuffer.append(this->EQUAL_QUOTE);
                                     }
                                 
 
-    std::string columnValue = updatedKeyValuePairs.get(columnName) as string;;
+    std::string columnValue = updatedKeyValuePairs.get(columnName);;
     
 
                         if(false)
@@ -355,10 +356,10 @@ stringBuffer.append(this->sqlStrings.WHERE);
     int32_t i = 0;i < size2; i++)
         {
 
-    std::string key = keyArray2[i]! as string;;
+    std::string key = keyArray2[i];;
     
 
-    std::string value = whereKeyValuePairs.get(key) as string;;
+    std::string value = whereKeyValuePairs.get(key);;
     
 
 
@@ -478,7 +479,7 @@ this->executeSQLStatement(sqlStatement);
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: void deleteWhere(HashMap<any, any> keysAndValues){
+    public: void deleteWhere(HashMap<Object*, Object*> keysAndValues){
 
     StringMaker stringBuffer = StringMaker();;
     
@@ -509,7 +510,7 @@ stringBuffer.append(this->sqlStrings.WHERE);
     int32_t i = 0;i < size; i++)
         {
 
-    std::string key = keyArray[i]! as string;;
+    std::string key = keyArray[i];;
     
 
     std::string value = .toCharArray();;
@@ -585,7 +586,7 @@ stringBuffer.append(this->sqlStrings.VALUES);
     int32_t i = 0;i < values.size() -1; i++)
         {
 
-    std::string value = this->getValue(values.get(i) as string);;
+    std::string value = this->getValue(values.get(i));;
     
 value= Replace(this->sqlStrings.ESCAPE, this->sqlStrings.DOUBLE_ESCAPE).all(value);
     
@@ -596,7 +597,7 @@ stringBuffer.append(this->sqlStrings.SINGLE_QUOTE_COMMA_SEP);
 }
 
 
-    std::string value = this->getValue(values.get(values.size() -1) as string);;
+    std::string value = this->getValue(values.get(values.size() -1));;
     
 value= Replace(this->sqlStrings.ESCAPE, this->sqlStrings.DOUBLE_ESCAPE).all(value);
     
@@ -636,7 +637,7 @@ this->executeSQLStatement(sqlStatement);
 }
 
 
-    public: HashMap<any, any> getRow(HashMap<any, any> keysAndValues){
+    public: HashMap<Object*, Object*> getRow(HashMap<Object*, Object*> keysAndValues){
 
     StringMaker stringBuffer = StringMaker();;
     
@@ -649,7 +650,7 @@ stringBuffer.append(this->sqlStrings.WHERE);
 
         try {
             
-    HashMap<any, any> result = 
+    HashMap<Object*, Object*> result = 
                 null
             ;;
     
@@ -670,7 +671,7 @@ stringBuffer.append(this->sqlStrings.WHERE);
     int32_t index = 0;index < size; index++)
         {
 
-    std::string key = keyArray[index]! as string;;
+    std::string key = keyArray[index];;
     
 
     std::string value = .toCharArray();;
@@ -793,7 +794,7 @@ result.put(columnName, field);
 }
 
 
-    public: BasicArrayList getRows(HashMap<any, any> keysAndValues){
+    public: BasicArrayList getRows(HashMap<Object*, Object*> keysAndValues){
 
 
 
@@ -803,7 +804,7 @@ result.put(columnName, field);
 }
 
 
-    public: BasicArrayList getRows(HashMap<any, any> keysAndValues, std::string more){
+    public: BasicArrayList getRows(HashMap<Object*, Object*> keysAndValues, std::string more){
 
     StringMaker stringBuffer = StringMaker();;
     
@@ -835,7 +836,7 @@ stringBuffer.append(this->sqlStrings.WHERE);
     int32_t index = 0;index < size; index++)
         {
 
-    std::string key = keyArray[index]! as string;;
+    std::string key = keyArray[index];;
     
 
     std::string value = .toCharArray();;
@@ -883,7 +884,7 @@ stringBuffer.append(more);
         while(rset.next())
         {
 
-    HashMap<any, any> result = this->stdUtil.createHashMap();;
+    HashMap<Object*, Object*> result = this->stdUtil.createHashMap();;
     
 
     int32_t columnCount = resultSetMetaData.getColumnCount();;
@@ -986,7 +987,7 @@ stringBuffer.append(this->getTableName());
         while(rset.next())
         {
 
-    HashMap<any, any> result = this->stdUtil.createHashMap();;
+    HashMap<Object*, Object*> result = this->stdUtil.createHashMap();;
     
 
     int32_t columnCount = resultSetMetaData.getColumnCount();;
@@ -1051,7 +1052,7 @@ rows.add(result);
 }
 
 
-    public: BasicArrayList getRowsWhereBetween(HashMap<any, any> whereKeyValuePairs, std::string betweenColumn, std::string smallest, std::string largest){
+    public: BasicArrayList getRowsWhereBetween(HashMap<Object*, Object*> whereKeyValuePairs, std::string betweenColumn, std::string smallest, std::string largest){
 
     StringMaker stringBuffer = StringMaker();;
     
@@ -1088,9 +1089,9 @@ stringBuffer.append(this->sqlStrings.WHERE);
                         for (
     int32_t index = 0;index < size; index++)
         {
-key= keyArray[index]! as string;
+key= keyArray[index];
     
-value= whereKeyValuePairs.get(key) as string;
+value= whereKeyValuePairs.get(key);
     
 stringBuffer.append(key);
     
@@ -1141,7 +1142,7 @@ stringBuffer.append(this->sqlStrings.CLOSE_QUOTE);
     ResultSetMetaData resultSetMetaData = rset.getMetaData();;
     
 
-    HashMap<any, any> result;;
+    HashMap<Object*, Object*> result;;
     
 
     BasicArrayList columnNames;;
@@ -1280,7 +1281,7 @@ stringBuffer.append(this->sqlStrings.CLOSE_QUOTE);
     std::string field;;
     
 
-    HashMap<any, any> result;;
+    HashMap<Object*, Object*> result;;
     
 
     BasicArrayList columnNames;;

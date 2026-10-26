@@ -21,7 +21,7 @@
         #ifndef ORG_ALLBINARY_PERSISTANCE_PLATFORMRECORDIDUTIL_H
         #define ORG_ALLBINARY_PERSISTANCE_PLATFORMRECORDIDUTIL_H
 
-            #include "../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
 #include <org/allbinary/string/CommonSeps.h>
 

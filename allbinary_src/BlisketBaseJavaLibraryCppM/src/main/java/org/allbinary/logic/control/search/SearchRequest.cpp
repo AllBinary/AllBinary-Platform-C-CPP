@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
 
@@ -74,8 +74,9 @@ class SearchRequest: public AbContext {
 
     private: StoreFrontInterface storeFront;
 
-public: SearchRequest(StoreFrontInterface storeFront, SearchParams searchParams, std::string xslFile, std::string contentType, HashMap<any, any> propertiesHashMap, PageContext pageContext){
-            super(propertiesHashMap, pageContext);
+public: SearchRequest(StoreFrontInterface storeFront, SearchParams searchParams, std::string xslFile, std::string contentType, HashMap<Object*, Object*> propertiesHashMap, PageContext pageContext) : AbContext(propertiesHashMap, pageContext){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.

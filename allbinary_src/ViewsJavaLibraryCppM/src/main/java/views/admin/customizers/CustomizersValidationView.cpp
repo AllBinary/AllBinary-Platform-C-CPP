@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/logic/communication/log/LogUtil.h>
 
@@ -59,8 +59,9 @@ class CustomizersValidationView: public CustomizersView, public ValidationCompon
 
     protected: const LogUtil logUtil = LogUtil::getInstance();
 
-public: CustomizersValidationView(TransformInfoInterface transformInfoInterface){
-            super(transformInfoInterface);
+public: CustomizersValidationView(TransformInfoInterface transformInfoInterface) : CustomizersView(transformInfoInterface){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.

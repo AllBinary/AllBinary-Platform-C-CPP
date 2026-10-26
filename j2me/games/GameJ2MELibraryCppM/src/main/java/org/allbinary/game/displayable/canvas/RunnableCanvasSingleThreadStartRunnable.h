@@ -21,7 +21,7 @@
         #ifndef ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_RUNNABLECANVASSINGLETHREADSTARTRUNNABLE_H
         #define ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_RUNNABLECANVASSINGLETHREADSTARTRUNNABLE_H
 
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/canvas/RunnableCanvas.h>
 

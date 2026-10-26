@@ -29,11 +29,12 @@
 
 class AppNameLicensingAdConfiguration: public AdConfiguration {
 
-public: AppNameLicensingAdConfiguration(){
-            super(
+public: AppNameLicensingAdConfiguration() : AdConfiguration(
                                                 {
                                                     StringUtil::getInstance().EMPTY_STRING,StringUtil::getInstance().EMPTY_STRING,StringUtil::getInstance().EMPTY_STRING
-                                                });
+                                                }){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.

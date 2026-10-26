@@ -21,9 +21,9 @@
         #ifndef ADMIN_TAGS_QUOTEREQUESTTAG_H
         #define ADMIN_TAGS_QUOTEREQUESTTAG_H
 
-            #include "../../java/lang/Class.h"
+            #include "java/lang/Class.h"
         
-            #include "../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/lang/reflect/Method.h>
 

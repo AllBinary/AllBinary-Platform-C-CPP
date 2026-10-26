@@ -23,7 +23,7 @@
 
             #include <vector>
         
-            #include "../../../../java/lang/RuntimeException.h"
+            #include "java/lang/RuntimeException.h"
         
 #include <javax/microedition/khronos/opengles/GL10.h>
 

@@ -18,13 +18,13 @@
 
 
 
-            #include "../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../../java/lang/Integer.h"
+            #include "java/lang/Integer.h"
         
-            #include "../../../../java/lang/Thread.h"
+            #include "java/lang/Thread.h"
         
 #include <org/allbinary/layer/AllBinaryLayer.h>
 
@@ -105,10 +105,10 @@ this->setPriority();
 
     public: void setPriority(){
 
-    AllBinaryLayer pathFindingLayer = this->pathFindingLayer as AllBinaryLayer;;
+    AllBinaryLayer pathFindingLayer = this->pathFindingLayer;;
     
 
-    AllBinaryLayer targetLayer = this->targetPathFindingLayer as AllBinaryLayer;;
+    AllBinaryLayer targetLayer = this->targetPathFindingLayer;;
     
 
                         if(targetLayer != 

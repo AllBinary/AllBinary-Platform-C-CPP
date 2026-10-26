@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
 
@@ -78,8 +78,9 @@ class PermissionItemsEntity: public AbSqlBean, public PermissionItemsEntityInter
 
     protected: const std::string tableName = "permissionitems";
 
-public: PermissionItemsEntity(){
-            super(InventoryDbInitInfo());
+public: PermissionItemsEntity() : AbSqlBean(InventoryDbInitInfo()){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -180,8 +181,8 @@ stringBuffer.append(PermissionItemData::WHO).append(this->sqlTypeStrings.MAX_CHA
 }
 
 
-    public: void update(HashMap<any, any> updatedValues){
-super.updateWhere(basicItemData.ID, updatedValues.get(basicItemData.ID) as string, updatedValues);
+    public: void update(HashMap<Object*, Object*> updatedValues){
+super.updateWhere(basicItemData.ID, updatedValues.get(basicItemData.ID), updatedValues);
     
 }
 

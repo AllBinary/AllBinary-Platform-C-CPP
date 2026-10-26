@@ -20,20 +20,8 @@
 
             #include <vector>
         
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-#include <jsinterop/annotations/JsType.h>
-
-      
-#include <jsinterop/annotations/JsProperty.h>
-
-      
-#include <jsinterop/annotations/JsMethod.h>
-
-      
-#include <jsinterop/annotations/JsConstructor.h>
-
-      
 #include <org/allbinary/game/identification/Group.h>
 
       
@@ -136,7 +124,7 @@ LayerManagerEventHandler::getInstance().addListener(this);
                         for (
     int32_t index = size -1;index >= 0; index--)
         {
-groupList= this->list.objectArray[index]! as BasicArrayList;
+groupList= this->list.objectArray[index];
     
 groupList.clear();
     
@@ -153,7 +141,7 @@ groupList.clear();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->getGroupSize(groupInterfaceArray[0]!);;
+                        return this->getGroupSize(groupInterfaceArray[0]);;
     
 }
 
@@ -186,7 +174,7 @@ groupList.clear();
 
     private: BasicArrayList getListById(int32_t groupId){
 
-    BasicArrayList groupList = this->list.objectArray[groupId]! as BasicArrayList;;
+    BasicArrayList groupList = this->list.objectArray[groupId];;
     
 
 
@@ -199,7 +187,7 @@ groupList.clear();
 
     private: int32_t getGroupSizeById(int32_t groupId){
 
-    BasicArrayList groupList = this->list.objectArray[groupId]! as BasicArrayList;;
+    BasicArrayList groupList = this->list.objectArray[groupId];;
     
 
     int32_t size = groupList.size();;
@@ -283,7 +271,7 @@ groupList.clear();
                         for (
     int32_t index = size -1;index >= 0; index--)
         {
-groupInterfaceArray= excludeGroupList.objectArray[index]! as Group[];
+groupInterfaceArray= excludeGroupList.objectArray[index] as Group[];
     
 
     int32_t size2 = groupInterfaceArray.size();;
@@ -295,7 +283,7 @@ groupInterfaceArray= excludeGroupList.objectArray[index]! as Group[];
                         for (
     int32_t index2 = 0;index2 < size2; index2++)
         {
-groupInterface= groupInterfaceArray[index2]!;
+groupInterface= groupInterfaceArray[index2];
     
 groupId= static_cast<int32_t>(groupInterface.getGroupId());
     
@@ -412,9 +400,9 @@ ForcedLogUtil::log(EventStrings::getInstance().PERFORMANCE_MESSAGE, this);
                         for (
     int32_t index = 0;index < size; index++)
         {
-id= static_cast<int32_t>(groupInterfaceArray[index]!.getGroupId());
+id= static_cast<int32_t>(groupInterfaceArray[index].getGroupId());
     
-groupList= this->list.objectArray[id]! as BasicArrayList;
+groupList= this->list.objectArray[id];
     
 
                         if(groupList == 
@@ -470,9 +458,9 @@ groupList= this->list.objectArray[id]! as BasicArrayList;
                         for (
     int32_t index = 0;index < size; index++)
         {
-id= static_cast<int32_t>(groupInterfaceArray[index]!.getGroupId());
+id= static_cast<int32_t>(groupInterfaceArray[index].getGroupId());
     
-groupList= this->list.objectArray[id]! as BasicArrayList;
+groupList= this->list.objectArray[id];
     
 groupList.remove(layerInterface);
     
@@ -505,7 +493,7 @@ groupList.remove(layerInterface);
     int32_t index = size -1;index >= 0; index--)
         {
 
-    BasicArrayList groupList = this->list.objectArray[index]! as BasicArrayList;;
+    BasicArrayList groupList = this->list.objectArray[index];;
     
 stringBuffer.append(GROUP);
     

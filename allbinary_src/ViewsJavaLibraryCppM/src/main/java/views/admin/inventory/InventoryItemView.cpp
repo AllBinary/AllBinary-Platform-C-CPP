@@ -20,7 +20,7 @@
 
             #include <vector>
         
-            #include "../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
 
@@ -138,28 +138,30 @@ class InventoryItemView: public HttpStoreComponentView, public RequestMapInterfa
 
     protected: BasicArrayList downloadableItemVector;
 
-    private: HashMap<any, any> requestHashMap;
+    private: HashMap<Object*, Object*> requestHashMap;
 
-public: InventoryItemView(TransformInfoInterface transformInfoInterface){
-            super(transformInfoInterface);
+public: InventoryItemView(TransformInfoInterface transformInfoInterface) : HttpStoreComponentView(transformInfoInterface){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this->request= this->getPageContext().getRequest() as HttpServletRequest;
+this->request= this->getPageContext().getRequest();
     
 this->getFormData();
     
 }
 
 
-public: InventoryItemView(TransformInfoInterface transformInfoInterface, std::string empty){
-            super(transformInfoInterface);
+public: InventoryItemView(TransformInfoInterface transformInfoInterface, std::string empty) : HttpStoreComponentView(transformInfoInterface){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this->request= this->getPageContext().getRequest() as HttpServletRequest;
+this->request= this->getPageContext().getRequest();
     
 }
 
@@ -187,7 +189,7 @@ this->setRequestHashMap(MultipartRequestParams(this->request).toHashMap());
                         
                                     {
                                     
-    FileItem fileItem = imageFileItemObject as FileItem;;
+    FileItem fileItem = *dynamic_cast<FileItem*>(imageFileItemObject);;
     
 
                         if(fileItem != 
@@ -233,7 +235,7 @@ this->logUtil.putF(stringBuffer.toString(), this, "getFormData()");
 
                                     }
                                 
-this->itemInterface= BasicItem(this->getRequestHashMap()) as ItemInterface;
+this->itemInterface= BasicItem(this->getRequestHashMap());
     
 }
 
@@ -255,7 +257,7 @@ this->itemInterface= BasicItem(this->getRequestHashMap()) as ItemInterface;
                         for (
     int32_t index = 0;index < size; index++)
         {
-downloadableItem= this->downloadableItemVector.get(index) as DownloadableItem;
+downloadableItem= this->downloadableItemVector.get(index);
     
 vector.add(DownloadableItemView(downloadableItem));
     
@@ -332,10 +334,10 @@ this->addDomNodeInterface(BasicItemView(this->itemInterface, vector));
     int32_t index = 0;index < size; index++)
         {
 
-    std::string fieldName = fieldNameArray[index]! as string;;
+    std::string fieldName = fieldNameArray[index];;
     
 
-                        if(fieldName.compareTo(basicItemData.IMAGE) == 0)
+                        if(fieldName.compare(basicItemData.IMAGE) == 0)
                         
                                     {
                                     
@@ -345,7 +347,7 @@ this->addDomNodeInterface(BasicItemView(this->itemInterface, vector));
     InventoryUploadMediaUtil inventoryUploadMediaUtil = InventoryUploadMediaUtil(storeFrontInterface, this->itemInterface);;
     
 
-    FileItem fileItem = this->getRequestHashMap().get(basicItemData.IMAGE) as FileItem;;
+    FileItem fileItem = this->getRequestHashMap().get(basicItemData.IMAGE);;
     
 this->itemInterface= inventoryUploadMediaUtil.saveFiles(fileItem.get(), this->imageFileName, this->mediaData);
     
@@ -357,13 +359,13 @@ this->itemInterface= inventoryUploadMediaUtil.saveFiles(fileItem.get(), this->im
 }
 
 
-    private: void setRequestHashMap(HashMap<any, any> requestHashMap){
+    private: void setRequestHashMap(HashMap<Object*, Object*> requestHashMap){
 this->requestHashMap= requestHashMap;
     
 }
 
 
-    public: HashMap<any, any> getRequestHashMap(){
+    public: HashMap<Object*, Object*> getRequestHashMap(){
 
 
 

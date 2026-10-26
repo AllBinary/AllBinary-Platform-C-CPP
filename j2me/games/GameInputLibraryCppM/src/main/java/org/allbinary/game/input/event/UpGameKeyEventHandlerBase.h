@@ -21,11 +21,8 @@
         #ifndef ORG_ALLBINARY_GAME_INPUT_EVENT_UPGAMEKEYEVENTHANDLERBASE_H
         #define ORG_ALLBINARY_GAME_INPUT_EVENT_UPGAMEKEYEVENTHANDLERBASE_H
 
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-#include <jsinterop/annotations/JsType.h>
-
-      
 #include <org/allbinary/game/input/PlayerGameInput.h>
 
       
@@ -48,12 +45,6 @@
 
       
 #include <org/allbinary/util/BasicArrayListD.h>
-
-      
-#include <jsinterop/annotations/JsMethod.h>
-
-      
-#include <jsinterop/annotations/JsConstructor.h>
 
       
 

@@ -21,7 +21,7 @@
         #ifndef ORG_ALLBINARY_BUSINESS_USER_COMMERCE_INVENTORY_ITEM_SPECIAL_SPECIALITEMDATA_H
         #define ORG_ALLBINARY_BUSINESS_USER_COMMERCE_INVENTORY_ITEM_SPECIAL_SPECIALITEMDATA_H
 
-            #include "../../../../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
 
 

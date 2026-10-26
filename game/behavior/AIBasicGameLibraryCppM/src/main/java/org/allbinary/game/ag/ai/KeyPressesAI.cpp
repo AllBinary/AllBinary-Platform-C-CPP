@@ -20,13 +20,10 @@
 
             #include <vector>
         
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../../../java/lang/Integer.h"
+            #include "java/lang/Integer.h"
         
-#include <java/util/Hashtable.h>
-
-      
 #include <org/allbinary/game/input/GameInput.h>
 
       
@@ -40,6 +37,9 @@
 
       
 #include <org/allbinary/game/ai/BasicAI.h>
+
+      
+#include <org/allbinary/util/ABHashtable.h>
 
       
 
@@ -67,13 +67,14 @@ class KeyPressesAI: public BasicAI {
 
     protected: std::vector<Integer> keys;
 
-public: KeyPressesAI(Hashtable<any, any> hashtable, AllBinaryLayer ownerLayerInterface, GameInput gameInput){
-            super(ownerLayerInterface, gameInput);
+public: KeyPressesAI(ABHashtable<Object*, Object*> hashtable, AllBinaryLayer ownerLayerInterface, GameInput gameInput) : BasicAI(ownerLayerInterface, gameInput){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this->keys= new Array(hashtable.length);
+this->keys= std::vector<Integer>(hashtable.size());
     
 
     std::vector<Object*> objectArray = HashtableUtil::getInstance().getKeysAsArray(hashtable);;
@@ -88,7 +89,7 @@ this->keys= new Array(hashtable.length);
                         for (
     int32_t index = 0;index < size; index++)
         {
-this->keys[index]= hashtable.get(objectArray[index]!) as Integer;
+this->keys[index]= hashtable.get(objectArray[index]);
     
 }
 
@@ -109,7 +110,7 @@ this->keys[index]= hashtable.get(objectArray[index]!) as Integer;
                         for (
     int32_t index = 0;index < this->keys.size(); index++)
         {
-super.processKeyAI(this->keys[index]!.intValue());
+super.processKeyAI(this->keys[index].intValue());
     
 }
 

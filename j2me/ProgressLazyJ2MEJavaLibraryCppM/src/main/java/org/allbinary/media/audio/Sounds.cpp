@@ -20,11 +20,11 @@
 
             #include <vector>
         
-            #include "../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../../java/lang/Integer.h"
+            #include "java/lang/Integer.h"
         
 #include <javax/microedition/media/Player.h>
 
@@ -146,7 +146,7 @@ stringBuffer.append(indexString);
     
 stringBuffer.append(this->soundStrings.SOUND);
     
-stringBuffer.append(soundInterface.constructor.name.toString()!);
+stringBuffer.append(soundInterface.constructor.name.toString());
     
 this->logUtil.putF(stringBuffer.toString(), this, this->commonStrings.INIT);
     
@@ -193,7 +193,7 @@ this->logUtil.putF(this->commonStrings.START, this, this->soundStrings.STOP_ALL)
                                 )
                         
                                     {
-                                    player= soundInterfaceArray[index]!.getPlayerP();
+                                    player= soundInterfaceArray[index].getPlayerP();
     
 
                         if(player != 
@@ -243,7 +243,7 @@ this->logUtil.putF(this->commonStrings.START, this, this->soundStrings.CLOSE_ALL
                                 )
                         
                                     {
-                                    player= soundInterfaceArray[index]!.getPlayerP();
+                                    player= soundInterfaceArray[index].getPlayerP();
     
 
                         if(player != 

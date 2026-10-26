@@ -8,7 +8,7 @@
         
             #include <vector>
         
-            #include "../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
 #include <android/app/Activity.h>
 
@@ -76,7 +76,7 @@ this->topViewArray= topViewArray;
 
     public: void setMainView(int32_t id){
 
-    ViewGroup viewGroup = this->activity.findViewById(this->rootViewId) as unknown as ViewGroup;;
+    ViewGroup viewGroup = this->activity.findViewById(this->rootViewId) as unknown;;
     
 
                         if(id != this->currentMainViewId)
@@ -89,7 +89,7 @@ this->topViewArray= topViewArray;
                         for (
     int32_t index = 0;index < this->topViewArray.size(); index++)
         {
-viewGroup.removeView(this->topViewArray[index]!);
+viewGroup.removeView(this->topViewArray[index]);
     
 }
 
@@ -101,10 +101,10 @@ viewGroup.removeView(this->topViewArray[index]!);
     int32_t index = 0;index < this->mainViewArray.size(); index++)
         {
 
-                        if(id != this->mainViewArray[index]!.getId())
+                        if(id != this->mainViewArray[index].getId())
                         
                                     {
-                                    viewGroup.removeView(this->mainViewArray[index]!);
+                                    viewGroup.removeView(this->mainViewArray[index]);
     
 
                                     }
@@ -119,10 +119,10 @@ viewGroup.removeView(this->topViewArray[index]!);
     int32_t index = 0;index < this->mainViewArray.size(); index++)
         {
 
-                        if(id == this->mainViewArray[index]!.getId())
+                        if(id == this->mainViewArray[index].getId())
                         
                                     {
-                                    viewGroup.addView(this->mainViewArray[index]!);
+                                    viewGroup.addView(this->mainViewArray[index]);
     
 this->currentMainViewId= id;
     
@@ -138,7 +138,7 @@ this->currentMainViewId= id;
                         for (
     int32_t index = 0;index < this->topViewArray.size(); index++)
         {
-viewGroup.addView(this->topViewArray[index]!);
+viewGroup.addView(this->topViewArray[index]);
     
 }
 

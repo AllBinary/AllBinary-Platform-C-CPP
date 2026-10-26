@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/game/input/PlayerGameInput.h>
 
@@ -127,9 +127,9 @@ super.removeListener(eventListenerInterface);
 
         try {
             
-    PlayerGameInput playerGameInput = this->list.objectArray[index]! as PlayerGameInput;;
+    PlayerGameInput playerGameInput = this->list.objectArray[index];;
     
-playerGameInput.onPressGameKeyEvent(eventObject as GameKeyEvent);
+playerGameInput.onPressGameKeyEvent(eventObject);
     
 
                 //: 
@@ -150,9 +150,9 @@ super.fireEvent(eventObject);
             
     protected: void process(AllBinaryEventObject eventObject, EventListenerInterface eventListenerInterface){
 
-    PressGameKeyEventListenerInterface pressGameKeyEventListenerInterface = (eventListenerInterface as PressGameKeyEventListenerInterface);;
+    PressGameKeyEventListenerInterface pressGameKeyEventListenerInterface = (eventListenerInterface);;
     
-pressGameKeyEventListenerInterface.onPressGameKeyEvent(eventObject as GameKeyEvent);
+pressGameKeyEventListenerInterface.onPressGameKeyEvent(eventObject);
     
 }
 

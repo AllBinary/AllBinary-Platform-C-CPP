@@ -20,9 +20,6 @@
 
             #include <vector>
         
-#include <jsinterop/annotations/JsType.h>
-
-      
 #include <javax/microedition/lcdui/Font.h>
 
       
@@ -54,15 +51,6 @@
 
       
 #include <org/allbinary/logic/string/StringUtil.h>
-
-      
-#include <jsinterop/annotations/JsMethod.h>
-
-      
-#include <jsinterop/annotations/JsConstructor.h>
-
-      
-#include <jsinterop/annotations/JsProperty.h>
 
       
 
@@ -132,7 +120,7 @@ this->charHeight= font.getHeight();
                         for (
     int32_t index = 0;index < size; index++)
         {
-this->beginWidthArray[index]= (font.stringWidth(this->inputInfo[index]!)>>1);
+this->beginWidthArray[index]= (font.stringWidth(this->inputInfo[index])>>1);
     
 }
 
@@ -144,7 +132,7 @@ this->myFontProcessor= MyFontProcessor::getInstance();
     public: void setInputInfoP(std::vector<std::string> inputInfo){
 this->inputInfo= inputInfo;
     
-this->beginWidthArray= new Array(this->inputInfo.length);
+this->beginWidthArray= std::vector<int32_t>(this->inputInfo.length);
     
 this->myFontProcessor= this->updateMyFontProcessor;
     
@@ -171,7 +159,7 @@ graphics.drawString(this->title, halfWidth -this->titleBeginWidth, this->charHei
                         for (
     int32_t index = 0;index < size; index++)
         {
-graphics.drawString(this->inputInfo[index]!, halfWidth -this->beginWidthArray[index], (index +3) *this->charHeight, this->anchor);
+graphics.drawString(this->inputInfo[index], halfWidth -this->beginWidthArray[index], (index +3) *this->charHeight, this->anchor);
     
 }
 

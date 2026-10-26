@@ -21,7 +21,7 @@
         #ifndef ORG_ALLBINARY_TIME_LICENSESTUPIDTIMERFACTORY_H
         #define ORG_ALLBINARY_TIME_LICENSESTUPIDTIMERFACTORY_H
 
-            #include "../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
 
 

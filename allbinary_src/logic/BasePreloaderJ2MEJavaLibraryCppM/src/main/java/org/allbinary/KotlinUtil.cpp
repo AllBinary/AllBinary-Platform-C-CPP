@@ -4,7 +4,7 @@
 
 
 
-            #include "../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
 #include <org/allbinary/logic/string/StringUtil.h>
 

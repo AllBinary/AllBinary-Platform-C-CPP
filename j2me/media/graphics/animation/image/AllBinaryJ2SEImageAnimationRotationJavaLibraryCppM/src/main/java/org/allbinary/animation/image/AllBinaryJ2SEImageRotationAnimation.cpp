@@ -20,9 +20,9 @@
 
             #include <vector>
         
-            #include "../../../../java/lang/Throwable.h"
+            #include "java/lang/Throwable.h"
         
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <javax/microedition/lcdui/Graphics.h>
 
@@ -88,9 +88,9 @@ class AllBinaryJ2SEImageRotationAnimation: public ImageBaseRotationAnimation {
 
     private: Image realOriginalImage;
 
-    private: const std::vector<Image> originalImageArray = new Array(1);
+    private: const std::vector<Image> originalImageArray = std::vector<Image>(1);
 
-    private: const std::vector<Image> twoImages = new Array(2);
+    private: const std::vector<Image> twoImages = std::vector<Image>(2);
 
     private: Image imageToShow;
 
@@ -116,8 +116,9 @@ class AllBinaryJ2SEImageRotationAnimation: public ImageBaseRotationAnimation {
 
     private: ScaleBaseProcessor scaleProcessor = ScaleProcessor::getInstance();
 
-public: AllBinaryJ2SEImageRotationAnimation(Image originalImage, Image image, AngleInfo angleInfo, int16_t totalAngle, AnimationBehavior animationBehavior){
-            super(image, angleInfo, totalAngle, animationBehavior);
+public: AllBinaryJ2SEImageRotationAnimation(Image originalImage, Image image, AngleInfo angleInfo, int16_t totalAngle, AnimationBehavior animationBehavior) : ImageBaseRotationAnimation(image, angleInfo, totalAngle, animationBehavior){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -278,13 +279,13 @@ this->updateImage();
 
 
     private: void updateImage(){
-this->imageRotationUtil.rotateImage(this->originalImageArray[0]!, this->twoImages[this->bufferedImageIndex]!, this->angleInfo.getAngle() +90);
+this->imageRotationUtil.rotateImage(this->originalImageArray[0], this->twoImages[this->bufferedImageIndex], this->angleInfo.getAngle() +90);
     
-this->alphaProcessor.updateAlpha(this->imageModifierUtil, NullImage::NULL_IMAGE, this->twoImages[this->bufferedImageIndex]!, 0, this->alphaP);
+this->alphaProcessor.updateAlpha(this->imageModifierUtil, NullImage::NULL_IMAGE, this->twoImages[this->bufferedImageIndex], 0, this->alphaP);
     
-this->setColorProcessor.updateColor(this->imageModifierUtil, NullImage::NULL_IMAGE, this->twoImages[this->bufferedImageIndex]!, 0, this->basicColor);
+this->setColorProcessor.updateColor(this->imageModifierUtil, NullImage::NULL_IMAGE, this->twoImages[this->bufferedImageIndex], 0, this->basicColor);
     
-this->changeColorProcessor.updateColor(this->imageModifierUtil, NullImage::NULL_IMAGE, this->twoImages[this->bufferedImageIndex]!, 0, this->changeBasicColorP);
+this->changeColorProcessor.updateColor(this->imageModifierUtil, NullImage::NULL_IMAGE, this->twoImages[this->bufferedImageIndex], 0, this->changeBasicColorP);
     
 this->swap();
     
@@ -300,7 +301,7 @@ this->updateImage();
 
 
     public: void swap(){
-this->imageToShow= this->twoImages[this->bufferedImageIndex]!;
+this->imageToShow= this->twoImages[this->bufferedImageIndex];
     
 
                         if(this->bufferedImageIndex == 0)
@@ -342,7 +343,7 @@ super.close();
                         for (
     int32_t index = 0;index < size2; index++)
         {
-disposalUtil.disposeImage(this->twoImages[index]!);
+disposalUtil.disposeImage(this->twoImages[index]);
     
 }
 
@@ -356,7 +357,7 @@ disposalUtil.disposeImage(this->twoImages[index]!);
                         for (
     int32_t index = 0;index < size; index++)
         {
-disposalUtil.disposeImage(this->originalImageArray[index]!);
+disposalUtil.disposeImage(this->originalImageArray[index]);
     
 }
 
@@ -385,7 +386,7 @@ super.finalize();
                         for (
     int32_t index = 0;index < size2; index++)
         {
-disposalUtil.disposeImage(this->twoImages[index]!);
+disposalUtil.disposeImage(this->twoImages[index]);
     
 }
 
@@ -399,7 +400,7 @@ disposalUtil.disposeImage(this->twoImages[index]!);
                         for (
     int32_t index = 0;index < size; index++)
         {
-disposalUtil.disposeImage(this->originalImageArray[index]!);
+disposalUtil.disposeImage(this->originalImageArray[index]);
     
 }
 

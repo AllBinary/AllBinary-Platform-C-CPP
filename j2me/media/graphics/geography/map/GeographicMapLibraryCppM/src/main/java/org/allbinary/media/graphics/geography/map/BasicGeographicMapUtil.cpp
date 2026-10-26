@@ -20,9 +20,9 @@
 
             #include <vector>
         
-            #include "../../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/layer/Layer.h>
 
@@ -214,7 +214,7 @@ default: {
 
     public: std::vector<Layer> createAllBinaryTiledLayerArray(std::vector<BasicGeographicMap> geographicMapInterfaceArray){
 
-    std::vector<Layer> tiledLayerArray = new Array(geographicMapInterfaceArray.length);;
+    std::vector<Layer> tiledLayerArray = std::vector<Layer>(geographicMapInterfaceArray.length);;
     
 
 
@@ -242,7 +242,7 @@ default: {
                         for (
     int32_t index = size +startIndex;--index >= startIndex; )
         {
-geographicMapInterface= geographicMapInterfaceArray[index]!;
+geographicMapInterface= geographicMapInterfaceArray[index];
     
 tiledLayerArray[count++]= geographicMapInterface.getAllBinaryTiledLayer();
     
@@ -271,7 +271,7 @@ tiledLayerArray[count++]= geographicMapInterface.getAllBinaryTiledLayer();
                         for (
     int32_t index = size;--index >= 0; )
         {
-geographicMapInterface= geographicMapInterfaceArray[index]!;
+geographicMapInterface= geographicMapInterfaceArray[index];
     
 geographicMapInterface.getAllBinaryTiledLayer().moveDXY(dx, dy);
     
@@ -294,7 +294,7 @@ geographicMapInterface.getAllBinaryTiledLayer().moveDXY(dx, dy);
                         for (
     int32_t index = size;--index >= 0; )
         {
-geographicMapInterface= geographicMapInterfaceArray[index]!;
+geographicMapInterface= geographicMapInterfaceArray[index];
     
 geographicMapInterface.getAllBinaryTiledLayer().setPosition(x, y, geographicMapInterface.getAllBinaryTiledLayer().getZP());
     

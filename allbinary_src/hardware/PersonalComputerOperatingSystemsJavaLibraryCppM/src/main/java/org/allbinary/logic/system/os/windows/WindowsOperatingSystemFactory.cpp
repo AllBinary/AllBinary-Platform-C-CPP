@@ -18,9 +18,9 @@
 
 
 
-            #include "../../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/logic/communication/log/LogUtil.h>
 
@@ -101,7 +101,7 @@ private: WindowsOperatingSystemFactory(){
     GenericOperatingSystem operatingSystemInterface;;
     
 
-                        if(osName.compareTo(operatingSystems.WINDOWS_NT) == 0)
+                        if(osName.compare(operatingSystems.WINDOWS_NT) == 0)
                         
                                     {
                                     operatingSystemInterface= WindowsOS();
@@ -110,7 +110,7 @@ private: WindowsOperatingSystemFactory(){
                                     }
                                 
                              else 
-                        if(osName.compareTo(operatingSystems.WINDOWS_10) == 0)
+                        if(osName.compare(operatingSystems.WINDOWS_10) == 0)
                         
                                     {
                                     operatingSystemInterface= WindowsOS();
@@ -119,7 +119,7 @@ private: WindowsOperatingSystemFactory(){
                                     }
                                 
                              else 
-                        if(osName.compareTo(operatingSystems.WINDOWS_11) == 0)
+                        if(osName.compare(operatingSystems.WINDOWS_11) == 0)
                         
                                     {
                                     operatingSystemInterface= WindowsOS();
@@ -128,7 +128,7 @@ private: WindowsOperatingSystemFactory(){
                                     }
                                 
                              else 
-                        if(osName.compareTo(operatingSystems.WINDOWS2000) == 0)
+                        if(osName.compare(operatingSystems.WINDOWS2000) == 0)
                         
                                     {
                                     operatingSystemInterface= WindowsOS();
@@ -137,7 +137,7 @@ private: WindowsOperatingSystemFactory(){
                                     }
                                 
                              else 
-                        if(osName.compareTo(operatingSystems.WINDOWS_XP) == 0)
+                        if(osName.compare(operatingSystems.WINDOWS_XP) == 0)
                         
                                     {
                                     operatingSystemInterface= WindowsOS();
@@ -146,7 +146,7 @@ private: WindowsOperatingSystemFactory(){
                                     }
                                 
                              else 
-                        if(osName.compareTo(operatingSystems.WINDOWS_VISTA) == 0)
+                        if(osName.compare(operatingSystems.WINDOWS_VISTA) == 0)
                         
                                     {
                                     operatingSystemInterface= WindowsOS();

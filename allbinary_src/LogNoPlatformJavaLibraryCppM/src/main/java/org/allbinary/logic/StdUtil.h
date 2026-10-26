@@ -21,15 +21,18 @@
         #ifndef ORG_ALLBINARY_LOGIC_STDUTIL_H
         #define ORG_ALLBINARY_LOGIC_STDUTIL_H
 
-            #include "../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-#include <java/util/HashMap.h>
+#include <org/allbinary/util/ABHashMap.h>
 
       
-#include <java/util/Hashtable.h>
+#include <org/allbinary/util/ABHashtable.h>
 
       
-#include <java/util/Stack.h>
+#include <org/allbinary/util/ABStack.h>
+
+      
+#include <org/allbinary/util/ABVector.h>
 
       
 
@@ -59,13 +62,19 @@
 
     /*actual*/ public: static StdUtil getInstance();
 
-    /*actual*/ public: const Hashtable<any, any> NULL_TABLE
+    /*actual*/ public: const ABVector<Object*> EMPTY_VECTOR
 
-    public: Stack<any> createStack();
+    /*actual*/ public: const ABHashtable<Object*, Object*> NULL_TABLE
 
-    public: Hashtable<any, any> createHashtable();
+    /*actual*/ public: const ABHashMap<Object*, Object*> NULL_MAP
 
-    public: HashMap<any, any> createHashMap();
+    public: ABStack<Object*> createStack();
+
+    public: ABVector<Object*> createVector();
+
+    public: ABHashtable<Object*, Object*> createHashtable();
+
+    public: ABHashMap<Object*, Object*> createHashMap();
 
 };
 

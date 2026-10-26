@@ -18,9 +18,9 @@
 
 
 
-            #include "../../../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/util/BasicArrayList.h>
 
@@ -73,7 +73,7 @@ class RaceTrackStartPointUtil
     BasicArrayList list = pathFindingInfo.getStartPathFindingNodeList();;
     
 
-    PathFindingNode startPathFindingNode = list.get(index) as PathFindingNode;;
+    PathFindingNode startPathFindingNode = list.get(index);;
     
 
     GeographicMapCellPosition geographicMapCellPosition = startPathFindingNode.geographicMapCellPosition;;

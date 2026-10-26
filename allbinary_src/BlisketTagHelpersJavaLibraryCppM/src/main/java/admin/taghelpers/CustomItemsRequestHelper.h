@@ -21,9 +21,9 @@
         #ifndef ADMIN_TAGHELPERS_CUSTOMITEMSREQUESTHELPER_H
         #define ADMIN_TAGHELPERS_CUSTOMITEMSREQUESTHELPER_H
 
-            #include "../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../java/lang/Long.h"
+            #include "java/lang/Long.h"
         
 #include <java/util/Calendar.h>
 
@@ -108,11 +108,11 @@ class CustomItemsRequestHelper: public ModifyTable {
 
     private: std::string lastModified;
 
-public: CustomItemsRequestHelper(HashMap<any, any> hashMap, PageContext pageContext);
+public: CustomItemsRequestHelper(HashMap<Object*, Object*> hashMap, PageContext pageContext);
 
     public: void getFormData();
 
-    private: HashMap<any, any> getHashMap();
+    private: HashMap<Object*, Object*> getHashMap();
 
     public: std::string insert();
 

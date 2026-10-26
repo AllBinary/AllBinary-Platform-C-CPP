@@ -21,7 +21,7 @@
         #ifndef ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_TEMPLATE_CUSTOMIZER_PAGE_PAGEVALIDATION_H
         #define ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_TEMPLATE_CUSTOMIZER_PAGE_PAGEVALIDATION_H
 
-            #include "../../../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
 
@@ -85,9 +85,9 @@ public: PageValidation();
 
 public: PageValidation(Document document);
 
-public: PageValidation(HashMap<any, any> hashMap);
+public: PageValidation(HashMap<Object*, Object*> hashMap);
 
-    public: void getFormData(HashMap<any, any> hashMap);
+    public: void getFormData(HashMap<Object*, Object*> hashMap);
 
     public: Boolean isValid();
 

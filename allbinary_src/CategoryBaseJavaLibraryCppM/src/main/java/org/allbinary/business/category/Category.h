@@ -21,11 +21,11 @@
         #ifndef ORG_ALLBINARY_BUSINESS_CATEGORY_CATEGORY_H
         #define ORG_ALLBINARY_BUSINESS_CATEGORY_CATEGORY_H
 
-            #include "../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../../java/lang/Integer.h"
+            #include "java/lang/Integer.h"
         
 #include <java/util/HashMap.h>
 
@@ -190,7 +190,7 @@ public: Category(CategoryInterface rootCategoryInterface, CategoryInterface pare
 
                 //@Throws(Exception.constructor)
             
-    public: HashMap<any, any> toHashMap();
+    public: HashMap<Object*, Object*> toHashMap();
 
                 //@Throws(Exception.constructor)
             

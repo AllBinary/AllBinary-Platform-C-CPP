@@ -21,9 +21,9 @@
         #ifndef ORG_ALLBINARY_GAME_LAYER_LAYERPLACEMENTTYPEFACTORY_H
         #define ORG_ALLBINARY_GAME_LAYER_LAYERPLACEMENTTYPEFACTORY_H
 
-            #include "../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../java/lang/Integer.h"
+            #include "java/lang/Integer.h"
         
 #include <org/allbinary/direction/DirectionFactory.h>
 

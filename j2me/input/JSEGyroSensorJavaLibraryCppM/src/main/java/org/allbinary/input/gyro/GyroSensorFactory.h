@@ -21,9 +21,9 @@
         #ifndef ORG_ALLBINARY_INPUT_GYRO_GYROSENSORFACTORY_H
         #define ORG_ALLBINARY_INPUT_GYRO_GYROSENSORFACTORY_H
 
-            #include "../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 
 

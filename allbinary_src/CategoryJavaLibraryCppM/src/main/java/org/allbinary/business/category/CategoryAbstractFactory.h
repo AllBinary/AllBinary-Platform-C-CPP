@@ -21,11 +21,11 @@
         #ifndef ORG_ALLBINARY_BUSINESS_CATEGORY_CATEGORYABSTRACTFACTORY_H
         #define ORG_ALLBINARY_BUSINESS_CATEGORY_CATEGORYABSTRACTFACTORY_H
 
-            #include "../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../../java/lang/RuntimeException.h"
+            #include "java/lang/RuntimeException.h"
         
 #include <java/util/HashMap.h>
 
@@ -94,7 +94,7 @@ public: CategoryAbstractFactory();
 
     public: CategoryInterface getInstance(CategoryInterface rootCategoryInterface, CategoryInterface parentCategoryInterface, Node node);
 
-    public: CategoryInterface getInstance(CategoryInterface rootCategoryInterface, CategoryInterface parentCategoryInterface, HashMap<any, any> categoryPropertiesHashMap);
+    public: CategoryInterface getInstance(CategoryInterface rootCategoryInterface, CategoryInterface parentCategoryInterface, HashMap<Object*, Object*> categoryPropertiesHashMap);
 
 };
 

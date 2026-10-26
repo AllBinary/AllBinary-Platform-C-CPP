@@ -20,11 +20,11 @@
 
             #include <vector>
         
-            #include "../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../../../java/lang/Long.h"
+            #include "java/lang/Long.h"
         
 #include <org/allbinary/logic/string/StringMaker.h>
 
@@ -340,7 +340,7 @@ FileUtil::getInstance().copy(path, backupAbPath);
 
         while(index < value.size())
         {
-index= value.indexOf(specialCharArray[0]!, lastIndex);
+index= value.indexOf(specialCharArray[0], lastIndex);
     
 
                         if(index !=  -1)

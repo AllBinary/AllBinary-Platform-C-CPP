@@ -18,11 +18,11 @@
 
 
 
-            #include "../java/lang/Class.h"
+            #include "java/lang/Class.h"
         
-            #include "../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../java/lang/Integer.h"
+            #include "java/lang/Integer.h"
         
 #include <java/lang/reflect/Method.h>
 
@@ -73,8 +73,9 @@ class StoreWorkFlowTag: public HelperTag {
 
     private: std::string viewFile;
 
-public: StoreWorkFlowTag(){
-            super(StoreTagWorkFlowHelperFactory());
+public: StoreWorkFlowTag() : HelperTag(StoreTagWorkFlowHelperFactory()){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -114,7 +115,7 @@ this->getPropertiesHashMap().put(TransformInfoData::getInstance().NAME, this->vi
                                     }
                                 
 
-    Function helperClass = this->getHelper().constructor;;
+    Class* helperClass = this->getHelper().getClass();;
     
 
     Method method = helperClass.getMethod(commonStrings.PROCESS, 
@@ -122,7 +123,7 @@ this->getPropertiesHashMap().put(TransformInfoData::getInstance().NAME, this->vi
     
 
     Integer result = method.invoke(this->getHelper(), 
-                            nullptr) as Integer;;
+                            nullptr);;
     
 
 

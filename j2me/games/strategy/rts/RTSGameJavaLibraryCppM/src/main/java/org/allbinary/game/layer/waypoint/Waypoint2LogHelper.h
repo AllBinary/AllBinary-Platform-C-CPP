@@ -21,7 +21,7 @@
         #ifndef ORG_ALLBINARY_GAME_LAYER_WAYPOINT_WAYPOINT2LOGHELPER_H
         #define ORG_ALLBINARY_GAME_LAYER_WAYPOINT_WAYPOINT2LOGHELPER_H
 
-            #include "../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
 #include <org/allbinary/game/layer/PathFindingLayerInterface.h>
 

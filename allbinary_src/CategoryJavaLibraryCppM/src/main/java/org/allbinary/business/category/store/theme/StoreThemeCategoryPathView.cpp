@@ -20,7 +20,7 @@
 
             #include <vector>
         
-            #include "../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/business/category/CategoryView.h>
 
@@ -65,8 +65,9 @@
 
 class StoreThemeCategoryPathView: public CategoryView, public DomNodeInterface {
 
-public: StoreThemeCategoryPathView(StoreThemeCategoryInterface categoryInterface){
-            super(categoryInterface as StoreThemeCategoryInterface);
+public: StoreThemeCategoryPathView(StoreThemeCategoryInterface categoryInterface) : CategoryView(categoryInterface){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -81,7 +82,7 @@ public: StoreThemeCategoryPathView(StoreThemeCategoryInterface categoryInterface
     Node node = super.toXmlNode(document);;
     
 
-    StoreThemeCategoryInterface storeThemeCategoryInterface = this->getCategoryInterface() as StoreThemeCategoryInterface;;
+    StoreThemeCategoryInterface storeThemeCategoryInterface = this->getCategoryInterface();;
     
 
     std::vector<Object*> themeArray = storeThemeCategoryInterface.getThemes().toArray();;
@@ -97,10 +98,10 @@ public: StoreThemeCategoryPathView(StoreThemeCategoryInterface categoryInterface
     int32_t i = 0;i < size; i++)
         {
 
-    ThemeValidation themeValidation = themeArray[i]! as ThemeValidation;;
+    ThemeValidation themeValidation = themeArray[i];;
     
 
-    DomNodeInterface domNodeInterface = ThemePropertiesView(themeValidation as ThemeInterface) as DomNodeInterface;;
+    DomNodeInterface domNodeInterface = ThemePropertiesView(themeValidation);;
     
 node.appendChild(domNodeInterface.toXmlNode(document));
     

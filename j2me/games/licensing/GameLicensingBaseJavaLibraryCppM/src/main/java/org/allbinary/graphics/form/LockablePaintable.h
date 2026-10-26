@@ -21,7 +21,7 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_FORM_LOCKABLEPAINTABLE_H
         #define ORG_ALLBINARY_GRAPHICS_FORM_LOCKABLEPAINTABLE_H
 
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <javax/microedition/lcdui/Graphics.h>
 

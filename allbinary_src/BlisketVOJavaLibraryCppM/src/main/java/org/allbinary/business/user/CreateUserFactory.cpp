@@ -18,9 +18,9 @@
 
 
 
-            #include "../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
 
@@ -63,7 +63,7 @@ class CreateUserFactory
 
                 //@Throws(Exception.constructor)
             
-    public: static UserInterface getInstance(HashMap<any, any> hashMap){
+    public: static UserInterface getInstance(HashMap<Object*, Object*> hashMap){
 
                         if(hashMap != 
                                     nullptr
@@ -71,7 +71,7 @@ class CreateUserFactory
                         
                                     {
                                     
-    std::string roleString = hashMap.get(UserRoleData::NAME.toString()) as string;;
+    std::string roleString = hashMap.get(UserRoleData::NAME.toString());;
     
 
                         if(!StringValidationUtil::getInstance().isEmpty(roleString))

@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/data/tree/dom/DomNodeInterface.h>
 
@@ -59,8 +59,9 @@
 
 class TransformInfoDomNodeView: public TransformInfoDomNode, public DomNodeInterface {
 
-public: TransformInfoDomNodeView(TransformInfoInterface transformInfoInterface, std::string mapping){
-            super(transformInfoInterface, mapping);
+public: TransformInfoDomNodeView(TransformInfoInterface transformInfoInterface, std::string mapping) : TransformInfoDomNode(transformInfoInterface, mapping){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -68,8 +69,9 @@ public: TransformInfoDomNodeView(TransformInfoInterface transformInfoInterface, 
 }
 
 
-public: TransformInfoDomNodeView(TransformInfoInterface transformInfoInterface){
-            super(transformInfoInterface);
+public: TransformInfoDomNodeView(TransformInfoInterface transformInfoInterface) : TransformInfoDomNode(transformInfoInterface){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -77,8 +79,9 @@ public: TransformInfoDomNodeView(TransformInfoInterface transformInfoInterface){
 }
 
 
-public: TransformInfoDomNodeView(std::string name, std::string mappedName){
-            super(name, mappedName);
+public: TransformInfoDomNodeView(std::string name, std::string mappedName) : TransformInfoDomNode(name, mappedName){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -86,9 +89,10 @@ public: TransformInfoDomNodeView(std::string name, std::string mappedName){
 }
 
 
-public: TransformInfoDomNodeView(std::string name){
-            super(name, 
-                            nullptr);
+public: TransformInfoDomNodeView(std::string name) : TransformInfoDomNode(name, 
+                            nullptr){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.

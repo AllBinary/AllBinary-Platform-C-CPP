@@ -20,9 +20,9 @@
 
             #include <vector>
         
-            #include "../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <javax/microedition/lcdui/game/SimpleTiledLayer.h>
 
@@ -134,11 +134,11 @@ this->currentIndex= 0;
 
     int32_t columns = simpleTiledLayer.getColumns();;
     
-this->stationaryVisibleCellPositions= new Array(rows).fill(null).map(() => new Array(columns).fill(0));
+this->stationaryVisibleCellPositions= std::vector<std::vector<int16_t>>(rows, std::vector<int16_t>(columns));
     
-this->visibleCellPositions= new Array(rows).fill(null).map(() => new Array(columns).fill(0));
+this->visibleCellPositions= std::vector<std::vector<int16_t>>(rows, std::vector<int16_t>(columns));
     
-this->currentlyVisibleCellPositions= new Array(rows).fill(null).map(() => new Array(columns).fill(0));
+this->currentlyVisibleCellPositions= std::vector<std::vector<int16_t>>(rows, std::vector<int16_t>(columns));
     
 this->setSimpleTiledLayer(simpleTiledLayer);
     
@@ -176,9 +176,9 @@ this->move(scrollMapEvent.getDx(), scrollMapEvent.getDy());
     int32_t index = list.size() -1;index >= 0; index--)
         {
 
-    CellPosition cellPosition = list.get(index) as CellPosition;;
+    CellPosition cellPosition = list.get(index);;
     
-this->stationaryVisibleCellPositions[cellPosition.getRow()]![cellPosition.getColumn()]++;
+this->stationaryVisibleCellPositions[cellPosition.getRow()][cellPosition.getColumn()]++;
     
 }
 
@@ -194,9 +194,9 @@ this->stationaryVisibleCellPositions[cellPosition.getRow()]![cellPosition.getCol
     int32_t index = list.size() -1;index >= 0; index--)
         {
 
-    CellPosition cellPosition = list.get(index) as CellPosition;;
+    CellPosition cellPosition = list.get(index);;
     
-this->stationaryVisibleCellPositions[cellPosition.getRow()]![cellPosition.getColumn()]--;
+this->stationaryVisibleCellPositions[cellPosition.getRow()][cellPosition.getColumn()]--;
     
 }
 
@@ -227,9 +227,9 @@ this->visibleCellPositions= temp;
 
 
                         for (
-    int32_t index2 = this->visibleCellPositions[0]!.size() -1;index2 >= 0; index2--)
+    int32_t index2 = this->visibleCellPositions[0].size() -1;index2 >= 0; index2--)
         {
-this->visibleCellPositions[index]![index2]= this->stationaryVisibleCellPositions[index]![index2]!;
+this->visibleCellPositions[index][index2]= this->stationaryVisibleCellPositions[index][index2];
     
 }
 
@@ -288,9 +288,9 @@ this->currentIndex++;
     int32_t index = list.size() -1;index >= 0; index--)
         {
 
-    CellPosition cellPosition = list.get(index) as CellPosition;;
+    CellPosition cellPosition = list.get(index);;
     
-this->visibleCellPositions[cellPosition.getRow()]![cellPosition.getColumn()]++;
+this->visibleCellPositions[cellPosition.getRow()][cellPosition.getColumn()]++;
     
 }
 
@@ -299,7 +299,7 @@ this->visibleCellPositions[cellPosition.getRow()]![cellPosition.getColumn()]++;
 
     public: bool isVisible(CellPosition cellPosition){
 
-                        if(this->visibleCellPositions[cellPosition.getRow()]![cellPosition.getColumn()] > 0)
+                        if(this->visibleCellPositions[cellPosition.getRow()][cellPosition.getColumn()] > 0)
                         
                                     {
                                     

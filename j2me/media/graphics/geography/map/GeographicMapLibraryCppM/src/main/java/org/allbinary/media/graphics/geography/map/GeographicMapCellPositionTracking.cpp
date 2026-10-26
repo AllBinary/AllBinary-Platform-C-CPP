@@ -18,9 +18,9 @@
 
 
 
-            #include "../../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/game/displayable/canvas/AllBinaryGameCanvasInterface.h>
 
@@ -100,7 +100,7 @@ public: GeographicMapCellPositionTracking(){
                         
                                     {
                                     
-    GeographicMapCompositeInterface geographicMapCompositeInterface = gameCanvasInterface.getLayerManager() as GeographicMapCompositeInterface;;
+    GeographicMapCompositeInterface geographicMapCompositeInterface = gameCanvasInterface.getLayerManager();;
     
 
     BasicGeographicMap geographicMapInterface = geographicMapCompositeInterface.getGeographicMapInterface()[0];;

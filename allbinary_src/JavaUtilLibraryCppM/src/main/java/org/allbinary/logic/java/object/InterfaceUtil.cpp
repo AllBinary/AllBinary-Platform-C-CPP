@@ -20,9 +20,9 @@
 
             #include <vector>
         
-            #include "../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../java/lang/Class.h"
+            #include "java/lang/Class.h"
         
 #include <org/allbinary/logic/string/StringMaker.h>
 
@@ -53,12 +53,12 @@ class InterfaceUtil
             : public Object
          {
 
-    public: static std::string viewAll(Function myClass, std::string lineBreak){
+    public: static std::string viewAll(Class* myClass, std::string lineBreak){
 
     StringMaker stringBuffer = StringMaker();;
     
 
-    std::vector<Function> interfaces = myClass.getInterfaces();;
+    std::vector<Class*> interfaces = myClass.getInterfaces();;
     
 stringBuffer.append(lineBreak);
     
@@ -75,7 +75,7 @@ stringBuffer.append(lineBreak);
         {
 stringBuffer.append("Interface: ");
     
-stringBuffer.append(interfaces[index]!.getName());
+stringBuffer.append(interfaces[index].getName());
     
 stringBuffer.append(lineBreak);
     
@@ -90,7 +90,7 @@ stringBuffer.append(lineBreak);
 }
 
 
-    public: static Function constructor(std::string interfaceName, std::vector<Function> interfaces){
+    public: static Class* getClass()(std::string interfaceName, std::vector<Class*> interfaces){
 
                         if(true && interfaces != 
                                     nullptr
@@ -105,14 +105,14 @@ stringBuffer.append(lineBreak);
     int32_t index = 0;index < interfaces.size(); index++)
         {
 
-                        if(interfaces[index]!.getName().indexOf(interfaceName) >= 0)
+                        if(interfaces[index].getName().indexOf(interfaceName) >= 0)
                         
                                     {
                                     
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return interfaces[index]!;
+                        return interfaces[index];
     
 
                                     }
@@ -131,9 +131,9 @@ stringBuffer.append(lineBreak);
 }
 
 
-    public: static bool isImplemented(Function clazz, Object* anyType){
+    public: static bool isImplemented(Class* clazz, Object* anyType){
 
-    std::vector<Function> classes = anyType->constructor.name.getInterfaces();;
+    std::vector<Class*> classes = anyType->constructor.name.getInterfaces();;
     
 
 
@@ -143,7 +143,7 @@ stringBuffer.append(lineBreak);
     int32_t index = 0;index < classes.size(); index++)
         {
 
-                        if(clazz.toString()!.compareTo(classes[index]!.getName()) == 0)
+                        if(clazz.toString().compareTo(classes[index].getName()) == 0)
                         
 
 
@@ -163,7 +163,7 @@ stringBuffer.append(lineBreak);
 
     public: static bool isImplemented(std::string className, Object* anyType){
 
-    std::vector<Function> classes = anyType->constructor.name.getInterfaces();;
+    std::vector<Class*> classes = anyType->constructor.name.getInterfaces();;
     
 
 
@@ -173,7 +173,7 @@ stringBuffer.append(lineBreak);
     int32_t index = 0;index < classes.size(); index++)
         {
 
-                        if(classes[index]!.getName().indexOf(className) == 0)
+                        if(classes[index].getName().indexOf(className) == 0)
                         
                                     {
                                     
@@ -196,12 +196,12 @@ stringBuffer.append(lineBreak);
 }
 
 
-    public: static std::string isImplementedView(Function clazz, Object* anyType){
+    public: static std::string isImplementedView(Class* clazz, Object* anyType){
 
     StringMaker stringBuffer = StringMaker();;
     
 
-    std::vector<Function> classes = anyType->constructor.name.getInterfaces();;
+    std::vector<Class*> classes = anyType->constructor.name.getInterfaces();;
     
 stringBuffer.append("isImplementedView: \n");
     
@@ -212,13 +212,13 @@ stringBuffer.append("isImplementedView: \n");
                         for (
     int32_t index = 0;index < classes.size(); index++)
         {
-stringBuffer.append(clazz.toString()!);
+stringBuffer.append(clazz.toString());
     
 stringBuffer.append(" should be = ");
     
-stringBuffer.append(classes[index]!.getName());
+stringBuffer.append(classes[index].getName());
     
-stringBuffer.append(classes[index]!.getName());
+stringBuffer.append(classes[index].getName());
     
 stringBuffer.append(CommonSeps::getInstance().NEW_LINE);
     

@@ -18,7 +18,7 @@
 
 
 
-            #include "../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/io/InputStream.h>
 
@@ -75,13 +75,14 @@ class CompoundTransform: public AbTransformer {
 
     private: const AbeClientInformationInterface abeClientInformation = ServiceClientInformationInterfaceFactory::getInstance();
 
-public: CompoundTransform(TransformInfoInterface transformInfoInterface){
-            super(transformInfoInterface);
+public: CompoundTransform(TransformInfoInterface transformInfoInterface) : AbTransformer(transformInfoInterface){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this->setURIResolver(StoreUriResolver(this->getTransformInfoInterface(), this->getURIResolver() as BasicUriResolver) as URIResolver);
+this->setURIResolver(StoreUriResolver(this->getTransformInfoInterface(), this->getURIResolver()));
     
 
     CompoundContextTransformInfoObjectConfig objectConfig = CompoundContextTransformInfoObjectConfig(this->abeClientInformation, this->getTransformInfoInterface(), this->getTransformInfoInterface().getObjectConfigInterface().toXmlDoc());;

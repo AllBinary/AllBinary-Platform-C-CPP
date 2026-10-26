@@ -21,12 +21,9 @@
         #ifndef ORG_ALLBINARY_LOGIC_SYSTEM_SECURITY_LICENSING_CLIENT_XMLRPCABELICENSERETRIEVALCLIENT_H
         #define ORG_ALLBINARY_LOGIC_SYSTEM_SECURITY_LICENSING_CLIENT_XMLRPCABELICENSERETRIEVALCLIENT_H
 
-            #include "../../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/io/IOException.h>
-
-      
-#include <java/util/Hashtable.h>
 
       
 #include <org/allbinary/util/BasicArrayList.h>
@@ -36,9 +33,6 @@
 
       
 #include <org/allbinary/init/crypt/jcehelper/CryptInterface.h>
-
-      
-#include <org/allbinary/logic/StdUtil.h>
 
       
 #include <org/allbinary/logic/communication/log/LogUtil.h>
@@ -63,6 +57,9 @@
 
       
 #include <org/allbinary/string/CommonLabels.h>
+
+      
+#include <org/allbinary/util/ABHashtable.h>
 
       
 #include <org/apache/xmlrpc/XmlRpcClient.h>

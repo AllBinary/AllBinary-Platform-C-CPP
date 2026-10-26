@@ -20,9 +20,9 @@
 
             #include <vector>
         
-            #include "../../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/logic/NullUtil.h>
 
@@ -90,7 +90,7 @@ class DatabaseEncoder
                         for (
     int32_t index = 0;index < array.size(); index++)
         {
-stringBuffer.append(Number(array[index]!).toString());
+stringBuffer.append(Number(array[index]).toString());
     
 
                         if(index < array.size() -1)
@@ -154,14 +154,14 @@ PreLogUtil::putOE(commonStrings.EXCEPTION, "DatabaseEncoder", "decode", e);
                         for (
     int32_t index = 0;index < size; index++)
         {
-byteOfData= vector.objectArray[index]! as string;
+byteOfData= vector.objectArray[index];
     
 byteVector.add(Number(byteOfData));
     
 }
 
 
-    std::vector<int8_t> decode = new Array(byteVector.size());;
+    std::vector<int8_t> decode = std::vector<int8_t>(byteVector.size());;
     
 
     int32_t decodeIndex = 0;;
@@ -176,7 +176,7 @@ byteVector.add(Number(byteOfData));
                         for (
     int32_t index = 0;index < size; index++)
         {
-aByte= byteVector.objectArray[index]! as number;
+aByte= byteVector.objectArray[index];
     
 decode[decodeIndex]= aByte;
     

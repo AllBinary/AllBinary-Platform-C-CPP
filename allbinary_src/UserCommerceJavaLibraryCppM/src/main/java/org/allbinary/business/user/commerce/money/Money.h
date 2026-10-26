@@ -21,11 +21,11 @@
         #ifndef ORG_ALLBINARY_BUSINESS_USER_COMMERCE_MONEY_MONEY_H
         #define ORG_ALLBINARY_BUSINESS_USER_COMMERCE_MONEY_MONEY_H
 
-            #include "../../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../../java/lang/Long.h"
+            #include "java/lang/Long.h"
         
-            #include "../../../../../../java/lang/Float.h"
+            #include "java/lang/Float.h"
         
 #include <org/allbinary/logic/io/path/AbPathData.h>
 

@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/business/init/db/DbConnectionInfo.h>
 
@@ -60,8 +60,9 @@ class AbSqlTable: public AbSqlBasic {
 
     private: const std::string DROPPED_SUCCESS = " Dropped Successfully";
 
-public: AbSqlTable(DbConnectionInfo databaseConnectionInfoInterface){
-            super(databaseConnectionInfoInterface);
+public: AbSqlTable(DbConnectionInfo databaseConnectionInfoInterface) : AbSqlBasic(databaseConnectionInfoInterface){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.

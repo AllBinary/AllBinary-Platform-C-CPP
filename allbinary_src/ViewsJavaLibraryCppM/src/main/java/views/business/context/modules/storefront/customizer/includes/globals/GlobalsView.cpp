@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/data/tree/dom/DomNodeInterface.h>
 
@@ -66,8 +66,9 @@ class GlobalsView: public HttpStoreComponentView, public DomNodeInterface {
 
     protected: GlobalsValidation globalsValidation;
 
-public: GlobalsView(TransformInfoInterface transformInfoInterface){
-            super(transformInfoInterface);
+public: GlobalsView(TransformInfoInterface transformInfoInterface) : HttpStoreComponentView(transformInfoInterface){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -78,7 +79,7 @@ this->globalsValidation= GlobalsValidation(this->getWeblisketSession().getStoreN
 
 
     public: void addDomNodeInterfaces(){
-this->addDomNodeInterface(this->globalsValidation as DomNodeInterface);
+this->addDomNodeInterface(this->globalsValidation);
     
 }
 

@@ -21,7 +21,7 @@
         #ifndef ORG_ALLBINARY_MEDIA_IMAGE_COMPARISON_IMAGECOMPARATORCONSTRAINTSINTERFACE_H
         #define ORG_ALLBINARY_MEDIA_IMAGE_COMPARISON_IMAGECOMPARATORCONSTRAINTSINTERFACE_H
 
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/awt.h>
 

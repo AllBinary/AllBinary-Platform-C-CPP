@@ -20,9 +20,9 @@
 
             #include <vector>
         
-            #include "../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/io/InputStream.h>
 
@@ -195,7 +195,7 @@ this->write(inputStream, dataOutputStream);
     public: void write(InputStream inputStream, AbDataOutputStream dataOutputStream){
 
         try {
-            dataOutputStream= StreamUtil::getInstance().get(inputStream, dataOutputStream, new Array(16384)) as AbDataOutputStream;
+            dataOutputStream= StreamUtil::getInstance().get(inputStream, dataOutputStream, std::vector<int8_t>(16384));
     
 dataOutputStream.flush();
     
@@ -214,7 +214,7 @@ dataOutputStream.flush();
     public: void write(InputStream inputStream, AbDataOutputStream dataOutputStream, std::vector<int8_t> buffer){
 
         try {
-            dataOutputStream= StreamUtil::getInstance().get(inputStream, dataOutputStream, buffer) as AbDataOutputStream;
+            dataOutputStream= StreamUtil::getInstance().get(inputStream, dataOutputStream, buffer);
     
 dataOutputStream.flush();
     
@@ -233,7 +233,7 @@ dataOutputStream.flush();
     private: void copy(AbFileInputStream dataInputStream, AbDataOutputStream dataOutputStream){
 
         try {
-            dataOutputStream= StreamUtil::getInstance().get(dataInputStream, dataOutputStream, new Array(16384)) as AbDataOutputStream;
+            dataOutputStream= StreamUtil::getInstance().get(dataInputStream, dataOutputStream, std::vector<int8_t>(16384));
     
 dataOutputStream.flush();
     
@@ -782,7 +782,7 @@ stringBuffer.appendint(end);
                         for (
     int32_t index = start;index < end; index++)
         {
-nextFile= fileList.get(index) as AbFile;
+nextFile= fileList.get(index);
     
 
                         if(nextFile.isDirectory())
@@ -906,7 +906,7 @@ this->logUtil.putF(stringBuffer.toString(), getInstance(), "copyDirectory");
                         for (
     int32_t index = 0;index < size; index++)
         {
-file= fileArray[index]!;
+file= fileArray[index];
     
 
                         if(file.isFile())
@@ -1260,7 +1260,7 @@ this->logUtil.put(stringBuffer.toString(), getInstance(), COPY, e);
                         for (
     int32_t index = 0;index < size; index++)
         {
-skipFile= skipFiles[index]!;
+skipFile= skipFiles[index];
     
 
                         if(file.getPath().compareTo(skipFile) == 0)

@@ -21,7 +21,7 @@
         #ifndef VIEWS_ADMIN_INVENTORY_ADDFILEVALIDATIONVIEW_H
         #define VIEWS_ADMIN_INVENTORY_ADDFILEVALIDATIONVIEW_H
 
-            #include "../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/business/context/modules/storefront/StoreFrontFactory.h>
 
@@ -68,9 +68,6 @@
 #include <org/allbinary/logic/io/path/AbPathData.h>
 
       
-#include <org/allbinary/logic/io/path/PathUtil.h>
-
-      
 #include <org/allbinary/logic/string/StringMaker.h>
 
       
@@ -81,6 +78,9 @@
 
       
 #include <org/allbinary/logic/visual/transform/info/TransformInfoInterface.h>
+
+      
+#include <org/allbinary/string/CommonLabels.h>
 
       
 #include <org/apache/commons/fileupload/FileItem.h>
@@ -116,7 +116,7 @@ class AddFileValidationView: public InventoryItemView, public ValidationComponen
 
     private: static const std::string ADDPRODUCT = "Add Product";
 
-    private: static const std::string NEXTSTEP = "Next Step";
+    private: static const std::string NEXTSTEP = CommonLabels::getInstance().NEXT +" Step";
 
     protected: const LogUtil logUtil = LogUtil::getInstance();
 

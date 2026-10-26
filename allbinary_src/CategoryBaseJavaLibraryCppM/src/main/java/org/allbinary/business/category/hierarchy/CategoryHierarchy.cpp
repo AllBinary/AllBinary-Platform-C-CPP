@@ -18,9 +18,9 @@
 
 
 
-            #include "../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../java/lang/Integer.h"
+            #include "java/lang/Integer.h"
         
 #include <java/util/HashMap.h>
 
@@ -84,9 +84,9 @@ this->setParent(parentCategoryInterface);
 }
 
 
-public: CategoryHierarchy(CategoryInterface rootCategoryInterface, CategoryInterface parentCategoryInterface, HashMap<any, any> categoryPropertiesHashMap){
+public: CategoryHierarchy(CategoryInterface rootCategoryInterface, CategoryInterface parentCategoryInterface, HashMap<Object*, Object*> categoryPropertiesHashMap){
 
-    std::string levelString = StringUtil::getInstance().getNonNull(categoryPropertiesHashMap.get(CategoryData::getInstance().LEVEL) as string);;
+    std::string levelString = StringUtil::getInstance().getNonNull(categoryPropertiesHashMap.get(CategoryData::getInstance().LEVEL));;
     
 this->level= Integer::valueOf(levelString).intValue();
     

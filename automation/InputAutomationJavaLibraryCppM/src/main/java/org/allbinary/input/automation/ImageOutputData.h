@@ -21,9 +21,9 @@
         #ifndef ORG_ALLBINARY_INPUT_AUTOMATION_IMAGEOUTPUTDATA_H
         #define ORG_ALLBINARY_INPUT_AUTOMATION_IMAGEOUTPUTDATA_H
 
-            #include "../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../java/lang/System.h"
+            #include "java/lang/System.h"
         
 #include <org/allbinary/logic/io/file/FilePathData.h>
 

@@ -18,9 +18,9 @@
 
 
 
-            #include "../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/util/BasicArrayList.h>
 
@@ -114,9 +114,9 @@ this->init();
     public: void init(){
 this->geographicMapCellPathHistoryInfo= GeographicMapCellPathHistoryInfo();
     
-this->geographicMapCellPathHistoryInfo.setPreviousOnPathGeographicMapCellPosition(this->geographicMapCellPositionBasicArrayList.get(this->geographicMapCellPositionBasicArrayList.size() -1) as GeographicMapCellPosition);
+this->geographicMapCellPathHistoryInfo.setPreviousOnPathGeographicMapCellPosition(this->geographicMapCellPositionBasicArrayList.get(this->geographicMapCellPositionBasicArrayList.size() -1));
     
-this->geographicMapCellPathHistoryInfo.setNextOnPathGeographicMapCellPosition(this->geographicMapCellPositionBasicArrayList.get(this->geographicMapCellPositionBasicArrayList.size() -1) as GeographicMapCellPosition);
+this->geographicMapCellPathHistoryInfo.setNextOnPathGeographicMapCellPosition(this->geographicMapCellPositionBasicArrayList.get(this->geographicMapCellPositionBasicArrayList.size() -1));
     
 this->update();
     

@@ -21,7 +21,7 @@
         #ifndef ORG_ALLBINARY_THREAD_IMAGETHREADPOOL_H
         #define ORG_ALLBINARY_THREAD_IMAGETHREADPOOL_H
 
-            #include "../../../java/lang/Runnable.h"
+            #include "java/lang/Runnable.h"
         
 #include <org/allbinary/string/CommonLabels.h>
 

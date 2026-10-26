@@ -49,8 +49,9 @@
 
 class AutoSearchValidationInventoryView: public InventorySearch {
 
-public: AutoSearchValidationInventoryView(SearchRequest searchRequest){
-            super(searchRequest);
+public: AutoSearchValidationInventoryView(SearchRequest searchRequest) : InventorySearch(searchRequest){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.

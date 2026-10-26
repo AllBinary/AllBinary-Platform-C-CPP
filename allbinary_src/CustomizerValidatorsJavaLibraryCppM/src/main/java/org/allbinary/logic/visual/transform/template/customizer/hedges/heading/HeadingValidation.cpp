@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
 
@@ -112,7 +112,7 @@ this->logo= LogoValidation(logoNode);
 }
 
 
-public: HeadingValidation(HashMap<any, any> hashMap){
+public: HeadingValidation(HashMap<Object*, Object*> hashMap){
 this->getFormData(hashMap);
     
 }
@@ -120,7 +120,7 @@ this->getFormData(hashMap);
 
                 //@Throws(Exception.constructor)
             
-    public: void getFormData(HashMap<any, any> hashMap){
+    public: void getFormData(HashMap<Object*, Object*> hashMap){
 this->title= TitleValidation(hashMap);
     
 this->logo= LogoValidation(hashMap);

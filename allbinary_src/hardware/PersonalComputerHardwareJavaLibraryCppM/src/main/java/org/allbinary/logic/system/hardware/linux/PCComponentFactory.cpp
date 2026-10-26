@@ -18,9 +18,9 @@
 
 
 
-            #include "../../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/logic/communication/log/LogUtil.h>
 
@@ -115,105 +115,105 @@ private: PCComponentFactory(){
                         
                                     {
                                     
-                        if(component.compareTo(this->componentFactory.ETHERNET.toString()) == 0)
+                        if(component.compare(this->componentFactory.ETHERNET.toString()) == 0)
                         
                                     {
                                     
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return Ethernet(componentData) as HardwareComponentInterface;
+                        return Ethernet(componentData);
     
 
                                     }
                                 
                              else 
-                        if(component.compareTo(this->componentFactory.BRIDGE.toString()) == 0)
+                        if(component.compare(this->componentFactory.BRIDGE.toString()) == 0)
                         
                                     {
                                     
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return Bridge(componentData) as HardwareComponentInterface;
+                        return Bridge(componentData);
     
 
                                     }
                                 
                              else 
-                        if(component.compareTo(this->componentFactory.IDE.toString()) == 0)
+                        if(component.compare(this->componentFactory.IDE.toString()) == 0)
                         
                                     {
                                     
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return HardDriveController(componentData) as HardwareComponentInterface;
+                        return HardDriveController(componentData);
     
 
                                     }
                                 
                              else 
-                        if(component.compareTo(this->componentFactory.MULTIMEDIA.toString()) == 0)
+                        if(component.compare(this->componentFactory.MULTIMEDIA.toString()) == 0)
                         
                                     {
                                     
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return Media(componentData) as HardwareComponentInterface;
+                        return Media(componentData);
     
 
                                     }
                                 
                              else 
-                        if(component.compareTo(this->componentFactory.SCSI.toString()) == 0)
+                        if(component.compare(this->componentFactory.SCSI.toString()) == 0)
                         
                                     {
                                     
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return HardDriveController(componentData) as HardwareComponentInterface;
+                        return HardDriveController(componentData);
     
 
                                     }
                                 
                              else 
-                        if(component.compareTo(this->componentFactory.USB.toString()) == 0)
+                        if(component.compare(this->componentFactory.USB.toString()) == 0)
                         
                                     {
                                     
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return Usb(componentData) as HardwareComponentInterface;
+                        return Usb(componentData);
     
 
                                     }
                                 
                              else 
-                        if(component.compareTo(this->componentFactory.VGA.toString()) == 0)
+                        if(component.compare(this->componentFactory.VGA.toString()) == 0)
                         
                                     {
                                     
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return Video(componentData) as HardwareComponentInterface;
+                        return Video(componentData);
     
 
                                     }
                                 
                              else 
-                        if(component.compareTo(this->componentFactory.PCI.toString()) == 0)
+                        if(component.compare(this->componentFactory.PCI.toString()) == 0)
                         
                                     {
                                     
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return PCI(componentData) as HardwareComponentInterface;
+                        return PCI(componentData);
     
 
                                     }
@@ -225,7 +225,7 @@ private: PCComponentFactory(){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return Unknown(componentData) as HardwareComponentInterface;
+                        return Unknown(componentData);
     
 
                 //: 
@@ -347,7 +347,7 @@ private: PCComponentFactory(){
                                     }
                                 
                              else 
-                        if(component.compareTo(this->componentFactory.PCI.toString()) == 0)
+                        if(component.compare(this->componentFactory.PCI.toString()) == 0)
                         
                                     {
                                     

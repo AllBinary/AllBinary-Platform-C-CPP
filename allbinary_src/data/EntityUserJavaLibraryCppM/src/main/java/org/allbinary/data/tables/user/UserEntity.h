@@ -21,9 +21,9 @@
         #ifndef ORG_ALLBINARY_DATA_TABLES_USER_USERENTITY_H
         #define ORG_ALLBINARY_DATA_TABLES_USER_USERENTITY_H
 
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../../../java/lang/Integer.h"
+            #include "java/lang/Integer.h"
         
 #include <java/util/HashMap.h>
 
@@ -160,7 +160,7 @@ public: UserEntity();
 
     public: std::string login(std::string userName, std::string password);
 
-    public: void update(std::string userName, HashMap<any, any> updatedValues);
+    public: void update(std::string userName, HashMap<Object*, Object*> updatedValues);
 
     public: std::string dropTables();
 

@@ -20,9 +20,9 @@
 
             #include <vector>
         
-            #include "../../../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../../../java/lang/Integer.h"
+            #include "java/lang/Integer.h"
         
 #include <org/allbinary/logic/math/SmallIntegerSingletonFactory.h>
 
@@ -84,7 +84,7 @@ public: BasicPlatormGeographicMapCellType(BasicArrayList types){
     int32_t size = types.size();;
     
 
-    std::vector<int32_t> typeArray = new Array(size);;
+    std::vector<int32_t> typeArray = std::vector<int32_t>(size);;
     
 
     Integer typeAsInteger;;
@@ -99,7 +99,7 @@ public: BasicPlatormGeographicMapCellType(BasicArrayList types){
                         for (
     int32_t index = 0;index < size; index++)
         {
-typeAsInteger= (types.get(index) as Integer);
+typeAsInteger= (types.get(index));
     
 type= typeAsInteger.intValue();
     

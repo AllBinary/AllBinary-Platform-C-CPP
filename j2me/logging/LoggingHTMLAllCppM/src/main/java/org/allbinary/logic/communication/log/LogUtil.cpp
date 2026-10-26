@@ -18,9 +18,9 @@
 
 
 
-            #include "../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../java/lang/Throwable.h"
+            #include "java/lang/Throwable.h"
         
 #include <org/allbinary/string/CommonStrings.h>
 
@@ -144,7 +144,7 @@ PlayN::log().debug(this->LOG_SUCCESS +message);
                                 )
                         
                                     {
-                                    PlayN::log().error(this->LOG_SUCCESS +message, exception as Throwable);
+                                    PlayN::log().error(this->LOG_SUCCESS +message, *dynamic_cast<Throwable*>(exception));
     
 
                                     }

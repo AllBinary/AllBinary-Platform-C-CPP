@@ -21,15 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_CONFIGURATION_GAMECONFIGURATION_H
         #define ORG_ALLBINARY_GAME_CONFIGURATION_GAMECONFIGURATION_H
 
-            #include "../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../../java/lang/Integer.h"
+            #include "java/lang/Integer.h"
         
-#include <jsinterop/annotations/JsType.h>
-
-      
 #include <org/allbinary/game/configuration/event/GameFeatureEvent.h>
 
       
@@ -46,12 +43,6 @@
 
       
 #include <org/allbinary/logic/string/StringUtil.h>
-
-      
-#include <jsinterop/annotations/JsMethod.h>
-
-      
-#include <jsinterop/annotations/JsConstructor.h>
 
       
 

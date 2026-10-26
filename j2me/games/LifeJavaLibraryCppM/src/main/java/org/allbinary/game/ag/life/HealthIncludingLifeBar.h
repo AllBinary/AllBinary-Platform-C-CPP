@@ -21,7 +21,7 @@
         #ifndef ORG_ALLBINARY_GAME_AG_LIFE_HEALTHINCLUDINGLIFEBAR_H
         #define ORG_ALLBINARY_GAME_AG_LIFE_HEALTHINCLUDINGLIFEBAR_H
 
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <javax/microedition/lcdui/Graphics.h>
 
@@ -69,6 +69,10 @@
 
 class HealthIncludingLifeBar: public Paintable, public HealthListenerInterface {
 
+                //@Throws(Exception.constructor)
+            
+    public: static HealthIncludingLifeBar createHealthIncludingLifeBar(AllBinaryLayer layerInterface, Life life, Health healthInterface, int32_t location, int32_t direction);
+
     private: HealthBarAnimation animationInterface;
 
     private: Life life;
@@ -78,8 +82,6 @@ class HealthIncludingLifeBar: public Paintable, public HealthListenerInterface {
     protected: AllBinaryLayer allbinaryLayer;
 
 public: HealthIncludingLifeBar(AllBinaryLayer layerInterface, Life life, Health healthInterface, HealthBarAnimation animationInterface, int32_t direction);
-
-public: HealthIncludingLifeBar(AllBinaryLayer layerInterface, Life life, Health healthInterface, int32_t location, int32_t direction);
 
     public: void onHealthChange();
 

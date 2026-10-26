@@ -21,15 +21,12 @@
         #ifndef ORG_ALLBINARY_THREAD_THREADFACTORYUTIL_H
         #define ORG_ALLBINARY_THREAD_THREADFACTORYUTIL_H
 
-            #include "../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../java/lang/Thread.h"
+            #include "java/lang/Thread.h"
         
-            #include "../../../java/lang/Runnable.h"
+            #include "java/lang/Runnable.h"
         
-#include <jsinterop/annotations/JsType.h>
-
-      
 #include <org/allbinary/J2MEUtil.h>
 
       
@@ -61,12 +58,6 @@
 
       
 #include <org/allbinary/string/CommonStrings.h>
-
-      
-#include <jsinterop/annotations/JsMethod.h>
-
-      
-#include <jsinterop/annotations/JsProperty.h>
 
       
 

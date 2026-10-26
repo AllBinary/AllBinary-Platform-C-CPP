@@ -18,19 +18,10 @@
 
 
 
-#include <jsinterop/annotations/JsType.h>
-
-      
 #include <org/allbinary/logic/system/security/licensing/ClientInformationFactory.h>
 
       
 #include <org/allbinary/logic/system/security/licensing/LicenseServerInitFileUtil.h>
-
-      
-#include <jsinterop/annotations/JsMethod.h>
-
-      
-#include <jsinterop/annotations/JsConstructor.h>
 
       
 
@@ -58,8 +49,9 @@
 
 class SpecialDemoGameMidlet: public DemoGameMidlet {
 
-public: SpecialDemoGameMidlet(ClientInformationFactory clientInformationFactory, LicenseLoadingType licenseLoadingType, LicensedDemoSetupFactory demoSetupFactory, LicenseCheckRunnableFactory licenseCheckRunnableFactory){
-            super(clientInformationFactory);
+public: SpecialDemoGameMidlet(ClientInformationFactory clientInformationFactory, LicenseLoadingType licenseLoadingType, LicensedDemoSetupFactory demoSetupFactory, LicenseCheckRunnableFactory licenseCheckRunnableFactory) : DemoGameMidlet(clientInformationFactory){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.

@@ -23,16 +23,13 @@
 
             #include <vector>
         
-            #include "../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../../java/lang/Integer.h"
+            #include "java/lang/Integer.h"
         
 #include <java/io/InputStream.h>
-
-      
-#include <java/util/Hashtable.h>
 
       
 #include <android/app/Activity.h>
@@ -74,6 +71,9 @@
 #include <org/allbinary/string/CommonStrings.h>
 
       
+#include <org/allbinary/util/ABHashtable.h>
+
+      
 #include <org/allbinary/util/HashtableUtil.h>
 
       
@@ -110,7 +110,7 @@ class ResourceUtil
 
     private: Object* resources = NullUtil::getInstance().NULL_OBJECT;
 
-    private: Hashtable<any, any> hashMap = StdUtil::getInstance().createHashtable();
+    private: ABHashtable<Object*, Object*> hashMap = StdUtil::getInstance().createHashtable();
 
 private: ResourceUtil();
 

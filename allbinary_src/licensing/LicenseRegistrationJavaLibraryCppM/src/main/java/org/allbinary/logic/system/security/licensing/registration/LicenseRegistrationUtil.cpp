@@ -18,13 +18,10 @@
 
 
 
-            #include "../../../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-#include <java/util/Hashtable.h>
-
-      
 #include <org/allbinary/string/CommonStrings.h>
 
       
@@ -38,6 +35,9 @@
 
       
 #include <org/allbinary/string/CommonLabels.h>
+
+      
+#include <org/allbinary/util/ABHashtable.h>
 
       
 
@@ -74,12 +74,15 @@ class LicenseRegistrationUtil
     
 PreLogUtil::put(CommonLabels::getInstance().START_LABEL +"License Registration", "LicenseRegistrationUtil", commonStrings.PROCESS);
     
-RegistrationConfiguration::getInstance().setRegistrationCode(registrationId);
+
+    RegistrationConfiguration registrationConfiguration = RegistrationConfiguration::getInstance();;
     
-RegistrationConfiguration::getInstance().write();
+registrationConfiguration.setRegistrationCode(registrationId);
+    
+registrationConfiguration.write();
     
 
-    Hashtable<any, any> hashtable = abeClientInformation.toHashtable();;
+    ABHashtable<Object*, Object*> hashtable = abeClientInformation.toHashtable();;
     
 hashtable.put(RegistrationConfiguration::getInstance().NAME, registrationId);
     

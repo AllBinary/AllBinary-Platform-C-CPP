@@ -20,7 +20,7 @@
 
             #include <vector>
         
-            #include "../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/io/ByteArrayOutputStream.h>
 
@@ -111,7 +111,7 @@ inputStream= CloudStreamUtil::getInstance().getFileLocal(file);
     ByteArrayOutputStream outputStream = ByteArrayOutputStream(8000);;
     
 
-    std::vector<int8_t> byteArray = StreamUtil::getInstance().getByteArray(inputStream, outputStream, new Array(16384));;
+    std::vector<int8_t> byteArray = StreamUtil::getInstance().getByteArray(inputStream, outputStream, std::vector<int8_t>(16384));;
     
 response.setContentType("image/jpeg;charset=utf-8");
     

@@ -21,7 +21,7 @@
         #ifndef ORG_ALLBINARY_DEBUG_NODEBUG_H
         #define ORG_ALLBINARY_DEBUG_NODEBUG_H
 
-            #include "../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
 
 

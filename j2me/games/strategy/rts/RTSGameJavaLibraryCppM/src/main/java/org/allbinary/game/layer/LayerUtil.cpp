@@ -18,11 +18,8 @@
 
 
 
-            #include "../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-#include <java/util/Hashtable.h>
-
-      
 #include <org/allbinary/string/CommonSeps.h>
 
       
@@ -33,6 +30,9 @@
 
       
 #include <org/allbinary/math/PositionStrings.h>
+
+      
+#include <org/allbinary/util/ABHashtable.h>
 
       
 
@@ -60,7 +60,7 @@ class LayerUtil
 
     private: static const std::string HASHTABLE = "Hashtable: ";
 
-    public: static std::string toString(Hashtable<any, any> hashtable, int32_t x, int32_t y, int32_t z){
+    public: static std::string toString(ABHashtable<Object*, Object*> hashtable, int32_t x, int32_t y, int32_t z){
 
     CommonSeps commonSeps = CommonSeps::getInstance();;
     

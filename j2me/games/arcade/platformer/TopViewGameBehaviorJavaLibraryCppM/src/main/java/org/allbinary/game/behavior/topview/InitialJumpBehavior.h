@@ -21,7 +21,7 @@
         #ifndef ORG_ALLBINARY_GAME_BEHAVIOR_TOPVIEW_INITIALJUMPBEHAVIOR_H
         #define ORG_ALLBINARY_GAME_BEHAVIOR_TOPVIEW_INITIALJUMPBEHAVIOR_H
 
-            #include "../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
 
 

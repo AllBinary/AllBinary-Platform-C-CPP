@@ -21,7 +21,7 @@
         #ifndef VIEWS_GENERIC_BASKET_MINI_MINIBASKETVIEW_H
         #define VIEWS_GENERIC_BASKET_MINI_MINIBASKETVIEW_H
 
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/business/user/commerce/inventory/basket/BasketData.h>
 

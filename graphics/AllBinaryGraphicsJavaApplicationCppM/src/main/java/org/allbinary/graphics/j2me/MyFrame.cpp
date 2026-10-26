@@ -20,15 +20,15 @@
 
             #include <vector>
         
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../../java/lang/System.h"
+            #include "java/lang/System.h"
         
-            #include "../../../../java/lang/Integer.h"
+            #include "java/lang/Integer.h"
         
-            #include "../../../../java/lang/Thread.h"
+            #include "java/lang/Thread.h"
         
-            #include "../../../../java/lang/Runnable.h"
+            #include "java/lang/Runnable.h"
         
 #include <java/awt.h>
 
@@ -94,6 +94,9 @@
 
       
 #include <org/allbinary/math/AngleFactory.h>
+
+      
+#include <org/allbinary/string/CommonLabels.h>
 
       
 #include <org/allbinary/string/CommonStrings.h>
@@ -629,7 +632,7 @@ this->previousFrameJMenuItem.setText("Previous");
     
 this->frameJMenu.add(this->previousFrameJMenuItem);
     
-this->nextFrameJMenuItem.setText("Next");
+this->nextFrameJMenuItem.setText(CommonLabels::getInstance().NEXT);
     
 this->frameJMenu.add(this->nextFrameJMenuItem);
     
@@ -926,14 +929,14 @@ this->logUtil.put(this->commonStrings.EXCEPTION, this, "centerJMenuItemActionPer
     int32_t index = 0;index < files.size(); index++)
         {
 
-    Document document = DomHelper::getInstance().createDocument(files[index]!);;
+    Document document = DomHelper::getInstance().createDocument(files[index]);;
     
 
     WorkAreaJPanel workAreaJPanel = WorkAreaJPanel(WorkAreaDom(document), this->getSize());;
     
 workAreaJPanel.setLayout(GridLayout(1, 1));
     
-this->add(workAreaJPanel as WorkAreaJPanelInterface);
+this->add(workAreaJPanel);
     
 }
 
@@ -1009,7 +1012,7 @@ this->fileJDialog.setVisible(true);
 
         try {
             
-    WorkAreaJPanelInterface workAreaJPanel = this->jTabbedPane.getSelectedComponent() as WorkAreaJPanelInterface;;
+    WorkAreaJPanelInterface workAreaJPanel = this->jTabbedPane.getSelectedComponent();;
     
 
     File file = File(this->SAVE_PATH +"/" +workAreaJPanel.getName() +this->JAVAEXTENSION);;
@@ -1043,7 +1046,7 @@ this->xslHelper.export(file, MyFrame::TEMPLATE_EXPORT_PATH +"/" +this->JAVA_TEMP
 
         try {
             
-    WorkAreaJPanelInterface workAreaJPanel = this->jTabbedPane.getSelectedComponent() as WorkAreaJPanelInterface;;
+    WorkAreaJPanelInterface workAreaJPanel = this->jTabbedPane.getSelectedComponent();;
     
 DomHelper::getInstance().save(File(this->SAVE_PATH +"/" +workAreaJPanel.getName() +this->SAVEEXTENSION), workAreaJPanel.toDocument());
     
@@ -1067,12 +1070,12 @@ DomHelper::getInstance().save(File(this->SAVE_PATH +"/" +workAreaJPanel.getName(
 
                 //@Throws(Exception.constructor)
             
-    public: void onHashMap(HashMap<any, any> hashMap){
+    public: void onHashMap(HashMap<Object*, Object*> hashMap){
 
-    Integer angleIncrementInteger = hashMap.get(Integer::valueOf(0)) as Integer;;
+    Integer angleIncrementInteger = hashMap.get(Integer::valueOf(0));;
     
 
-    Integer totalRotationInteger = hashMap.get(Integer::valueOf(1)) as Integer;;
+    Integer totalRotationInteger = hashMap.get(Integer::valueOf(1));;
     
 this->getSelectedWorkArea().autoRotate(angleIncrementInteger.intValue(), totalRotationInteger.intValue());
     
@@ -1084,7 +1087,7 @@ this->getSelectedWorkArea().autoRotate(angleIncrementInteger.intValue(), totalRo
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->jTabbedPane.getSelectedComponent() as WorkAreaJPanelInterface;
+                        return this->jTabbedPane.getSelectedComponent();
     
 }
 
@@ -1101,14 +1104,14 @@ this->getSelectedWorkArea().autoRotate(angleIncrementInteger.intValue(), totalRo
     int32_t index = 0;index < numberOfTabs; index++)
         {
 
-    WorkAreaJPanelInterface workAreaJPanel = this->jTabbedPane.getComponentAt(index) as WorkAreaJPanelInterface;;
+    WorkAreaJPanelInterface workAreaJPanel = this->jTabbedPane.getComponentAt(index);;
     
 workAreaJPanel.deselect();
     
 }
 
 
-    WorkAreaJPanelInterface workAreaJPanel = this->jTabbedPane.getSelectedComponent() as WorkAreaJPanelInterface;;
+    WorkAreaJPanelInterface workAreaJPanel = this->jTabbedPane.getSelectedComponent();;
     
 
                         if(workAreaJPanel != 
@@ -1143,12 +1146,12 @@ workAreaJPanel.deselect();
 
                                     }
                                 
-this->jTabbedPane.addTab(newCanvasInterface.getName(), newCanvasInterface as JPanel);
+this->jTabbedPane.addTab(newCanvasInterface.getName(), newCanvasInterface);
     
-this->jTabbedPane.setSelectedComponent(newCanvasInterface as JPanel);
+this->jTabbedPane.setSelectedComponent(newCanvasInterface);
     
 
-    Thread animationThread = Thread(newCanvasInterface as Runnable);;
+    Thread animationThread = Thread(newCanvasInterface);;
     
 animationThread.start();
     

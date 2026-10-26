@@ -20,9 +20,9 @@
 
             #include <vector>
         
-            #include "../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
 
@@ -115,7 +115,8 @@ class InventorySearch
     private: SearchRequest searchRequest;
 
 public: InventorySearch(SearchRequest searchRequest){
-            super();
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -137,10 +138,10 @@ this->searchRequest= searchRequest;
     SearchParams searchParams = this->searchRequest.getParams();;
     
 
-    HashMap<any, any> columnValueHashMap = searchParams.get();;
+    HashMap<Object*, Object*> columnValueHashMap = searchParams.get();;
     
 
-    std::string file = StaticPagesEntity().getFile(storeFront.getName(), Replace("-", CommonSeps::getInstance().SPACE).all(columnValueHashMap.get(basicItemData.KEYWORDS) as string));;
+    std::string file = StaticPagesEntity().getFile(storeFront.getName(), Replace("-", CommonSeps::getInstance().SPACE).all(columnValueHashMap.get(basicItemData.KEYWORDS)));;
     
 
                         if(StringValidationUtil::getInstance().isEmpty(file))
@@ -220,7 +221,7 @@ stringBuffer.append(InputOutputTypeData::getInstance().DEFAULT);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return str[this->searchRequest.getParams().getStartPageInt().intValue()]!;
+                        return str[this->searchRequest.getParams().getStartPageInt().intValue()];
     
 
                 //: 

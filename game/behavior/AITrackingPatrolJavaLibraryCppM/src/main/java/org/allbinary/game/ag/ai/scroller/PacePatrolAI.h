@@ -21,13 +21,10 @@
         #ifndef ORG_ALLBINARY_GAME_AG_AI_SCROLLER_PACEPATROLAI_H
         #define ORG_ALLBINARY_GAME_AG_AI_SCROLLER_PACEPATROLAI_H
 
-            #include "../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../../../../java/lang/Math.h"
+            #include "java/lang/Math.h"
         
-#include <java/util/Hashtable.h>
-
-      
 #include <javax/microedition/lcdui/Canvas.h>
 
       
@@ -70,6 +67,9 @@
 #include <org/allbinary/logic/util/event/EventStrings.h>
 
       
+#include <org/allbinary/util/ABHashtable.h>
+
+      
 #include <org/allbinary/util/BasicArrayList.h>
 
       
@@ -104,7 +104,7 @@ class PacePatrolAI: public BasePatrolAI, public TrackingEventListenerInterface {
 
     protected: bool isFollowLimitedByTerrain = false;
 
-public: PacePatrolAI(Hashtable<any, any> hashtable, AllBinaryLayer ownerLayerInterface, GameInput gameInput);
+public: PacePatrolAI(ABHashtable<Object*, Object*> hashtable, AllBinaryLayer ownerLayerInterface, GameInput gameInput);
 
                 //@Throws(Exception.constructor)
             

@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <javax/microedition/lcdui/Graphics.h>
 
@@ -58,8 +58,9 @@ class AllBinaryAdjustedHTMLImageRotationAnimation: public AllBinaryHTMLImageRota
 
     private: int32_t dy= 0;
 
-public: AllBinaryAdjustedHTMLImageRotationAnimation(Image originalImage, Image image, AngleInfo angleInfo, int16_t totalAngle, int32_t dx, int32_t dy, AnimationBehavior animationBehavior){
-            super(originalImage, image, angleInfo, totalAngle, animationBehavior);
+public: AllBinaryAdjustedHTMLImageRotationAnimation(Image originalImage, Image image, AngleInfo angleInfo, int16_t totalAngle, int32_t dx, int32_t dy, AnimationBehavior animationBehavior) : AllBinaryHTMLImageRotationAnimation(originalImage, image, angleInfo, totalAngle, animationBehavior){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.

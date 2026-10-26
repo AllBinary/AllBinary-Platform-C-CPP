@@ -18,9 +18,9 @@
 
 
 
-            #include "../../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/io/IOException.h>
 
@@ -176,7 +176,7 @@ this->logUtil.put("Licensing Failure", this, this->commonStrings.GET, e);
 
 
 
-                            throw LicensingException("Unknown License Failure: " +this->constructor.name.toString()!);
+                            throw LicensingException("Unknown License Failure: " +this->constructor.name.toString());
                     
 }
 */

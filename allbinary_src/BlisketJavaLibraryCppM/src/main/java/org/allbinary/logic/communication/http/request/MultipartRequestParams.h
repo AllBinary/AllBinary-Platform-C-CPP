@@ -23,7 +23,7 @@
 
             #include <vector>
         
-            #include "../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
 
@@ -91,7 +91,7 @@ public: MultipartRequestParams(PageContext pageContext);
 
                 //@Throws(Exception.constructor)
             
-    public: HashMap<any, any> toHashMap();
+    public: HashMap<Object*, Object*> toHashMap();
 
 };
 

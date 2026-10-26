@@ -21,7 +21,7 @@
         #ifndef ORG_ALLBINARY_LOG_LOGGING_H
         #define ORG_ALLBINARY_LOG_LOGGING_H
 
-            #include "../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
 #include <org/allbinary/util/BasicArrayList.h>
 

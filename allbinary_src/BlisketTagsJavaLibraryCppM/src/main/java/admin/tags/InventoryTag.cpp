@@ -18,7 +18,7 @@
 
 
 
-            #include "../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <javax/servlet/jsp/JspTagException.h>
 
@@ -64,8 +64,9 @@ class InventoryTag: public TableTag {
 
     private: std::string storeName;
 
-public: InventoryTag(){
-            super();
+public: InventoryTag() : TableTag(){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.

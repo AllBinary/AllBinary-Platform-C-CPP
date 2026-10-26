@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
 
@@ -80,10 +80,11 @@ class InsertThemeValidationView: public ThemeCustomizerView, public ValidationCo
 
     protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: HashMap<any, any> requestHashMap;
+    private: HashMap<Object*, Object*> requestHashMap;
 
-public: InsertThemeValidationView(TransformInfoInterface transformInfoInterface){
-            super(transformInfoInterface);
+public: InsertThemeValidationView(TransformInfoInterface transformInfoInterface) : ThemeCustomizerView(transformInfoInterface){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -158,7 +159,7 @@ isValid= this->validationInterface.isValid();
                         if(isValid == Boolean::TRUE)
                         
                                     {
-                                    CustomizerUtil::getInstance().insert(this->getTransformInfoInterface(), this->validationInterface as DomNodeInterface);
+                                    CustomizerUtil::getInstance().insert(this->getTransformInfoInterface(), this->validationInterface);
     
 
                                     }

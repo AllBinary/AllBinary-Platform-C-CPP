@@ -18,19 +18,10 @@
 
 
 
-#include <jsinterop/annotations/JsType.h>
-
-      
 #include <org/allbinary/game/input/mapping/InputToGameKeyMapping.h>
 
       
 #include <org/allbinary/logic/util/event/AllBinaryEventObject.h>
-
-      
-#include <jsinterop/annotations/JsMethod.h>
-
-      
-#include <jsinterop/annotations/JsConstructor.h>
 
       
 
@@ -56,8 +47,9 @@ class InputMappingEvent: public AllBinaryEventObject {
 
     private: InputToGameKeyMapping inputToGameKeyMapping = InputToGameKeyMapping::getNullInstance();
 
-public: InputMappingEvent(Object* anyType){
-            super(anyType);
+public: InputMappingEvent(Object* anyType) : AllBinaryEventObject(anyType){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.

@@ -20,9 +20,9 @@
 
             #include <vector>
         
-            #include "../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/globals/PATH_GLOBALS.h>
 
@@ -306,7 +306,7 @@ this->updateIfNeeded();
 this->updateIfNeeded();
     
 
-                        if(true && this->userName.compareTo(userName) == 0 && true && this->password.compareTo(password) == 0)
+                        if(true && this->userName.compare(userName) == 0 && true && this->password.compare(password) == 0)
                         
                                     {
                                     

@@ -18,11 +18,8 @@
 
 
 
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-#include <jsinterop/annotations/JsType.h>
-
-      
 #include <org/allbinary/game/collision/CollidableBaseBehavior.h>
 
       
@@ -36,15 +33,6 @@
 
       
 #include <org/allbinary/logic/communication/log/ForcedLogUtil.h>
-
-      
-#include <jsinterop/annotations/JsMethod.h>
-
-      
-#include <jsinterop/annotations/JsConstructor.h>
-
-      
-#include <jsinterop/annotations/JsProperty.h>
 
       
 
@@ -71,8 +59,9 @@ class CollidableDestroyableDamageableBehavior: public CollidableBaseBehavior {
 
     protected: const DamageUtil damageUtil = DamageUtil::getInstance();
 
-public: CollidableDestroyableDamageableBehavior(bool collidable){
-            super(collidable);
+public: CollidableDestroyableDamageableBehavior(bool collidable) : CollidableBaseBehavior(collidable){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -107,10 +96,10 @@ public: CollidableDestroyableDamageableBehavior(bool collidable){
             
     public: void collide(CollidableCompositeLayer ownerLayer, CollidableCompositeLayer collidableInterfaceCompositeInterface){
 
-    CollidableDestroyableDamageableLayer ownerCollidableDestroyableDamageableLayer = ownerLayer as CollidableDestroyableDamageableLayer;;
+    CollidableDestroyableDamageableLayer ownerCollidableDestroyableDamageableLayer = ownerLayer;;
     
 
-    CollidableDestroyableDamageableLayer collidableDestroyableDamageableLayer = collidableInterfaceCompositeInterface as CollidableDestroyableDamageableLayer;;
+    CollidableDestroyableDamageableLayer collidableDestroyableDamageableLayer = collidableInterfaceCompositeInterface;;
     
 ownerCollidableDestroyableDamageableLayer.damage(collidableDestroyableDamageableLayer.getDamage(0), 0);
     

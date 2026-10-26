@@ -18,11 +18,11 @@
 
 
 
-            #include "../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../java/lang/Integer.h"
+            #include "java/lang/Integer.h"
         
-#include <java/util/Hashtable.h>
+#include <org/allbinary/util/ABHashtable.h>
 
       
 #include <org/allbinary/util/BasicArrayList.h>
@@ -79,15 +79,15 @@ this->list= BasicArrayListD();
 }
 
 
-    public: ArtificialIntelligenceInterfaceFactoryInterface getInstanceFromCollection(Hashtable<any, any> hashtable){
+    public: ArtificialIntelligenceInterfaceFactoryInterface getInstanceFromCollection(ABHashtable<Object*, Object*> hashtable){
 
-    Integer typeInteger = hashtable.get(BasicAI::ID) as Integer;;
+    Integer typeInteger = hashtable.get(BasicAI::ID);;
     
 
     int32_t type = typeInteger.intValue();;
     
 
-    ArtificialIntelligenceInterfaceFactoryInterface artificialIntelligenceInterfaceFactoryInterface = this->list.objectArray[type -1]! as ArtificialIntelligenceInterfaceFactoryInterface;;
+    ArtificialIntelligenceInterfaceFactoryInterface artificialIntelligenceInterfaceFactoryInterface = this->list.objectArray[type -1];;
     
 
 

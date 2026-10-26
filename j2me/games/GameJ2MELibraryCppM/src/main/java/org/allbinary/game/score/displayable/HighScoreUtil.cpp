@@ -20,9 +20,9 @@
 
             #include <vector>
         
-            #include "../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <javax/microedition/lcdui/Command.h>
 
@@ -182,7 +182,7 @@ this->highScoresFactoryInterface.fetchHighScores(this->gameInfo, this);
                         for (
     int32_t index = 0;index < size; index++)
         {
-highScores= this->highScoresArray[index]!;
+highScores= this->highScoresArray[index];
     
 highScores.addHighScore(this->highScore);
     

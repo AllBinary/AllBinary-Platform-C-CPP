@@ -20,7 +20,7 @@
 
             #include <vector>
         
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <javax/microedition/lcdui/Image.h>
 
@@ -58,7 +58,7 @@ class ImageArrayRotationAnimation: public ImageArrayBaseRotationAnimation {
             
     protected: static ImageArrayRotationAnimation createAnimation(Object* anyType, AnimationBehavior animationBehavior){
 
-    ImageArrayRotationAnimationInfo imageRotationAnimationInfo = anyType as ImageArrayRotationAnimationInfo;;
+    ImageArrayRotationAnimationInfo imageRotationAnimationInfo = *dynamic_cast<ImageArrayRotationAnimationInfo*>(anyType);;
     
 
 
@@ -71,8 +71,9 @@ class ImageArrayRotationAnimation: public ImageArrayBaseRotationAnimation {
 
     private: int32_t expectedTotalFrames= 0;
 
-public: ImageArrayRotationAnimation(std::vector<Image> imageArray, AngleInfo angleInfo, int32_t totalAngle, AnimationBehavior animationBehavior){
-            super(imageArray, angleInfo, animationBehavior);
+public: ImageArrayRotationAnimation(std::vector<Image> imageArray, AngleInfo angleInfo, int32_t totalAngle, AnimationBehavior animationBehavior) : ImageArrayBaseRotationAnimation(imageArray, angleInfo, animationBehavior){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.

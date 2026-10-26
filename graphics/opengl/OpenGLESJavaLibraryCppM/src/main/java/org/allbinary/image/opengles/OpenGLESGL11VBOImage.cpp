@@ -79,8 +79,9 @@ class OpenGLESGL11VBOImage: public OpenGLESImage {
 
     private: FloatBuffer textureVertexFloatBuffer = ByteBuffer::allocateDirect(4 *4 *2).order(ByteOrder::nativeOrder()).asFloatBuffer();
 
-public: OpenGLESGL11VBOImage(Image image, PlatformBitmapBaseFactory bitmapFactory, PlatformTextureBaseFactory textureFactory){
-            super(image, bitmapFactory, textureFactory);
+public: OpenGLESGL11VBOImage(Image image, PlatformBitmapBaseFactory bitmapFactory, PlatformTextureBaseFactory textureFactory) : OpenGLESImage(image, bitmapFactory, textureFactory){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -118,7 +119,7 @@ this->textureVertexFloatBuffer.rewind();
 
     public: void set(GL gl){
 
-    GL10 gl10 = gl as GL10;;
+    GL10 gl10 = gl;;
     
 
                         if(super.initTexture(gl10))
@@ -136,11 +137,35 @@ OpenGLLogUtil::getInstance().logError(gl10, this);
 }
 
 
-    protected: const std::vector<float> regionRectangleFloatArray = {0,0,0,0,0,0,0,0,0,0,0,0};
+    protected: const std::vector<float> regionRectangleFloatArray = {
+                                //Otherwise - values - DoubleLiteralExpr
+
+                                //Otherwise - values - DoubleLiteralExpr
+
+                                //Otherwise - values - DoubleLiteralExpr
+
+                                //Otherwise - values - DoubleLiteralExpr
+
+                                //Otherwise - values - DoubleLiteralExpr
+
+                                //Otherwise - values - DoubleLiteralExpr
+
+                                //Otherwise - values - DoubleLiteralExpr
+
+                                //Otherwise - values - DoubleLiteralExpr
+
+                                //Otherwise - values - DoubleLiteralExpr
+
+                                //Otherwise - values - DoubleLiteralExpr
+
+                                //Otherwise - values - DoubleLiteralExpr
+
+                                //Otherwise - values - DoubleLiteralExpr
+};
 
     protected: FloatBuffer regionRectangleVertexFloatBuffer = ByteBuffer::allocateDirect(4 *4 *3).order(ByteOrder::nativeOrder()).asFloatBuffer();
 
-    private: const std::vector<float> regionTextureRectangleFloatArray = new Array(8);
+    private: const std::vector<float> regionTextureRectangleFloatArray = std::vector<float>(8);
 
     private: FloatBuffer regionTextureVertexFloatBuffer = ByteBuffer::allocateDirect(4 *4 *2).order(ByteOrder::nativeOrder()).asFloatBuffer();
 
@@ -153,29 +178,29 @@ this->regionRectangleFloatArray[1]= this->regionRectangleFloatArray[7] -height;
     
 this->regionRectangleFloatArray[3]= x +width;
     
-this->regionRectangleFloatArray[4]= this->regionRectangleFloatArray[1]!;
+this->regionRectangleFloatArray[4]= this->regionRectangleFloatArray[1];
     
 this->regionRectangleFloatArray[6]= x;
     
-this->regionRectangleFloatArray[9]= this->regionRectangleFloatArray[3]!;
+this->regionRectangleFloatArray[9]= this->regionRectangleFloatArray[3];
     
-this->regionRectangleFloatArray[10]= this->regionRectangleFloatArray[7]!;
+this->regionRectangleFloatArray[10]= this->regionRectangleFloatArray[7];
     
 this->regionTextureRectangleFloatArray[0]= x_src /this->getWidth();
     
-this->regionTextureRectangleFloatArray[1]= () /this->getHeight();
+this->regionTextureRectangleFloatArray[1]= (y_src +height) /this->getHeight();
     
-this->regionTextureRectangleFloatArray[2]= () /this->getWidth();
+this->regionTextureRectangleFloatArray[2]= (x_src +width) /this->getWidth();
     
-this->regionTextureRectangleFloatArray[3]= this->regionTextureRectangleFloatArray[1]!;
+this->regionTextureRectangleFloatArray[3]= this->regionTextureRectangleFloatArray[1];
     
-this->regionTextureRectangleFloatArray[4]= this->regionTextureRectangleFloatArray[0]!;
+this->regionTextureRectangleFloatArray[4]= this->regionTextureRectangleFloatArray[0];
     
 this->regionTextureRectangleFloatArray[5]= y_src /this->getHeight();
     
-this->regionTextureRectangleFloatArray[6]= this->regionTextureRectangleFloatArray[2]!;
+this->regionTextureRectangleFloatArray[6]= this->regionTextureRectangleFloatArray[2];
     
-this->regionTextureRectangleFloatArray[7]= this->regionTextureRectangleFloatArray[5]!;
+this->regionTextureRectangleFloatArray[7]= this->regionTextureRectangleFloatArray[5];
     
 this->glUtil.position(this->regionRectangleVertexFloatBuffer, 0);
     
@@ -207,19 +232,19 @@ gl.glDisable(GL10::GL_TEXTURE_2D);
     public: void draw(GL10 gl, int32_t x, int32_t y, int32_t z){
 this->regionRectangleFloatArray[0]= x;
     
-this->regionRectangleFloatArray[7]= DisplayInfoSingleton::getInstance().getLastHeight() -y;
+this->regionRectangleFloatArray[7]= (DisplayInfoSingleton::getInstance().getLastHeight() -y);
     
 this->regionRectangleFloatArray[1]= this->regionRectangleFloatArray[7] -this->getHeight();
     
-this->regionRectangleFloatArray[3]= x +this->getWidth();
+this->regionRectangleFloatArray[3]= (x +this->getWidth());
     
-this->regionRectangleFloatArray[4]= this->regionRectangleFloatArray[1]!;
+this->regionRectangleFloatArray[4]= this->regionRectangleFloatArray[1];
     
 this->regionRectangleFloatArray[6]= x;
     
-this->regionRectangleFloatArray[9]= this->regionRectangleFloatArray[3]!;
+this->regionRectangleFloatArray[9]= this->regionRectangleFloatArray[3];
     
-this->regionRectangleFloatArray[10]= this->regionRectangleFloatArray[7]!;
+this->regionRectangleFloatArray[10]= this->regionRectangleFloatArray[7];
     
 this->glUtil.position(this->regionRectangleVertexFloatBuffer, 0);
     

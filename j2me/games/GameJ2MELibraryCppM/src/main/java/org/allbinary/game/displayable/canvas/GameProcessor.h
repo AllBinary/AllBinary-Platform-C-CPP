@@ -21,18 +21,9 @@
         #ifndef ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_GAMEPROCESSOR_H
         #define ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_GAMEPROCESSOR_H
 
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-#include <jsinterop/annotations/JsType.h>
-
-      
 #include <org/allbinary/canvas/Processor.h>
-
-      
-#include <jsinterop/annotations/JsMethod.h>
-
-      
-#include <jsinterop/annotations/JsConstructor.h>
 
       
 

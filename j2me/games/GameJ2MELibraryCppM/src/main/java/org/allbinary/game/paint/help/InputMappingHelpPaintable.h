@@ -23,9 +23,6 @@
 
             #include <vector>
         
-#include <jsinterop/annotations/JsType.h>
-
-      
 #include <javax/microedition/lcdui/Font.h>
 
       
@@ -56,6 +53,9 @@
 #include <org/allbinary/graphics/color/BasicColorFactory.h>
 
       
+#include <org/allbinary/graphics/color/BasicColorUtil.h>
+
+      
 #include <org/allbinary/logic/NullUtil.h>
 
       
@@ -78,15 +78,6 @@
 
       
 #include <org/allbinary/util/BasicArrayList.h>
-
-      
-#include <jsinterop/annotations/JsMethod.h>
-
-      
-#include <jsinterop/annotations/JsConstructor.h>
-
-      
-#include <jsinterop/annotations/JsProperty.h>
 
       
 
@@ -136,10 +127,9 @@ class InputMappingHelpPaintable: public HelpPaintable {
 
     private: std::vector<BasicArrayList> keyMappingArray = {};
 
-    private: std::vector<BasicColor> actionBasicColor = {};
+    private: std::vector<BasicColor> actionBasicColor = BasicColorUtil::getInstance().ZERO_ARRAY;
 
-    private: std::vector<std::vector<BasicColor>> inputBasicColorArray = new Array(0).fill(null).map(() => new Array(0).fill(0))
-                                                            ;
+    private: std::vector<std::vector<BasicColor>> inputBasicColorArray = std::vector<std::vector<BasicColor>>(0, std::vector<BasicColor>(0));
 
     private: BasicColor selectedBasicColor;
 
@@ -158,8 +148,7 @@ class UpdateMyFontProperties
 
     std::vector<std::vector<int32_t>> inputDeltaXArray = NullUtil::getInstance().NULL_INT_ARRAY_ARRAY;
 
-    std::vector<std::vector<std::string>> sepArray = new Array(0).fill(null).map(() => new Array(0).fill(0))
-                                                            ;
+    std::vector<std::vector<std::string>> sepArray = std::vector<std::vector<std::string>>(0, std::vector<std::string>(0));
 
     std::vector<std::vector<int32_t>> sepWidthArray = NullUtil::getInstance().NULL_INT_ARRAY_ARRAY;
 

@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/layer/AllBinaryLayerCircularPool.h>
 
@@ -67,7 +67,7 @@ private: PickupLayerCircularStaticPool(){
             
     public: PickedUpLayerInterface getInstanceXYZ(PickedUpLayerInterfaceFactoryInterface pickedUpLayerInterfaceFactoryInterface, int32_t x, int32_t y, int32_t z){
 
-    PickupLayer pickupLayer = this->getNextInstance() as PickupLayer;;
+    PickupLayer pickupLayer = this->getNextInstance();;
     
 pickupLayer.initXYZ(x, y, z);
     

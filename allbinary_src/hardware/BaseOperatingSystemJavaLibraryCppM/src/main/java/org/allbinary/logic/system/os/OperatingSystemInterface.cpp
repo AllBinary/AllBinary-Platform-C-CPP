@@ -18,13 +18,7 @@
 
 
 
-#include <jsinterop/annotations/JsType.h>
-
-      
 #include <org/allbinary/logic/java/character/CharacterSet.h>
-
-      
-#include <jsinterop/annotations/JsMethod.h>
 
       
 

@@ -20,9 +20,9 @@
 
             #include <vector>
         
-            #include "../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/TsUtil.h>
 
@@ -148,7 +148,7 @@ private: BooleanUtil(){
     std::string booleanStringLowerCase = booleanString.toLowerCase();;
     
 
-                        if(booleanStringLowerCase.compareTo(booleanFactory.TRUE_STRING) == 0 || booleanStringLowerCase.compareTo(booleanFactory.FALSE_STRING) == 0)
+                        if(booleanStringLowerCase.compare(booleanFactory.TRUE_STRING) == 0 || booleanStringLowerCase.compare(booleanFactory.FALSE_STRING) == 0)
                         
                                     {
                                     
@@ -183,7 +183,7 @@ private: BooleanUtil(){
                         for (
     int32_t index = 0;index < size; index++)
         {
-stringMaker.appendboolean(booleanArray[index]!);
+stringMaker.appendboolean(booleanArray[index]);
     
 }
 

@@ -20,9 +20,9 @@
 
             #include <vector>
         
-            #include "../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../../../../java/lang/Integer.h"
+            #include "java/lang/Integer.h"
         
 #include <java/awt/image/BufferedImage.h>
 
@@ -58,8 +58,9 @@ class MagicGameObject: public MeteredGameObject, public MagicGameObjectInterface
 
     private: const std::string MP_LABEL = "MP:";
 
-public: MagicGameObject(std::vector<BufferedImage> bufferedImage, Integer minX, Integer maxX, Integer y){
-            super(bufferedImage, minX, maxX, y);
+public: MagicGameObject(std::vector<BufferedImage> bufferedImage, Integer minX, Integer maxX, Integer y) : MeteredGameObject(bufferedImage, minX, maxX, y){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.

@@ -18,17 +18,9 @@
 
 
 
-            #include "../../../../../java/lang/Object.h"
-        
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Object.h"
         
 #include <java/io/Serializable.h>
-
-      
-#include <org/allbinary/util/BasicArrayList.h>
-
-      
-#include <org/allbinary/util/BasicArrayListD.h>
 
       
 
@@ -49,65 +41,11 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        
+        #include "BasicUserRoles.h"
+
 class BasicUserRole
             : public Object
         : public Serializable {
-
-    private: static const BasicArrayList roleVector = BasicArrayListD();
-
-                //@Throws(Exception.constructor)
-            //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
-
-    public: static BasicUserRole getRole(std::string role){
-
-    BasicArrayList roleVector = BasicUserRole::getAll();;
-    
-
-    int32_t size = roleVector.size();;
-    
-
-
-
-
-                        for (
-    int32_t index = 0;index < size; index++)
-        {
-
-    BasicUserRole userRole = roleVector.get(index) as BasicUserRole;;
-    
-
-                        if(role.compareTo(userRole.toString()) == 0)
-                        
-                                    {
-                                    
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return userRole;
-    
-
-                                    }
-                                
-}
-
-
-
-
-                            throw Exception("Unable to get role - Unknown Role");
-                    
-}
-
-
-    public: static BasicArrayList getAll(){
-
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return BasicUserRole::roleVector;
-    
-}
-
 
     private: int32_t m_int_RoleId;
 
@@ -119,8 +57,9 @@ class BasicUserRole
 
     private: int64_t sessionInactivityTimeout;
 
-: BasicUserRole(std::string aRole, int32_t a_int_RoleId, int64_t aSessionTimeout, int64_t aSessionInactivityTimeout){
-            this(aRole, aRole, a_int_RoleId, aSessionTimeout, aSessionInactivityTimeout);
+: BasicUserRole(std::string aRole, int32_t a_int_RoleId, int64_t aSessionTimeout, int64_t aSessionInactivityTimeout) : BasicUserRole(aRole, aRole, a_int_RoleId, aSessionTimeout, aSessionInactivityTimeout){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -139,7 +78,7 @@ this->sessionTimeout= aSessionTimeout;
     
 this->sessionInactivityTimeout= aSessionInactivityTimeout;
     
-BasicUserRole::roleVector.add(this);
+BasicUserRoles::getInstance().roleVector.add(this);
     
 }
 

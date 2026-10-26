@@ -23,9 +23,9 @@
 
             #include <vector>
         
-            #include "../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../java/lang/Long.h"
+            #include "java/lang/Long.h"
         
 
 
@@ -58,9 +58,9 @@ class SmallLongFactory
 
     public: const int32_t POSITIVE_MAX = 0x2D1;
 
-    private: const std::vector<Long> INTEGER_ARRAY = new Array(this->NEGATIVE_MAX +this->POSITIVE_MAX);
+    private: const std::vector<Long> INTEGER_ARRAY = std::vector<Long>(this->NEGATIVE_MAX +this->POSITIVE_MAX);
 
-    private: const std::vector<std::string> STRING_ARRAY = new Array(this->NEGATIVE_MAX +this->POSITIVE_MAX);
+    private: const std::vector<std::string> STRING_ARRAY = std::vector<std::string>(this->NEGATIVE_MAX +this->POSITIVE_MAX);
 
     public: int32_t MIN = 0;
 

@@ -7,7 +7,7 @@
         #ifndef ORG_ALLBINARY_LOGIC_UTIL_CACHE_POOLTYPEFACTORY_H
         #define ORG_ALLBINARY_LOGIC_UTIL_CACHE_POOLTYPEFACTORY_H
 
-            #include "../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
 
 

@@ -45,8 +45,9 @@
         
 class CollidableInterfaceLayerManager: public LayerManager {
 
-public: CollidableInterfaceLayerManager(){
-            super(LayerManagerNoDebug::getInstance());
+public: CollidableInterfaceLayerManager() : LayerManager(LayerManagerNoDebug::getInstance()){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.

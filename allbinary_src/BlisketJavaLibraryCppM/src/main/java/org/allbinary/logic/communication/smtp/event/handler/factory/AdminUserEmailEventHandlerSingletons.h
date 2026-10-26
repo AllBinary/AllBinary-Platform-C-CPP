@@ -21,9 +21,9 @@
         #ifndef ORG_ALLBINARY_LOGIC_COMMUNICATION_SMTP_EVENT_HANDLER_FACTORY_ADMINUSEREMAILEVENTHANDLERSINGLETONS_H
         #define ORG_ALLBINARY_LOGIC_COMMUNICATION_SMTP_EVENT_HANDLER_FACTORY_ADMINUSEREMAILEVENTHANDLERSINGLETONS_H
 
-            #include "../../../../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
 
@@ -89,7 +89,7 @@ class AdminUserEmailEventHandlerSingletons
 
     protected: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    private: const HashMap<any, any> userEmailEventHandlerHashMap = StdUtil::getInstance().createHashMap();
+    private: const HashMap<Object*, Object*> userEmailEventHandlerHashMap = StdUtil::getInstance().createHashMap();
 
 private: AdminUserEmailEventHandlerSingletons();
 

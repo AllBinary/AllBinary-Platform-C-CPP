@@ -18,11 +18,8 @@
 
 
 
-            #include "../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-#include <java/util/Hashtable.h>
-
-      
 #include <javax/microedition/lcdui/Canvas.h>
 
       
@@ -36,6 +33,9 @@
 
       
 #include <org/allbinary/layer/AllBinaryLayerManager.h>
+
+      
+#include <org/allbinary/util/ABHashtable.h>
 
       
 
@@ -62,8 +62,9 @@ class RandomPatrolAI: public BasePatrolAI {
 
     private: bool changedDirection = true;
 
-public: RandomPatrolAI(Hashtable<any, any> hashtable, AllBinaryLayer ownerLayerInterface, GameInput gameInput){
-            super(hashtable, ownerLayerInterface, gameInput);
+public: RandomPatrolAI(ABHashtable<Object*, Object*> hashtable, AllBinaryLayer ownerLayerInterface, GameInput gameInput) : BasePatrolAI(hashtable, ownerLayerInterface, gameInput){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.

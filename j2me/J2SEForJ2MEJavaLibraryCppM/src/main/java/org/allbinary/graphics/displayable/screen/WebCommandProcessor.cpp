@@ -18,9 +18,9 @@
 
 
 
-            #include "../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/awt/Desktop.h>
 
@@ -98,7 +98,7 @@ class WebCommandProcessor
                         if(Desktop::isDesktopSupported() && Desktop::getDesktop().isSupported(Desktop::Action.BROWSE))
                         
                                     {
-                                    Desktop::getDesktop().browse(URI(this->list.removeAt(0) as string));
+                                    Desktop::getDesktop().browse(URI(this->list.removeAt(0)));
     
 
                                     }

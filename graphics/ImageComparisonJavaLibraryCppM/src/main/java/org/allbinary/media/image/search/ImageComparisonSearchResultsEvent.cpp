@@ -45,8 +45,9 @@ class ImageComparisonSearchResultsEvent: public AllBinaryEventObject {
 
     private: ImageComparisonSearch imageComparisonSearch;
 
-public: ImageComparisonSearchResultsEvent(Object* anyType, ImageComparisonSearch imageComparisonSearch){
-            super(anyType);
+public: ImageComparisonSearchResultsEvent(Object* anyType, ImageComparisonSearch imageComparisonSearch) : AllBinaryEventObject(anyType){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.

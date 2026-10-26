@@ -21,7 +21,7 @@
         #ifndef ORG_ALLBINARY_INPUT_KEYUTIL_H
         #define ORG_ALLBINARY_INPUT_KEYUTIL_H
 
-            #include "../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
 #include <java/awt/event/KeyEvent.h>
 

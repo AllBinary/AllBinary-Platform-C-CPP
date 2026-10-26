@@ -24,9 +24,6 @@
 #include <java/util/Enumeration.h>
 
       
-#include <java/util/Hashtable.h>
-
-      
 #include <org/allbinary/string/CommonStrings.h>
 
       
@@ -34,6 +31,9 @@
 
       
 #include <org/allbinary/media/graphics/geography/map/GeographicMapCellTypeFactory.h>
+
+      
+#include <org/allbinary/util/ABHashtable.h>
 
       
 #include <org/allbinary/util/BasicArrayList.h>
@@ -74,7 +74,7 @@ class BasicPlatormGeographicMapCellTypeFactory: public GeographicMapCellTypeFact
 
     private: int32_t maxTileId;
 
-public: BasicPlatormGeographicMapCellTypeFactory(Hashtable<any, any> tileTypeToTileIdsMap, int32_t maxTileId);
+public: BasicPlatormGeographicMapCellTypeFactory(ABHashtable<Object*, Object*> tileTypeToTileIdsMap, int32_t maxTileId);
 
     public: int32_t getStartType();
 

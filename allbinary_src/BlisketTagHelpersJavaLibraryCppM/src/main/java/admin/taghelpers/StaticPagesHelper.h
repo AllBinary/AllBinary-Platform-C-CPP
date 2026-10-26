@@ -21,7 +21,7 @@
         #ifndef ADMIN_TAGHELPERS_STATICPAGESHELPER_H
         #define ADMIN_TAGHELPERS_STATICPAGESHELPER_H
 
-            #include "../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
 
@@ -67,7 +67,7 @@ class StaticPagesHelper: public BasicTable {
 
     private: Portion portion;
 
-public: StaticPagesHelper(HashMap<any, any> hashMap, PageContext pageContext);
+public: StaticPagesHelper(HashMap<Object*, Object*> hashMap, PageContext pageContext);
 
     public: std::string drop();
 

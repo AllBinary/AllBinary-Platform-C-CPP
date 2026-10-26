@@ -18,14 +18,8 @@
 
 
 
-            #include "../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-#include <jsinterop/annotations/JsType.h>
-
-      
-#include <java/util/Hashtable.h>
-
-      
 #include <org/allbinary/logic/StdUtil.h>
 
       
@@ -41,10 +35,7 @@
 #include <org/allbinary/util/BasicArrayListUtil.h>
 
       
-#include <jsinterop/annotations/JsMethod.h>
-
-      
-#include <jsinterop/annotations/JsConstructor.h>
+#include <org/allbinary/util/ABHashtable.h>
 
       
 
@@ -107,7 +98,7 @@ public: ValidatorBase(){
 }
 
 
-    public: Hashtable<any, any> toHashtable(){
+    public: ABHashtable<Object*, Object*> toHashtable(){
 
 
 

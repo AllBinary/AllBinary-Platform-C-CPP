@@ -21,11 +21,11 @@
         #ifndef ORG_ALLBINARY_ANDROID_INPUT_API3_HIDEVIRTUALKEYBOARDRUNNABLE_H
         #define ORG_ALLBINARY_ANDROID_INPUT_API3_HIDEVIRTUALKEYBOARDRUNNABLE_H
 
-            #include "../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../../../java/lang/Runnable.h"
+            #include "java/lang/Runnable.h"
         
 #include <android/app/Activity.h>
 

@@ -21,7 +21,7 @@
         #ifndef ORG_ALLBINARY_ANDROID_ACTIVITY_PROGRESSACTIVITYINTERFACE_H
         #define ORG_ALLBINARY_ANDROID_ACTIVITY_PROGRESSACTIVITYINTERFACE_H
 
-            #include "../../../../java/lang/Runnable.h"
+            #include "java/lang/Runnable.h"
         
 
 

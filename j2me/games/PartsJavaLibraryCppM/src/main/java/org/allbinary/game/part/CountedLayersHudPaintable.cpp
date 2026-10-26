@@ -20,7 +20,7 @@
 
             #include <vector>
         
-            #include "../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
 #include <javax/microedition/lcdui/Font.h>
 
@@ -175,7 +175,7 @@ this->myFontProcessor.process(graphics);
                         for (
     int32_t index = this->startIndex;index < size; index++)
         {
-countedLayerInterfaceFactory= this->partInterfaceArray[index]! as CountedLayerInterfaceFactoryPart;
+countedLayerInterfaceFactory= this->partInterfaceArray[index];
     
 
                         if(countedLayerInterfaceFactory.getTotal() > 0)

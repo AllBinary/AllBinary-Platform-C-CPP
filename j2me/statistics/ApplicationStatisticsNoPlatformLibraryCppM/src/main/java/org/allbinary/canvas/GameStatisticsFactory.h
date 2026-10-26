@@ -21,7 +21,7 @@
         #ifndef ORG_ALLBINARY_CANVAS_GAMESTATISTICSFACTORY_H
         #define ORG_ALLBINARY_CANVAS_GAMESTATISTICSFACTORY_H
 
-            #include "../../../java/lang/RuntimeException.h"
+            #include "java/lang/RuntimeException.h"
         
 
 

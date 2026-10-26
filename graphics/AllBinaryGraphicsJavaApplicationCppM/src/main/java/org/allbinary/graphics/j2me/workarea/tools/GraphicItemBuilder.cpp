@@ -18,9 +18,9 @@
 
 
 
-            #include "../../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/w3c/dom/Node.h>
 
@@ -58,7 +58,7 @@ class GraphicItemBuilder
     std::string graphicItemName = node.getNodeName();;
     
 
-                        if(graphicItemName.compareTo(PointsDomUtil::getInstance().LINES) == 0)
+                        if(graphicItemName.compare(PointsDomUtil::getInstance().LINES) == 0)
                         
                                     {
                                     

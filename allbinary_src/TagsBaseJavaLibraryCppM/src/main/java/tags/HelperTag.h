@@ -21,7 +21,7 @@
         #ifndef TAGS_HELPERTAG_H
         #define TAGS_HELPERTAG_H
 
-            #include "../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <admin/taghelpers/TagHelperFactoryInterface.h>
 

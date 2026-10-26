@@ -20,11 +20,11 @@
 
             #include <vector>
         
-            #include "../../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../../../../java/lang/Long.h"
+            #include "java/lang/Long.h"
         
 #include <java/awt.h>
 
@@ -130,7 +130,7 @@ public: MotionRectanglesImageInputOutput(){
     CommonStrings commonStrings = CommonStrings::getInstance();;
     
 
-    MotionRectanglesResultsFrameCacheable motionRectanglesResultsFrameCacheable = (getInstance as AutomaticCacheInterface).get(frame) as MotionRectanglesResultsFrameCacheable;;
+    MotionRectanglesResultsFrameCacheable motionRectanglesResultsFrameCacheable = (getInstance).get(frame);;
     
 
                         if(motionRectanglesResultsFrameCacheable != 
@@ -143,13 +143,13 @@ public: MotionRectanglesImageInputOutput(){
     
 this->save(motionRectangles, frame);
     
-motionRectanglesResultsFrameCacheable= (getInstance as AutomaticCacheInterface).get(frame) as MotionRectanglesResultsFrameCacheable;
+motionRectanglesResultsFrameCacheable= (getInstance).get(frame);
     
 motionRectangles= motionRectanglesResultsFrameCacheable.getMotionRectangles();
     
 this->save(motionRectangles, frame);
     
-motionRectanglesResultsFrameCacheable= (getInstance as AutomaticCacheInterface).get(frame) as MotionRectanglesResultsFrameCacheable;
+motionRectanglesResultsFrameCacheable= (getInstance).get(frame);
     
 motionRectangles= motionRectanglesResultsFrameCacheable.getMotionRectangles();
     
@@ -216,7 +216,7 @@ this->logUtil.putF("Motion Image File Path 2: " +filePathStringBuffer2.toString(
 this->logUtil.putF("Motion Image File Path 2: " +filePathStringBuffer3.toString(), this, commonStrings.SAVE);
     
 
-    std::vector<BufferedImageCacheable> bufferedImageCacheables = new Array(this->NUMBER_OF_IMAGES);;
+    std::vector<BufferedImageCacheable> bufferedImageCacheables = std::vector<BufferedImageCacheable>(this->NUMBER_OF_IMAGES);;
     
 
     ImageComparisonResult imageComparisonInfo = motionRectangles.getImageComparisonResult();;
@@ -237,17 +237,17 @@ this->logUtil.putF("Motion Image File Path 2: " +filePathStringBuffer3.toString(
                         for (
     int32_t index = 0;index < this->NUMBER_OF_IMAGES; index++)
         {
-bufferedImageCacheables[index]= poolInterface.remove(bufferedImageInfo) as BufferedImageCacheable;
+bufferedImageCacheables[index]= poolInterface.remove(bufferedImageInfo);
     
 }
 
-bufferedImageCacheables[0]!.getBufferedImage().setData(imageComparisonInfo.getBufferedImages()[1]!.getData());
+bufferedImageCacheables[0].getBufferedImage().setData(imageComparisonInfo.getBufferedImages()[1].getData());
     
 
                         if(this->NUMBER_OF_IMAGES > 1)
                         
                                     {
-                                    bufferedImageCacheables[1]!.getBufferedImage().setData(imageComparisonInfo.getBufferedImages()[1]!.getData());
+                                    bufferedImageCacheables[1].getBufferedImage().setData(imageComparisonInfo.getBufferedImages()[1].getData());
     
 
                                     }
@@ -255,7 +255,7 @@ bufferedImageCacheables[0]!.getBufferedImage().setData(imageComparisonInfo.getBu
 
     std::vector<Graphics> bufferedImageGraphicsArray;;
     
-bufferedImageGraphicsArray= new Array(this->NUMBER_OF_IMAGES);
+bufferedImageGraphicsArray= std::vector<Graphics>(this->NUMBER_OF_IMAGES);
     
 
 
@@ -264,7 +264,7 @@ bufferedImageGraphicsArray= new Array(this->NUMBER_OF_IMAGES);
                         for (
     int32_t index = 0;index < this->NUMBER_OF_IMAGES; index++)
         {
-bufferedImageGraphicsArray[index]= bufferedImageCacheables[index]!.getBufferedImage().getGraphics();
+bufferedImageGraphicsArray[index]= bufferedImageCacheables[index].getBufferedImage().getGraphics();
     
 }
 
@@ -282,7 +282,7 @@ bufferedImageGraphicsArray[index]= bufferedImageCacheables[index]!.getBufferedIm
     int32_t index2 = 0;index2 < size; index2++)
         {
 
-    MotionRectangle motionRectangle = rectangelList.get(index2) as MotionRectangle;;
+    MotionRectangle motionRectangle = rectangelList.get(index2);;
     
 
     Rectangle rectangle = motionRectangle.getRectangle();;
@@ -294,9 +294,9 @@ bufferedImageGraphicsArray[index]= bufferedImageCacheables[index]!.getBufferedIm
                         for (
     int32_t index = 0;index < this->NUMBER_OF_IMAGES; index++)
         {
-bufferedImageGraphicsArray[index]!.setColor(Color::ORANGE);
+bufferedImageGraphicsArray[index].setColor(Color::ORANGE);
     
-bufferedImageGraphicsArray[index]!.drawRect(rectangle.x, rectangle.y, rectangle.width, rectangle.height);
+bufferedImageGraphicsArray[index].drawRect(rectangle.x, rectangle.y, rectangle.width, rectangle.height);
     
 }
 
@@ -309,18 +309,18 @@ bufferedImageGraphicsArray[index]!.drawRect(rectangle.x, rectangle.y, rectangle.
                         if(this->NUMBER_OF_IMAGES > 1)
                         
                                     {
-                                    imagePersistanceUtil.saveWithImageIO(filePathStringBuffer1.toString(), bufferedImageCacheables[1]!.getBufferedImage());
+                                    imagePersistanceUtil.saveWithImageIO(filePathStringBuffer1.toString(), bufferedImageCacheables[1].getBufferedImage());
     
 
                                     }
                                 
-imagePersistanceUtil.saveWithImageIO(filePathStringBuffer2.toString(), bufferedImageCacheables[0]!.getBufferedImage());
+imagePersistanceUtil.saveWithImageIO(filePathStringBuffer2.toString(), bufferedImageCacheables[0].getBufferedImage());
     
 
                         if(this->NUMBER_OF_IMAGES > 2)
                         
                                     {
-                                    imagePersistanceUtil.saveWithImageIO(filePathStringBuffer3.toString(), bufferedImageCacheables[2]!.getBufferedImage());
+                                    imagePersistanceUtil.saveWithImageIO(filePathStringBuffer3.toString(), bufferedImageCacheables[2].getBufferedImage());
     
 
                                     }

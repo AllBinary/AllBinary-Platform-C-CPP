@@ -18,9 +18,9 @@
 
 
 
-            #include "../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/io/File.h>
 
@@ -131,7 +131,7 @@ private: InputAutomationConfigurationFactory(){
 
     JAXBElement<InputAutomationConfiguration> root = unmarshaller.unmarshal(StreamSource(FileInputStream(file)), InputAutomationConfiguration.constructor);;
     
-this->inputAutomationConfiguration= root.getValue() as InputAutomationConfiguration;
+this->inputAutomationConfiguration= root.getValue();
     
 
     List<InputAutomationModuleConfiguration> inputAutomationModuleConfigurationList = this->inputAutomationConfiguration.getInputAutomationModuleConfigurationList();;
@@ -145,7 +145,7 @@ logUtil.putF("isInstalled: " +this->inputAutomationConfiguration.isInstalled() +
                         
                                     {
                                     
-    int32_t size = inputAutomationModuleConfigurationList.length;;
+    int32_t size = inputAutomationModuleConfigurationList.size;;
     
 
     InputAutomationModuleConfiguration inputAutomationModuleConfiguration;;

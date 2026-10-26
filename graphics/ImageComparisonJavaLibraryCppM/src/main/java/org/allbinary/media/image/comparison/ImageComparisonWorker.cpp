@@ -20,9 +20,9 @@
 
             #include <vector>
         
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../../../java/lang/Long.h"
+            #include "java/lang/Long.h"
         
 #include <org/allbinary/util/BasicArrayList.h>
 
@@ -145,7 +145,7 @@ this->bufferedImageVector.add(capturedImageWorkerResultsEvent);
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
     public: void onEvent(AllBinaryEventObject allBinaryEventObject){
-this->onCaptureEvent(allBinaryEventObject as CapturedImageWorkerResultsEvent);
+this->onCaptureEvent(allBinaryEventObject);
     
 }
 
@@ -167,21 +167,21 @@ timeHelper.setStartTimeTNT();
                         
                                     {
                                     
-    std::vector<CapturedImageWorkerResultsEvent> capturedImageWorkerResultsEvent = new Array(2);;
+    std::vector<CapturedImageWorkerResultsEvent> capturedImageWorkerResultsEvent = std::vector<CapturedImageWorkerResultsEvent>(2);;
     
-capturedImageWorkerResultsEvent[0]= this->bufferedImageVector.get(0) as CapturedImageWorkerResultsEvent;
+capturedImageWorkerResultsEvent[0]= this->bufferedImageVector.get(0);
     
-capturedImageWorkerResultsEvent[1]= this->bufferedImageVector.get(1) as CapturedImageWorkerResultsEvent;
+capturedImageWorkerResultsEvent[1]= this->bufferedImageVector.get(1);
     
 
-                        if(this->imageComparatorConstraintsInterface.isImageValid(capturedImageWorkerResultsEvent[0]!.getBufferedImage()) && this->imageComparatorConstraintsInterface.isImageValid(capturedImageWorkerResultsEvent[1]!.getBufferedImage()))
+                        if(this->imageComparatorConstraintsInterface.isImageValid(capturedImageWorkerResultsEvent[0].getBufferedImage()) && this->imageComparatorConstraintsInterface.isImageValid(capturedImageWorkerResultsEvent[1].getBufferedImage()))
                         
                                     {
                                     
-    ImageComparisonResult imageComparisonResult = this->imageComparator.compare(capturedImageWorkerResultsEvent[0]!.getBufferedImage(), capturedImageWorkerResultsEvent[1]!.getBufferedImage(), capturedImageWorkerResultsEvent[0]!.getFrame(), capturedImageWorkerResultsEvent[1]!.getFrame(), 0);;
+    ImageComparisonResult imageComparisonResult = this->imageComparator.compare(capturedImageWorkerResultsEvent[0].getBufferedImage(), capturedImageWorkerResultsEvent[1].getBufferedImage(), capturedImageWorkerResultsEvent[0].getFrame(), capturedImageWorkerResultsEvent[1].getFrame(), 0);;
     
 
-    Long frame = capturedImageWorkerResultsEvent[1]!.getFrame();;
+    Long frame = capturedImageWorkerResultsEvent[1].getFrame();;
     
 
     ImageComparisonResultFrameCacheable imageComparisonResultFrameCacheable = ImageComparisonResultFrameCacheable(imageComparisonResult, frame);;

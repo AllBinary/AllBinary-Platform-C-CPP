@@ -21,11 +21,11 @@
         #ifndef ORG_ALLBINARY_LOGIC_COMMUNICATION_LOG_LOGUTIL_H
         #define ORG_ALLBINARY_LOGIC_COMMUNICATION_LOG_LOGUTIL_H
 
-            #include "../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../java/lang/Class.h"
+            #include "java/lang/Class.h"
         
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/util/logging/Level.h>
 
@@ -68,7 +68,7 @@
 
     /*actual*/ public: static LogUtil getInstance();
 
-    private: const Logger logger = Logger::getLogger(LogUtil.constructor.toString()!);
+    private: const Logger logger = Logger::getLogger(LogUtil.constructor.toString());
 
     private: const LogFormatUtil logFormatUtil = LogFormatUtil::getInstance();
 

@@ -21,7 +21,7 @@
         #ifndef ORG_ALLBINARY_GAME_INPUT_GAMEINPUTLAYERPROCESSOR_H
         #define ORG_ALLBINARY_GAME_INPUT_GAMEINPUTLAYERPROCESSOR_H
 
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/layer/AllBinaryLayer.h>
 

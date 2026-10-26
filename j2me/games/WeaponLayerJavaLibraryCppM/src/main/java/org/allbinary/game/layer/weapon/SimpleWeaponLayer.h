@@ -21,11 +21,8 @@
         #ifndef ORG_ALLBINARY_GAME_LAYER_WEAPON_SIMPLEWEAPONLAYER_H
         #define ORG_ALLBINARY_GAME_LAYER_WEAPON_SIMPLEWEAPONLAYER_H
 
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-#include <jsinterop/annotations/JsType.h>
-
-      
 #include <org/allbinary/animation/Animation.h>
 
       
@@ -48,12 +45,6 @@
 
       
 #include <org/allbinary/view/ViewPositionBase.h>
-
-      
-#include <jsinterop/annotations/JsMethod.h>
-
-      
-#include <jsinterop/annotations/JsConstructor.h>
 
       
 

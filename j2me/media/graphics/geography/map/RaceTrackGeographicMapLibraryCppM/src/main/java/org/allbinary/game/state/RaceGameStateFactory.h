@@ -21,7 +21,7 @@
         #ifndef ORG_ALLBINARY_GAME_STATE_RACEGAMESTATEFACTORY_H
         #define ORG_ALLBINARY_GAME_STATE_RACEGAMESTATEFACTORY_H
 
-            #include "../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
 #include <org/allbinary/logic/NullUtil.h>
 

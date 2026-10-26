@@ -21,11 +21,8 @@
         #ifndef ORG_ALLBINARY_GAME_PART_WEAPON_STRAIGHTMULTIPROJECTILEWEAPONPART_H
         #define ORG_ALLBINARY_GAME_PART_WEAPON_STRAIGHTMULTIPROJECTILEWEAPONPART_H
 
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-#include <jsinterop/annotations/JsType.h>
-
-      
 #include <org/allbinary/animation/Animation.h>
 
       
@@ -54,12 +51,6 @@
 
       
 #include <org/allbinary/math/NoDecimalTrigTable.h>
-
-      
-#include <jsinterop/annotations/JsMethod.h>
-
-      
-#include <jsinterop/annotations/JsConstructor.h>
 
       
 

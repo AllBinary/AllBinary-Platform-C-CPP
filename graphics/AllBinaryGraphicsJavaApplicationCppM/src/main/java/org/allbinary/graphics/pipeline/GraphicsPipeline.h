@@ -21,9 +21,9 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_PIPELINE_GRAPHICSPIPELINE_H
         #define ORG_ALLBINARY_GRAPHICS_PIPELINE_GRAPHICSPIPELINE_H
 
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../../java/lang/Math.h"
+            #include "java/lang/Math.h"
         
 #include <org/allbinary/graphics/GPoint.h>
 

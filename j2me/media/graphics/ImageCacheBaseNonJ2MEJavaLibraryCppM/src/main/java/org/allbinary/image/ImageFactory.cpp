@@ -18,20 +18,14 @@
 
 
 
-            #include "../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-#include <jsinterop/annotations/JsType.h>
-
-      
 #include <java/io/InputStream.h>
 
       
 #include <javax/microedition/lcdui/Image.h>
-
-      
-#include <jsinterop/annotations/JsMethod.h>
 
       
 
@@ -104,6 +98,18 @@ class ImageFactory
 
                         //if statement needs to be on the same line and ternary does not work the same way.
                         return image;
+    
+}
+
+
+                //@Throws(Exception.constructor)
+            
+    public: Image createImageFromInputStream(InputStream inputStream){
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return Image::createImageFromInputStream(inputStream);;
     
 }
 

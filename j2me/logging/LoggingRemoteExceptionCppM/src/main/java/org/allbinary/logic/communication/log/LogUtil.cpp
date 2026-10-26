@@ -18,18 +18,15 @@
 
 
 
-            #include "../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../java/lang/Throwable.h"
+            #include "java/lang/Throwable.h"
         
-            #include "../../../../../java/lang/RuntimeException.h"
+            #include "java/lang/RuntimeException.h"
         
-            #include "../../../../../java/lang/System.h"
+            #include "java/lang/System.h"
         
 #include <java/io/IOException.h>
-
-      
-#include <java/util/Hashtable.h>
 
       
 #include <org/apache/xmlrpc/XmlRpcException.h>
@@ -51,6 +48,9 @@
 
       
 #include <org/allbinary/time/TimeDelayHelper.h>
+
+      
+#include <org/allbinary/util/ABHashtable.h>
 
       
 
@@ -154,7 +154,7 @@ this->put(specialMessage, anyType, functionName, exception);
                         
                                     {
                                     
-                        if(exception->constructor.name.toString()!.compareTo(XmlRpcException.constructor.toString()!) == 0)
+                        if(exception->constructor.name.toString().compareTo(XmlRpcException.constructor.toString()) == 0)
                         
                                     {
                                     
@@ -167,7 +167,7 @@ this->put(specialMessage, anyType, functionName, exception);
                                     }
                                 
 
-                        if(exception->constructor.name.toString()!.compareTo(IOException.constructor.toString()!) == 0)
+                        if(exception->constructor.name.toString().compareTo(IOException.constructor.toString()) == 0)
                         
                                     {
                                     
@@ -191,12 +191,12 @@ this->isFirstException= false;
 
                         if(anyType != 
                                     nullptr
-                                 && anyType->constructor.name.toString()! != 
+                                 && anyType->constructor.name.toString() != 
                                     nullptr
                                 )
                         
                                     {
-                                    className= anyType->constructor.name.toString()!;
+                                    className= anyType->constructor.name.toString();
     
 
                                     }
@@ -223,7 +223,7 @@ this->isFirstException= false;
                                     }
                                 
 
-    Hashtable<any, any> hashtable = this->abeClientInformation.toHashtable();;
+    ABHashtable<Object*, Object*> hashtable = this->abeClientInformation.toHashtable();;
     
 this->stringBuffer.delete(0, this->stringBuffer.length());
     

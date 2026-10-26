@@ -23,7 +23,7 @@
 
             #include <vector>
         
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/media/graphics/geography/map/MultiGeographicMapBehavior.h>
 
@@ -62,6 +62,9 @@
 
       
 #include <org/allbinary/media/graphics/geography/map/GeographicMapCellType.h>
+
+      
+#include <org/allbinary/media/graphics/geography/map/SimpleGeographicMapCellPositionFactory.h>
 
       
 

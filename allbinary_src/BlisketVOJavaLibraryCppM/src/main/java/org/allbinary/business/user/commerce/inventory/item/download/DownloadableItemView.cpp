@@ -20,11 +20,11 @@
 
             #include <vector>
         
-            #include "../../../../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../../../../../../java/lang/Integer.h"
+            #include "java/lang/Integer.h"
         
 #include <java/util/Calendar.h>
 
@@ -106,7 +106,7 @@ this->downloadableItem= downloadableItem;
                                     }
                                 
 
-    HashMap<any, any> hashMap = this->downloadableItem.toHashMap();;
+    HashMap<Object*, Object*> hashMap = this->downloadableItem.toHashMap();;
     
 
     int64_t totalTime = this->downloadableItem.getValidTime().longValue();;
@@ -187,10 +187,10 @@ hashMap.put(DownloadItemData::VALID_TIME_SECONDS, Integer::valueOf(secondDelta -
     int32_t index = 0;index < size; index++)
         {
 
-    std::string name = nameArray[index]! as string;;
+    std::string name = nameArray[index];;
     
 
-    std::string value = hashMap.get(name) as string;;
+    std::string value = hashMap.get(name);;
     
 value= stringUtil.getNonNull(value);
     

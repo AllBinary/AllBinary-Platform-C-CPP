@@ -20,9 +20,9 @@
 
             #include <vector>
         
-            #include "../../../../../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../../../../../java/lang/Integer.h"
+            #include "java/lang/Integer.h"
         
 #include <java/awt/event/KeyEvent.h>
 
@@ -72,7 +72,7 @@ class KeyNameDefaultComboBoxModelFactory
     int32_t index = 0;index < keyArray.size(); index++)
         {
 
-    std::string keyAsString = KeyEvent::getKeyText(keyArray[index]!);;
+    std::string keyAsString = KeyEvent::getKeyText(keyArray[index]);;
     
 defaultComboBoxModel.addElement(keyAsString);
     

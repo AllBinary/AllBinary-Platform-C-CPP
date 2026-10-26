@@ -20,7 +20,7 @@
 
             #include <vector>
         
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/game/physics/velocity/VelocityProperties.h>
 
@@ -35,6 +35,9 @@
 
       
 #include <org/allbinary/media/graphics/geography/map/GeographicMapCellType.h>
+
+      
+#include <org/allbinary/media/graphics/geography/map/SimpleGeographicMapCellPositionFactory.h>
 
       
 #include <org/allbinary/media/graphics/geography/map/topview/BasicTopViewGeographicMapCellTypeFactory.h>
@@ -65,8 +68,9 @@
 
 class GeographicMapTopViewLayerBehavior: public TopViewGameLayerBehavior {
 
-public: GeographicMapTopViewLayerBehavior(int32_t maxGravityActionIndex){
-            super(maxGravityActionIndex);
+public: GeographicMapTopViewLayerBehavior(int32_t maxGravityActionIndex) : TopViewGameLayerBehavior(maxGravityActionIndex){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -81,7 +85,7 @@ public: GeographicMapTopViewLayerBehavior(int32_t maxGravityActionIndex){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return nullptr;
+                        return SimpleGeographicMapCellPositionFactory::NULL_GEOGRAPHIC_MAP_CELL_POSITION;
     
 }
 
@@ -93,7 +97,7 @@ public: GeographicMapTopViewLayerBehavior(int32_t maxGravityActionIndex){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return nullptr;
+                        return SimpleGeographicMapCellPositionFactory::NULL_GEOGRAPHIC_MAP_CELL_POSITION;
     
 }
 
@@ -105,7 +109,7 @@ public: GeographicMapTopViewLayerBehavior(int32_t maxGravityActionIndex){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return nullptr;
+                        return SimpleGeographicMapCellPositionFactory::NULL_GEOGRAPHIC_MAP_CELL_POSITION;
     
 }
 
@@ -160,10 +164,10 @@ public: GeographicMapTopViewLayerBehavior(int32_t maxGravityActionIndex){
                         for (
     int32_t index = 0;index < size; index++)
         {
-basicTopViewGeographicMapCellTypeFactory= geographicMapInterfaceArray[index]!.getGeographicMapCellTypeFactory() as BasicTopViewGeographicMapCellTypeFactory;
+basicTopViewGeographicMapCellTypeFactory= geographicMapInterfaceArray[index].getGeographicMapCellTypeFactory();
     
 
-                        if(basicTopViewGeographicMapCellTypeFactory.BLOCK_CELL_TYPE.isType(geographicMapCellTypeArray[index]!))
+                        if(basicTopViewGeographicMapCellTypeFactory.BLOCK_CELL_TYPE.isType(geographicMapCellTypeArray[index]))
                         
                                     {
                                     
@@ -200,10 +204,10 @@ basicTopViewGeographicMapCellTypeFactory= geographicMapInterfaceArray[index]!.ge
                         for (
     int32_t index = 0;index < size; index++)
         {
-basicTopViewGeographicMapCellTypeFactory= geographicMapInterfaceArray[index]!.getGeographicMapCellTypeFactory() as BasicTopViewGeographicMapCellTypeFactory;
+basicTopViewGeographicMapCellTypeFactory= geographicMapInterfaceArray[index].getGeographicMapCellTypeFactory();
     
 
-                        if(basicTopViewGeographicMapCellTypeFactory.OFF_MAP_CELL_TYPE.isType(geographicMapCellTypeArray[index]!))
+                        if(basicTopViewGeographicMapCellTypeFactory.OFF_MAP_CELL_TYPE.isType(geographicMapCellTypeArray[index]))
                         
                                     {
                                     

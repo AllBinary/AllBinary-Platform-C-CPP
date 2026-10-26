@@ -21,7 +21,7 @@
         #ifndef VIEWS_ADMIN_PAYMENT_GATEWAYS_SELECTNEWVALIDATIONVIEW_H
         #define VIEWS_ADMIN_PAYMENT_GATEWAYS_SELECTNEWVALIDATIONVIEW_H
 
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/logic/control/validate/ValidationComponentInterface.h>
 

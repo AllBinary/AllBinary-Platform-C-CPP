@@ -18,11 +18,11 @@
 
 
 
-            #include "../../../../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../../../../../../java/lang/Float.h"
+            #include "java/lang/Float.h"
         
 #include <org/allbinary/business/context/modules/storefront/StoreFrontInterface.h>
 
@@ -43,6 +43,9 @@
 
       
 #include <org/allbinary/data/tree/dom/document/DomDocumentHelper.h>
+
+      
+#include <org/allbinary/data/tree/dom/document/XmlDocumentHelper.h>
 
       
 #include <org/allbinary/globals/FREEBLISKET_PATH_GLOBALS.h>
@@ -147,7 +150,7 @@ this->document= DomDocumentHelper::create(data);
                         if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().TAX))
                         
                                     {
-                                    this->logUtil.putF("Tax Doc: " +DomDocumentHelper::toString(this->document), this, "getTaxRate");
+                                    this->logUtil.putF("Tax Doc: " +XmlDocumentHelper::toString(this->document), this, "getTaxRate");
     
 
                                     }
@@ -186,13 +189,13 @@ state= state.toUpperCase();
     StringValidationUtil stringValidationUtil = StringValidationUtil::getInstance();;
     
 
-                        if(!stringValidationUtil.isEmpty(country) && !stringValidationUtil.isEmpty(taxableStreetAddress.getCountry()) && country.compareTo(taxableStreetAddress.getCountry()) == 0)
+                        if(!stringValidationUtil.isEmpty(country) && !stringValidationUtil.isEmpty(taxableStreetAddress.getCountry()) && country.compare(taxableStreetAddress.getCountry()) == 0)
                         
                                     {
                                     
                         if(true && taxableStreetAddress.getState() != 
                                     nullptr
-                                 && state.compareTo(taxableStreetAddress.getState()) == 0)
+                                 && state.compare(taxableStreetAddress.getState()) == 0)
                         
                                     {
                                     
@@ -246,7 +249,7 @@ this->document= DomDocumentHelper::create(data);
                         if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().TAX))
                         
                                     {
-                                    this->logUtil.putF("Tax Doc: " +DomDocumentHelper::toString(this->document), this, this->commonStrings.IS_VALID);
+                                    this->logUtil.putF("Tax Doc: " +XmlDocumentHelper::toString(this->document), this, this->commonStrings.IS_VALID);
     
 
                                     }
@@ -320,7 +323,7 @@ this->logUtil.putF(stringBuffer.toString(), this, this->commonStrings.IS_VALID);
                                     }
                                 
 
-                        if(!stringValidationUtil.isEmpty(country) && !stringValidationUtil.isEmpty(taxableStreetAddress.getCountry()) && country.compareTo(taxableStreetAddress.getCountry()) == 0)
+                        if(!stringValidationUtil.isEmpty(country) && !stringValidationUtil.isEmpty(taxableStreetAddress.getCountry()) && country.compare(taxableStreetAddress.getCountry()) == 0)
                         
                                     {
                                     

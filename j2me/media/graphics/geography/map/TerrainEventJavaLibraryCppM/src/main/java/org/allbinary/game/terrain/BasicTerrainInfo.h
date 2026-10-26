@@ -21,7 +21,7 @@
         #ifndef ORG_ALLBINARY_GAME_TERRAIN_BASICTERRAININFO_H
         #define ORG_ALLBINARY_GAME_TERRAIN_BASICTERRAININFO_H
 
-            #include "../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
 #include <org/allbinary/math/Angle.h>
 

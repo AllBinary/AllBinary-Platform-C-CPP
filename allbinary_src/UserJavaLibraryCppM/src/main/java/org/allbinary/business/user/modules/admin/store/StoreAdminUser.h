@@ -21,7 +21,7 @@
         #ifndef ORG_ALLBINARY_BUSINESS_USER_MODULES_ADMIN_STORE_STOREADMINUSER_H
         #define ORG_ALLBINARY_BUSINESS_USER_MODULES_ADMIN_STORE_STOREADMINUSER_H
 
-            #include "../../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
 
@@ -55,7 +55,7 @@ class StoreAdminUser: public User {
 
 public: StoreAdminUser();
 
-public: StoreAdminUser(HashMap<any, any> userHashMap);
+public: StoreAdminUser(HashMap<Object*, Object*> userHashMap);
 
     public: void validateSession(WeblisketSessionInterface weblisketSession);
 

@@ -21,11 +21,11 @@
         #ifndef ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_IMAGECOMPARATORCONSTRAINTS_H
         #define ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_IMAGECOMPARATORCONSTRAINTS_H
 
-            #include "../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../../../java/lang/RuntimeException.h"
+            #include "java/lang/RuntimeException.h"
         
 #include <java/awt/Color.h>
 

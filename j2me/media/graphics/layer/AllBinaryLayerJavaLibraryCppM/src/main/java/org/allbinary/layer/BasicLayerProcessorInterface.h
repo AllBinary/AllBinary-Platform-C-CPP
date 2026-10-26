@@ -21,14 +21,8 @@
         #ifndef ORG_ALLBINARY_LAYER_BASICLAYERPROCESSORINTERFACE_H
         #define ORG_ALLBINARY_LAYER_BASICLAYERPROCESSORINTERFACE_H
 
-            #include "../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-#include <jsinterop/annotations/JsType.h>
-
-      
-#include <jsinterop/annotations/JsMethod.h>
-
-      
 
 
 

@@ -21,9 +21,9 @@
         #ifndef ORG_ALLBINARY_LOGIC_COMMUNICATION_HTTP_REQUEST_ABRESPONSEHANDLER_H
         #define ORG_ALLBINARY_LOGIC_COMMUNICATION_HTTP_REQUEST_ABRESPONSEHANDLER_H
 
-            #include "../../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <javax/servlet/RequestDispatcher.h>
 

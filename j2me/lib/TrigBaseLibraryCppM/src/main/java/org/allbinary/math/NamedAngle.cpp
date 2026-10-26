@@ -51,8 +51,9 @@ class NamedAngle: public Angle {
 
     public: std::string name;
 
-public: NamedAngle(int16_t angle, std::string name){
-            super(angle);
+public: NamedAngle(int16_t angle, std::string name) : Angle(angle){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.

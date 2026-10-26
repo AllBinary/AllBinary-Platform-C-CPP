@@ -21,7 +21,7 @@
         #ifndef VIEWS_GENERIC_ORDER_ORDERVIEW_H
         #define VIEWS_GENERIC_ORDER_ORDERVIEW_H
 
-            #include "../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <javax/servlet/http/HttpServletRequest.h>
 

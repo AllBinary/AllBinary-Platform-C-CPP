@@ -21,7 +21,7 @@
         #ifndef TAGS_ADMIN_STOREFRONT_STATISTICS_STOREFRONTSTATISTICSTAG_H
         #define TAGS_ADMIN_STOREFRONT_STATISTICS_STOREFRONTSTATISTICSTAG_H
 
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <javax/servlet/jsp/JspTagException.h>
 

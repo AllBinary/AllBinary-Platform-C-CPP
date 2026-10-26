@@ -18,9 +18,9 @@
 
 
 
-            #include "../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/io/ByteArrayOutputStream.h>
 
@@ -32,6 +32,9 @@
 
       
 #include <java/io/StringBufferInputStream.h>
+
+      
+#include <javax/xml/transform/Templates.h>
 
       
 #include <javax/xml/transform/Transformer.h>
@@ -49,7 +52,7 @@
 #include <javax/xml/transform/stream/StreamSource.h>
 
       
-#include <org/allbinary/data/tree/dom/document/DomDocumentHelper.h>
+#include <org/allbinary/data/tree/dom/document/XmlDocumentHelper.h>
 
       
 #include <org/w3c/dom/Document.h>
@@ -164,6 +167,39 @@ transformer.transform(xmlStreamSource, streamResult);
 
                 //@Throws(Exception.constructor)
             
+    public: std::string translateTemplate(Templates templates, StreamSource xmlStreamSource){
+
+        try {
+            
+    ByteArrayOutputStream outputStream = ByteArrayOutputStream();;
+    
+
+    StreamResult streamResult = StreamResult(outputStream);;
+    
+templates.newTransformer().transform(xmlStreamSource, streamResult);
+    
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return streamResult.getOutputStream().toString();;
+    
+
+                //: 
+} catch(e) 
+            {
+
+
+
+                            throw e;
+                    
+}
+
+}
+
+
+                //@Throws(Exception.constructor)
+            
     public: std::string translate(StreamSource xsltStreamSource, Document xmlDocument){
 
         try {
@@ -174,7 +210,7 @@ transformer.transform(xmlStreamSource, streamResult);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->translate(xsltStreamSource, StreamSource(StringBufferInputStream(DomDocumentHelper::toString(xmlDocument))), StreamResult(outputStream)).toString();;
+                        return this->translate(xsltStreamSource, StreamSource(StringBufferInputStream(XmlDocumentHelper::toString(xmlDocument))), StreamResult(outputStream)).toString();;
     
 
                 //: 
@@ -253,7 +289,7 @@ transformer.transform(xmlStreamSource, streamResult);
         try {
             outputFile.createNewFile();
     
-this->translate(StreamSource(xsltFilePath), StreamSource(StringBufferInputStream(DomDocumentHelper::toString(xmlDocument))), StreamResult(outputFile));
+this->translate(StreamSource(xsltFilePath), StreamSource(StringBufferInputStream(XmlDocumentHelper::toString(xmlDocument))), StreamResult(outputFile));
     
 
                 //: 

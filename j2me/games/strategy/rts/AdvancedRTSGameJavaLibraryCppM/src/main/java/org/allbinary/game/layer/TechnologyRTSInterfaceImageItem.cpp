@@ -20,7 +20,7 @@
 
             #include <vector>
         
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <javax/microedition/lcdui/Font.h>
 
@@ -107,8 +107,9 @@ class TechnologyRTSInterfaceImageItem: public ABCustomImageItem, public UpdateMy
 
     private: int32_t adjustedLevelY= 0;
 
-public: TechnologyRTSInterfaceImageItem(std::string label, Image img, int32_t layout, std::string altText, BasicColor basicColor, RTSInterface rtsInterface){
-            super(label, img, layout, altText, basicColor, 0);
+public: TechnologyRTSInterfaceImageItem(std::string label, Image img, int32_t layout, std::string altText, BasicColor basicColor, RTSInterface rtsInterface) : ABCustomImageItem(label, img, layout, altText, basicColor, 0){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.

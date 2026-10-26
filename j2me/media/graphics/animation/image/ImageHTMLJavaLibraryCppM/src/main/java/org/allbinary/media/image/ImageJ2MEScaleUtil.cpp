@@ -20,9 +20,9 @@
 
             #include <vector>
         
-            #include "../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <javax/microedition/lcdui/Image.h>
 
@@ -70,7 +70,7 @@ private: ImageJ2MEScaleUtil(){
             
     public: std::vector<Image> scaleArray(std::vector<Image> images, int32_t width, int32_t height){
 
-    std::vector<Image> scaledImages = new Array(images.length);;
+    std::vector<Image> scaledImages = std::vector<Image>(images.length);;
     
 
 
@@ -79,7 +79,7 @@ private: ImageJ2MEScaleUtil(){
                         for (
     int32_t index = images.size();--index >= 0; )
         {
-scaledImages[index]= this->scale(images[index]!, width, height);
+scaledImages[index]= this->scale(images[index], width, height);
     
 }
 

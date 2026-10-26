@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../../../../../java/lang/Integer.h"
+            #include "java/lang/Integer.h"
         
 
 
@@ -50,8 +50,9 @@ class HtmlLengthInput: public HtmlValueInput {
 
     private: std::string size;
 
-public: HtmlLengthInput(std::string before, std::string type, std::string name, std::string value, std::string after){
-            super(before, type, name, value, after);
+public: HtmlLengthInput(std::string before, std::string type, std::string name, std::string value, std::string after) : HtmlValueInput(before, type, name, value, after){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.

@@ -21,7 +21,7 @@
         #ifndef ORG_ALLBINARY_THIRDPARTY_STORE_THIRDPARTYSTOREFACTORY_H
         #define ORG_ALLBINARY_THIRDPARTY_STORE_THIRDPARTYSTOREFACTORY_H
 
-            #include "../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
 
 

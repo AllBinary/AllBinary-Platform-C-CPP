@@ -56,8 +56,9 @@ class UpgradableWideRTSLayerPaintable: public RTSLayerCompositePaintable {
 
     private: std::string cost = StringUtil::getInstance().EMPTY_STRING;
 
-public: UpgradableWideRTSLayerPaintable(UpgradableRTSLayerHudPaintable upgradableRTSLayerHudPaintable){
-            super(upgradableRTSLayerHudPaintable);
+public: UpgradableWideRTSLayerPaintable(UpgradableRTSLayerHudPaintable upgradableRTSLayerHudPaintable) : RTSLayerCompositePaintable(upgradableRTSLayerHudPaintable){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.

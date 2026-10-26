@@ -21,12 +21,6 @@
         #ifndef ORG_ALLBINARY_DEBUG_DEBUGINTERFACE_H
         #define ORG_ALLBINARY_DEBUG_DEBUGINTERFACE_H
 
-#include <jsinterop/annotations/JsType.h>
-
-      
-#include <jsinterop/annotations/JsMethod.h>
-
-      
 
 
 

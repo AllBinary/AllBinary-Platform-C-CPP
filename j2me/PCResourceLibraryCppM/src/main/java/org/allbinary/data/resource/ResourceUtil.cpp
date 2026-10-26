@@ -20,13 +20,13 @@
 
             #include <vector>
         
-            #include "../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../java/lang/ClassLoader.h"
+            #include "java/lang/ClassLoader.h"
         
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../../java/lang/Integer.h"
+            #include "java/lang/Integer.h"
         
 #include <java/io/ByteArrayInputStream.h>
 
@@ -162,7 +162,7 @@ this->ext= ext;
                         
                                     {
                                     
-    std::vector<int8_t> byteArray = new Array(inputStream.available());;
+    std::vector<int8_t> byteArray = std::vector<int8_t>(inputStream.available());;
     
 StreamUtil::getInstance().getByteArray(inputStream, ByteArrayOutputStream(), byteArray);
     

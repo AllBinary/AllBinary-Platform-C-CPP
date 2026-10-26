@@ -21,7 +21,7 @@
         #ifndef ORG_ALLBINARY_LOGIC_MATH_MATHDATA_H
         #define ORG_ALLBINARY_LOGIC_MATH_MATHDATA_H
 
-            #include "../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
 #include <org/allbinary/string/CommonPhoneStrings.h>
 

@@ -45,8 +45,9 @@ class ImmutableBasicArrayList: public BasicArrayListS {
 
     private: std::string name;
 
-public: ImmutableBasicArrayList(std::string name, int32_t size){
-            super(size);
+public: ImmutableBasicArrayList(std::string name, int32_t size) : BasicArrayListS(size){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.

@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../../../../../java/lang/Integer.h"
+            #include "java/lang/Integer.h"
         
 #include <java/util/HashMap.h>
 
@@ -65,7 +65,7 @@ class BasketInterface {
 
     Set getIds()
 
-    HashMap<any, any> getItems()
+    HashMap<Object*, Object*> getItems()
 
     Integer getNumberOf(std::string product)
 

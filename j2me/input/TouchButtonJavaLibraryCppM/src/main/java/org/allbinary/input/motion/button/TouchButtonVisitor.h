@@ -21,9 +21,9 @@
         #ifndef ORG_ALLBINARY_INPUT_MOTION_BUTTON_TOUCHBUTTONVISITOR_H
         #define ORG_ALLBINARY_INPUT_MOTION_BUTTON_TOUCHBUTTONVISITOR_H
 
-            #include "../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 
 

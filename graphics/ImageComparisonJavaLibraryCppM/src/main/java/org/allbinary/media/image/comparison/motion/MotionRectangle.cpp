@@ -18,9 +18,9 @@
 
 
 
-            #include "../../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../../java/lang/Cloneable.h"
+            #include "java/lang/Cloneable.h"
         
 #include <java/awt/Rectangle.h>
 
@@ -103,9 +103,9 @@ this->pixelDeltaVector= pixelDeltaVector;
 
     public: Object* clone(){
 
-    MotionRectangle motionRectangle = MotionRectangle(this->getRectangle().clone() as Rectangle);;
+    MotionRectangle motionRectangle = MotionRectangle(this->getRectangle().clone());;
     
-motionRectangle.setPixelDeltaVector(this->getPixelDeltaVector().clone() as BasicArrayList);
+motionRectangle.setPixelDeltaVector(this->getPixelDeltaVector().clone());
     
 
 

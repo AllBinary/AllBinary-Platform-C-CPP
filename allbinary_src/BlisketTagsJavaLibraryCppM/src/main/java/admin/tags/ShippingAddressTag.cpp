@@ -18,9 +18,9 @@
 
 
 
-            #include "../../java/lang/Class.h"
+            #include "java/lang/Class.h"
         
-            #include "../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/lang/reflect/Method.h>
 
@@ -92,7 +92,7 @@ this->value= value;
     Object* anyType = ShippingAddressHelperFactory().getInstance(this->getPropertiesHashMap(), this->pageContext);;
     
 
-    Function addressHelperClass = anyType->constructor;;
+    Class* addressHelperClass = anyType->getClass();;
     
 
     Method method = addressHelperClass.getMethod("set", 
@@ -100,7 +100,7 @@ this->value= value;
     
 
     std::string result = method.invoke(anyType, 
-                            nullptr) as string;;
+                            nullptr);;
     
 
 
@@ -154,7 +154,7 @@ this->value= value;
     Object* anyType = ShippingAddressHelperFactory().getInstance(this->getPropertiesHashMap(), this->pageContext);;
     
 
-    Function addressHelperClass = anyType->constructor;;
+    Class* addressHelperClass = anyType->getClass();;
     
 
     Method method = addressHelperClass.getMethod("setToBillingAddress", 
@@ -162,7 +162,7 @@ this->value= value;
     
 
     std::string result = method.invoke(anyType, 
-                            nullptr) as string;;
+                            nullptr);;
     
 
 

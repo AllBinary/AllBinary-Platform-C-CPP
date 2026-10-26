@@ -9,11 +9,11 @@
 
             #include <vector>
         
-            #include "../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../java/lang/IndexOutOfBoundsException.h"
+            #include "java/lang/IndexOutOfBoundsException.h"
         
-            #include "../../../java/lang/System.h"
+            #include "java/lang/System.h"
         
 #include <jsinterop/annotations/JsType.h>
 

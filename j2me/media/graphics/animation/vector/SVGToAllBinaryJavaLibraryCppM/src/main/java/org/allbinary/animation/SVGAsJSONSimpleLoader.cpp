@@ -20,19 +20,22 @@
 
             #include <vector>
         
-            #include "../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../java/lang/IllegalArgumentException.h"
+            #include "java/lang/IllegalArgumentException.h"
         
-            #include "../../../java/lang/System.h"
+            #include "java/lang/System.h"
         
-            #include "../../../java/lang/Math.h"
+            #include "java/lang/Math.h"
         
-            #include "../../../java/lang/Double.h"
+            #include "java/lang/Double.h"
         
 #include <java/util/Enumeration.h>
+
+      
+#include <org/allbinary/graphics/GraphicsStrings.h>
 
       
 #include <org/allbinary/logic/math/PrimitiveIntUtil.h>
@@ -95,7 +98,7 @@ class SVGAsJSONSimpleLoader
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return instance;
+                        return SVGAsJSONSimpleLoader::instance();
     
 }
 
@@ -123,7 +126,7 @@ class SVGAsJSONSimpleLoader
     int32_t index = 0;index < size; index++)
         {
 
-    int32_t size2 = points[index]!.size();;
+    int32_t size2 = points[index].size();;
     
 
 
@@ -132,7 +135,7 @@ class SVGAsJSONSimpleLoader
                         for (
     int32_t index2 = 0;index2 < size2; index2++)
         {
-stringBuilder.appendint(points[index]![index2]!);
+stringBuilder.appendint(points[index][index2]);
     
 stringBuilder.append(CommonSeps::getInstance().COMMA);
     
@@ -144,6 +147,8 @@ console.log(stringBuilder.toString());
     
 }
 
+
+    private: const GraphicsStrings graphicsStrings = GraphicsStrings::getInstance();
 
     private: const ShapeTypeFactory shapeTypeFactory = ShapeTypeFactory::getInstance();
 
@@ -166,10 +171,6 @@ console.log(stringBuilder.toString());
     private: const std::string KEY_X = PositionStrings::getInstance().X;
 
     private: const std::string KEY_Y = PositionStrings::getInstance().Y;
-
-    private: const std::string KEY_WIDTH = "width";
-
-    private: const std::string KEY_HEIGHT = "height";
 
     private: const std::string ERROR_PARSE_SVG_JSON = "Unable to parse SVG JSON";
 
@@ -225,13 +226,13 @@ console.log(stringBuilder.toString());
     BasicArrayList pointVector = BasicArrayListD();;
     
 
-    Enumeration<any> keys = svg.keys();;
+    Enumeration<Object*> keys = svg.keys();;
     
 
         while(keys.hasMoreElements())
         {
 
-    std::string key = keys.nextElement()! as string;;
+    std::string key = keys.nextElement();;
     
 
     Object* value = svg.opt(key);;
@@ -293,7 +294,7 @@ console.log(stringBuilder.toString());
                         
                                     {
                                     
-    JSONArray array = value as JSONArray;;
+    JSONArray array = *dynamic_cast<JSONArray*>(value);;
     
 
     int32_t size = array.length();;
@@ -413,10 +414,10 @@ this->addSeparator(pointVector);
     int32_t y = this->readInt(rectangle, KEY_Y, 0);;
     
 
-    int32_t width = this->readInt(rectangle, KEY_WIDTH);;
+    int32_t width = this->readInt(rectangle, graphicsStrings.WIDTH);;
     
 
-    int32_t height = this->readInt(rectangle, KEY_HEIGHT);;
+    int32_t height = this->readInt(rectangle, graphicsStrings.HEIGHT);;
     
 this->addPoint(pointVector, x, y);
     
@@ -434,13 +435,13 @@ this->addSeparator(pointVector);
 
 
     private: void addPoint(BasicArrayList pointVector, int32_t x, int32_t y){
-pointVector.add([x,y]);
+pointVector.add({x,y});
     
 }
 
 
     private: void addSeparator(BasicArrayList pointVector){
-pointVector.add([SHAPE_SEPARATOR[0],SHAPE_SEPARATOR[1]]);
+pointVector.add({SHAPE_SEPARATOR[0],SHAPE_SEPARATOR[1]});
     
 }
 
@@ -519,7 +520,7 @@ e.printStackTrace();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return static_cast<int32_t>(Math::round((value as Number).doubleValue()));
+                        return static_cast<int32_t>(Math::round((value)).doubleValue()));
     
 
                                     }
@@ -532,7 +533,7 @@ e.printStackTrace();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return static_cast<int32_t>(Math::round(Double::parseDouble(value as string)));
+                        return static_cast<int32_t>(Math::round(Double::parseDouble(value)));
     
 
                                     }
@@ -554,7 +555,7 @@ e.printStackTrace();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return value as JSONObject;
+                        return *dynamic_cast<JSONObject*>(value);
     
 
                                     }
@@ -582,7 +583,7 @@ e.printStackTrace();
                                     }
                                 
 
-    std::vector<std::vector<int32_t>> points = new Array(pointVector.size()).fill(null).map(() => new Array(2).fill(0));;
+    std::vector<std::vector<int32_t>> points = std::vector<std::vector<int32_t>>(pointVector.size(), std::vector<int32_t>(2));;
     
 
 

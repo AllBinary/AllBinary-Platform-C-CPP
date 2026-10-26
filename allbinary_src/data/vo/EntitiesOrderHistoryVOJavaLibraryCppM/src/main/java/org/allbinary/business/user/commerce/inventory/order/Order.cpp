@@ -20,9 +20,9 @@
 
             #include <vector>
         
-            #include "../../../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/io/Serializable.h>
 
@@ -390,9 +390,9 @@ this->storeCancelComment= value;
 }
 
 
-    public: HashMap<any, any> toHashMapOrder(){
+    public: HashMap<Object*, Object*> toHashMapOrder(){
 
-    HashMap<any, any> hashMap = StdUtil::getInstance().createHashMap();;
+    HashMap<Object*, Object*> hashMap = StdUtil::getInstance().createHashMap();;
     
 hashMap.put(PaymentData::METHOD, this->paymentMethod);
     
@@ -425,7 +425,7 @@ hashMap.put(OrderData::STORECANCELCOMMENT, this->storeCancelComment);
             
     public: Node toXmlNode(Document document){
 
-    HashMap<any, any> hashMap = this->toHashMapOrder();;
+    HashMap<Object*, Object*> hashMap = this->toHashMapOrder();;
     
 
     Set keySet = hashMap.keys();;
@@ -447,10 +447,10 @@ hashMap.put(OrderData::STORECANCELCOMMENT, this->storeCancelComment);
     int32_t i = 0;i < size; i++)
         {
 
-    std::string name = keyArray[i]! as string;;
+    std::string name = keyArray[i];;
     
 
-    std::string value = hashMap.get(name) as string;;
+    std::string value = hashMap.get(name);;
     
 value= StringUtil::getInstance().getNonNull(value);
     

@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/animation/Animation.h>
 
@@ -54,8 +54,9 @@
 
 class ImageAnimationSingletonInterfaceFactory: public SingletonAnimationInterfaceFactory {
 
-public: ImageAnimationSingletonInterfaceFactory(Animation animationInterface, int32_t width, int32_t height){
-            super(ImageAnimation(AnimationFrameToImageUtil::getInstance().getInstanceWH(width, height, animationInterface), AnimationBehavior::getInstance()));
+public: ImageAnimationSingletonInterfaceFactory(Animation animationInterface, int32_t width, int32_t height) : SingletonAnimationInterfaceFactory(ImageAnimation(AnimationFrameToImageUtil::getInstance().getInstanceWH(width, height, animationInterface), AnimationBehavior::getInstance())){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.

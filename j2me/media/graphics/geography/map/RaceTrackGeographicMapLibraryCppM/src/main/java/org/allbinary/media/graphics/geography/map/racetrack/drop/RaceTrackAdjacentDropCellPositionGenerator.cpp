@@ -20,11 +20,8 @@
 
             #include <vector>
         
-            #include "../../../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-#include <java/util/Hashtable.h>
-
-      
 #include <org/allbinary/game/identification/GroupCommonFactory.h>
 
       
@@ -94,6 +91,9 @@
 #include <org/allbinary/media/graphics/geography/map/racetrack/RaceTrackGeographicMapCellTypeFactory.h>
 
       
+#include <org/allbinary/util/ABHashtable.h>
+
+      
 
 
 
@@ -133,7 +133,7 @@ class RaceTrackAdjacentDropCellPositionGenerator: public RaceTrackDropCellPositi
 
     private: const GroupCommonFactory groupCommonFactory = GroupCommonFactory::getInstance();
 
-    private: std::vector<GeographicMapCellPosition> surroundingCellPositions = new Array(4);
+    private: std::vector<GeographicMapCellPosition> surroundingCellPositions = std::vector<GeographicMapCellPosition>(4);
 
 private: RaceTrackAdjacentDropCellPositionGenerator(){
 }
@@ -157,10 +157,10 @@ this->surroundingCellPositions[2]= geographicMapCellPositionFactory.getAt(column
 this->surroundingCellPositions[3]= geographicMapCellPositionFactory.getAt(column +1, row);
     
 
-    BaseRaceTrackGeographicMap baseRaceTrackGeographicMap = this->raceTrackGeographicMap as BaseRaceTrackGeographicMap;;
+    BaseRaceTrackGeographicMap baseRaceTrackGeographicMap = this->raceTrackGeographicMap;;
     
 
-    RaceTrackGeographicMapCellTypeFactory raceTrackGeographicMapCellTypeFactory = baseRaceTrackGeographicMap.getGeographicMapCellTypeFactory() as RaceTrackGeographicMapCellTypeFactory;;
+    RaceTrackGeographicMapCellTypeFactory raceTrackGeographicMapCellTypeFactory = baseRaceTrackGeographicMap.getGeographicMapCellTypeFactory();;
     
 
     GeographicMapCellPosition geographicMapCellPosition;;
@@ -175,9 +175,9 @@ this->surroundingCellPositions[3]= geographicMapCellPositionFactory.getAt(column
                         for (
     int32_t index = this->surroundingCellPositions.size();--index >= 0; )
         {
-geographicMapCellPosition= this->surroundingCellPositions[index]!;
+geographicMapCellPosition= this->surroundingCellPositions[index];
     
-raceTrackGeographicMapCellType= this->raceTrackGeographicMap.getCellTypeAt(geographicMapCellPosition) as RaceTrackGeographicMapCellType;
+raceTrackGeographicMapCellType= this->raceTrackGeographicMap.getCellTypeAt(geographicMapCellPosition);
     
 
                         if(!raceTrackGeographicMapCellTypeFactory.isPath(raceTrackGeographicMapCellType))
@@ -202,7 +202,7 @@ break;
 }
 
 
-    private: const Hashtable<any, any> hashtable = StdUtil::getInstance().createHashtable();
+    private: const ABHashtable<Object*, Object*> hashtable = StdUtil::getInstance().createHashtable();
 
                 //@Throws(Exception.constructor)
             
@@ -220,7 +220,7 @@ super.update(allBinaryGameLayerManager, geographicMapInterface);
             
     protected: void drop(AllBinaryLayerManager allBinaryLayerManager, int32_t index){
 
-    GeographicMapCellPosition geographicMapCellPosition = this->list.get(index) as GeographicMapCellPosition;;
+    GeographicMapCellPosition geographicMapCellPosition = this->list.get(index);;
     
 
     GeographicMapCellPosition randomGeographicMapCellPosition = this->getFirstNonRoadAdjacentCellPosition(geographicMapCellPosition.getColumn(), geographicMapCellPosition.getRow());;
@@ -286,7 +286,7 @@ this->hashtable.put(DirectionFactory::getInstance().NAME, direction);
     AllBinaryLayer layerInterface = RaceTrackAdjacentDropLayerFactory::getInstance().getRandomInstance().getNextInstance(hashtable, x, y, z);;
     
 
-    BaseRaceTrackGeographicMap baseRaceTrackGeographicMap = this->raceTrackGeographicMap as BaseRaceTrackGeographicMap;;
+    BaseRaceTrackGeographicMap baseRaceTrackGeographicMap = this->raceTrackGeographicMap;;
     
 
     BasicArrayList list = this->layerCoveringCellPositionsUtil.getAll(baseRaceTrackGeographicMap, randomGeographicMapCellPosition, layerInterface, BasicArrayListD());;
@@ -314,7 +314,7 @@ this->hashtable.put(DirectionFactory::getInstance().NAME, direction);
                         for (
     int32_t index2 = list.size();--index2 >= 0; )
         {
-geographicMapCellType= this->raceTrackGeographicMap.getCellTypeAt(list.get(index2) as GeographicMapCellPosition);
+geographicMapCellType= this->raceTrackGeographicMap.getCellTypeAt(list.get(index2));
     
 
                         if(this->raceTrackGeographicMapCellTypeFactory.isPath(geographicMapCellType))

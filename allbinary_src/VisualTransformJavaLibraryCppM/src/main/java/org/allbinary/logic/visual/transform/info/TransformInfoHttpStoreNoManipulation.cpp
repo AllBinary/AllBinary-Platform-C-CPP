@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
 
@@ -51,8 +51,9 @@
 
 class TransformInfoHttpStoreNoManipulation: public TransformInfoHttpStore {
 
-public: TransformInfoHttpStoreNoManipulation(HashMap<any, any> propertiesHashMap, PageContext pageContext){
-            super(propertiesHashMap, pageContext);
+public: TransformInfoHttpStoreNoManipulation(HashMap<Object*, Object*> propertiesHashMap, PageContext pageContext) : TransformInfoHttpStore(propertiesHashMap, pageContext){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.

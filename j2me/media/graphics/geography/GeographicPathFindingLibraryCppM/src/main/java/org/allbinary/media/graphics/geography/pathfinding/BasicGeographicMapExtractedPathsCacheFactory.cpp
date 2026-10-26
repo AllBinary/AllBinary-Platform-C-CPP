@@ -90,7 +90,7 @@ this->maxPaths= maxPaths;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->list.removeAt(0) as BasicArrayList;
+                        return this->list.removeAt(0);
     
 
                                     }
@@ -116,7 +116,7 @@ this->maxPaths= maxPaths;
                         for (
     int32_t index = list.size() -1;index >= 0; index--)
         {
-BasicGeographicMapExtractedPathCacheFactory::getInstance().release(list.get(index) as BasicArrayList);
+BasicGeographicMapExtractedPathCacheFactory::getInstance().release(list.get(index));
     
 }
 

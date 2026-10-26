@@ -23,13 +23,10 @@
 
             #include <vector>
         
-            #include "../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-#include <jsinterop/annotations/JsType.h>
-
-      
 #include <javax/microedition/lcdui/Displayable.h>
 
       
@@ -84,15 +81,6 @@
 #include <org/allbinary/util/BasicArrayListD.h>
 
       
-#include <jsinterop/annotations/JsMethod.h>
-
-      
-#include <jsinterop/annotations/JsConstructor.h>
-
-      
-#include <jsinterop/annotations/JsProperty.h>
-
-      
 
 
 
@@ -136,11 +124,11 @@ class DisplayInfoSingleton
 
     public: const std::string ADJUSTING_FOR_SCALING_IN_LANDSCAPE = "Adjusting for Scaling in landscape display ratio: ";
 
-    private: std::vector<int32_t> last = new Array(4);
+    private: std::vector<int32_t> last = std::vector<int32_t>(4);
 
-    private: std::vector<int32_t> lastHalf = new Array(4);
+    private: std::vector<int32_t> lastHalf = std::vector<int32_t>(4);
 
-    private: std::vector<int32_t> full = new Array(4);
+    private: std::vector<int32_t> full = std::vector<int32_t>(4);
 
     private: int32_t top= 0;
 

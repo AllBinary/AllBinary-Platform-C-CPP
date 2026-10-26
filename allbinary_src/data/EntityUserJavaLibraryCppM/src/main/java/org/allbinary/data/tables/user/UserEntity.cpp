@@ -18,9 +18,9 @@
 
 
 
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../../../java/lang/Integer.h"
+            #include "java/lang/Integer.h"
         
 #include <java/util/HashMap.h>
 
@@ -125,8 +125,9 @@ class UserEntity: public AbSqlBean, public UserEntityInterface {
 
     private: const std::string END_QUOTES = CommonSeps::getInstance().QUOTE;
 
-public: UserEntity(){
-            super(UserDbInitInfo());
+public: UserEntity() : AbSqlBean(UserDbInitInfo()){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -184,7 +185,7 @@ this->setTableName(this->tableName);
             
     public: BasicArrayList getStoreManagers(StoreFrontInterface storeFrontInterface){
 
-    HashMap<any, any> keysAndValues = StdUtil::getInstance().createHashMap();;
+    HashMap<Object*, Object*> keysAndValues = StdUtil::getInstance().createHashMap();;
     
 
     BasicArrayList usersVector = BasicArrayListD();;
@@ -207,7 +208,7 @@ keysAndValues.put(UserData::PERMISSIONS, storeFrontInterface.getName());
     int32_t i = 0;i < size; i++)
         {
 
-    HashMap<any, any> userHashMap = usersHashMapVector.get(i) as HashMap<any, any>;;
+    HashMap<Object*, Object*> userHashMap = usersHashMapVector.get(i);;
     
 
                         if(userHashMap != 
@@ -242,7 +243,7 @@ keysAndValues.put(UserData::PERMISSIONS, storeFrontInterface.getName());
             
     public: BasicArrayList getUsersWithRole(UserRole userRole){
 
-    HashMap<any, any> keysAndValues = StdUtil::getInstance().createHashMap();;
+    HashMap<Object*, Object*> keysAndValues = StdUtil::getInstance().createHashMap();;
     
 
     BasicArrayList usersVector = BasicArrayListD();;
@@ -263,7 +264,7 @@ keysAndValues.put(UserRoleData::NAME.toString(), userRole.toString());
     int32_t index = 0;index < size; index++)
         {
 
-    HashMap<any, any> userHashMap = usersHashMapVector.get(index) as HashMap<any, any>;;
+    HashMap<Object*, Object*> userHashMap = usersHashMapVector.get(index);;
     
 
                         if(userHashMap != 
@@ -286,7 +287,7 @@ keysAndValues.put(UserRoleData::NAME.toString(), userRole.toString());
             
     public: BasicArrayList getUsers(StoreFrontInterface storeFrontInterface){
 
-    HashMap<any, any> keysAndValues = StdUtil::getInstance().createHashMap();;
+    HashMap<Object*, Object*> keysAndValues = StdUtil::getInstance().createHashMap();;
     
 
     BasicArrayList usersVector = BasicArrayListD();;
@@ -307,7 +308,7 @@ keysAndValues.put(StoreFrontData::getInstance().NAME, storeFrontInterface.getNam
     int32_t index = 0;index < size; index++)
         {
 
-    HashMap<any, any> userHashMap = usersHashMapVector.get(index) as HashMap<any, any>;;
+    HashMap<Object*, Object*> userHashMap = usersHashMapVector.get(index);;
     
 
                         if(userHashMap != 
@@ -330,12 +331,12 @@ keysAndValues.put(StoreFrontData::getInstance().NAME, storeFrontInterface.getNam
             
     public: UserInterface getUser(std::string userName){
 
-    HashMap<any, any> row = StdUtil::getInstance().createHashMap();;
+    HashMap<Object*, Object*> row = StdUtil::getInstance().createHashMap();;
     
 row.put(UserData::USERNAME, userName);
     
 
-    HashMap<any, any> userHashMap = super.getRow(row);;
+    HashMap<Object*, Object*> userHashMap = super.getRow(row);;
     
 
                         if(userHashMap != 
@@ -410,8 +411,8 @@ row.put(UserData::USERNAME, userName);
     std::string encryption = super.getField(UserData::USERNAME, userName, EntryData::getInstance().ENCRYPTION);;
     
 
-                        if(true && encryption.compareTo(this->stringUtil.EMPTY_STRING) != 0)
-                        isUserNameAndPasswordCorrect= result.compareTo(SuperCrypt(Integer(encryption).intValue()).encrypt(password));
+                        if(true && encryption.compare(this->stringUtil.EMPTY_STRING) != 0)
+                        isUserNameAndPasswordCorrect= result.compare(SuperCrypt(Integer(encryption).intValue()).encrypt(password));
                                 
                         else {
                             
@@ -529,7 +530,7 @@ this->logUtil.putF(stringBuffer.toString(), this, "login");
 }
 
 
-    public: void update(std::string userName, HashMap<any, any> updatedValues){
+    public: void update(std::string userName, HashMap<Object*, Object*> updatedValues){
 super.updateWhere(UserData::USERNAME, userName, updatedValues);
     
 }

@@ -18,9 +18,9 @@
 
 
 
-            #include "../../java/lang/Class.h"
+            #include "java/lang/Class.h"
         
-            #include "../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/lang/reflect/Method.h>
 
@@ -79,7 +79,7 @@ public: PaymentProcessTag(){
     Object* anyType = PaymentProcessHelperFactory().getInstance(this->getPropertiesHashMap(), this->pageContext);;
     
 
-    Function helperClass = anyType->constructor;;
+    Class* helperClass = anyType->getClass();;
     
 
     Method method = helperClass.getMethod(commonStrings.PROCESS, 
@@ -87,7 +87,7 @@ public: PaymentProcessTag(){
     
 
     std::string result = method.invoke(anyType, 
-                            nullptr) as string;;
+                            nullptr);;
     
 
 

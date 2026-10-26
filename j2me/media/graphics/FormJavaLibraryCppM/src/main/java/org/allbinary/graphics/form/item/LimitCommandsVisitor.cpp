@@ -70,7 +70,7 @@ this->isNotSmallDisplay= (displayInfo.isPortrait() && displayInfo.getLastHeight(
 
     public: Object* visit(Object* anyType){
 
-    Command command = anyType as Command;;
+    Command command = *dynamic_cast<Command*>(anyType);;
     
 
     BooleanFactory booleanFactory = BooleanFactory::getInstance();;

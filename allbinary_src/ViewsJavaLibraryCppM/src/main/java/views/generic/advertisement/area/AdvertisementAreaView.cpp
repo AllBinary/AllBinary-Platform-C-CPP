@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/business/advertisement/area/AdvertisementAreaData.h>
 
@@ -75,13 +75,14 @@ class AdvertisementAreaView: public HttpStoreComponentView, public DomNodeInterf
 
     private: std::string advertisementAreaName;
 
-public: AdvertisementAreaView(TransformInfoInterface transformInfoInterface){
-            super(transformInfoInterface);
+public: AdvertisementAreaView(TransformInfoInterface transformInfoInterface) : HttpStoreComponentView(transformInfoInterface){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this->advertisementAreaName= this->getPropertiesHashMap().get(AdvertisementAreaData::getInstance().NAME) as string;
+this->advertisementAreaName= this->getPropertiesHashMap().get(AdvertisementAreaData::getInstance().NAME);
     
 }
 
@@ -127,7 +128,7 @@ this->advertisementAreaName= this->getPropertiesHashMap().get(AdvertisementAreaD
 
 
     public: void addDomNodeInterfaces(){
-this->addDomNodeInterface(this as DomNodeInterface);
+this->addDomNodeInterface(this);
     
 }
 

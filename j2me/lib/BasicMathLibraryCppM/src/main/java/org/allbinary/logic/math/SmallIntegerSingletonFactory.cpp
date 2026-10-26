@@ -20,24 +20,12 @@
 
             #include <vector>
         
-            #include "../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../../java/lang/Integer.h"
+            #include "java/lang/Integer.h"
         
-#include <jsinterop/annotations/JsType.h>
-
-      
-#include <jsinterop/annotations/JsMethod.h>
-
-      
-#include <jsinterop/annotations/JsConstructor.h>
-
-      
-#include <jsinterop/annotations/JsProperty.h>
-
-      
 #include <org/allbinary/AndroidUtil.h>
 
       
@@ -89,9 +77,9 @@ class SmallIntegerSingletonFactory
 
     public: const int32_t POSITIVE_MAX = 0x2D1;
 
-    private: const std::vector<Integer> INTEGER_ARRAY = new Array(this->NEGATIVE_MAX +this->POSITIVE_MAX);
+    private: const std::vector<Integer> INTEGER_ARRAY = std::vector<Integer>(this->NEGATIVE_MAX +this->POSITIVE_MAX);
 
-    private: const std::vector<std::string> STRING_ARRAY = new Array(this->NEGATIVE_MAX +this->POSITIVE_MAX);
+    private: const std::vector<std::string> STRING_ARRAY = std::vector<std::string>(this->NEGATIVE_MAX +this->POSITIVE_MAX);
 
     private: int32_t MIN = 0;
 
@@ -303,7 +291,7 @@ this->initWithRange(23, 0);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->INTEGER_ARRAY[index +this->NEGATIVE_MAX]!;
+                        return this->INTEGER_ARRAY[index +this->NEGATIVE_MAX];
     
 }
 
@@ -317,7 +305,7 @@ this->initWithRange(23, 0);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->INTEGER_ARRAY[ -1 +this->NEGATIVE_MAX]!;
+                        return this->INTEGER_ARRAY[ -1 +this->NEGATIVE_MAX];
     
 
                                     }
@@ -326,7 +314,7 @@ this->initWithRange(23, 0);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->INTEGER_ARRAY[index +this->NEGATIVE_MAX]!;
+                        return this->INTEGER_ARRAY[index +this->NEGATIVE_MAX];
     
 }
 
@@ -365,7 +353,7 @@ this->initWithRange(23, 0);
                                 )
                         
                                     {
-                                    this->STRING_ARRAY[i]= this->INTEGER_ARRAY[i]!.toString();
+                                    this->STRING_ARRAY[i]= this->INTEGER_ARRAY[i].toString();
     
 
                                     }
@@ -374,7 +362,7 @@ this->initWithRange(23, 0);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->STRING_ARRAY[i]!;
+                        return this->STRING_ARRAY[i];
     
 }
 

@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/logic/communication/log/LogUtil.h>
 
@@ -68,8 +68,9 @@ class InsertTemplateCustomizerTransformInfoObjectConfig: public NoTemplateTransf
 
     protected: const LogUtil logUtil = LogUtil::getInstance();
 
-public: InsertTemplateCustomizerTransformInfoObjectConfig(Object transformInfoInterface){
-            super(transformInfoInterface);
+public: InsertTemplateCustomizerTransformInfoObjectConfig(Object transformInfoInterface) : NoTemplateTransformInfoObjectConfig(transformInfoInterface){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -77,8 +78,9 @@ public: InsertTemplateCustomizerTransformInfoObjectConfig(Object transformInfoIn
 }
 
 
-public: InsertTemplateCustomizerTransformInfoObjectConfig(Object transformInfoInterface, Object document){
-            super(transformInfoInterface, document);
+public: InsertTemplateCustomizerTransformInfoObjectConfig(Object transformInfoInterface, Object document) : NoTemplateTransformInfoObjectConfig(transformInfoInterface, document){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -88,8 +90,9 @@ this->setDocument(this->generate(this->toXmlDoc()));
 }
 
 
-public: InsertTemplateCustomizerTransformInfoObjectConfig(Object transformInfoInterface, std::string name, std::string type){
-            super(transformInfoInterface, name, type);
+public: InsertTemplateCustomizerTransformInfoObjectConfig(Object transformInfoInterface, std::string name, std::string type) : NoTemplateTransformInfoObjectConfig(transformInfoInterface, name, type){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.

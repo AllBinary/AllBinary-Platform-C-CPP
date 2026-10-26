@@ -20,11 +20,11 @@
 
             #include <vector>
         
-            #include "../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../../../java/lang/Integer.h"
+            #include "java/lang/Integer.h"
         
 #include <java/util/HashMap.h>
 
@@ -186,7 +186,7 @@ newNode.appendChild(ModDomHelper::createIndexNode(document, index));
 
                 //@Throws(Exception.constructor)
             
-    public: static Node createNameValueNodes(Document document, std::string rootNode, HashMap<any, any> hashMap){
+    public: static Node createNameValueNodes(Document document, std::string rootNode, HashMap<Object*, Object*> hashMap){
 
     Node node = document.createElement(rootNode);;
     
@@ -201,7 +201,7 @@ newNode.appendChild(ModDomHelper::createIndexNode(document, index));
 
                 //@Throws(Exception.constructor)
             
-    public: static Node createNameValueNodes(Document document, Node node, HashMap<any, any> hashMap){
+    public: static Node createNameValueNodes(Document document, Node node, HashMap<Object*, Object*> hashMap){
 
     StringUtil stringUtil = StringUtil::getInstance();;
     
@@ -225,7 +225,7 @@ newNode.appendChild(ModDomHelper::createIndexNode(document, index));
     Object* objectKey = keyArray[i];;
     
 
-    std::string name = objectKey as string;;
+    std::string name = objectKey;;
     
 
     Object* anyType = hashMap.get(objectKey);;
@@ -249,7 +249,7 @@ node.appendChild(ModDomHelper::createNameValueNodes(document, name, value));
                         
                                     {
                                     
-    std::string value = stringUtil.getNonNull(anyType as string);;
+    std::string value = stringUtil.getNonNull(anyType);;
     
 node.appendChild(ModDomHelper::createNameValueNodes(document, name, value));
     
@@ -305,7 +305,7 @@ node.appendChild(ModDomHelper::createNameValueNodes(document, name, value));
     int32_t i = 0;i < size; i++)
         {
 
-    std::string value = stringUtil.getNonNull(valueVector.get(i) as string);;
+    std::string value = stringUtil.getNonNull(valueVector.get(i));;
     
 node.appendChild(ModDomHelper::createNameValueNodes(document, duplicateNodeName, value));
     
@@ -340,7 +340,7 @@ node.appendChild(ModDomHelper::createNameValueNodes(document, duplicateNodeName,
     int32_t index = 0;index < size; index++)
         {
 
-    std::string value = stringUtil.getNonNull(valueVector.get(index) as string);;
+    std::string value = stringUtil.getNonNull(valueVector.get(index));;
     
 node.appendChild(ModDomHelper::createNameValueIndexNodes(document, duplicateNodeName, index, value));
     
@@ -357,7 +357,7 @@ node.appendChild(ModDomHelper::createNameValueIndexNodes(document, duplicateNode
 
                 //@Throws(Exception.constructor)
             
-    public: static Node createNodeWithValueNodes(Document document, std::string rootNode, HashMap<any, any> hashMap){
+    public: static Node createNodeWithValueNodes(Document document, std::string rootNode, HashMap<Object*, Object*> hashMap){
 
     Node node = document.createElement(rootNode);;
     
@@ -372,7 +372,7 @@ node.appendChild(ModDomHelper::createNameValueIndexNodes(document, duplicateNode
 
                 //@Throws(Exception.constructor)
             
-    public: static Node createNodeWithValueNodes(Document document, Node node, HashMap<any, any> hashMap){
+    public: static Node createNodeWithValueNodes(Document document, Node node, HashMap<Object*, Object*> hashMap){
 
     StringUtil stringUtil = StringUtil::getInstance();;
     
@@ -393,13 +393,13 @@ node.appendChild(ModDomHelper::createNameValueIndexNodes(document, duplicateNode
     int32_t i = 0;i < size; i++)
         {
 
-    std::string name = keyArray[i]! as string;;
+    std::string name = keyArray[i];;
     
 
     Object* anyType = hashMap.get(name);;
     
 
-    std::string value = stringUtil.getNonNull(anyType as string);;
+    std::string value = stringUtil.getNonNull(anyType);;
     
 node.appendChild(ModDomHelper::createTextNode(document, name, value));
     

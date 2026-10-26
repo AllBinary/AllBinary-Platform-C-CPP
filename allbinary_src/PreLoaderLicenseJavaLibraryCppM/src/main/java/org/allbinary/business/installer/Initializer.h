@@ -23,11 +23,11 @@
 
             #include <vector>
         
-            #include "../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../java/lang/Class.h"
+            #include "java/lang/Class.h"
         
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
 
@@ -174,9 +174,9 @@ class Initializer
 
 public: Initializer(Map map);
 
-public: Initializer(HashMap<any, any> initHashMap);
+public: Initializer(HashMap<Object*, Object*> initHashMap);
 
-    public: void getFormData(HashMap<any, any> hashMap);
+    public: void getFormData(HashMap<Object*, Object*> hashMap);
 
     private: bool isJdbcDriverValid(std::string jdbcDriverClassPathString);
 

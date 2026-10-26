@@ -20,9 +20,9 @@
 
             #include <vector>
         
-            #include "../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../java/lang/Class.h"
+            #include "java/lang/Class.h"
         
 #include <java/lang/reflect/Method.h>
 
@@ -54,7 +54,7 @@ class MethodUtil
             : public Object
          {
 
-    public: static std::string viewAll(Function myClass, std::string lineBreak){
+    public: static std::string viewAll(Class* myClass, std::string lineBreak){
 
     StringMaker stringBuffer = StringMaker();;
     
@@ -72,15 +72,15 @@ stringBuffer.append(lineBreak);
                         for (
     int32_t index = 0;index < method.size(); index++)
         {
-stringBuffer.append(method[index]!.getReturnType().getName());
+stringBuffer.append(method[index].getReturnType().getName());
     
 stringBuffer.append(" ");
     
-stringBuffer.append(method[index]!.getName());
+stringBuffer.append(method[index].getName());
     
 stringBuffer.append("(");
     
-ParamsUtil::viewParams(method[index]!.getParameterTypes());
+ParamsUtil::viewParams(method[index].getParameterTypes());
     
 stringBuffer.append(")");
     

@@ -21,9 +21,6 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_FORM_ITEM_VALIDATION_TEXTFIELDITEMVALIDATOR_H
         #define ORG_ALLBINARY_GRAPHICS_FORM_ITEM_VALIDATION_TEXTFIELDITEMVALIDATOR_H
 
-#include <jsinterop/annotations/JsType.h>
-
-      
 #include <org/allbinary/graphics/form/item/ABTextFieldItem.h>
 
       
@@ -40,12 +37,6 @@
 
       
 #include <org/allbinary/util/BasicArrayListD.h>
-
-      
-#include <jsinterop/annotations/JsMethod.h>
-
-      
-#include <jsinterop/annotations/JsConstructor.h>
 
       
 

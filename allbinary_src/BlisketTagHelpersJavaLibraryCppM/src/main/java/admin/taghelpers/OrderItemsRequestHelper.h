@@ -21,7 +21,7 @@
         #ifndef ADMIN_TAGHELPERS_ORDERITEMSREQUESTHELPER_H
         #define ADMIN_TAGHELPERS_ORDERITEMSREQUESTHELPER_H
 
-            #include "../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
 
@@ -79,7 +79,7 @@ class OrderItemsRequestHelper: public TagHelper {
 
     private: std::string status;
 
-public: OrderItemsRequestHelper(HashMap<any, any> hashMap, PageContext pageContext);
+public: OrderItemsRequestHelper(HashMap<Object*, Object*> hashMap, PageContext pageContext);
 
     private: void getFormData();
 

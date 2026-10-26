@@ -23,15 +23,12 @@
 
             #include <vector>
         
-            #include "../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../java/lang/Integer.h"
+            #include "java/lang/Integer.h"
         
-            #include "../../../java/lang/Long.h"
+            #include "java/lang/Long.h"
         
-#include <jsinterop/annotations/JsType.h>
-
-      
 #include <org/allbinary/logic/math/PrimitiveLongSingleton.h>
 
       
@@ -54,15 +51,6 @@
 
       
 #include <org/allbinary/time/TimeDelayHelper.h>
-
-      
-#include <jsinterop/annotations/JsMethod.h>
-
-      
-#include <jsinterop/annotations/JsConstructor.h>
-
-      
-#include <jsinterop/annotations/JsProperty.h>
 
       
 

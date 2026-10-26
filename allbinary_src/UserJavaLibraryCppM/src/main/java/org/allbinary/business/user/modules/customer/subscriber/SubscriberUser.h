@@ -21,7 +21,7 @@
         #ifndef ORG_ALLBINARY_BUSINESS_USER_MODULES_CUSTOMER_SUBSCRIBER_SUBSCRIBERUSER_H
         #define ORG_ALLBINARY_BUSINESS_USER_MODULES_CUSTOMER_SUBSCRIBER_SUBSCRIBERUSER_H
 
-            #include "../../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
 
@@ -60,7 +60,7 @@ class SubscriberUser: public User {
 
 public: SubscriberUser();
 
-public: SubscriberUser(HashMap<any, any> userHashMap);
+public: SubscriberUser(HashMap<Object*, Object*> userHashMap);
 
     public: void validateSession(WeblisketSessionInterface weblisketSession);
 

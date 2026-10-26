@@ -4,7 +4,7 @@
 
 
 
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/game/layer/AllBinaryGameLayer.h>
 
@@ -49,8 +49,9 @@ class PreciseConstantVelocityMovement: public BasicConstantVelocityMovement {
 
     private: int32_t accumulatedZ= 0;
 
-public: PreciseConstantVelocityMovement(BasicDecimal basicDecimal, BasicVelocityProperties velocityProperties){
-            super(basicDecimal, velocityProperties);
+public: PreciseConstantVelocityMovement(BasicDecimal basicDecimal, BasicVelocityProperties velocityProperties) : BasicConstantVelocityMovement(basicDecimal, velocityProperties){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.

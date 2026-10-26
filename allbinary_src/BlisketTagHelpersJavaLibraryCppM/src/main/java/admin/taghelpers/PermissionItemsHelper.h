@@ -21,7 +21,7 @@
         #ifndef ADMIN_TAGHELPERS_PERMISSIONITEMSHELPER_H
         #define ADMIN_TAGHELPERS_PERMISSIONITEMSHELPER_H
 
-            #include "../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
 
@@ -67,7 +67,7 @@ class PermissionItemsHelper: public BasicTable {
 
     private: Portion portion;
 
-public: PermissionItemsHelper(HashMap<any, any> hashMap, PageContext pageContext);
+public: PermissionItemsHelper(HashMap<Object*, Object*> hashMap, PageContext pageContext);
 
     public: std::string create();
 

@@ -10,7 +10,7 @@
 
 
 
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/net/InetAddress.h>
 
@@ -92,8 +92,9 @@ class AbDatabaseManagement: public AbSqlBean {
 
     protected: const std::string ADD_TABLES_RESULTS_LABEL = "Add Table Results: ";
 
-public: AbDatabaseManagement(DatabaseConnectionInfoInterface databaseConnectionInfoInterface){
-            super(databaseConnectionInfoInterface as DbConnectionInfo);
+public: AbDatabaseManagement(DatabaseConnectionInfoInterface databaseConnectionInfoInterface) : AbSqlBean(databaseConnectionInfoInterface){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -101,8 +102,9 @@ public: AbDatabaseManagement(DatabaseConnectionInfoInterface databaseConnectionI
 }
 
 
-public: AbDatabaseManagement(DbConnectionInfo connectionInfo){
-            super(connectionInfo);
+public: AbDatabaseManagement(DbConnectionInfo connectionInfo) : AbSqlBean(connectionInfo){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.

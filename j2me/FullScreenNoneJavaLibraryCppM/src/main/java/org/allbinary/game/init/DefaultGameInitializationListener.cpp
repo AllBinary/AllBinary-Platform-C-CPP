@@ -18,15 +18,12 @@
 
 
 
-            #include "../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../../java/lang/Thread.h"
+            #include "java/lang/Thread.h"
         
-#include <jsinterop/annotations/JsType.h>
-
-      
 #include <org/allbinary/game/configuration/event/GameInitializedEvent.h>
 
       
@@ -90,7 +87,7 @@ public: DefaultGameInitializationListener(){
     
 gameInitializedEventHandler.removeAllListeners();
     
-gameInitializedEventHandler.addListenerInterface(this as GameInitializedListenerInterface);
+gameInitializedEventHandler.addListenerInterface(this);
     
 }
 

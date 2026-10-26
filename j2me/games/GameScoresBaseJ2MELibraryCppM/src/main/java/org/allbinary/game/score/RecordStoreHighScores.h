@@ -23,7 +23,7 @@
 
             #include <vector>
         
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/io/ByteArrayInputStream.h>
 
@@ -35,9 +35,6 @@
 
       
 #include <java/io/IOException.h>
-
-      
-#include <java/util/Hashtable.h>
 
       
 #include <javax/microedition/rms/RecordComparator.h>
@@ -94,6 +91,9 @@
 #include <org/allbinary/string/CommonStrings.h>
 
       
+#include <org/allbinary/util/ABHashtable.h>
+
+      
 #include <org/allbinary/util/BasicArrayList.h>
 
       
@@ -124,7 +124,7 @@
 
 class RecordStoreHighScores: public HighScores {
 
-    private: static const Hashtable<any, any> hashTable = StdUtil::getInstance().createHashtable();
+    private: static const ABHashtable<Object*, Object*> hashTable = StdUtil::getInstance().createHashtable();
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
     public: static HighScores getInstance(AbeClientInformationInterface abeClientInformation, GameInfo gameInfo, std::string highScoreName, std::string heading, std::string columnTwoHeading, RecordComparator recordComparatorInterface);

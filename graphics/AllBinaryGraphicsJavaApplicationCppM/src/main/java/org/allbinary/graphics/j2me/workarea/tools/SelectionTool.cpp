@@ -20,13 +20,13 @@
 
             #include <vector>
         
-            #include "../../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../../../../java/lang/Math.h"
+            #include "java/lang/Math.h"
         
-            #include "../../../../../../java/lang/Double.h"
+            #include "java/lang/Double.h"
         
 #include <java/awt.h>
 
@@ -232,7 +232,7 @@ this->canvasJPanel= canvasJPanel;
     int32_t yRect2 = Math::abs(this->endPoint.getY() -this->startPoint.getY()) +yRect;;
     
 
-    HashMap<any, any> hashMap = this->canvasJPanel.getGraphicItemHashMap();;
+    HashMap<Object*, Object*> hashMap = this->canvasJPanel.getGraphicItemHashMap();;
     
 
     std::vector<Object*> graphicItemArray = hashMap.keys().();;
@@ -248,7 +248,7 @@ this->canvasJPanel= canvasJPanel;
     int32_t index = 0;index < size; index++)
         {
 
-    GraphicItemInterface item = hashMap.get(graphicItemArray[index]!) as GraphicItemInterface;;
+    GraphicItemInterface item = hashMap.get(graphicItemArray[index]);;
     
 
                         if(item.getName() == LinesGraphicItem::getStaticName())

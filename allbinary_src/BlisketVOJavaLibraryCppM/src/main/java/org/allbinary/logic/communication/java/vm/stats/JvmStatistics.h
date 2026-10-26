@@ -21,13 +21,13 @@
         #ifndef ORG_ALLBINARY_LOGIC_COMMUNICATION_JAVA_VM_STATS_JVMSTATISTICS_H
         #define ORG_ALLBINARY_LOGIC_COMMUNICATION_JAVA_VM_STATS_JVMSTATISTICS_H
 
-            #include "../../../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../../../java/lang/Runtime.h"
+            #include "java/lang/Runtime.h"
         
-            #include "../../../../../../../java/lang/Long.h"
+            #include "java/lang/Long.h"
         
-            #include "../../../../../../../java/lang/Thread.h"
+            #include "java/lang/Thread.h"
         
 
 

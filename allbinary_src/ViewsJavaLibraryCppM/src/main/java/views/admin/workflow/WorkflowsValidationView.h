@@ -21,7 +21,7 @@
         #ifndef VIEWS_ADMIN_WORKFLOW_WORKFLOWSVALIDATIONVIEW_H
         #define VIEWS_ADMIN_WORKFLOW_WORKFLOWSVALIDATIONVIEW_H
 
-            #include "../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/logic/communication/log/LogUtil.h>
 

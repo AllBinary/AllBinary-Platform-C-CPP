@@ -18,7 +18,7 @@
 
 
 
-            #include "../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
 
@@ -124,10 +124,10 @@ class StoreFrontsRequestHelper: public ModifyTable {
 
     private: Portion portion;
 
-public: StoreFrontsRequestHelper(HashMap<any, any> hashMap, PageContext pageContext){
+public: StoreFrontsRequestHelper(HashMap<Object*, Object*> hashMap, PageContext pageContext){
 this->pageContext= pageContext;
     
-this->request= pageContext.getRequest() as HttpServletRequest;
+this->request= pageContext.getRequest();
     
 this->weblisketSession= WeblisketSession(hashMap, pageContext);
     
@@ -143,7 +143,7 @@ this->getFormData();
     private: void getFormData(){
 this->storeName= this->weblisketSession.getStoreName();
     
-this->modifyingStoreFrontInterface= StoreFront(this->request) as StoreFrontInterface;
+this->modifyingStoreFrontInterface= StoreFront(this->request);
     
 }
 
@@ -155,7 +155,7 @@ this->modifyingStoreFrontInterface= StoreFront(this->request) as StoreFrontInter
     std::string success = "Updated Successfully";;
     
 
-    HashMap<any, any> hashMapData = this->modifyingStoreFrontInterface.toHashMap();;
+    HashMap<Object*, Object*> hashMapData = this->modifyingStoreFrontInterface.toHashMap();;
     
 StoreFrontsEntityFactory::getInstance().getStoreFrontsEntityInstance().update(hashMapData);
     
@@ -243,10 +243,10 @@ stringBuffer.append(this->weblisketSession.getUserName());
     std::string adminEmailTextBody = stringBuffer.toString();;
     
 
-    BasicEmailInfo adminBasicEmailInfo = AdminEmailInfo(adminEmailSubject, adminEmailTextBody) as BasicEmailInfo;;
+    BasicEmailInfo adminBasicEmailInfo = AdminEmailInfo(adminEmailSubject, adminEmailTextBody);;
     
 
-    BasicEmailInfo storeAdminBasicEmailInfo = StoreEmailInfo(this->modifyingStoreFrontInterface, storeManagerEmailSubject, adminEmailTextBody) as BasicEmailInfo;;
+    BasicEmailInfo storeAdminBasicEmailInfo = StoreEmailInfo(this->modifyingStoreFrontInterface, storeManagerEmailSubject, adminEmailTextBody);;
     
 
     EmailInfo storeAdminEmailInfo = EmailInfo(storeAdminBasicEmailInfo);;

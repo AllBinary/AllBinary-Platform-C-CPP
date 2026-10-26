@@ -21,7 +21,7 @@
         #ifndef ADMIN_TAGHELPERS_QUOTEREQUESTHELPER_H
         #define ADMIN_TAGHELPERS_QUOTEREQUESTHELPER_H
 
-            #include "../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
 
@@ -89,7 +89,7 @@ class QuoteRequestHelper: public ModifyTable {
 
     private: QuoteRequest quoteRequest;
 
-public: QuoteRequestHelper(HashMap<any, any> hashMap, PageContext pageContext);
+public: QuoteRequestHelper(HashMap<Object*, Object*> hashMap, PageContext pageContext);
 
     public: Boolean isValid();
 

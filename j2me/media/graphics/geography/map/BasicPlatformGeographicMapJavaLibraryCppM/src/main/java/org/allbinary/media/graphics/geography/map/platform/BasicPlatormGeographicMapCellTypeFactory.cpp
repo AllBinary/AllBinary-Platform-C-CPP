@@ -21,9 +21,6 @@
 #include <java/util/Enumeration.h>
 
       
-#include <java/util/Hashtable.h>
-
-      
 #include <org/allbinary/string/CommonStrings.h>
 
       
@@ -31,6 +28,9 @@
 
       
 #include <org/allbinary/media/graphics/geography/map/GeographicMapCellTypeFactory.h>
+
+      
+#include <org/allbinary/util/ABHashtable.h>
 
       
 #include <org/allbinary/util/BasicArrayList.h>
@@ -71,7 +71,7 @@ class BasicPlatormGeographicMapCellTypeFactory: public GeographicMapCellTypeFact
 
     private: int32_t maxTileId;
 
-public: BasicPlatormGeographicMapCellTypeFactory(Hashtable<any, any> tileTypeToTileIdsMap, int32_t maxTileId){
+public: BasicPlatormGeographicMapCellTypeFactory(ABHashtable<Object*, Object*> tileTypeToTileIdsMap, int32_t maxTileId){
 
     CommonStrings commonStrings = CommonStrings::getInstance();;
     
@@ -100,7 +100,7 @@ GeographicMapCellType(0, 0);
     std::string LADDER = "Ladder";;
     
 
-    Enumeration<any> enumeration = tileTypeToTileIdsMap.keys();;
+    Enumeration<Object*> enumeration = tileTypeToTileIdsMap.keys();;
     
 
     BasicArrayList idsWithTypeList;;
@@ -114,11 +114,11 @@ GeographicMapCellType(0, 0);
 
         while(this->enumerationUtil.hasMoreElements(enumeration))
         {
-key= this->enumerationUtil.nextElement(enumeration)! as string;
+key= this->enumerationUtil.nextElement(enumeration);
     
 this->logUtil.putF(key, this, commonStrings.INIT);
     
-idsWithTypeList= tileTypeToTileIdsMap.get(key) as BasicArrayList;
+idsWithTypeList= tileTypeToTileIdsMap.get(key);
     
 basicPlatormGeographicMapCellType= BasicPlatormGeographicMapCellType(idsWithTypeList);
     

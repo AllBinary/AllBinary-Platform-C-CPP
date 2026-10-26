@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/business/category/CategoryData.h>
 
@@ -87,8 +87,9 @@ class CategoryLoader: public CategoryModifierTree, public CategoryLoaderInterfac
 
     protected: const LogUtil logUtil = LogUtil::getInstance();
 
-public: CategoryLoader(CategoryFactoryInterface categoryFactoryInterface){
-            super(categoryFactoryInterface);
+public: CategoryLoader(CategoryFactoryInterface categoryFactoryInterface) : CategoryModifierTree(categoryFactoryInterface){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -395,7 +396,7 @@ this->logUtil.put(this->commonStrings.FAILURE, this, "getDoc", e);
                         
                                     {
                                     
-    CategoryInterface categoryInterface = this->categoryFactoryInterface.getInstance(parentCategoryInterface.getHierarchy().getRoot(), parentCategoryInterface, categoryNode) as CategoryInterface;;
+    CategoryInterface categoryInterface = this->categoryFactoryInterface.getInstance(parentCategoryInterface.getHierarchy().getRoot(), parentCategoryInterface, categoryNode);;
     
 parentCategoryInterface.addChild(categoryInterface);
     
@@ -464,7 +465,7 @@ parentCategoryInterface.addChild(categoryInterface);
                         
                                     {
                                     
-    CategoryPropertiesInterface categoryPropertiesInterface = CategoryProperties(categoryNode) as CategoryPropertiesInterface;;
+    CategoryPropertiesInterface categoryPropertiesInterface = CategoryProperties(categoryNode);;
     
 loadedCategoryInterface.addChildProperty(categoryPropertiesInterface);
     

@@ -7,7 +7,7 @@
         #ifndef ORG_OSGI_FRAMEWORK_INVALIDSYNTAXEXCEPTION_H
         #define ORG_OSGI_FRAMEWORK_INVALIDSYNTAXEXCEPTION_H
 
-            #include "../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 
 

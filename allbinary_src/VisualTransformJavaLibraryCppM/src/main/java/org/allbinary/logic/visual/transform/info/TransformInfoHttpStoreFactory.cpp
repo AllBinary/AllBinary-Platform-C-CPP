@@ -18,9 +18,9 @@
 
 
 
-            #include "../../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
 
@@ -72,7 +72,7 @@ private: TransformInfoHttpStoreFactory(){
 
                 //@Throws(Exception.constructor)
             
-    public: TransformInfoInterface getInstance(HashMap<any, any> databaseHashMap, HashMap<any, any> propertiesHashMap, PageContext pageContext){
+    public: TransformInfoInterface getInstance(HashMap<Object*, Object*> databaseHashMap, HashMap<Object*, Object*> propertiesHashMap, PageContext pageContext){
 
 
 

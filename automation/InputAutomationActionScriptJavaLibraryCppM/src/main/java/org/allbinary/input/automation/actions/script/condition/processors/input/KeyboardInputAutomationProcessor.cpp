@@ -20,13 +20,13 @@
 
             #include <vector>
         
-            #include "../../../../../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../../../../../../../java/lang/Integer.h"
+            #include "java/lang/Integer.h"
         
-            #include "../../../../../../../../../java/lang/Thread.h"
+            #include "java/lang/Thread.h"
         
 #include <org/allbinary/input/automation/robot/InputRobotInterface.h>
 
@@ -99,7 +99,7 @@ logUtil.putF(CommonLabels::getInstance().START +keyActionScriptInputInterface.to
                         if(keyActionScriptInputInterface.isPress())
                         
                                     {
-                                    inputRobotInterface.keyPress(integer[index]!);
+                                    inputRobotInterface.keyPress(integer[index]);
     
 
                                     }
@@ -119,7 +119,7 @@ Thread::sleep(keyActionScriptInputInterface.getTime());
                         if(keyActionScriptInputInterface.isRelease())
                         
                                     {
-                                    inputRobotInterface.keyRelease(integer[index]!);
+                                    inputRobotInterface.keyRelease(integer[index]);
     
 
                                     }
@@ -141,7 +141,7 @@ Thread::sleep(keyActionScriptInputInterface.getTime());
                         if(keyActionScriptInputInterface.isPress())
                         
                                     {
-                                    inputRobotInterface.keyPress(integer[index]!);
+                                    inputRobotInterface.keyPress(integer[index]);
     
 
                                     }
@@ -152,7 +152,7 @@ Thread::sleep(keyActionScriptInputInterface.getTime());
                         if(keyActionScriptInputInterface.isRelease())
                         
                                     {
-                                    inputRobotInterface.keyRelease(integer[index]!);
+                                    inputRobotInterface.keyRelease(integer[index]);
     
 
                                     }

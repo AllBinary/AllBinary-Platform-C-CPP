@@ -62,7 +62,7 @@ class TouchButtonsListBuilder: public BaseTouchInput {
                         for (
     int32_t index = 0;index < size; index++)
         {
-baseTouchInput= this->baseTouchInputList.get(index) as BaseTouchInput;
+baseTouchInput= this->baseTouchInputList.get(index);
     
 list.addAllList(baseTouchInput.getList());
     

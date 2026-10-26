@@ -21,9 +21,9 @@
         #ifndef ADMIN_TAGHELPERS_BASICGROUPITEMSREQUESTHELPER_H
         #define ADMIN_TAGHELPERS_BASICGROUPITEMSREQUESTHELPER_H
 
-            #include "../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../java/lang/Long.h"
+            #include "java/lang/Long.h"
         
 #include <java/util/Calendar.h>
 
@@ -121,11 +121,11 @@ class BasicGroupItemsRequestHelper: public ModifyTable {
 
     private: std::string lastModified;
 
-public: BasicGroupItemsRequestHelper(HashMap<any, any> hashMap, PageContext pageContext);
+public: BasicGroupItemsRequestHelper(HashMap<Object*, Object*> hashMap, PageContext pageContext);
 
     public: void getFormData();
 
-    private: HashMap<any, any> getHashMap();
+    private: HashMap<Object*, Object*> getHashMap();
 
     public: std::string insert();
 

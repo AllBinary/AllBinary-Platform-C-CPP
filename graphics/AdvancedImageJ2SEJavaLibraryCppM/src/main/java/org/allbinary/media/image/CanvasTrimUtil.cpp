@@ -20,7 +20,7 @@
 
             #include <vector>
         
-            #include "../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
 #include <java/awt/image/BufferedImage.h>
 
@@ -82,7 +82,7 @@ class CanvasTrimUtil
     std::vector<BufferedImage> bufferedImageArray = imageProcessorInput.getBufferedImageArray();;
     
 
-    std::vector<BufferedImage> subBufferedImageArray = new Array(bufferedImageArray.length);;
+    std::vector<BufferedImage> subBufferedImageArray = std::vector<BufferedImage>(bufferedImageArray.length);;
     
 
     int32_t size = bufferedImageArray.size();;
@@ -97,11 +97,11 @@ class CanvasTrimUtil
                         for (
     int32_t index = 0;index < size; index++)
         {
-bufferedImage= bufferedImageArray[index]!;
+bufferedImage= bufferedImageArray[index];
     
 subBufferedImageArray[index]= bufferedImage.getSubimage(cutCanvasFromLeftReduction, cutCanvasFromTopReduction, bufferedImage.getWidth() -cutCanvasFromLeftReduction -cutCanvasFromRightReduction, bufferedImage.getHeight() -cutCanvasFromTopReduction -cutCanvasFromBottomReduction);
     
-visitor.visit(subBufferedImageArray[index]!, this->stringUtil.EMPTY_STRING, index);
+visitor.visit(subBufferedImageArray[index], this->stringUtil.EMPTY_STRING, index);
     
 }
 

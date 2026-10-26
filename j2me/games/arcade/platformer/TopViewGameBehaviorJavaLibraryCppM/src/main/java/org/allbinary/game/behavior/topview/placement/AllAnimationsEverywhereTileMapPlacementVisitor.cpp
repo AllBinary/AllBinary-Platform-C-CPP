@@ -50,7 +50,7 @@ class AllAnimationsEverywhereTileMapPlacementVisitor: public TileMapPlacementVis
     int32_t size = mapData.size();;
     
 
-    int32_t size2 = mapData[0]!.size() -7;;
+    int32_t size2 = mapData[0].size() -7;;
     
 
 
@@ -66,19 +66,19 @@ class AllAnimationsEverywhereTileMapPlacementVisitor: public TileMapPlacementVis
                         for (
     int32_t index2 = 0;index2 < size2; )
         {
-mapData[index]![index2]= 1;
+mapData[index][index2]= 1;
     
-mapData[index]![index2 +1]= 17;
+mapData[index][index2 +1]= 17;
     
-mapData[index]![index2 +2]= 33;
+mapData[index][index2 +2]= 33;
     
-mapData[index]![index2 +3]= 49;
+mapData[index][index2 +3]= 49;
     
-mapData[index]![index2 +4]= 65;
+mapData[index][index2 +4]= 65;
     
-mapData[index]![index2 +5]= 81;
+mapData[index][index2 +5]= 81;
     
-mapData[index]![index2 +6]= 97;
+mapData[index][index2 +6]= 97;
     
 }
 

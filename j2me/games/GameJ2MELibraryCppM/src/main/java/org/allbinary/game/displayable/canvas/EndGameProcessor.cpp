@@ -18,11 +18,8 @@
 
 
 
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-#include <jsinterop/annotations/JsType.h>
-
-      
 #include <org/allbinary/canvas/Processor.h>
 
       
@@ -39,15 +36,6 @@
 
       
 #include <org/allbinary/graphics/paint/NullPaintable.h>
-
-      
-#include <jsinterop/annotations/JsMethod.h>
-
-      
-#include <jsinterop/annotations/JsConstructor.h>
-
-      
-#include <jsinterop/annotations/JsProperty.h>
 
       
 
@@ -100,7 +88,7 @@ this->gameCanvas= gameCanvas;
                         
                                     {
                                     
-    HighScoresHelperBase highScoresBase = this->gameCanvas.highScoresHelper as HighScoresHelperBase;;
+    HighScoresHelperBase highScoresBase = this->gameCanvas.highScoresHelper;;
     
 
     HighScores highScores = highScoresBase.getSelectedHighScores();;

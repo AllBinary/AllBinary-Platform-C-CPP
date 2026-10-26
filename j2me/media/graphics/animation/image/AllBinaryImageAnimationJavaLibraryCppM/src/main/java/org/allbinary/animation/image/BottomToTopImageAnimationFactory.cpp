@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <javax/microedition/lcdui/Image.h>
 
@@ -55,8 +55,9 @@
 
 class BottomToTopImageAnimationFactory: public BaseImageAnimationFactory {
 
-public: BottomToTopImageAnimationFactory(Image image, AnimationBehaviorFactory animationBehaviorFactory){
-            super(image, PrimitiveIntUtil::getArrayInstance(), image.getWidth(), image.getHeight(), 0, 0, animationBehaviorFactory);
+public: BottomToTopImageAnimationFactory(Image image, AnimationBehaviorFactory animationBehaviorFactory) : BaseImageAnimationFactory(image, PrimitiveIntUtil::getArrayInstance(), image.getWidth(), image.getHeight(), 0, 0, animationBehaviorFactory){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.

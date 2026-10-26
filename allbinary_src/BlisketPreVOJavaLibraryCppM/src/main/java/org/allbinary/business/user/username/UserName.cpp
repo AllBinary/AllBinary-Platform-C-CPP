@@ -18,9 +18,9 @@
 
 
 
-            #include "../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
 
@@ -109,8 +109,8 @@ private: UserName(){
 }
 
 
-public: UserName(HashMap<any, any> hashMap){
-this->userName= hashMap.get(UserData::USERNAME) as string;
+public: UserName(HashMap<Object*, Object*> hashMap){
+this->userName= hashMap.get(UserData::USERNAME);
     
 }
 

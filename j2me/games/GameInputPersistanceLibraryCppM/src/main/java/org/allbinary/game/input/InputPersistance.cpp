@@ -20,13 +20,10 @@
 
             #include <vector>
         
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../../java/lang/Integer.h"
+            #include "java/lang/Integer.h"
         
-#include <jsinterop/annotations/JsType.h>
-
-      
 #include <java/io/ByteArrayInputStream.h>
 
       
@@ -37,9 +34,6 @@
 
       
 #include <java/io/DataOutputStream.h>
-
-      
-#include <java/util/Hashtable.h>
 
       
 #include <javax/microedition/rms/RecordEnumeration.h>
@@ -87,13 +81,10 @@
 #include <org/allbinary/util/HashtableUtil.h>
 
       
-#include <jsinterop/annotations/JsMethod.h>
-
-      
-#include <jsinterop/annotations/JsConstructor.h>
-
-      
 #include <org/allbinary/logic/StdUtil.h>
+
+      
+#include <org/allbinary/util/ABHashtable.h>
 
       
 
@@ -124,8 +115,9 @@ class InputPersistance: public BasicPersitance {
 
     private: const HashtableUtil hashtableUtil = HashtableUtil::getInstance();
 
-public: InputPersistance(std::string name){
-            super(name);
+public: InputPersistance(std::string name) : BasicPersitance(name){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -159,7 +151,7 @@ public: InputPersistance(std::string name){
     Input input;;
     
 
-    Hashtable<any, any> hashtable;;
+    ABHashtable<Object*, Object*> hashtable;;
     
 
     GameKeyMappingFactory gameKeyFactory = GameKeyMappingFactory::getInstance();;
@@ -335,7 +327,7 @@ recordStore.closeRecordStore();
 
                 //@Throws(Exception.constructor)
             
-    public: void save(AbeClientInformationInterface abeClientInformation, Hashtable<any, any> hashtable){
+    public: void save(AbeClientInformationInterface abeClientInformation, ABHashtable<Object*, Object*> hashtable){
 
     RecordStore recordStore = NullRecordStore::NULL_RECORD_STORE;;
     
@@ -385,9 +377,9 @@ recordStore= RecordStore::openRecordStore(this->getRecordId(abeClientInformation
                         for (
     int32_t index = 0;index < size; index++)
         {
-gameActionInput= inputObjectArray[index]! as Input;
+gameActionInput= inputObjectArray[index];
     
-list= hashtable.get(inputObjectArray[index]!) as BasicArrayList;
+list= hashtable.get(inputObjectArray[index]);
     
 
 
@@ -403,7 +395,7 @@ outputStream.writeUTF(gameActionInputIdAsString);
     
 outputStream.writeUTF(commonSeps.EQUALS);
     
-input= list.objectArray[index2]! as Input;
+input= list.objectArray[index2];
     
 
     std::string inputIdAsString = smallIntegerSingletonFactory.getAt(input.getId()).toString();;

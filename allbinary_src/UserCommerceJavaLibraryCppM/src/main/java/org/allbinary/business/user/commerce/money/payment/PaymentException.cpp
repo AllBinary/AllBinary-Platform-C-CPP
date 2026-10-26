@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 
 
@@ -41,8 +41,9 @@
         
 class PaymentException: public Exception {
 
-public: PaymentException(std::string error){
-            super(error);
+public: PaymentException(std::string error) : Exception(error){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.

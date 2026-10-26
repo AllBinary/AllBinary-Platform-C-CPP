@@ -20,7 +20,7 @@
 
             #include <vector>
         
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/game/layer/RTSPlayerLayerInterface.h>
 
@@ -88,8 +88,9 @@ class CompositeRTSFormInput: public RTSFormInput {
 
     private: bool isPrimaryWaypointCreator;
 
-public: CompositeRTSFormInput(std::vector<Group> groupInterface, bool isPrimaryWaypointCreator, std::vector<int32_t> itemIndex){
-            super(groupInterface);
+public: CompositeRTSFormInput(std::vector<Group> groupInterface, bool isPrimaryWaypointCreator, std::vector<int32_t> itemIndex) : RTSFormInput(groupInterface){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -98,7 +99,7 @@ this->itemIndex= itemIndex;
     
 this->isPrimaryWaypointCreator= isPrimaryWaypointCreator;
     
-this->rtsFormInputArray= new Array(2);
+this->rtsFormInputArray= std::vector<RTSFormInput>(2);
     
 this->rtsFormInputArray[0]= WaypointRTSFormInput(this->groupInterfaceArray, isPrimaryWaypointCreator);
     
@@ -113,7 +114,7 @@ this->rtsFormInputArray[1]= UnitRTSFormInput(this->groupInterfaceArray);
 super.setAllBinaryGameLayerManager(allBinaryGameLayerManager);
     
 
-    GeographicMapCompositeInterface geographicMapCompositeInterface = allBinaryGameLayerManager as GeographicMapCompositeInterface;;
+    GeographicMapCompositeInterface geographicMapCompositeInterface = allBinaryGameLayerManager;;
     
 
     BasicGeographicMap geographicMapInterface = geographicMapCompositeInterface.getGeographicMapInterface()[0];;
@@ -128,7 +129,7 @@ super.setAllBinaryGameLayerManager(allBinaryGameLayerManager);
                         for (
     int32_t index = 0;index < size; index++)
         {
-this->rtsFormInputArray[index]!.setAllBinaryGameLayerManager(allBinaryGameLayerManager);
+this->rtsFormInputArray[index].setAllBinaryGameLayerManager(allBinaryGameLayerManager);
     
 }
 
@@ -152,7 +153,7 @@ this->rtsFormInputArray[index]!.setAllBinaryGameLayerManager(allBinaryGameLayerM
                         if(this->getSelectedStickyItemIndex() <= this->itemIndex[0])
                         
                                     {
-                                    this->rtsFormInputArray[0]!.processAtPoint(associatedRtsLayer, rtsPlayerLayerInterface, layerManager, point);
+                                    this->rtsFormInputArray[0].processAtPoint(associatedRtsLayer, rtsPlayerLayerInterface, layerManager, point);
     
 
                                     }
@@ -164,7 +165,7 @@ this->rtsFormInputArray[index]!.setAllBinaryGameLayerManager(allBinaryGameLayerM
                         if(index > this->itemIndex[0])
                         
                                     {
-                                    this->rtsFormInputArray[1]!.processAtPoint(associatedRtsLayer, rtsPlayerLayerInterface, layerManager, point);
+                                    this->rtsFormInputArray[1].processAtPoint(associatedRtsLayer, rtsPlayerLayerInterface, layerManager, point);
     
 
                                     }
@@ -188,7 +189,7 @@ this->logUtil.putF(CommonLabels::getInstance().INDEX_LABEL +index +" > " +this->
                         if(this->getSelectedStickyItemIndex() <= this->itemIndex[0])
                         
                                     {
-                                    this->rtsFormInputArray[0]!.processGameSpecific(associatedRtsLayer, rtsPlayerLayerInterface, layerManager, item, index);
+                                    this->rtsFormInputArray[0].processGameSpecific(associatedRtsLayer, rtsPlayerLayerInterface, layerManager, item, index);
     
 
                                     }
@@ -200,7 +201,7 @@ this->logUtil.putF(CommonLabels::getInstance().INDEX_LABEL +index +" > " +this->
                         if(index > this->itemIndex[0])
                         
                                     {
-                                    this->rtsFormInputArray[1]!.processGameSpecific(associatedRtsLayer, rtsPlayerLayerInterface, layerManager, item, index);
+                                    this->rtsFormInputArray[1].processGameSpecific(associatedRtsLayer, rtsPlayerLayerInterface, layerManager, item, index);
     
 
                                     }
@@ -215,7 +216,7 @@ this->logUtil.putF(CommonLabels::getInstance().INDEX_LABEL +index +" > " +this->
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->rtsFormInputArray[0]!.processSticky(associatedRtsLayer, rtsPlayerLayerInterface, layerManager, point);;
+                        return this->rtsFormInputArray[0].processSticky(associatedRtsLayer, rtsPlayerLayerInterface, layerManager, point);;
     
 }
 
@@ -223,7 +224,7 @@ this->logUtil.putF(CommonLabels::getInstance().INDEX_LABEL +index +" > " +this->
                 //@Throws(Exception.constructor)
             
     public: void processStickyGameSpecific(CollidableDestroyableDamageableLayer associatedRtsLayer, RTSPlayerLayerInterface rtsPlayerLayerInterface, AllBinaryLayerManager layerManager, ABCustomItem item, int32_t index){
-this->rtsFormInputArray[0]!.processStickyGameSpecific(associatedRtsLayer, rtsPlayerLayerInterface, layerManager, item, index);
+this->rtsFormInputArray[0].processStickyGameSpecific(associatedRtsLayer, rtsPlayerLayerInterface, layerManager, item, index);
     
 }
 
@@ -233,7 +234,7 @@ this->rtsFormInputArray[0]!.processStickyGameSpecific(associatedRtsLayer, rtsPla
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->rtsFormInputArray[0]!.getSelectedStickyItemIndex();;
+                        return this->rtsFormInputArray[0].getSelectedStickyItemIndex();;
     
 }
 
@@ -243,13 +244,13 @@ this->rtsFormInputArray[0]!.processStickyGameSpecific(associatedRtsLayer, rtsPla
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->rtsFormInputArray[0]!.isStickyItemSelected();;
+                        return this->rtsFormInputArray[0].isStickyItemSelected();;
     
 }
 
 
     public: void setStickyItemSelected(bool stickyItemSelected){
-this->rtsFormInputArray[0]!.setStickyItemSelected(stickyItemSelected);
+this->rtsFormInputArray[0].setStickyItemSelected(stickyItemSelected);
     
 }
 
@@ -259,13 +260,13 @@ this->rtsFormInputArray[0]!.setStickyItemSelected(stickyItemSelected);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->rtsFormInputArray[0]!.getSelectedStickyItem();;
+                        return this->rtsFormInputArray[0].getSelectedStickyItem();;
     
 }
 
 
     public: void setSelectedStickyItem(ABCustomItem selectedStickyItem){
-this->rtsFormInputArray[0]!.setSelectedStickyItem(selectedStickyItem);
+this->rtsFormInputArray[0].setSelectedStickyItem(selectedStickyItem);
     
 }
 

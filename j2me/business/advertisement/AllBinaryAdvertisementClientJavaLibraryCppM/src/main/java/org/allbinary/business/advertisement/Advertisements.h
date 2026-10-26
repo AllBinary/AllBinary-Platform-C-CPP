@@ -21,11 +21,8 @@
         #ifndef ORG_ALLBINARY_BUSINESS_ADVERTISEMENT_ADVERTISEMENTS_H
         #define ORG_ALLBINARY_BUSINESS_ADVERTISEMENT_ADVERTISEMENTS_H
 
-            #include "../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-#include <jsinterop/annotations/JsType.h>
-
-      
 #include <org/allbinary/game/rand/MyRandomFactory.h>
 
       
@@ -36,9 +33,6 @@
 
       
 #include <org/allbinary/util/BasicArrayListD.h>
-
-      
-#include <jsinterop/annotations/JsMethod.h>
 
       
 

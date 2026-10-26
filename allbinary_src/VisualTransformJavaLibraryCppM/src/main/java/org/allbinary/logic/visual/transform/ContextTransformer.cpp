@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <javax/xml/transform/URIResolver.h>
 
@@ -57,13 +57,14 @@
 
 class ContextTransformer: public BasicTransformer {
 
-public: ContextTransformer(AbeClientInformationInterface abeClientInformation, TransformInfoInterface transformInfoInterface){
-            super(abeClientInformation, transformInfoInterface);
+public: ContextTransformer(AbeClientInformationInterface abeClientInformation, TransformInfoInterface transformInfoInterface) : BasicTransformer(abeClientInformation, transformInfoInterface){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this->setURIResolver(ContextUriResolver(this->getURIResolver() as BasicUriResolver) as URIResolver);
+this->setURIResolver(ContextUriResolver(this->getURIResolver()));
     
 }
 

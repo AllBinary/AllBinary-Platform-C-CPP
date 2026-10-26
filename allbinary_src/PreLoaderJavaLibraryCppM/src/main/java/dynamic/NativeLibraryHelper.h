@@ -21,9 +21,9 @@
         #ifndef DYNAMIC_NATIVELIBRARYHELPER_H
         #define DYNAMIC_NATIVELIBRARYHELPER_H
 
-            #include "../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../java/lang/System.h"
+            #include "java/lang/System.h"
         
 
 

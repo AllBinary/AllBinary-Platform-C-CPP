@@ -23,9 +23,11 @@
 
             #include <vector>
         
-            #include "../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../java/lang/InterruptedException.h"
+            #include "java/lang/InterruptedException.h"
+        
+            #include "java/lang/System.h"
         
 #include <javax/microedition/lcdui/Displayable.h>
 
@@ -66,7 +68,7 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        
+        //J2ME
 class TsUtil
             : public Object
          {
@@ -98,6 +100,10 @@ class TsUtil
     public: std::vector<int8_t> getByteArray(std::string string);
 
     public: bool isItemListener(Displayable owner);
+
+    public: void printAvailableMethods(Object* anyType);
+
+    public: void gc();
 
 };
 

@@ -18,9 +18,9 @@
 
 
 
-            #include "../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
 
@@ -72,7 +72,7 @@ public: UrlGlobalsView(){
             
     public: Node toXmlNode(Document document){
 
-    HashMap<any, any> hashMap = StdUtil::getInstance().createHashMap();;
+    HashMap<Object*, Object*> hashMap = StdUtil::getInstance().createHashMap();;
     
 hashMap.put(UrlGlobalsData::WEBAPPPATH, org.allbinary.globals.URLGLOBALS.getWebappPath());
     

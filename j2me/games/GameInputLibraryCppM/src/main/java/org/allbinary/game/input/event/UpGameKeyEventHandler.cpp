@@ -20,19 +20,10 @@
 
             #include <vector>
         
-#include <jsinterop/annotations/JsType.h>
-
-      
 #include <org/allbinary/game/input/LocalPlayerInputIdFactory.h>
 
       
 #include <org/allbinary/logic/util/event/EventListenerInterface.h>
-
-      
-#include <jsinterop/annotations/JsMethod.h>
-
-      
-#include <jsinterop/annotations/JsConstructor.h>
 
       
 
@@ -84,7 +75,7 @@ class UpGameKeyEventHandler: public UpGameKeyEventHandlerBase {
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return UpGameKeyEventHandler::instanceArray[playerInputId]!;
+                        return UpGameKeyEventHandler::instanceArray[playerInputId];
     
 }
 
@@ -94,7 +85,7 @@ class UpGameKeyEventHandler: public UpGameKeyEventHandlerBase {
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return UpGameKeyEventHandler::instanceArray[playerInputId]!;
+                        return UpGameKeyEventHandler::instanceArray[playerInputId];
     
 }
 
@@ -113,7 +104,7 @@ super.removeAllListeners();
                         for (
     int32_t index = UpGameKeyEventHandler::instanceArray.size() -1;index >= 0; index--)
         {
-UpGameKeyEventHandler::instanceArray[index]!.removeAllListeners();
+UpGameKeyEventHandler::instanceArray[index].removeAllListeners();
     
 }
 
@@ -130,7 +121,7 @@ super.removeListenerSingleThreaded(eventListenerInterface);
                         for (
     int32_t index = UpGameKeyEventHandler::instanceArray.size() -1;index >= 0; index--)
         {
-UpGameKeyEventHandler::instanceArray[index]!.removeListenerSingleThreaded(eventListenerInterface);
+UpGameKeyEventHandler::instanceArray[index].removeListenerSingleThreaded(eventListenerInterface);
     
 }
 
@@ -147,7 +138,7 @@ super.removeListener(eventListenerInterface);
                         for (
     int32_t index = UpGameKeyEventHandler::instanceArray.size() -1;index >= 0; index--)
         {
-UpGameKeyEventHandler::instanceArray[index]!.removeListener(eventListenerInterface);
+UpGameKeyEventHandler::instanceArray[index].removeListener(eventListenerInterface);
     
 }
 

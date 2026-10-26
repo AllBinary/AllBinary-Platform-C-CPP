@@ -85,7 +85,7 @@ this->textLine2Y= (this->y +font.getHeight());
 
     public: void updateSelectionInfo(){
 
-    RTSLayer rtsLayer = this->rtsLayerP as RTSLayer;;
+    RTSLayer rtsLayer = this->rtsLayerP;;
     
 this->setName(rtsLayer.getName());
     

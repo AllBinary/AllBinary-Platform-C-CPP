@@ -21,7 +21,7 @@
         #ifndef ORG_ALLBINARY_DATA_TABLES_USER_COMMERCE_MONEY_PAYMENT_PAYMENTENTITYINTERFACE_H
         #define ORG_ALLBINARY_DATA_TABLES_USER_COMMERCE_MONEY_PAYMENT_PAYMENTENTITYINTERFACE_H
 
-            #include "../../../../../../../../java/lang/Integer.h"
+            #include "java/lang/Integer.h"
         
 #include <org/allbinary/util/BasicArrayList.h>
 

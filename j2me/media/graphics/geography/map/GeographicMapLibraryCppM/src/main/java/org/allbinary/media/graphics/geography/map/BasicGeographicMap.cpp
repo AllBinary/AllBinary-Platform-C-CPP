@@ -20,9 +20,9 @@
 
             #include <vector>
         
-            #include "../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../../../../java/lang/Integer.h"
+            #include "java/lang/Integer.h"
         
 #include <org/allbinary/game/layer/AllBinaryTiledLayer.h>
 
@@ -79,8 +79,9 @@ class BasicGeographicMap: public SimpleGeographicMap, public GeographicMapInterf
 
     private: GeographicMapCellTypeFactory geographicMapCellTypeFactory;
 
-public: BasicGeographicMap(Integer id, std::string name, std::vector<int32_t> cellTypeIdToGeographicMapCellType, AllBinaryTiledLayer tiledLayer, BasicColor foregroundBasicColor, BasicColor backgroundBasicColor, GeographicMapCellPositionFactoryInterface geographicMapCellPositionFactoryInterface, GeographicMapCellPositionBaseFactory geographicMapCellPositionBaseFactory, GeographicMapCellTypeFactory geographicMapCellTypeFactory){
-            super(id, name, cellTypeIdToGeographicMapCellType, tiledLayer, foregroundBasicColor, backgroundBasicColor);
+public: BasicGeographicMap(Integer id, std::string name, std::vector<int32_t> cellTypeIdToGeographicMapCellType, AllBinaryTiledLayer tiledLayer, BasicColor foregroundBasicColor, BasicColor backgroundBasicColor, GeographicMapCellPositionFactoryInterface geographicMapCellPositionFactoryInterface, GeographicMapCellPositionBaseFactory geographicMapCellPositionBaseFactory, GeographicMapCellTypeFactory geographicMapCellTypeFactory) : SimpleGeographicMap(id, name, cellTypeIdToGeographicMapCellType, tiledLayer, foregroundBasicColor, backgroundBasicColor){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -468,7 +469,7 @@ geographicMapCellPositionList.clear();
     int32_t size = cellPositionArray.size();;
     
 
-    int32_t size2 = cellPositionArray[0]!.size();;
+    int32_t size2 = cellPositionArray[0].size();;
     
 
     int32_t xPortion = layer.getXP() /(size -1);;
@@ -496,10 +497,10 @@ geographicMapCellPositionList.clear();
 
     int32_t y = yPortion *index;;
     
-cellPositionArray[index]![index2]= this->getCellPositionAtXY(x, y);
+cellPositionArray[index][index2]= this->getCellPositionAtXY(x, y);
     
 
-                        if(currentCellPositionArray[index]![index2] != cellPositionArray[index]![index2])
+                        if(currentCellPositionArray[index][index2] != cellPositionArray[index][index2])
                         
                                     {
                                     hasChanged= true;

@@ -21,15 +21,12 @@
         #ifndef ORG_ALLBINARY_GAME_MIDLET_DEMORUNNABLE_H
         #define ORG_ALLBINARY_GAME_MIDLET_DEMORUNNABLE_H
 
-            #include "../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../../java/lang/Runnable.h"
+            #include "java/lang/Runnable.h"
         
-#include <jsinterop/annotations/JsType.h>
-
-      
 #include <org/allbinary/graphics/canvas/transition/progress/ProgressCanvasFactory.h>
 
       
@@ -46,15 +43,6 @@
 
       
 #include <org/allbinary/string/CommonStrings.h>
-
-      
-#include <jsinterop/annotations/JsMethod.h>
-
-      
-#include <jsinterop/annotations/JsConstructor.h>
-
-      
-#include <jsinterop/annotations/JsProperty.h>
 
       
 

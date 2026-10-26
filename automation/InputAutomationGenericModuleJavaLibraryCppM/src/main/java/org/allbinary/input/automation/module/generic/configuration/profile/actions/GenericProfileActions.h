@@ -23,9 +23,9 @@
 
             #include <vector>
         
-            #include "../../../../../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/io/DataOutputStream.h>
 
@@ -49,6 +49,9 @@
 
       
 #include <org/allbinary/data/tree/dom/document/DomDocumentHelper.h>
+
+      
+#include <org/allbinary/data/tree/dom/document/XmlDocumentHelper.h>
 
       
 #include <org/allbinary/data/tree/dom/document/mapping/DomDocumentMappingInterface.h>
@@ -120,7 +123,7 @@ class GenericProfileActions
 
     private: DefaultListModelHelper actionsDefaultListModelHelper;
 
-    private: HashMap<any, any> hashMap;
+    private: HashMap<Object*, Object*> hashMap;
 
 public: GenericProfileActions(GenericProfileActionsJPanel genericProfileActionsJPanel, std::string name);
 
@@ -162,7 +165,7 @@ public: GenericProfileActions(GenericProfileActionsJPanel genericProfileActionsJ
             
     public: void remove(std::string name);
 
-    public: HashMap<any, any> toHashMap();
+    public: HashMap<Object*, Object*> toHashMap();
 
                 //@Throws(Exception.constructor)
             
@@ -176,9 +179,9 @@ public: GenericProfileActions(GenericProfileActionsJPanel genericProfileActionsJ
 
     public: void setGenericProfileActionsJPanel(GenericProfileActionsJPanel genericProfileActionsJPanel);
 
-    public: HashMap<any, any> getHashMap();
+    public: HashMap<Object*, Object*> getHashMap();
 
-    public: void setHashMap(HashMap<any, any> hashMap);
+    public: void setHashMap(HashMap<Object*, Object*> hashMap);
 
     public: std::string getName();
 

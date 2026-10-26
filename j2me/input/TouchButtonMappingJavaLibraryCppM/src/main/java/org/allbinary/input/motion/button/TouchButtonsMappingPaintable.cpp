@@ -20,7 +20,7 @@
 
             #include <vector>
         
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <javax/microedition/lcdui/Graphics.h>
 
@@ -70,8 +70,7 @@ class TouchButtonsMappingPaintable: public Paintable {
 
     protected: int32_t foregroundColor;
 
-    private: std::vector<std::vector<Paintable>> paintableTable = new Array(0).fill(null).map(() => new Array(0).fill(0))
-                                                            ;
+    private: std::vector<std::vector<Paintable>> paintableTable = std::vector<std::vector<Paintable>>(0, std::vector<Paintable>(0));
 
     private: TouchButtonLocationHelper touchButtonLocationHelper = TouchButtonLocationHelper();
 
@@ -112,8 +111,7 @@ this->logUtil.put(commonStrings.EXCEPTION, this, "updateRectangle", e);
     int32_t totalRows = this->touchButtonLocationHelper.getTotalRows();;
     
 
-    std::vector<std::vector<Paintable>> paintableTable = new Array(totalColumns).fill(null).map(() => new Array(totalRows).fill(0))
-                                                            ;;
+    std::vector<std::vector<Paintable>> paintableTable = std::vector<std::vector<Paintable>>(totalColumns, std::vector<Paintable>(totalRows));;
     
 
     CellPositionFactory cellPositionFactory = CellPositionFactory::getInstance();;
@@ -135,7 +133,7 @@ this->logUtil.put(commonStrings.EXCEPTION, this, "updateRectangle", e);
                         for (
     int32_t rowIndex = totalRows -1;rowIndex >= 0; rowIndex--)
         {
-this->paintableTable[index]![rowIndex]= TouchButton::createButton(BasicTouchInputFactory::getInstance().NONE, TouchButtonBlankResource::getInstance(), commonButtons.NORMAL_BUTTON, cellPositionFactory.getInstanceColRow(index, rowIndex), this->touchButtonLocationHelper.getColumnsRemainderHalf(), this->touchButtonLocationHelper.getRowsRemainderHalf());
+this->paintableTable[index][rowIndex]= TouchButton::createButton(BasicTouchInputFactory::getInstance().NONE, TouchButtonBlankResource::getInstance(), commonButtons.NORMAL_BUTTON, cellPositionFactory.getInstanceColRow(index, rowIndex), this->touchButtonLocationHelper.getColumnsRemainderHalf(), this->touchButtonLocationHelper.getRowsRemainderHalf());
     
 }
 
@@ -171,7 +169,7 @@ this->paintableTable[index]![rowIndex]= TouchButton::createButton(BasicTouchInpu
                         for (
     int32_t rowIndex = totalRows -1;rowIndex >= 0; rowIndex--)
         {
-this->paintableTable[index]![rowIndex]!.paint(graphics);
+this->paintableTable[index][rowIndex].paint(graphics);
     
 }
 

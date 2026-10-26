@@ -23,7 +23,7 @@
 
             #include <hilog/log.h>
         
-            #include "../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
 #include <org/allbinary/logic/NullUtil.h>
 

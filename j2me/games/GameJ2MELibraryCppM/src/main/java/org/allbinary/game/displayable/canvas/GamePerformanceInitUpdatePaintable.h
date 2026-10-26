@@ -77,7 +77,7 @@ class GamePerformanceInitUpdatePaintable: public InitUpdatePaintable, public Upd
 
     private: MyFontProcessor myFontProcessor = UpdateMyFontProcessor(this);
 
-    private: std::vector<std::vector<char>> baseRefreshHelperCharArray = new Array(0).fill(null).map(() => new Array(0).fill(0));
+    private: std::vector<std::vector<char>> baseRefreshHelperCharArray = std::vector<std::vector<char>>(0, std::vector<char>(0));
 
     private: int32_t defaultStringWidth= 0;
 

@@ -21,7 +21,7 @@
         #ifndef ORG_ALLBINARY_IMAGE_PRERESOURCEIMAGEUTIL_H
         #define ORG_ALLBINARY_IMAGE_PRERESOURCEIMAGEUTIL_H
 
-            #include "../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
 #include <javax/microedition/khronos/opengles/GL.h>
 

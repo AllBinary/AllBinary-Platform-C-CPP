@@ -56,8 +56,9 @@ class NoSound: public Sound {
 
     private: static NoSound instance() { return NoSound(); }
 
-private: NoSound(){
-            super(StringUtil::getInstance().EMPTY_STRING);
+private: NoSound() : Sound(StringUtil::getInstance().EMPTY_STRING){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.

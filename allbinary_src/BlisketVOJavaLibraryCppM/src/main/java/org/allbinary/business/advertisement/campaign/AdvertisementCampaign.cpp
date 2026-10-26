@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
 #include <java/util/HashMap.h>
 
@@ -57,9 +57,9 @@ class AdvertisementCampaign
             : public Object
         : public AdvertisementCampaignInterface {
 
-    private: HashMap<any, any> hashMap;
+    private: HashMap<Object*, Object*> hashMap;
 
-public: AdvertisementCampaign(HashMap<any, any> hashMap){
+public: AdvertisementCampaign(HashMap<Object*, Object*> hashMap){
 this->hashMap= hashMap;
     
 }
@@ -80,7 +80,7 @@ this->hashMap= hashMap;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->hashMap.get(AdvertisementCampaignData::getInstance().NAME) as string;
+                        return this->hashMap.get(AdvertisementCampaignData::getInstance().NAME);
     
 }
 

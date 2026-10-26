@@ -18,9 +18,9 @@
 
 
 
-            #include "../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <javax/xml/transform/Source.h>
 
@@ -117,7 +117,7 @@ stringBuffer.append(AbPathData::getInstance().SEPARATOR);
 stringBuffer.append(href);
     
 
-    AbPath fileAbPath = AbFilePath(stringBuffer.toString()) as AbPath;;
+    AbPath fileAbPath = AbFilePath(stringBuffer.toString());;
     
 
                         if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().XMLLOGGING))

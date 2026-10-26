@@ -20,9 +20,9 @@
 
             #include <vector>
         
-            #include "../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../java/lang/Long.h"
+            #include "java/lang/Long.h"
         
 #include <java/awt/image/BufferedImage.h>
 
@@ -78,7 +78,7 @@ class ImageComparisonResult
 
     protected: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    private: const std::vector<BufferedImage> bufferedImages = new Array(2);
+    private: const std::vector<BufferedImage> bufferedImages = std::vector<BufferedImage>(2);
 
     public: std::string name;
 

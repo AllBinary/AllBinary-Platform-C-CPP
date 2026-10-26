@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
 #include <javax/microedition/lcdui/Canvas.h>
 
@@ -51,7 +51,7 @@ class ScreenRepaintUtil
 
     public: static void repaint(Displayable displayable){
 
-    Canvas canvas = displayable as Canvas;;
+    Canvas canvas = displayable;;
     
 canvas.repaint();
     

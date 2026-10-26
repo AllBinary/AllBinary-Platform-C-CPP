@@ -20,9 +20,9 @@
 
             #include <vector>
         
-            #include "../../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/io/File.h>
 
@@ -118,7 +118,7 @@ LicenseInitInfoUtil::getInstance().setFilePath(PrintLicenseInitInfo::PATH +PATH_
                         for (
     int32_t index = 1;index < options.size(); index++)
         {
-this->vector.add(options[index]!);
+this->vector.add(options[index]);
     
 }
 
@@ -200,7 +200,7 @@ this->vector.add(options[index]!);
 stringBuffer.append(TESTING);
     
 
-    std::string serverName = this->vector.get(index) as string;;
+    std::string serverName = this->vector.get(index);;
     
 
         try {
@@ -219,7 +219,7 @@ LicenseInitInfoUtil::getInstance().write(licenseInitInfo);
     
 
     AbeLicenseInterface abeLicenseInterface = xmlRpcAbeLicenseClient.get(
-                            nullptr) as AbeLicenseInterface;;
+                            nullptr);;
     
 
                         if(abeLicenseInterface != 

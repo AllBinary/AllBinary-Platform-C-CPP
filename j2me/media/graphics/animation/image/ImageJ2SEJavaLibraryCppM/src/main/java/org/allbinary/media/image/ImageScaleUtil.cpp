@@ -20,9 +20,9 @@
 
             #include <vector>
         
-            #include "../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/awt/Graphics2D.h>
 
@@ -121,7 +121,7 @@ private: ImageScaleUtil(){
                         if(cached)
                         
                                     {
-                                    image= imageCache.get(this->constructor.name.toString()!, static_cast<int32_t>((width *scaleX)), static_cast<int32_t>((height *scaleY)));
+                                    image= imageCache.get(this->constructor.name.toString(), static_cast<int32_t>((width *scaleX)), static_cast<int32_t>((height *scaleY)));
     
 
                                     }
@@ -147,7 +147,7 @@ this->scale(originalImage, image, scaleX, scaleY, true);
             
     public: void scale2(Image originalImage, std::vector<Image> originalImageArray, std::vector<Image> ximageToShowArray, int32_t unused, float scaleX, float scaleY, float maxScaleX, float maxScaleY){
 
-                        if(maxScaleX *originalImage.getWidth() > originalImageArray[0]!.getWidth() || maxScaleY *originalImage.getHeight() > originalImageArray[0]!.getHeight())
+                        if(maxScaleX *originalImage.getWidth() > originalImageArray[0].getWidth() || maxScaleY *originalImage.getHeight() > originalImageArray[0].getHeight())
                         
                                     {
                                     originalImageArray[0]= this->imageCreationUtil.createImage(originalImage.getWidth(), originalImage.getHeight(), maxScaleX, maxScaleY);
@@ -155,7 +155,7 @@ this->scale(originalImage, image, scaleX, scaleY, true);
 
                                     }
                                 
-this->scale(originalImage, originalImageArray[0]!, scaleX, scaleY, false);
+this->scale(originalImage, originalImageArray[0], scaleX, scaleY, false);
     
 }
 

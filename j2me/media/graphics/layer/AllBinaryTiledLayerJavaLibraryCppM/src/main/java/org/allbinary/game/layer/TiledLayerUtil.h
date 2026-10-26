@@ -21,7 +21,7 @@
         #ifndef ORG_ALLBINARY_GAME_LAYER_TILEDLAYERUTIL_H
         #define ORG_ALLBINARY_GAME_LAYER_TILEDLAYERUTIL_H
 
-            #include "../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
 
 

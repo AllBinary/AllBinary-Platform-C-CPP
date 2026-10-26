@@ -21,7 +21,7 @@
         #ifndef ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_TEMPLATE_CUSTOMIZER_WIDGETS_LOGO_LOGOVALIDATION_H
         #define ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_TEMPLATE_CUSTOMIZER_WIDGETS_LOGO_LOGOVALIDATION_H
 
-            #include "../../../../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
 
@@ -108,11 +108,11 @@ public: LogoValidation();
 
 public: LogoValidation(Node node);
 
-public: LogoValidation(HashMap<any, any> hashMap);
+public: LogoValidation(HashMap<Object*, Object*> hashMap);
 
                 //@Throws(Exception.constructor)
             
-    public: void getFormData(HashMap<any, any> hashMap);
+    public: void getFormData(HashMap<Object*, Object*> hashMap);
 
     public: Boolean isValid();
 
@@ -122,7 +122,7 @@ public: LogoValidation(HashMap<any, any> hashMap);
 
     public: Node toValidationInfoNode(Document document);
 
-    public: HashMap<any, any> toHashMap();
+    public: HashMap<Object*, Object*> toHashMap();
 
                 //@Throws(Exception.constructor)
             

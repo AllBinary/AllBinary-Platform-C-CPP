@@ -18,11 +18,11 @@
 
 
 
-            #include "../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../../../../java/lang/Long.h"
+            #include "java/lang/Long.h"
         
-            #include "../../../../../../java/lang/Thread.h"
+            #include "java/lang/Thread.h"
         
 #include <java/awt/image/BufferedImage.h>
 

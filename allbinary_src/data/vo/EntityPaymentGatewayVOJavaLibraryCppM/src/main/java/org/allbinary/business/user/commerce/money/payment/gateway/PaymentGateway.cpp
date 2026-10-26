@@ -18,9 +18,9 @@
 
 
 
-            #include "../../../../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
 
@@ -146,186 +146,186 @@ class PaymentGateway
 
     private: std::string timeEntered;
 
-public: PaymentGateway(HashMap<any, any> hashMap){
+public: PaymentGateway(HashMap<Object*, Object*> hashMap){
 this->getFormData(hashMap);
     
 }
 
 
-    public: void getFormData(HashMap<any, any> hashMap){
+    public: void getFormData(HashMap<Object*, Object*> hashMap){
 
     StringUtil stringUtil = StringUtil::getInstance();;
     
 
     std::string empty = stringUtil.EMPTY_STRING;;
     
-this->storeName= hashMap.get(StoreFrontData::getInstance().NAME.toString()) as string;
+this->storeName= hashMap.get(StoreFrontData::getInstance().NAME.toString());
     
-this->name= hashMap.get(PaymentGatewayData::NAME.toString()) as string;
+this->name= hashMap.get(PaymentGatewayData::NAME.toString());
     
-this->enable= stringUtil.getNonNull(hashMap.get(EntryData::getInstance().ENABLE.toString()) as string);
+this->enable= stringUtil.getNonNull(hashMap.get(EntryData::getInstance().ENABLE.toString()));
     
-this->paymentMethod= stringUtil.getNonNull(hashMap.get(PaymentData::METHOD.toString()) as string);
+this->paymentMethod= stringUtil.getNonNull(hashMap.get(PaymentData::METHOD.toString()));
     
-this->mode= stringUtil.getNonNull(hashMap.get(PaymentGatewayData::MODE.toString()) as string);
+this->mode= stringUtil.getNonNull(hashMap.get(PaymentGatewayData::MODE.toString()));
     
-this->testProtocol= stringUtil.getNonNull(hashMap.get(PaymentGatewayData::TESTPROTOCOL.toString()) as string);
+this->testProtocol= stringUtil.getNonNull(hashMap.get(PaymentGatewayData::TESTPROTOCOL.toString()));
     
-this->testServer= stringUtil.getNonNull(hashMap.get(PaymentGatewayData::TESTSERVER.toString()) as string);
+this->testServer= stringUtil.getNonNull(hashMap.get(PaymentGatewayData::TESTSERVER.toString()));
     
-this->testPort= stringUtil.getNonNull(hashMap.get(PaymentGatewayData::TESTPORT.toString()) as string);
+this->testPort= stringUtil.getNonNull(hashMap.get(PaymentGatewayData::TESTPORT.toString()));
     
-this->testPath= hashMap.get(PaymentGatewayData::TESTPATH.toString()) as string;
+this->testPath= hashMap.get(PaymentGatewayData::TESTPATH.toString());
     
 
                         if(false)
                         this->testPath= empty;
                                 
-this->serverProtocol= hashMap.get(PaymentGatewayData::SERVERPROTOCOL.toString()) as string;
+this->serverProtocol= hashMap.get(PaymentGatewayData::SERVERPROTOCOL.toString());
     
 
                         if(false)
                         this->serverProtocol= empty;
                                 
-this->server= hashMap.get(PaymentGatewayData::SERVER.toString()) as string;
+this->server= hashMap.get(PaymentGatewayData::SERVER.toString());
     
 
                         if(false)
                         this->server= empty;
                                 
-this->serverPort= hashMap.get(PaymentGatewayData::SERVERPORT.toString()) as string;
+this->serverPort= hashMap.get(PaymentGatewayData::SERVERPORT.toString());
     
 
                         if(false)
                         this->serverPort= empty;
                                 
-this->serverPath= hashMap.get(PaymentGatewayData::SERVERPATH.toString()) as string;
+this->serverPath= hashMap.get(PaymentGatewayData::SERVERPATH.toString());
     
 
                         if(false)
                         this->serverPath= empty;
                                 
-this->userName= hashMap.get(UserData::USERNAME.toString()) as string;
+this->userName= hashMap.get(UserData::USERNAME.toString());
     
 
                         if(false)
                         this->userName= empty;
                                 
-this->password= hashMap.get(UserData::PASSWORD.toString()) as string;
+this->password= hashMap.get(UserData::PASSWORD.toString());
     
 
                         if(false)
                         this->password= empty;
                                 
-this->timeout= hashMap.get(PaymentGatewayData::TIMEOUT.toString()) as string;
+this->timeout= hashMap.get(PaymentGatewayData::TIMEOUT.toString());
     
 
                         if(false)
                         this->timeout= empty;
                                 
-this->proxyProtocol= hashMap.get(PaymentGatewayData::PROXYPROTOCOL.toString()) as string;
+this->proxyProtocol= hashMap.get(PaymentGatewayData::PROXYPROTOCOL.toString());
     
 
                         if(false)
                         this->proxyProtocol= empty;
                                 
-this->proxyServer= hashMap.get(PaymentGatewayData::PROXYSERVER.toString()) as string;
+this->proxyServer= hashMap.get(PaymentGatewayData::PROXYSERVER.toString());
     
 
                         if(false)
                         this->proxyServer= empty;
                                 
-this->proxyPort= hashMap.get(PaymentGatewayData::PROXYPORT.toString()) as string;
+this->proxyPort= hashMap.get(PaymentGatewayData::PROXYPORT.toString());
     
 
                         if(false)
                         this->proxyPort= empty;
                                 
-this->proxyPath= hashMap.get(PaymentGatewayData::PROXYPATH.toString()) as string;
+this->proxyPath= hashMap.get(PaymentGatewayData::PROXYPATH.toString());
     
 
                         if(false)
                         this->proxyPath= empty;
                                 
-this->proxyUserName= hashMap.get(PaymentGatewayData::PROXYUSERNAME.toString()) as string;
+this->proxyUserName= hashMap.get(PaymentGatewayData::PROXYUSERNAME.toString());
     
 
                         if(false)
                         this->proxyUserName= empty;
                                 
-this->proxyPassword= hashMap.get(PaymentGatewayData::PROXYPASSWORD.toString()) as string;
+this->proxyPassword= hashMap.get(PaymentGatewayData::PROXYPASSWORD.toString());
     
 
                         if(false)
                         this->proxyPassword= empty;
                                 
-this->proxyTimeout= hashMap.get(PaymentGatewayData::PROXYTIMEOUT.toString()) as string;
+this->proxyTimeout= hashMap.get(PaymentGatewayData::PROXYTIMEOUT.toString());
     
 
                         if(false)
                         this->proxyTimeout= empty;
                                 
-this->special1= hashMap.get(PaymentGatewayData::SPECIAL1.toString()) as string;
+this->special1= hashMap.get(PaymentGatewayData::SPECIAL1.toString());
     
 
                         if(false)
                         this->special1= empty;
                                 
-this->special2= hashMap.get(PaymentGatewayData::SPECIAL2.toString()) as string;
+this->special2= hashMap.get(PaymentGatewayData::SPECIAL2.toString());
     
 
                         if(false)
                         this->special2= empty;
                                 
-this->special3= hashMap.get(PaymentGatewayData::SPECIAL3.toString()) as string;
+this->special3= hashMap.get(PaymentGatewayData::SPECIAL3.toString());
     
 
                         if(false)
                         this->special3= empty;
                                 
-this->special4= hashMap.get(PaymentGatewayData::SPECIAL4.toString()) as string;
+this->special4= hashMap.get(PaymentGatewayData::SPECIAL4.toString());
     
 
                         if(false)
                         this->special4= empty;
                                 
-this->special5= hashMap.get(PaymentGatewayData::SPECIAL5.toString()) as string;
+this->special5= hashMap.get(PaymentGatewayData::SPECIAL5.toString());
     
 
                         if(false)
                         this->special5= empty;
                                 
-this->special6= hashMap.get(PaymentGatewayData::SPECIAL6.toString()) as string;
+this->special6= hashMap.get(PaymentGatewayData::SPECIAL6.toString());
     
 
                         if(false)
                         this->special6= empty;
                                 
-this->special7= hashMap.get(PaymentGatewayData::SPECIAL7.toString()) as string;
+this->special7= hashMap.get(PaymentGatewayData::SPECIAL7.toString());
     
 
                         if(false)
                         this->special7= empty;
                                 
-this->special8= hashMap.get(PaymentGatewayData::SPECIAL8.toString()) as string;
+this->special8= hashMap.get(PaymentGatewayData::SPECIAL8.toString());
     
 
                         if(false)
                         this->special8= empty;
                                 
-this->special9= hashMap.get(PaymentGatewayData::SPECIAL9.toString()) as string;
+this->special9= hashMap.get(PaymentGatewayData::SPECIAL9.toString());
     
 
                         if(false)
                         this->special9= empty;
                                 
-this->lastModified= hashMap.get(EntryData::getInstance().LASTMODIFIED.toString()) as string;
+this->lastModified= hashMap.get(EntryData::getInstance().LASTMODIFIED.toString());
     
 
                         if(false)
                         this->lastModified= empty;
                                 
-this->timeEntered= hashMap.get(EntryData::getInstance().TIMECREATED.toString()) as string;
+this->timeEntered= hashMap.get(EntryData::getInstance().TIMECREATED.toString());
     
 
                         if(false)
@@ -880,7 +880,7 @@ this->timeEntered= value;
 
                 //@Throws(Exception.constructor)
             
-    public: HashMap<any, any> toHashMap(){
+    public: HashMap<Object*, Object*> toHashMap(){
 
 
 
@@ -892,9 +892,9 @@ this->timeEntered= value;
 
                 //@Throws(Exception.constructor)
             
-    public: HashMap<any, any> toHashMap(bool isEncrypted){
+    public: HashMap<Object*, Object*> toHashMap(bool isEncrypted){
 
-    HashMap<any, any> paymentGatewayHashMap = StdUtil::getInstance().createHashMap();;
+    HashMap<Object*, Object*> paymentGatewayHashMap = StdUtil::getInstance().createHashMap();;
     
 paymentGatewayHashMap.put(EntryData::getInstance().ENABLE, this->enable);
     

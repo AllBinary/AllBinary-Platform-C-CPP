@@ -21,7 +21,7 @@
         #ifndef ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_CANVASUTIL_H
         #define ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_CANVASUTIL_H
 
-            #include "../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
 #include <javax/microedition/lcdui/Canvas.h>
 

@@ -20,11 +20,8 @@
 
             #include <vector>
         
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-#include <jsinterop/annotations/JsType.h>
-
-      
 #include <java/io/ByteArrayInputStream.h>
 
       
@@ -35,9 +32,6 @@
 
       
 #include <java/io/DataOutputStream.h>
-
-      
-#include <java/util/Hashtable.h>
 
       
 #include <javax/microedition/rms/RecordEnumeration.h>
@@ -67,13 +61,10 @@
 #include <org/allbinary/string/CommonSeps.h>
 
       
+#include <org/allbinary/util/ABHashtable.h>
+
+      
 #include <org/allbinary/util/HashtableUtil.h>
-
-      
-#include <jsinterop/annotations/JsMethod.h>
-
-      
-#include <jsinterop/annotations/JsConstructor.h>
 
       
 
@@ -103,8 +94,9 @@ class KeyValuePersistance: public BasicPersitance {
 
     private: const TsUtil tsUtil = TsUtil::getInstance();
 
-protected: KeyValuePersistance(std::string recordId){
-            super(recordId);
+protected: KeyValuePersistance(std::string recordId) : BasicPersitance(recordId){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -134,7 +126,7 @@ this->loadAllSize(abeClientInformation, 1);
     RecordEnumeration recordEnum = recordStore.enumerateRecords(NullRecordFilter::NULL_RECORD_FILTER, NullRecordComparator::NULL_RECORD_COMPARATOR, true);;
     
 
-    Hashtable<string, string> hashtable;;
+    ABHashtable<std::string, std::string> hashtable;;
     
 
     std::string name;;
@@ -179,7 +171,7 @@ recordAsBytes= this->tsUtil.getRecord(recordStore, id);
     
 inputStream= DataInputStream(byteArrayInputStream);
     
-hashtable= Hashtable<string, string>();
+hashtable= ABHashtable<std::string, std::string>();
     
 
 
@@ -240,7 +232,7 @@ recordStore.closeRecordStore();
 
                 //@Throws(Exception.constructor)
             
-    public: void save(AbeClientInformationInterface abeClientInformation, Hashtable<any, any> hashtable){
+    public: void save(AbeClientInformationInterface abeClientInformation, ABHashtable<Object*, Object*> hashtable){
 
     RecordStore recordStore = NullRecordStore::NULL_RECORD_STORE;;
     
@@ -278,13 +270,13 @@ recordStore= RecordStore::openRecordStore(this->getRecordId(abeClientInformation
                         for (
     int32_t index = 0;index < size; index++)
         {
-outputStream.writeUTF(objectArray[index]! as string);
+outputStream.writeUTF(objectArray[index]);
     
 outputStream.writeUTF(commonSeps.EQUALS);
     
-anyType= objectArray[index]!;
+anyType= objectArray[index];
     
-value= hashtable.get(anyType) as string;
+value= hashtable.get(anyType);
     
 outputStream.writeUTF(value);
     
@@ -329,9 +321,9 @@ recordStore.closeRecordStore();
 }
 
 
-    public: Hashtable<any, any> get(int32_t index){
+    public: ABHashtable<Object*, Object*> get(int32_t index){
 
-    Hashtable<any, any> hashtable = this->valueList.objectArray[index]! as Hashtable<any, any>;;
+    ABHashtable<Object*, Object*> hashtable = this->valueList.objectArray[index];;
     
 
 

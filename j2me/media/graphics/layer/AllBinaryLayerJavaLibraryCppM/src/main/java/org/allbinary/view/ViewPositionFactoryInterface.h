@@ -21,7 +21,7 @@
         #ifndef ORG_ALLBINARY_VIEW_VIEWPOSITIONFACTORYINTERFACE_H
         #define ORG_ALLBINARY_VIEW_VIEWPOSITIONFACTORYINTERFACE_H
 
-            #include "../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 
 

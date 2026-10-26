@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 
 
@@ -46,8 +46,9 @@
 
 class SingleLayerLayerProcessor: public LayerProcessor {
 
-public: SingleLayerLayerProcessor(){
-            super(SingleLayerLayerManager());
+public: SingleLayerLayerProcessor() : LayerProcessor(SingleLayerLayerManager()){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -61,7 +62,7 @@ public: SingleLayerLayerProcessor(){
 
     LayerManager layerManager = this->getLayerManager();;
     
-this->processAt(allBinaryLayerManager, layerManager.getLayerAt(0) as AllBinaryLayer, 0);
+this->processAt(allBinaryLayerManager, layerManager.getLayerAt(0), 0);
     
 }
 

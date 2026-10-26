@@ -18,11 +18,11 @@
 
 
 
-            #include "../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../../../../java/lang/Integer.h"
+            #include "java/lang/Integer.h"
         
-            #include "../../../../../../java/lang/Long.h"
+            #include "java/lang/Long.h"
         
 #include <java/util/Calendar.h>
 
@@ -95,8 +95,9 @@ class StreetAddressesEntity: public AbSqlBean, public StreetAddressesEntityInter
 
     private: std::string userName;
 
-public: StreetAddressesEntity(){
-            super(UserDbInitInfo());
+public: StreetAddressesEntity() : AbSqlBean(UserDbInitInfo()){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -104,8 +105,9 @@ public: StreetAddressesEntity(){
 }
 
 
-public: StreetAddressesEntity(std::string userName){
-            super(UserDbInitInfo());
+public: StreetAddressesEntity(std::string userName) : AbSqlBean(UserDbInitInfo()){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -119,11 +121,11 @@ this->userName= userName;
 
         try {
             
-    HashMap<any, any> whereHashMap = StdUtil::getInstance().createHashMap();;
+    HashMap<Object*, Object*> whereHashMap = StdUtil::getInstance().createHashMap();;
     
 whereHashMap.put(UserData::USERNAME, this->userName);
     
-whereHashMap.put(StreetAddressData::ID, std::to_string(index) as string);
+whereHashMap.put(StreetAddressData::ID, std::to_string(index));
     
 super.deleteWhere(whereHashMap);
     
@@ -227,10 +229,10 @@ this->setDefault(getLastId());
 
         try {
             
-    HashMap<any, any> addressHashMap = address.toHashMap();;
+    HashMap<Object*, Object*> addressHashMap = address.toHashMap();;
     
 
-    HashMap<any, any> whereKeyValuePairs = StdUtil::getInstance().createHashMap();;
+    HashMap<Object*, Object*> whereKeyValuePairs = StdUtil::getInstance().createHashMap();;
     
 whereKeyValuePairs.put(StreetAddressData::ID, address.getId());
     
@@ -284,7 +286,7 @@ this->setDefault(address.getId());
     BasicArrayList streetAddressVector = BasicArrayListD();;
     
 
-    HashMap<any, any> keyAndValue = StdUtil::getInstance().createHashMap();;
+    HashMap<Object*, Object*> keyAndValue = StdUtil::getInstance().createHashMap();;
     
 keyAndValue.put(UserData::USERNAME, this->userName);
     
@@ -302,7 +304,7 @@ keyAndValue.put(UserData::USERNAME, this->userName);
     int32_t index = 0;index < size; index++)
         {
 
-    HashMap<any, any> addressHashMap = addressList.get(index) as HashMap<any, any>;;
+    HashMap<Object*, Object*> addressHashMap = addressList.get(index);;
     
 
     StreetAddress streetAddress = StreetAddress(addressHashMap);;
@@ -354,14 +356,14 @@ keyAndValue.put(UserData::USERNAME, this->userName);
 
         try {
             
-    HashMap<any, any> keyAndValue = StdUtil::getInstance().createHashMap();;
+    HashMap<Object*, Object*> keyAndValue = StdUtil::getInstance().createHashMap();;
     
 keyAndValue.put(UserData::USERNAME, this->userName);
     
 keyAndValue.put(StreetAddressData::ID, std::to_string(index));
     
 
-    HashMap<any, any> addressHashMap = super.getRow(keyAndValue);;
+    HashMap<Object*, Object*> addressHashMap = super.getRow(keyAndValue);;
     
 
                         if(addressHashMap != 
@@ -416,10 +418,10 @@ keyAndValue.put(StreetAddressData::ID, std::to_string(index));
 
         try {
             
-    HashMap<any, any> addressHashMap = StdUtil::getInstance().createHashMap();;
+    HashMap<Object*, Object*> addressHashMap = StdUtil::getInstance().createHashMap();;
     
 
-    HashMap<any, any> updateKeyAndValue = StdUtil::getInstance().createHashMap();;
+    HashMap<Object*, Object*> updateKeyAndValue = StdUtil::getInstance().createHashMap();;
     
 updateKeyAndValue.put(StreetAddressData::DEFAULT, StreetAddressData::DEFAULT);
     
@@ -501,10 +503,10 @@ addressHashMap= super.getRow(updateKeyAndValue);
 
         try {
             
-    HashMap<any, any> updateKeyAndValue = StdUtil::getInstance().createHashMap();;
+    HashMap<Object*, Object*> updateKeyAndValue = StdUtil::getInstance().createHashMap();;
     
 
-    HashMap<any, any> whereKeyAndValue = StdUtil::getInstance().createHashMap();;
+    HashMap<Object*, Object*> whereKeyAndValue = StdUtil::getInstance().createHashMap();;
     
 whereKeyAndValue.put(UserData::USERNAME, this->userName);
     

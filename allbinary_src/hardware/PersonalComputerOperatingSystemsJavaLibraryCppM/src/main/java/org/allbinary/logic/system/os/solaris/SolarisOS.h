@@ -21,7 +21,7 @@
         #ifndef ORG_ALLBINARY_LOGIC_SYSTEM_OS_SOLARIS_SOLARISOS_H
         #define ORG_ALLBINARY_LOGIC_SYSTEM_OS_SOLARIS_SOLARISOS_H
 
-            #include "../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/logic/system/os/GenericOperatingSystem.h>
 

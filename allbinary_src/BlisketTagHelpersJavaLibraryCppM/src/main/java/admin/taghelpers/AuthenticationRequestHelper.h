@@ -23,7 +23,7 @@
 
             #include <vector>
         
-            #include "../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
 
@@ -115,9 +115,9 @@ class AuthenticationRequestHelper: public TagHelper {
 
     private: HttpServletRequest request;
 
-public: AuthenticationRequestHelper(HashMap<any, any> hashMap, PageContext pageContext);
+public: AuthenticationRequestHelper(HashMap<Object*, Object*> hashMap, PageContext pageContext);
 
-public: AuthenticationRequestHelper(HashMap<any, any> hashMap, HttpServletRequest httpServletRequest);
+public: AuthenticationRequestHelper(HashMap<Object*, Object*> hashMap, HttpServletRequest httpServletRequest);
 
                 //@Throws(Exception.constructor)
             

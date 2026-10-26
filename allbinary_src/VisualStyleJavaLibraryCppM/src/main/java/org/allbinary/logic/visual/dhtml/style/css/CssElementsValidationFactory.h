@@ -21,9 +21,9 @@
         #ifndef ORG_ALLBINARY_LOGIC_VISUAL_DHTML_STYLE_CSS_CSSELEMENTSVALIDATIONFACTORY_H
         #define ORG_ALLBINARY_LOGIC_VISUAL_DHTML_STYLE_CSS_CSSELEMENTSVALIDATIONFACTORY_H
 
-            #include "../../../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
 
@@ -71,7 +71,7 @@ class CssElementsValidationFactory
             
     public: static BasicArrayList getInstance(BasicArrayList cssElementStyleNodeList);
 
-    public: static BasicArrayList getInstance(HashMap<any, any> hashMap);
+    public: static BasicArrayList getInstance(HashMap<Object*, Object*> hashMap);
 
 private: CssElementsValidationFactory();
 

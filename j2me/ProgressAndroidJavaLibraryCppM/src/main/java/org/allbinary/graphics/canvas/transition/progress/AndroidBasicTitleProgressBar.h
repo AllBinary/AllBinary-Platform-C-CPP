@@ -23,11 +23,11 @@
 
             #include <vector>
         
-            #include "../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../../../../java/lang/IllegalArgumentException.h"
+            #include "java/lang/IllegalArgumentException.h"
         
-            #include "../../../../../../java/lang/Integer.h"
+            #include "java/lang/Integer.h"
         
 #include <javax/microedition/lcdui/Graphics.h>
 
@@ -154,7 +154,7 @@ class AndroidBasicTitleProgressBar: public ProgressCanvas, public DisplayChangeE
 
     private: int32_t portion = 0;
 
-    private: const std::vector<Image> IMAGE = new Array(4);
+    private: const std::vector<Image> IMAGE = std::vector<Image>(4);
 
     private: Image image = NullImage::NULL_IMAGE;
 

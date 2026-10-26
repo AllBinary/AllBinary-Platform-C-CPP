@@ -18,16 +18,10 @@
 
 
 
-            #include "../../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-#include <org/allbinary/util/BasicArrayList.h>
-
-      
-#include <org/allbinary/util/BasicArrayListD.h>
-
-      
 #include <org/allbinary/business/entry/EntryData.h>
 
       
@@ -295,7 +289,7 @@ stringBuffer.append(this->getFileName());
     int32_t i = 0;i < size; i++)
         {
 
-    Node node = logConfigTypeNodeVector.get(i) as Node;;
+    Node node = logConfigTypeNodeVector.get(i);;
     
 
     LogConfigType logType = LogConfigTypes::getInstance(node);;

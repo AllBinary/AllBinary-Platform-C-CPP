@@ -20,11 +20,11 @@
 
             #include <vector>
         
-            #include "../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../../java/lang/Integer.h"
+            #include "java/lang/Integer.h"
         
 #include <java/io/ByteArrayInputStream.h>
 
@@ -164,7 +164,7 @@ this->name= StringUtil::getInstance().EMPTY_STRING;
     int32_t index = 0;index < size; index++)
         {
 
-    Integer integer = this->nameBasicArrayList.objectArray[index]! as Integer;;
+    Integer integer = this->nameBasicArrayList.objectArray[index];;
     
 this->delete(abeClientInformation, gameInfo, integer.intValue());
     

@@ -18,9 +18,9 @@
 
 
 
-            #include "../../../../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/game/graphics/hud/BasicHudFactory.h>
 
@@ -85,7 +85,8 @@ private: NoGameNotificationHudSingleton(){
 class NoGameGameNotificationHud: public GameNotificationHud {
 
 : NoGameGameNotificationHud(){
-            super(basicHudFactory.TOPCENTER, basicHudFactory.HORIZONTAL, 2, BasicColorFactory::getInstance().RED);
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.

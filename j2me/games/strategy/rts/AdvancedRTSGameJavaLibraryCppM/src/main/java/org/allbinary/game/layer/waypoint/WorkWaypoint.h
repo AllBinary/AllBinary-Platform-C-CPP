@@ -21,9 +21,9 @@
         #ifndef ORG_ALLBINARY_GAME_LAYER_WAYPOINT_WORKWAYPOINT_H
         #define ORG_ALLBINARY_GAME_LAYER_WAYPOINT_WORKWAYPOINT_H
 
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../../../java/lang/Integer.h"
+            #include "java/lang/Integer.h"
         
 #include <org/allbinary/game/layer/PathFindingLayerInterface.h>
 

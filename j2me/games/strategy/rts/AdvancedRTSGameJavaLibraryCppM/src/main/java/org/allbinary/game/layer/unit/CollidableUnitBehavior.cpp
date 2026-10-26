@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <javax/microedition/lcdui/Canvas.h>
 
@@ -99,8 +99,9 @@ class CollidableUnitBehavior: public CollidableRTSBehavior {
 
     private: const LayerPartialCellPositionsUtil layerPartialCellPositionsUtil = LayerPartialCellPositionsUtil::getInstance();
 
-public: CollidableUnitBehavior(bool collidable){
-            super(collidable);
+public: CollidableUnitBehavior(bool collidable) : CollidableRTSBehavior(collidable){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -114,13 +115,13 @@ public: CollidableUnitBehavior(bool collidable){
 this->chase(ownerLayer, collidableInterfaceCompositeInterface);
     
 
-    AdvancedRTSGameLayer rtsLayer = collidableInterfaceCompositeInterface as AdvancedRTSGameLayer;;
+    AdvancedRTSGameLayer rtsLayer = collidableInterfaceCompositeInterface;;
     
 
                         if(rtsLayer.getType() == UnitLayer::getStaticType())
                         
                                     {
-                                    this->collideUnit(ownerLayer, rtsLayer as UnitLayer);
+                                    this->collideUnit(ownerLayer, rtsLayer);
     
 
                                     }
@@ -138,14 +139,14 @@ class SimpleSteeringVisitor: public SteeringVisitor {
 
         try {
             
-    CollidableCompositeLayer ownerLayer = anyType as CollidableCompositeLayer;;
+    CollidableCompositeLayer ownerLayer = *dynamic_cast<CollidableCompositeLayer*>(anyType);;
     
 
                         if(this->getList().size() > 0)
                         
                                     {
                                     
-    CollidableCompositeLayer allbinaryLayer = this->getList().get(0) as CollidableCompositeLayer;;
+    CollidableCompositeLayer allbinaryLayer = this->getList().get(0);;
     
 
     bool clear = this->steer(ownerLayer, allbinaryLayer);;
@@ -209,10 +210,10 @@ logUtil.put(commonStrings.EXCEPTION, this, "visit", e);
             
     private: bool steer(CollidableCompositeLayer ownerLayer, CollidableCompositeLayer collidableInterfaceCompositeInterface){
 
-    UnitLayer ownerUnitLayer = ownerLayer as UnitLayer;;
+    UnitLayer ownerUnitLayer = ownerLayer;;
     
 
-    UnitLayer unitLayer = collidableInterfaceCompositeInterface as UnitLayer;;
+    UnitLayer unitLayer = collidableInterfaceCompositeInterface;;
     
 
     AngleInfo angleInfo2 = unitLayer.getRotationAnimationInterface().getAngleInfoP();;
@@ -263,7 +264,7 @@ logUtil.put(commonStrings.EXCEPTION, this, "visit", e);
             
     private: void chase(CollidableCompositeLayer ownerLayer, CollidableCompositeLayer collidableInterfaceCompositeInterface){
 
-    AdvancedRTSGameLayer rtsLayer = collidableInterfaceCompositeInterface as AdvancedRTSGameLayer;;
+    AdvancedRTSGameLayer rtsLayer = collidableInterfaceCompositeInterface;;
     
 
                         if(rtsLayer.getType() == UnitLayer::getStaticType())
@@ -279,7 +280,7 @@ logUtil.put(commonStrings.EXCEPTION, this, "visit", e);
                                     }
                                 
 
-    UnitLayer ownerUnitLayer = ownerLayer as UnitLayer;;
+    UnitLayer ownerUnitLayer = ownerLayer;;
     
 
     BasicArrayList list = ownerUnitLayer.getUnitWaypointBehavior().getSteeringVisitorList();;
@@ -303,13 +304,13 @@ logUtil.put(commonStrings.EXCEPTION, this, "visit", e);
             
     protected: void collideUnit(CollidableCompositeLayer ownerLayer, UnitLayer unitLayer){
 
-    UnitLayer ownerUnitLayer = ownerLayer as UnitLayer;;
+    UnitLayer ownerUnitLayer = ownerLayer;;
     
 
     BasicArrayList partialPositionList = UnitLayer::getPartialpositionlist();;
     
 
-    GeographicMapCompositeInterface geographicMapCompositeInterface = ownerUnitLayer.allBinaryGameLayerManagerP as GeographicMapCompositeInterface;;
+    GeographicMapCompositeInterface geographicMapCompositeInterface = ownerUnitLayer.allBinaryGameLayerManagerP;;
     
 
     BasicGeographicMap geographicMapInterface = geographicMapCompositeInterface.getGeographicMapInterface()[0];;

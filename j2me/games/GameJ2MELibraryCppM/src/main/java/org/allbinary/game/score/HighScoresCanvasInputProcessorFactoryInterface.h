@@ -21,13 +21,7 @@
         #ifndef ORG_ALLBINARY_GAME_SCORE_HIGHSCORESCANVASINPUTPROCESSORFACTORYINTERFACE_H
         #define ORG_ALLBINARY_GAME_SCORE_HIGHSCORESCANVASINPUTPROCESSORFACTORYINTERFACE_H
 
-#include <jsinterop/annotations/JsType.h>
-
-      
 #include <org/allbinary/game/score/displayable/HighScoresCanvas.h>
-
-      
-#include <jsinterop/annotations/JsMethod.h>
 
       
 

@@ -58,8 +58,9 @@
 
 class CompoundRotationAnimationInterfaceFactory: public CompoundAnimationInterfaceFactory {
 
-public: CompoundRotationAnimationInterfaceFactory(std::vector<AnimationInterfaceFactoryInterface> basicAnimationInterfaceFactoryInterfaceArray, AnimationBehaviorFactory animationBehaviorFactory){
-            super(basicAnimationInterfaceFactoryInterfaceArray, animationBehaviorFactory);
+public: CompoundRotationAnimationInterfaceFactory(std::vector<AnimationInterfaceFactoryInterface> basicAnimationInterfaceFactoryInterfaceArray, AnimationBehaviorFactory animationBehaviorFactory) : CompoundAnimationInterfaceFactory(basicAnimationInterfaceFactoryInterfaceArray, animationBehaviorFactory){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -81,7 +82,7 @@ public: CompoundRotationAnimationInterfaceFactory(std::vector<AnimationInterface
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new Array(size);
+                        return std::vector<RotationAnimation>(size);
     
 }
 

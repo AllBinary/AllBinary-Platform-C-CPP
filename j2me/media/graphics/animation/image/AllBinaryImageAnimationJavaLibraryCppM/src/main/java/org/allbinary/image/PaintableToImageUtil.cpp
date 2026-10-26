@@ -18,9 +18,9 @@
 
 
 
-            #include "../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <javax/microedition/lcdui/Graphics.h>
 
@@ -61,7 +61,7 @@ class PaintableToImageUtil
             
     public: static Image getImage(PaintableInterface paintableInterface, int32_t width, int32_t height){
 
-    Image image = GameFeatureImageCacheFactory::getInstance().get(PaintableToImageUtil::instance.constructor.name.toString()!, width, height);;
+    Image image = GameFeatureImageCacheFactory::getInstance().get(PaintableToImageUtil::instance.constructor.name.toString(), width, height);;
     
 
     Graphics graphics = image.getGraphics();;

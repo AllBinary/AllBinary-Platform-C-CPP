@@ -20,7 +20,7 @@
 
             #include <hilog/log.h>
         
-            #include "../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
 #include <android/graphics/Canvas.h>
 

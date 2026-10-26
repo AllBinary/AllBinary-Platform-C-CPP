@@ -23,9 +23,9 @@
 
             #include <vector>
         
-            #include "../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
 
@@ -121,7 +121,7 @@ public: StreetAddress(HttpServletRequest request);
 
 public: StreetAddress(std::string name, std::string street, std::string city, std::string state, std::string code, std::string country);
 
-public: StreetAddress(HashMap<any, any> address);
+public: StreetAddress(HashMap<Object*, Object*> address);
 
     private: void log();
 
@@ -165,7 +165,7 @@ public: StreetAddress(HashMap<any, any> address);
 
     private: Node toValidationInfoNode(Document document);
 
-    public: HashMap<any, any> toHashMap();
+    public: HashMap<Object*, Object*> toHashMap();
 
                 //@Throws(Exception.constructor)
             

@@ -6,11 +6,11 @@
 
             #include <vector>
         
-            #include "../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../java/lang/IndexOutOfBoundsException.h"
+            #include "java/lang/IndexOutOfBoundsException.h"
         
-            #include "../../../java/lang/System.h"
+            #include "java/lang/System.h"
         
 #include <jsinterop/annotations/JsType.h>
 
@@ -98,7 +98,7 @@ stringBuffer.appendint(this->currentIndex);
                                 
 this->ensureCapacity(this->currentIndex +1);
     
-std::copy(this->objectArray.begin() + , this->objectArray.begin() +  + , this->objectArray.begin() + );
+System.arraycopy(this->objectArray, index, this->objectArray, index +1, this->currentIndex -index);
     
 this->objectArray[index]= element;
     
@@ -155,7 +155,7 @@ stringBuffer.appendint(this->currentIndex);
                         if(numMoved > 0)
                         
                                     {
-                                    std::copy(this->objectArray.begin() + , this->objectArray.begin() +  + numMoved, this->objectArray.begin() + );
+                                    System.arraycopy(this->objectArray, index +1, this->objectArray, index, numMoved);
     
 
                                     }
@@ -200,7 +200,7 @@ this->objectArray[--this->currentIndex]=
                         if(numMoved > 0)
                         
                                     {
-                                    std::copy(this->objectArray.begin() + , this->objectArray.begin() +  + numMoved, this->objectArray.begin() + );
+                                    System.arraycopy(this->objectArray, index +1, this->objectArray, index, numMoved);
     
 
                                     }
@@ -232,7 +232,7 @@ this->objectArray[--this->currentIndex]=
     int32_t index = 0;index < this->currentIndex; index++)
         {
 
-                        if(anyType == this->objectArray[index] || anyType === this->objectArray[index]!)
+                        if(anyType == this->objectArray[index] || anyType === this->objectArray[index])
                         
                                     {
                                     
@@ -242,7 +242,7 @@ this->objectArray[--this->currentIndex]=
                         if(numMoved > 0)
                         
                                     {
-                                    std::copy(this->objectArray.begin() + , this->objectArray.begin() +  + numMoved, this->objectArray.begin() + );
+                                    System.arraycopy(this->objectArray, index +1, this->objectArray, index, numMoved);
     
 
                                     }
@@ -325,7 +325,7 @@ this->ensureCapacity(this->currentIndex +list.currentIndex);
                         for (
     int32_t index = 0;index < listSize; index++)
         {
-this->objectArray[this->currentIndex++]= list.objectArray[index]!;
+this->objectArray[this->currentIndex++]= list.objectArray[index];
     
 }
 
@@ -357,7 +357,7 @@ this->objectArray[this->currentIndex++]= list.objectArray[index]!;
     
 this->ensureCapacity(this->currentIndex +numSize);
     
-std::copy(newObjectArray.begin() + 0, newObjectArray.begin() + 0 + numSize, this->objectArray.begin() + );
+System.arraycopy(newObjectArray, 0, this->objectArray, this->currentIndex, numSize);
     
 this->currentIndex += numSize;
     
@@ -457,7 +457,7 @@ this->objectArray= this->arrayUtil.copyOf(this->objectArray, newCapacity);
     int32_t i = 0;i < this->currentIndex; i++)
         {
 
-                        if(anyType === this->objectArray[i]!)
+                        if(anyType === this->objectArray[i])
                         
                                     {
                                     
@@ -526,7 +526,7 @@ this->objectArray= this->arrayUtil.copyOf(this->objectArray, newCapacity);
     int32_t i = this->currentIndex -1;i >= 0; i--)
         {
 
-                        if(anyType === this->objectArray[i]!)
+                        if(anyType === this->objectArray[i])
                         
                                     {
                                     
@@ -580,7 +580,7 @@ stringBuffer.appendint(this->currentIndex);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->objectArray[index]!;
+                        return this->objectArray[index];
     
 }
 
@@ -691,12 +691,12 @@ this->currentIndex= 0;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->arrayUtil.copyOfType(this->objectArray, this->currentIndex, objectArray.constructor);;
+                        return this->arrayUtil.copyOfType(this->objectArray, this->currentIndex, objectArray.getClass());;
     
 
                                     }
                                 
-std::copy(this->objectArray.begin() + 0, this->objectArray.begin() + 0 + currentIndex, objectArray.begin() + 0);
+System.arraycopy(this->objectArray, 0, objectArray, 0, this->currentIndex);
     
 
                         if(objectArray.size() > this->currentIndex)
@@ -735,7 +735,7 @@ std::copy(this->objectArray.begin() + 0, this->objectArray.begin() + 0 + current
                         for (
     int32_t index = 0;index < size; index++)
         {
-anyType= this->objectArray[index]!;
+anyType= this->objectArray[index];
     
 list.add(anyType);
     
@@ -764,7 +764,7 @@ list.add(anyType);
                         for (
     int32_t index = 0;index < this->currentIndex; index++)
         {
-stringBuffer.append(this->objectArray[index]!.toString());
+stringBuffer.append(this->objectArray[index].toString());
     
 stringBuffer.append(COMMA_SEP);
     

@@ -21,7 +21,7 @@
         #ifndef ORG_ALLBINARY_LOGIC_COMMUNICATION_SMTP_CONFIGURATION_USER_EVENT_USEREMAILEVENTCONFIGURATION_H
         #define ORG_ALLBINARY_LOGIC_COMMUNICATION_SMTP_CONFIGURATION_USER_EVENT_USEREMAILEVENTCONFIGURATION_H
 
-            #include "../../../../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
 #include <java/util/HashMap.h>
 
@@ -65,7 +65,7 @@ class UserEmailEventConfiguration
 
 public: UserEmailEventConfiguration();
 
-public: UserEmailEventConfiguration(HashMap<any, any> hashMap);
+public: UserEmailEventConfiguration(HashMap<Object*, Object*> hashMap);
 
     public: std::string getName();
 

@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/logic/util/event/AllBinaryEventObject.h>
 
@@ -72,9 +72,9 @@ private: GameFeatureEventHandler(){
             
     protected: void process(AllBinaryEventObject eventObject, EventListenerInterface eventListenerInterface){
 
-    GameFeatureListenerInterface gameFeatureListenerInterface = (eventListenerInterface as GameFeatureListenerInterface);;
+    GameFeatureListenerInterface gameFeatureListenerInterface = (eventListenerInterface);;
     
-gameFeatureListenerInterface.onGameFeatureChange(eventObject as GameFeatureEvent);
+gameFeatureListenerInterface.onGameFeatureChange(eventObject);
     
 }
 

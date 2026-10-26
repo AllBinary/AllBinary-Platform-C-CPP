@@ -21,7 +21,7 @@
         #ifndef TAGS_TRANSFORM_INFO_TRANSFORMINFOTAG_H
         #define TAGS_TRANSFORM_INFO_TRANSFORMINFOTAG_H
 
-            #include "../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <javax/servlet/jsp/JspTagException.h>
 

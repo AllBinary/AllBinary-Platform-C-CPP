@@ -21,9 +21,9 @@
         #ifndef ORG_ALLBINARY_LOGIC_IO_FILE_FILELOCKUTIL_H
         #define ORG_ALLBINARY_LOGIC_IO_FILE_FILELOCKUTIL_H
 
-            #include "../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/nio/channels/FileChannel.h>
 

@@ -18,11 +18,11 @@
 
 
 
-            #include "../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../../../java/lang/Long.h"
+            #include "java/lang/Long.h"
         
 #include <java/util/Calendar.h>
 
@@ -118,15 +118,15 @@ this->id= QuoteRequestIdGenerator().getNext();
     
 this->setUserName(userName);
     
-this->setProjectInfo(request.getParameter(quoteRequestData.PROJECT_INFO) as string);
+this->setProjectInfo(request.getParameter(quoteRequestData.PROJECT_INFO));
     
-this->setUserComments(request.getParameter(quoteRequestData.CUSTOMER_COMMENTS) as string);
+this->setUserComments(request.getParameter(quoteRequestData.CUSTOMER_COMMENTS));
     
-this->setBudget(request.getParameter(quoteRequestData.BUDGET) as string);
+this->setBudget(request.getParameter(quoteRequestData.BUDGET));
     
-this->setTimeFrame(request.getParameter(quoteRequestData.TIMEFRAME) as string);
+this->setTimeFrame(request.getParameter(quoteRequestData.TIMEFRAME));
     
-this->setComments(request.getParameter(quoteRequestData.COMMENTS) as string);
+this->setComments(request.getParameter(quoteRequestData.COMMENTS));
     
 
                         if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().TAGHELPER))
@@ -140,23 +140,23 @@ this->setComments(request.getParameter(quoteRequestData.COMMENTS) as string);
 }
 
 
-public: QuoteRequest(HashMap<any, any> hashMap){
+public: QuoteRequest(HashMap<Object*, Object*> hashMap){
 
     QuoteRequestData quoteRequestData = QuoteRequestData::getInstance();;
     
-this->id= hashMap.get(quoteRequestData.ID) as string;
+this->id= hashMap.get(quoteRequestData.ID);
     
-this->setUserName(hashMap.get(UserData::USERNAME) as string);
+this->setUserName(hashMap.get(UserData::USERNAME));
     
-this->setProjectInfo(hashMap.get(quoteRequestData.PROJECT_INFO) as string);
+this->setProjectInfo(hashMap.get(quoteRequestData.PROJECT_INFO));
     
-this->setUserComments(hashMap.get(quoteRequestData.CUSTOMER_COMMENTS) as string);
+this->setUserComments(hashMap.get(quoteRequestData.CUSTOMER_COMMENTS));
     
-this->setBudget(hashMap.get(quoteRequestData.BUDGET) as string);
+this->setBudget(hashMap.get(quoteRequestData.BUDGET));
     
-this->setTimeFrame(hashMap.get(quoteRequestData.TIMEFRAME) as string);
+this->setTimeFrame(hashMap.get(quoteRequestData.TIMEFRAME));
     
-this->setComments(hashMap.get(quoteRequestData.COMMENTS) as string);
+this->setComments(hashMap.get(quoteRequestData.COMMENTS));
     
 
                         if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().TAGHELPER))
@@ -387,12 +387,12 @@ values.add(time);
 }
 
 
-    public: HashMap<any, any> toHashMap(){
+    public: HashMap<Object*, Object*> toHashMap(){
 
     QuoteRequestData quoteRequestData = QuoteRequestData::getInstance();;
     
 
-    HashMap<any, any> values = StdUtil::getInstance().createHashMap();;
+    HashMap<Object*, Object*> values = StdUtil::getInstance().createHashMap();;
     
 values.put(UserData::USERNAME, userName);
     

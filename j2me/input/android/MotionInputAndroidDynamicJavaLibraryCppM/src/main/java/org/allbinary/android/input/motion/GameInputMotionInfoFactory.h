@@ -21,7 +21,7 @@
         #ifndef ORG_ALLBINARY_ANDROID_INPUT_MOTION_GAMEINPUTMOTIONINFOFACTORY_H
         #define ORG_ALLBINARY_ANDROID_INPUT_MOTION_GAMEINPUTMOTIONINFOFACTORY_H
 
-            #include "../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
 #include <org/allbinary/android/AndroidInfoFactory.h>
 

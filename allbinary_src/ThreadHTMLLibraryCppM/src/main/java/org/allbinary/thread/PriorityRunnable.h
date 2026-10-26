@@ -21,14 +21,8 @@
         #ifndef ORG_ALLBINARY_THREAD_PRIORITYRUNNABLE_H
         #define ORG_ALLBINARY_THREAD_PRIORITYRUNNABLE_H
 
-            #include "../../../java/lang/Runnable.h"
+            #include "java/lang/Runnable.h"
         
-#include <jsinterop/annotations/JsType.h>
-
-      
-#include <jsinterop/annotations/JsMethod.h>
-
-      
 
 
 

@@ -20,7 +20,7 @@
 
             #include <vector>
         
-            #include "../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
 #include <org/allbinary/logic/communication/log/LogUtil.h>
 
@@ -83,7 +83,7 @@ class GroupFactory
 
     public: Group getNextGroup(){
 
-    Group group = this->list.objectArray[this->index]! as Group;;
+    Group group = this->list.objectArray[this->index];;
     
 this->index++;
     
@@ -138,7 +138,7 @@ this->index= 0;
                         if(size < nameArray.size())
                         
                                     {
-                                    name= nameArray[size]!;
+                                    name= nameArray[size];
     
 
                                     }

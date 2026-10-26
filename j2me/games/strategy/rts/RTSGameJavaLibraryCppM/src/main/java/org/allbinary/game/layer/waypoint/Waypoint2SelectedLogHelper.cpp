@@ -127,7 +127,7 @@ this->logUtil.putF(stringBuffer.toString(), this, "selected: initRange");
 
     public: void processPossibleTarget(PathFindingLayerInterface associatedAdvancedRTSGameLayer, WaypointBehaviorBase waypointBehaviorBase, PathFindingLayerInterface layerInterface, int32_t anotherTargetDistance, bool isShorterThanCurrentTargetDistance, bool isCurrentTargetDestroyed){
 
-                        if(waypointBehaviorBase.isWaypointListEmptyOrOnlyTargets() && waypointBehaviorBase.isInSensorRange(layerInterface as CollidableDestroyableDamageableLayer, anotherTargetDistance))
+                        if(waypointBehaviorBase.isWaypointListEmptyOrOnlyTargets() && waypointBehaviorBase.isInSensorRange(layerInterface, anotherTargetDistance))
                         
                                     {
                                     

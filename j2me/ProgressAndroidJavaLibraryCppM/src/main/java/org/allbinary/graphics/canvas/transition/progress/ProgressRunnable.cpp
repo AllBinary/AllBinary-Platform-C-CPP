@@ -58,9 +58,9 @@ class ProgressRunnable: public ARunnable {
 
 public: ProgressRunnable(Activity midletActivity, ProgressCanvas progressCanvas){
 
-    MidletActivityBase midletActivity2 = midletActivity as MidletActivityBase;;
+    MidletActivityBase midletActivity2 = midletActivity;;
     
-this->midletActivity= midletActivity2 as SimpleProgressActivityInterface;
+this->midletActivity= midletActivity2;
     
 this->progressCanvas= progressCanvas;
     

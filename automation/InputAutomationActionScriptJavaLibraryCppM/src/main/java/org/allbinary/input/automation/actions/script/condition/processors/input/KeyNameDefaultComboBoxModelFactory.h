@@ -23,9 +23,9 @@
 
             #include <vector>
         
-            #include "../../../../../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../../../../../java/lang/Integer.h"
+            #include "java/lang/Integer.h"
         
 #include <java/awt/event/KeyEvent.h>
 

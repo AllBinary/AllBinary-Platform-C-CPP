@@ -18,9 +18,9 @@
 
 
 
-            #include "../../../../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
 
@@ -76,7 +76,7 @@ class UserEmailEventsConfiguration
 
     protected: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    private: HashMap<any, any> emailEventHashMap;
+    private: HashMap<Object*, Object*> emailEventHashMap;
 
 public: UserEmailEventsConfiguration(){
 this->init();
@@ -84,7 +84,7 @@ this->init();
 }
 
 
-public: UserEmailEventsConfiguration(HashMap<any, any> hashMap){
+public: UserEmailEventsConfiguration(HashMap<Object*, Object*> hashMap){
 this->init();
     
 }
@@ -105,7 +105,7 @@ this->emailEventHashMap= StdUtil::getInstance().createHashMap();
 }
 
 
-    public: HashMap<any, any> getEventConfigurationHashMap(){
+    public: HashMap<Object*, Object*> getEventConfigurationHashMap(){
 
 
 
@@ -134,7 +134,7 @@ this->emailEventHashMap.put(userEmailEventConfigurationInterface.getName(), user
             
     public: UserEmailEventListenerInterface getEventListener(AbeClientInformationInterface abeClientInformation, UserEmailEventNameData userEmailEventNameData, UserInterface userInterface){
 
-    UserEmailEventConfigurationInterface userEmailEventConfigurationInterface = this->emailEventHashMap.get(userEmailEventNameData.toString()) as UserEmailEventConfigurationInterface;;
+    UserEmailEventConfigurationInterface userEmailEventConfigurationInterface = this->emailEventHashMap.get(userEmailEventNameData.toString());;
     
 
 

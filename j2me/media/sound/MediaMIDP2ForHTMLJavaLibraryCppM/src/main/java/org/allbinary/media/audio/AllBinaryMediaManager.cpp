@@ -18,11 +18,9 @@
 
 
 
-            #include "../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../java/lang/Exception.h"
-        
-            #include "../../../../java/lang/System.h"
+            #include "java/lang/Exception.h"
         
 #include <javax/microedition/media/Manager.h>
 
@@ -31,6 +29,9 @@
 
       
 #include <javax/microedition/media/Player.h>
+
+      
+#include <org/allbinary/TsUtil.h>
 
       
 #include <org/allbinary/game/configuration/feature/Features.h>
@@ -125,7 +126,7 @@ Sounds(soundsFactoryInterface).stopAll();
     
 Sounds(soundsFactoryInterface).closeAll();
     
-System.gc();
+TsUtil::getInstance().gc();
     
 }
 
@@ -138,7 +139,7 @@ System.gc();
                         
                                     {
                                     
-                        if(resource.compareTo(Manager::TONE_DEVICE_LOCATOR) == 0)
+                        if(TsUtil::getInstance().compareTo(resource, Manager::TONE_DEVICE_LOCATOR) == 0)
                         
                                     {
                                     

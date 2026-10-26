@@ -77,8 +77,6 @@ class OwnershipPaintable: public Paintable, public UpdateMyFontInterface {
 
     public: static OwnershipPaintable getInstance();
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
-
     private: const DisplayInfoSingleton displayInfo = DisplayInfoSingleton::getInstance();
 
     private: MyFontProcessor myFontProcessor = UpdateMyFontProcessor(this);

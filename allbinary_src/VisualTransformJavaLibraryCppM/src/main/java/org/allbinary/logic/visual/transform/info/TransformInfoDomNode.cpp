@@ -18,9 +18,9 @@
 
 
 
-            #include "../../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/data/tree/dom/DomNodeHelper.h>
 
@@ -95,7 +95,7 @@ public: TransformInfoDomNode(Node node){
     NamedNodeMap attributes = node.getAttributes();;
     
 
-    Attr attrNode = attributes.getNamedItem(transformInfoData.NAME) as Attr;;
+    Attr attrNode = attributes.getNamedItem(transformInfoData.NAME);;
     
 
     std::string name = attrNode.getValue();;
@@ -153,7 +153,7 @@ this->logUtil.putF(stringBuffer.toString(), this, "TransformInfoObjectConfigComp
 
     std::string dataFileName = DomNodeHelper::getTextNodeValue(dataFileNameNode);;
     
-this->transformInfoInterface= TransformInfo(name, objectFileName, objectConfigFileName, templateFileName, dataFileName) as TransformInfoInterface;
+this->transformInfoInterface= TransformInfo(name, objectFileName, objectConfigFileName, templateFileName, dataFileName);
     
 
                                     }
@@ -181,13 +181,13 @@ this->logUtil.putF(stringBuffer.toString(), this, "TransformInfoObjectConfigComp
 
                                     }
                                 
-this->transformInfoInterface= TransformInfo(name) as TransformInfoInterface;
+this->transformInfoInterface= TransformInfo(name);
     
 
                         }
                             
 
-    Attr templateAttrNode = attributes.getNamedItem(transformInfoData.MAPPED) as Attr;;
+    Attr templateAttrNode = attributes.getNamedItem(transformInfoData.MAPPED);;
     
 
                         if(templateAttrNode != 

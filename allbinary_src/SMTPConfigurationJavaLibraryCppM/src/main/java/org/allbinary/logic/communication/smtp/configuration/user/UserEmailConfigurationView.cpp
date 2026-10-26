@@ -18,9 +18,9 @@
 
 
 
-            #include "../../../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
 
@@ -101,7 +101,7 @@ public: UserEmailConfigurationView(Node node){
 
                                     }
                                 
-this->userEmailConfigurationInterface= UserEmailConfiguration() as UserEmailConfigurationInterface;
+this->userEmailConfigurationInterface= UserEmailConfiguration();
     
 
     NodeList childNodeList = node.getChildNodes();;
@@ -140,7 +140,7 @@ this->userEmailConfigurationInterface= userEmailConfigurationInterface;
     UserEmailConfigurationMapping emailConfigurationMapping = UserEmailConfigurationMapping(this->userEmailConfigurationInterface);;
     
 
-    HashMap<any, any> hashMap = emailConfigurationMapping.toHashMap();;
+    HashMap<Object*, Object*> hashMap = emailConfigurationMapping.toHashMap();;
     
 
     Node node = ModDomHelper::createNameValueNodes(document, UserEmailConfigurationData::NAME, hashMap);;

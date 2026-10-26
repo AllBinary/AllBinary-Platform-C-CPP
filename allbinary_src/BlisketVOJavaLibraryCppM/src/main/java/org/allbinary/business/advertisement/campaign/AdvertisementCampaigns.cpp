@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
 #include <org/allbinary/util/BasicArrayList.h>
 
@@ -78,7 +78,7 @@ this->advertisementsVector.add(advertisementInterface);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->advertisementsVector.get(index) as AdvertisementInterface;
+                        return this->advertisementsVector.get(index);
     
 }
 

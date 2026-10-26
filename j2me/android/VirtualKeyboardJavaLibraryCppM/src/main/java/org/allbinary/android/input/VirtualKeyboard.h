@@ -21,7 +21,7 @@
         #ifndef ORG_ALLBINARY_ANDROID_INPUT_VIRTUALKEYBOARD_H
         #define ORG_ALLBINARY_ANDROID_INPUT_VIRTUALKEYBOARD_H
 
-            #include "../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
 #include <org/allbinary/input/event/VirtualKeyboardEvent.h>
 

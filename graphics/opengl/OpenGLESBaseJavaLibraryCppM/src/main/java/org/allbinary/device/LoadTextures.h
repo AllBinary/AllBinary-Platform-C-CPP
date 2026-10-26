@@ -21,9 +21,9 @@
         #ifndef ORG_ALLBINARY_DEVICE_LOADTEXTURES_H
         #define ORG_ALLBINARY_DEVICE_LOADTEXTURES_H
 
-            #include "../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <javax/microedition/khronos/opengles/GL10.h>
 

@@ -18,9 +18,6 @@
 
 
 
-#include <jsinterop/annotations/JsType.h>
-
-      
 #include <org/allbinary/game/displayable/canvas/AllBinaryGameCanvas.h>
 
       
@@ -37,12 +34,6 @@
 
       
 #include <org/allbinary/logic/util/event/AllBinaryEventObject.h>
-
-      
-#include <jsinterop/annotations/JsMethod.h>
-
-      
-#include <jsinterop/annotations/JsConstructor.h>
 
       
 
@@ -71,8 +62,9 @@ class DestroyedEvent: public AllBinaryEventObject {
 
     private: AllBinaryLayer allBinaryLayerInterface = AllBinaryLayer::NULL_ALLBINARY_LAYER;
 
-public: DestroyedEvent(AllBinaryGameCanvas combatGameCanvas){
-            super(DestroyedEventHandler::getInstance());
+public: DestroyedEvent(AllBinaryGameCanvas combatGameCanvas) : AllBinaryEventObject(DestroyedEventHandler::getInstance()){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.

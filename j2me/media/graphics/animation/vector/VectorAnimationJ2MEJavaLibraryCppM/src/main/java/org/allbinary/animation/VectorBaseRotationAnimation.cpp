@@ -20,11 +20,8 @@
 
             #include <vector>
         
-            #include "../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-#include <jsinterop/annotations/JsType.h>
-
-      
 #include <javax/microedition/lcdui/Graphics.h>
 
       
@@ -34,9 +31,6 @@
 #include <org/allbinary/logic/NullUtil.h>
 
       
-#include <org/allbinary/logic/communication/log/LogUtil.h>
-
-      
 #include <org/allbinary/logic/math/PrimitiveIntUtil.h>
 
       
@@ -44,15 +38,6 @@
 
       
 #include <org/allbinary/util/CircularIndexUtil.h>
-
-      
-#include <jsinterop/annotations/JsMethod.h>
-
-      
-#include <jsinterop/annotations/JsConstructor.h>
-
-      
-#include <jsinterop/annotations/JsProperty.h>
 
       
 
@@ -79,12 +64,11 @@
 
 class VectorBaseRotationAnimation: public RotationAnimation, public VectorAnimationInterface {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
-
     private: std::vector<std::vector<std::vector<int32_t>>> currentPoints = NullUtil::getInstance().NULL_INT_ARRAY_ARRAY_ARRAY;
 
-public: VectorBaseRotationAnimation(AngleInfo angleInfo, std::vector<std::vector<std::vector<int32_t>>> currentPoints, BasicColor basicColor, AnimationBehavior animationBehavior){
-            super(angleInfo, CircularIndexUtil::createInstance(360 /angleInfo.getAngleIncrementInfo().getAngleIncrement()), animationBehavior);
+public: VectorBaseRotationAnimation(AngleInfo angleInfo, std::vector<std::vector<std::vector<int32_t>>> currentPoints, BasicColor basicColor, AnimationBehavior animationBehavior) : RotationAnimation(angleInfo, CircularIndexUtil::createInstance(360 /angleInfo.getAngleIncrementInfo().getAngleIncrement()), animationBehavior){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -189,13 +173,13 @@ this->basicSetColorUtil.setBasicColorP(graphics, this->basicColor);
 
         while(--index >= 0)
         {
-nextPoint= currentPointsFrame[index]!;
+nextPoint= currentPointsFrame[index];
     
-point= currentPointsFrame[index +1]!;
+point= currentPointsFrame[index +1];
     
-nextPointX= nextPoint[0]!;
+nextPointX= nextPoint[0];
     
-nextPointY= nextPoint[1]!;
+nextPointY= nextPoint[1];
     
 
                         if(nextPointX != 1000)
@@ -230,7 +214,7 @@ this->logUtil.put(this->commonStrings.EXCEPTION, this, "paintVectors", e);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->currentPoints[frame]!;
+                        return this->currentPoints[frame];
     
 }
 

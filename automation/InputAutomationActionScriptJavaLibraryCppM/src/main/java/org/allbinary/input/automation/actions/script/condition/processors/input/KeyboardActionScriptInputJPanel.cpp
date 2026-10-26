@@ -18,9 +18,9 @@
 
 
 
-            #include "../../../../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../../../../../../../java/lang/Integer.h"
+            #include "java/lang/Integer.h"
         
 #include <javax/swing.h>
 
@@ -182,7 +182,7 @@ this->keyActionScriptInputInterface.log();
     ComboBoxModel comboBoxModel = this->inputAutomationTypeJComboBox.getModel();;
     
 
-    std::string selectedItem = comboBoxModel.getSelectedItem() as string;;
+    std::string selectedItem = comboBoxModel.getSelectedItem();;
     
 
                         if(!StringValidationUtil::getInstance().isEmpty(selectedItem))
@@ -201,7 +201,7 @@ this->keyActionScriptInputInterface.log();
     ComboBoxModel comboBoxModel = this->keyNameJComboBox.getModel();;
     
 
-    std::string selectedItem = comboBoxModel.getSelectedItem() as string;;
+    std::string selectedItem = comboBoxModel.getSelectedItem();;
     
 
                         if(!StringValidationUtil::getInstance().isEmpty(selectedItem))
@@ -211,7 +211,7 @@ this->keyActionScriptInputInterface.log();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return KeySingletonFactory::getHashtable().get(selectedItem) as Integer;
+                        return KeySingletonFactory::getHashtable().get(selectedItem);
     
 
                                     }

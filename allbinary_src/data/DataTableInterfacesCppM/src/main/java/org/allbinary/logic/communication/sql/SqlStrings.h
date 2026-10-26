@@ -7,7 +7,7 @@
         #ifndef ORG_ALLBINARY_LOGIC_COMMUNICATION_SQL_SQLSTRINGS_H
         #define ORG_ALLBINARY_LOGIC_COMMUNICATION_SQL_SQLSTRINGS_H
 
-            #include "../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
 #include <org/allbinary/string/CommonSeps.h>
 

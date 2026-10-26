@@ -18,11 +18,11 @@
 
 
 
-            #include "../../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../../java/lang/Long.h"
+            #include "java/lang/Long.h"
         
-            #include "../../../../../../java/lang/Float.h"
+            #include "java/lang/Float.h"
         
 #include <org/allbinary/logic/io/path/AbPathData.h>
 
@@ -161,7 +161,7 @@ this->units= Long(this->units.longValue() *multiplier);
     StringMaker stringBuffer = StringMaker();;
     
 
-                        if(currency.compareTo(this->DEFAULT_CURRENCY) == 0)
+                        if(currency.compare(this->DEFAULT_CURRENCY) == 0)
                         
                                     {
                                     
@@ -217,7 +217,7 @@ stringBuffer.append(Long(cents).toString());
                         if(index < 1)
                         
                                     {
-                                    dollarStr= usDollarStr.toCharArray().slice(0, ).join('');
+                                    dollarStr= std::string(usDollarStr);
     
 centsStr= "00";
     

@@ -21,7 +21,7 @@
         #ifndef ORG_ALLBINARY_LOGIC_COMMUNICATION_SQL_ABSQLTABLE_H
         #define ORG_ALLBINARY_LOGIC_COMMUNICATION_SQL_ABSQLTABLE_H
 
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/business/init/db/DbConnectionInfo.h>
 

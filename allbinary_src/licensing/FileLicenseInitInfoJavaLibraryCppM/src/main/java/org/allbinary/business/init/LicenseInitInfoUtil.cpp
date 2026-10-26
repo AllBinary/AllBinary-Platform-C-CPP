@@ -20,9 +20,9 @@
 
             #include <vector>
         
-            #include "../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/TsUtil.h>
 
@@ -51,6 +51,9 @@
 #include <org/allbinary/logic/io/FileStreamFactory.h>
 
       
+#include <org/allbinary/logic/string/StringMaker.h>
+
+      
 #include <org/allbinary/logic/string/StringUtil.h>
 
       
@@ -58,6 +61,9 @@
 
       
 #include <org/allbinary/logic/system/security/crypt/WeakCrypt.h>
+
+      
+#include <org/allbinary/string/CommonLabels.h>
 
       
 
@@ -243,7 +249,7 @@ initInfo.setLicenseId(WeakCrypt(1).decrypt(licenseIdDecoded));
     int32_t numberOfLicenseServers = iData.readInt();;
     
 
-    std::string NEXT_FILE = "Next License Server From File: ";;
+    std::string NEXT_FILE = StringMaker().append(CommonLabels::getInstance().NEXT).append(" License Server From File: ").toString();;
     
 
     std::string licenseServerDecoded;;

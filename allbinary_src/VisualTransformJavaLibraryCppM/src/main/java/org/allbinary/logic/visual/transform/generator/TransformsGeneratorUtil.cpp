@@ -18,9 +18,9 @@
 
 
 
-            #include "../../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/util/BasicArrayList.h>
 
@@ -182,7 +182,7 @@ this->logUtil.putF(stringBuffer.toString(), this, "generateComponentsFromObjectC
     int32_t index = 0;index < size; index++)
         {
 
-    TransformInfoDomNode transformInfoObjectConfigComponent = transformInfoObjectConfigComponentVector.get(index) as TransformInfoDomNode;;
+    TransformInfoDomNode transformInfoObjectConfigComponent = transformInfoObjectConfigComponentVector.get(index);;
     
 TransformGeneratorUtil::getInstance().generate(abeClientInformation, transformInfoObjectConfigComponent, transformInfoInterface);
     

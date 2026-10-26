@@ -18,9 +18,9 @@
 
 
 
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../../java/lang/Thread.h"
+            #include "java/lang/Thread.h"
         
 #include <java/awt.h>
 
@@ -106,8 +106,9 @@ class RotationImageJPanel: public javax::swing::JPanel, public ImageProcessedVis
 
     private: BufferedImage result;
 
-public: RotationImageJPanel(ImageProcessorInput imageProcessorInput){
-            super();
+public: RotationImageJPanel(ImageProcessorInput imageProcessorInput) : javax::swing::JPanel(){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -130,7 +131,7 @@ class extends Thread
 
         try {
             
-    std::string angleAsString = this->totalAngleJComboBox.getSelectedItem() as string;;
+    std::string angleAsString = this->totalAngleJComboBox.getSelectedItem();;
     
 ImageArrayRotationUtil::getInstance().process(this->getImageProcessorInput(), angleAsString, this);
     
@@ -336,7 +337,7 @@ file= File(filePath);
                                     }
                                 
 
-    bool isWritten = ImageIO::write(this->result as RenderedImage, imageStrings.PNG, file);;
+    bool isWritten = ImageIO::write(this->result, imageStrings.PNG, file);;
     
 this->logUtil.putF("File: " +file +" Wrote: " +isWritten, this, this->commonStrings.RUN);
     

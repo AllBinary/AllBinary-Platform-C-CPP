@@ -21,11 +21,8 @@
         #ifndef ORG_ALLBINARY_INPUT_MOTION_BUTTON_TOUCHBUTTONRESOURCEANIMATIONINTERFACEFACTORYINTERFACEFACTORY_H
         #define ORG_ALLBINARY_INPUT_MOTION_BUTTON_TOUCHBUTTONRESOURCEANIMATIONINTERFACEFACTORYINTERFACEFACTORY_H
 
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-#include <java/util/Hashtable.h>
-
-      
 #include <javax/microedition/lcdui/Image.h>
 
       
@@ -60,6 +57,9 @@
 
       
 #include <org/allbinary/image/ImageCacheFactory.h>
+
+      
+#include <org/allbinary/logic/StdUtil.h>
 
       
 #include <org/allbinary/logic/string/StringMaker.h>

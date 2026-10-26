@@ -44,8 +44,9 @@ class ShippingAddressesEntity: public StreetAddressesEntity {
 
     private: const std::string TABLENAME = "shipping";
 
-public: ShippingAddressesEntity(std::string userName){
-            super(userName);
+public: ShippingAddressesEntity(std::string userName) : StreetAddressesEntity(userName){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.

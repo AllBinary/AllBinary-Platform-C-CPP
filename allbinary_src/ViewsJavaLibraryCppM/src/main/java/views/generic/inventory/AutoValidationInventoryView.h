@@ -21,7 +21,7 @@
         #ifndef VIEWS_GENERIC_INVENTORY_AUTOVALIDATIONINVENTORYVIEW_H
         #define VIEWS_GENERIC_INVENTORY_AUTOVALIDATIONINVENTORYVIEW_H
 
-            #include "../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/logic/control/validate/ValidationComponentInterface.h>
 

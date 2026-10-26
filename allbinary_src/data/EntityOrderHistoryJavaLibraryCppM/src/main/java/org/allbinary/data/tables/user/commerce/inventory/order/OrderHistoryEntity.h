@@ -21,13 +21,13 @@
         #ifndef ORG_ALLBINARY_DATA_TABLES_USER_COMMERCE_INVENTORY_ORDER_ORDERHISTORYENTITY_H
         #define ORG_ALLBINARY_DATA_TABLES_USER_COMMERCE_INVENTORY_ORDER_ORDERHISTORYENTITY_H
 
-            #include "../../../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../../../../../../java/lang/Integer.h"
+            #include "java/lang/Integer.h"
         
-            #include "../../../../../../../../java/lang/Long.h"
+            #include "java/lang/Long.h"
         
-            #include "../../../../../../../../java/lang/Float.h"
+            #include "java/lang/Float.h"
         
 #include <java/util/Calendar.h>
 
@@ -213,7 +213,7 @@ public: OrderHistoryEntity();
 
                 //@Throws(Exception.constructor)
             
-    public: void update(HashMap<any, any> whereHashMap, HashMap<any, any> orderHashMap);
+    public: void update(HashMap<Object*, Object*> whereHashMap, HashMap<Object*, Object*> orderHashMap);
 
 };
 

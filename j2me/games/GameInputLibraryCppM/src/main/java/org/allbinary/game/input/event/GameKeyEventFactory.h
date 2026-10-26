@@ -23,13 +23,10 @@
 
             #include <vector>
         
-            #include "../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-#include <jsinterop/annotations/JsType.h>
-
-      
 #include <org/allbinary/game/input/GameKeyEventSourceInterface.h>
 
       
@@ -43,15 +40,6 @@
 
       
 #include <org/allbinary/logic/communication/log/LogUtil.h>
-
-      
-#include <jsinterop/annotations/JsMethod.h>
-
-      
-#include <jsinterop/annotations/JsConstructor.h>
-
-      
-#include <jsinterop/annotations/JsProperty.h>
 
       
 
@@ -90,8 +78,7 @@ class GameKeyEventFactory
 
     private: const int32_t MAX_SOURCES = 4;
 
-    private: std::vector<std::vector<GameKeyEvent>> ARRAY = new Array(this->MAX_SOURCES).fill(null).map(() => new Array(InputFactory::getInstance().MAX).fill(0))
-                                                            ;
+    private: std::vector<std::vector<GameKeyEvent>> ARRAY = std::vector<std::vector<GameKeyEvent>>(this->MAX_SOURCES, std::vector<GameKeyEvent>(InputFactory::getInstance().MAX));
 
 private: GameKeyEventFactory();
 

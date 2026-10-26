@@ -21,7 +21,7 @@
         #ifndef ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_INFO_TRANSFORMINFOFACTORYINTERFACE_H
         #define ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_INFO_TRANSFORMINFOFACTORYINTERFACE_H
 
-            #include "../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
 
@@ -53,7 +53,7 @@ class TransformInfoFactoryInterface {
 
                 //@Throws(Exception.constructor)
             
-    TransformInfoInterface getInstance(HashMap<any, any> databaseHashMap, HashMap<any, any> propertiesHashMap, PageContext pageContext);
+    TransformInfoInterface getInstance(HashMap<Object*, Object*> databaseHashMap, HashMap<Object*, Object*> propertiesHashMap, PageContext pageContext);
 
 };
 

@@ -18,9 +18,9 @@
 
 
 
-            #include "../../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../../../../../java/lang/Long.h"
+            #include "java/lang/Long.h"
         
 #include <java/util/HashMap.h>
 
@@ -82,8 +82,9 @@ class AlwaysActionScriptCondition: public BasicProfileActionScriptCondition, pub
 
     private: bool isOn= false;
 
-public: AlwaysActionScriptCondition(Node node){
-            super(AlwaysActionScriptCondition::NAME, node);
+public: AlwaysActionScriptCondition(Node node) : BasicProfileActionScriptCondition(AlwaysActionScriptCondition::NAME, node){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -150,8 +151,9 @@ this->init();
 }
 
 
-public: AlwaysActionScriptCondition(){
-            super(AlwaysActionScriptCondition::NAME);
+public: AlwaysActionScriptCondition() : BasicProfileActionScriptCondition(AlwaysActionScriptCondition::NAME){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -189,9 +191,9 @@ this->alwaysActionScriptConditionJPanel.getAlwaysActionJDialog().setVisible(true
 }
 
 
-    public: HashMap<any, any> toHashMap(){
+    public: HashMap<Object*, Object*> toHashMap(){
 
-    HashMap<any, any> hashMap = StdUtil::getInstance().createHashMap();;
+    HashMap<Object*, Object*> hashMap = StdUtil::getInstance().createHashMap();;
     
 hashMap.put(AlwaysActionScriptConditionData::IS_ON, Boolean::toString(this->isIsOn()));
     

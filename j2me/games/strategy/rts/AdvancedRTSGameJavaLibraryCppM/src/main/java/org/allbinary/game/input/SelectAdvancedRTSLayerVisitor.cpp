@@ -77,14 +77,14 @@ this->selectedRTSLayersPlayerGameInput= selectedRTSLayersPlayerGameInput;
 
     public: Object* visit(Object* anyType){
 
-    CollidableDestroyableDamageableLayer selectedLayer = anyType as CollidableDestroyableDamageableLayer;;
+    CollidableDestroyableDamageableLayer selectedLayer = *dynamic_cast<CollidableDestroyableDamageableLayer*>(anyType);;
     
 
                         if(selectedLayer != CollidableDestroyableDamageableLayer::getNullInstance() && selectedLayer.getType() == BuildingLayer::getStaticType())
                         
                                     {
                                     
-    AdvancedRTSGameLayer rtsGameLayer = selectedLayer as AdvancedRTSGameLayer;;
+    AdvancedRTSGameLayer rtsGameLayer = selectedLayer;;
     
 
     AssignWaypointsUtil assignWaypointsUtil = AssignWaypointsUtil::getInstance();;
@@ -105,13 +105,13 @@ this->selectedRTSLayersPlayerGameInput= selectedRTSLayersPlayerGameInput;
                         for (
     int32_t index = list.size() -1;index >= 0; index--)
         {
-currentRTSLayer= list.get(index) as RTSLayer;
+currentRTSLayer= list.get(index);
     
 
                         if(currentRTSLayer.getType() == UnitLayer::getStaticType())
                         
                                     {
-                                    unitLayer= currentRTSLayer as UnitLayer;
+                                    unitLayer= currentRTSLayer;
     
 unitLayer.setParentLayer(rtsGameLayer);
     

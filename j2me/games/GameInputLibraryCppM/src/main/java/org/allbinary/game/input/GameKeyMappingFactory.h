@@ -23,7 +23,7 @@
 
             #include <vector>
         
-            #include "../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
 #include <org/allbinary/logic/NullUtil.h>
 
@@ -58,7 +58,7 @@ class GameKeyMappingFactory
 
     public: static GameKeyMappingFactory getInstance();
 
-    private: std::vector<GameKey> intKeyToGameKey = new Array(InputFactory::getInstance().MAX);
+    private: std::vector<GameKey> intKeyToGameKey = std::vector<GameKey>(InputFactory::getInstance().MAX);
 
 private: GameKeyMappingFactory();
 

@@ -57,8 +57,9 @@ class TileLayerItem: public ABCustomItem, public ABCustomItemInterface {
 
     private: AllBinaryTiledLayer tiledLayer;
 
-public: TileLayerItem(std::string label, AllBinaryTiledLayer tiledLayer, int32_t layout, std::string altText, BasicColor backgroundBasicColor, BasicColor foregroundBasicColor){
-            super(label, backgroundBasicColor, foregroundBasicColor);
+public: TileLayerItem(std::string label, AllBinaryTiledLayer tiledLayer, int32_t layout, std::string altText, BasicColor backgroundBasicColor, BasicColor foregroundBasicColor) : ABCustomItem(label, backgroundBasicColor, foregroundBasicColor){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.

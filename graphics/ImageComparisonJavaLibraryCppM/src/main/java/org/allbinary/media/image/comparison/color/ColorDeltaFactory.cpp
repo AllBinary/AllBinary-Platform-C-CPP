@@ -18,9 +18,9 @@
 
 
 
-            #include "../../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/logic/communication/log/LogUtil.h>
 
@@ -87,7 +87,7 @@ class ColorDeltaFactory
         try {
             logUtil.putF(commonStrings.START, instance, STATIC_BLOCK);
     
-ColorDeltaFactory::cacheInterface= CacheInterfaceFactory::getInstance(CacheTypeFactory::getInstance().CACHE, CachePolicyFactory::getInstance().THIRTY_MINUTES_TEN_THOUSAND_MAX) as AutomaticCacheInterface;
+ColorDeltaFactory::cacheInterface= CacheInterfaceFactory::getInstance(CacheTypeFactory::getInstance().CACHE, CachePolicyFactory::getInstance().THIRTY_MINUTES_TEN_THOUSAND_MAX);
     
 logUtil.putF(commonStrings.END, instance, STATIC_BLOCK);
     
@@ -108,7 +108,7 @@ logUtil.put(commonStrings.EXCEPTION, instance, STATIC_BLOCK, e);
             
     public: static ColorDelta getInstance(int32_t rgb1, int32_t rgb2){
 
-    ColorDelta colorDelta = ColorDeltaFactory::cacheInterface.get(ColorDelta::getKey(rgb1, rgb2)) as ColorDelta;;
+    ColorDelta colorDelta = ColorDeltaFactory::cacheInterface.get(ColorDelta::getKey(rgb1, rgb2));;
     
 
                         if(colorDelta == 

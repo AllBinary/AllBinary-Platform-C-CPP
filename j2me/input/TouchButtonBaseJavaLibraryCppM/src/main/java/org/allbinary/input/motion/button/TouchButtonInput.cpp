@@ -18,11 +18,8 @@
 
 
 
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-#include <jsinterop/annotations/JsType.h>
-
-      
 #include <org/allbinary/game/input/GameKey.h>
 
       
@@ -48,15 +45,6 @@
 
       
 #include <org/allbinary/string/CommonStrings.h>
-
-      
-#include <jsinterop/annotations/JsMethod.h>
-
-      
-#include <jsinterop/annotations/JsConstructor.h>
-
-      
-#include <jsinterop/annotations/JsProperty.h>
 
       
 
@@ -88,8 +76,9 @@ class TouchButtonInput: public Input, public GameKeyEventSourceInterface {
 
     private: GameKeyEvent gameKeyEvent = GameKeyEvent::NONE;
 
-public: TouchButtonInput(int32_t id, std::string name){
-            super(id, name);
+public: TouchButtonInput(int32_t id, std::string name) : Input(id, name){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.

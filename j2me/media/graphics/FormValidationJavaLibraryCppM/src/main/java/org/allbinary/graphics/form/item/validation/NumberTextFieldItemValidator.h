@@ -21,16 +21,10 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_FORM_ITEM_VALIDATION_NUMBERTEXTFIELDITEMVALIDATOR_H
         #define ORG_ALLBINARY_GRAPHICS_FORM_ITEM_VALIDATION_NUMBERTEXTFIELDITEMVALIDATOR_H
 
-            #include "../../../../../../java/lang/NumberFormatException.h"
+            #include "java/lang/NumberFormatException.h"
         
-            #include "../../../../../../java/lang/Integer.h"
+            #include "java/lang/Integer.h"
         
-#include <org/allbinary/util/BasicArrayList.h>
-
-      
-#include <org/allbinary/util/BasicArrayListD.h>
-
-      
 #include <org/allbinary/graphics/form/item/ABTextFieldItem.h>
 
       

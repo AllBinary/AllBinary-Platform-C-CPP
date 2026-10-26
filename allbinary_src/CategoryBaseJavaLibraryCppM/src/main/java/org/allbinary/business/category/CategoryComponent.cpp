@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/data/tree/dom/document/DomDocumentHelper.h>
 
@@ -58,8 +58,9 @@
 
 class CategoryComponent: public CategoryView, public TransformInterface {
 
-public: CategoryComponent(CategoryInterface categoryInterface){
-            super(categoryInterface);
+public: CategoryComponent(CategoryInterface categoryInterface) : CategoryView(categoryInterface){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.

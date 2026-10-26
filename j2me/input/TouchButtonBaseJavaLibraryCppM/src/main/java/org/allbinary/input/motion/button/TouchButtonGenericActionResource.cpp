@@ -52,8 +52,9 @@ class TouchButtonGenericActionResource: public TouchButtonResource {
 }
 
 
-private: TouchButtonGenericActionResource(){
-            super("/touch_button_generic_action_64_by_64.png", "/touch_button_generic_action_hint_64_by_64.png");
+private: TouchButtonGenericActionResource() : TouchButtonResource("/touch_button_generic_action_64_by_64.png", "/touch_button_generic_action_hint_64_by_64.png"){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.

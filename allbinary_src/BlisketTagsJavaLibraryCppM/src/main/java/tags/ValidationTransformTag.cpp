@@ -18,9 +18,9 @@
 
 
 
-            #include "../java/lang/Class.h"
+            #include "java/lang/Class.h"
         
-            #include "../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/lang/reflect/Method.h>
 
@@ -74,8 +74,9 @@ class ValidationTransformTag: public TransformTag {
 
     private: bool logic;
 
-public: ValidationTransformTag(){
-            super(ValidatedViewHelperFactory());
+public: ValidationTransformTag() : TransformTag(ValidatedViewHelperFactory()){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -105,7 +106,7 @@ this->logic= logic;
 
         try {
             
-    Function helperClass = this->getHelper().constructor;;
+    Class* helperClass = this->getHelper().getClass();;
     
 
     Method method = helperClass.getMethod(commonStrings.IS_VALID, 
@@ -113,7 +114,7 @@ this->logic= logic;
     
 
     Boolean result = method.invoke(this->getHelper(), 
-                            nullptr) as Boolean;;
+                            nullptr);;
     
 
 
@@ -150,7 +151,7 @@ this->logic= logic;
 
         try {
             
-    Function addressHelperClass = this->getHelper().constructor;;
+    Class* addressHelperClass = this->getHelper().getClass();;
     
 
     Method method = addressHelperClass.getMethod("validationInfo", 
@@ -158,7 +159,7 @@ this->logic= logic;
     
 
     std::string result = method.invoke(this->getHelper(), 
-                            nullptr) as string;;
+                            nullptr);;
     
 
 
@@ -202,7 +203,7 @@ this->logic= logic;
     StringMaker stringBuffer = StringMaker();;
     
 
-    HttpServletRequest request = this->pageContext.getRequest() as HttpServletRequest;;
+    HttpServletRequest request = this->pageContext.getRequest();;
     
 stringBuffer.append("ValidationViewTag Start For: ");
     

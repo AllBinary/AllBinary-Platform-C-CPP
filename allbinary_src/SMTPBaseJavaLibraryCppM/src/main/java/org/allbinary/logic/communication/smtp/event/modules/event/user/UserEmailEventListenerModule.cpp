@@ -18,9 +18,9 @@
 
 
 
-            #include "../../../../../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/business/user/UserInterface.h>
 
@@ -85,7 +85,7 @@ this->userInterface= userInterface;
 
     BasicEmail email = BasicEmail(emailEvent.getEmailInfo(), to);;
     
-EmailQueueFactory::getInstance().offer(email.getEmail() as EmailInterface);
+EmailQueueFactory::getInstance().offer(email.getEmail());
     
 }
 
@@ -108,7 +108,7 @@ EmailQueueFactory::getInstance().offer(email.getEmail() as EmailInterface);
 
     BasicEmail email = BasicEmail(emailEvent.getEmailInfo(), to);;
     
-EmailQueueFactory::getInstance().offer(email.getEmail() as EmailInterface);
+EmailQueueFactory::getInstance().offer(email.getEmail());
     
 }
 

@@ -18,13 +18,10 @@
 
 
 
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../../java/lang/Integer.h"
+            #include "java/lang/Integer.h"
         
-#include <jsinterop/annotations/JsType.h>
-
-      
 #include <javax/microedition/lcdui/Choice.h>
 
       
@@ -55,6 +52,9 @@
 #include <org/allbinary/graphics/displayable/screen/CommandForm.h>
 
       
+#include <org/allbinary/logic/MEUtil.h>
+
+      
 #include <org/allbinary/logic/string/StringMaker.h>
 
       
@@ -62,12 +62,6 @@
 
       
 #include <org/allbinary/util/BasicArrayList.h>
-
-      
-#include <jsinterop/annotations/JsMethod.h>
-
-      
-#include <jsinterop/annotations/JsConstructor.h>
 
       
 
@@ -91,10 +85,13 @@
         
 class LoadGameForm: public CommandForm {
 
+    private: const MEUtil meUtil = MEUtil::getInstance();
+
     private: bool areChoices= false;
 
-public: LoadGameForm(CommandListener commandListener, std::string title, BasicColor backgrounBasicColor, BasicColor foregroundBasicColor){
-            super(commandListener, title, backgrounBasicColor, foregroundBasicColor);
+public: LoadGameForm(CommandListener commandListener, std::string title, BasicColor backgrounBasicColor, BasicColor foregroundBasicColor) : CommandForm(commandListener, title, backgrounBasicColor, foregroundBasicColor){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -145,7 +142,7 @@ this->areChoices= true;
                                     }
                                 
                         else {
-                            this->append(StringItem("No Saved Games", StringUtil::getInstance().EMPTY_STRING, Item::PLAIN));
+                            this->meUtil.appendItem(this, StringItem("No Saved Games", StringUtil::getInstance().EMPTY_STRING, Item::PLAIN));
     
 this->areChoices= false;
     
@@ -170,7 +167,7 @@ super.update();
 
                                     }
                                 
-this->append(choiceGroup);
+this->meUtil.appendItem(this, choiceGroup);
     
 }
 
@@ -219,7 +216,7 @@ choiceGroup.append(anyType->toString(), NullImage::NULL_IMAGE);
                         
                                     {
                                     
-    ChoiceGroup choiceGroup = this->get(0) as ChoiceGroup;;
+    ChoiceGroup choiceGroup = this->get(0);;
     
 
 
@@ -249,7 +246,7 @@ choiceGroup.append(anyType->toString(), NullImage::NULL_IMAGE);
                         
                                     {
                                     
-    ChoiceGroup choiceGroup = this->get(0) as ChoiceGroup;;
+    ChoiceGroup choiceGroup = this->get(0);;
     
 
     int32_t value = Integer::valueOf(choiceGroup.getString(choiceGroup.getSelectedIndex())).intValue();;

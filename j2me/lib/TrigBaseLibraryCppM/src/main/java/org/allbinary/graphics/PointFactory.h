@@ -21,7 +21,7 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_POINTFACTORY_H
         #define ORG_ALLBINARY_GRAPHICS_POINTFACTORY_H
 
-            #include "../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
 #include <jsinterop/annotations/JsType.h>
 

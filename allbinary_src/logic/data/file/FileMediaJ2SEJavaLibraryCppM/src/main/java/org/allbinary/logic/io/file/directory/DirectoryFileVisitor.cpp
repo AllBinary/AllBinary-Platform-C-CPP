@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
 #include <java/io/File.h>
 
@@ -61,7 +61,7 @@ public: DirectoryFileVisitor(){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return visit = this->visit(arg0)visit as Boolean
+                        return visit = this->visit(arg0)visit
 visit.
                     .valueOf();;
     
@@ -70,7 +70,7 @@ visit.
 
     public: Object* visit(Object* anyType){
 
-    File file = anyType as File;;
+    File file = *dynamic_cast<File*>(anyType);;
     
 
     int32_t index = 1;;

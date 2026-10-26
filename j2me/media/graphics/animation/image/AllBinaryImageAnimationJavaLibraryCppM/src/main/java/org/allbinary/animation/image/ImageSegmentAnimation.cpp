@@ -20,11 +20,8 @@
 
             #include <vector>
         
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-#include <jsinterop/annotations/JsType.h>
-
-      
 #include <javax/microedition/lcdui/Graphics.h>
 
       
@@ -35,12 +32,6 @@
 
       
 #include <org/allbinary/util/CircularIndexUtil.h>
-
-      
-#include <jsinterop/annotations/JsMethod.h>
-
-      
-#include <jsinterop/annotations/JsConstructor.h>
 
       
 
@@ -77,8 +68,9 @@ class ImageSegmentAnimation: public ImageAnimation {
 
     private: std::vector<int32_t> sequenceArray;
 
-protected: ImageSegmentAnimation(Image image, std::vector<int32_t> sequenceArray, AnimationBehavior animationBehavior){
-            super(image, animationBehavior);
+protected: ImageSegmentAnimation(Image image, std::vector<int32_t> sequenceArray, AnimationBehavior animationBehavior) : ImageAnimation(image, animationBehavior){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.

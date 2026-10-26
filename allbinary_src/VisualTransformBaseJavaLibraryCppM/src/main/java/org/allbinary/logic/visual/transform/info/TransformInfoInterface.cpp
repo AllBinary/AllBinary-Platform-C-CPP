@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
 
@@ -60,7 +60,7 @@ class TransformInfoInterface: public TableMappingInterface {
 
                 //@Throws(Exception.constructor)
             
-    void override(HashMap<any, any> hashMap)
+    void override(HashMap<Object*, Object*> hashMap)
 
     std::string getName()
 

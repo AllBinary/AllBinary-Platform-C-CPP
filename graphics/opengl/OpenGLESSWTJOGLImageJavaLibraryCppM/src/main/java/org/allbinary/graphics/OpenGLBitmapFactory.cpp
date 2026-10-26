@@ -4,6 +4,8 @@
 
 
 
+            #include "java/lang/Exception.h"
+        
 #include <java/io/IOException.h>
 
       
@@ -11,6 +13,9 @@
 
       
 #include <javax/microedition/lcdui/Image.h>
+
+      
+#include <org/allbinary/image/ImageFactory.h>
 
       
 #include <org/allbinary/platform/graphics/PlatformBitmapBaseFactory.h>
@@ -85,14 +90,14 @@ this->bitmapConfig= bitmapConfig;
 }
 
 
-                //@Throws(IOException.constructor)
+                //@Throws(Exception.constructor)
             
     public: OpenGLBitmap decodeStream(InputStream inputStream){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return OpenGLBitmap(Image::createImage(inputStream));
+                        return OpenGLBitmap(ImageFactory::getInstance().createImageFromInputStream(inputStream));
     
 }
 

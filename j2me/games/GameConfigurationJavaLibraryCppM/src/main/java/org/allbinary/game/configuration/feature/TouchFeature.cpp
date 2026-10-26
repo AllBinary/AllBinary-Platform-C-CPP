@@ -18,12 +18,6 @@
 
 
 
-#include <jsinterop/annotations/JsType.h>
-
-      
-#include <jsinterop/annotations/JsConstructor.h>
-
-      
 
 
 
@@ -46,8 +40,9 @@
 
 class TouchFeature: public Feature {
 
-: TouchFeature(std::string name){
-            super(name);
+: TouchFeature(std::string name) : Feature(name){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.

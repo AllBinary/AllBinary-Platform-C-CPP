@@ -18,9 +18,9 @@
 
 
 
-            #include "../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <javax/microedition/lcdui/ChoiceGroup.h>
 
@@ -140,7 +140,7 @@ this->logUtil.putF(StringMaker().append(CommonLabels::getInstance().ITEM_LABEL).
                         if(item instanceof GameConfigurationGauge)
                         
                                     {
-                                    GameConfigurationUtil::getInstance().change(this->gameOptionsForm, item as GameConfigurationGauge);
+                                    GameConfigurationUtil::getInstance().change(this->gameOptionsForm, item);
     
 
                                     }
@@ -156,13 +156,13 @@ this->logUtil.putF(StringMaker().append(CommonLabels::getInstance().ITEM_LABEL).
                         if(gameFeatureUtil.isExclusive(itemLabel))
                         
                                     {
-                                    gameFeatureUtil.updateExclusiveForChoiceGroup(item as ChoiceGroup);
+                                    gameFeatureUtil.updateExclusiveForChoiceGroup(item);
     
 
                                     }
                                 
                         else {
-                            gameFeatureUtil.updateMultiple(item as ChoiceGroup);
+                            gameFeatureUtil.updateMultiple(item);
     
 
                         }

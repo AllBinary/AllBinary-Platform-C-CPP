@@ -20,13 +20,10 @@
 
             #include <vector>
         
-            #include "../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../java/lang/Integer.h"
+            #include "java/lang/Integer.h"
         
-#include <jsinterop/annotations/JsType.h>
-
-      
 #include <javax/microedition/lcdui/Graphics.h>
 
       
@@ -66,22 +63,10 @@
 #include <org/allbinary/string/CommonSeps.h>
 
       
-#include <org/allbinary/view/ViewPosition.h>
-
-      
 #include <org/allbinary/view/ViewPositionBase.h>
 
       
 #include <org/allbinary/view/event/ViewPositionEvent.h>
-
-      
-#include <jsinterop/annotations/JsMethod.h>
-
-      
-#include <jsinterop/annotations/JsConstructor.h>
-
-      
-#include <jsinterop/annotations/JsProperty.h>
 
       
 
@@ -121,8 +106,9 @@ class AllBinaryLayer: public Layer, public LayerInterface {
 
     private: ViewPositionBase viewPosition = ViewPositionBase::NULL_VIEW_POSITION;
 
-public: AllBinaryLayer(std::string name, Rectangle rectangle, ViewPositionBase viewPosition){
-            super(rectangle.getWidth(), rectangle.getHeight());
+public: AllBinaryLayer(std::string name, Rectangle rectangle, ViewPositionBase viewPosition) : Layer(rectangle.getWidth(), rectangle.getHeight()){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -134,7 +120,7 @@ public: AllBinaryLayer(std::string name, Rectangle rectangle, ViewPositionBase v
                         if(false)
                         
                                     {
-                                    localName= this->constructor.name.toString()!;
+                                    localName= this->constructor.name.toString();
     
 
                                     }

@@ -18,11 +18,11 @@
 
 
 
-            #include "../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-#include <org/allbinary/data/tree/dom/document/DomDocumentHelper.h>
+#include <org/allbinary/data/tree/dom/document/XmlDocumentHelper.h>
 
       
 #include <org/allbinary/logic/communication/log/LogUtil.h>
@@ -197,7 +197,7 @@ this->transformInfoInterface= transformInfoInterface;
 
         try {
             
-    std::string success = DomDocumentHelper::toString(this->getDoc());;
+    std::string success = XmlDocumentHelper::toString(this->getDoc());;
     
 
     std::string result = BasicTransformer(this->abeClientInformation, this->getTransformInfoInterface()).translate(success);;

@@ -20,7 +20,7 @@
 
             #include <vector>
         
-            #include "../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
 
@@ -112,15 +112,15 @@ class AuthenticationRequestHelper: public TagHelper {
 
     private: HttpServletRequest request;
 
-public: AuthenticationRequestHelper(HashMap<any, any> hashMap, PageContext pageContext){
+public: AuthenticationRequestHelper(HashMap<Object*, Object*> hashMap, PageContext pageContext){
 this->weblisketSession= WeblisketSession(hashMap, pageContext);
     
-this->request= pageContext.getRequest() as HttpServletRequest;
+this->request= pageContext.getRequest();
     
 }
 
 
-public: AuthenticationRequestHelper(HashMap<any, any> hashMap, HttpServletRequest httpServletRequest){
+public: AuthenticationRequestHelper(HashMap<Object*, Object*> hashMap, HttpServletRequest httpServletRequest){
 this->weblisketSession= WeblisketSession(hashMap, httpServletRequest);
     
 this->request= httpServletRequest;
@@ -240,7 +240,7 @@ this->request= httpServletRequest;
 userInterface.setPassword(newPassword);
     
 
-    HashMap<any, any> newPasswordHashMap = userInterface.toPasswordHashMap();;
+    HashMap<Object*, Object*> newPasswordHashMap = userInterface.toPasswordHashMap();;
     
 UserEntityFactory::getInstance().update(userName, newPasswordHashMap);
     
@@ -335,7 +335,7 @@ NewPasswordEmail(this->abeClientInformation, userInterface, newPassword).process
                                     }
                                 
 
-                        if(newPassword.compareTo(newReenteredPassword) != 0)
+                        if(newPassword.compare(newReenteredPassword) != 0)
                         
                                     {
                                     
@@ -369,7 +369,7 @@ NewPasswordEmail(this->abeClientInformation, userInterface, newPassword).process
     std::string login = userEntityInterface.login(userName, passwordString);;
     
 
-                        if(login.compareTo(GLOBALS2::LOGINSUCCESS) == 0)
+                        if(login.compare(GLOBALS2::LOGINSUCCESS) == 0)
                         
                                     {
                                     
@@ -382,7 +382,7 @@ NewPasswordEmail(this->abeClientInformation, userInterface, newPassword).process
                                     }
                                 
 
-    HashMap<any, any> newPasswordHashMap = password.toHashMap(
+    HashMap<Object*, Object*> newPasswordHashMap = password.toHashMap(
                             nullptr);;
     
 UserEntityFactory::getInstance().update(userName, newPasswordHashMap);
@@ -484,13 +484,13 @@ NewPasswordEmail(this->abeClientInformation, userInterface, newPassword).process
     int32_t index = 0;index < size; index++)
         {
 
-    BasicUserRole nextRole = basicUserRoleArray[index]! as BasicUserRole;;
+    BasicUserRole nextRole = basicUserRoleArray[index];;
     
 
                         if(userInterface.getRole().getBasicUserRole() === nextRole)
                         
                                     {
-                                    userInterface.validateSession(this->weblisketSession as WeblisketSessionInterface);
+                                    userInterface.validateSession(this->weblisketSession);
     
 this->request.removeAttribute(WeblisketSessionData::REMOVABLEUSERNAME);
     

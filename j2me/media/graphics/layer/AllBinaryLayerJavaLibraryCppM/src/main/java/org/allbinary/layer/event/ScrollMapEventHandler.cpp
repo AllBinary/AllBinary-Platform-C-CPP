@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/logic/util/event/AllBinaryEventObject.h>
 
@@ -72,9 +72,9 @@ private: ScrollMapEventHandler(){
             
     protected: void process(AllBinaryEventObject eventObject, EventListenerInterface eventListenerInterface){
 
-    ScrollMapEventListenerInterface scrollMapEventListenerInterface = (eventListenerInterface as ScrollMapEventListenerInterface);;
+    ScrollMapEventListenerInterface scrollMapEventListenerInterface = (eventListenerInterface);;
     
-scrollMapEventListenerInterface.onMoveEvent(eventObject as ScrollMapEvent);
+scrollMapEventListenerInterface.onMoveEvent(eventObject);
     
 }
 

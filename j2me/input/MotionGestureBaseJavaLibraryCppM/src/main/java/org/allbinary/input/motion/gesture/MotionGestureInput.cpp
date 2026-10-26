@@ -18,16 +18,10 @@
 
 
 
-#include <jsinterop/annotations/JsType.h>
-
-      
 #include <org/allbinary/game/input/Input.h>
 
       
 #include <org/allbinary/game/input/InputFactory.h>
-
-      
-#include <jsinterop/annotations/JsConstructor.h>
 
       
 
@@ -51,8 +45,9 @@
         
 class MotionGestureInput: public Input {
 
-public: MotionGestureInput(int32_t id, std::string name){
-            super(id, name);
+public: MotionGestureInput(int32_t id, std::string name) : Input(id, name){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.

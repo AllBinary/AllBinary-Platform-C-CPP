@@ -18,11 +18,11 @@
 
 
 
-            #include "../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../../../java/lang/RuntimeException.h"
+            #include "java/lang/RuntimeException.h"
         
 #include <java/awt/Color.h>
 
@@ -127,7 +127,7 @@ this->setAvoidVector(BasicArrayListD());
     int32_t index = 0;index < size; index++)
         {
 
-    Rectangle avoidRectangle = avoidVector.get(index) as Rectangle;;
+    Rectangle avoidRectangle = avoidVector.get(index);;
     
 
                         if(RectangleCollisionUtil::isCollision(avoidRectangle, rectangle))
@@ -167,7 +167,7 @@ this->setAvoidVector(BasicArrayListD());
     int32_t index = 0;index < size; index++)
         {
 
-    Rectangle avoidRectangle = avoidVector.get(index) as Rectangle;;
+    Rectangle avoidRectangle = avoidVector.get(index);;
     
 
                         if(RectangleCollisionUtil::isCollision(avoidRectangle, point))
@@ -272,7 +272,7 @@ this->logUtil.putF(" Frame: " +frame +" remainder: " +remainder +" this.doImageC
     int32_t index = 0;index < size; index++)
         {
 
-    Rectangle avoidRectangle = avoidVector.get(index) as Rectangle;;
+    Rectangle avoidRectangle = avoidVector.get(index);;
     
 this->logUtil.putF("Avoid Rectangle: " +avoidRectangle, this, "log");
     

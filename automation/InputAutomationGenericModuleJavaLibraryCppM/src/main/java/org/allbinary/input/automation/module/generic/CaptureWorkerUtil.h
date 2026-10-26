@@ -21,11 +21,11 @@
         #ifndef ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_GENERIC_CAPTUREWORKERUTIL_H
         #define ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_GENERIC_CAPTUREWORKERUTIL_H
 
-            #include "../../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../../../../java/lang/Long.h"
+            #include "java/lang/Long.h"
         
 #include <org/allbinary/util/BasicArrayList.h>
 

@@ -21,7 +21,7 @@
         #ifndef ORG_ALLBINARY_ANIMATION_IMAGE_ALPHABASEPROCESSOR_H
         #define ORG_ALLBINARY_ANIMATION_IMAGE_ALPHABASEPROCESSOR_H
 
-            #include "../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
 #include <javax/microedition/lcdui/Image.h>
 

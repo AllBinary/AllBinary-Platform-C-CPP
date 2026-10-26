@@ -21,7 +21,7 @@
         #ifndef ORG_ALLBINARY_BUSINESS_CATEGORY_PROPERTIES_ROOT_STORE_THEME_ROOTSTORETHEMECATEGORYPROPERTIES_H
         #define ORG_ALLBINARY_BUSINESS_CATEGORY_PROPERTIES_ROOT_STORE_THEME_ROOTSTORETHEMECATEGORYPROPERTIES_H
 
-            #include "../../../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
 
@@ -92,7 +92,7 @@ public: RootStoreThemeCategoryProperties(TransformInfoInterface transformInfoInt
 
 public: RootStoreThemeCategoryProperties(TransformInfoInterface transformInfoInterface, Node node);
 
-public: RootStoreThemeCategoryProperties(TransformInfoInterface transformInfoInterface, HashMap<any, any> categoryPropertiesHashMap);
+public: RootStoreThemeCategoryProperties(TransformInfoInterface transformInfoInterface, HashMap<Object*, Object*> categoryPropertiesHashMap);
 
                 //@Throws(Exception.constructor)
             

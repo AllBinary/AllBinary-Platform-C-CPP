@@ -21,7 +21,7 @@
         #ifndef ORG_ALLBINARY_LOGIC_IO_PATH_ABFILEPATH_H
         #define ORG_ALLBINARY_LOGIC_IO_PATH_ABFILEPATH_H
 
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/logic/string/StringUtil.h>
 

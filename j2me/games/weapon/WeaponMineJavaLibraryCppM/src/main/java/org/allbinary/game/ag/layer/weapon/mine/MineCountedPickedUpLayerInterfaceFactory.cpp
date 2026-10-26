@@ -18,13 +18,10 @@
 
 
 
-            #include "../../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../../../../../java/lang/Integer.h"
+            #include "java/lang/Integer.h"
         
-#include <java/util/Hashtable.h>
-
-      
 #include <org/allbinary/animation/FeaturedAnimationInterfaceFactoryInterfaceFactory.h>
 
       
@@ -53,6 +50,9 @@
 
       
 #include <org/allbinary/logic/math/SmallIntegerSingletonFactory.h>
+
+      
+#include <org/allbinary/util/ABHashtable.h>
 
       
 
@@ -100,8 +100,9 @@ MineCountedPickedUpLayerInterfaceFactory::pickedUpLayerInterfaceFactoryInterface
 
     private: const WeaponLayerCircularPool weaponLayerCircularStaticPool = MineLayerCircularStaticPool::getInstance();
 
-private: MineCountedPickedUpLayerInterfaceFactory(){
-            super(PickedUpLayerTypeFactory::getInstance().MINE, IconLayerFactory::getInstance(FeaturedAnimationInterfaceFactoryInterfaceFactory::getInstance().get(MineWeaponResources::getInstance().DROP_ICON_RESOURCE).getInstance(0), 10, 10), FeaturedAnimationInterfaceFactoryInterfaceFactory::getInstance().get(MineWeaponResources::getInstance().DROP_RESOURCE).getInstance(0));
+private: MineCountedPickedUpLayerInterfaceFactory() : CountedPickedUpLayerInterfaceFactory(PickedUpLayerTypeFactory::getInstance().MINE, IconLayerFactory::getInstance(FeaturedAnimationInterfaceFactoryInterfaceFactory::getInstance().get(MineWeaponResources::getInstance().DROP_ICON_RESOURCE).getInstance(0), 10, 10), FeaturedAnimationInterfaceFactoryInterfaceFactory::getInstance().get(MineWeaponResources::getInstance().DROP_RESOURCE).getInstance(0)){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -125,15 +126,15 @@ private: MineCountedPickedUpLayerInterfaceFactory(){
 
                 //@Throws(Exception.constructor)
             
-    public: AllBinaryLayer getNextInstance(Hashtable<any, any> hashtable, int32_t x, int32_t y, int32_t z){
+    public: AllBinaryLayer getNextInstance(ABHashtable<Object*, Object*> hashtable, int32_t x, int32_t y, int32_t z){
 
-    AllBinaryLayer sourceLayerInterface = hashtable.get(this->smallIntegerSingletonFactory.getAt(0)) as AllBinaryLayer;;
+    AllBinaryLayer sourceLayerInterface = hashtable.get(this->smallIntegerSingletonFactory.getAt(0));;
     
 
-    Integer angle = hashtable.get(this->smallIntegerSingletonFactory.getAt(1)) as Integer;;
+    Integer angle = hashtable.get(this->smallIntegerSingletonFactory.getAt(1));;
     
 
-    ScoreableInterface scoreableInterface = sourceLayerInterface as unknown as ScoreableInterface;;
+    ScoreableInterface scoreableInterface = sourceLayerInterface as unknown;;
     
 
 

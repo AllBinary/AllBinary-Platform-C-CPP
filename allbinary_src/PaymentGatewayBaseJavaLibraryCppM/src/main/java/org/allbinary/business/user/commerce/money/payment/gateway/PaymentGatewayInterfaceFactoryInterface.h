@@ -21,7 +21,7 @@
         #ifndef ORG_ALLBINARY_BUSINESS_USER_COMMERCE_MONEY_PAYMENT_GATEWAY_PAYMENTGATEWAYINTERFACEFACTORYINTERFACE_H
         #define ORG_ALLBINARY_BUSINESS_USER_COMMERCE_MONEY_PAYMENT_GATEWAY_PAYMENTGATEWAYINTERFACEFACTORYINTERFACE_H
 
-            #include "../../../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
 
@@ -50,7 +50,7 @@ class PaymentGatewayInterfaceFactoryInterface {
 
                 //@Throws(Exception.constructor)
             
-    PaymentGatewayInterface getInstance(HashMap<any, any> hashMap);
+    PaymentGatewayInterface getInstance(HashMap<Object*, Object*> hashMap);
 
 };
 

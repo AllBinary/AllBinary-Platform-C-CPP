@@ -23,7 +23,7 @@
 
             #include <vector>
         
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/media/graphics/geography/map/MultiGeographicMapBehavior.h>
 
@@ -50,6 +50,9 @@
 
       
 #include <org/allbinary/media/graphics/geography/map/GeographicMapCellType.h>
+
+      
+#include <org/allbinary/media/graphics/geography/map/SimpleGeographicMapCellPositionFactory.h>
 
       
 
@@ -85,7 +88,7 @@ class GeographicMapTopViewGameLayerBehavior1: public GeographicMapTopViewLayerBe
 
     private: int32_t offsetY;
 
-    private: GeographicMapCellPosition previousGeographicMapCellPosition;
+    private: GeographicMapCellPosition previousGeographicMapCellPosition = SimpleGeographicMapCellPositionFactory::NULL_GEOGRAPHIC_MAP_CELL_POSITION;
 
 public: GeographicMapTopViewGameLayerBehavior1(int32_t maxGravityActionIndex, bool autoStepBlocks, int32_t offsetY);
 

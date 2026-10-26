@@ -21,12 +21,12 @@
         #ifndef ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_CACHINGGEOGRAPHICMAPCELLPOSITIONFACTORY_H
         #define ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_CACHINGGEOGRAPHICMAPCELLPOSITIONFACTORY_H
 
-            #include "../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-#include <java/util/Hashtable.h>
+#include <org/allbinary/graphics/CellPosition.h>
 
       
-#include <org/allbinary/graphics/CellPosition.h>
+#include <org/allbinary/util/ABHashtable.h>
 
       
 

@@ -20,7 +20,7 @@
 
             #include <hilog/log.h>
         
-            #include "../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
 #include <org/allbinary/logic/NullUtil.h>
 
@@ -68,7 +68,7 @@ PreLogUtil::putOE(specialMessage, anyType, functionName, NullUtil::getInstance()
     std::string className = PreLogUtil::LABEL;;
     
 
-    std::string actualClassName = anyType->constructor.name.toString()!;;
+    std::string actualClassName = anyType->constructor.name.toString();;
     
 
                         if(true)

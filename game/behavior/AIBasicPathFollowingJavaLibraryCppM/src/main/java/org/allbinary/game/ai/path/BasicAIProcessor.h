@@ -21,9 +21,9 @@
         #ifndef ORG_ALLBINARY_GAME_AI_PATH_BASICAIPROCESSOR_H
         #define ORG_ALLBINARY_GAME_AI_PATH_BASICAIPROCESSOR_H
 
-            #include "../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/util/BasicArrayList.h>
 

@@ -18,9 +18,9 @@
 
 
 
-            #include "../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../../../../java/lang/Integer.h"
+            #include "java/lang/Integer.h"
         
 #include <javax/microedition/lcdui/Canvas.h>
 
@@ -74,8 +74,9 @@ class TimedFireAI: public BasicAI {
 
     private: int32_t delay;
 
-public: TimedFireAI(int32_t delay, AllBinaryLayer ownerLayerInterface, GameInput gameInput){
-            super(ownerLayerInterface, gameInput);
+public: TimedFireAI(int32_t delay, AllBinaryLayer ownerLayerInterface, GameInput gameInput) : BasicAI(ownerLayerInterface, gameInput){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -89,7 +90,7 @@ this->delay= delay;
             
     public: void processAI(AllBinaryLayerManager allBinaryLayerManager){
 
-    TimeFiredInterface timeFiredInterface = this->getOwnerLayerInterface() as TimeFiredInterface;;
+    TimeFiredInterface timeFiredInterface = this->getOwnerLayerInterface();;
     
 
                         if(this->maxFireDelayTimeHelper.isTime(GameTickTimeDelayHelperFactory::getInstance().startTime) && timeFiredInterface.getLastFireTime() +this->maxFireDelayTimeHelper.delay < this->maxFireDelayTimeHelper.getStartTime())

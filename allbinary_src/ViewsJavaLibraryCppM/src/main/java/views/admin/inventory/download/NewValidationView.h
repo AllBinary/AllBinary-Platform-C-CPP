@@ -21,7 +21,7 @@
         #ifndef VIEWS_ADMIN_INVENTORY_DOWNLOAD_NEWVALIDATIONVIEW_H
         #define VIEWS_ADMIN_INVENTORY_DOWNLOAD_NEWVALIDATIONVIEW_H
 
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/business/user/commerce/inventory/item/BasicItem.h>
 

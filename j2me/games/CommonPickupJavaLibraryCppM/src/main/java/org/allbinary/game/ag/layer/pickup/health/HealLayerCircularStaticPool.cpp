@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/game/health/HealthInterface.h>
 
@@ -67,10 +67,10 @@ super.initAllBinaryLayerCircularPool(allbinaryLayerFactoryInterface, total);
             
     public: void visit(AllBinaryLayer sourceLayerInterface){
 
-    HealLayer healLayer = this->getNextInstance() as HealLayer;;
+    HealLayer healLayer = this->getNextInstance();;
     
 
-    HealthInterfaceCompositeInterface healthInterfaceCompositeInterface = sourceLayerInterface as unknown as HealthInterfaceCompositeInterface;;
+    HealthInterfaceCompositeInterface healthInterfaceCompositeInterface = sourceLayerInterface as unknown;;
     
 
     HealthInterface healthInterface = healthInterfaceCompositeInterface.getHealthInterface();;

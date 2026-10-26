@@ -21,7 +21,7 @@
         #ifndef ORG_ALLBINARY_MEDIA_IMAGE_CACHE_BUFFEREDIMAGEINFOFACTORY_H
         #define ORG_ALLBINARY_MEDIA_IMAGE_CACHE_BUFFEREDIMAGEINFOFACTORY_H
 
-            #include "../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
 #include <java/util/HashMap.h>
 
@@ -56,7 +56,7 @@ class BufferedImageInfoFactory
             : public Object
          {
 
-    private: static HashMap<any, any> hashMap = StdUtil::getInstance().createHashMap();
+    private: static HashMap<Object*, Object*> hashMap = StdUtil::getInstance().createHashMap();
 
     public: static BufferedImageInfo getInstance(int32_t width, int32_t height, int32_t type);
 

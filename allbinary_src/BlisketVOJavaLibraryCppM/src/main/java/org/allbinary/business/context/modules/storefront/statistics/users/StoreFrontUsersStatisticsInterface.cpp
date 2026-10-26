@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../../../../../../java/lang/Long.h"
+            #include "java/lang/Long.h"
         
 #include <org/allbinary/data/tables/TableMappingInterface.h>
 

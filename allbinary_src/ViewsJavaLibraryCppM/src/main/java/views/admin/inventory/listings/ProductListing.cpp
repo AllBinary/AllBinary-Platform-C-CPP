@@ -20,11 +20,11 @@
 
             #include <vector>
         
-            #include "../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../../java/lang/Integer.h"
+            #include "java/lang/Integer.h"
         
 #include <java/util/HashMap.h>
 
@@ -209,7 +209,7 @@ this->inventory= InventoryEntity();
     int32_t index = 0;index < size; index++)
         {
 
-    std::string subStore = subStoreVector.get(index) as string;;
+    std::string subStore = subStoreVector.get(index);;
     
 
     BasicArrayList substoreKeywords = inventoryColumnUtil.getColumnWhereLike(this->inventory, AbPathData::getInstance().SEPARATOR +subStore, basicItemData.CATEGORY);;
@@ -298,12 +298,12 @@ StreamUtil::getInstance().close(idOutData);
 
                 //@Throws(Exception.constructor)
             
-    private: void create(std::string keywordData, HashMap<any, any> keywordFilenameHashMap, BasicArrayList vector, AbPath staticPath){
+    private: void create(std::string keywordData, HashMap<Object*, Object*> keywordFilenameHashMap, BasicArrayList vector, AbPath staticPath){
 
     StringMaker stringBuffer = StringMaker();;
     
 
-    HashMap<any, any> hashMap = SpecialCharacterUtil::getHashMap();;
+    HashMap<Object*, Object*> hashMap = SpecialCharacterUtil::getHashMap();;
     
 hashMap.put(CommonSeps::getInstance().SPACE, StringUtil::getInstance().EMPTY_STRING);
     
@@ -399,14 +399,14 @@ stringBuffer.append(InputOutputTypeData::getInstance().DEFAULT);
 
                                     }
                                 
-this->savePage(file, productListingPages[index]!);
+this->savePage(file, productListingPages[index]);
     
 }
 
 }
 
 
-    private: void addStaticPageInfoToDatabase(StoreFrontInterface storeFront, HashMap<any, any> keywordFilenameHashMap){
+    private: void addStaticPageInfoToDatabase(StoreFrontInterface storeFront, HashMap<Object*, Object*> keywordFilenameHashMap){
 
     Set keywordHashSet = keywordFilenameHashMap.keys();;
     
@@ -427,10 +427,10 @@ this->savePage(file, productListingPages[index]!);
     BasicArrayList insertVector = BasicArrayListD();;
     
 
-    std::string keywordData = keywordArray[index]! as string;;
+    std::string keywordData = keywordArray[index];;
     
 
-    std::string fileName = keywordFilenameHashMap.get(keywordData) as string;;
+    std::string fileName = keywordFilenameHashMap.get(keywordData);;
     
 insertVector.add(storeFront.getName());
     
@@ -486,7 +486,7 @@ stringBuffer.append(storeFront.getStaticPath());
     int32_t size = keywordArray.size();;
     
 
-    HashMap<any, any> keywordFilenameHashMap = StdUtil::getInstance().createHashMap();;
+    HashMap<Object*, Object*> keywordFilenameHashMap = StdUtil::getInstance().createHashMap();;
     
 
                         if(size == 0)
@@ -523,7 +523,7 @@ stringBuffer.append(" Store Not Found");
     int32_t index = 0;index < size; index++)
         {
 
-    std::string keywordData = keywordArray[index]! as string;;
+    std::string keywordData = keywordArray[index];;
     
 
                         if(keywordData.size() > 1)
@@ -583,7 +583,7 @@ stringBuffer.append(this->INVENTORY);
                         
                                     {
                                     
-                        if(storeName.compareTo(GLOBALS2::GENERATEALLSTORES) != 0)
+                        if(storeName.compare(GLOBALS2::GENERATEALLSTORES) != 0)
                         
                                     {
                                     this->searchRequest.setStoreFront(this->storeFronts.getStoreFrontInterface(storeName));
@@ -609,7 +609,7 @@ stringBuffer.append("<br />");
                         for (
     int32_t index = 0;index < size; index++)
         {
-storeName= storeFrontVector.get(index) as string;
+storeName= storeFrontVector.get(index);
     
 this->searchRequest.setStoreFront(this->storeFronts.getStoreFrontInterface(storeName));
     

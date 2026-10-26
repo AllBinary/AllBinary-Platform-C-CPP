@@ -23,9 +23,9 @@
 
             #include <vector>
         
-            #include "../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../java/lang/Class.h"
+            #include "java/lang/Class.h"
         
 #include <java/util/Hashtable.h>
 
@@ -62,7 +62,7 @@
 
     public: const Object* NULL_OBJECT
 
-    public: const Function NULL_CLASS
+    public: const Class* NULL_CLASS
 
     public: const std::vector<Object*> NULL_OBJECT_ARRAY
 
@@ -80,9 +80,9 @@
 
     public: const std::vector<float> NULL_FLOAT_ARRAY
 
-    public: const Vector<any> EMPTY_VECTOR
+    public: const Vector<Object*> EMPTY_VECTOR
 
-    public: const Hashtable<any, any> NULL_TABLE
+    public: const Hashtable<Object*, Object*> NULL_TABLE
 
 };
 

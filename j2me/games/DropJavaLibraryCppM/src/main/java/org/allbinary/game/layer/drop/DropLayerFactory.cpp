@@ -18,11 +18,8 @@
 
 
 
-            #include "../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-#include <jsinterop/annotations/JsType.h>
-
-      
 #include <org/allbinary/game/layer/pickup/PickedUpLayerInterfaceFactoryInterface.h>
 
       
@@ -33,12 +30,6 @@
 
       
 #include <org/allbinary/util/BasicArrayListUtil.h>
-
-      
-#include <jsinterop/annotations/JsMethod.h>
-
-      
-#include <jsinterop/annotations/JsConstructor.h>
 
       
 
@@ -105,7 +96,7 @@ this->list.clear();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->basicArrayListUtil.getRandom(this->list) as PickedUpLayerInterfaceFactoryInterface;
+                        return this->basicArrayListUtil.getRandom(this->list);
     
 }
 

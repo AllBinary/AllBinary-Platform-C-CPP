@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/logic/control/validate/ValidationComponentInterface.h>
 
@@ -57,8 +57,9 @@
 
 class GatewayValidationView: public HttpStoreComponentView, public ValidationComponentInterface {
 
-public: GatewayValidationView(TransformInfoInterface transformInfoInterface){
-            super(transformInfoInterface);
+public: GatewayValidationView(TransformInfoInterface transformInfoInterface) : HttpStoreComponentView(transformInfoInterface){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.

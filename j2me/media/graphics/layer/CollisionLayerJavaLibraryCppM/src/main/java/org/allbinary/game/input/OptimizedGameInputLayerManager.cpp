@@ -45,8 +45,9 @@
         
 class OptimizedGameInputLayerManager: public LayerManager {
 
-public: OptimizedGameInputLayerManager(){
-            super(LayerManagerNoDebug::getInstance());
+public: OptimizedGameInputLayerManager() : LayerManager(LayerManagerNoDebug::getInstance()){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.

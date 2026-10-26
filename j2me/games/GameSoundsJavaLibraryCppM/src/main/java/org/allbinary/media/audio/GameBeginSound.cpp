@@ -53,8 +53,9 @@ class GameBeginSound: public CompositeSound {
 }
 
 
-private: GameBeginSound(){
-            super("resource:/wav/begin.wav");
+private: GameBeginSound() : CompositeSound("resource:/wav/begin.wav"){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.

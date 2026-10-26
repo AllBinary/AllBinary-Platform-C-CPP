@@ -18,9 +18,9 @@
 
 
 
-            #include "../../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/game/displayable/canvas/AllBinaryGameCanvas.h>
 
@@ -84,7 +84,7 @@ this->EVENT_POOL.initAllBinaryEventCircularPool(DestroyEventFactory(combatGameCa
             
     public: DestroyedEvent getInstanceForLayer(AllBinaryLayer layerInterface){
 
-    DestroyedEvent destroyedEvent = this->EVENT_POOL.getNextInstance() as DestroyedEvent;;
+    DestroyedEvent destroyedEvent = this->EVENT_POOL.getNextInstance();;
     
 destroyedEvent.setLayerInterfaceForCircularStaticPool(layerInterface);
     

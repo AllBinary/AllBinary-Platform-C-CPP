@@ -46,8 +46,9 @@
 
 class BasicArrayListD: public BasicArrayListS {
 
-public: BasicArrayListD(){
-            super(7);
+public: BasicArrayListD() : BasicArrayListS(7){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.

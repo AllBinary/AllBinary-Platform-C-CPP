@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/util/BasicArrayList.h>
 
@@ -124,9 +124,9 @@ super.removeListener(eventListenerInterface);
 
         try {
             
-    MiniMapLayer miniMapLayer = this->list.get(index) as MiniMapLayer;;
+    MiniMapLayer miniMapLayer = this->list.get(index);;
     
-miniMapLayer.onGeographicMapCellPositionEvent(eventObject as GeographicMapCellPositionEvent);
+miniMapLayer.onGeographicMapCellPositionEvent(eventObject);
     
 
                 //: 
@@ -160,9 +160,9 @@ super.fireEvent(eventObject);
 
         try {
             
-    MiniMapLayer miniMapLayer = this->list.get(index) as MiniMapLayer;;
+    MiniMapLayer miniMapLayer = this->list.get(index);;
     
-miniMapLayer.onRemoveGeographicMapCellPositionEvent(eventObject as GeographicMapCellPositionEvent);
+miniMapLayer.onRemoveGeographicMapCellPositionEvent(eventObject);
     
 
                 //: 
@@ -192,11 +192,11 @@ this->logUtil.put(this->commonStrings.EXCEPTION, this, EventStrings::getInstance
         {
 
         try {
-            eventListenerInterface= list.get(index) as EventListenerInterface;
+            eventListenerInterface= list.get(index);
     
-geographicMapCellPositionEventListenerInterface= (eventListenerInterface as GeographicMapCellPositionEventListenerInterface);
+geographicMapCellPositionEventListenerInterface= (eventListenerInterface);
     
-geographicMapCellPositionEventListenerInterface.onRemoveGeographicMapCellPositionEvent(eventObject as GeographicMapCellPositionEvent);
+geographicMapCellPositionEventListenerInterface.onRemoveGeographicMapCellPositionEvent(eventObject);
     
 
                 //: 
@@ -215,9 +215,9 @@ this->logUtil.put(this->commonStrings.EXCEPTION, this, EventStrings::getInstance
             
     protected: void process(AllBinaryEventObject eventObject, EventListenerInterface eventListenerInterface){
 
-    GeographicMapCellPositionEventListenerInterface geographicMapCellPositionEventListenerInterface = (eventListenerInterface as GeographicMapCellPositionEventListenerInterface);;
+    GeographicMapCellPositionEventListenerInterface geographicMapCellPositionEventListenerInterface = (eventListenerInterface);;
     
-geographicMapCellPositionEventListenerInterface.onGeographicMapCellPositionEvent(eventObject as GeographicMapCellPositionEvent);
+geographicMapCellPositionEventListenerInterface.onGeographicMapCellPositionEvent(eventObject);
     
 }
 

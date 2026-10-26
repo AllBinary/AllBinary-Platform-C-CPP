@@ -18,11 +18,11 @@
 
 
 
-            #include "../../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../../../../java/lang/Long.h"
+            #include "java/lang/Long.h"
         
 #include <org/allbinary/util/BasicArrayList.h>
 
@@ -84,7 +84,7 @@ logUtil.putF(commonStrings.START, "CaptureWorkerUtil", "processProfileActionCond
     int32_t index = 0;index < size; index++)
         {
 
-    ProfileActionScriptConditionInterface profileActionConditionInterface = vector.get(index) as ProfileActionScriptConditionInterface;;
+    ProfileActionScriptConditionInterface profileActionConditionInterface = vector.get(index);;
     
 
                         if(profileActionConditionInterface.shouldProcess(frame))

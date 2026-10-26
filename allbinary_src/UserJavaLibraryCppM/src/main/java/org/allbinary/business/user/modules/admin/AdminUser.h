@@ -21,7 +21,7 @@
         #ifndef ORG_ALLBINARY_BUSINESS_USER_MODULES_ADMIN_ADMINUSER_H
         #define ORG_ALLBINARY_BUSINESS_USER_MODULES_ADMIN_ADMINUSER_H
 
-            #include "../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
 
@@ -55,7 +55,7 @@ class AdminUser: public User {
 
 public: AdminUser();
 
-public: AdminUser(HashMap<any, any> userHashMap);
+public: AdminUser(HashMap<Object*, Object*> userHashMap);
 
     public: void validateSession(WeblisketSessionInterface weblisketSession);
 

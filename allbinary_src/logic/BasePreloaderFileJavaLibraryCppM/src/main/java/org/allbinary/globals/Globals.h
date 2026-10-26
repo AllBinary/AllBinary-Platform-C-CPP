@@ -21,9 +21,9 @@
         #ifndef ORG_ALLBINARY_GLOBALS_GLOBALS_H
         #define ORG_ALLBINARY_GLOBALS_GLOBALS_H
 
-            #include "../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../java/lang/ClassLoader.h"
+            #include "java/lang/ClassLoader.h"
         
 #include <org/allbinary/logic/communication/log/LogUtil.h>
 

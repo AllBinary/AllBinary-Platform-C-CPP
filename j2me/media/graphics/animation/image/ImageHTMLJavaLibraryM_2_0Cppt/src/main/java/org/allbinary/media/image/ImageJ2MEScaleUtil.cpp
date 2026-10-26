@@ -10,7 +10,7 @@
                 *  You may obtain the AllBinary Open License Version 1 legal agreement from
                 *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
                 *  
-                *  Created By: Travis Berthelot  
+                *  Created By: Travis Berthelot   
         */
         
         /* Generated Code Do Not Modify */
@@ -20,9 +20,9 @@
 
             #include <vector>
         
-            #include "../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <javax/microedition/lcdui/Image.h>
 
@@ -36,7 +36,22 @@
 #include <org/microemu/device/playn/PlaynMutableImage.h>
 
       
+#include <playn/core/Canvas.h>
+
+      
+#include <playn/core/CoreImage.h>
+
+      
 #include <playn/core/ImageImpl.h>
+
+      
+#include <playn/core/PlayN.h>
+
+      
+#include <playn/html/HtmlGraphics.h>
+
+      
+#include <playn/html/HtmlImage.h>
 
       
 
@@ -84,7 +99,7 @@ private: ImageJ2MEScaleUtil(){
             
     public: std::vector<Image> scaleArray(std::vector<Image> images, int32_t width, int32_t height){
 
-    std::vector<Image> scaledImages = new Array(images.length);;
+    std::vector<Image> scaledImages = std::vector<Image>(images.length);;
     
 
 
@@ -93,7 +108,7 @@ private: ImageJ2MEScaleUtil(){
                         for (
     int32_t index = images.size();--index >= 0; )
         {
-scaledImages[index]= this->scale(images[index]!, width, height);
+scaledImages[index]= this->scale(images[index], width, height);
     
 }
 
@@ -110,7 +125,7 @@ scaledImages[index]= this->scale(images[index]!, width, height);
             
     public: Image scale(Image image, int32_t width, int32_t height){
 
-    playn::core::Image originalPlayNImage = 
+    CoreImage originalPlayNImage = 
                 null
             ;;
     
@@ -119,18 +134,18 @@ scaledImages[index]= this->scale(images[index]!, width, height);
                         
                                     {
                                     
-    PlaynMutableImage originalHTMLImage = image as PlaynMutableImage;;
+    PlaynMutableImage originalHTMLImage = image;;
     
-originalPlayNImage= originalHTMLImage.getImage() as playn::core::Image;
+originalPlayNImage= originalHTMLImage.getImage();
     
 
                                     }
                                 
                         else {
                             
-    PlaynImmutableImage originalHTMLImage = image as PlaynImmutableImage;;
+    PlaynImmutableImage originalHTMLImage = image;;
     
-originalPlayNImage= originalHTMLImage.getImage() as playn::core::Image;
+originalPlayNImage= originalHTMLImage.getImage();
     
 
                         }
@@ -139,12 +154,17 @@ originalPlayNImage= originalHTMLImage.getImage() as playn::core::Image;
     Image scaledImage = Image::createImageWH(width, height);;
     
 
-    PlaynMutableImage htmlImage = scaledImage as PlaynMutableImage;;
+    PlaynMutableImage htmlImage = scaledImage;;
     
 
-    ImageImpl canvasImage = htmlImage.getImage() as ImageImpl;;
+    ImageImpl scaledPlayNImage = htmlImage.getImage();;
     
-canvasImage.draw(originalPlayNImage, 0, 0, scaledImage.getWidth(), scaledImage.getHeight(), 0, 0, image.getWidth(), image.getHeight());
+
+    Canvas canvas = (graphics).get(scaledPlayNImage);;
+    
+originalPlayNImage = originalPlayNImageoriginalPlayNImage
+originalPlayNImage.
+                    draw(canvas.gc(), 0, 0, scaledImage.getWidth(), scaledImage.getHeight(), 0, 0, image.getWidth(), image.getHeight());
     
 
 

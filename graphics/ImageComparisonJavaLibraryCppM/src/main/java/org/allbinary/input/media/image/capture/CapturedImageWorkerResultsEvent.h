@@ -21,7 +21,7 @@
         #ifndef ORG_ALLBINARY_INPUT_MEDIA_IMAGE_CAPTURE_CAPTUREDIMAGEWORKERRESULTSEVENT_H
         #define ORG_ALLBINARY_INPUT_MEDIA_IMAGE_CAPTURE_CAPTUREDIMAGEWORKERRESULTSEVENT_H
 
-            #include "../../../../../../java/lang/Long.h"
+            #include "java/lang/Long.h"
         
 #include <java/awt/image/BufferedImage.h>
 

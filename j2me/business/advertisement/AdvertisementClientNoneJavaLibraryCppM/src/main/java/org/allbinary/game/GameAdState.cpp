@@ -18,11 +18,8 @@
 
 
 
-            #include "../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-#include <jsinterop/annotations/JsType.h>
-
-      
 #include <org/allbinary/business/advertisement/GameAdStateBase.h>
 
       
@@ -36,12 +33,6 @@
 
       
 #include <org/allbinary/input/event/VirtualKeyboardEventListenerInterface.h>
-
-      
-#include <jsinterop/annotations/JsMethod.h>
-
-      
-#include <jsinterop/annotations/JsConstructor.h>
 
       
 
@@ -65,8 +56,9 @@
         
 class GameAdState: public GameAdStateBase, public VirtualKeyboardEventListenerInterface {
 
-public: GameAdState(AdConfiguration adConfiguration){
-            super(adConfiguration);
+public: GameAdState(AdConfiguration adConfiguration) : GameAdStateBase(adConfiguration){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.

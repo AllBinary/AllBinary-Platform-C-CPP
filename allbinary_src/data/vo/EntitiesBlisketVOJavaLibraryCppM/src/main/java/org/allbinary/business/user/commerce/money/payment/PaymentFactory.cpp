@@ -18,9 +18,9 @@
 
 
 
-            #include "../../../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <javax/servlet/ServletRequest.h>
 
@@ -66,7 +66,7 @@ class PaymentFactory
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return org::allbinary::business::user::commerce::money::payment::Payment(request) as PaymentInterface;
+                        return org::allbinary::business::user::commerce::money::payment::Payment(request);
     
 
                 //: 

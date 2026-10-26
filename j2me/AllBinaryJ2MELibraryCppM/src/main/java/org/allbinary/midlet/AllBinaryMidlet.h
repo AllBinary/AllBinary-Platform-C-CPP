@@ -21,14 +21,8 @@
         #ifndef ORG_ALLBINARY_MIDLET_ALLBINARYMIDLET_H
         #define ORG_ALLBINARY_MIDLET_ALLBINARYMIDLET_H
 
-            #include "../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-#include <jsinterop/annotations/JsType.h>
-
-      
-#include <java/util/Hashtable.h>
-
-      
 #include <javax/microedition/lcdui/Command.h>
 
       
@@ -80,16 +74,10 @@
 #include <org/allbinary/system/Memory.h>
 
       
-#include <jsinterop/annotations/JsMethod.h>
-
-      
-#include <jsinterop/annotations/JsConstructor.h>
-
-      
-#include <jsinterop/annotations/JsProperty.h>
-
-      
 #include <org/allbinary/logic/NullUtil.h>
+
+      
+#include <org/allbinary/util/ABHashtable.h>
 
       
 
@@ -110,7 +98,7 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        // MIDlet methods not overridden are final
+        
 class AllBinaryMidlet: public MIDlet, public CommandListener {
 
     private: static Object* NULL_ALLBINARY_MIDLET = NullUtil::getInstance().NULL_OBJECT;
@@ -129,7 +117,7 @@ class AllBinaryMidlet: public MIDlet, public CommandListener {
 
     private: const std::string SETTING_NO_TITLE = "Setting: No Title, Display: ";
 
-    private: Hashtable<any, any> hashtable = StdUtil::getInstance().createHashtable();
+    private: ABHashtable<Object*, Object*> hashtable = StdUtil::getInstance().createHashtable();
 
     private: bool midletDestroyed= false;
 
@@ -157,15 +145,15 @@ public: AllBinaryMidlet();
 
                 //@Throws(Exception.constructor)
             
-    public: void setStartStateHashtable(Hashtable<any, any> hashtable);
+    public: void setStartStateHashtable(ABHashtable<Object*, Object*> hashtable);
 
                 //@Throws(Exception.constructor)
             
-    public: Hashtable<any, any> getStartStateHashtable();
+    public: ABHashtable<Object*, Object*> getStartStateHashtable();
 
                 //@Throws(Exception.constructor)
             
-    public: Hashtable<any, any> getCurrentStateHashtable();
+    public: ABHashtable<Object*, Object*> getCurrentStateHashtable();
 
     public: void commandAction(Command command, Displayable displayable);
 

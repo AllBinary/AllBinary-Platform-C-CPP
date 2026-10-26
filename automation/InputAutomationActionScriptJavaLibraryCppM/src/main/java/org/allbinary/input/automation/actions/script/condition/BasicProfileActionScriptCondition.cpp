@@ -18,9 +18,9 @@
 
 
 
-            #include "../../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../../../../../java/lang/Long.h"
+            #include "java/lang/Long.h"
         
 #include <java/awt/event/ActionEvent.h>
 
@@ -120,8 +120,9 @@ class BasicProfileActionScriptCondition: public ProfileActionScriptItem, public 
 
     private: BasicArrayList profileActionConditionInterfaceVector;
 
-public: BasicProfileActionScriptCondition(std::string label, Node node){
-            super(label, node);
+public: BasicProfileActionScriptCondition(std::string label, Node node) : ProfileActionScriptItem(label, node){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -219,8 +220,9 @@ this->init();
 }
 
 
-public: BasicProfileActionScriptCondition(std::string label){
-            super(label);
+public: BasicProfileActionScriptCondition(std::string label) : ProfileActionScriptItem(label){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -392,7 +394,7 @@ this->add(profileActionScriptNodeInterface);
     int32_t index = 0;index < size; index++)
         {
 
-    ProfileActionScriptConditionInterface profileActionConditionInterface = profileActionConditionInterfaceVector.get(index) as ProfileActionScriptConditionInterface;;
+    ProfileActionScriptConditionInterface profileActionConditionInterface = profileActionConditionInterfaceVector.get(index);;
     
 node.appendChild(profileActionConditionInterface.toXmlNode(document));
     
@@ -412,7 +414,7 @@ node.appendChild(profileActionConditionInterface.toXmlNode(document));
     int32_t index = 0;index < size2; index++)
         {
 
-    ProfileActionScriptProcessorInterface profileActionProcessorInterface = profileActionProcessorInterfaceVector.get(index) as ProfileActionScriptProcessorInterface;;
+    ProfileActionScriptProcessorInterface profileActionProcessorInterface = profileActionProcessorInterfaceVector.get(index);;
     
 node.appendChild(profileActionProcessorInterface.toXmlNode(document));
     
@@ -457,7 +459,7 @@ this->profileActionConditionInterfaceVector= profileActionConditionInterfaceVect
                         
                                     {
                                     
-    ProfileActionScriptNodeInterface profileActionScriptNodeInterface = this->getParent() as ProfileActionScriptNodeInterface;;
+    ProfileActionScriptNodeInterface profileActionScriptNodeInterface = this->getParent();;
     
 profileActionScriptNodeInterface.removeCondition(this);
     
@@ -590,7 +592,7 @@ JTreeInterfaceFactory::getInstance().getJTreeInterface().getActionScriptJTree().
     int32_t index = 0;index < size; index++)
         {
 
-    ProfileActionScriptConditionInterface profileActionScriptConditionInterface = profileActionConditionInterfaceVector.get(index) as ProfileActionScriptConditionInterface;;
+    ProfileActionScriptConditionInterface profileActionScriptConditionInterface = profileActionConditionInterfaceVector.get(index);;
     
 
                         if(!profileActionScriptConditionInterface.shouldProcess(frame))
@@ -635,7 +637,7 @@ this->logUtil.putF(StringMaker().append("Start - Processing ").appendint(this->g
     int32_t index = 0;index < size; index++)
         {
 
-    ProfileActionScriptProcessorInterface profileActionScriptProcessorInterface = profileActionProcessorInterfaceVector.get(index) as ProfileActionScriptProcessorInterface;;
+    ProfileActionScriptProcessorInterface profileActionScriptProcessorInterface = profileActionProcessorInterfaceVector.get(index);;
     
 profileActionScriptProcessorInterface.process(frame);
     

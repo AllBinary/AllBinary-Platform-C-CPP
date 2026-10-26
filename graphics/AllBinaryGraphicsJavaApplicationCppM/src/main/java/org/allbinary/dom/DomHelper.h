@@ -21,9 +21,9 @@
         #ifndef ORG_ALLBINARY_DOM_DOMHELPER_H
         #define ORG_ALLBINARY_DOM_DOMHELPER_H
 
-            #include "../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/io/ByteArrayOutputStream.h>
 

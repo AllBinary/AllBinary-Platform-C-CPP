@@ -21,7 +21,7 @@
         #ifndef ADMIN_TAGHELPERS_ORDERITEMSHELPER_H
         #define ADMIN_TAGHELPERS_ORDERITEMSHELPER_H
 
-            #include "../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
 
@@ -67,7 +67,7 @@ class OrderItemsHelper: public BasicTable {
 
     private: Portion portion;
 
-public: OrderItemsHelper(HashMap<any, any> hashMap, PageContext pageContext);
+public: OrderItemsHelper(HashMap<Object*, Object*> hashMap, PageContext pageContext);
 
     public: std::string drop();
 

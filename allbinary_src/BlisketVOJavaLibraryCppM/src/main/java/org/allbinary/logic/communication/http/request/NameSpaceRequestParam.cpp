@@ -18,19 +18,13 @@
 
 
 
-            #include "../../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../../../../java/lang/Integer.h"
+            #include "java/lang/Integer.h"
         
 #include <java/util/HashMap.h>
-
-      
-#include <org/allbinary/util/BasicArrayList.h>
-
-      
-#include <org/allbinary/util/BasicArrayListD.h>
 
       
 #include <org/allbinary/logic/StdUtil.h>
@@ -82,7 +76,7 @@ class NameSpaceRequestParam
 
     private: BasicArrayList nameSpaceVector;
 
-    private: HashMap<any, any> nameSpacePropertiesHashMap;
+    private: HashMap<Object*, Object*> nameSpacePropertiesHashMap;
 
     private: std::string value;
 
@@ -145,7 +139,7 @@ this->value= value;
         while(index < size)
         {
 
-    std::string nameSpaceWithProperties = nameSpaceWithPropertiesVector.get(index++) as string;;
+    std::string nameSpaceWithProperties = nameSpaceWithPropertiesVector.get(index++);;
     
 list.clear();
     
@@ -166,7 +160,7 @@ list.clear();
                         
                                     {
                                     
-    std::string packageName = nameSpaceAndPropertiesVector.get(0) as string;;
+    std::string packageName = nameSpaceAndPropertiesVector.get(0);;
     
 
                         if(false)
@@ -187,10 +181,10 @@ this->nameSpaceVector.add(packageName);
                         
                                     {
                                     
-    std::string properties = nameSpaceAndPropertiesVector.get(1) as string;;
+    std::string properties = nameSpaceAndPropertiesVector.get(1);;
     
 
-    HashMap<any, any> packagePropertiesHashMap = this->generatePackagePropertiesHashMap(properties);;
+    HashMap<Object*, Object*> packagePropertiesHashMap = this->generatePackagePropertiesHashMap(properties);;
     
 this->nameSpacePropertiesHashMap.put(std::to_string(packageIndex)packagePropertiesHashMap);
     
@@ -235,9 +229,9 @@ packageIndex++;
 }
 
 
-    public: HashMap<any, any> getPackageProperties(int32_t packageIndex){
+    public: HashMap<Object*, Object*> getPackageProperties(int32_t packageIndex){
 
-    HashMap<any, any> packagePropertiesHashMap = this->nameSpacePropertiesHashMap.get(std::to_string(packageIndex)) as HashMap<any, any>;;
+    HashMap<Object*, Object*> packagePropertiesHashMap = this->nameSpacePropertiesHashMap.get(std::to_string(packageIndex));;
     
 
                         if(packagePropertiesHashMap == 
@@ -289,12 +283,12 @@ packageIndex++;
 
                 //@Throws(Exception.constructor)
             
-    private: HashMap<any, any> generatePackagePropertiesHashMap(std::string properties){
+    private: HashMap<Object*, Object*> generatePackagePropertiesHashMap(std::string properties){
 
     Tokenizer propertiesTokenizer = Tokenizer(NameSpaceRequestParamData::PROPERTIESSEPARATOR);;
     
 
-    HashMap<any, any> packagePropertiesHashMap = StdUtil::getInstance().createHashMap();;
+    HashMap<Object*, Object*> packagePropertiesHashMap = StdUtil::getInstance().createHashMap();;
     
 
     BasicArrayList propertyVector = propertiesTokenizer.getTokensFromString(properties, BasicArrayListD());;
@@ -315,7 +309,7 @@ packageIndex++;
         while(index < size)
         {
 
-    std::string property = propertyVector.get(index) as string;;
+    std::string property = propertyVector.get(index);;
     
 list.clear();
     
@@ -329,14 +323,14 @@ list.clear();
         while(index2 < propertyNameValueVector.size())
         {
 
-    std::string propertyName = propertyNameValueVector.get(index2++) as string;;
+    std::string propertyName = propertyNameValueVector.get(index2++);;
     
 
                         if(propertyNameValueVector.size() > 1)
                         
                                     {
                                     
-    std::string propertyValue = propertyNameValueVector.get(index2++) as string;;
+    std::string propertyValue = propertyNameValueVector.get(index2++);;
     
 
                         if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().HTTPREQUEST))

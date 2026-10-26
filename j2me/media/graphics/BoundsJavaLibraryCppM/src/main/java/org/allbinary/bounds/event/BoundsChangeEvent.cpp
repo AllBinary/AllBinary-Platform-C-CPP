@@ -45,8 +45,9 @@
         
 class BoundsChangeEvent: public AllBinaryEventObject {
 
-public: BoundsChangeEvent(Rectangle rectangle){
-            super(rectangle);
+public: BoundsChangeEvent(Rectangle rectangle) : AllBinaryEventObject(rectangle){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -59,7 +60,7 @@ public: BoundsChangeEvent(Rectangle rectangle){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->getSource() as Rectangle;
+                        return this->getSource();
     
 }
 

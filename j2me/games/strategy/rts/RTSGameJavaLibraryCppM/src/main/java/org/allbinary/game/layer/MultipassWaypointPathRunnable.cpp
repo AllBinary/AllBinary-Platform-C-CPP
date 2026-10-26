@@ -18,11 +18,11 @@
 
 
 
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../../java/lang/RuntimeException.h"
+            #include "java/lang/RuntimeException.h"
         
-            #include "../../../../java/lang/Runnable.h"
+            #include "java/lang/Runnable.h"
         
 #include <org/allbinary/logic/NullUtil.h>
 
@@ -285,7 +285,7 @@ this->reset2();
 this->pathFindingInfo= this->targetPathFindingLayer.getWaypointBehavior().getWaypoint().getPathFindingInfo(geographicMapCellPosition);
     
 
-    PathFindingInfo localPathFindingInfo = this->pathFindingInfo as PathFindingInfo;;
+    PathFindingInfo localPathFindingInfo = this->pathFindingInfo;;
     
 this->list= this->targetPathFindingLayer.getWaypointBehavior().getWaypoint().getPathsList(geographicMapCellPosition, localPathFindingInfo, this->multipassState);
     
@@ -329,7 +329,7 @@ this->finish();
     GeographicMapCellPosition geographicMapCellPosition = this->pathFindingLayer.getCurrentGeographicMapCellPosition();;
     
 
-    PathFindingInfo localPathFindingInfo = this->pathFindingInfo as PathFindingInfo;;
+    PathFindingInfo localPathFindingInfo = this->pathFindingInfo;;
     
 this->list= this->targetPathFindingLayer.getWaypointBehavior().getWaypoint().getPathsList(geographicMapCellPosition, localPathFindingInfo, this->multipassState);
     

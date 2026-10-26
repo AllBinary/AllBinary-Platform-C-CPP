@@ -21,9 +21,9 @@
         #ifndef ORG_ALLBINARY_BUSINESS_INSTALLER_PORTION_H
         #define ORG_ALLBINARY_BUSINESS_INSTALLER_PORTION_H
 
-            #include "../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../java/lang/Integer.h"
+            #include "java/lang/Integer.h"
         
 #include <java/util/HashMap.h>
 
@@ -55,7 +55,7 @@ class Portion
 
     private: Integer total;
 
-public: Portion(HashMap<any, any> hashMap);
+public: Portion(HashMap<Object*, Object*> hashMap);
 
     public: Integer getCurrent();
 

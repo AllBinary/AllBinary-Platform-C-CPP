@@ -21,7 +21,7 @@
         #ifndef ORG_ALLBINARY_BUSINESS_USER_ADDRESS_SHIPPINGADDRESSDATA_H
         #define ORG_ALLBINARY_BUSINESS_USER_ADDRESS_SHIPPINGADDRESSDATA_H
 
-            #include "../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
 
 

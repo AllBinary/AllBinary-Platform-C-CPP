@@ -18,16 +18,10 @@
 
 
 
-#include <jsinterop/annotations/JsType.h>
-
-      
 #include <org/allbinary/game/layer/AllBinaryGameLayerManager.h>
 
       
 #include <org/allbinary/graphics/displayable/DisplayableInterface.h>
-
-      
-#include <jsinterop/annotations/JsMethod.h>
 
       
 

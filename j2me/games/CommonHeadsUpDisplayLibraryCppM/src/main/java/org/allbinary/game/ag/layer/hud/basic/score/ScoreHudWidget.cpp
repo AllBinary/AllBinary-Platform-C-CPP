@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <javax/microedition/lcdui/Font.h>
 
@@ -68,8 +68,9 @@ class ScoreHudWidget: public NumberStringHud {
 }
 
 
-public: ScoreHudWidget(int32_t maxscore, int32_t location, int32_t direction, int32_t bufferZone, BasicColor basicColor){
-            super("Pts ", maxscore, location, direction, bufferZone, basicColor);
+public: ScoreHudWidget(int32_t maxscore, int32_t location, int32_t direction, int32_t bufferZone, BasicColor basicColor) : NumberStringHud("Pts ", maxscore, location, direction, bufferZone, basicColor){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.

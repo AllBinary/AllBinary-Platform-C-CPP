@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/data/tree/dom/DomNodeInterface.h>
 
@@ -66,8 +66,9 @@ class TopBarView: public HttpStoreComponentView, public DomNodeInterface {
 
     protected: HeadingValidation heading;
 
-public: TopBarView(TransformInfoInterface transformInfoInterface){
-            super(transformInfoInterface);
+public: TopBarView(TransformInfoInterface transformInfoInterface) : HttpStoreComponentView(transformInfoInterface){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -76,7 +77,7 @@ public: TopBarView(TransformInfoInterface transformInfoInterface){
 
 
     public: void addDomNodeInterfaces(){
-this->addDomNodeInterface(this as DomNodeInterface);
+this->addDomNodeInterface(this);
     
 }
 

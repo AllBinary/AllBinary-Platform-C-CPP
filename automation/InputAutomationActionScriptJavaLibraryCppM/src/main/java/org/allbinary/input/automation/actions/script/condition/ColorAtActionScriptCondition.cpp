@@ -18,11 +18,11 @@
 
 
 
-            #include "../../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../../../../../java/lang/Integer.h"
+            #include "java/lang/Integer.h"
         
-            #include "../../../../../../../java/lang/Long.h"
+            #include "java/lang/Long.h"
         
 #include <java/awt/Color.h>
 
@@ -120,10 +120,11 @@ class ColorAtActionScriptCondition: public BasicProfileActionScriptCondition, pu
 
     private: Point point;
 
-    private: ColorRangeInterface colorRangeInterface = ColorRange() as ColorRangeInterface;
+    private: ColorRangeInterface colorRangeInterface = ColorRange();
 
-public: ColorAtActionScriptCondition(Node node){
-            super(ColorAtActionScriptCondition::NAME, node);
+public: ColorAtActionScriptCondition(Node node) : BasicProfileActionScriptCondition(ColorAtActionScriptCondition::NAME, node){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -267,8 +268,9 @@ this->init();
 }
 
 
-public: ColorAtActionScriptCondition(){
-            super(ColorAtActionScriptCondition::NAME);
+public: ColorAtActionScriptCondition() : BasicProfileActionScriptCondition(ColorAtActionScriptCondition::NAME){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -308,9 +310,9 @@ this->colorAtActionScriptConditionJPanel.getColorAtActionJDialog().setVisible(tr
 }
 
 
-    public: HashMap<any, any> toHashMap(){
+    public: HashMap<Object*, Object*> toHashMap(){
 
-    HashMap<any, any> hashMap = StdUtil::getInstance().createHashMap();;
+    HashMap<Object*, Object*> hashMap = StdUtil::getInstance().createHashMap();;
     
 hashMap.put(ColorAtActionScriptConditionData::LOCATION_X, std::to_string(x));
     
@@ -360,7 +362,7 @@ node.appendChild(ModDomHelper::createNodeWithValueNodes(document, ColorAtActionS
             
     public: bool shouldProcess(int64_t frame){
 
-    BufferedImageFrameCacheable capturedBufferedImageCacheable = (getInstance as AutomaticCacheInterface).get((frame).toLong()) as BufferedImageFrameCacheable;;
+    BufferedImageFrameCacheable capturedBufferedImageCacheable = (getInstance).get((frame).toLong());;
     
 
     BufferedImage bufferedImage = capturedBufferedImageCacheable.getBufferedImage();;
@@ -372,7 +374,7 @@ node.appendChild(ModDomHelper::createNodeWithValueNodes(document, ColorAtActionS
     Integer colorInteger = Integer::valueOf(bufferedImage.getRGB(this->getPoint().x, this->getPoint().y));;
     
 
-    ColorCacheable colorCacheable = automaticCacheInterface.get(colorInteger) as ColorCacheable;;
+    ColorCacheable colorCacheable = automaticCacheInterface.get(colorInteger);;
     
 
     Color color = colorCacheable.getColor();;

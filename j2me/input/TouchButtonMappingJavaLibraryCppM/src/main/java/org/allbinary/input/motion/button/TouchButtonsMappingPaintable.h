@@ -23,7 +23,7 @@
 
             #include <vector>
         
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <javax/microedition/lcdui/Graphics.h>
 
@@ -73,8 +73,7 @@ class TouchButtonsMappingPaintable: public Paintable {
 
     protected: int32_t foregroundColor;
 
-    private: std::vector<std::vector<Paintable>> paintableTable = new Array(0).fill(null).map(() => new Array(0).fill(0))
-                                                            ;
+    private: std::vector<std::vector<Paintable>> paintableTable = std::vector<std::vector<Paintable>>(0, std::vector<Paintable>(0));
 
     private: TouchButtonLocationHelper touchButtonLocationHelper = TouchButtonLocationHelper();
 

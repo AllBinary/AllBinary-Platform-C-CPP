@@ -18,11 +18,11 @@
 
 
 
-            #include "../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../../java/lang/Integer.h"
+            #include "java/lang/Integer.h"
         
 #include <java/util/HashMap.h>
 
@@ -126,7 +126,7 @@ public: Category(CategoryPropertiesFactoryInterface categoryPropertiesFactoryInt
                                 
 this->categoryPropertiesInterface= categoryPropertiesFactoryInterface.getInstance();
     
-this->categoryHierarchyInterface= CategoryHierarchy(this, this) as CategoryHierarchyInterface;
+this->categoryHierarchyInterface= CategoryHierarchy(this, this);
     
 this->log();
     
@@ -136,7 +136,7 @@ this->log();
 public: Category(CategoryPropertiesFactoryInterface categoryPropertiesFactoryInterface, int32_t level){
 this->categoryPropertiesInterface= categoryPropertiesFactoryInterface.getInstance();
     
-this->categoryHierarchyInterface= CategoryHierarchy(this, this, level) as CategoryHierarchyInterface;
+this->categoryHierarchyInterface= CategoryHierarchy(this, this, level);
     
 this->log();
     
@@ -144,9 +144,9 @@ this->log();
 
 
 public: Category(CategoryInterface rootCategoryInterface, CategoryInterface parentCategoryInterface, CategoryPropertiesFactoryInterface categoryPropertiesFactoryInterface){
-this->categoryPropertiesInterface= categoryPropertiesFactoryInterface.getInstance() as CategoryPropertiesInterface;
+this->categoryPropertiesInterface= categoryPropertiesFactoryInterface.getInstance();
     
-this->categoryHierarchyInterface= CategoryHierarchy(rootCategoryInterface, parentCategoryInterface) as CategoryHierarchyInterface;
+this->categoryHierarchyInterface= CategoryHierarchy(rootCategoryInterface, parentCategoryInterface);
     
 this->log();
     
@@ -179,7 +179,7 @@ this->log();
                         
                                     {
                                     
-    RootCategoryPropertiesInterface rootCategoryPropertiesInterface = categoryInterface.getProperties() as RootCategoryPropertiesInterface;;
+    RootCategoryPropertiesInterface rootCategoryPropertiesInterface = categoryInterface.getProperties();;
     
 rootAbPath= rootCategoryPropertiesInterface.getRootFilePath();
     
@@ -316,7 +316,7 @@ this->typeVector.add(this->CATEGORY);
     Object* anyType = this->childCategoryVector.get(index);;
     
 
-    CategoryInterface currentCategoryInterface = anyType as CategoryInterface;;
+    CategoryInterface currentCategoryInterface = *dynamic_cast<CategoryInterface*>(anyType);;
     
 
                         if(currentCategoryInterface.getProperties().getValue().compareTo(categoryInterface.getProperties().getValue()) == 0)
@@ -397,7 +397,7 @@ this->childCategoryVector.remove(objectIndex);
                         
                                     {
                                     
-    CategoryPropertiesInterface categoryPropertiesInterface = anyType as CategoryPropertiesInterface;;
+    CategoryPropertiesInterface categoryPropertiesInterface = *dynamic_cast<CategoryPropertiesInterface*>(anyType);;
     
 
                         if(categoryInterface.getProperties().getValue().compareTo(categoryPropertiesInterface.getValue()) == 0)
@@ -421,7 +421,7 @@ break;
                         
                                     {
                                     
-    CategoryInterface existingCategoryInterface = anyType as CategoryInterface;;
+    CategoryInterface existingCategoryInterface = *dynamic_cast<CategoryInterface*>(anyType);;
     
 
     CategoryPropertiesInterface categoryPropertiesInterface = existingCategoryInterface.getProperties();;
@@ -566,7 +566,7 @@ this->categoryHierarchyInterface= categoryHierarchyInterface;
                         
                                     {
                                     
-    CategoryPropertiesInterface categoryPropertiesInterface = anyType as CategoryPropertiesInterface;;
+    CategoryPropertiesInterface categoryPropertiesInterface = *dynamic_cast<CategoryPropertiesInterface*>(anyType);;
     
 
                         if(!categoryPropertiesInterface.isValid().valueOf())
@@ -589,7 +589,7 @@ this->categoryHierarchyInterface= categoryHierarchyInterface;
                         
                                     {
                                     
-    CategoryInterface categoryInterface = anyType as CategoryInterface;;
+    CategoryInterface categoryInterface = *dynamic_cast<CategoryInterface*>(anyType);;
     
 
                         if(!categoryInterface.isValid().valueOf())
@@ -656,9 +656,9 @@ this->categoryHierarchyInterface= categoryHierarchyInterface;
 
                 //@Throws(Exception.constructor)
             
-    public: HashMap<any, any> toHashMap(){
+    public: HashMap<Object*, Object*> toHashMap(){
 
-    HashMap<any, any> categoryHashMap = this->categoryPropertiesInterface.toHashMap();;
+    HashMap<Object*, Object*> categoryHashMap = this->categoryPropertiesInterface.toHashMap();;
     
 
 

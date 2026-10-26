@@ -21,7 +21,7 @@
         #ifndef ADMIN_TAGS_ABTAGDATA_H
         #define ADMIN_TAGS_ABTAGDATA_H
 
-            #include "../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
 
 

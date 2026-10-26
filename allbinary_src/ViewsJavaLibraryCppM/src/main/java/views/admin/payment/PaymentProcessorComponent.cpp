@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/business/user/commerce/money/payment/gateway/processor/PaymentProcessorInterface.h>
 
@@ -64,8 +64,9 @@ class PaymentProcessorComponent: public HttpStoreComponentView {
 
     protected: const LogUtil logUtil = LogUtil::getInstance();
 
-public: PaymentProcessorComponent(TransformInfoInterface transformInfoInterface){
-            super(transformInfoInterface);
+public: PaymentProcessorComponent(TransformInfoInterface transformInfoInterface) : HttpStoreComponentView(transformInfoInterface){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -82,11 +83,11 @@ public: PaymentProcessorComponent(TransformInfoInterface transformInfoInterface)
 paymentProcessorInterface.process();
     
 
-    TransformInfoHttpInterface httpTransformInfoInterface = this->getTransformInfoInterface() as TransformInfoHttpInterface;;
+    TransformInfoHttpInterface httpTransformInfoInterface = this->getTransformInfoInterface();;
     
 httpTransformInfoInterface.getWeblisketSession().removeBasket();
     
-this->addDomNodeInterface(paymentProcessorInterface as DomNodeInterface);
+this->addDomNodeInterface(paymentProcessorInterface);
     
 }
 

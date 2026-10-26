@@ -21,9 +21,9 @@
         #ifndef ORG_ALLBINARY_BUSINESS_TIME_TIME_H
         #define ORG_ALLBINARY_BUSINESS_TIME_TIME_H
 
-            #include "../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../java/lang/Long.h"
+            #include "java/lang/Long.h"
         
 
 

@@ -18,9 +18,9 @@
 
 
 
-            #include "../../../../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/logic/communication/log/LogUtil.h>
 
@@ -83,7 +83,7 @@ private: TransformInfoObjectConfigGeneratorFactory(){
             
     public: TransformInfoObjectConfigGenerator getInstance(TransformInfoInterface transformInfoInterface){
 
-    std::string type = transformInfoInterface.getObjectConfigInterface().getOutputTypeName() as string;;
+    std::string type = transformInfoInterface.getObjectConfigInterface().getOutputTypeName();;
     
 
                         if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEW))
@@ -98,7 +98,7 @@ this->logUtil.putF("Generating Instance for type: " +type, this, commonStrings.G
                                     }
                                 
 
-                        if(false || type.compareTo(InputOutputTypeData::getInstance().RESPONSE) == 0 || transformInfoInterface.isChild())
+                        if(false || type.compare(InputOutputTypeData::getInstance().RESPONSE) == 0 || transformInfoInterface.isChild())
                         
                                     {
                                     
@@ -111,7 +111,7 @@ this->logUtil.putF("Generating Instance for type: " +type, this, commonStrings.G
                                     }
                                 
                              else 
-                        if(type.compareTo(InputOutputTypeData::getInstance().FILE) == 0)
+                        if(type.compare(InputOutputTypeData::getInstance().FILE) == 0)
                         
                                     {
                                     

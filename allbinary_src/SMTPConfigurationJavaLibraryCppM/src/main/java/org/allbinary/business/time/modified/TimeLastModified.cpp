@@ -42,8 +42,9 @@
         
 class TimeLastModified: public Time {
 
-public: TimeLastModified(std::string time){
-            super(time);
+public: TimeLastModified(std::string time) : Time(time){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -51,8 +52,9 @@ public: TimeLastModified(std::string time){
 }
 
 
-public: TimeLastModified(int64_t time){
-            super(time);
+public: TimeLastModified(int64_t time) : Time(time){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.

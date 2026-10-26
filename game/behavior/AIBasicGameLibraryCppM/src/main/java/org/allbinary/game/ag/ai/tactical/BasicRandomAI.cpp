@@ -20,9 +20,9 @@
 
             #include <vector>
         
-            #include "../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../../../../java/lang/Integer.h"
+            #include "java/lang/Integer.h"
         
 #include <javax/microedition/lcdui/Canvas.h>
 
@@ -80,8 +80,9 @@ class BasicRandomAI: public BasicAI {
 
     private: const std::vector<int32_t> keyArray = {Canvas::UP,Canvas::DOWN,Canvas::LEFT,Canvas::RIGHT,Canvas::KEY_NUM1,Canvas::KEY_NUM7,Canvas::KEY_NUM9};
 
-public: BasicRandomAI(AllBinaryLayer ownerLayerInterface, GameInput gameInput, InputProbability inputProbability, Visitor visitor){
-            super(ownerLayerInterface, gameInput);
+public: BasicRandomAI(AllBinaryLayer ownerLayerInterface, GameInput gameInput, InputProbability inputProbability, Visitor visitor) : BasicAI(ownerLayerInterface, gameInput){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -111,7 +112,7 @@ this->visitor= visitor;
     std::vector<Integer> repeatLikelyhoodIntegerArray = this->inputProbability.getRepeatLikelyhoodIntegerArray();;
     
 
-                        if(this->getLastKey() !=  -1 && repeatLikelyhoodIntegerArray[this->getLastKey()]!.intValue() >= this->i_random)
+                        if(this->getLastKey() !=  -1 && repeatLikelyhoodIntegerArray[this->getLastKey()].intValue() >= this->i_random)
                         
                                     {
                                     repeat= true;
@@ -144,7 +145,7 @@ this->i_random= this->myRandomFactory.getAbsoluteNextInt(this->inputProbability.
 
     int32_t key = this->keyArray[index];;
     
-likelyhoodIntegerKeyArray= likelyhoodIntegerArray[key]!;
+likelyhoodIntegerKeyArray= likelyhoodIntegerArray[key];
     
 
                         if(likelyhoodIntegerArray.size() >= key && likelyhoodIntegerKeyArray[0] != 
@@ -153,7 +154,7 @@ likelyhoodIntegerKeyArray= likelyhoodIntegerArray[key]!;
                         
                                     {
                                     
-                        if(this->i_random >= likelyhoodIntegerKeyArray[0]!.intValue() && this->i_random < likelyhoodIntegerKeyArray[1]!.intValue())
+                        if(this->i_random >= likelyhoodIntegerKeyArray[0].intValue() && this->i_random < likelyhoodIntegerKeyArray[1].intValue())
                         
                                     {
                                     this->setLastKey(key);

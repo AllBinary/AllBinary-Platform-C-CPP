@@ -21,9 +21,9 @@
         #ifndef ADMIN_TAGHELPERS_PERMISSIONITEMSREQUESTHELPER_H
         #define ADMIN_TAGHELPERS_PERMISSIONITEMSREQUESTHELPER_H
 
-            #include "../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../java/lang/Long.h"
+            #include "java/lang/Long.h"
         
 #include <java/util/Calendar.h>
 
@@ -119,11 +119,11 @@ class PermissionItemsRequestHelper: public ModifyTable {
 
     private: std::string lastModified;
 
-public: PermissionItemsRequestHelper(HashMap<any, any> hashMap, PageContext pageContext);
+public: PermissionItemsRequestHelper(HashMap<Object*, Object*> hashMap, PageContext pageContext);
 
     public: void getFormData();
 
-    private: HashMap<any, any> getHashMap();
+    private: HashMap<Object*, Object*> getHashMap();
 
     public: std::string insert();
 

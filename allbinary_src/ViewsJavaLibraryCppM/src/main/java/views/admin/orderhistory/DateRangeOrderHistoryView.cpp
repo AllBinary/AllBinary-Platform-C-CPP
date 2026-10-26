@@ -18,9 +18,9 @@
 
 
 
-            #include "../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../java/lang/Long.h"
+            #include "java/lang/Long.h"
         
 #include <java/util/Calendar.h>
 
@@ -158,13 +158,14 @@ class DateRangeOrderHistoryView: public HttpStoreComponentView, public Validatio
 
     private: int32_t MAXLEN = 15;
 
-public: DateRangeOrderHistoryView(TransformInfoInterface transformInfoInterface){
-            super(transformInfoInterface);
+public: DateRangeOrderHistoryView(TransformInfoInterface transformInfoInterface) : HttpStoreComponentView(transformInfoInterface){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this->request= this->getPageContext().getRequest() as HttpServletRequest;
+this->request= this->getPageContext().getRequest();
     
 this->getFormData();
     
@@ -206,7 +207,7 @@ this->command= this->request.getParameter(GLOBALS2::ADMINCOMMAND);
 
 
     public: void addDomNodeInterfaces(){
-this->addDomNodeInterface(this as DomNodeInterface);
+this->addDomNodeInterface(this);
     
 }
 
@@ -276,7 +277,7 @@ this->logUtil.putF(stringBuffer.toString(), this, "view");
     Node node = document.createElement(OrderData::ORDERS);;
     
 
-                        if(true && this->preprocessing.compareTo(this->ON) == 0)
+                        if(true && this->preprocessing.compare(this->ON) == 0)
                         
                                     {
                                     
@@ -302,7 +303,7 @@ this->logUtil.putF(stringBuffer.toString(), this, "view");
     int32_t index = 0;index < size; index++)
         {
 
-    OrderHistory orderHistory = orderHistoryVector.get(index) as OrderHistory;;
+    OrderHistory orderHistory = orderHistoryVector.get(index);;
     
 node.appendChild(orderHistory.toXmlNode(document));
     
@@ -312,7 +313,7 @@ node.appendChild(orderHistory.toXmlNode(document));
                                     }
                                 
 
-                        if(true && this->shipped.compareTo(this->ON) == 0)
+                        if(true && this->shipped.compare(this->ON) == 0)
                         
                                     {
                                     
@@ -338,7 +339,7 @@ node.appendChild(orderHistory.toXmlNode(document));
     int32_t index = 0;index < size; index++)
         {
 
-    OrderHistory orderHistory = orderHistoryVector.get(index) as OrderHistory;;
+    OrderHistory orderHistory = orderHistoryVector.get(index);;
     
 node.appendChild(orderHistory.toXmlNode(document));
     
@@ -348,7 +349,7 @@ node.appendChild(orderHistory.toXmlNode(document));
                                     }
                                 
 
-                        if(true && this->partiallyShipped.compareTo(this->ON) == 0)
+                        if(true && this->partiallyShipped.compare(this->ON) == 0)
                         
                                     {
                                     
@@ -374,7 +375,7 @@ node.appendChild(orderHistory.toXmlNode(document));
     int32_t index = 0;index < size; index++)
         {
 
-    OrderHistory orderHistory = orderHistoryVector.get(index) as OrderHistory;;
+    OrderHistory orderHistory = orderHistoryVector.get(index);;
     
 node.appendChild(orderHistory.toXmlNode(document));
     
@@ -384,7 +385,7 @@ node.appendChild(orderHistory.toXmlNode(document));
                                     }
                                 
 
-                        if(true && this->processing.compareTo(this->ON) == 0)
+                        if(true && this->processing.compare(this->ON) == 0)
                         
                                     {
                                     
@@ -410,7 +411,7 @@ node.appendChild(orderHistory.toXmlNode(document));
     int32_t index = 0;index < size; index++)
         {
 
-    OrderHistory orderHistory = orderHistoryVector.get(index) as OrderHistory;;
+    OrderHistory orderHistory = orderHistoryVector.get(index);;
     
 node.appendChild(orderHistory.toXmlNode(document));
     
@@ -420,7 +421,7 @@ node.appendChild(orderHistory.toXmlNode(document));
                                     }
                                 
 
-                        if(true && this->cancelled.compareTo(this->ON) == 0)
+                        if(true && this->cancelled.compare(this->ON) == 0)
                         
                                     {
                                     
@@ -446,7 +447,7 @@ node.appendChild(orderHistory.toXmlNode(document));
     int32_t index = 0;index < size; index++)
         {
 
-    OrderHistory orderHistory = orderHistoryVector.get(index) as OrderHistory;;
+    OrderHistory orderHistory = orderHistoryVector.get(index);;
     
 node.appendChild(orderHistory.toXmlNode(document));
     
@@ -504,7 +505,7 @@ node.appendChild(ModDomHelper::createNameValueNodes(document, GLOBALS2::VIEWNAME
     Boolean isValid = Boolean::TRUE;;
     
 
-                        if(false || (this->dateType.compareTo(OrderHistoryData::TYPELONG) != 0 && this->dateType.compareTo(OrderHistoryData::TYPECAESAR) != 0))
+                        if(false || (this->dateType.compare(OrderHistoryData::TYPELONG) != 0 && this->dateType.compare(OrderHistoryData::TYPECAESAR) != 0))
                         
                                     {
                                     isValid= Boolean::FALSE;
@@ -517,7 +518,7 @@ node.appendChild(ModDomHelper::createNameValueNodes(document, GLOBALS2::VIEWNAME
                         
                                     {
                                     
-                        if(this->dateType.compareTo(OrderHistoryData::TYPELONG) == 0)
+                        if(this->dateType.compare(OrderHistoryData::TYPELONG) == 0)
                         
                                     {
                                     
@@ -530,7 +531,7 @@ node.appendChild(ModDomHelper::createNameValueNodes(document, GLOBALS2::VIEWNAME
     std::string rangeDate = StringUtil::getInstance().EMPTY_STRING;;
     
 
-                        if(this->command.compareTo(this->VIEWORDERSINLASTHOUR) == 0)
+                        if(this->command.compare(this->VIEWORDERSINLASTHOUR) == 0)
                         
                                     {
                                     
@@ -542,7 +543,7 @@ rangeDate= Long(oneHour).toString();
                                     }
                                 
                              else 
-                        if(this->command.compareTo(this->VIEWORDERSINLASTDAY) == 0)
+                        if(this->command.compare(this->VIEWORDERSINLASTDAY) == 0)
                         
                                     {
                                     
@@ -554,7 +555,7 @@ rangeDate= Long(oneDay).toString();
                                     }
                                 
                              else 
-                        if(this->command.compareTo(this->VIEWORDERSINLASTWEEK) == 0)
+                        if(this->command.compare(this->VIEWORDERSINLASTWEEK) == 0)
                         
                                     {
                                     
@@ -566,7 +567,7 @@ rangeDate= Long(oneWeek).toString();
                                     }
                                 
                              else 
-                        if(this->command.compareTo(this->VIEWORDERSINLAST30DAYS) == 0)
+                        if(this->command.compare(this->VIEWORDERSINLAST30DAYS) == 0)
                         
                                     {
                                     
@@ -578,7 +579,7 @@ rangeDate= Long(thirtyDays).toString();
                                     }
                                 
                              else 
-                        if(this->command.compareTo(this->VIEWALLORDERS) == 0)
+                        if(this->command.compare(this->VIEWALLORDERS) == 0)
                         
                                     {
                                     rangeDate= Long(currentTime).toString();
@@ -600,7 +601,7 @@ this->toDate= time;
                                     }
                                 
                              else 
-                        if(this->dateType.compareTo(OrderHistoryData::TYPECAESAR) == 0)
+                        if(this->dateType.compare(OrderHistoryData::TYPECAESAR) == 0)
                         
                                     {
                                     
@@ -719,7 +720,7 @@ this->logUtil.putF(stringBuffer.toString(), this, this->commonStrings.IS_VALID);
     StringMaker result = StringMaker();;
     
 
-                        if(false || (this->dateType.compareTo(OrderHistoryData::TYPELONG) != 0 && this->dateType.compareTo(OrderHistoryData::TYPECAESAR) != 0))
+                        if(false || (this->dateType.compare(OrderHistoryData::TYPELONG) != 0 && this->dateType.compare(OrderHistoryData::TYPECAESAR) != 0))
                         
                                     {
                                     result.append("DATETYPE not recognized");

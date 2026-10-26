@@ -18,9 +18,9 @@
 
 
 
-            #include "../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/layer/AllBinaryLayer.h>
 
@@ -78,7 +78,7 @@ this->EVENT_POOL.initAllBinaryEventCircularPool(TrackingEventFactory());
 
     public: TrackingEvent getNextInstance(AllBinaryLayer layerInterface){
 
-    TrackingEvent trackingEvent = this->EVENT_POOL.getNextInstance() as TrackingEvent;;
+    TrackingEvent trackingEvent = this->EVENT_POOL.getNextInstance();;
     
 trackingEvent.setLayerInterfaceForCircularStaticPool(layerInterface);
     

@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
 #include <org/allbinary/game/view/TileLayerPositionIntoViewPosition.h>
 
@@ -60,7 +60,7 @@ class TileLayerPositionIntoViewPositionUtil
 
     public: static void init(AllBinaryGameCanvas gameCanvasInterface, TileLayerPositionIntoViewPosition viewPosition){
 
-    GeographicMapCompositeInterface geographicMapCompositeInterface = gameCanvasInterface.getLayerManager() as GeographicMapCompositeInterface;;
+    GeographicMapCompositeInterface geographicMapCompositeInterface = gameCanvasInterface.getLayerManager();;
     
 
     BasicGeographicMap geographicMapInterface = geographicMapCompositeInterface.getGeographicMapInterface()[0];;

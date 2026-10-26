@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/data/tree/dom/DomNodeInterface.h>
 
@@ -66,8 +66,9 @@ class MetaView: public HttpStoreComponentView, public DomNodeInterface {
 
     protected: MetasValidation metasValidation;
 
-public: MetaView(TransformInfoInterface transformInfoInterface){
-            super(transformInfoInterface);
+public: MetaView(TransformInfoInterface transformInfoInterface) : HttpStoreComponentView(transformInfoInterface){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -78,7 +79,7 @@ this->metasValidation= MetasValidation(this->getWeblisketSession().getStoreName(
 
 
     public: void addDomNodeInterfaces(){
-this->addDomNodeInterface(this->metasValidation as DomNodeInterface);
+this->addDomNodeInterface(this->metasValidation);
     
 }
 

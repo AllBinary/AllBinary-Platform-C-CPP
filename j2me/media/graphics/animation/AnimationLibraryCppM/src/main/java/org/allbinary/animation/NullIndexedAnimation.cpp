@@ -4,17 +4,8 @@
 
 
 
-            #include "../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-#include <jsinterop/annotations/JsType.h>
-
-      
-#include <jsinterop/annotations/JsMethod.h>
-
-      
-#include <jsinterop/annotations/JsConstructor.h>
-
-      
 
 
 
@@ -38,8 +29,9 @@
 
 class NullIndexedAnimation: public IndexedAnimation {
 
-public: NullIndexedAnimation(AnimationBehavior animationBehavior){
-            super(animationBehavior);
+public: NullIndexedAnimation(AnimationBehavior animationBehavior) : IndexedAnimation(animationBehavior){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.

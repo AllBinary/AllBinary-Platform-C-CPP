@@ -18,9 +18,9 @@
 
 
 
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../../../java/lang/Long.h"
+            #include "java/lang/Long.h"
         
 #include <java/util/HashMap.h>
 
@@ -78,8 +78,9 @@ class IdGeneratorEntity: public AbSqlBean, public IdGeneratorEntityInterface {
 
     const std::string VALUE = "VALUE";
 
-public: IdGeneratorEntity(){
-            super(UserDbInitInfo());
+public: IdGeneratorEntity() : AbSqlBean(UserDbInitInfo()){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -95,15 +96,15 @@ super.setTableName(this->tableName);
             
     public: Long get(std::string name){
 
-    HashMap<any, any> keysAndValues = StdUtil::getInstance().createHashMap();;
+    HashMap<Object*, Object*> keysAndValues = StdUtil::getInstance().createHashMap();;
     
 keysAndValues.put(this->NAME, name);
     
 
-    HashMap<any, any> hashMap = super.getRow(keysAndValues);;
+    HashMap<Object*, Object*> hashMap = super.getRow(keysAndValues);;
     
 
-                        if((get as string).compareTo(name) != 0)
+                        if((get).compareTo(name) != 0)
                         
                                     {
                                     
@@ -115,7 +116,7 @@ keysAndValues.put(this->NAME, name);
                                     }
                                 
 
-    std::string value = hashMap.get(this->VALUE) as string;;
+    std::string value = hashMap.get(this->VALUE);;
     
 
 
@@ -164,7 +165,7 @@ this->logUtil.put(this->commonStrings.FAILURE, this, this->commonStrings.delete_
 
     public: void update(std::string name, Long value){
 
-    HashMap<any, any> map = StdUtil::getInstance().createHashMap();;
+    HashMap<Object*, Object*> map = StdUtil::getInstance().createHashMap();;
     
 map.put(this->NAME, name);
     
@@ -175,8 +176,8 @@ this->update(map);
 }
 
 
-    public: void update(HashMap<any, any> hashMap){
-super.updateWhere(this->NAME, hashMap.get(this->NAME) as string, hashMap);
+    public: void update(HashMap<Object*, Object*> hashMap){
+super.updateWhere(this->NAME, hashMap.get(this->NAME), hashMap);
     
 }
 

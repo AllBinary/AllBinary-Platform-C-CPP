@@ -52,8 +52,9 @@ class TouchButtonFireResource: public TouchButtonResource {
 }
 
 
-private: TouchButtonFireResource(){
-            super("/touch_button_fire_64_by_64.png", "/touch_button_fire_hint_64_by_64.png");
+private: TouchButtonFireResource() : TouchButtonResource("/touch_button_fire_64_by_64.png", "/touch_button_fire_hint_64_by_64.png"){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.

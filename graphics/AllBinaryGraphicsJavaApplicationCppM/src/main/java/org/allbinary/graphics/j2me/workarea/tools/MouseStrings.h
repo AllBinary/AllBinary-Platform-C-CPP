@@ -21,7 +21,7 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_J2ME_WORKAREA_TOOLS_MOUSESTRINGS_H
         #define ORG_ALLBINARY_GRAPHICS_J2ME_WORKAREA_TOOLS_MOUSESTRINGS_H
 
-            #include "../../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
 #include <org/allbinary/string/CommonSeps.h>
 

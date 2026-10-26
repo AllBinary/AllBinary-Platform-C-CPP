@@ -20,7 +20,7 @@
 
             #include <vector>
         
-            #include "../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
 #include <java/awt/image/BufferedImage.h>
 
@@ -96,7 +96,7 @@ class ImageComparisonSearch
 public: ImageComparisonSearch(BufferedImage bufferedImage, BufferedImage bufferedImage2, int32_t tolerance){
 this->nonMatchingPixelVector= BasicArrayListD();
     
-this->setBufferedImages(new Array(2));
+this->setBufferedImages(std::vector<BufferedImage>(2));
     
 this->getBufferedImages()[0]= bufferedImage;
     

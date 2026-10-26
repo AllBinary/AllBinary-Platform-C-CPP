@@ -20,7 +20,7 @@
 
             #include <vector>
         
-            #include "../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
 #include <org/allbinary/logic/NullUtil.h>
 
@@ -66,7 +66,7 @@ class LastFetchHighScoresFactory
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return LastFetchHighScoresFactory::instance() as LastFetchHighScoresFactory;
+                        return LastFetchHighScoresFactory::instance();
     
 }
 

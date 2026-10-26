@@ -21,11 +21,11 @@
         #ifndef ORG_ALLBINARY_BUSINESS_USER_COMMERCE_MONEY_PAYMENT_PAYMENT_H
         #define ORG_ALLBINARY_BUSINESS_USER_COMMERCE_MONEY_PAYMENT_PAYMENT_H
 
-            #include "../../../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../../../../../java/lang/Integer.h"
+            #include "java/lang/Integer.h"
         
 #include <java/util/HashMap.h>
 
@@ -117,7 +117,7 @@ class Payment
 
     private: bool isDefault = false;
 
-public: Payment(HashMap<any, any> payment);
+public: Payment(HashMap<Object*, Object*> payment);
 
 public: Payment(ServletRequest request);
 
@@ -187,7 +187,7 @@ public: Payment();
 
     public: bool isDefault();
 
-    public: HashMap<any, any> toHashMap();
+    public: HashMap<Object*, Object*> toHashMap();
 
                 //@Throws(Exception.constructor)
             

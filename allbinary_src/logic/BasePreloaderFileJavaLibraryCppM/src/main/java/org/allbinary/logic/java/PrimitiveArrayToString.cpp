@@ -20,7 +20,7 @@
 
             #include <vector>
         
-            #include "../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
 #include <org/allbinary/logic/string/StringMaker.h>
 
@@ -59,7 +59,7 @@ class PrimitiveArrayToString
                         for (
     int32_t index = 0;index < floats.size(); index++)
         {
-stringBuffer.appendfloat(floats[index]!);
+stringBuffer.appendfloat(floats[index]);
     
 }
 

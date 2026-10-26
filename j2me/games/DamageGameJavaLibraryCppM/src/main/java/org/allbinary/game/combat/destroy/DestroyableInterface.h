@@ -21,15 +21,9 @@
         #ifndef ORG_ALLBINARY_GAME_COMBAT_DESTROY_DESTROYABLEINTERFACE_H
         #define ORG_ALLBINARY_GAME_COMBAT_DESTROY_DESTROYABLEINTERFACE_H
 
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-#include <jsinterop/annotations/JsType.h>
-
-      
 #include <org/allbinary/layer/NamedInterface.h>
-
-      
-#include <jsinterop/annotations/JsMethod.h>
 
       
 

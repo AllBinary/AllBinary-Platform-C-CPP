@@ -21,7 +21,7 @@
         #ifndef ORG_ALLBINARY_INPUT_MOTION_BUTTON_NOBUTTONSTOUCHINPUTFACTORY_H
         #define ORG_ALLBINARY_INPUT_MOTION_BUTTON_NOBUTTONSTOUCHINPUTFACTORY_H
 
-            #include "../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
 
 

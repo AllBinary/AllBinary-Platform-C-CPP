@@ -18,9 +18,9 @@
 
 
 
-            #include "../java/lang/Class.h"
+            #include "java/lang/Class.h"
         
-            #include "../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/lang/reflect/Method.h>
 
@@ -71,7 +71,7 @@ public: XmlValidationTransformTag(){
 
         try {
             
-    Function helperClass = this->getHelper().constructor;;
+    Class* helperClass = this->getHelper().getClass();;
     
 
     Method method = helperClass.getMethod(commonStrings.IS_VALID, 
@@ -79,7 +79,7 @@ public: XmlValidationTransformTag(){
     
 
     Boolean result = method.invoke(this->getHelper(), 
-                            nullptr) as Boolean;;
+                            nullptr);;
     
 
 

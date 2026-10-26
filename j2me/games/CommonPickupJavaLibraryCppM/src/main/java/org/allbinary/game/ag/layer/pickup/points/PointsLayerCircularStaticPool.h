@@ -21,7 +21,7 @@
         #ifndef ORG_ALLBINARY_GAME_AG_LAYER_PICKUP_POINTS_POINTSLAYERCIRCULARSTATICPOOL_H
         #define ORG_ALLBINARY_GAME_AG_LAYER_PICKUP_POINTS_POINTSLAYERCIRCULARSTATICPOOL_H
 
-            #include "../../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/game/score/ScoreableInterface.h>
 

@@ -21,7 +21,7 @@
         #ifndef ORG_ALLBINARY_AUDIO_AUDIOCONTENTTYPEDATAFACTORY_H
         #define ORG_ALLBINARY_AUDIO_AUDIOCONTENTTYPEDATAFACTORY_H
 
-            #include "../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
 
 

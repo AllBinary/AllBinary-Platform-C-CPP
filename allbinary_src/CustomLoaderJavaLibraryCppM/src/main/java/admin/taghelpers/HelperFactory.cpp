@@ -20,11 +20,11 @@
 
             #include <vector>
         
-            #include "../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../java/lang/Class.h"
+            #include "java/lang/Class.h"
         
-            #include "../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
 
@@ -75,24 +75,24 @@ class HelperFactory
 
                 //@Throws(LicensingException.constructor)
             
-    public: static Object* getInstance(AbeClientInformationInterface abeClientInformation, std::string factoryName, std::string className, HashMap<any, any> hashMap, HttpServletRequest httpServletRequest){
+    public: static Object* getInstance(AbeClientInformationInterface abeClientInformation, std::string factoryName, std::string className, HashMap<Object*, Object*> hashMap, HttpServletRequest httpServletRequest){
 
     LogUtil logUtil = LogUtil::getInstance();;
     
 
         try {
             
-    std::vector<Object*> params = new Array(2);;
+    std::vector<Object*> params = std::vector<Object*>(2);;
     
 
-    std::vector<Function> classes = new Array(2);;
+    std::vector<Class*> classes = std::vector<Class>(2);;
     
 
     AbeFactory abeFactory = AbeFactory::getInstance();;
     
-classes[0]= hashMap.constructor;
+classes[0]= hashMap.getClass();
     
-classes[1]= abeFactory.constructor;
+classes[1]= abeFactory.getClass();
     
 params[0]= hashMap;
     
@@ -158,24 +158,24 @@ params[1]= httpServletRequest;
 
                 //@Throws(LicensingException.constructor)
             
-    public: static Object* getInstance(AbeClientInformationInterface abeClientInformation, std::string factoryName, std::string className, HashMap<any, any> hashMap, PageContext pageContext){
+    public: static Object* getInstance(AbeClientInformationInterface abeClientInformation, std::string factoryName, std::string className, HashMap<Object*, Object*> hashMap, PageContext pageContext){
 
     LogUtil logUtil = LogUtil::getInstance();;
     
 
         try {
             
-    std::vector<Object*> params = new Array(2);;
+    std::vector<Object*> params = std::vector<Object*>(2);;
     
 
-    std::vector<Function> classes = new Array(2);;
+    std::vector<Class*> classes = std::vector<Class>(2);;
     
 
     AbeFactory abeFactory = AbeFactory::getInstance();;
     
-classes[0]= hashMap.constructor;
+classes[0]= hashMap.getClass();
     
-classes[1]= abeFactory.constructor;
+classes[1]= abeFactory.getClass();
     
 params[0]= hashMap;
     
@@ -241,26 +241,26 @@ logUtil.put(commonStrings.EXCEPTION, factoryName +"->HelperFactory", "getInstanc
 
                 //@Throws(LicensingException.constructor)
             
-    public: static Object* getInstance(AbeClientInformationInterface abeClientInformation, std::string factoryName, std::string className, HashMap<any, any> hashMap, HashMap<any, any> specialhashMap, PageContext pageContext){
+    public: static Object* getInstance(AbeClientInformationInterface abeClientInformation, std::string factoryName, std::string className, HashMap<Object*, Object*> hashMap, HashMap<Object*, Object*> specialhashMap, PageContext pageContext){
 
     LogUtil logUtil = LogUtil::getInstance();;
     
 
         try {
             
-    std::vector<Object*> params = new Array(3);;
+    std::vector<Object*> params = std::vector<Object*>(3);;
     
 
-    std::vector<Function> classes = new Array(3);;
+    std::vector<Class*> classes = std::vector<Class>(3);;
     
 
     AbeFactory abeFactory = AbeFactory::getInstance();;
     
-classes[0]= hashMap.constructor;
+classes[0]= hashMap.getClass();
     
-classes[1]= specialhashMap.constructor;
+classes[1]= specialhashMap.getClass();
     
-classes[2]= abeFactory.constructor;
+classes[2]= abeFactory.getClass();
     
 params[0]= hashMap;
     

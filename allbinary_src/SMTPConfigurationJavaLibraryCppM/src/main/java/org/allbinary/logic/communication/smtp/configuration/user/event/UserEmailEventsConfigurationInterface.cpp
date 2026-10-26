@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
 
@@ -57,7 +57,7 @@
 
 class UserEmailEventsConfigurationInterface {
 
-    HashMap<any, any> getEventConfigurationHashMap()
+    HashMap<Object*, Object*> getEventConfigurationHashMap()
 
     void addUserEmailEventConfiguration(UserEmailEventConfigurationInterface userEmailEventConfigurationInterface)
 

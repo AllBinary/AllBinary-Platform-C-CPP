@@ -21,13 +21,13 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_J2ME_WORKAREA_TOOLS_POINTSDOMUTIL_H
         #define ORG_ALLBINARY_GRAPHICS_J2ME_WORKAREA_TOOLS_POINTSDOMUTIL_H
 
-            #include "../../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../../../../java/lang/Integer.h"
+            #include "java/lang/Integer.h"
         
-            #include "../../../../../../java/lang/Double.h"
+            #include "java/lang/Double.h"
         
 #include <org/allbinary/graphics/GPoint.h>
 

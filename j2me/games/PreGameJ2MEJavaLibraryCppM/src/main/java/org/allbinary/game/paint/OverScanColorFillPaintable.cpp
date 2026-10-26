@@ -46,8 +46,9 @@
 
 class OverScanColorFillPaintable: public ColorFillPaintable {
 
-public: OverScanColorFillPaintable(BasicColor basicColor){
-            super(basicColor);
+public: OverScanColorFillPaintable(BasicColor basicColor) : ColorFillPaintable(basicColor){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.

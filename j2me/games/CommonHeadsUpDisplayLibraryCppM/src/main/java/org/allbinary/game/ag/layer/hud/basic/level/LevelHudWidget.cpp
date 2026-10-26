@@ -20,7 +20,7 @@
 
             #include <vector>
         
-            #include "../../../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <javax/microedition/lcdui/Font.h>
 
@@ -90,8 +90,9 @@ class LevelHudWidget: public BasicHud, public PaintableInterface {
 
     private: PrimitiveLongUtil primitiveLongUtil;
 
-public: LevelHudWidget(int32_t maxlevel, int32_t location, int32_t direction){
-            super(location, direction, 2, BasicColorFactory::getInstance().GREY);
+public: LevelHudWidget(int32_t maxlevel, int32_t location, int32_t direction) : BasicHud(location, direction, 2, BasicColorFactory::getInstance().GREY){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.

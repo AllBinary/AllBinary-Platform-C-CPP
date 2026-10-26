@@ -18,11 +18,8 @@
 
 
 
-            #include "../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-#include <jsinterop/annotations/JsType.h>
-
-      
 #include <org/allbinary/game/rand/MyRandomFactory.h>
 
       
@@ -33,9 +30,6 @@
 
       
 #include <org/allbinary/util/BasicArrayListD.h>
-
-      
-#include <jsinterop/annotations/JsMethod.h>
 
       
 
@@ -91,7 +85,7 @@ class Advertisements
     int32_t random = this->myRandomFactory.getAbsoluteNextInt(size);;
     
 
-    AdvertisementProcessorInterface advertisementProcessorInterface = this->pageList.objectArray[random]! as AdvertisementProcessorInterface;;
+    AdvertisementProcessorInterface advertisementProcessorInterface = this->pageList.objectArray[random];;
     
 advertisementProcessorInterface.start();
     
@@ -119,7 +113,7 @@ advertisementProcessorInterface.start();
     int32_t random = this->myRandomFactory.getAbsoluteNextInt(size);;
     
 
-    AdvertisementProcessorInterface advertisementProcessorInterface = this->pageList.objectArray[random]! as AdvertisementProcessorInterface;;
+    AdvertisementProcessorInterface advertisementProcessorInterface = this->pageList.objectArray[random];;
     
 advertisementProcessorInterface.process();
     
@@ -141,7 +135,7 @@ advertisementProcessorInterface.process();
     int32_t index = this->pageList.size();--index >= 0; )
         {
 
-    AdvertisementProcessorInterface advertisementProcessorInterface = this->pageList.objectArray[index]! as AdvertisementProcessorInterface;;
+    AdvertisementProcessorInterface advertisementProcessorInterface = this->pageList.objectArray[index];;
     
 advertisementProcessorInterface.stop();
     
@@ -172,7 +166,7 @@ advertisementProcessorInterface.stop();
     int32_t index = this->bannerList.size();--index >= 0; )
         {
 
-    AdvertisementProcessorInterface advertisementProcessorInterface = this->bannerList.objectArray[index]! as AdvertisementProcessorInterface;;
+    AdvertisementProcessorInterface advertisementProcessorInterface = this->bannerList.objectArray[index];;
     
 advertisementProcessorInterface.start();
     
@@ -190,7 +184,7 @@ advertisementProcessorInterface.start();
     int32_t index = this->bannerList.size();--index >= 0; )
         {
 
-    AdvertisementProcessorInterface advertisementProcessorInterface = this->bannerList.objectArray[index]! as AdvertisementProcessorInterface;;
+    AdvertisementProcessorInterface advertisementProcessorInterface = this->bannerList.objectArray[index];;
     
 advertisementProcessorInterface.stop();
     
@@ -201,7 +195,7 @@ advertisementProcessorInterface.stop();
 
     public: AdvertisementProcessorInterface getBanner(int32_t index){
 
-    AdvertisementProcessorInterface advertisementProcessorInterface = this->bannerList.objectArray[index]! as AdvertisementProcessorInterface;;
+    AdvertisementProcessorInterface advertisementProcessorInterface = this->bannerList.objectArray[index];;
     
 
 

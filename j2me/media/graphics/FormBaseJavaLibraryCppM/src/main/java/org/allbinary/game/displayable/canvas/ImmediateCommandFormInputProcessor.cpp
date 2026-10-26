@@ -18,11 +18,8 @@
 
 
 
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-#include <jsinterop/annotations/JsType.h>
-
-      
 #include <org/allbinary/game/input/event/GameKeyEvent.h>
 
       
@@ -36,15 +33,6 @@
 
       
 #include <org/allbinary/util/BasicArrayList.h>
-
-      
-#include <jsinterop/annotations/JsMethod.h>
-
-      
-#include <jsinterop/annotations/JsConstructor.h>
-
-      
-#include <jsinterop/annotations/JsProperty.h>
 
       
 
@@ -74,8 +62,9 @@ class ImmediateCommandFormInputProcessor: public CommandFormInputProcessor {
 
     protected: GameCommandCanvas gameCommandCanvas;
 
-public: ImmediateCommandFormInputProcessor(BasicArrayList gameKeyEventList, int32_t playerInputId, GameCommandCanvas gameCommandCanvas, ScrollSelectionForm form){
-            super(gameKeyEventList, playerInputId, gameCommandCanvas, form);
+public: ImmediateCommandFormInputProcessor(BasicArrayList gameKeyEventList, int32_t playerInputId, GameCommandCanvas gameCommandCanvas, ScrollSelectionForm form) : CommandFormInputProcessor(gameKeyEventList, playerInputId, gameCommandCanvas, form){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.

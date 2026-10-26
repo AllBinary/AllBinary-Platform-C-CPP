@@ -21,9 +21,9 @@
         #ifndef ORG_ALLBINARY_INPUT_MOTION_GESTURE_OBSERVER_RESOLVECOMPLETEMOTIONGESTURELISTENER_H
         #define ORG_ALLBINARY_INPUT_MOTION_GESTURE_OBSERVER_RESOLVECOMPLETEMOTIONGESTURELISTENER_H
 
-            #include "../../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/game/input/CompleteMotionGestureInputEventHandler.h>
 

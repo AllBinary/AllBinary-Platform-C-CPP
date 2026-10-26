@@ -21,9 +21,9 @@
         #ifndef ORG_ALLBINARY_MIDLET_PROGRESSMIDLET_H
         #define ORG_ALLBINARY_MIDLET_PROGRESSMIDLET_H
 
-            #include "../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../java/lang/Runnable.h"
+            #include "java/lang/Runnable.h"
         
 #include <org/allbinary/canvas/Processor.h>
 

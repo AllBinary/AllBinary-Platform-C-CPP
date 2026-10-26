@@ -18,11 +18,8 @@
 
 
 
-            #include "../../../../java/lang/Integer.h"
+            #include "java/lang/Integer.h"
         
-#include <jsinterop/annotations/JsType.h>
-
-      
 #include <org/allbinary/game/input/event/GameKeyEvent.h>
 
       
@@ -48,15 +45,6 @@
 
       
 #include <org/allbinary/util/BasicArrayList.h>
-
-      
-#include <jsinterop/annotations/JsMethod.h>
-
-      
-#include <jsinterop/annotations/JsConstructor.h>
-
-      
-#include <jsinterop/annotations/JsProperty.h>
 
       
 
@@ -86,8 +74,9 @@ class PlayerGameInput: public GameInput, public GameKeyEventListenerInterface {
 
     private: int32_t playerInputId;
 
-public: PlayerGameInput(BasicArrayList gameKeyEventList, BasicArrayList removalGameKeyEventList, int32_t playerInputId){
-            super(gameKeyEventList, removalGameKeyEventList);
+public: PlayerGameInput(BasicArrayList gameKeyEventList, BasicArrayList removalGameKeyEventList, int32_t playerInputId) : GameInput(gameKeyEventList, removalGameKeyEventList){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.

@@ -20,9 +20,9 @@
 
             #include <vector>
         
-            #include "../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../java/lang/System.h"
+            #include "java/lang/System.h"
         
 #include <java/util/Arrays.h>
 
@@ -75,7 +75,7 @@ class OrderedObjectArrayPermutationUtil
     int32_t TOTAL = 7;;
     
 
-    std::vector<Object*> data = new Array(TOTAL);;
+    std::vector<Object*> data = std::vector<Object*>(TOTAL);;
     
 
 
@@ -124,7 +124,7 @@ private: OrderedObjectArrayPermutationUtil(){
     TsUtil tsUtil = TsUtil::getInstance();;
     
 
-        while(tsUtil.hashCode(data[i -1]!) >= tsUtil.hashCode(data[i]!))
+        while(tsUtil.hashCode(data[i -1]) >= tsUtil.hashCode(data[i]))
         {
 i= i -1;
     
@@ -134,7 +134,7 @@ i= i -1;
     int32_t j = length;;
     
 
-        while(tsUtil.hashCode(data[j -1]!) <= tsUtil.hashCode(data[i -1]!))
+        while(tsUtil.hashCode(data[j -1]) <= tsUtil.hashCode(data[i -1]))
         {
 j= j -1;
     
@@ -164,7 +164,7 @@ j--;
 
     Object* temp = data[a];;
     
-data[a]= data[b]!;
+data[a]= data[b];
     
 data[b]= temp;
     

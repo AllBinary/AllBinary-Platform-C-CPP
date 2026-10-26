@@ -20,9 +20,9 @@
 
             #include <vector>
         
-            #include "../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../java/lang/Throwable.h"
+            #include "java/lang/Throwable.h"
         
 #include <java/lang/reflect/Method.h>
 
@@ -79,7 +79,7 @@ this->anyType= anyType;
     std::string methodName = proxyMethod.getName();;
     
 
-    Method realMethod = this->anyType.constructor.name.getMethod(methodName, proxyMethod.getParameterTypes());;
+    Method realMethod = this->anyType->constructor.name.getMethod(methodName, proxyMethod.getParameterTypes());;
     
 
                         if(!realMethod.isAccessible())

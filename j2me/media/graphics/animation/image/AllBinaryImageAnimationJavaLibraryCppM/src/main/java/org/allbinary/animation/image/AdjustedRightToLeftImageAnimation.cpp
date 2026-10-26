@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <javax/microedition/lcdui/Graphics.h>
 
@@ -55,8 +55,9 @@ class AdjustedRightToLeftImageAnimation: public RightToLeftImageAnimation {
 
     private: int32_t dy= 0;
 
-public: AdjustedRightToLeftImageAnimation(Image image, int32_t dx, int32_t dy, AnimationBehavior animationBehavior){
-            super(image, animationBehavior);
+public: AdjustedRightToLeftImageAnimation(Image image, int32_t dx, int32_t dy, AnimationBehavior animationBehavior) : RightToLeftImageAnimation(image, animationBehavior){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.

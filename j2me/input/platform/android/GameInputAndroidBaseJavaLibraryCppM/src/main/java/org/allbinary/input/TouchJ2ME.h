@@ -21,7 +21,7 @@
         #ifndef ORG_ALLBINARY_INPUT_TOUCHJ2ME_H
         #define ORG_ALLBINARY_INPUT_TOUCHJ2ME_H
 
-            #include "../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
 
 

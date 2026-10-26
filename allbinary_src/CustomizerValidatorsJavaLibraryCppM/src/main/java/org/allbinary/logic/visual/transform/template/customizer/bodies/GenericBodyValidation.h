@@ -21,7 +21,7 @@
         #ifndef ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_TEMPLATE_CUSTOMIZER_BODIES_GENERICBODYVALIDATION_H
         #define ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_TEMPLATE_CUSTOMIZER_BODIES_GENERICBODYVALIDATION_H
 
-            #include "../../../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
 
@@ -98,11 +98,11 @@ public: GenericBodyValidation();
 
 public: GenericBodyValidation(Document document);
 
-public: GenericBodyValidation(HashMap<any, any> hashMap);
+public: GenericBodyValidation(HashMap<Object*, Object*> hashMap);
 
                 //@Throws(Exception.constructor)
             
-    public: void getFormData(HashMap<any, any> hashMap);
+    public: void getFormData(HashMap<Object*, Object*> hashMap);
 
     public: Boolean isValid();
 

@@ -45,8 +45,9 @@
         
 class ArtificialIntelligenceLayerManager: public LayerManager {
 
-public: ArtificialIntelligenceLayerManager(){
-            super(LayerManagerNoDebug::getInstance());
+public: ArtificialIntelligenceLayerManager() : LayerManager(LayerManagerNoDebug::getInstance()){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.

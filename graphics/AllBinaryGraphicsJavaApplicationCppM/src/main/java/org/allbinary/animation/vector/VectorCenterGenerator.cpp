@@ -20,11 +20,11 @@
 
             #include <vector>
         
-            #include "../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../../java/lang/Integer.h"
+            #include "java/lang/Integer.h"
         
 #include <java/util/HashMap.h>
 
@@ -127,7 +127,7 @@ public: VectorCenterGenerator(){
 
                 //@Throws(Exception.constructor)
             
-    public: void calculate(HashMap<any, any> hashMap){
+    public: void calculate(HashMap<Object*, Object*> hashMap){
 
     std::vector<Object*> graphicItemArray = hashMap.keys().();;
     
@@ -142,7 +142,7 @@ public: VectorCenterGenerator(){
     int32_t index = 0;index < size; index++)
         {
 
-    GraphicItemInterface item = hashMap.get(graphicItemArray[index]!) as GraphicItemInterface;;
+    GraphicItemInterface item = hashMap.get(graphicItemArray[index]);;
     
 
                         if(item.getName() == LinesGraphicItem::getStaticName())
@@ -199,7 +199,7 @@ this->dy= middle -currentMiddleY;
 
                 //@Throws(Exception.constructor)
             
-    public: void transform(HashMap<any, any> hashMap){
+    public: void transform(HashMap<Object*, Object*> hashMap){
 this->calculate(hashMap);
     
 this->logUtil.putF(StringMaker().append(" dx: ").appendint(this->dx).append(" dy: ").appendint(this->dy).toString(), this, this->commonStrings.GET_INSTANCE);
@@ -218,7 +218,7 @@ this->logUtil.putF(StringMaker().append(" dx: ").appendint(this->dx).append(" dy
     int32_t index = 0;index < size; index++)
         {
 
-    GraphicItemInterface item = hashMap.get(graphicItemArray[index]!) as GraphicItemInterface;;
+    GraphicItemInterface item = hashMap.get(graphicItemArray[index]);;
     
 
     BasicArrayList list = VectorCenterGenerator::translate(item.getPointsInterface().getPoints(), dx, dy);;
@@ -251,7 +251,7 @@ item.setPointsInterface(newPoints);
     int32_t index = 0;index < size; index++)
         {
 
-    GPoint point = pointVector.get(index) as GPoint;;
+    GPoint point = pointVector.get(index);;
     
 
                         if(point.getX() < this->minX)

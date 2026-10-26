@@ -21,7 +21,7 @@
         #ifndef ORG_ALLBINARY_GAME_COLLISION_COLLISIONTYPEFACTORY_H
         #define ORG_ALLBINARY_GAME_COLLISION_COLLISIONTYPEFACTORY_H
 
-            #include "../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
 
 

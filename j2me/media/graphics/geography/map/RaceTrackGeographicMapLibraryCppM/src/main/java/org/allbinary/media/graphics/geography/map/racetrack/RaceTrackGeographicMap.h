@@ -23,7 +23,7 @@
 
             #include <vector>
         
-            #include "../../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/logic/string/StringMaker.h>
 

@@ -21,11 +21,8 @@
         #ifndef ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_GEOGRAPHICMAPCELLPOSITIONFACTORY_H
         #define ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_GEOGRAPHICMAPCELLPOSITIONFACTORY_H
 
-            #include "../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-#include <java/util/Hashtable.h>
-
-      
 #include <org/allbinary/string/CommonStrings.h>
 
       
@@ -39,6 +36,9 @@
 
       
 #include <org/allbinary/logic/string/StringMaker.h>
+
+      
+#include <org/allbinary/util/ABHashtable.h>
 
       
 
@@ -65,9 +65,9 @@
 
 class GeographicMapCellPositionFactory: public GeographicMapCellPositionBaseFactory {
 
-    private: static const Hashtable<any, any> hashtable = StdUtil::getInstance().createHashtable();
+    private: static const ABHashtable<Object*, Object*> hashtable = StdUtil::getInstance().createHashtable();
 
-    public: static Hashtable<any, any> getHashtable();
+    public: static ABHashtable<Object*, Object*> getHashtable();
 
     protected: const LogUtil logUtil = LogUtil::getInstance();
 

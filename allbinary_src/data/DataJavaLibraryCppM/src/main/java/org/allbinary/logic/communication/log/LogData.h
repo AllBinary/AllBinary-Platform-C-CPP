@@ -21,7 +21,7 @@
         #ifndef ORG_ALLBINARY_LOGIC_COMMUNICATION_LOG_LOGDATA_H
         #define ORG_ALLBINARY_LOGIC_COMMUNICATION_LOG_LOGDATA_H
 
-            #include "../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
 #include <org/allbinary/logic/io/path/AbPathData.h>
 

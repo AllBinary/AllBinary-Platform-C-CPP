@@ -21,7 +21,7 @@
         #ifndef ORG_ALLBINARY_ANIMATION_TRANSITION_SHAKE_SHAKEANIMATIONLISTENERFACTORY_H
         #define ORG_ALLBINARY_ANIMATION_TRANSITION_SHAKE_SHAKEANIMATIONLISTENERFACTORY_H
 
-            #include "../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
 
 

@@ -18,9 +18,9 @@
 
 
 
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../../java/lang/Long.h"
+            #include "java/lang/Long.h"
         
 #include <java/util/HashMap.h>
 
@@ -127,8 +127,9 @@ class AddFileValidationView: public DownloadableInventoryItemView, public Valida
 
     protected: const BasicItemData basicItemData = BasicItemData::getInstance();
 
-public: AddFileValidationView(TransformInfoInterface transformInfoInterface){
-            super(transformInfoInterface);
+public: AddFileValidationView(TransformInfoInterface transformInfoInterface) : DownloadableInventoryItemView(transformInfoInterface){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -140,10 +141,10 @@ public: AddFileValidationView(TransformInfoInterface transformInfoInterface){
 
         try {
             
-    std::string command = this->getRequestHashMap().get(GLOBALS2::ADMINCOMMAND) as string;;
+    std::string command = this->getRequestHashMap().get(GLOBALS2::ADMINCOMMAND);;
     
 
-                        if(StringValidationUtil::getInstance().isEmpty(command) || (command.compareTo(AddFileValidationView::ADDPRODUCT) != 0 && command.compareTo(ADDANOTHERDOWNLOADABLE) != 0))
+                        if(StringValidationUtil::getInstance().isEmpty(command) || (command.compare(AddFileValidationView::ADDPRODUCT) != 0 && command.compare(ADDANOTHERDOWNLOADABLE) != 0))
                         
                                     {
                                     
@@ -271,7 +272,7 @@ this->itemInterface= inventoryEntity.getItem(this->id);
                         
                                     {
                                     
-    FileItem fileItem = downloadableFileObject as FileItem;;
+    FileItem fileItem = *dynamic_cast<FileItem*>(downloadableFileObject);;
     
 
     std::string fileName = fileItem.getName();;
@@ -319,7 +320,7 @@ this->getRequestHashMap().put(DownloadItemData::SIZE, std::to_string(size));
                         
                                     {
                                     
-    FileItem fileItem = licenseFileObject as FileItem;;
+    FileItem fileItem = *dynamic_cast<FileItem*>(licenseFileObject);;
     
 
     std::string fileName = fileItem.getName();;
@@ -359,7 +360,7 @@ HttpFileUploadUtil::log(fileItem);
                         
                                     {
                                     
-    FileItem fileItem = extraFilesObject as FileItem;;
+    FileItem fileItem = *dynamic_cast<FileItem*>(extraFilesObject);;
     
 
     std::string fileName = fileItem.getName();;
@@ -394,7 +395,7 @@ this->unzip(fileItem);
                         }
                             
 
-    HashMap<any, any> hashMap = this->getRequestHashMap();;
+    HashMap<Object*, Object*> hashMap = this->getRequestHashMap();;
     
 hashMap.put(basicItemData.ID, this->itemInterface.getId());
     
@@ -407,7 +408,7 @@ hashMap.put(basicItemData.ID, this->itemInterface.getId());
                                 )
                         
                                     {
-                                    hashMap.put(DownloadItemData::LICENSE_FILE, (licenseObject as FileItem).getName());
+                                    hashMap.put(DownloadItemData::LICENSE_FILE, (licenseObject)).getName());
     
 
                                     }
@@ -427,7 +428,7 @@ hashMap.put(basicItemData.ID, this->itemInterface.getId());
                                 )
                         
                                     {
-                                    hashMap.put(DownloadItemData::FILE, (fileObject as FileItem).getName());
+                                    hashMap.put(DownloadItemData::FILE, (fileObject)).getName());
     
 
                                     }
@@ -522,10 +523,10 @@ this->downloadableItem= DownloadableItem(hashMap);
     StringMaker stringBuffer = StringMaker();;
     
 
-    std::string command = this->getRequestHashMap().get(GLOBALS2::ADMINCOMMAND) as string;;
+    std::string command = this->getRequestHashMap().get(GLOBALS2::ADMINCOMMAND);;
     
 
-                        if(StringValidationUtil::getInstance().isEmpty(command) || (command.compareTo(AddFileValidationView::ADDPRODUCT) != 0 && command.compareTo(ADDANOTHERDOWNLOADABLE) != 0))
+                        if(StringValidationUtil::getInstance().isEmpty(command) || (command.compare(AddFileValidationView::ADDPRODUCT) != 0 && command.compare(ADDANOTHERDOWNLOADABLE) != 0))
                         
                                     {
                                     
@@ -619,7 +620,7 @@ stringBuffer.append("<br />");
                         
                                     {
                                     
-    FileItem fileItem = downloadableFileObject as FileItem;;
+    FileItem fileItem = *dynamic_cast<FileItem*>(downloadableFileObject);;
     
 
     std::string fileName = fileItem.getName();;
@@ -648,7 +649,7 @@ stringBuffer.append("<br/>");
                         
                                     {
                                     
-    FileItem fileItem = licenseFileObject as FileItem;;
+    FileItem fileItem = *dynamic_cast<FileItem*>(licenseFileObject);;
     
 
     std::string fileName = fileItem.getName();;
@@ -673,7 +674,7 @@ this->validationInfo(stringBuffer, fileName, size);
                         
                                     {
                                     
-    FileItem fileItem = extraFilesObject as FileItem;;
+    FileItem fileItem = *dynamic_cast<FileItem*>(extraFilesObject);;
     
 
     std::string fileName = fileItem.getName();;

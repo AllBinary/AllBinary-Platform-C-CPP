@@ -18,9 +18,9 @@
 
 
 
-            #include "../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../java/lang/Float.h"
+            #include "java/lang/Float.h"
         
 #include <org/allbinary/util/BasicArrayList.h>
 
@@ -115,8 +115,9 @@ class ShippingMethodsView: public HttpStoreComponentView, public DomNodeInterfac
 
     private: StoreFrontInterface storeFrontInterface;
 
-public: ShippingMethodsView(TransformInfoInterface transformInfoInterface){
-            super(transformInfoInterface);
+public: ShippingMethodsView(TransformInfoInterface transformInfoInterface) : HttpStoreComponentView(transformInfoInterface){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -165,10 +166,10 @@ this->shippingMethods= ShippingMethods(this->abeClientInformation, this->storeFr
     Node shippingMethodNode = document.createElement(ShippingMethodsData::SHIPPINGMETHODORDERSUMMARY);;
     
 
-    ShippingInterface shipping = shippingVector.get(index) as ShippingInterface;;
+    ShippingInterface shipping = shippingVector.get(index);;
     
 
-    DomNodeInterface shippingView = shipping as DomNodeInterface;;
+    DomNodeInterface shippingView = shipping;;
     
 shippingMethodNode.appendChild(shippingView.toXmlNode(document));
     
@@ -243,7 +244,7 @@ shippingMethodsNode.appendChild(shippingMethodNode);
 
 
     public: void addDomNodeInterfaces(){
-this->addDomNodeInterface(this as DomNodeInterface);
+this->addDomNodeInterface(this);
     
 }
 

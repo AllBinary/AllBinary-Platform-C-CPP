@@ -7,17 +7,8 @@
         #ifndef ORG_ALLBINARY_ANIMATION_NULLINDEXEDANIMATION_H
         #define ORG_ALLBINARY_ANIMATION_NULLINDEXEDANIMATION_H
 
-            #include "../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-#include <jsinterop/annotations/JsType.h>
-
-      
-#include <jsinterop/annotations/JsMethod.h>
-
-      
-#include <jsinterop/annotations/JsConstructor.h>
-
-      
 
 
 

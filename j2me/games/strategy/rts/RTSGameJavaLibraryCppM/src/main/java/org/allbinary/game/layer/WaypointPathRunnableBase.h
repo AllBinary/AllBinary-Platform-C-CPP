@@ -21,13 +21,13 @@
         #ifndef ORG_ALLBINARY_GAME_LAYER_WAYPOINTPATHRUNNABLEBASE_H
         #define ORG_ALLBINARY_GAME_LAYER_WAYPOINTPATHRUNNABLEBASE_H
 
-            #include "../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../../java/lang/Integer.h"
+            #include "java/lang/Integer.h"
         
-            #include "../../../../java/lang/Thread.h"
+            #include "java/lang/Thread.h"
         
 #include <org/allbinary/layer/AllBinaryLayer.h>
 

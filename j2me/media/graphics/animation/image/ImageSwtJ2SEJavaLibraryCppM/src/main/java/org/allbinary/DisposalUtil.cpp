@@ -18,9 +18,9 @@
 
 
 
-            #include "../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../java/lang/System.h"
+            #include "java/lang/System.h"
         
 #include <javax/microedition/lcdui/Image.h>
 
@@ -92,9 +92,9 @@ class DisposalUtil
                         
                                     {
                                     
-    SwtMutableImage mutableImage = image as SwtMutableImage;;
+    SwtMutableImage mutableImage = image;;
     
-this->disposeResource(mutableImage.getImage() as Resource);
+this->disposeResource(mutableImage.getImage());
     
 
                                     }

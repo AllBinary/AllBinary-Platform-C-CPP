@@ -21,9 +21,9 @@
         #ifndef ORG_ALLBINARY_LOGIC_IO_FILESTREAMFACTORY_H
         #define ORG_ALLBINARY_LOGIC_IO_FILESTREAMFACTORY_H
 
-            #include "../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <android/content/Context.h>
 

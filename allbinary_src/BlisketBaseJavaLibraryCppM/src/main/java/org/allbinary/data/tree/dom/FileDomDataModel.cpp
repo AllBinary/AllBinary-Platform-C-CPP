@@ -18,9 +18,9 @@
 
 
 
-            #include "../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
 
@@ -75,10 +75,10 @@ this->file= file;
             
     public: Node toXmlNode(Document document){
 
-    TableMappingInterface tableMappingInterface = FileTableMapping(this->file) as TableMappingInterface;;
+    TableMappingInterface tableMappingInterface = FileTableMapping(this->file);;
     
 
-    HashMap<any, any> hashMap = tableMappingInterface.toHashMap();;
+    HashMap<Object*, Object*> hashMap = tableMappingInterface.toHashMap();;
     
 
 

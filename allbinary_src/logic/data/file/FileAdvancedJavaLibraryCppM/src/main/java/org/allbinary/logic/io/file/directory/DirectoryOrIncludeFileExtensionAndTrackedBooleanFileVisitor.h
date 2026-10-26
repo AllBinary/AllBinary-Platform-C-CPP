@@ -23,17 +23,12 @@
 
             #include <vector>
         
-            #include "../../../../../../java/lang/Exception.h"
+            #include "java/lang/System.h"
         
-            #include "../../../../../../java/lang/System.h"
-        
-#include <java/io/File.h>
+#include <org/allbinary/java/runtime/process/git/GitProcessHelper.h>
 
       
 #include <org/allbinary/logic/io/file/AbFile.h>
-
-      
-#include <org/allbinary/logic/io/file/AbFileNativeUtil.h>
 
       
 #include <org/allbinary/logic/io/file/CommonDataFileStrings.h>
@@ -67,14 +62,14 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "TrackedStrings.h"
-#include "ProcessBuilder.h"
-#include "Process.h"
 
 class DirectoryOrIncludeFileExtensionAndTrackedBooleanFileVisitor: public IncludeFileExtensionsBooleanFileVisitor {
 
     public: static void main(std::vector<std::string> args);
 
     private: const TrackedStrings trackedStrings = TrackedStrings::getInstance();
+
+    private: const GitProcessHelper gitProcessHelper = GitProcessHelper::getInstance();
 
     private: std::string includesString;
 
@@ -85,8 +80,6 @@ public: DirectoryOrIncludeFileExtensionAndTrackedBooleanFileVisitor(BasicArrayLi
     public: Boolean visit(AbFile file);
 
     public: Boolean visit(AbFile file, std::string fileNameString);
-
-    private: bool isGitTracked(AbFile file);
 
 };
 

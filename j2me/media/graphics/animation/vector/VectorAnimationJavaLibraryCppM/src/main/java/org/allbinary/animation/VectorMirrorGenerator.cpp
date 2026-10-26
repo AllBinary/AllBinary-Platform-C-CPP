@@ -20,9 +20,9 @@
 
             #include <vector>
         
-            #include "../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/graphics/PointFactory.h>
 
@@ -117,7 +117,7 @@ private: VectorMirrorGenerator(){
                         for (
     int32_t frame = 0;frame < size; frame++)
         {
-nextPoints= points[frame]!;
+nextPoints= points[frame];
     
 size2= nextPoints.size();
     
@@ -130,7 +130,7 @@ pointBasicArrayList= BasicArrayListS(size2);
                         for (
     int32_t index = 0;index < size2; index++)
         {
-pointBasicArrayList.add(pointFactory.createXY(nextPoints[index]![0]!, nextPoints[index]![1]!));
+pointBasicArrayList.add(pointFactory.createXY(nextPoints[index][0], nextPoints[index][1]));
     
 }
 
@@ -145,7 +145,7 @@ pointsBasicArrayList.add(pointBasicArrayList);
                         for (
     int32_t index = 0;index < points.size(); index++)
         {
-pointsBasicArrayList.add(this->getInstance(pointsBasicArrayList.objectArray[index]! as BasicArrayList, width));
+pointsBasicArrayList.add(this->getInstance(pointsBasicArrayList.objectArray[index], width));
     
 }
 

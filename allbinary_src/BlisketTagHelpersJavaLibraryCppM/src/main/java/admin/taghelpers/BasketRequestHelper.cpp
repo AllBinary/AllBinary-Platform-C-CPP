@@ -18,7 +18,7 @@
 
 
 
-            #include "../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
 
@@ -89,7 +89,7 @@ class BasketRequestHelper: public TagHelper {
 
     private: const StoreFrontInterface storeFrontInterface;
 
-    private: HashMap<any, any> propertiesHashMap;
+    private: HashMap<Object*, Object*> propertiesHashMap;
 
     private: PageContext pageContext;
 
@@ -101,15 +101,15 @@ class BasketRequestHelper: public TagHelper {
 
     private: const int32_t MAX = 200;
 
-public: BasketRequestHelper(HashMap<any, any> propertiesHashMap, PageContext pageContext){
+public: BasketRequestHelper(HashMap<Object*, Object*> propertiesHashMap, PageContext pageContext){
 this->propertiesHashMap= propertiesHashMap;
     
 this->pageContext= pageContext;
     
-this->request= pageContext.getRequest() as HttpServletRequest;
+this->request= pageContext.getRequest();
     
 
-    std::string storeName = propertiesHashMap.get(StoreFrontData::getInstance().NAME) as string;;
+    std::string storeName = propertiesHashMap.get(StoreFrontData::getInstance().NAME);;
     
 
                         if(true)

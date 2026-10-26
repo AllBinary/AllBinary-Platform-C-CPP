@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/logic/util/event/AllBinaryEventObject.h>
 
@@ -72,9 +72,9 @@ protected: ScrolledMotionGesturesHandler(){
             
     protected: void process(AllBinaryEventObject eventObject, EventListenerInterface eventListenerInterface){
 
-    BaseMotionGestureEventListener baseMotionGestureEventListener = eventListenerInterface as BaseMotionGestureEventListener;;
+    BaseMotionGestureEventListener baseMotionGestureEventListener = eventListenerInterface;;
     
-baseMotionGestureEventListener.onScrolledMotionGestureEvent(eventObject as MotionGestureEvent);
+baseMotionGestureEventListener.onScrolledMotionGestureEvent(eventObject);
     
 }
 

@@ -21,9 +21,9 @@
         #ifndef ORG_ALLBINARY_MEDIA_IMAGE_IO_IMAGEIOINTERFACE_H
         #define ORG_ALLBINARY_MEDIA_IMAGE_IO_IMAGEIOINTERFACE_H
 
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../../../java/lang/Long.h"
+            #include "java/lang/Long.h"
         
 
 

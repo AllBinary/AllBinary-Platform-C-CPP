@@ -21,7 +21,7 @@
         #ifndef ORG_ALLBINARY_BUSINESS_ADVERTISEMENT_AFFILIATE_SALES_AFFILIATESALES_H
         #define ORG_ALLBINARY_BUSINESS_ADVERTISEMENT_AFFILIATE_SALES_AFFILIATESALES_H
 
-            #include "../../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
 
 

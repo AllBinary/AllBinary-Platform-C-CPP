@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
 #include <org/allbinary/logic/NullUtil.h>
 
@@ -65,7 +65,7 @@ class PlatformKeyFactory
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return PlatformKeyFactory::instance() as PlatformKeyFactory;
+                        return PlatformKeyFactory::instance();
     
 }
 

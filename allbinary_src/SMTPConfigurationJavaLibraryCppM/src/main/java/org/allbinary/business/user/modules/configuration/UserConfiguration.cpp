@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
 #include <java/util/HashMap.h>
 
@@ -69,7 +69,7 @@ class UserConfiguration
     private: TimeLastModified timeLastModified;
 
 public: UserConfiguration(){
-this->userEmailConfigurationInterface= UserEmailConfiguration() as UserEmailConfigurationInterface;
+this->userEmailConfigurationInterface= UserEmailConfiguration();
     
 this->timeCreated= TimeCreated(0);
     
@@ -78,12 +78,12 @@ this->timeLastModified= TimeLastModified(0);
 }
 
 
-public: UserConfiguration(HashMap<any, any> hashMap){
-this->userEmailConfigurationInterface= UserEmailConfiguration(hashMap) as UserEmailConfigurationInterface;
+public: UserConfiguration(HashMap<Object*, Object*> hashMap){
+this->userEmailConfigurationInterface= UserEmailConfiguration(hashMap);
     
-this->timeCreated= TimeCreated(hashMap.get(EntryData::getInstance().TIMECREATED) as string);
+this->timeCreated= TimeCreated(hashMap.get(EntryData::getInstance().TIMECREATED));
     
-this->timeLastModified= TimeLastModified(hashMap.get(EntryData::getInstance().LASTMODIFIED) as string);
+this->timeLastModified= TimeLastModified(hashMap.get(EntryData::getInstance().LASTMODIFIED));
     
 }
 

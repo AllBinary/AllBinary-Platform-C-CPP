@@ -20,9 +20,9 @@
 
             #include <vector>
         
-            #include "../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/util/CircularIndexUtil.h>
 
@@ -67,21 +67,17 @@ class WeaponLayerArrayLayerCircularStaticPool
 
     private: CircularIndexUtil circularIndexUtil = CircularIndexUtil::createInstance(this->MAX);
 
-    private: std::vector<std::vector<std::vector<Object*>>> ALL_WEAPONLAYER_ARRAY = new Array(4)
-                                                        ;
+    private: std::vector<std::vector<std::vector<Object*>>> ALL_WEAPONLAYER_ARRAY = std::vector<std::vector<std::vector<Object*>>>(4);
 
     public: void init(){
 
-    std::vector<std::vector<Object*>> WEAPONLAYER_ARRAY = new Array(this->MAX *2)
-                                                            ;;
+    std::vector<std::vector<Object*>> WEAPONLAYER_ARRAY = std::vector<std::vector<Object*>>(this->MAX *2);;
     
 
-    std::vector<std::vector<Object*>> TWO_WEAPONLAYER_ARRAY = new Array(this->MAX)
-                                                            ;;
+    std::vector<std::vector<Object*>> TWO_WEAPONLAYER_ARRAY = std::vector<std::vector<Object*>>(this->MAX);;
     
 
-    std::vector<std::vector<Object*>> THREE_WEAPONLAYER_ARRAY = new Array(this->MAX)
-                                                            ;;
+    std::vector<std::vector<Object*>> THREE_WEAPONLAYER_ARRAY = std::vector<std::vector<Object*>>(this->MAX);;
     
 
 
@@ -90,11 +86,11 @@ class WeaponLayerArrayLayerCircularStaticPool
                         for (
     int32_t index = 0;index < this->MAX; index++)
         {
-WEAPONLAYER_ARRAY[index]= new Array(1);
+WEAPONLAYER_ARRAY[index]= std::vector<Object*>(1);
     
-TWO_WEAPONLAYER_ARRAY[index]= new Array(2);
+TWO_WEAPONLAYER_ARRAY[index]= std::vector<Object*>(2);
     
-THREE_WEAPONLAYER_ARRAY[index]= new Array(3);
+THREE_WEAPONLAYER_ARRAY[index]= std::vector<Object*>(3);
     
 }
 
@@ -112,7 +108,7 @@ this->ALL_WEAPONLAYER_ARRAY[3]= THREE_WEAPONLAYER_ARRAY;
 
     public: std::vector<WeaponLayer> getInstanceArray(int32_t size){
 
-    std::vector<WeaponLayer> weaponLayerArray = this->ALL_WEAPONLAYER_ARRAY[size]![this->circularIndexUtil.getIndex()]! as WeaponLayer[];;
+    std::vector<WeaponLayer> weaponLayerArray = this->ALL_WEAPONLAYER_ARRAY[size][this->circularIndexUtil.getIndex()] as WeaponLayer[];;
     
 this->circularIndexUtil.next();
     

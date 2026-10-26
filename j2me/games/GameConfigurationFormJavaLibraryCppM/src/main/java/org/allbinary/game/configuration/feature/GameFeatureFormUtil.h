@@ -23,13 +23,10 @@
 
             #include <vector>
         
-            #include "../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-#include <java/util/Hashtable.h>
-
-      
 #include <javax/microedition/lcdui/ChoiceGroup.h>
 
       
@@ -48,6 +45,9 @@
 #include <org/allbinary/graphics/displayable/screen/CommandForm.h>
 
       
+#include <org/allbinary/logic/MEUtil.h>
+
+      
 #include <org/allbinary/logic/communication/log/LogUtil.h>
 
       
@@ -55,6 +55,9 @@
 
       
 #include <org/allbinary/logic/string/StringUtil.h>
+
+      
+#include <org/allbinary/util/ABHashtable.h>
 
       
 #include <org/allbinary/util/BasicArrayList.h>
@@ -95,9 +98,11 @@ class GameFeatureFormUtil
 
     protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    public: ChoiceGroup getChoiceGroup(Hashtable<any, any> hashtable, std::string name, int32_t option);
+    private: const MEUtil meUtil = MEUtil::getInstance();
 
-    public: void addChoiceGroup(CommandForm form, Hashtable<any, any> hashtable, int32_t option);
+    public: ChoiceGroup getChoiceGroup(ABHashtable<Object*, Object*> hashtable, std::string name, int32_t option);
+
+    public: void addChoiceGroup(CommandForm form, ABHashtable<Object*, Object*> hashtable, int32_t option);
 
                 //@Throws(Exception.constructor)
             

@@ -20,7 +20,7 @@
 
             #include <vector>
         
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/graphics/form/item/ABCustomItem.h>
 
@@ -61,8 +61,9 @@
         
 class PreGameScrollSelectionForm: public ScrollCurrentSelectionForm {
 
-public: PreGameScrollSelectionForm(std::string title, std::vector<ABCustomItem> items, ItemPaintableFactory formPaintableFactory, BasicColor backgroundBasicColor, BasicColor foregroundBasicColor){
-            super(title, items, formPaintableFactory, 0, 3, false, backgroundBasicColor, foregroundBasicColor);
+public: PreGameScrollSelectionForm(std::string title, std::vector<ABCustomItem> items, ItemPaintableFactory formPaintableFactory, BasicColor backgroundBasicColor, BasicColor foregroundBasicColor) : ScrollCurrentSelectionForm(title, items, formPaintableFactory, 0, 3, false, backgroundBasicColor, foregroundBasicColor){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.

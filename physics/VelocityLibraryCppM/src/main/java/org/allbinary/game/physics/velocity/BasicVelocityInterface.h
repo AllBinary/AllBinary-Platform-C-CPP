@@ -21,9 +21,6 @@
         #ifndef ORG_ALLBINARY_GAME_PHYSICS_VELOCITY_BASICVELOCITYINTERFACE_H
         #define ORG_ALLBINARY_GAME_PHYSICS_VELOCITY_BASICVELOCITYINTERFACE_H
 
-#include <jsinterop/annotations/JsType.h>
-
-      
 #include <org/allbinary/direction/Direction.h>
 
       
@@ -31,9 +28,6 @@
 
       
 #include <org/allbinary/math/Angle.h>
-
-      
-#include <jsinterop/annotations/JsMethod.h>
 
       
 

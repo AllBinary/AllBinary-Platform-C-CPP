@@ -7,9 +7,9 @@
         #ifndef ORG_PLATFORM_OPENGL_OPENGLGLUUTILS_H
         #define ORG_PLATFORM_OPENGL_OPENGLGLUUTILS_H
 
-            #include "../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../java/lang/RuntimeException.h"
+            #include "java/lang/RuntimeException.h"
         
 #include <java/nio/ByteBuffer.h>
 

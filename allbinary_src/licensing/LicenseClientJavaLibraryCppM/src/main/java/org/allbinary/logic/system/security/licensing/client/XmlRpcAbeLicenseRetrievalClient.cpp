@@ -18,12 +18,9 @@
 
 
 
-            #include "../../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/io/IOException.h>
-
-      
-#include <java/util/Hashtable.h>
 
       
 #include <org/allbinary/util/BasicArrayList.h>
@@ -33,9 +30,6 @@
 
       
 #include <org/allbinary/init/crypt/jcehelper/CryptInterface.h>
-
-      
-#include <org/allbinary/logic/StdUtil.h>
 
       
 #include <org/allbinary/logic/communication/log/LogUtil.h>
@@ -60,6 +54,9 @@
 
       
 #include <org/allbinary/string/CommonLabels.h>
+
+      
+#include <org/allbinary/util/ABHashtable.h>
 
       
 #include <org/apache/xmlrpc/XmlRpcClient.h>
@@ -91,8 +88,9 @@ class XmlRpcAbeLicenseRetrievalClient: public XmlRpcAbeClient {
 
     protected: const LogUtil logUtil = LogUtil::getInstance();
 
-public: XmlRpcAbeLicenseRetrievalClient(AbeClientInformationInterface clientInfo){
-            super(clientInfo, "LicServ.getLicense");
+public: XmlRpcAbeLicenseRetrievalClient(AbeClientInformationInterface clientInfo) : XmlRpcAbeClient(clientInfo, "LicServ.getLicense"){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -134,7 +132,7 @@ xmlRpcClient.setBasicAuthentication(
                             nullptr);
     
 
-    Hashtable<any, any> hashtable = this->getClientInfo().toHashtable();;
+    ABHashtable<Object*, Object*> hashtable = this->getClientInfo().toHashtable();;
     
 this->logUtil.putF(CLIENT_INFO +hashtable.toString(), this, this->commonStrings.GET);
     
@@ -146,7 +144,7 @@ param.add(hashtable);
 this->logUtil.putF(RESULT +result->toString(), this, this->commonStrings.GET);
     
 
-    Hashtable<any, any> resultHashtable = result as Hashtable<any, any>;;
+    ABHashtable<Object*, Object*> resultHashtable = *dynamic_cast<ABHashtable<Object*, Object*>*>(result);;
     
 
                         if(!AbeClientLicense::hasRequiredKeys(resultHashtable))

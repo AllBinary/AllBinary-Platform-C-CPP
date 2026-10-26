@@ -23,12 +23,12 @@
 
             #include <vector>
         
-            #include "../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
 #include <java/util/Enumeration.h>
 
       
-#include <java/util/Hashtable.h>
+#include <jsinterop/annotations/JsType.h>
 
       
 
@@ -50,6 +50,7 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "EnumerationUtil.h"
+#include "ABHashtable.h"
 #include "BasicArrayListS.h"
 #include "BasicArrayList.h"
 
@@ -63,11 +64,11 @@ class HashtableUtil
 
     private: const EnumerationUtil enumerationUtil = EnumerationUtil::getInstance();
 
-    public: void putAll(Hashtable<any, any> fromHashtable, Hashtable<any, any> hashtable);
+    public: void putAll(ABHashtable<Object*, Object*> fromHashtable, ABHashtable<Object*, Object*> hashtable);
 
-    public: std::vector<Object*> getKeysAsArray(Hashtable<any, any> hashtable);
+    public: std::vector<Object*> getKeysAsArray(ABHashtable<Object*, Object*> hashtable);
 
-    public: BasicArrayList getKeysAsList(Hashtable<any, any> hashtable);
+    public: BasicArrayList getKeysAsList(ABHashtable<Object*, Object*> hashtable);
 
 };
 

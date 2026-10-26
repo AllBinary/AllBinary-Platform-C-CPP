@@ -40,8 +40,9 @@
 
 class TestClientInformation: public AbeClientInformation {
 
-public: TestClientInformation(){
-            super("Test App Name", "0.0.1", "Test App Name 0.0.1", "TA");
+public: TestClientInformation() : AbeClientInformation("Test App Name", "0.0.1", "Test App Name 0.0.1", "TA"){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.

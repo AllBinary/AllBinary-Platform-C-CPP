@@ -7,21 +7,12 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_FORM_ITEM_ABCUSTOMITEM_H
         #define ORG_ALLBINARY_GRAPHICS_FORM_ITEM_ABCUSTOMITEM_H
 
-            #include "../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
 #include <javax/microedition/lcdui/Graphics.h>
 
       
 #include <javax/microedition/lcdui/Screen.h>
-
-      
-#include <jsinterop/annotations/JsConstructor.h>
-
-      
-#include <jsinterop/annotations/JsMethod.h>
-
-      
-#include <jsinterop/annotations/JsType.h>
 
       
 #include <org/allbinary/graphics/color/BasicColor.h>

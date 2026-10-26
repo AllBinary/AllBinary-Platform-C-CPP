@@ -18,9 +18,9 @@
 
 
 
-            #include "../../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
 
@@ -78,7 +78,7 @@ public: TransformInfoHttpComposite(TransformInfoInterface transformInfoInterface
 
                                     }
                                 
-this->transformInfoInterface= transformInfoInterface as TransformInfoHttpInterface;
+this->transformInfoInterface= transformInfoInterface;
     
 }
 
@@ -115,7 +115,7 @@ this->transformInfoInterface= transformInfoInterface as TransformInfoHttpInterfa
 }
 
 
-    public: HashMap<any, any> getPropertiesHashMap(){
+    public: HashMap<Object*, Object*> getPropertiesHashMap(){
 
 
 

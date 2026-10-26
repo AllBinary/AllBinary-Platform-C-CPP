@@ -21,7 +21,7 @@
         #ifndef ORG_ALLBINARY_PHYSICS_MOVEMENT_CUSTOMGRAVITYCONSTANTVELOCITYMOVEMENT_H
         #define ORG_ALLBINARY_PHYSICS_MOVEMENT_CUSTOMGRAVITYCONSTANTVELOCITYMOVEMENT_H
 
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/game/layer/AllBinaryGameLayer.h>
 

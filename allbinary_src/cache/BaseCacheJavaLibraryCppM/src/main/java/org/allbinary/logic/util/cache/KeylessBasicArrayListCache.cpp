@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/logic/communication/log/LogUtil.h>
 
@@ -75,7 +75,7 @@ public: KeylessBasicArrayListCache(){
                                     }
                                 
 
-    BasicArrayList list = this->getAt(this->index++) as BasicArrayList;;
+    BasicArrayList list = this->getAt(this->index++);;
     
 
 
@@ -113,7 +113,7 @@ super.clear();
                         for (
     int32_t index = this->list.size() -1;index >= 0; index--)
         {
-basicArrayList= (this->list.objectArray[index]! as BasicArrayList);
+basicArrayList= (this->list.objectArray[index]);
     
 basicArrayList.clear();
     
@@ -145,7 +145,7 @@ stringBuffer.appendint(this->list.size());
         {
 stringBuffer.append(S_LABEL);
     
-basicArrayList= (this->list.objectArray[index]! as BasicArrayList);
+basicArrayList= (this->list.objectArray[index]);
     
 stringBuffer.appendint(basicArrayList.size());
     

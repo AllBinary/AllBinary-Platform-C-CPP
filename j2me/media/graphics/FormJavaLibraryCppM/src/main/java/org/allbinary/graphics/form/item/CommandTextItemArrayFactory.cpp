@@ -20,20 +20,8 @@
 
             #include <vector>
         
-            #include "../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-#include <java/util/Vector.h>
-
-      
-#include <jsinterop/annotations/JsType.h>
-
-      
-#include <jsinterop/annotations/JsMethod.h>
-
-      
-#include <jsinterop/annotations/JsConstructor.h>
-
-      
 #include <javax/microedition/lcdui/Command.h>
 
       
@@ -47,6 +35,9 @@
 
       
 #include <org/allbinary/graphics/form/ScreenInfo.h>
+
+      
+#include <org/allbinary/logic/VectorUtil.h>
 
       
 #include <org/allbinary/logic/string/StringUtil.h>
@@ -96,9 +87,12 @@ this->visitorInterface= visitorInterface;
 }
 
 
-    public: std::vector<ABCustomItem> getInstance(Vector<any> vector, BasicColor backgroundBasicColor, BasicColor foregroundBasicColor){
+    public: std::vector<ABCustomItem> getInstance(Object* vector, BasicColor backgroundBasicColor, BasicColor foregroundBasicColor){
 
-    int32_t size = vector.length;;
+    VectorUtil vectorUtil = VectorUtil::getInstance();;
+    
+
+    int32_t size = vectorUtil.getSize(vector);;
     
 this->list.clear();
     
@@ -133,14 +127,14 @@ this->list.clear();
                         for (
     int32_t index = 0;index < size; index++)
         {
-command= vector.elementAt(index) as Command;
+command= vectorUtil.elementAt(vector, index);
     
 
                         if(command.getPriority() < priorityLimit)
                         
                                     {
                                     
-    Boolean aBoolean = this->visitorInterface.visit(command) as Boolean;;
+    Boolean aBoolean = this->visitorInterface.visit(command);;
     
 
                         if(aBoolean.valueOf())
@@ -159,7 +153,7 @@ this->list.add(textItem);
 }
 
 
-    std::vector<ABCustomItem> textItemArray = new Array(this->list.size());;
+    std::vector<ABCustomItem> textItemArray = std::vector<ABCustomItem>(this->list.size());;
     
 
     int32_t size2 = textItemArray.size();;
@@ -171,7 +165,7 @@ this->list.add(textItem);
                         for (
     int32_t index = 0;index < size2; index++)
         {
-textItemArray[index]= this->list.objectArray[index]! as ABCustomItem;
+textItemArray[index]= this->list.objectArray[index];
     
 }
 

@@ -20,9 +20,9 @@
 
             #include <vector>
         
-            #include "../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../java/lang/System.h"
+            #include "java/lang/System.h"
         
 #include <jsinterop/annotations/JsType.h>
 
@@ -115,8 +115,7 @@ console.log(list.toString());
 }
 
 
-    public: const std::vector<std::vector<BasicArrayList>> NULL_ARRAY_OF_ARRAY = new Array(0).fill(null).map(() => new Array(0).fill(0))
-                                                            ;
+    public: const std::vector<std::vector<BasicArrayList>> NULL_ARRAY_OF_ARRAY = std::vector<std::vector<BasicArrayList>>(0, std::vector<BasicArrayList>(0));
 
     private: const MyRandomFactory myRandomFactory = MyRandomFactory::getInstance();
 
@@ -130,7 +129,7 @@ console.log(list.toString());
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return list.objectArray[i_random]!;
+                        return list.objectArray[i_random];
     
 }
 
@@ -200,7 +199,7 @@ stringBuffer.appendint(size);
     int32_t index = size -1;index >= 0; index--)
         {
 
-    BasicArrayList usedList = list.objectArray[index]! as BasicArrayList;;
+    BasicArrayList usedList = list.objectArray[index];;
     
 stringBuffer.append(S_LABEL);
     

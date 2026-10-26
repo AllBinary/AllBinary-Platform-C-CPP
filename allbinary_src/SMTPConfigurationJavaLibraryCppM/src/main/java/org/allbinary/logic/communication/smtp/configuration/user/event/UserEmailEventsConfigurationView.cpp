@@ -20,9 +20,9 @@
 
             #include <vector>
         
-            #include "../../../../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
 
@@ -94,7 +94,7 @@ class UserEmailEventsConfigurationView
     private: UserEmailEventsConfigurationInterface userEmailEventsConfigurationInterface;
 
 public: UserEmailEventsConfigurationView(Node node){
-this->userEmailEventsConfigurationInterface= UserEmailEventsConfiguration() as UserEmailEventsConfigurationInterface;
+this->userEmailEventsConfigurationInterface= UserEmailEventsConfiguration();
     
 
     NodeList childNodeList = node.getChildNodes();;
@@ -113,7 +113,7 @@ this->userEmailEventsConfigurationInterface= UserEmailEventsConfiguration() as U
     int32_t index = 0;index < size; index++)
         {
 
-    Node userEmailConfigurationNode = emailEventConfigurationNodeVector.get(index) as Node;;
+    Node userEmailConfigurationNode = emailEventConfigurationNodeVector.get(index);;
     
 
     UserEmailEventConfigurationView userEmailEventConfigurationView = UserEmailEventConfigurationView(userEmailConfigurationNode);;
@@ -151,7 +151,7 @@ this->userEmailEventsConfigurationInterface= userEmailEventsConfigurationInterfa
     Node node = document.createElement(UserEmailEventsConfigurationData::NAME);;
     
 
-    HashMap<any, any> emailEventHashMap = this->getUserEmailEventsConfigurationInterface().getEventConfigurationHashMap();;
+    HashMap<Object*, Object*> emailEventHashMap = this->getUserEmailEventsConfigurationInterface().getEventConfigurationHashMap();;
     
 
     Set set = emailEventHashMap.keys();;
@@ -179,10 +179,10 @@ this->userEmailEventsConfigurationInterface= userEmailEventsConfigurationInterfa
     int32_t index = 0;index < size; index++)
         {
 
-    std::string eventName = eventNameArray[index]! as string;;
+    std::string eventName = eventNameArray[index];;
     
 
-    UserEmailEventConfigurationInterface userEmailEventsConfigurationInterface = emailEventHashMap.get(eventName) as UserEmailEventConfigurationInterface;;
+    UserEmailEventConfigurationInterface userEmailEventsConfigurationInterface = emailEventHashMap.get(eventName);;
     
 
     UserEmailEventConfigurationView userEmailEventConfigurationView = UserEmailEventConfigurationView(userEmailEventsConfigurationInterface);;

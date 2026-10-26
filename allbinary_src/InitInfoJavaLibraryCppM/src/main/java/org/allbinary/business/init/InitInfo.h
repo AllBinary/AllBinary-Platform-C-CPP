@@ -21,9 +21,9 @@
         #ifndef ORG_ALLBINARY_BUSINESS_INIT_INITINFO_H
         #define ORG_ALLBINARY_BUSINESS_INIT_INITINFO_H
 
-            #include "../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
 
@@ -105,7 +105,7 @@ private: InitInfo();
     public: void set();
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: void set(HashMap<any, any> hashMap);
+    public: void set(HashMap<Object*, Object*> hashMap);
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
     private: void get();
@@ -138,7 +138,7 @@ private: InitInfo();
             
     public: bool isTestingValid(std::string testing);
 
-    public: HashMap<any, any> toHashMap();
+    public: HashMap<Object*, Object*> toHashMap();
 
 };
 

@@ -20,7 +20,7 @@
 
             #include <vector>
         
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/io/ByteArrayInputStream.h>
 
@@ -132,28 +132,30 @@ class DownloadableInventoryItemView: public HttpStoreComponentView, public Reque
 
     protected: DownloadableItem downloadableItem;
 
-    private: HashMap<any, any> requestHashMap;
+    private: HashMap<Object*, Object*> requestHashMap;
 
-public: DownloadableInventoryItemView(TransformInfoInterface transformInfoInterface){
-            super(transformInfoInterface);
+public: DownloadableInventoryItemView(TransformInfoInterface transformInfoInterface) : HttpStoreComponentView(transformInfoInterface){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this->request= this->getPageContext().getRequest() as HttpServletRequest;
+this->request= this->getPageContext().getRequest();
     
 this->getFormData();
     
 }
 
 
-public: DownloadableInventoryItemView(TransformInfoInterface transformInfoInterface, std::string empty){
-            super(transformInfoInterface);
+public: DownloadableInventoryItemView(TransformInfoInterface transformInfoInterface, std::string empty) : HttpStoreComponentView(transformInfoInterface){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this->request= this->getPageContext().getRequest() as HttpServletRequest;
+this->request= this->getPageContext().getRequest();
     
 }
 
@@ -173,7 +175,7 @@ this->request= this->getPageContext().getRequest() as HttpServletRequest;
     private: void getFormData(){
 this->setRequestHashMap(MultipartRequestParams(this->request).toHashMap());
     
-this->id= this->getRequestHashMap().get(basicItemData.ID) as string;
+this->id= this->getRequestHashMap().get(basicItemData.ID);
     
 }
 
@@ -335,13 +337,13 @@ stringBuffer.appendchar(filePathData.SEPARATORCHAR);
 }
 
 
-    private: void setRequestHashMap(HashMap<any, any> requestHashMap){
+    private: void setRequestHashMap(HashMap<Object*, Object*> requestHashMap){
 this->requestHashMap= requestHashMap;
     
 }
 
 
-    public: HashMap<any, any> getRequestHashMap(){
+    public: HashMap<Object*, Object*> getRequestHashMap(){
 
 
 

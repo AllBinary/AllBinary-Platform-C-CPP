@@ -21,7 +21,7 @@
         #ifndef ORG_ALLBINARY_GAME_LAYER_HUD_LAPINFO_H
         #define ORG_ALLBINARY_GAME_LAYER_HUD_LAPINFO_H
 
-            #include "../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
 #include <org/allbinary/logic/string/StringMaker.h>
 

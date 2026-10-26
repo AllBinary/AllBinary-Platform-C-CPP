@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/util/BasicArrayList.h>
 
@@ -81,8 +81,9 @@ class WorkFlowsView: public HttpStoreComponentView, public DomNodeInterface {
 
     private: BasicArrayList workFlowsVector;
 
-public: WorkFlowsView(TransformInfoInterface transformInfoInterface){
-            super(transformInfoInterface);
+public: WorkFlowsView(TransformInfoInterface transformInfoInterface) : HttpStoreComponentView(transformInfoInterface){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -93,7 +94,7 @@ this->workFlowsVector= WorkFlowEntityFactory::getInstance().create2().get(this->
 
 
     public: void addDomNodeInterfaces(){
-this->addDomNodeInterface(this as DomNodeInterface);
+this->addDomNodeInterface(this);
     
 }
 
@@ -151,7 +152,7 @@ this->addDomNodeInterface(this as DomNodeInterface);
     int32_t index = 0;index < size; index++)
         {
 
-    WorkFlowInterface workFlowInterface = this->workFlowsVector.get(index) as WorkFlowInterface;;
+    WorkFlowInterface workFlowInterface = this->workFlowsVector.get(index);;
     
 }
 

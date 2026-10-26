@@ -23,11 +23,8 @@
 
             #include <vector>
         
-            #include "../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-#include <jsinterop/annotations/JsType.h>
-
-      
 #include <org/allbinary/logic/NullUtil.h>
 
       
@@ -41,15 +38,6 @@
 
       
 #include <org/allbinary/string/CommonStrings.h>
-
-      
-#include <jsinterop/annotations/JsMethod.h>
-
-      
-#include <jsinterop/annotations/JsConstructor.h>
-
-      
-#include <jsinterop/annotations/JsProperty.h>
 
       
 
@@ -90,7 +78,7 @@ class InputFactory
 
     public: const int32_t MAX = SmallIntegerSingletonFactory::getInstance().getMin();
 
-    protected: const std::vector<Input> inputIntegerArray = new Array(this->MAX);
+    protected: const std::vector<Input> inputIntegerArray = std::vector<Input>(this->MAX);
 
     public: const Input NO_INPUT = Input(0, this->commonStrings.UNKNOWN);
 

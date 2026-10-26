@@ -18,9 +18,6 @@
 
 
 
-#include <jsinterop/annotations/JsType.h>
-
-      
 #include <org/allbinary/graphics/GPoint.h>
 
       
@@ -31,12 +28,6 @@
 
       
 #include <org/allbinary/util/BasicArrayList.h>
-
-      
-#include <jsinterop/annotations/JsMethod.h>
-
-      
-#include <jsinterop/annotations/JsConstructor.h>
 
       
 
@@ -62,8 +53,9 @@ class RelativeLayerRelationship: public RelativeRelationship {
 
     private: AllBinaryLayer layer = AllBinaryLayer::NULL_ALLBINARY_LAYER;
 
-public: RelativeLayerRelationship(AllBinaryLayer layer, GPoint point, BasicArrayList typesAllowedList){
-            super(point, typesAllowedList);
+public: RelativeLayerRelationship(AllBinaryLayer layer, GPoint point, BasicArrayList typesAllowedList) : RelativeRelationship(point, typesAllowedList){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.

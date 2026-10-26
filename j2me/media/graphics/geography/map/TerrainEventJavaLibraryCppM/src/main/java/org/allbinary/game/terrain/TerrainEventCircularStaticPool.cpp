@@ -18,9 +18,9 @@
 
 
 
-            #include "../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/logic/util/event/AllBinaryEventCircularPool.h>
 
@@ -76,7 +76,7 @@ this->EVENT_POOL.initAllBinaryEventCircularPool(TerrainEventFactory());
 
     public: TerrainEvent getNext(BasicTerrainInfo basicTerrainInfo){
 
-    TerrainEvent trackingEvent = this->EVENT_POOL.getNextInstance() as TerrainEvent;;
+    TerrainEvent trackingEvent = this->EVENT_POOL.getNextInstance();;
     
 trackingEvent.setBasicTerrainInfoForCircularStaticPool(basicTerrainInfo);
     

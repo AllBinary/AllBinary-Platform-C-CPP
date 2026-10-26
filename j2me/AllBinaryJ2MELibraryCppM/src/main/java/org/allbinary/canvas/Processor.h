@@ -21,16 +21,10 @@
         #ifndef ORG_ALLBINARY_CANVAS_PROCESSOR_H
         #define ORG_ALLBINARY_CANVAS_PROCESSOR_H
 
-            #include "../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-#include <jsinterop/annotations/JsType.h>
-
-      
-#include <jsinterop/annotations/JsMethod.h>
-
-      
 
 
 

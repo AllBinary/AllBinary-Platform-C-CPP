@@ -18,9 +18,9 @@
 
 
 
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../../../java/lang/Integer.h"
+            #include "java/lang/Integer.h"
         
 #include <org/allbinary/J2MEUtil.h>
 
@@ -170,8 +170,9 @@ class UnitWaypointBehavior2: public UnitWaypointBehavior {
 
     private: CollidableDestroyableDamageableLayer targetWithoutCachedPathLayerInterface = CollidableDestroyableDamageableLayer::getNullInstance();
 
-public: UnitWaypointBehavior2(UnitLayer ownerAdvancedRTSGameLayer, AdvancedRTSGameLayer fakeWaypoint){
-            super(ownerAdvancedRTSGameLayer, fakeWaypoint);
+public: UnitWaypointBehavior2(UnitLayer ownerAdvancedRTSGameLayer, AdvancedRTSGameLayer fakeWaypoint) : UnitWaypointBehavior(ownerAdvancedRTSGameLayer, fakeWaypoint){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -270,7 +271,7 @@ this->associatedAdvancedRTSGameLayer.waypoint2LogHelperP.initRange(this->associa
                         if(this->waitingOnWaypointPath)
                         
                                     {
-                                    this->setWaypointPath(this->waypointPathRunnable.getTargetLayer() as AdvancedRTSGameLayer);
+                                    this->setWaypointPath(this->waypointPathRunnable.getTargetLayer());
     
 
                                     }
@@ -443,7 +444,7 @@ this->setTarget(layerInterface, anotherTargetDistance);
                         
                                     {
                                     
-    GeographicMapCellPosition geographicMapCellPosition = this->currentGeographicMapCellHistoryP.getTracked().get(this->currentGeographicMapCellHistoryP.getSize() -1) as GeographicMapCellPosition;;
+    GeographicMapCellPosition geographicMapCellPosition = this->currentGeographicMapCellHistoryP.getTracked().get(this->currentGeographicMapCellHistoryP.getSize() -1);;
     
 this->associatedAdvancedRTSGameLayer.teleportTo(geographicMapCellPosition);
     
@@ -481,7 +482,7 @@ this->targetList.clear();
     GeographicMapCellPosition geographicMapCellPosition = this->associatedAdvancedRTSGameLayer.getCurrentGeographicMapCellPosition();;
     
 
-    PathFindingLayerInterface pathFindingLayerInterface = (this->currentTargetLayerInterfaceP as PathFindingLayerInterface);;
+    PathFindingLayerInterface pathFindingLayerInterface = (this->currentTargetLayerInterfaceP);;
     
 
     WaypointBase waypoint = pathFindingLayerInterface.getWaypointBehavior().getWaypoint();;
@@ -585,7 +586,7 @@ super.setGeographicMapCellHistoryPath(geographicMapCellPositionBasicArrayList);
                         
                                     {
                                     
-    AdvancedRTSGameLayer targetLayer = this->targetList.get(0) as AdvancedRTSGameLayer;;
+    AdvancedRTSGameLayer targetLayer = this->targetList.get(0);;
     
 this->associatedAdvancedRTSGameLayer.waypoint2LogHelperP.processWaypoint(this->associatedAdvancedRTSGameLayer, this, targetLayer, size);
     
@@ -624,13 +625,13 @@ this->removeWaypoint(targetLayer, this->unitWaypointStrings.WAYPOINT_DESTROYED);
                         
                                     {
                                     
-    AdvancedRTSGameLayer oldWaypointLayer = this->currentTargetLayerInterfaceP as AdvancedRTSGameLayer;;
+    AdvancedRTSGameLayer oldWaypointLayer = this->currentTargetLayerInterfaceP;;
     
 oldWaypointLayer.getWaypointBehavior().getWaypoint().visit(this->associatedAdvancedRTSGameLayer);
     
 this->associatedAdvancedRTSGameLayer.getCaptionAnimationHelper().update(this->unitWaypointStrings.ALL_VISITED_SHORT, this->basicColorFactory.GREEN);
     
-this->removeWaypoint(this->currentTargetLayerInterfaceP as AdvancedRTSGameLayer, this->unitWaypointStrings.ALL_VISITED);
+this->removeWaypoint(this->currentTargetLayerInterfaceP, this->unitWaypointStrings.ALL_VISITED);
     
 
                                     }
@@ -840,7 +841,7 @@ this->targetWithoutCachedPathLayerInterface= CollidableDestroyableDamageableLaye
     int32_t index = this->getPossibleTargetList().size() -1;index >= 0; index--)
         {
 
-    AdvancedRTSGameLayer layerInterface = this->getPossibleTargetList().get(index) as AdvancedRTSGameLayer;;
+    AdvancedRTSGameLayer layerInterface = this->getPossibleTargetList().get(index);;
     
 
                         if(layerInterface.isDestroyed())
@@ -867,7 +868,7 @@ this->targetWithoutCachedPathLayerInterface= CollidableDestroyableDamageableLaye
     
 this->associatedAdvancedRTSGameLayer.getCaptionAnimationHelper().update(this->unitWaypointStrings.THINKING_ABOUT_TARGET, this->basicColorFactory.GREEN);
     
-this->runWaypointPathTask(this->currentTargetLayerInterfaceP as AdvancedRTSGameLayer);
+this->runWaypointPathTask(this->currentTargetLayerInterfaceP);
     
 
                                     }
@@ -1121,7 +1122,7 @@ TrackingEventHandler::getInstance().fireEvent(this->associatedAdvancedRTSGameLay
     int32_t index = list.size() -1;index >= 0; index--)
         {
 
-    AdvancedRTSGameLayer layerInterface = list.get(index) as AdvancedRTSGameLayer;;
+    AdvancedRTSGameLayer layerInterface = list.get(index);;
     
 
                         if(layerInterface.isWaypointListEmptyOrOnlyTargets())
@@ -1245,10 +1246,10 @@ class BuildingSteeringVisitor: public SteeringVisitor {
                         
                                     {
                                     
-    AllBinaryLayer allbinaryLayer = this->getList().get(0) as AllBinaryLayer;;
+    AllBinaryLayer allbinaryLayer = this->getList().get(0);;
     
 
-    GeographicMapCellPosition cellPosition = this->getPositionList().get(0) as GeographicMapCellPosition;;
+    GeographicMapCellPosition cellPosition = this->getPositionList().get(0);;
     
 
     bool clear = this->buildingChase(allbinaryLayer, cellPosition);;

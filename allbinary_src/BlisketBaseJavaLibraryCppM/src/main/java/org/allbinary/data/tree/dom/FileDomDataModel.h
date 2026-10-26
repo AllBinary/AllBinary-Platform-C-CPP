@@ -21,9 +21,9 @@
         #ifndef ORG_ALLBINARY_DATA_TREE_DOM_FILEDOMDATAMODEL_H
         #define ORG_ALLBINARY_DATA_TREE_DOM_FILEDOMDATAMODEL_H
 
-            #include "../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
 

@@ -21,7 +21,7 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_OPENGLES_VBO_VERTEXATTRIBUTEPOINTERVBOOPENGLPROCESSOR_H
         #define ORG_ALLBINARY_GRAPHICS_OPENGLES_VBO_VERTEXATTRIBUTEPOINTERVBOOPENGLPROCESSOR_H
 
-            #include "../../../../../java/lang/RuntimeException.h"
+            #include "java/lang/RuntimeException.h"
         
 #include <javax/microedition/khronos/opengles/GL10.h>
 

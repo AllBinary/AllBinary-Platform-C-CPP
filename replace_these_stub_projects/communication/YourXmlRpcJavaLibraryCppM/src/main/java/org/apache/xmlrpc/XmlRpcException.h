@@ -7,7 +7,7 @@
         #ifndef ORG_APACHE_XMLRPC_XMLRPCEXCEPTION_H
         #define ORG_APACHE_XMLRPC_XMLRPCEXCEPTION_H
 
-            #include "../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 
 

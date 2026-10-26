@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../../java/lang/Runnable.h"
+            #include "java/lang/Runnable.h"
         
 
 

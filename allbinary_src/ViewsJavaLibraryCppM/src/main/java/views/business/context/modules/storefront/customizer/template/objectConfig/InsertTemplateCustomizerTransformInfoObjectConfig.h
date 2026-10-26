@@ -21,7 +21,7 @@
         #ifndef VIEWS_BUSINESS_CONTEXT_MODULES_STOREFRONT_CUSTOMIZER_TEMPLATE_OBJECTCONFIG_INSERTTEMPLATECUSTOMIZERTRANSFORMINFOOBJECTCONFIG_H
         #define VIEWS_BUSINESS_CONTEXT_MODULES_STOREFRONT_CUSTOMIZER_TEMPLATE_OBJECTCONFIG_INSERTTEMPLATECUSTOMIZERTRANSFORMINFOOBJECTCONFIG_H
 
-            #include "../../../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/logic/communication/log/LogUtil.h>
 

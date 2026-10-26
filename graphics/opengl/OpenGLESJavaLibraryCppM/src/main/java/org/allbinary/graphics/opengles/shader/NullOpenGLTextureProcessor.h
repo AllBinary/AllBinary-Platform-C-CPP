@@ -21,7 +21,7 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_OPENGLES_SHADER_NULLOPENGLTEXTUREPROCESSOR_H
         #define ORG_ALLBINARY_GRAPHICS_OPENGLES_SHADER_NULLOPENGLTEXTUREPROCESSOR_H
 
-            #include "../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
 
 

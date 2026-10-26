@@ -18,18 +18,12 @@
 
 
 
-            #include "../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-#include <jsinterop/annotations/JsType.h>
-
-      
 #include <org/allbinary/game/input/analog/AnalogLocationInput.h>
 
       
 #include <org/allbinary/layer/AllBinaryLayerManager.h>
-
-      
-#include <jsinterop/annotations/JsMethod.h>
 
       
 

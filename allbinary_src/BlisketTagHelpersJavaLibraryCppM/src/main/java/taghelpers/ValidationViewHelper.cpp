@@ -18,7 +18,7 @@
 
 
 
-            #include "../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
 
@@ -64,13 +64,14 @@ class ValidationViewHelper: public ViewHelper, public ValidationComponentInterfa
 
     private: ValidationComponentInterface viewInterface;
 
-public: ValidationViewHelper(HashMap<any, any> hashMap, PageContext pageContext){
-            super(hashMap, pageContext);
+public: ValidationViewHelper(HashMap<Object*, Object*> hashMap, PageContext pageContext) : ViewHelper(hashMap, pageContext){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this->viewInterface= this->getViewObject() as ValidationComponentInterface;
+this->viewInterface= this->getViewObject();
     
 
                         if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().TAGHELPER))

@@ -18,11 +18,11 @@
 
 
 
-            #include "../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../java/lang/Integer.h"
+            #include "java/lang/Integer.h"
         
 #include <java/util/HashMap.h>
 
@@ -88,11 +88,11 @@ class BasicWorkFlow
 
     private: ValidationComponentInterface validationDomNodeInterface;
 
-    private: HashMap<any, any> propertiesHashMap;
+    private: HashMap<Object*, Object*> propertiesHashMap;
 
     private: PageContext pageContext;
 
-public: BasicWorkFlow(HashMap<any, any> propertiesHashMap, PageContext pageContext){
+public: BasicWorkFlow(HashMap<Object*, Object*> propertiesHashMap, PageContext pageContext){
 
                         if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().WORKFLOW))
                         
@@ -106,7 +106,7 @@ this->propertiesHashMap= propertiesHashMap;
     
 this->pageContext= pageContext;
     
-this->validationDomNodeInterface= TransformFactory::getInstance().getInstance(this->abeClientInformation, propertiesHashMap, pageContext) as ValidationComponentInterface;
+this->validationDomNodeInterface= TransformFactory::getInstance().getInstance(this->abeClientInformation, propertiesHashMap, pageContext);
     
 }
 
@@ -118,12 +118,12 @@ this->validationDomNodeInterface= TransformFactory::getInstance().getInstance(th
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->getPropertiesHashMap().get(WorkFlowData::getInstance().NAME) as string;
+                        return this->getPropertiesHashMap().get(WorkFlowData::getInstance().NAME);
     
 }
 
 
-    protected: HashMap<any, any> getPropertiesHashMap(){
+    protected: HashMap<Object*, Object*> getPropertiesHashMap(){
 
 
 

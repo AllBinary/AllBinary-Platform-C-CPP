@@ -20,16 +20,10 @@
 
             #include <vector>
         
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../../java/lang/Integer.h"
+            #include "java/lang/Integer.h"
         
-#include <jsinterop/annotations/JsType.h>
-
-      
-#include <java/util/Hashtable.h>
-
-      
 #include <javax/microedition/lcdui/Choice.h>
 
       
@@ -81,6 +75,9 @@
 #include <org/allbinary/input/gyro/OrientationData.h>
 
       
+#include <org/allbinary/logic/MEUtil.h>
+
+      
 #include <org/allbinary/logic/string/StringMaker.h>
 
       
@@ -93,13 +90,10 @@
 #include <org/allbinary/util/HashtableUtil.h>
 
       
-#include <jsinterop/annotations/JsMethod.h>
-
-      
-#include <jsinterop/annotations/JsConstructor.h>
-
-      
 #include <org/allbinary/logic/StdUtil.h>
+
+      
+#include <org/allbinary/util/ABHashtable.h>
 
       
 
@@ -129,8 +123,11 @@
 
 class GameOptionsForm: public CommandForm {
 
-public: GameOptionsForm(CommandListener commandListener, std::string title, BasicColor backgrounBasicColor, BasicColor foregroundBasicColor){
-            super(commandListener, title, backgrounBasicColor, foregroundBasicColor);
+    private: const MEUtil meUtil = MEUtil::getInstance();
+
+public: GameOptionsForm(CommandListener commandListener, std::string title, BasicColor backgrounBasicColor, BasicColor foregroundBasicColor) : CommandForm(commandListener, title, backgrounBasicColor, foregroundBasicColor){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -170,7 +167,7 @@ this->save(abeClientInformation);
     std::string key = OrientationData::getInstance().ORIENTATION_SENSOR_INPUT;;
     
 
-    Hashtable<any, any> hashtable = GameFeatureChoiceGroups::getExclusiveInstance().get();;
+    ABHashtable<Object*, Object*> hashtable = GameFeatureChoiceGroups::getExclusiveInstance().get();;
     
 
                         if(hashtable != 
@@ -188,7 +185,7 @@ this->save(abeClientInformation);
                         
                                     {
                                     
-    BasicArrayList list = listCanBeNull as BasicArrayList;;
+    BasicArrayList list = *dynamic_cast<BasicArrayList*>(listCanBeNull);;
     
 
                         if(list.contains(SensorFeatureFactory::getInstance().SIMULATED_ORIENTATION_SENSORS))
@@ -210,10 +207,10 @@ this->save(abeClientInformation);
 
     private: void addTextFields(){
 
-    Hashtable<any, any> hashtable = GameConfigurationTextInput::getHashtable();;
+    ABHashtable<Object*, Object*> hashtable = GameConfigurationTextInput::getHashtable();;
     
 
-    int32_t size = hashtable.length;;
+    int32_t size = hashtable.size();;
     
 
     std::vector<Object*> objectArray = HashtableUtil::getInstance().getKeysAsArray(hashtable);;
@@ -231,11 +228,11 @@ this->save(abeClientInformation);
                         for (
     int32_t index = 0;index < size; index++)
         {
-gameConfigurationTextInput= hashtable.get(objectArray[index]!) as GameConfigurationTextInput;
+gameConfigurationTextInput= hashtable.get(objectArray[index]);
     
 textField= TextField(gameConfigurationTextInput.getLabel(), gameConfigurationTextInput.getText(), 30, TextField::ANY);
     
-this->append(textField);
+this->meUtil.appendItem(this, textField);
     
 }
 
@@ -274,7 +271,7 @@ this->append(textField);
                         for (
     int32_t index = 0;index < size; index++)
         {
-gameConfiguration= list.objectArray[index]! as GameConfiguration;
+gameConfiguration= list.objectArray[index];
     
 stringMaker.delete(0, stringMaker.length());
     
@@ -286,7 +283,7 @@ gauge.setDefaultCommand(GAUGE_CHANGE);
     
 gauge.setItemCommandListener(GameFeatureItemCommandListener(this));
     
-this->append(gauge);
+this->meUtil.appendItem(this, gauge);
     
 }
 
@@ -330,7 +327,7 @@ item= this->get(index);
                         if(item instanceof GameConfigurationGauge)
                         
                                     {
-                                    GameConfigurationUtil::getInstance().update(item as GameConfigurationGauge);
+                                    GameConfigurationUtil::getInstance().update(item);
     
 
                                     }
@@ -339,7 +336,7 @@ item= this->get(index);
                         if(item instanceof TextField)
                         
                                     {
-                                    GameConfigurationTextInput::update(item as TextField);
+                                    GameConfigurationTextInput::update(item);
     
 
                                     }
@@ -349,7 +346,7 @@ item= this->get(index);
 GameConfigurationUtil::getInstance().updateCompetitionValue();
     
 
-    Hashtable<any, any> hashtable = StdUtil::getInstance().createHashtable();;
+    ABHashtable<Object*, Object*> hashtable = StdUtil::getInstance().createHashtable();;
     
 
     GameConfiguration SCALE = GameConfigurationCentral::getInstance().SCALE;;
@@ -381,7 +378,7 @@ keyValuePersistance.save(abeClientInformation, hashtable);
                         for (
     int32_t index = 0;index < size2; index++)
         {
-integer= list.objectArray[index]! as Integer;
+integer= list.objectArray[index];
     
 keyValuePersistance.delete(abeClientInformation, integer.intValue());
     

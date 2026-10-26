@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
 
@@ -78,8 +78,9 @@ class BasicOptionItemsEntity: public AbSqlBean, public BasicOptionItemsEntityInt
 
     protected: const std::string tableName = "basicoptionitems";
 
-public: BasicOptionItemsEntity(){
-            super(InventoryDbInitInfo());
+public: BasicOptionItemsEntity() : AbSqlBean(InventoryDbInitInfo()){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -182,8 +183,8 @@ stringBuffer.append(BasicOptionItemData::OPTION_ONE_ONE_ITEM).append(this->sqlTy
 }
 
 
-    public: void update(HashMap<any, any> updatedValues){
-super.updateWhere(basicItemData.ID, updatedValues.get(basicItemData.ID) as string, updatedValues);
+    public: void update(HashMap<Object*, Object*> updatedValues){
+super.updateWhere(basicItemData.ID, updatedValues.get(basicItemData.ID), updatedValues);
     
 }
 

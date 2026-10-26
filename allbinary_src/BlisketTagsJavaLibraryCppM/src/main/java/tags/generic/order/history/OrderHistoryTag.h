@@ -21,9 +21,9 @@
         #ifndef TAGS_GENERIC_ORDER_HISTORY_ORDERHISTORYTAG_H
         #define TAGS_GENERIC_ORDER_HISTORY_ORDERHISTORYTAG_H
 
-            #include "../../../../java/lang/Class.h"
+            #include "java/lang/Class.h"
         
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/lang/reflect/Method.h>
 

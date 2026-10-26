@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
 
@@ -175,7 +175,7 @@ this->titleValidation= TitleNotRequiredValidation(titleNode);
 }
 
 
-public: TitleBodyValidation(HashMap<any, any> hashMap){
+public: TitleBodyValidation(HashMap<Object*, Object*> hashMap){
 
                         if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEW))
                         
@@ -192,8 +192,8 @@ this->getFormData(hashMap);
 
                 //@Throws(Exception.constructor)
             
-    public: void getFormData(HashMap<any, any> hashMap){
-this->body= hashMap.get(BodyData::getInstance().NAME) as string;
+    public: void getFormData(HashMap<Object*, Object*> hashMap){
+this->body= hashMap.get(BodyData::getInstance().NAME);
     
 this->titleValidation= TitleNotRequiredValidation(hashMap);
     

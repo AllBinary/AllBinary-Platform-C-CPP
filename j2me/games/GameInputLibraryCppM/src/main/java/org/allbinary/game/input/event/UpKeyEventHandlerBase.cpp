@@ -18,13 +18,10 @@
 
 
 
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../../../java/lang/Integer.h"
+            #include "java/lang/Integer.h"
         
-#include <jsinterop/annotations/JsType.h>
-
-      
 #include <org/allbinary/game/input/PlayerGameInput.h>
 
       
@@ -44,12 +41,6 @@
 
       
 #include <org/allbinary/util/BasicArrayListD.h>
-
-      
-#include <jsinterop/annotations/JsMethod.h>
-
-      
-#include <jsinterop/annotations/JsConstructor.h>
 
       
 
@@ -135,7 +126,7 @@ super.removeListener(eventListenerInterface);
 
         try {
             
-    PlayerGameInput playerGameInput = this->list.objectArray[index]! as PlayerGameInput;;
+    PlayerGameInput playerGameInput = this->list.objectArray[index];;
     
 playerGameInput.onUpKeyEvent(eventObject);
     
@@ -160,7 +151,7 @@ this->logUtil.put(this->commonStrings.EXCEPTION, this, EventStrings::getInstance
         {
 
         try {
-            eventListenerInterface= this->eventListenerInterfaceList.get(index) as EventListenerInterface;
+            eventListenerInterface= this->eventListenerInterfaceList.get(index);
     
 this->processForInteger(eventObject, eventListenerInterface);
     
@@ -183,7 +174,7 @@ index++;
             
     protected: void processForInteger(Integer eventObject, EventListenerInterface eventListenerInterface){
 
-    UpKeyEventListenerInterface upKeyEventListenerInterface = eventListenerInterface as UpKeyEventListenerInterface;;
+    UpKeyEventListenerInterface upKeyEventListenerInterface = eventListenerInterface;;
     
 upKeyEventListenerInterface.onUpKeyEvent(eventObject);
     
@@ -210,7 +201,7 @@ stringBuffer.appendint(this->list.size());
 
         try {
             
-    EventListenerInterface eventListenerInterface = this->list.get(index) as EventListenerInterface;;
+    EventListenerInterface eventListenerInterface = this->list.get(index);;
     
 stringBuffer.append(UpKeyEventHandlerBase::LISTENER_LABEL);
     

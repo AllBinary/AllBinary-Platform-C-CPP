@@ -18,7 +18,7 @@
 
 
 
-            #include "../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/util/BasicArrayList.h>
 
@@ -32,10 +32,7 @@
 #include <org/allbinary/data/tree/dom/DomNodeInterface.h>
 
       
-#include <org/allbinary/data/tree/dom/document/DomDocumentHelper.h>
-
-      
-#include <org/allbinary/logic/StdUtil.h>
+#include <org/allbinary/data/tree/dom/document/XmlDocumentHelper.h>
 
       
 #include <org/allbinary/logic/communication/log/LogUtil.h>
@@ -100,8 +97,9 @@ class HttpComponentView: public TransformInfoHttpComposite, public TransformInte
 
     private: TransformDocumentInterface transformDocumentInterface;
 
-public: HttpComponentView(TransformInfoInterface transformInfoInterface){
-            super(transformInfoInterface);
+public: HttpComponentView(TransformInfoInterface transformInfoInterface) : TransformInfoHttpComposite(transformInfoInterface){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -172,7 +170,7 @@ this->domNodeInterfaceVector.add(domNodeInterface);
     int32_t index = 0;index < size; index++)
         {
 
-    DomNodeInterface domNodeInterface = this->domNodeInterfaceVector.get(index) as DomNodeInterface;;
+    DomNodeInterface domNodeInterface = this->domNodeInterfaceVector.get(index);;
     
 this->transformDocumentInterface.getBaseNode().appendChild(domNodeInterface.toXmlNode(this->transformDocumentInterface.getDoc()));
     
@@ -256,7 +254,7 @@ this->transformDocumentInterface.getBaseNode().appendChild(domNodeInterface.toXm
             this->toXmlDoc();
     
 
-    std::string success = DomDocumentHelper::toString(this->getDoc());;
+    std::string success = XmlDocumentHelper::toString(this->getDoc());;
     
 
     std::string result = BasicTransformer(this->abeClientInformation, this->getTransformInfoInterface()).translate(success);;

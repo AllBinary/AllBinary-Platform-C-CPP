@@ -20,7 +20,7 @@
 
             #include <vector>
         
-            #include "../../../../java/lang/Integer.h"
+            #include "java/lang/Integer.h"
         
 #include <javax/microedition/lcdui/Font.h>
 
@@ -63,8 +63,9 @@ class AllBinaryJ2METiledLayer: public AllBinaryTiledLayer {
 
     protected: int32_t debugColor;
 
-public: AllBinaryJ2METiledLayer(Integer dataId, TiledLayer tiledLayer, std::vector<std::vector<int32_t>> mapTwoDArray, int32_t debugColor){
-            super(dataId, tiledLayer.getWidth(), tiledLayer.getHeight(), tiledLayer.getCellWidth(), tiledLayer.getCellHeight());
+public: AllBinaryJ2METiledLayer(Integer dataId, TiledLayer tiledLayer, std::vector<std::vector<int32_t>> mapTwoDArray, int32_t debugColor) : AllBinaryTiledLayer(dataId, tiledLayer.getWidth(), tiledLayer.getHeight(), tiledLayer.getCellWidth(), tiledLayer.getCellHeight()){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.

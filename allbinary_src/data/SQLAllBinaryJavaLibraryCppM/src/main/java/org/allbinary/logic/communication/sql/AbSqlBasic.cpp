@@ -18,15 +18,15 @@
 
 
 
-            #include "../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../java/lang/Class.h"
+            #include "java/lang/Class.h"
         
-            #include "../../../../../java/lang/ClassLoader.h"
+            #include "java/lang/ClassLoader.h"
         
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../../../java/lang/Thread.h"
+            #include "java/lang/Thread.h"
         
 #include <java/sql/Connection.h>
 
@@ -321,7 +321,7 @@ this->initialize();
     ClassLoader loader = Thread::currentThread().getContextClassLoader();;
     
 
-    Function jdbcDriverClass = loader.loadClass(this->getDatabaseConnectionInfoInterface().getJdbcDriver());;
+    Class* jdbcDriverClass = loader.loadClass(this->getDatabaseConnectionInfoInterface().getJdbcDriver());;
     
 jdbcDriverClass.newInstance();
     

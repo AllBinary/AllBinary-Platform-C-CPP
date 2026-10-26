@@ -90,8 +90,6 @@ class HtmlTable: public HtmlTag {
 
     private: const std::string RULES = "rules";
 
-    private: const std::string WIDTH = "width";
-
     private: const std::string STYLE = "style";
 
     public: const std::string BORDERCOLLAPSE = "border-collapse: collapse";
@@ -170,13 +168,13 @@ result += " ";
     int32_t i = 0;i < attributeKeys.size(); i++)
         {
 
-    std::string key = attributeKeys[i]! as string;;
+    std::string key = attributeKeys[i];;
     
 
-    std::string value = otherAttributes.get(key) as string;;
+    std::string value = otherAttributes.get(key);;
     
 
-                        if(true && value.compareTo(stringUtil.EMPTY_STRING) != 0)
+                        if(true && value.compare(stringUtil.EMPTY_STRING) != 0)
                         
                                     {
                                     result += key;

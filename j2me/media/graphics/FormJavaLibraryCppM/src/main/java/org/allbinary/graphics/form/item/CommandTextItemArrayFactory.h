@@ -23,20 +23,8 @@
 
             #include <vector>
         
-            #include "../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-#include <java/util/Vector.h>
-
-      
-#include <jsinterop/annotations/JsType.h>
-
-      
-#include <jsinterop/annotations/JsMethod.h>
-
-      
-#include <jsinterop/annotations/JsConstructor.h>
-
-      
 #include <javax/microedition/lcdui/Command.h>
 
       
@@ -50,6 +38,9 @@
 
       
 #include <org/allbinary/graphics/form/ScreenInfo.h>
+
+      
+#include <org/allbinary/logic/VectorUtil.h>
 
       
 #include <org/allbinary/logic/string/StringUtil.h>
@@ -95,7 +86,7 @@ class CommandTextItemArrayFactory
 
 public: CommandTextItemArrayFactory(Visitor visitorInterface);
 
-    public: std::vector<ABCustomItem> getInstance(Vector<any> vector, BasicColor backgroundBasicColor, BasicColor foregroundBasicColor);
+    public: std::vector<ABCustomItem> getInstance(Object* vector, BasicColor backgroundBasicColor, BasicColor foregroundBasicColor);
 
 };
 

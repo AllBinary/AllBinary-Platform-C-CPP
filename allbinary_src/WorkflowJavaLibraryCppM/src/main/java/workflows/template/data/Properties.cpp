@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
 #include <java/util/HashMap.h>
 
@@ -62,7 +62,7 @@ class Properties
 
     protected: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    private: HashMap<any, any> propertiesHashMap;
+    private: HashMap<Object*, Object*> propertiesHashMap;
 
 public: Properties(){
 
@@ -79,7 +79,7 @@ this->propertiesHashMap= StdUtil::getInstance().createHashMap();
 }
 
 
-    protected: HashMap<any, any> getPropertiesHashMap(){
+    protected: HashMap<Object*, Object*> getPropertiesHashMap(){
 
 
 

@@ -20,7 +20,7 @@
 
             #include <vector>
         
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <javax/microedition/khronos/opengles/GL.h>
 
@@ -79,8 +79,9 @@ class CompoundRotationAnimation: public RotationAnimation, public CompoundAnimat
 
     private: std::vector<RotationAnimation> animationInterfaceArray;
 
-public: CompoundRotationAnimation(std::vector<RotationAnimation> animationInterfaceArray, AnimationBehavior animationBehavior){
-            super(AngleInfo::getInstance(AngleFactory::getInstance().QUARTER_TOTAL_ANGLE), CircularIndexUtil::createInstance(4), animationBehavior);
+public: CompoundRotationAnimation(std::vector<RotationAnimation> animationInterfaceArray, AnimationBehavior animationBehavior) : RotationAnimation(AngleInfo::getInstance(AngleFactory::getInstance().QUARTER_TOTAL_ANGLE), CircularIndexUtil::createInstance(4), animationBehavior){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -93,7 +94,7 @@ this->circularIndexUtil= CircularIndexUtil::createInstance(this->animationInterf
 
 
     public: void setFrame(int32_t index){
-this->animationInterfaceArray[this->circularIndexUtil.getIndex()]!.setFrame(index);
+this->animationInterfaceArray[this->circularIndexUtil.getIndex()].setFrame(index);
     
 }
 
@@ -103,7 +104,7 @@ this->animationInterfaceArray[this->circularIndexUtil.getIndex()]!.setFrame(inde
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->animationInterfaceArray[this->circularIndexUtil.getIndex()]!.getFrame();;
+                        return this->animationInterfaceArray[this->circularIndexUtil.getIndex()].getFrame();;
     
 }
 
@@ -115,7 +116,7 @@ this->animationInterfaceArray[this->circularIndexUtil.getIndex()]!.setFrame(inde
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->animationInterfaceArray[this->circularIndexUtil.getIndex()]!.getAnimationSize();;
+                        return this->animationInterfaceArray[this->circularIndexUtil.getIndex()].getAnimationSize();;
     
 }
 
@@ -125,13 +126,13 @@ this->animationInterfaceArray[this->circularIndexUtil.getIndex()]!.setFrame(inde
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->animationInterfaceArray[this->circularIndexUtil.getIndex()]!.getSize();;
+                        return this->animationInterfaceArray[this->circularIndexUtil.getIndex()].getSize();;
     
 }
 
 
     public: void previousFrame(){
-this->animationInterfaceArray[this->circularIndexUtil.getIndex()]!.previousFrame();
+this->animationInterfaceArray[this->circularIndexUtil.getIndex()].previousFrame();
     
 }
 
@@ -139,19 +140,19 @@ this->animationInterfaceArray[this->circularIndexUtil.getIndex()]!.previousFrame
                 //@Throws(Exception.constructor)
             
     public: void nextFrame(){
-this->animationInterfaceArray[this->circularIndexUtil.getIndex()]!.nextFrame();
+this->animationInterfaceArray[this->circularIndexUtil.getIndex()].nextFrame();
     
 }
 
 
     public: void previousRotation(){
-this->animationInterfaceArray[this->circularIndexUtil.getIndex()]!.previousRotation();
+this->animationInterfaceArray[this->circularIndexUtil.getIndex()].previousRotation();
     
 }
 
 
     public: void nextRotation(){
-this->animationInterfaceArray[this->circularIndexUtil.getIndex()]!.nextRotation();
+this->animationInterfaceArray[this->circularIndexUtil.getIndex()].nextRotation();
     
 }
 
@@ -171,13 +172,13 @@ this->animationInterfaceArray[this->circularIndexUtil.getIndex()]!.nextRotation(
 
 
     public: void paintXY(Graphics graphics, int32_t x, int32_t y){
-this->animationInterfaceArray[this->circularIndexUtil.getIndex()]!.paintXY(graphics, x, y);
+this->animationInterfaceArray[this->circularIndexUtil.getIndex()].paintXY(graphics, x, y);
     
 }
 
 
     public: void paintThreedXYZ(Graphics graphics, int32_t x, int32_t y, int32_t z){
-this->animationInterfaceArray[this->circularIndexUtil.getIndex()]!.paintThreedXYZ(graphics, x, y, z);
+this->animationInterfaceArray[this->circularIndexUtil.getIndex()].paintThreedXYZ(graphics, x, y, z);
     
 }
 
@@ -187,7 +188,7 @@ this->animationInterfaceArray[this->circularIndexUtil.getIndex()]!.paintThreedXY
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->animationInterfaceArray[this->circularIndexUtil.getIndex()]!;
+                        return this->animationInterfaceArray[this->circularIndexUtil.getIndex()];
     
 }
 
@@ -226,13 +227,13 @@ this->setFrame(frame);
 
 
     public: void setFrameByDirection(Direction direction){
-this->animationInterfaceArray[this->circularIndexUtil.getIndex()]!.setFrameByDirection(direction);
+this->animationInterfaceArray[this->circularIndexUtil.getIndex()].setFrameByDirection(direction);
     
 }
 
 
     public: void setFrameToAngle(Angle angle){
-this->animationInterfaceArray[this->circularIndexUtil.getIndex()]!.setFrameToAngle(angle);
+this->animationInterfaceArray[this->circularIndexUtil.getIndex()].setFrameToAngle(angle);
     
 }
 
@@ -244,7 +245,7 @@ this->adjustFrame(newAngle.getValue());
 
 
     public: void adjustFrame(int16_t angle){
-this->animationInterfaceArray[this->circularIndexUtil.getIndex()]!.adjustFrame(angle);
+this->animationInterfaceArray[this->circularIndexUtil.getIndex()].adjustFrame(angle);
     
 }
 
@@ -254,7 +255,7 @@ this->animationInterfaceArray[this->circularIndexUtil.getIndex()]!.adjustFrame(a
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->animationInterfaceArray[this->circularIndexUtil.getIndex()]!.getAngleInfoP();;
+                        return this->animationInterfaceArray[this->circularIndexUtil.getIndex()].getAngleInfoP();;
     
 }
 
@@ -285,7 +286,7 @@ this->animationInterfaceArray= animationInterfaceArray;
                         for (
     int32_t index = this->animationInterfaceArray.size();--index >= 0; )
         {
-this->animationInterfaceArray[index]!.set(gl);
+this->animationInterfaceArray[index].set(gl);
     
 }
 

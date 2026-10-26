@@ -18,11 +18,11 @@
 
 
 
-            #include "../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../java/lang/System.h"
+            #include "java/lang/System.h"
         
-            #include "../../../../../java/lang/Integer.h"
+            #include "java/lang/Integer.h"
         
 #include <org/allbinary/logic/TsUtil.h>
 
@@ -104,12 +104,12 @@ this->put(specialMessage, anyType, functionName, exception);
     std::string className = CommonStrings::getInstance().EMPTY;;
     
 
-                        if(anyType->constructor.name.toString()! != 
+                        if(anyType->constructor.name.toString() != 
                                     nullptr
                                 )
                         
                                     {
-                                    className= StringMaker().append(anyType->constructor.name.toString()!).append(CommonSeps::getInstance().COLON).append(Integer::toHexString(TsUtil::getInstance().hashCode(anyType))).toString();
+                                    className= StringMaker().append(anyType->constructor.name.toString()).append(CommonSeps::getInstance().COLON).append(Integer::toHexString(TsUtil::getInstance().hashCode(anyType))).toString();
     
 
                                     }
@@ -138,12 +138,12 @@ console.log(LogUtil::LOG_SUCCESS + message);
     std::string className = CommonStrings::getInstance().EMPTY;;
     
 
-                        if(anyType->constructor.name.toString()! != 
+                        if(anyType->constructor.name.toString() != 
                                     nullptr
                                 )
                         
                                     {
-                                    className= StringMaker().append(anyType->constructor.name.toString()!).append(CommonSeps::getInstance().COLON).append(Integer::toHexString(TsUtil::getInstance().hashCode(anyType))).toString();
+                                    className= StringMaker().append(anyType->constructor.name.toString()).append(CommonSeps::getInstance().COLON).append(Integer::toHexString(TsUtil::getInstance().hashCode(anyType))).toString();
     
 
                                     }

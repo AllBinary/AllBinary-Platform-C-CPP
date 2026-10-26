@@ -23,9 +23,9 @@
 
             #include <vector>
         
-            #include "../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../java/lang/Class.h"
+            #include "java/lang/Class.h"
         
 #include <org/allbinary/logic/string/StringMaker.h>
 
@@ -53,7 +53,7 @@ class ParamsUtil
             : public Object
          {
 
-    public: static std::string viewParams(std::vector<Function> params);
+    public: static std::string viewParams(std::vector<Class*> params);
 
 private: ParamsUtil();
 

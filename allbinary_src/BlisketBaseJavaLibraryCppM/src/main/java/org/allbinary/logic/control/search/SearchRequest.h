@@ -21,7 +21,7 @@
         #ifndef ORG_ALLBINARY_LOGIC_CONTROL_SEARCH_SEARCHREQUEST_H
         #define ORG_ALLBINARY_LOGIC_CONTROL_SEARCH_SEARCHREQUEST_H
 
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
 
@@ -77,7 +77,7 @@ class SearchRequest: public AbContext {
 
     private: StoreFrontInterface storeFront;
 
-public: SearchRequest(StoreFrontInterface storeFront, SearchParams searchParams, std::string xslFile, std::string contentType, HashMap<any, any> propertiesHashMap, PageContext pageContext);
+public: SearchRequest(StoreFrontInterface storeFront, SearchParams searchParams, std::string xslFile, std::string contentType, HashMap<Object*, Object*> propertiesHashMap, PageContext pageContext);
 
     public: void setStoreFront(StoreFrontInterface storeFront);
 

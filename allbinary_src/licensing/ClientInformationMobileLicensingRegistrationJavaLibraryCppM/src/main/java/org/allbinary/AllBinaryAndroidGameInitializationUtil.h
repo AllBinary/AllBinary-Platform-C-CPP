@@ -21,9 +21,9 @@
         #ifndef ORG_ALLBINARY_ALLBINARYANDROIDGAMEINITIALIZATIONUTIL_H
         #define ORG_ALLBINARY_ALLBINARYANDROIDGAMEINITIALIZATIONUTIL_H
 
-            #include "../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../java/lang/Integer.h"
+            #include "java/lang/Integer.h"
         
 #include <org/allbinary/business/init/LicenseInitInfoUtil.h>
 

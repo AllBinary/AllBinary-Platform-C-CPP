@@ -18,9 +18,6 @@
 
 
 
-#include <jsinterop/annotations/JsType.h>
-
-      
 #include <org/allbinary/game/resource/ResourceLoadingLevel.h>
 
       
@@ -28,12 +25,6 @@
 
       
 #include <org/allbinary/logic/util/event/AllBinaryEventObject.h>
-
-      
-#include <jsinterop/annotations/JsMethod.h>
-
-      
-#include <jsinterop/annotations/JsConstructor.h>
 
       
 
@@ -61,8 +52,9 @@ class GameInitializedEvent: public AllBinaryEventObject {
 
     private: int32_t level= 0;
 
-public: GameInitializedEvent(Object* anyType){
-            super(anyType);
+public: GameInitializedEvent(Object* anyType) : AllBinaryEventObject(anyType){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.

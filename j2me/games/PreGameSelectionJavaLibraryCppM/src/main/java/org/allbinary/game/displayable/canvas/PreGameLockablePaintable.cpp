@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <javax/microedition/lcdui/Graphics.h>
 
@@ -63,8 +63,9 @@ class PreGameLockablePaintable: public LockablePaintable {
 
     private: ScrollCurrentSelectionForm paintableForm;
 
-public: PreGameLockablePaintable(ScrollCurrentSelectionForm paintableForm, int32_t lockedIndex){
-            super(lockedIndex);
+public: PreGameLockablePaintable(ScrollCurrentSelectionForm paintableForm, int32_t lockedIndex) : LockablePaintable(lockedIndex){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.

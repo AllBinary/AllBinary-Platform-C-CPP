@@ -21,9 +21,9 @@
         #ifndef ORG_ALLBINARY_MEDIA_IMAGE_COMPARISON_MOTION_MOTIONRECTANGLE_H
         #define ORG_ALLBINARY_MEDIA_IMAGE_COMPARISON_MOTION_MOTIONRECTANGLE_H
 
-            #include "../../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../../java/lang/Cloneable.h"
+            #include "java/lang/Cloneable.h"
         
 #include <java/awt/Rectangle.h>
 

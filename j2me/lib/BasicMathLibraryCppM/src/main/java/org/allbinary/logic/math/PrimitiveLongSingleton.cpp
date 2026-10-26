@@ -20,20 +20,11 @@
 
             #include <vector>
         
-            #include "../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-#include <jsinterop/annotations/JsType.h>
-
-      
 #include <org/allbinary/logic/string/StringMaker.h>
-
-      
-#include <jsinterop/annotations/JsMethod.h>
-
-      
-#include <jsinterop/annotations/JsProperty.h>
 
       
 
@@ -84,7 +75,7 @@ class PrimitiveLongSingleton
 
     public: const std::vector<char> ZERO = 
                                                         
-                                                        [this->NUMBER_CHAR_ARRAY[0]]
+                                                        {this->NUMBER_CHAR_ARRAY[0]}
                                                     ;
 
                 //@Throws(Exception.constructor)
@@ -108,7 +99,7 @@ class PrimitiveLongSingleton
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->NUMBER_ARRAY[index]!;
+                        return this->NUMBER_ARRAY[index];
     
 
                                     }

@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/awt/event/ActionEvent.h>
 
@@ -61,8 +61,9 @@
 
 class BasicProfileActionScriptProcessor: public ProfileActionScriptItem, public ProfileActionScriptProcessorInterface {
 
-public: BasicProfileActionScriptProcessor(std::string label, Node node){
-            super(label, node);
+public: BasicProfileActionScriptProcessor(std::string label, Node node) : ProfileActionScriptItem(label, node){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -70,8 +71,9 @@ public: BasicProfileActionScriptProcessor(std::string label, Node node){
 }
 
 
-public: BasicProfileActionScriptProcessor(std::string label){
-            super(label);
+public: BasicProfileActionScriptProcessor(std::string label) : ProfileActionScriptItem(label){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -91,9 +93,9 @@ super.actionPerformed(actionEvent);
                         
                                     {
                                     
-    ProfileActionScriptConditionInterface profileActionScriptConditionInterface = this->getParent() as ProfileActionScriptConditionInterface;;
+    ProfileActionScriptConditionInterface profileActionScriptConditionInterface = this->getParent();;
     
-profileActionScriptConditionInterface.removeProcessor(this as ProfileActionScriptProcessorInterface);
+profileActionScriptConditionInterface.removeProcessor(this);
     
 JTreeInterfaceFactory::getInstance().getJTreeInterface().updateJTree();
     

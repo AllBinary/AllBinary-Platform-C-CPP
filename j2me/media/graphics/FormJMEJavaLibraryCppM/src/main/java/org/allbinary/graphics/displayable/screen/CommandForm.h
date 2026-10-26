@@ -21,14 +21,8 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_DISPLAYABLE_SCREEN_COMMANDFORM_H
         #define ORG_ALLBINARY_GRAPHICS_DISPLAYABLE_SCREEN_COMMANDFORM_H
 
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-#include <jsinterop/annotations/JsType.h>
-
-      
-#include <java/util/Stack.h>
-
-      
 #include <javax/microedition/lcdui/Command.h>
 
       
@@ -68,13 +62,10 @@
 #include <org/allbinary/string/CommonStrings.h>
 
       
-#include <jsinterop/annotations/JsMethod.h>
+#include <org/allbinary/logic/StdUtil.h>
 
       
-#include <jsinterop/annotations/JsConstructor.h>
-
-      
-#include <jsinterop/annotations/JsProperty.h>
+#include <org/allbinary/util/ABStack.h>
 
       
 
@@ -109,7 +100,7 @@ class CommandForm: public Form, public MyCommandInterface, public MenuListener {
 
     private: const Processor repaintProcessor = ScreenRepaintProcessorFactory::getInstance().create(this);
 
-    private: Stack<any> commandStack;
+    private: ABStack<Object*> commandStack;
 
 public: CommandForm(CommandListener commandListener, std::string formTitle, BasicColor backgrounBasicColor, BasicColor foregroundBasicColor);
 

@@ -60,8 +60,9 @@
         
 class AbFileUpload: public FileUpload {
 
-public: AbFileUpload(FileItemFactory fileItemFactory){
-            super(fileItemFactory);
+public: AbFileUpload(FileItemFactory fileItemFactory) : FileUpload(fileItemFactory){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.

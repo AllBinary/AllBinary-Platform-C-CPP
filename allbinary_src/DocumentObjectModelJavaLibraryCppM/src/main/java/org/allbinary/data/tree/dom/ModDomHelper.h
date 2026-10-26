@@ -23,11 +23,11 @@
 
             #include <vector>
         
-            #include "../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../../../java/lang/Integer.h"
+            #include "java/lang/Integer.h"
         
 #include <java/util/HashMap.h>
 
@@ -110,11 +110,11 @@ class ModDomHelper
 
                 //@Throws(Exception.constructor)
             
-    public: static Node createNameValueNodes(Document document, std::string rootNode, HashMap<any, any> hashMap);
+    public: static Node createNameValueNodes(Document document, std::string rootNode, HashMap<Object*, Object*> hashMap);
 
                 //@Throws(Exception.constructor)
             
-    public: static Node createNameValueNodes(Document document, Node node, HashMap<any, any> hashMap);
+    public: static Node createNameValueNodes(Document document, Node node, HashMap<Object*, Object*> hashMap);
 
                 //@Throws(Exception.constructor)
             
@@ -126,11 +126,11 @@ class ModDomHelper
 
                 //@Throws(Exception.constructor)
             
-    public: static Node createNodeWithValueNodes(Document document, std::string rootNode, HashMap<any, any> hashMap);
+    public: static Node createNodeWithValueNodes(Document document, std::string rootNode, HashMap<Object*, Object*> hashMap);
 
                 //@Throws(Exception.constructor)
             
-    public: static Node createNodeWithValueNodes(Document document, Node node, HashMap<any, any> hashMap);
+    public: static Node createNodeWithValueNodes(Document document, Node node, HashMap<Object*, Object*> hashMap);
 
 private: ModDomHelper();
 

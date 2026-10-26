@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/io/Serializable.h>
 
@@ -50,7 +50,7 @@ class UserFactoryInterface: public Serializable {
 
                 //@Throws(Exception.constructor)
             
-    UserInterface getInstance(HashMap<any, any> hashMap)
+    UserInterface getInstance(HashMap<Object*, Object*> hashMap)
 
 };
 

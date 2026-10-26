@@ -21,7 +21,7 @@
         #ifndef ORG_ALLBINARY_BUSINESS_USER_MODULES_CONFIGURATION_USERCONFIGURATION_H
         #define ORG_ALLBINARY_BUSINESS_USER_MODULES_CONFIGURATION_USERCONFIGURATION_H
 
-            #include "../../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
 #include <java/util/HashMap.h>
 
@@ -73,7 +73,7 @@ class UserConfiguration
 
 public: UserConfiguration();
 
-public: UserConfiguration(HashMap<any, any> hashMap);
+public: UserConfiguration(HashMap<Object*, Object*> hashMap);
 
     public: UserEmailConfigurationInterface getUserEmailConfigurationInterface();
 

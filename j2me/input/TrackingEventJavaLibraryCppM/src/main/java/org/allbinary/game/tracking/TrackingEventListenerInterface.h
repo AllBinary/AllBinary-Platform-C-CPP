@@ -21,14 +21,8 @@
         #ifndef ORG_ALLBINARY_GAME_TRACKING_TRACKINGEVENTLISTENERINTERFACE_H
         #define ORG_ALLBINARY_GAME_TRACKING_TRACKINGEVENTLISTENERINTERFACE_H
 
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-#include <jsinterop/annotations/JsMethod.h>
-
-      
-#include <jsinterop/annotations/JsType.h>
-
-      
 #include <org/allbinary/logic/util/event/EventListenerInterface.h>
 
       

@@ -21,7 +21,7 @@
         #ifndef ORG_ALLBINARY_GUI_DIALOG_HASHMAPJDIALOGLISTENERINTERFACE_H
         #define ORG_ALLBINARY_GUI_DIALOG_HASHMAPJDIALOGLISTENERINTERFACE_H
 
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
 
@@ -49,7 +49,7 @@ class HashMapJDialogListenerInterface {
 
                 //@Throws(Exception.constructor)
             
-    void onHashMap(HashMap<any, any> hashMap);
+    void onHashMap(HashMap<Object*, Object*> hashMap);
 
 };
 

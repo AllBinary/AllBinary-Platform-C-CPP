@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/awt.h>
 
@@ -63,8 +63,9 @@ class ConsolidateMotionRectangles: public MotionRectangles {
 
     protected: const LogUtil logUtil = LogUtil::getInstance();
 
-public: ConsolidateMotionRectangles(MotionRectangles motionRectangles){
-            super(NAME, motionRectangles.getImageComparisonResult());
+public: ConsolidateMotionRectangles(MotionRectangles motionRectangles) : MotionRectangles(NAME, motionRectangles.getImageComparisonResult()){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -83,7 +84,7 @@ public: ConsolidateMotionRectangles(MotionRectangles motionRectangles){
     int32_t index = 0;index < size; index++)
         {
 
-    MotionRectangle motionRectangle = vector.get(index) as MotionRectangle;;
+    MotionRectangle motionRectangle = vector.get(index);;
     
 vector.add(motionRectangle.clone());
     
@@ -114,7 +115,7 @@ this->logUtil.putF("Start - Size Before: " +vector.size(), this, "consolidateMot
     int32_t index = 0;index < size; index++)
         {
 
-    MotionRectangle motionRectangle = vector.get(index) as MotionRectangle;;
+    MotionRectangle motionRectangle = vector.get(index);;
     
 
 
@@ -124,7 +125,7 @@ this->logUtil.putF("Start - Size Before: " +vector.size(), this, "consolidateMot
     int32_t i = index +1;i < vector.size(); i++)
         {
 
-    MotionRectangle motionRectangle2 = vector.get(i) as MotionRectangle;;
+    MotionRectangle motionRectangle2 = vector.get(i);;
     
 
     Rectangle rectangle = motionRectangle.getRectangle();;

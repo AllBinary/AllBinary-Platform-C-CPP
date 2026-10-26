@@ -18,11 +18,8 @@
 
 
 
-            #include "../../../../../../java/lang/Integer.h"
+            #include "java/lang/Integer.h"
         
-#include <jsinterop/annotations/JsType.h>
-
-      
 #include <org/allbinary/graphics/color/BasicColor.h>
 
       
@@ -33,12 +30,6 @@
 
       
 #include <org/allbinary/logic/util/event/AllBinaryEventObject.h>
-
-      
-#include <jsinterop/annotations/JsMethod.h>
-
-      
-#include <jsinterop/annotations/JsConstructor.h>
 
       
 
@@ -70,8 +61,9 @@ class GameNotificationEvent: public AllBinaryEventObject {
 
     private: Boolean removeable;
 
-public: GameNotificationEvent(Object* anyType, std::string string, Integer seconds, BasicColor basicColor, Boolean permanent){
-            super(anyType);
+public: GameNotificationEvent(Object* anyType, std::string string, Integer seconds, BasicColor basicColor, Boolean permanent) : AllBinaryEventObject(anyType){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.

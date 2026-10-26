@@ -21,9 +21,9 @@
         #ifndef ORG_ALLBINARY_IMAGE_OPENGLES_OPENGLIMAGECACHE_H
         #define ORG_ALLBINARY_IMAGE_OPENGLES_OPENGLIMAGECACHE_H
 
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../../java/lang/RuntimeException.h"
+            #include "java/lang/RuntimeException.h"
         
 #include <java/io/InputStream.h>
 

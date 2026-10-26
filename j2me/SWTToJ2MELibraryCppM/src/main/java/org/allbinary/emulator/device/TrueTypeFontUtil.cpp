@@ -20,9 +20,9 @@
 
             #include <vector>
         
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../../java/lang/RuntimeException.h"
+            #include "java/lang/RuntimeException.h"
         
 #include <javax/microedition/khronos/opengles/GL10.h>
 
@@ -126,8 +126,9 @@ class TrueTypeFontUtil: public TrueTypeFontUtilBase {
 
     private: float widthScale;
 
-private: TrueTypeFontUtil(){
-            super(2);
+private: TrueTypeFontUtil() : TrueTypeFontUtilBase(2){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -136,13 +137,433 @@ private: TrueTypeFontUtil(){
                         if(AvianUtil::isAvian())
                         
                                     {
-                                    this->widthFloatArray= new Array();
+                                    this->widthFloatArray= {
+                                //Otherwise - values - DoubleLiteralExpr
+
+                                //Otherwise - values - DoubleLiteralExpr
+
+                                //Otherwise - values - DoubleLiteralExpr
+
+                                //Otherwise - values - DoubleLiteralExpr
+
+                                //Otherwise - values - DoubleLiteralExpr
+
+                                //Otherwise - values - DoubleLiteralExpr
+
+                                //Otherwise - values - DoubleLiteralExpr
+
+                                //Otherwise - values - DoubleLiteralExpr
+
+                                //Otherwise - values - DoubleLiteralExpr
+
+                                //Otherwise - values - DoubleLiteralExpr
+
+                                //Otherwise - values - DoubleLiteralExpr
+
+                                //Otherwise - values - DoubleLiteralExpr
+
+                                //Otherwise - values - DoubleLiteralExpr
+
+                                //Otherwise - values - DoubleLiteralExpr
+
+                                //Otherwise - values - DoubleLiteralExpr
+
+                                //Otherwise - values - DoubleLiteralExpr
+
+                                //Otherwise - values - DoubleLiteralExpr
+
+                                //Otherwise - values - DoubleLiteralExpr
+
+                                //Otherwise - values - DoubleLiteralExpr
+
+                                //Otherwise - values - DoubleLiteralExpr
+
+                                //Otherwise - values - DoubleLiteralExpr
+
+                                //Otherwise - values - DoubleLiteralExpr
+
+                                //Otherwise - values - DoubleLiteralExpr
+
+                                //Otherwise - values - DoubleLiteralExpr
+
+                                //Otherwise - values - DoubleLiteralExpr
+
+                                //Otherwise - values - DoubleLiteralExpr
+
+                                //Otherwise - values - DoubleLiteralExpr
+
+                                //Otherwise - values - DoubleLiteralExpr
+
+                                //Otherwise - values - DoubleLiteralExpr
+
+                                //Otherwise - values - DoubleLiteralExpr
+
+                                //Otherwise - values - DoubleLiteralExpr
+
+                                //Otherwise - values - DoubleLiteralExpr
+
+                                //Otherwise - values - DoubleLiteralExpr
+
+                                //Otherwise - values - DoubleLiteralExpr
+
+                                //Otherwise - values - DoubleLiteralExpr
+
+                                //Otherwise - values - DoubleLiteralExpr
+
+                                //Otherwise - values - DoubleLiteralExpr
+
+                                //Otherwise - values - DoubleLiteralExpr
+
+                                //Otherwise - values - DoubleLiteralExpr
+
+                                //Otherwise - values - DoubleLiteralExpr
+
+                                //Otherwise - values - DoubleLiteralExpr
+
+                                //Otherwise - values - DoubleLiteralExpr
+
+                                //Otherwise - values - DoubleLiteralExpr
+
+                                //Otherwise - values - DoubleLiteralExpr
+
+                                //Otherwise - values - DoubleLiteralExpr
+
+                                //Otherwise - values - DoubleLiteralExpr
+
+                                //Otherwise - values - DoubleLiteralExpr
+
+                                //Otherwise - values - DoubleLiteralExpr
+
+                                //Otherwise - values - DoubleLiteralExpr
+
+                                //Otherwise - values - DoubleLiteralExpr
+
+                                //Otherwise - values - DoubleLiteralExpr
+
+                                //Otherwise - values - DoubleLiteralExpr
+
+                                //Otherwise - values - DoubleLiteralExpr
+
+                                //Otherwise - values - DoubleLiteralExpr
+
+                                //Otherwise - values - DoubleLiteralExpr
+
+                                //Otherwise - values - DoubleLiteralExpr
+
+                                //Otherwise - values - DoubleLiteralExpr
+
+                                //Otherwise - values - DoubleLiteralExpr
+
+                                //Otherwise - values - DoubleLiteralExpr
+
+                                //Otherwise - values - DoubleLiteralExpr
+
+                                //Otherwise - values - DoubleLiteralExpr
+
+                                //Otherwise - values - DoubleLiteralExpr
+
+                                //Otherwise - values - DoubleLiteralExpr
+
+                                //Otherwise - values - DoubleLiteralExpr
+
+                                //Otherwise - values - DoubleLiteralExpr
+
+                                //Otherwise - values - DoubleLiteralExpr
+
+                                //Otherwise - values - DoubleLiteralExpr
+
+                                //Otherwise - values - DoubleLiteralExpr
+
+                                //Otherwise - values - DoubleLiteralExpr
+
+                                //Otherwise - values - DoubleLiteralExpr
+
+                                //Otherwise - values - DoubleLiteralExpr
+
+                                //Otherwise - values - DoubleLiteralExpr
+
+                                //Otherwise - values - DoubleLiteralExpr
+
+                                //Otherwise - values - DoubleLiteralExpr
+
+                                //Otherwise - values - DoubleLiteralExpr
+
+                                //Otherwise - values - DoubleLiteralExpr
+
+                                //Otherwise - values - DoubleLiteralExpr
+
+                                //Otherwise - values - DoubleLiteralExpr
+
+                                //Otherwise - values - DoubleLiteralExpr
+
+                                //Otherwise - values - DoubleLiteralExpr
+
+                                //Otherwise - values - DoubleLiteralExpr
+
+                                //Otherwise - values - DoubleLiteralExpr
+
+                                //Otherwise - values - DoubleLiteralExpr
+
+                                //Otherwise - values - DoubleLiteralExpr
+
+                                //Otherwise - values - DoubleLiteralExpr
+
+                                //Otherwise - values - DoubleLiteralExpr
+
+                                //Otherwise - values - DoubleLiteralExpr
+
+                                //Otherwise - values - DoubleLiteralExpr
+
+                                //Otherwise - values - DoubleLiteralExpr
+
+                                //Otherwise - values - DoubleLiteralExpr
+
+                                //Otherwise - values - DoubleLiteralExpr
+
+                                //Otherwise - values - DoubleLiteralExpr
+
+                                //Otherwise - values - DoubleLiteralExpr
+
+                                //Otherwise - values - DoubleLiteralExpr
+
+                                //Otherwise - values - DoubleLiteralExpr
+
+                                //Otherwise - values - DoubleLiteralExpr
+
+                                //Otherwise - values - DoubleLiteralExpr
+
+                                //Otherwise - values - DoubleLiteralExpr
+
+                                //Otherwise - values - DoubleLiteralExpr
+
+                                //Otherwise - values - DoubleLiteralExpr
+
+                                //Otherwise - values - DoubleLiteralExpr
+
+                                //Otherwise - values - DoubleLiteralExpr
+
+                                //Otherwise - values - DoubleLiteralExpr
+
+                                //Otherwise - values - DoubleLiteralExpr
+
+                                //Otherwise - values - DoubleLiteralExpr
+
+                                //Otherwise - values - DoubleLiteralExpr
+
+                                //Otherwise - values - DoubleLiteralExpr
+
+                                //Otherwise - values - DoubleLiteralExpr
+
+                                //Otherwise - values - DoubleLiteralExpr
+
+                                //Otherwise - values - DoubleLiteralExpr
+
+                                //Otherwise - values - DoubleLiteralExpr
+};
     
 
                                     }
                                 
                         else {
-                            this->widthFloatArray= new Array();
+                            this->widthFloatArray= {
+                                //Otherwise - values - DoubleLiteralExpr
+
+                                //Otherwise - values - DoubleLiteralExpr
+
+                                //Otherwise - values - DoubleLiteralExpr
+
+                                //Otherwise - values - DoubleLiteralExpr
+
+                                //Otherwise - values - DoubleLiteralExpr
+
+                                //Otherwise - values - DoubleLiteralExpr
+
+                                //Otherwise - values - DoubleLiteralExpr
+
+                                //Otherwise - values - DoubleLiteralExpr
+
+                                //Otherwise - values - DoubleLiteralExpr
+
+                                //Otherwise - values - DoubleLiteralExpr
+
+                                //Otherwise - values - DoubleLiteralExpr
+
+                                //Otherwise - values - DoubleLiteralExpr
+
+                                //Otherwise - values - DoubleLiteralExpr
+
+                                //Otherwise - values - DoubleLiteralExpr
+
+                                //Otherwise - values - DoubleLiteralExpr
+
+                                //Otherwise - values - DoubleLiteralExpr
+
+                                //Otherwise - values - DoubleLiteralExpr
+
+                                //Otherwise - values - DoubleLiteralExpr
+
+                                //Otherwise - values - DoubleLiteralExpr
+
+                                //Otherwise - values - DoubleLiteralExpr
+
+                                //Otherwise - values - DoubleLiteralExpr
+
+                                //Otherwise - values - DoubleLiteralExpr
+
+                                //Otherwise - values - DoubleLiteralExpr
+
+                                //Otherwise - values - DoubleLiteralExpr
+
+                                //Otherwise - values - DoubleLiteralExpr
+
+                                //Otherwise - values - DoubleLiteralExpr
+
+                                //Otherwise - values - DoubleLiteralExpr
+
+                                //Otherwise - values - DoubleLiteralExpr
+
+                                //Otherwise - values - DoubleLiteralExpr
+
+                                //Otherwise - values - DoubleLiteralExpr
+
+                                //Otherwise - values - DoubleLiteralExpr
+
+                                //Otherwise - values - DoubleLiteralExpr
+
+                                //Otherwise - values - DoubleLiteralExpr
+
+                                //Otherwise - values - DoubleLiteralExpr
+
+                                //Otherwise - values - DoubleLiteralExpr
+
+                                //Otherwise - values - DoubleLiteralExpr
+
+                                //Otherwise - values - DoubleLiteralExpr
+
+                                //Otherwise - values - DoubleLiteralExpr
+
+                                //Otherwise - values - DoubleLiteralExpr
+
+                                //Otherwise - values - DoubleLiteralExpr
+
+                                //Otherwise - values - DoubleLiteralExpr
+
+                                //Otherwise - values - DoubleLiteralExpr
+
+                                //Otherwise - values - DoubleLiteralExpr
+
+                                //Otherwise - values - DoubleLiteralExpr
+
+                                //Otherwise - values - DoubleLiteralExpr
+
+                                //Otherwise - values - DoubleLiteralExpr
+
+                                //Otherwise - values - DoubleLiteralExpr
+
+                                //Otherwise - values - DoubleLiteralExpr
+
+                                //Otherwise - values - DoubleLiteralExpr
+
+                                //Otherwise - values - DoubleLiteralExpr
+
+                                //Otherwise - values - DoubleLiteralExpr
+
+                                //Otherwise - values - DoubleLiteralExpr
+
+                                //Otherwise - values - DoubleLiteralExpr
+
+                                //Otherwise - values - DoubleLiteralExpr
+
+                                //Otherwise - values - DoubleLiteralExpr
+
+                                //Otherwise - values - DoubleLiteralExpr
+
+                                //Otherwise - values - DoubleLiteralExpr
+
+                                //Otherwise - values - DoubleLiteralExpr
+
+                                //Otherwise - values - DoubleLiteralExpr
+
+                                //Otherwise - values - DoubleLiteralExpr
+
+                                //Otherwise - values - DoubleLiteralExpr
+
+                                //Otherwise - values - DoubleLiteralExpr
+
+                                //Otherwise - values - DoubleLiteralExpr
+
+                                //Otherwise - values - DoubleLiteralExpr
+
+                                //Otherwise - values - DoubleLiteralExpr
+
+                                //Otherwise - values - DoubleLiteralExpr
+
+                                //Otherwise - values - DoubleLiteralExpr
+
+                                //Otherwise - values - DoubleLiteralExpr
+
+                                //Otherwise - values - DoubleLiteralExpr
+
+                                //Otherwise - values - DoubleLiteralExpr
+
+                                //Otherwise - values - DoubleLiteralExpr
+
+                                //Otherwise - values - DoubleLiteralExpr
+
+                                //Otherwise - values - DoubleLiteralExpr
+
+                                //Otherwise - values - DoubleLiteralExpr
+
+                                //Otherwise - values - DoubleLiteralExpr
+
+                                //Otherwise - values - DoubleLiteralExpr
+
+                                //Otherwise - values - DoubleLiteralExpr
+
+                                //Otherwise - values - DoubleLiteralExpr
+
+                                //Otherwise - values - DoubleLiteralExpr
+
+                                //Otherwise - values - DoubleLiteralExpr
+
+                                //Otherwise - values - DoubleLiteralExpr
+
+                                //Otherwise - values - DoubleLiteralExpr
+
+                                //Otherwise - values - DoubleLiteralExpr
+
+                                //Otherwise - values - DoubleLiteralExpr
+
+                                //Otherwise - values - DoubleLiteralExpr
+
+                                //Otherwise - values - DoubleLiteralExpr
+
+                                //Otherwise - values - DoubleLiteralExpr
+
+                                //Otherwise - values - DoubleLiteralExpr
+
+                                //Otherwise - values - DoubleLiteralExpr
+
+                                //Otherwise - values - DoubleLiteralExpr
+
+                                //Otherwise - values - DoubleLiteralExpr
+
+                                //Otherwise - values - DoubleLiteralExpr
+
+                                //Otherwise - values - DoubleLiteralExpr
+
+                                //Otherwise - values - DoubleLiteralExpr
+
+                                //Otherwise - values - DoubleLiteralExpr
+
+                                //Otherwise - values - DoubleLiteralExpr
+
+                                //Otherwise - values - DoubleLiteralExpr
+
+                                //Otherwise - values - DoubleLiteralExpr
+
+                                //Otherwise - values - DoubleLiteralExpr
+};
     
 
                         }
@@ -188,7 +609,7 @@ this->widthScale= (this->scale == 2)
     
 image.setName(canvasStrings.FONT_ATLAS);
     
-this->fontImage= this->preResourceImageUtil.encapsulate(image) as OpenGLESImage;
+this->fontImage= this->preResourceImageUtil.encapsulate(image);
     
 
                                     }
@@ -205,7 +626,7 @@ this->fontImage= this->preResourceImageUtil.encapsulate(image) as OpenGLESImage;
     
 image.setName(canvasStrings.FONT_ATLAS);
     
-this->fontImage= this->preResourceImageUtil.encapsulate(image) as OpenGLESImage;
+this->fontImage= this->preResourceImageUtil.encapsulate(image);
     
 
                                     }
@@ -219,7 +640,7 @@ this->fontImage= this->preResourceImageUtil.encapsulate(image) as OpenGLESImage;
     
 image.setName(canvasStrings.FONT_ATLAS);
     
-this->fontImage= this->preResourceImageUtil.encapsulate(image) as OpenGLESImage;
+this->fontImage= this->preResourceImageUtil.encapsulate(image);
     
 
                         }
@@ -271,7 +692,7 @@ PreLogUtil::putOE(commonStrings.EXCEPTION, this, commonStrings.EXCEPTION, e);
     ImageLoader imageLoader = ImageLoader();;
     
 
-    ImageData imageData = image = imageimage as SwtMutableImage
+    ImageData imageData = image = imageimage
 image.
                     image.getImageData();;
     
@@ -381,7 +802,7 @@ y += cellSize;
     
 y -= (cellSize>>2);
     
-graphics.drawChar(this->characterArray[0]!, x, y, 0);
+graphics.drawChar(this->characterArray[0], x, y, 0);
     
 }
 
@@ -418,7 +839,7 @@ this->characterArray[0]= pattern[index];
                                 
                         else {
                             
-    int32_t shortPatternIndex = this->shortPattern.indexOf(this->characterArray[0]!);;
+    int32_t shortPatternIndex = this->shortPattern.indexOf(this->characterArray[0]);;
     
 
     int32_t w = static_cast<int32_t>((this->widthFloatArray[shortPatternIndex] /75)) +19;;

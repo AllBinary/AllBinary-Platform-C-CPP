@@ -18,24 +18,15 @@
 
 
 
-            #include "../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../../../java/lang/NumberFormatException.h"
+            #include "java/lang/NumberFormatException.h"
         
-            #include "../../../../../java/lang/Integer.h"
+            #include "java/lang/Integer.h"
         
 #include <java/util/HashSet.h>
-
-      
-#include <org/allbinary/util/BasicArrayList.h>
-
-      
-#include <org/allbinary/util/BasicArrayListD.h>
-
-      
-#include <org/allbinary/logic/StdUtil.h>
 
       
 #include <org/allbinary/logic/io/path/AbPathData.h>
@@ -152,7 +143,7 @@ this->specialCharacters.add("`");
         while(index < stringVector.size())
         {
 
-    std::string keywords = stringVector.get(index) as string;;
+    std::string keywords = stringVector.get(index);;
     
 
     Tokenizer tokenizer = Tokenizer(commonSeps.COMMA);;
@@ -168,7 +159,7 @@ this->specialCharacters.add("`");
     int32_t forIndex = 0;forIndex < keywordVector.size(); forIndex++)
         {
 
-    std::string cleanString = keywordVector.get(forIndex) as string;;
+    std::string cleanString = keywordVector.get(forIndex);;
     
 cleanString= cleanString.trim();
     
@@ -196,7 +187,7 @@ hashSet.add(cleanString);
     int32_t spaceIndex = 0;spaceIndex < subKeywordVector.size(); spaceIndex++)
         {
 
-    std::string subCleanString = subKeywordVector.get(spaceIndex) as string;;
+    std::string subCleanString = subKeywordVector.get(spaceIndex);;
     
 
                         if(!isSpecialCharacter(subCleanString) && !numberOnly(subCleanString))
@@ -273,7 +264,7 @@ index++;
     int32_t index = 0;index < this->specialCharacters.size(); index++)
         {
 
-                        if(subCleaningString.compareTo(this->specialCharacters.get(index) as string) == 0)
+                        if(subCleaningString.compare(this->specialCharacters.get(index)) == 0)
                         
 
 

@@ -75,7 +75,7 @@ class DownKeyEventHandler: public DownKeyEventHandlerBase {
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return DownKeyEventHandler::instanceArray[playerInputId]!;
+                        return DownKeyEventHandler::instanceArray[playerInputId];
     
 }
 
@@ -85,7 +85,7 @@ class DownKeyEventHandler: public DownKeyEventHandlerBase {
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return DownKeyEventHandler::instanceArray[playerInputId]!;
+                        return DownKeyEventHandler::instanceArray[playerInputId];
     
 }
 
@@ -104,7 +104,7 @@ super.removeAllListeners();
                         for (
     int32_t index = DownKeyEventHandler::instanceArray.size() -1;index >= 0; index--)
         {
-DownKeyEventHandler::instanceArray[index]!.removeAllListeners();
+DownKeyEventHandler::instanceArray[index].removeAllListeners();
     
 }
 
@@ -121,7 +121,7 @@ super.removeListenerSingleThreaded(eventListenerInterface);
                         for (
     int32_t index = DownKeyEventHandler::instanceArray.size() -1;index >= 0; index--)
         {
-DownKeyEventHandler::instanceArray[index]!.removeListenerSingleThreaded(eventListenerInterface);
+DownKeyEventHandler::instanceArray[index].removeListenerSingleThreaded(eventListenerInterface);
     
 }
 
@@ -139,7 +139,7 @@ super.removeListener(eventListenerInterface);
                         for (
     int32_t index = DownKeyEventHandler::instanceArray.size() -1;index >= 0; index--)
         {
-DownKeyEventHandler::instanceArray[index]!.removeListener(eventListenerInterface);
+DownKeyEventHandler::instanceArray[index].removeListener(eventListenerInterface);
     
 }
 

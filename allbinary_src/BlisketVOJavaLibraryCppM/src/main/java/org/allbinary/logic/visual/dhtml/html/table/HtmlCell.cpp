@@ -68,13 +68,13 @@ class HtmlCell: public HtmlTag {
     private: std::string after;
 
 public: HtmlCell(std::string before, std::string width, std::string height, std::string after){
-this->before= before.toCharArray().slice(0, ).join('');
+this->before= std::string(before);
     
-this->after= after.toCharArray().slice(0, ).join('');
+this->after= std::string(after);
     
-this->height= height.toCharArray().slice(0, ).join('');
+this->height= std::string(height);
     
-this->width= width.toCharArray().slice(0, ).join('');
+this->width= std::string(width);
     
 addAttribute(this->HEIGHT, this->height);
     
@@ -116,13 +116,13 @@ result += " ";
     int32_t i = 0;i < attributeSize; i++)
         {
 
-    std::string key = attributeKeys[i]! as string;;
+    std::string key = attributeKeys[i];;
     
 
-    std::string value = otherAttributes.get(key) as string;;
+    std::string value = otherAttributes.get(key);;
     
 
-                        if(true && value.compareTo(stringUtil.EMPTY_STRING) != 0)
+                        if(true && value.compare(stringUtil.EMPTY_STRING) != 0)
                         
                                     {
                                     result += key;

@@ -18,9 +18,9 @@
 
 
 
-            #include "../../../../../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
 
@@ -126,7 +126,7 @@ this->title= DomNodeHelper::getTextNodeValue(valueNode);
 }
 
 
-public: TitleView(HashMap<any, any> hashMap){
+public: TitleView(HashMap<Object*, Object*> hashMap){
 
                         if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEW))
                         
@@ -151,8 +151,8 @@ this->getFormData(hashMap);
 }
 
 
-    public: void getFormData(HashMap<any, any> hashMap){
-this->title= hashMap.get(TitleData::getInstance().TEXT) as string;
+    public: void getFormData(HashMap<Object*, Object*> hashMap){
+this->title= hashMap.get(TitleData::getInstance().TEXT);
     
 
                         if(StringValidationUtil::getInstance().isEmpty(this->title))
@@ -166,9 +166,9 @@ this->title= hashMap.get(TitleData::getInstance().TEXT) as string;
 }
 
 
-    public: HashMap<any, any> toHashMap(){
+    public: HashMap<Object*, Object*> toHashMap(){
 
-    HashMap<any, any> hashMap = StdUtil::getInstance().createHashMap();;
+    HashMap<Object*, Object*> hashMap = StdUtil::getInstance().createHashMap();;
     
 hashMap.put(TitleData::getInstance().TEXT, this->getTitle());
     
@@ -185,7 +185,7 @@ hashMap.put(TitleData::getInstance().TEXT, this->getTitle());
             
     public: Node toXmlNode(Document document){
 
-    HashMap<any, any> hashMap = this->toHashMap();;
+    HashMap<Object*, Object*> hashMap = this->toHashMap();;
     
 
                         if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEW))

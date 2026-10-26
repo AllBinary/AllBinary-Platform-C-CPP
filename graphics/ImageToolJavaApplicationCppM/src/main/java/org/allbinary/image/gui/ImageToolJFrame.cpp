@@ -20,9 +20,9 @@
 
             #include <vector>
         
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../../java/lang/Integer.h"
+            #include "java/lang/Integer.h"
         
 #include <java/awt/image/BufferedImage.h>
 
@@ -602,7 +602,7 @@ i= 0;
                             );
     
 
-    std::vector<BufferedImage> bufferedImageArray = new Array(files.length);;
+    std::vector<BufferedImage> bufferedImageArray = std::vector<BufferedImage>(files.length);;
     
 
 
@@ -611,7 +611,7 @@ i= 0;
                         for (
     int32_t index = 0;index < files.size(); index++)
         {
-bufferedImageArray[index]= ImageIO::read(files[index]!);
+bufferedImageArray[index]= ImageIO::read(files[index]);
     
 
                         if(bufferedImageArray[index] == 
@@ -622,7 +622,7 @@ bufferedImageArray[index]= ImageIO::read(files[index]!);
                                     
 
 
-                            throw Exception("Unable to read file: " +files[index]!.getPath());
+                            throw Exception("Unable to read file: " +files[index].getPath());
                     
 
                                     }
@@ -895,7 +895,7 @@ this->logUtil.put(this->commonStrings.EXCEPTION, this, "generateMirrorJMenuItemA
 
     private: ColorRangeInterface getColorRangeInterface(){
 
-    ColorRangeInterface colorRangeInterface = ColorRange() as ColorRangeInterface;;
+    ColorRangeInterface colorRangeInterface = ColorRange();;
     
 colorRangeInterface.setMinRed(Integer(this->getMinRedJTextField().getText()).intValue());
     

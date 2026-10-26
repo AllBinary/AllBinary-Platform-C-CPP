@@ -21,12 +21,6 @@
         #ifndef ORG_ALLBINARY_LOGIC_UTIL_VISITOR_VISITORINTERFACE_H
         #define ORG_ALLBINARY_LOGIC_UTIL_VISITOR_VISITORINTERFACE_H
 
-#include <jsinterop/annotations/JsType.h>
-
-      
-#include <jsinterop/annotations/JsMethod.h>
-
-      
 
 
 

@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
 
@@ -103,8 +103,9 @@ class WorkFlowEntity: public AbSqlBean, public WorkFlowEntityInterface {
 
     private: const std::string METHOD_UPDATE = "update";
 
-public: WorkFlowEntity(){
-            super(UserDbInitInfo());
+public: WorkFlowEntity() : AbSqlBean(UserDbInitInfo()){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -150,7 +151,7 @@ this->setTableName(this->tableName);
 
         try {
             
-    HashMap<any, any> keysAndValues = StdUtil::getInstance().createHashMap();;
+    HashMap<Object*, Object*> keysAndValues = StdUtil::getInstance().createHashMap();;
     
 keysAndValues.put(WorkFlowData::getInstance().NAME, name);
     
@@ -191,20 +192,20 @@ super.deleteWhere(keysAndValues);
 
         try {
             
-    HashMap<any, any> keysAndValues = StdUtil::getInstance().createHashMap();;
+    HashMap<Object*, Object*> keysAndValues = StdUtil::getInstance().createHashMap();;
     
 keysAndValues.put(WorkFlowData::getInstance().NAME, name);
     
 keysAndValues.put(StoreFrontData::getInstance().NAME, storeName);
     
 
-    HashMap<any, any> hashMap = super.getRow(keysAndValues);;
+    HashMap<Object*, Object*> hashMap = super.getRow(keysAndValues);;
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return DbWorkFlowFactory::getInstance().getInstance(this->abeClientInformation, hashMap) as WorkFlowInterface;
+                        return DbWorkFlowFactory::getInstance().getInstance(this->abeClientInformation, hashMap);
     
 
                 //: 
@@ -255,7 +256,7 @@ keysAndValues.put(StoreFrontData::getInstance().NAME, storeName);
     BasicArrayList workFlowsVector = BasicArrayListD();;
     
 
-    HashMap<any, any> keysAndValues = StdUtil::getInstance().createHashMap();;
+    HashMap<Object*, Object*> keysAndValues = StdUtil::getInstance().createHashMap();;
     
 keysAndValues.put(StoreFrontData::getInstance().NAME, storeName);
     
@@ -273,7 +274,7 @@ keysAndValues.put(StoreFrontData::getInstance().NAME, storeName);
     int32_t i = 0;i < size; i++)
         {
 
-    HashMap<any, any> workFlowHashMap = hashMapVector.get(i) as HashMap<any, any>;;
+    HashMap<Object*, Object*> workFlowHashMap = hashMapVector.get(i);;
     
 
                         if(workFlowHashMap != 
@@ -318,15 +319,15 @@ keysAndValues.put(StoreFrontData::getInstance().NAME, storeName);
 }
 
 
-    public: void update(HashMap<any, any> updatedValues){
+    public: void update(HashMap<Object*, Object*> updatedValues){
 
         try {
             
-    HashMap<any, any> wherekeysAndValues = StdUtil::getInstance().createHashMap();;
+    HashMap<Object*, Object*> wherekeysAndValues = StdUtil::getInstance().createHashMap();;
     
-wherekeysAndValues.put(WorkFlowData::getInstance().NAME, updatedValues.get(WorkFlowData::getInstance().NAME) as string);
+wherekeysAndValues.put(WorkFlowData::getInstance().NAME, updatedValues.get(WorkFlowData::getInstance().NAME));
     
-wherekeysAndValues.put(StoreFrontData::getInstance().NAME, updatedValues.get(StoreFrontData::getInstance().NAME) as string);
+wherekeysAndValues.put(StoreFrontData::getInstance().NAME, updatedValues.get(StoreFrontData::getInstance().NAME));
     
 super.updateWhere(wherekeysAndValues, updatedValues);
     

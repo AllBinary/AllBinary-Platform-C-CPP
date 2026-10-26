@@ -6,11 +6,11 @@
 
             #include <vector>
         
-            #include "../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../java/lang/Class.h"
+            #include "java/lang/Class.h"
         
-            #include "../../../java/lang/System.h"
+            #include "java/lang/System.h"
         
 #include <jsinterop/annotations/JsType.h>
 
@@ -72,16 +72,16 @@ class ArrayUtil
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->copyOfType(original, newLength, original.constructor);;
+                        return this->copyOfType(original, newLength, original.getClass());;
     
 }
 
 
-    public: std::vector<Object*> copyOfType(std::vector<Object*> original, int32_t newLength, Function newType){
+    public: std::vector<Object*> copyOfType(std::vector<Object*> original, int32_t newLength, Class* newType){
 
-    std::vector<Object*> copy = new Array(newLength);;
+    std::vector<Object*> copy = std::vector<Object*>(newLength);;
     
-std::copy(original.begin() + 0, original.begin() + 0 + min, copy.begin() + 0);
+System.arraycopy(original, 0, copy, 0, this->mathUtil.min(original.size(), newLength));
     
 
 
@@ -94,9 +94,9 @@ std::copy(original.begin() + 0, original.begin() + 0 + min, copy.begin() + 0);
 
     public: std::vector<int8_t> copyOfbyte(std::vector<int8_t> original, int32_t newLength){
 
-    std::vector<int8_t> copy = new Array(newLength);;
+    std::vector<int8_t> copy = std::vector<int8_t>(newLength);;
     
-std::copy(original.begin() + 0, original.begin() + 0 + min, copy.begin() + 0);
+System.arraycopy(original, 0, copy, 0, this->mathUtil.min(original.size(), newLength));
     
 
 
@@ -109,9 +109,9 @@ std::copy(original.begin() + 0, original.begin() + 0 + min, copy.begin() + 0);
 
     public: std::vector<int16_t> copyOfshort(std::vector<int16_t> original, int32_t newLength){
 
-    std::vector<int16_t> copy = new Array(newLength);;
+    std::vector<int16_t> copy = std::vector<int16_t>(newLength);;
     
-std::copy(original.begin() + 0, original.begin() + 0 + min, copy.begin() + 0);
+System.arraycopy(original, 0, copy, 0, this->mathUtil.min(original.size(), newLength));
     
 
 
@@ -124,9 +124,9 @@ std::copy(original.begin() + 0, original.begin() + 0 + min, copy.begin() + 0);
 
     public: std::vector<int32_t> copyOfint(std::vector<int32_t> original, int32_t newLength){
 
-    std::vector<int32_t> copy = new Array(newLength);;
+    std::vector<int32_t> copy = std::vector<int32_t>(newLength);;
     
-std::copy(original.begin() + 0, original.begin() + 0 + min, copy.begin() + 0);
+System.arraycopy(original, 0, copy, 0, this->mathUtil.min(original.size(), newLength));
     
 
 
@@ -139,9 +139,9 @@ std::copy(original.begin() + 0, original.begin() + 0 + min, copy.begin() + 0);
 
     public: std::vector<int64_t> copyOflong(std::vector<int64_t> original, int32_t newLength){
 
-    std::vector<int64_t> copy = new Array(newLength);;
+    std::vector<int64_t> copy = std::vector<int64_t>(newLength);;
     
-std::copy(original.begin() + 0, original.begin() + 0 + min, copy.begin() + 0);
+System.arraycopy(original, 0, copy, 0, this->mathUtil.min(original.size(), newLength));
     
 
 
@@ -154,12 +154,9 @@ std::copy(original.begin() + 0, original.begin() + 0 + min, copy.begin() + 0);
 
     public: std::vector<char> copyOfchar(std::vector<char> original, int32_t newLength){
 
-    std::vector<char> copy = 
-                                                        
-                                                        std::vector<char>(newLength)
-                                                    ;;
+    std::vector<char> copy = std::vector<char>(newLength);;
     
-std::copy(original.begin() + 0, original.begin() + 0 + min, copy.begin() + 0);
+System.arraycopy(original, 0, copy, 0, this->mathUtil.min(original.size(), newLength));
     
 
 
@@ -172,9 +169,9 @@ std::copy(original.begin() + 0, original.begin() + 0 + min, copy.begin() + 0);
 
     public: std::vector<float> copyOffloat(std::vector<float> original, int32_t newLength){
 
-    std::vector<float> copy = new Array(newLength);;
+    std::vector<float> copy = std::vector<float>(newLength);;
     
-std::copy(original.begin() + 0, original.begin() + 0 + min, copy.begin() + 0);
+System.arraycopy(original, 0, copy, 0, this->mathUtil.min(original.size(), newLength));
     
 
 
@@ -187,9 +184,9 @@ std::copy(original.begin() + 0, original.begin() + 0 + min, copy.begin() + 0);
 
     public: std::vector<double> copyOfdouble(std::vector<double> original, int32_t newLength){
 
-    std::vector<double> copy = new Array(newLength);;
+    std::vector<double> copy = std::vector<double>(newLength);;
     
-std::copy(original.begin() + 0, original.begin() + 0 + min, copy.begin() + 0);
+System.arraycopy(original, 0, copy, 0, this->mathUtil.min(original.size(), newLength));
     
 
 
@@ -202,9 +199,9 @@ std::copy(original.begin() + 0, original.begin() + 0 + min, copy.begin() + 0);
 
     public: std::vector<bool> copyOfboolean(std::vector<bool> original, int32_t newLength){
 
-    std::vector<bool> copy = new Array(newLength);;
+    std::vector<bool> copy = std::vector<bool>(newLength);;
     
-std::copy(original.begin() + 0, original.begin() + 0 + min, copy.begin() + 0);
+System.arraycopy(original, 0, copy, 0, this->mathUtil.min(original.size(), newLength));
     
 
 
@@ -232,9 +229,9 @@ std::copy(original.begin() + 0, original.begin() + 0 + min, copy.begin() + 0);
                         for (
     int32_t index = 0;index <= size; index++)
         {
-temp= intArray[index]!;
+temp= intArray[index];
     
-intArray[index]= intArray[length -index]!;
+intArray[index]= intArray[length -index];
     
 intArray[length -index]= temp;
     
@@ -274,9 +271,9 @@ rowIndex= ((length -y) *width);
     
 index= x +(y *width);
     
-temp= intArray[index]!;
+temp= intArray[index];
     
-intArray[index]= intArray[rowIndex +x]!;
+intArray[index]= intArray[rowIndex +x];
     
 intArray[rowIndex +x]= temp;
     
@@ -298,7 +295,7 @@ intArray[rowIndex +x]= temp;
     int32_t endIndex = twoDimensionalIntArray.size();;
     
 
-    int32_t endIndex2 = twoDimensionalIntArray[0]!.size();;
+    int32_t endIndex2 = twoDimensionalIntArray[0].size();;
     
 
 
@@ -316,7 +313,7 @@ stringBuffer.append(commonSeps.BRACE_OPEN);
                         for (
     int32_t index2 = 0;index2 < endIndex2; index2++)
         {
-stringBuffer.appendint(twoDimensionalIntArray[index]![index2]!);
+stringBuffer.appendint(twoDimensionalIntArray[index][index2]);
     
 stringBuffer.append(commonSeps.COMMA_SEP);
     
@@ -351,7 +348,7 @@ stringBuffer.append(commonSeps.NEW_LINE);
                         for (
     int32_t index = 0;index < objectArray.size(); index++)
         {
-stringBuffer.append(StringUtil::getInstance().toString(objectArray[index]!));
+stringBuffer.append(StringUtil::getInstance().toString(objectArray[index]));
     
 stringBuffer.append(commonSeps.COMMA_SEP);
     
@@ -380,7 +377,7 @@ stringBuffer.append(commonSeps.COMMA_SEP);
                         for (
     int32_t index = 0;index < byteArray.size(); index++)
         {
-stringBuffer.appendbyte(byteArray[index]!);
+stringBuffer.appendbyte(byteArray[index]);
     
 stringBuffer.append(commonSeps.COMMA_SEP);
     

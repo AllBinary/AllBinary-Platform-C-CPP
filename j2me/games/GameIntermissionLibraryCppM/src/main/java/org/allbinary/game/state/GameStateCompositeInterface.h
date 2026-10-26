@@ -21,7 +21,7 @@
         #ifndef ORG_ALLBINARY_GAME_STATE_GAMESTATECOMPOSITEINTERFACE_H
         #define ORG_ALLBINARY_GAME_STATE_GAMESTATECOMPOSITEINTERFACE_H
 
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 
 

@@ -18,11 +18,11 @@
 
 
 
-            #include "../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../../../java/lang/Long.h"
+            #include "java/lang/Long.h"
         
 #include <java/util/Calendar.h>
 
@@ -195,7 +195,7 @@ this->userConfigurationInterface= UserConfigurationInterfaceFactory::getInstance
 }
 
 
-public: User(HashMap<any, any> userHashMap){
+public: User(HashMap<Object*, Object*> userHashMap){
 this->getFormData(userHashMap);
     
 this->userConfigurationInterface= UserConfigurationInterfaceFactory::getInstance(this->getRole());
@@ -205,14 +205,14 @@ this->userConfigurationInterface= UserConfigurationInterfaceFactory::getInstance
 
                 //@Throws(Exception.constructor)
             
-    public: void getFormData(HashMap<any, any> userHashMap){
+    public: void getFormData(HashMap<Object*, Object*> userHashMap){
 this->userName= UserName(userHashMap).get();
     
 
     StringUtil stringUtil = StringUtil::getInstance();;
     
 
-    std::string passwordString = stringUtil.getNonNull(userHashMap.get(UserData::PASSWORD) as string);;
+    std::string passwordString = stringUtil.getNonNull(userHashMap.get(UserData::PASSWORD));;
     
 
     StringValidationUtil stringValidationUtil = StringValidationUtil::getInstance();;
@@ -221,58 +221,58 @@ this->userName= UserName(userHashMap).get();
                         if(stringValidationUtil.isEmpty(this->userName) && stringValidationUtil.isEmpty(passwordString))
                         
                                     {
-                                    this->userName= stringUtil.getNonNull(userHashMap.get(WeblisketSessionData::REMOVABLEUSERNAME) as string);
+                                    this->userName= stringUtil.getNonNull(userHashMap.get(WeblisketSessionData::REMOVABLEUSERNAME));
     
-passwordString= stringUtil.getNonNull(userHashMap.get(WeblisketSessionData::REMOVABLEPASSWORD) as string);
+passwordString= stringUtil.getNonNull(userHashMap.get(WeblisketSessionData::REMOVABLEPASSWORD));
     
 
                                     }
                                 
 
-    std::string encryption = stringUtil.getNonNull(userHashMap.get(EntryData::getInstance().ENCRYPTION) as string);;
+    std::string encryption = stringUtil.getNonNull(userHashMap.get(EntryData::getInstance().ENCRYPTION));;
     
 
-    std::string secret = stringUtil.getNonNull(userHashMap.get(UserData::SECRET) as string);;
+    std::string secret = stringUtil.getNonNull(userHashMap.get(UserData::SECRET));;
     
 this->password= Password(passwordString);
     
-this->prefixName= stringUtil.getNonNull(userHashMap.get(UserData::PREFIXNAME) as string);
+this->prefixName= stringUtil.getNonNull(userHashMap.get(UserData::PREFIXNAME));
     
-this->firstName= stringUtil.getNonNull(userHashMap.get(UserData::FIRSTNAME) as string);
+this->firstName= stringUtil.getNonNull(userHashMap.get(UserData::FIRSTNAME));
     
-this->lastName= stringUtil.getNonNull(userHashMap.get(UserData::LASTNAME) as string);
+this->lastName= stringUtil.getNonNull(userHashMap.get(UserData::LASTNAME));
     
-this->middleName= stringUtil.getNonNull(userHashMap.get(UserData::MIDDLENAME) as string);
+this->middleName= stringUtil.getNonNull(userHashMap.get(UserData::MIDDLENAME));
     
-this->suffixName= stringUtil.getNonNull(userHashMap.get(UserData::SUFFIXNAME) as string);
+this->suffixName= stringUtil.getNonNull(userHashMap.get(UserData::SUFFIXNAME));
     
-this->company= stringUtil.getNonNull(userHashMap.get(UserData::COMPANY) as string);
+this->company= stringUtil.getNonNull(userHashMap.get(UserData::COMPANY));
     
-this->positionAtCompany= stringUtil.getNonNull(userHashMap.get(UserData::POSITIONATCOMPANY) as string);
+this->positionAtCompany= stringUtil.getNonNull(userHashMap.get(UserData::POSITIONATCOMPANY));
     
-this->mainEmail= stringUtil.getNonNull(userHashMap.get(UserData::MAINEMAIL) as string);
+this->mainEmail= stringUtil.getNonNull(userHashMap.get(UserData::MAINEMAIL));
     
-this->secondaryEmail= stringUtil.getNonNull(userHashMap.get(UserData::SECONDARYEMAIL) as string);
+this->secondaryEmail= stringUtil.getNonNull(userHashMap.get(UserData::SECONDARYEMAIL));
     
-this->homePhone= stringUtil.getNonNull(userHashMap.get(UserData::HOMEPHONE) as string);
+this->homePhone= stringUtil.getNonNull(userHashMap.get(UserData::HOMEPHONE));
     
-this->cellPhone= stringUtil.getNonNull(userHashMap.get(UserData::CELLPHONE) as string);
+this->cellPhone= stringUtil.getNonNull(userHashMap.get(UserData::CELLPHONE));
     
-this->workPhone= stringUtil.getNonNull(userHashMap.get(UserData::WORKPHONE) as string);
+this->workPhone= stringUtil.getNonNull(userHashMap.get(UserData::WORKPHONE));
     
-this->otherContact= stringUtil.getNonNull(userHashMap.get(UserData::OTHERCONTACT) as string);
+this->otherContact= stringUtil.getNonNull(userHashMap.get(UserData::OTHERCONTACT));
     
-this->electronicDevice= stringUtil.getNonNull(userHashMap.get(UserData::ELECTRONICDEVICE) as string);
+this->electronicDevice= stringUtil.getNonNull(userHashMap.get(UserData::ELECTRONICDEVICE));
     
-this->fax= stringUtil.getNonNull(userHashMap.get(UserData::FAX) as string);
+this->fax= stringUtil.getNonNull(userHashMap.get(UserData::FAX));
     
-this->role= UserRoleB::getRole(userHashMap.get(UserRoleData::NAME.toString()) as string);
+this->role= UserRoleB::getRole(userHashMap.get(UserRoleData::NAME.toString()));
     
-this->permissions= stringUtil.getNonNull(userHashMap.get(UserData::PERMISSIONS) as string);
+this->permissions= stringUtil.getNonNull(userHashMap.get(UserData::PERMISSIONS));
     
 
-                        if(!stringValidationUtil.isEmpty(this->permissions) && this->permissions.compareTo(StoreFrontData::getInstance().NAME) == 0)
-                        this->permissions= stringUtil.getNonNull(userHashMap.get(StoreFrontData::getInstance().NAME) as string);
+                        if(!stringValidationUtil.isEmpty(this->permissions) && this->permissions.compare(StoreFrontData::getInstance().NAME) == 0)
+                        this->permissions= stringUtil.getNonNull(userHashMap.get(StoreFrontData::getInstance().NAME));
                                 
                              else 
                         if(false)
@@ -283,7 +283,7 @@ this->permissions= stringUtil.getNonNull(userHashMap.get(UserData::PERMISSIONS) 
 
                                     }
                                 
-this->enable= stringUtil.getNonNull(userHashMap.get(EntryData::getInstance().ENABLE) as string);
+this->enable= stringUtil.getNonNull(userHashMap.get(EntryData::getInstance().ENABLE));
     
 }
 
@@ -871,9 +871,9 @@ values.add(time);
 
                 //@Throws(Exception.constructor)
             
-    public: HashMap<any, any> toHashMap(){
+    public: HashMap<Object*, Object*> toHashMap(){
 
-    HashMap<any, any> values = StdUtil::getInstance().createHashMap();;
+    HashMap<Object*, Object*> values = StdUtil::getInstance().createHashMap();;
     
 values.put(UserData::USERNAME, userName);
     
@@ -946,7 +946,7 @@ values.put(EntryData::getInstance().LASTMODIFIED, time);
 }
 
 
-    public: HashMap<any, any> toPasswordHashMap(){
+    public: HashMap<Object*, Object*> toPasswordHashMap(){
 
 
 

@@ -18,11 +18,11 @@
 
 
 
-            #include "../../../../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../../../../../../java/lang/Integer.h"
+            #include "java/lang/Integer.h"
         
 #include <java/util/HashMap.h>
 
@@ -103,7 +103,7 @@ this->propertyValueVector= BasicArrayListD();
 
 public: CssPropertyValues(Node node){
 
-    HashMap<any, any> indexPropertyValueHashMap = StdUtil::getInstance().createHashMap();;
+    HashMap<Object*, Object*> indexPropertyValueHashMap = StdUtil::getInstance().createHashMap();;
     
 this->propertyValueVector= BasicArrayListD();
     
@@ -130,7 +130,7 @@ this->propertyValueVector= BasicArrayListD();
     int32_t index = 0;index < size; index++)
         {
 
-    Node cssPropertyValueNode = cssPropertyNodeVector.get(index) as Node;;
+    Node cssPropertyValueNode = cssPropertyNodeVector.get(index);;
     
 
     Node valueNode = DomSearchHelper::getNode(DomData::VALUE, cssPropertyValueNode.getChildNodes());;
@@ -171,7 +171,7 @@ indexPropertyValueHashMap.put(indexValue, propertyValue);
     Integer indexInt = Integer(index);;
     
 
-    std::string propertyValue = indexPropertyValueHashMap.get(indexInt.toString()) as string;;
+    std::string propertyValue = indexPropertyValueHashMap.get(indexInt.toString());;
     
 this->propertyValueVector.add(propertyValue);
     
@@ -180,7 +180,7 @@ this->propertyValueVector.add(propertyValue);
 }
 
 
-    public: HashMap<any, any> toHashMap(){
+    public: HashMap<Object*, Object*> toHashMap(){
 
     CommonSeps commonSeps = CommonSeps::getInstance();;
     
@@ -188,7 +188,7 @@ this->propertyValueVector.add(propertyValue);
     CssPropertyValueData cssPropertyValueData = CssPropertyValueData::getInstance();;
     
 
-    HashMap<any, any> hashMap = StdUtil::getInstance().createHashMap();;
+    HashMap<Object*, Object*> hashMap = StdUtil::getInstance().createHashMap();;
     
 
     StringMaker stringBuffer = StringMaker();;
@@ -204,7 +204,7 @@ this->propertyValueVector.add(propertyValue);
     int32_t index = 0;index < size; index++)
         {
 
-    std::string value = this->propertyValueVector.get(index) as string;;
+    std::string value = this->propertyValueVector.get(index);;
     
 stringBuffer.delete(0, stringBuffer.length());
     
@@ -239,7 +239,7 @@ index++;
                         
                                     {
                                     
-    HashMap<any, any> hashMap = this->toHashMap();;
+    HashMap<Object*, Object*> hashMap = this->toHashMap();;
     
 this->logUtil.putF("CssPropertyValues HashMap: " +hashMap.toString(), this, "toXmlNode()");
     

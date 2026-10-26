@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/animation/FeaturedAnimationInterfaceFactoryInterfaceFactory.h>
 
@@ -90,8 +90,9 @@ LifePickedUpLayerInterfaceFactory::pickedUpLayerInterfaceFactoryInterface= LifeP
 
     private: LifeLayerCircularStaticPool pool = LifeLayerCircularStaticPool(LifeLayerFactory(), 1);
 
-private: LifePickedUpLayerInterfaceFactory(){
-            super(PickedUpLayerTypeFactory::getInstance().LIFE, IconLayerFactory::getInstance(FeaturedAnimationInterfaceFactoryInterfaceFactory::getInstance().get(LifeResources::getInstance().RESOURCE).getInstance(0), 10, 10), FeaturedAnimationInterfaceFactoryInterfaceFactory::getInstance().get(LifeResources::getInstance().RESOURCE).getInstance(0));
+private: LifePickedUpLayerInterfaceFactory() : PickedUpLayerInterfaceFactory(PickedUpLayerTypeFactory::getInstance().LIFE, IconLayerFactory::getInstance(FeaturedAnimationInterfaceFactoryInterfaceFactory::getInstance().get(LifeResources::getInstance().RESOURCE).getInstance(0), 10, 10), FeaturedAnimationInterfaceFactoryInterfaceFactory::getInstance().get(LifeResources::getInstance().RESOURCE).getInstance(0)){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.

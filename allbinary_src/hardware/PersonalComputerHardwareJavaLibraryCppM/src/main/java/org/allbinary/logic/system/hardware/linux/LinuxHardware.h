@@ -21,20 +21,14 @@
         #ifndef ORG_ALLBINARY_LOGIC_SYSTEM_HARDWARE_LINUX_LINUXHARDWARE_H
         #define ORG_ALLBINARY_LOGIC_SYSTEM_HARDWARE_LINUX_LINUXHARDWARE_H
 
-            #include "../../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/io/FileReader.h>
 
       
 #include <java/io/LineNumberReader.h>
-
-      
-#include <java/util/Hashtable.h>
-
-      
-#include <org/allbinary/util/BasicArrayList.h>
 
       
 #include <org/allbinary/util/BasicArrayListD.h>
@@ -110,6 +104,9 @@
 
       
 #include <org/allbinary/string/CommonStrings.h>
+
+      
+#include <org/allbinary/util/ABHashtable.h>
 
       
 #include <org/allbinary/util/BasicArrayList.h>
@@ -213,7 +210,7 @@ public: LinuxHardware();
 
     public: bool compareTo(HardwareInterface hardwareInterface);
 
-    public: Hashtable<any, any> difference(HardwareInterface hardwareInterface);
+    public: ABHashtable<Object*, Object*> difference(HardwareInterface hardwareInterface);
 
     public: bool isNextHardware(std::string nextLine);
 

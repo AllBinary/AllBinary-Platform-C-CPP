@@ -20,7 +20,7 @@
 
             #include <vector>
         
-            #include "../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
 
@@ -78,8 +78,9 @@ class MultipartRequestParams: public RequestParams {
 
     private: bool special = false;
 
-public: MultipartRequestParams(HttpServletRequest request){
-            super();
+public: MultipartRequestParams(HttpServletRequest request) : RequestParams(){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -89,13 +90,14 @@ this->processMultipartRequest(request);
 }
 
 
-public: MultipartRequestParams(PageContext pageContext){
-            super();
+public: MultipartRequestParams(PageContext pageContext) : RequestParams(){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this->processMultipartRequest(pageContext.getRequest() as HttpServletRequest);
+this->processMultipartRequest(pageContext.getRequest());
     
 }
 
@@ -110,7 +112,7 @@ this->special= true;
 
         try {
             
-    HashMap<any, any> specialRequest = StdUtil::getInstance().createHashMap();;
+    HashMap<Object*, Object*> specialRequest = StdUtil::getInstance().createHashMap();;
     
 
     List multipartRequestList = AbFileUploadFactory::getInstance().getFileItemStreamList(request);;
@@ -125,7 +127,7 @@ this->special= true;
                         if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().HTTPREQUEST))
                         
                                     {
-                                    this->logUtil.putF("FileItem List Size: " +multipartRequestList.length, this, "processMultipartRequest()");
+                                    this->logUtil.putF("FileItem List Size: " +multipartRequestList.size, this, "processMultipartRequest()");
     
 
                                     }
@@ -144,7 +146,7 @@ this->special= true;
     int32_t index = 0;index < size; index++)
         {
 
-    FileItem fileItem = fileItemArray[index]! as FileItem;;
+    FileItem fileItem = fileItemArray[index];;
     
 
     std::string name = fileItem.getName();;
@@ -220,7 +222,7 @@ super.setMap(request.getParameterMap());
 
                 //@Throws(Exception.constructor)
             
-    public: HashMap<any, any> toHashMap(){
+    public: HashMap<Object*, Object*> toHashMap(){
 
                         if(this->special)
                         
@@ -229,7 +231,7 @@ super.setMap(request.getParameterMap());
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->getMap() as HashMap<any, any>;
+                        return this->getMap();
     
 
                                     }

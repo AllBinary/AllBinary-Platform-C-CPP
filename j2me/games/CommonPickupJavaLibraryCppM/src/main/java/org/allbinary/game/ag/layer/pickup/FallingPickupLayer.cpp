@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/animation/NullAnimationFactory.h>
 
@@ -70,8 +70,9 @@ class FallingPickupLayer: public PickupLayer, public TickableInterface {
 
     private: static const std::string NAME = "FallingPickupLayer";
 
-public: FallingPickupLayer(RemoteInfo remoteInfo){
-            super(FallingPickupLayer::NAME, remoteInfo, 0, CountedPickedUpLayerInterfaceFactory::NULL_COUNTED_PICKUP_LAYER_FACTORY, NullAnimationFactory::getFactoryInstance().getInstance(0), Rectangle(PointFactory::getInstance().ZERO_ZERO, 0, 0), ViewPosition::getInstanceD());
+public: FallingPickupLayer(RemoteInfo remoteInfo) : PickupLayer(FallingPickupLayer::NAME, remoteInfo, 0, CountedPickedUpLayerInterfaceFactory::NULL_COUNTED_PICKUP_LAYER_FACTORY, NullAnimationFactory::getFactoryInstance().getInstance(0), Rectangle(PointFactory::getInstance().ZERO_ZERO, 0, 0), ViewPosition::getInstanceD()){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.

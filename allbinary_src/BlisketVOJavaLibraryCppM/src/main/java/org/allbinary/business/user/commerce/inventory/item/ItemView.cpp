@@ -20,9 +20,9 @@
 
             #include <vector>
         
-            #include "../../../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
 
@@ -93,7 +93,7 @@ this->vector= vector;
             
     public: Node toXmlNode(Document document){
 
-    HashMap<any, any> hashMap = this->itemInterface.toHashMap();;
+    HashMap<Object*, Object*> hashMap = this->itemInterface.toHashMap();;
     
 
     Set keySet = hashMap.keys();;
@@ -123,10 +123,10 @@ node.appendChild(basicItemView.toXmlNode(document));
     int32_t index = 0;index < size; index++)
         {
 
-    std::string name = nameArray[index]! as string;;
+    std::string name = nameArray[index];;
     
 
-    std::string value = hashMap.get(name) as string;;
+    std::string value = hashMap.get(name);;
     
 value= stringUtil.getNonNull(value);
     

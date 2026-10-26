@@ -20,13 +20,13 @@
 
             #include <vector>
         
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../../java/lang/System.h"
+            #include "java/lang/System.h"
         
-            #include "../../../../java/lang/Integer.h"
+            #include "java/lang/Integer.h"
         
-            #include "../../../../java/lang/Thread.h"
+            #include "java/lang/Thread.h"
         
 #include <java/awt/image/BufferedImage.h>
 
@@ -103,8 +103,9 @@ class CreateIconImagesJPanel: public javax::swing::JPanel, public ImageProcessor
 
     private: ImageProcessorInput imageProcessorInput;
 
-public: CreateIconImagesJPanel(ImageProcessorInput imageProcessorInput){
-            super();
+public: CreateIconImagesJPanel(ImageProcessorInput imageProcessorInput) : javax::swing::JPanel(){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -114,7 +115,7 @@ initComponents();
 this->imageProcessorInput= imageProcessorInput;
     
 
-    std::vector<std::string> numberStringArray = new Array(101);;
+    std::vector<std::string> numberStringArray = std::vector<std::string>(101);;
     
 numberStringArray[0]= std::to_string();
     
@@ -130,7 +131,7 @@ numberStringArray[index]= std::to_string(index);
 }
 
 
-    Raster araster = this->imageProcessorInput.getBufferedImageArray()[0]!.getAlphaRaster();;
+    Raster araster = this->imageProcessorInput.getBufferedImageArray()[0].getAlphaRaster();;
     
 
                         if(araster == 
@@ -206,9 +207,9 @@ iconHeightList.add(864);
                         for (
     int32_t index2 = 0;index2 < size; index2++)
         {
-width= (get as Integer).intValue();
+width= (get).intValue();
     
-height= (get as Integer).intValue();
+height= (get).intValue();
     
 
     std::vector<BufferedImage> generatedBufferedImageArray = imageUtil.createBufferedImage3(imageProcessorInput.getBufferedImageArray(), width, height, true);;
@@ -224,7 +225,7 @@ height= (get as Integer).intValue();
     int32_t index = 0;index < generatedBufferedImageArray.size(); index++)
         {
 
-    std::string filePath = files[index]!.getAbsolutePath();;
+    std::string filePath = files[index].getAbsolutePath();;
     
 
     int32_t endIndex = filePath.lastIndexOf('\\');;
@@ -239,7 +240,7 @@ stringMaker.append(path).append(ANDROID).appendint(width).append(CanvasStrings::
 
     std::string newFilePath = stringMaker.toString();;
     
-imagePersistanceUtil.saveWithBatik(AbFile::createAbFile(newFilePath), generatedBufferedImageArray[index]!);
+imagePersistanceUtil.saveWithBatik(AbFile::createAbFile(newFilePath), generatedBufferedImageArray[index]);
     
 stringMaker.delete(0, stringMaker.length());
     
@@ -247,7 +248,7 @@ stringMaker.append(path).append(IOS).appendint(width).append(CanvasStrings::getI
     
 newFilePath= stringMaker.toString();
     
-imagePersistanceUtil.saveWithBatik(AbFile::createAbFile(newFilePath), generatedBufferedImageArray[index]!);
+imagePersistanceUtil.saveWithBatik(AbFile::createAbFile(newFilePath), generatedBufferedImageArray[index]);
     
 }
 

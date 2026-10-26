@@ -18,20 +18,11 @@
 
 
 
-            #include "../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <javax/microedition/lcdui/Image.h>
-
-      
-#include <jsinterop/annotations/JsMethod.h>
-
-      
-#include <jsinterop/annotations/JsProperty.h>
-
-      
-#include <jsinterop/annotations/JsType.h>
 
       
 #include <org/allbinary/logic/communication/log/PreLogUtil.h>
@@ -44,6 +35,9 @@
 
       
 #include <org/microemu/device/playn/PlaynImage.h>
+
+      
+#include <playn/core/CoreImage.h>
 
       
 
@@ -95,10 +89,10 @@ class ImageCompleteUtil
             
     public: bool isReady(Image image, std::string name, TimeDelayHelper timeDelayHelper){
 
-    PlaynImage playnImage = image as PlaynImage;;
+    PlaynImage playnImage = image;;
     
 
-    playn::core::Image playnCoreImage = playnImage.getImage() as playn::core::Image;;
+    CoreImage playnCoreImage = playnImage.getImage();;
     
 
                         if(!playnCoreImage.isReady() || playnCoreImage.width() +playnCoreImage.height() <= 0)

@@ -79,8 +79,9 @@ class BasicInputMappingHelpPaintable: public HelpPaintable {
 
     private: const GameKey NONE = GameKeyFactory::getInstance().NONE;
 
-protected: BasicInputMappingHelpPaintable(std::vector<GameInputMapping> gameInputMappingArray, BasicColor basicColor){
-            super("Help Screen", BasicColorFactory::getInstance().BLACK, basicColor);
+protected: BasicInputMappingHelpPaintable(std::vector<GameInputMapping> gameInputMappingArray, BasicColor basicColor) : HelpPaintable("Help Screen", BasicColorFactory::getInstance().BLACK, basicColor){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -106,7 +107,7 @@ this->update(this->NONE, this->NONE);
     int32_t size = this->gameInputMappingArray.size();;
     
 
-    std::vector<std::string> keyInfo = new Array(size);;
+    std::vector<std::string> keyInfo = std::vector<std::string>(size);;
     
 
     GameInputMapping gameInputMapping;;
@@ -124,7 +125,7 @@ this->update(this->NONE, this->NONE);
                         for (
     int32_t index = 0;index < size; index++)
         {
-gameInputMapping= this->gameInputMappingArray[index]!;
+gameInputMapping= this->gameInputMappingArray[index];
     
 gameKey= gameInputMapping.getGameKey();
     
@@ -164,7 +165,7 @@ super.setInputInfoP(keyInfo);
                         for (
     int32_t index = 0;index < size; index++)
         {
-key= keyList.objectArray[index]! as Input;
+key= keyList.objectArray[index];
     
 stringBuffer.append(key.getName());
     

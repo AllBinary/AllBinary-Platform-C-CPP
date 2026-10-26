@@ -21,9 +21,9 @@
         #ifndef ORG_ALLBINARY_DATA_TREE_DOM_FILETABLEMAPPING_H
         #define ORG_ALLBINARY_DATA_TREE_DOM_FILETABLEMAPPING_H
 
-            #include "../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
 
@@ -89,7 +89,7 @@ public: FileTableMapping(AbFile file);
 
                 //@Throws(Exception.constructor)
             
-    public: HashMap<any, any> toHashMap();
+    public: HashMap<Object*, Object*> toHashMap();
 
 };
 

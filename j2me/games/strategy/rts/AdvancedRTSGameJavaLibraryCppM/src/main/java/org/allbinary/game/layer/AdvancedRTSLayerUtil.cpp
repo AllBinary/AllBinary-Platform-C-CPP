@@ -17,11 +17,8 @@
 
 
 
-            #include "../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-#include <java/util/Hashtable.h>
-
-      
 #include <org/allbinary/game/layer/waypoint/WorkWaypoint.h>
 
       
@@ -29,6 +26,9 @@
 
       
 #include <org/allbinary/media/graphics/geography/map/racetrack/BaseRaceTrackGeographicMap.h>
+
+      
+#include <org/allbinary/util/ABHashtable.h>
 
       
 
@@ -67,9 +67,9 @@ class AdvancedRTSLayerUtil
 }
 
 
-    public: Hashtable<any, any> createFakeRTSLayerHashtable(BaseRaceTrackGeographicMap baseRaceTrackGeographicMap){
+    public: ABHashtable<Object*, Object*> createFakeRTSLayerHashtable(BaseRaceTrackGeographicMap baseRaceTrackGeographicMap){
 
-    Hashtable<any, any> hashtable = RTSLayerUtil::getInstance().createFakeRTSLayerHashtable(baseRaceTrackGeographicMap);;
+    ABHashtable<Object*, Object*> hashtable = RTSLayerUtil::getInstance().createFakeRTSLayerHashtable(baseRaceTrackGeographicMap);;
     
 hashtable.put(WorkWaypoint::ID, SmallIntegerSingletonFactory::getInstance().getAt(50));
     

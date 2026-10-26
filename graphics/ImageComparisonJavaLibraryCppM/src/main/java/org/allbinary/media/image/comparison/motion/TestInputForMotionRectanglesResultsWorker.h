@@ -23,22 +23,19 @@
 
             #include <vector>
         
-            #include "../../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../../../../java/lang/Thread.h"
+            #include "java/lang/Thread.h"
         
-#include <java/awt.h>
+#include <java/awt/Rectangle.h>
 
       
 #include <java/awt/event/InputEvent.h>
 
       
 #include <java/awt/event/KeyEvent.h>
-
-      
-#include <java/util/Hashtable.h>
 
       
 #include <org/allbinary/util/BasicArrayList.h>
@@ -56,9 +53,6 @@
 #include <org/allbinary/input/automation/robot/TempInputRobotNames.h>
 
       
-#include <org/allbinary/logic/StdUtil.h>
-
-      
 #include <org/allbinary/logic/communication/log/LogUtil.h>
 
       
@@ -72,6 +66,9 @@
 
       
 #include <org/allbinary/time/TimeDelayHelper.h>
+
+      
+#include <org/allbinary/util/ABHashtable.h>
 
       
 
@@ -95,7 +92,6 @@
         #include "MotionRectanglesResultsListener.h"
 #include "MotionRectanglesResultsEvent.h"
 #include "MotionRectangles.h"
-#include "Rectangle.h"
 
 class TestInputForMotionRectanglesResultsWorker
             : public Object

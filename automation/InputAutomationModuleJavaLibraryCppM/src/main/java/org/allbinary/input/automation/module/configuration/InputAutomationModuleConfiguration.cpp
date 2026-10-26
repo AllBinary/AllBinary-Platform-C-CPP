@@ -18,11 +18,11 @@
 
 
 
-            #include "../../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../../../../java/lang/RuntimeException.h"
+            #include "java/lang/RuntimeException.h"
         
 #include <javax/xml/bind/annotation/XmlAccessType.h>
 
@@ -137,7 +137,7 @@ this->init(abeClientInformation);
 public: InputAutomationModuleConfiguration(InputAutomationModuleFactoryInterface inputAutomationModuleInterface){
 this->setInputAutomationModuleInterface(inputAutomationModuleInterface);
     
-this->setClassName(this->inputAutomationModuleInterface.constructor.name.toString()!);
+this->setClassName(this->inputAutomationModuleInterface.constructor.name.toString());
     
 }
 
@@ -195,7 +195,7 @@ this->init(abeClientInformation);
     
 this->logUtil.putF("ClassName: " +className, this, this->commonStrings.INIT);
     
-this->setInputAutomationModuleInterface(AbeFactory::getInstance().getInstance().getInstance(abeClientInformation, getClassName()) as InputAutomationModuleFactoryInterface);
+this->setInputAutomationModuleInterface(AbeFactory::getInstance().getInstance().getInstance(abeClientInformation, getClassName()));
     
 
                 //: 

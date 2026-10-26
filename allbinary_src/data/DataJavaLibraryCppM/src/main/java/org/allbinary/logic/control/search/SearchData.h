@@ -21,7 +21,7 @@
         #ifndef ORG_ALLBINARY_LOGIC_CONTROL_SEARCH_SEARCHDATA_H
         #define ORG_ALLBINARY_LOGIC_CONTROL_SEARCH_SEARCHDATA_H
 
-            #include "../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
 
 

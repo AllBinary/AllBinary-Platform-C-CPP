@@ -23,11 +23,11 @@
 
             #include <vector>
         
-            #include "../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../../java/lang/Integer.h"
+            #include "java/lang/Integer.h"
         
 #include <java/util/HashMap.h>
 
@@ -189,9 +189,9 @@ public: ProductListing(SearchRequest searchRequest);
 
                 //@Throws(Exception.constructor)
             
-    private: void create(std::string keywordData, HashMap<any, any> keywordFilenameHashMap, BasicArrayList vector, AbPath staticPath);
+    private: void create(std::string keywordData, HashMap<Object*, Object*> keywordFilenameHashMap, BasicArrayList vector, AbPath staticPath);
 
-    private: void addStaticPageInfoToDatabase(StoreFrontInterface storeFront, HashMap<any, any> keywordFilenameHashMap);
+    private: void addStaticPageInfoToDatabase(StoreFrontInterface storeFront, HashMap<Object*, Object*> keywordFilenameHashMap);
 
                 //@Throws(Exception.constructor)
             

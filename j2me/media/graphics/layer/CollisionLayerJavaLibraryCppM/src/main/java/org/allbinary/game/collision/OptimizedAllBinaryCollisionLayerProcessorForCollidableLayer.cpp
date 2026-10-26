@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/game/layer/CollidableCompositeLayer.h>
 
@@ -58,8 +58,9 @@
 
 class OptimizedAllBinaryCollisionLayerProcessorForCollidableLayer: public LayerProcessor {
 
-public: OptimizedAllBinaryCollisionLayerProcessorForCollidableLayer(){
-            super(OptimizedAllBinaryCollisionLayerManager());
+public: OptimizedAllBinaryCollisionLayerProcessorForCollidableLayer() : LayerProcessor(OptimizedAllBinaryCollisionLayerManager()){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -71,7 +72,7 @@ public: OptimizedAllBinaryCollisionLayerProcessorForCollidableLayer(){
             
     public: void processAt(AllBinaryLayerManager allBinaryLayerManager, AllBinaryLayer layerInterface, int32_t startIndex){
 
-    CollidableCompositeLayer collidableInterfaceCompositeInterface = layerInterface as CollidableCompositeLayer;;
+    CollidableCompositeLayer collidableInterfaceCompositeInterface = layerInterface;;
     
 
     CollidableBaseBehavior collidableBase = collidableInterfaceCompositeInterface.getCollidableInferface();;
@@ -99,7 +100,7 @@ public: OptimizedAllBinaryCollisionLayerProcessorForCollidableLayer(){
                         for (
     int32_t index = startIndex +1;index < size; index++)
         {
-collidableInterfaceCompositeInterface2= layerManager.getLayerAt(index) as CollidableCompositeLayer;
+collidableInterfaceCompositeInterface2= layerManager.getLayerAt(index);
     
 collidableBase2= collidableInterfaceCompositeInterface2.getCollidableInferface();
     

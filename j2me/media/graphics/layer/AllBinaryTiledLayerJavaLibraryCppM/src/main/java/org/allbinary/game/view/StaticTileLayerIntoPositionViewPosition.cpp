@@ -64,8 +64,9 @@ StaticTileLayerIntoPositionViewPosition::tiledLayer= tiledLayer;
 }
 
 
-public: StaticTileLayerIntoPositionViewPosition(){
-            super(0, 0, 0);
+public: StaticTileLayerIntoPositionViewPosition() : ViewPosition(0, 0, 0){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.

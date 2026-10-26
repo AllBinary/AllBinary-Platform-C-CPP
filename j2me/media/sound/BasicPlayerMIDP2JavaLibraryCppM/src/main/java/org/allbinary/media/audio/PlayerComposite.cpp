@@ -20,15 +20,12 @@
 
             #include <vector>
         
-            #include "../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../../java/lang/RuntimeException.h"
+            #include "java/lang/RuntimeException.h"
         
-#include <jsinterop/annotations/JsType.h>
-
-      
 #include <javax/microedition/media/Control.h>
 
       
@@ -60,15 +57,6 @@
 
       
 #include <org/allbinary/time/TimeDelayHelper.h>
-
-      
-#include <jsinterop/annotations/JsMethod.h>
-
-      
-#include <jsinterop/annotations/JsConstructor.h>
-
-      
-#include <jsinterop/annotations/JsProperty.h>
 
       
 
@@ -172,7 +160,7 @@ this->player.deallocate();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return (player as TimeBaseInterface).getTimeBase();;
+                        return (player).getTimeBase();;
     
 }
 
@@ -181,7 +169,7 @@ this->player.deallocate();
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
     public: void setTimeBase(TimeBase timeBase){
-player = this->playerplayer as TimeBaseInterface
+player = this->playerplayer
 player.
                     setTimeBase(timeBase);
     
@@ -324,7 +312,7 @@ this->logUtil.put(this->commonStrings.EXCEPTION, this, "stop", e);
 
     public: void setVolume(int32_t leftVolume, int32_t rightVolume){
 
-    Controllable2 controllable2 = (this->player as unknown as Controllable2);;
+    Controllable2 controllable2 = (this->player as unknown);;
     
 controllable2.setVolume(leftVolume, rightVolume);
     

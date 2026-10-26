@@ -18,7 +18,7 @@
 
 
 
-            #include "../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
 
@@ -88,9 +88,9 @@ class InventoryRequestHelper: public ModifyTable {
 
     private: ItemInterface itemInterface;
 
-public: InventoryRequestHelper(HashMap<any, any> propertiesHashMap, PageContext pageContext){
+public: InventoryRequestHelper(HashMap<Object*, Object*> propertiesHashMap, PageContext pageContext){
 
-    HelperTag inventoryTag = propertiesHashMap.get(AbTagData::PARENT) as HelperTag;;
+    HelperTag inventoryTag = propertiesHashMap.get(AbTagData::PARENT);;
     
 
     InventoryItemView itemView = InventoryItemViewParentTagHelper::getInstance().getInventoryItemView(inventoryTag);;
@@ -106,7 +106,7 @@ this->itemInterface= itemView.getItemInterface();
 
         try {
             
-    TableMappingInterface dataMappingInterface = this->getItemInterface() as TableMappingInterface;;
+    TableMappingInterface dataMappingInterface = this->getItemInterface();;
     
 
     BasicArrayList values = dataMappingInterface.toVector();;
@@ -162,10 +162,10 @@ InventoryEntityFactory::getInstance().getInventoryEntityInstance().insert(values
 
         try {
             
-    TableMappingInterface dataMappingInterface = this->getItemInterface() as TableMappingInterface;;
+    TableMappingInterface dataMappingInterface = this->getItemInterface();;
     
 
-    std::string id = dataMappingInterface.getKey() as string;;
+    std::string id = dataMappingInterface.getKey();;
     
 InventoryEntityFactory::getInstance().getInventoryEntityInstance().deleteWhere(basicItemData.ID, id);
     

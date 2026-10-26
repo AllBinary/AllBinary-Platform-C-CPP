@@ -21,7 +21,7 @@
         #ifndef ORG_ALLBINARY_LOGIC_COMMUNICATION_SQL_CONNECTION_POOL_SQLCONNECTIONPOOL_H
         #define ORG_ALLBINARY_LOGIC_COMMUNICATION_SQL_CONNECTION_POOL_SQLCONNECTIONPOOL_H
 
-            #include "../../../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
 #include <java/sql/Connection.h>
 
@@ -81,7 +81,7 @@ class SqlConnectionPool
 
     protected: const StdUtil stdUtil = StdUtil::getInstance();
 
-    private: HashMap<any, any> connectionHashMap = 
+    private: HashMap<Object*, Object*> connectionHashMap = 
                 nullptr
             ;
 

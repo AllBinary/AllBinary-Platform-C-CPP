@@ -21,13 +21,7 @@
         #ifndef ORG_ALLBINARY_GAME_SCORE_HIGHSCORESFACTORYINTERFACE_H
         #define ORG_ALLBINARY_GAME_SCORE_HIGHSCORESFACTORYINTERFACE_H
 
-#include <jsinterop/annotations/JsType.h>
-
-      
 #include <org/allbinary/game/GameInfo.h>
-
-      
-#include <jsinterop/annotations/JsMethod.h>
 
       
 

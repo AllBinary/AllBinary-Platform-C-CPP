@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../../../../java/lang/Long.h"
+            #include "java/lang/Long.h"
         
 #include <java/awt/image/BufferedImage.h>
 
@@ -51,8 +51,9 @@ class CapturedImageWorkerResultsEvent: public AllBinaryEventObject {
 
     private: BufferedImage bufferedImage;
 
-public: CapturedImageWorkerResultsEvent(Object* anyType, Long frame, BufferedImage bufferedImage){
-            super(anyType);
+public: CapturedImageWorkerResultsEvent(Object* anyType, Long frame, BufferedImage bufferedImage) : AllBinaryEventObject(anyType){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.

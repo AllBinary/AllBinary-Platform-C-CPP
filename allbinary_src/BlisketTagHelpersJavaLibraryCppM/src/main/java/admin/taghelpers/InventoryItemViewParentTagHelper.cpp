@@ -18,9 +18,9 @@
 
 
 
-            #include "../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/logic/communication/http/request/RequestMapInterface.h>
 
@@ -90,7 +90,7 @@ class InventoryItemViewParentTagHelper
                                     this->checkForValidationViewHelper(inventoryTag.getHelper());
     
 
-    ValidationViewHelper validationViewHelper = inventoryTag.getHelper() as ValidationViewHelper;;
+    ValidationViewHelper validationViewHelper = inventoryTag.getHelper();;
     
 
     TransformInterface viewObject = validationViewHelper.getViewObject();;
@@ -106,7 +106,7 @@ stringBuffer.append("Must have ");
     
 stringBuffer.append("InventoryItemView and not: ");
     
-stringBuffer.append(inventoryTag.getHelper().constructor.name.toString()!);
+stringBuffer.append(inventoryTag.getHelper().constructor.name.toString());
     
 
 
@@ -120,7 +120,7 @@ stringBuffer.append(inventoryTag.getHelper().constructor.name.toString()!);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return viewObject as InventoryItemView;
+                        return viewObject;
     
 
                                     }
@@ -149,7 +149,7 @@ stringBuffer.append(inventoryTag.getHelper().constructor.name.toString()!);
                                     this->checkForValidationViewHelper(inventoryTag.getHelper());
     
 
-    ValidationViewHelper validationViewHelper = inventoryTag.getHelper() as ValidationViewHelper;;
+    ValidationViewHelper validationViewHelper = inventoryTag.getHelper();;
     
 
     TransformInterface viewObject = validationViewHelper.getViewObject();;
@@ -165,7 +165,7 @@ stringBuffer.append("Must have ");
     
 stringBuffer.append("DownloadableInventoryItemView and not: ");
     
-stringBuffer.append(inventoryTag.getHelper().constructor.name.toString()!);
+stringBuffer.append(inventoryTag.getHelper().constructor.name.toString());
     
 
 
@@ -179,7 +179,7 @@ stringBuffer.append(inventoryTag.getHelper().constructor.name.toString()!);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return viewObject as DownloadableInventoryItemView;
+                        return viewObject;
     
 
                                     }
@@ -208,7 +208,7 @@ stringBuffer.append(inventoryTag.getHelper().constructor.name.toString()!);
                                     this->checkForValidationViewHelper(inventoryTag.getHelper());
     
 
-    ValidationViewHelper validationViewHelper = inventoryTag.getHelper() as ValidationViewHelper;;
+    ValidationViewHelper validationViewHelper = inventoryTag.getHelper();;
     
 
     TransformInterface viewObject = validationViewHelper.getViewObject();;
@@ -224,7 +224,7 @@ stringBuffer.append("Must have ");
     
 stringBuffer.append("specific TYPE_ID and not: ");
     
-stringBuffer.append(inventoryTag.getHelper().constructor.name.toString()!);
+stringBuffer.append(inventoryTag.getHelper().constructor.name.toString());
     
 
 
@@ -238,7 +238,7 @@ stringBuffer.append(inventoryTag.getHelper().constructor.name.toString()!);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return viewObject as RequestMapInterface;
+                        return viewObject;
     
 
                                     }
@@ -271,7 +271,7 @@ stringBuffer.append("ValidationViewHelper");
     
 stringBuffer.append("and not: ");
     
-stringBuffer.append(helperObject->constructor.name.toString()!);
+stringBuffer.append(helperObject->constructor.name.toString());
     
 
 

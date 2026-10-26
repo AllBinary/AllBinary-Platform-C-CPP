@@ -21,9 +21,9 @@
         #ifndef TAGS_XMLVALIDATIONTRANSFORMTAG_H
         #define TAGS_XMLVALIDATIONTRANSFORMTAG_H
 
-            #include "../java/lang/Class.h"
+            #include "java/lang/Class.h"
         
-            #include "../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/lang/reflect/Method.h>
 

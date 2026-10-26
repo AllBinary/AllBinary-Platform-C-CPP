@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
 
@@ -66,7 +66,7 @@ class QuoteRequestEntityInterface: public BasicDataTableInterface {
 
     void insert(BasicArrayList values)
 
-    void update(std::string userName, HashMap<any, any> updatedValues)
+    void update(std::string userName, HashMap<Object*, Object*> updatedValues)
 
 };
 

@@ -18,15 +18,15 @@
 
 
 
-            #include "../../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../../../../java/lang/Math.h"
+            #include "java/lang/Math.h"
         
-            #include "../../../../../../java/lang/Integer.h"
+            #include "java/lang/Integer.h"
         
-            #include "../../../../../../java/lang/Double.h"
+            #include "java/lang/Double.h"
         
 #include <java/awt.h>
 
@@ -211,7 +211,7 @@ this->active= false;
     int32_t index = 0;index < numberOfLines; index++)
         {
 
-    Node lineNode = lineNodes.get(index) as Node;;
+    Node lineNode = lineNodes.get(index);;
     
 
     BasicArrayList pointNodes = DomHelper::getInstance().getWithoutTextNodes(lineNode.getChildNodes());;
@@ -326,7 +326,7 @@ this->setRotate(this->theta +Math::toRadians(angle));
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->treeNode as MutableTreeNode;
+                        return this->treeNode;
     
 }
 
@@ -382,7 +382,7 @@ this->logUtil.putF(point.toString(), this, "addPoint");
     
 this->pointTreeNodeVector.add(DefaultMutableTreeNode(point.toString()));
     
-this->treeNode.add(this->pointTreeNodeVector.get(this->pointTreeNodeVector.size() -1) as DefaultMutableTreeNode);
+this->treeNode.add(this->pointTreeNodeVector.get(this->pointTreeNodeVector.size() -1));
     
 }
 
@@ -401,7 +401,7 @@ this->treeNode.add(this->pointTreeNodeVector.get(this->pointTreeNodeVector.size(
                                     
     int32_t lastPoint = this->points.getSize() -1;;
     
-point= this->points.getPoints().removeAt(lastPoint) as GPoint;
+point= this->points.getPoints().removeAt(lastPoint);
     
 
     int32_t index = this->pointTreeNodeVector.size() -1;;
@@ -410,7 +410,7 @@ point= this->points.getPoints().removeAt(lastPoint) as GPoint;
                         if(index > 0)
                         
                                     {
-                                    this->treeNode.remove(this->pointTreeNodeVector.get(index) as DefaultMutableTreeNode);
+                                    this->treeNode.remove(this->pointTreeNodeVector.get(index));
     
 this->pointTreeNodeVector.remove(index);
     
@@ -465,7 +465,7 @@ this->active= true;
     int32_t index = 0;index < size; index++)
         {
 
-    GPoint point = list.get(index) as GPoint;;
+    GPoint point = list.get(index);;
     
 
                         if(point != 
@@ -477,7 +477,7 @@ this->active= true;
     
 this->pointTreeNodeVector.add(DefaultMutableTreeNode(point.toString()));
     
-this->treeNode.add(this->pointTreeNodeVector.get(this->pointTreeNodeVector.size() -1) as DefaultMutableTreeNode);
+this->treeNode.add(this->pointTreeNodeVector.get(this->pointTreeNodeVector.size() -1));
     
 
                                     }
@@ -526,7 +526,7 @@ this->fulcrumPoint= point;
 
         try {
             
-    Graphics2D graphics = g as Graphics2D;;
+    Graphics2D graphics = g;;
     
 graphics.setColor(getColor());
     
@@ -552,7 +552,7 @@ graphics.setStroke(BasicStroke(x));
                                 )
                         
                                     {
-                                    this->currentMousePoint= this->points.getPoints().removeAt(this->points.getSize() -1) as GPoint;
+                                    this->currentMousePoint= this->points.getPoints().removeAt(this->points.getSize() -1);
     
 
                                     }
@@ -569,7 +569,7 @@ graphics.setStroke(BasicStroke(x));
                         if(size > 0)
                         
                                     {
-                                    firstPoint= tempPointVector.get(0) as GPoint;
+                                    firstPoint= tempPointVector.get(0);
     
 
                                     }
@@ -582,7 +582,7 @@ graphics.setStroke(BasicStroke(x));
     int32_t index = 1;index < size; index++)
         {
 
-    GPoint secondPoint = tempPointVector.get(index) as GPoint;;
+    GPoint secondPoint = tempPointVector.get(index);;
     
 graphics.drawLine((firstPoint.getX() *x) -(x /4), (firstPoint.getY() *y) -(y /4), (secondPoint.getX() *x) -(x /4), (secondPoint.getY() *y) -(y /4));
     

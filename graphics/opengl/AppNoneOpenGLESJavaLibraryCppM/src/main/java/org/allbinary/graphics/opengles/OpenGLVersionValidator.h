@@ -21,7 +21,7 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_OPENGLES_OPENGLVERSIONVALIDATOR_H
         #define ORG_ALLBINARY_GRAPHICS_OPENGLES_OPENGLVERSIONVALIDATOR_H
 
-            #include "../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
 #include <org/allbinary/graphics/opengles/shader/ShaderComposite.h>
 

@@ -21,7 +21,7 @@
         #ifndef ORG_ALLBINARY_LOGIC_JAVA_NUMBER_LONGUTIL_H
         #define ORG_ALLBINARY_LOGIC_JAVA_NUMBER_LONGUTIL_H
 
-            #include "../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
 #include <org/allbinary/logic/string/StringMaker.h>
 

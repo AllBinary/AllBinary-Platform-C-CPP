@@ -21,7 +21,7 @@
         #ifndef ORG_ALLBINARY_LOGIC_COMMUNICATION_SQL_ABSQLDATA_H
         #define ORG_ALLBINARY_LOGIC_COMMUNICATION_SQL_ABSQLDATA_H
 
-            #include "../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
 
 

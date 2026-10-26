@@ -18,9 +18,9 @@
 
 
 
-            #include "../../../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/util/BasicArrayList.h>
 
@@ -104,7 +104,7 @@ this->fireEmailEvent();
     int32_t index = 0;index < size; index++)
         {
 
-    UserEmailEventListenerInterface userEmailEventListenerInterface = vector.get(index) as UserEmailEventListenerInterface;;
+    UserEmailEventListenerInterface userEmailEventListenerInterface = vector.get(index);;
     
 this->addListener(userEmailEventListenerInterface);
     
@@ -145,7 +145,7 @@ this->emailVector.remove(emailEventListenerInterface);
     int32_t index = 0;index < size; index++)
         {
 
-    UserEmailEventListenerInterface emailEventListenerInterface = this->emailVector.get(index) as UserEmailEventListenerInterface;;
+    UserEmailEventListenerInterface emailEventListenerInterface = this->emailVector.get(index);;
     
 emailEventListenerInterface.onEmailSendRequest(emailEvent);
     

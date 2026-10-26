@@ -23,9 +23,9 @@
 
             #include <vector>
         
-            #include "../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../java/lang/RuntimeException.h"
+            #include "java/lang/RuntimeException.h"
         
 #include <jsinterop/annotations/JsType.h>
 
@@ -92,7 +92,7 @@ class AngleFactory
 
     public: const int16_t QUARTER_TOTAL_ANGLE = 90;
 
-    private: const std::vector<Angle> angleArray = new Array(static_cast<int32_t>(this->TOTAL_ANGLE));
+    private: const std::vector<Angle> angleArray = std::vector<Angle>(static_cast<int32_t>(this->TOTAL_ANGLE));
 
     private: const int16_t NEGATIVE_ONE =  -1;
 

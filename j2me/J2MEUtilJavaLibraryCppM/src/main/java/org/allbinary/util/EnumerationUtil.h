@@ -23,7 +23,7 @@
 
             #include <vector>
         
-            #include "../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
 #include <jsinterop/annotations/JsType.h>
 
@@ -63,11 +63,11 @@ class EnumerationUtil
 
     public: static EnumerationUtil getInstance();
 
-    public: bool hasMoreElements(Enumeration<any> enumeration);
+    public: bool hasMoreElements(Enumeration<Object*> enumeration);
 
-    public: Object* nextElement(Enumeration<any> enumeration);
+    public: Object* nextElement(Enumeration<Object*> enumeration);
 
-    public: std::vector<Object*> getAsArray(Enumeration<any> enumeration);
+    public: std::vector<Object*> getAsArray(Enumeration<Object*> enumeration);
 
 };
 

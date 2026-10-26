@@ -18,15 +18,12 @@
 
 
 
-            #include "../../../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
 
       
 #include <org/allbinary/util/BasicArrayList.h>
-
-      
-#include <org/allbinary/util/BasicArrayListD.h>
 
       
 #include <org/allbinary/data/tables/transform/info/TransformInfoEntity.h>
@@ -36,6 +33,9 @@
 
       
 #include <org/allbinary/data/tree/dom/document/DomDocumentHelper.h>
+
+      
+#include <org/allbinary/data/tree/dom/document/XmlDocumentHelper.h>
 
       
 #include <org/allbinary/logic/StdUtil.h>
@@ -101,8 +101,9 @@ class PageValidationView: public PageView, public ValidationComponentInterface {
 
     protected: const LogUtil logUtil = LogUtil::getInstance();
 
-public: PageValidationView(TransformInfoInterface transformInfoInterface){
-            super(transformInfoInterface);
+public: PageValidationView(TransformInfoInterface transformInfoInterface) : PageView(transformInfoInterface){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -163,7 +164,7 @@ public: PageValidationView(TransformInfoInterface transformInfoInterface){
     int32_t index = 0;index < size; index++)
         {
 
-    TransformInfo transformInfoInterface = allViewsToBeModifiedVector.get(index) as TransformInfo;;
+    TransformInfo transformInfoInterface = allViewsToBeModifiedVector.get(index);;
     
 
     std::string viewNameOfViewToBeModified = transformInfoInterface.getName();;
@@ -187,7 +188,7 @@ this->logUtil.putF(stringBuffer.toString(), this, "insert()");
                                     }
                                 
 
-    TransformInfoHttpInterface httpTransformInfoInterface = this->getTransformInfoInterface() as TransformInfoHttpInterface;;
+    TransformInfoHttpInterface httpTransformInfoInterface = this->getTransformInfoInterface();;
     
 
     TransformInfoInterface specifiedTransformInfoInterface = transformInfoEntityInterface.get(viewNameOfViewToBeModified, httpTransformInfoInterface.getPropertiesHashMap(), httpTransformInfoInterface.getPageContext());;
@@ -211,13 +212,13 @@ this->logUtil.putF(stringBuffer.toString(), this, "insert()");
                                     }
                                 
 
-    HashMap<any, any> hashMap = StdUtil::getInstance().createHashMap();;
+    HashMap<Object*, Object*> hashMap = StdUtil::getInstance().createHashMap();;
     
 
     std::string title = specifiedTransformInfoInterface.getName().substring(this->getTransformInfoInterface().getStoreName().length());;
     
 
-                        if(title.compareTo("index") == 0)
+                        if(title.compare("index") == 0)
                         
                                     {
                                     hashMap.put(TitleData::getInstance().TEXT, this->getTransformInfoInterface().getStoreName() +" - Home Page");
@@ -253,7 +254,7 @@ this->logUtil.putF(stringBuffer.toString(), this, "insert()");
 document.appendChild(pageValidation.toXmlNode(document));
     
 
-    std::string documentString = DomDocumentHelper::toString(document);;
+    std::string documentString = XmlDocumentHelper::toString(document);;
     
 
                         if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEW))
@@ -327,7 +328,7 @@ CustomizerUtil::getInstance().write(specifiedTransformInfoInterface, documentStr
     TransformInfoObjectConfigInterface objectConfig = this->getTransformInfoInterface().getObjectConfigInterface();;
     
 
-    TransformInfoHttpInterface httpTransformInfoInterface = this->getTransformInfoInterface() as TransformInfoHttpInterface;;
+    TransformInfoHttpInterface httpTransformInfoInterface = this->getTransformInfoInterface();;
     
 
     BasicArrayList allViewsToBeModifiedVector = objectConfig.getGroupTransforms();;
@@ -343,7 +344,7 @@ CustomizerUtil::getInstance().write(specifiedTransformInfoInterface, documentStr
     int32_t index = 0;index < size; index++)
         {
 
-    TransformInfo transformInfoInterface = allViewsToBeModifiedVector.get(index) as TransformInfo;;
+    TransformInfo transformInfoInterface = allViewsToBeModifiedVector.get(index);;
     
 
     std::string viewNameOfViewToBeModified = transformInfoInterface.getName();;
@@ -352,13 +353,13 @@ CustomizerUtil::getInstance().write(specifiedTransformInfoInterface, documentStr
     TransformInfoInterface specifiedTransformInfoInterface = transformInfoEntityInterface.get(viewNameOfViewToBeModified, httpTransformInfoInterface.getPropertiesHashMap(), httpTransformInfoInterface.getPageContext());;
     
 
-    HashMap<any, any> hashMap = StdUtil::getInstance().createHashMap();;
+    HashMap<Object*, Object*> hashMap = StdUtil::getInstance().createHashMap();;
     
 
     std::string title = specifiedTransformInfoInterface.getName().substring(this->getTransformInfoInterface().getStoreName().length());;
     
 
-                        if(title.compareTo("index") == 0)
+                        if(title.compare("index") == 0)
                         
                                     {
                                     hashMap.put(TitleData::getInstance().TEXT, this->getTransformInfoInterface().getStoreName() +" - Home Page");

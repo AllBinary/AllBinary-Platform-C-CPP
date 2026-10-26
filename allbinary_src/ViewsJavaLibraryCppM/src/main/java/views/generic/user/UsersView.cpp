@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/util/BasicArrayList.h>
 
@@ -78,8 +78,9 @@ class UsersView: public HttpStoreComponentView, public DomNodeInterface {
 
     protected: BasicArrayList userVector;
 
-public: UsersView(TransformInfoInterface transformInfoInterface){
-            super(transformInfoInterface);
+public: UsersView(TransformInfoInterface transformInfoInterface) : HttpStoreComponentView(transformInfoInterface){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -104,7 +105,7 @@ public: UsersView(TransformInfoInterface transformInfoInterface){
     int32_t index = 0;index < size; index++)
         {
 
-    User userInterface = this->userVector.get(index) as User;;
+    User userInterface = this->userVector.get(index);;
     
 
                         if(userInterface != 
@@ -159,7 +160,7 @@ usersNode.appendChild(node);
 
 
     public: void addDomNodeInterfaces(){
-this->addDomNodeInterface(this as DomNodeInterface);
+this->addDomNodeInterface(this);
     
 }
 

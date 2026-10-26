@@ -21,9 +21,9 @@
         #ifndef ADMIN_TAGS_PAYMENTTAG_H
         #define ADMIN_TAGS_PAYMENTTAG_H
 
-            #include "../../java/lang/Class.h"
+            #include "java/lang/Class.h"
         
-            #include "../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/lang/reflect/Method.h>
 
@@ -81,7 +81,7 @@ class PaymentTag: public TableTag {
 
     private: std::string storeName;
 
-    private: HashMap<any, any> propertiesHashMap;
+    private: HashMap<Object*, Object*> propertiesHashMap;
 
 public: PaymentTag();
 

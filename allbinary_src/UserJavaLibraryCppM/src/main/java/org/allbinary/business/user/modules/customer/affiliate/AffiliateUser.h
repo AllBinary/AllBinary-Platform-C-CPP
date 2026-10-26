@@ -21,7 +21,7 @@
         #ifndef ORG_ALLBINARY_BUSINESS_USER_MODULES_CUSTOMER_AFFILIATE_AFFILIATEUSER_H
         #define ORG_ALLBINARY_BUSINESS_USER_MODULES_CUSTOMER_AFFILIATE_AFFILIATEUSER_H
 
-            #include "../../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
 
@@ -60,7 +60,7 @@ class AffiliateUser: public User {
 
 public: AffiliateUser();
 
-public: AffiliateUser(HashMap<any, any> userHashMap);
+public: AffiliateUser(HashMap<Object*, Object*> userHashMap);
 
     public: void validateSession(WeblisketSessionInterface weblisketSession);
 

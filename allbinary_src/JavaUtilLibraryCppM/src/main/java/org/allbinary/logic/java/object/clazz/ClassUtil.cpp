@@ -20,9 +20,9 @@
 
             #include <vector>
         
-            #include "../../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../../java/lang/Class.h"
+            #include "java/lang/Class.h"
         
 #include <org/allbinary/logic/java/anyType/ConstructorUtil.h>
 
@@ -70,7 +70,7 @@ class ClassUtil
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return ClassUtil::viewAll(anyType->constructor, lineBreak);;
+                        return ClassUtil::viewAll(anyType->getClass(), lineBreak);;
     
 
                                     }
@@ -81,7 +81,7 @@ class ClassUtil
 }
 
 
-    public: static std::string viewAll(Function myClass, std::string lineBreak){
+    public: static std::string viewAll(Class* myClass, std::string lineBreak){
 
                         if(myClass != 
                                     nullptr
@@ -92,13 +92,13 @@ class ClassUtil
     StringMaker stringBuffer = StringMaker();;
     
 
-    std::vector<Function> classes = myClass.getClasses();;
+    std::vector<Class*> classes = myClass.getClasses();;
     
 stringBuffer.append(lineBreak);
     
 stringBuffer.append("Class: ");
     
-stringBuffer.append(myClass.toString()!);
+stringBuffer.append(myClass.toString());
     
 stringBuffer.append(" uses ");
     
@@ -123,7 +123,7 @@ stringBuffer.append(lineBreak);
         {
 stringBuffer.append("Class: ");
     
-stringBuffer.append(classes[index]!.getName());
+stringBuffer.append(classes[index].getName());
     
 stringBuffer.append(lineBreak);
     

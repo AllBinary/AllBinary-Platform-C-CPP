@@ -18,9 +18,9 @@
 
 
 
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../../java/lang/RuntimeException.h"
+            #include "java/lang/RuntimeException.h"
         
 #include <javax/microedition/media/MediaException.h>
 
@@ -312,7 +312,7 @@ this->logUtil.putF("LineEvent: " +event, this, this->commonStrings.UPDATE);
     int32_t index = 0;index < size; index++)
         {
 
-    PlayerListener listener = this->listenersList.objectArray[index]! as PlayerListener;;
+    PlayerListener listener = this->listenersList.objectArray[index];;
     
 listener.playerUpdate(this, event, NullUtil::getInstance().NULL_OBJECT);
     

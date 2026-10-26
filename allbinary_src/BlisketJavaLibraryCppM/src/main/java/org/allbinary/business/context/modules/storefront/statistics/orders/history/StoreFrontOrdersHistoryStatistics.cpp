@@ -18,11 +18,11 @@
 
 
 
-            #include "../../../../../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../../../../../../../java/lang/Long.h"
+            #include "java/lang/Long.h"
         
 #include <java/util/HashMap.h>
 
@@ -117,7 +117,7 @@ this->totalMoney= Money();
                         for (
     int32_t index = 0;index < size; index++)
         {
-orderHistoryInterface= orderHistoryInterfaceVector.get(index) as OrderHistoryInterface;
+orderHistoryInterface= orderHistoryInterfaceVector.get(index);
     
 numberOfOrders= numberOfOrders +1;
     
@@ -186,9 +186,9 @@ this->numberOfOrdersLong= Long(numberOfOrders);
 }
 
 
-    public: HashMap<any, any> toHashMap(){
+    public: HashMap<Object*, Object*> toHashMap(){
 
-    HashMap<any, any> hashMap = StdUtil::getInstance().createHashMap();;
+    HashMap<Object*, Object*> hashMap = StdUtil::getInstance().createHashMap();;
     
 
     StoreFrontOrdersHistoryStatisticsData storeFrontOrdersHistoryStatisticsData = StoreFrontOrdersHistoryStatisticsData::getInstance();;

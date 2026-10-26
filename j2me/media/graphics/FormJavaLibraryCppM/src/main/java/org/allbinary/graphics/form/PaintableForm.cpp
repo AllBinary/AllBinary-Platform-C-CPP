@@ -6,11 +6,8 @@
 
             #include <vector>
         
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-#include <jsinterop/annotations/JsType.h>
-
-      
 #include <org/allbinary/graphics/GPoint.h>
 
       
@@ -36,15 +33,6 @@
 
       
 #include <org/allbinary/logic/string/StringUtil.h>
-
-      
-#include <jsinterop/annotations/JsMethod.h>
-
-      
-#include <jsinterop/annotations/JsConstructor.h>
-
-      
-#include <jsinterop/annotations/JsProperty.h>
 
       
 
@@ -87,7 +75,7 @@ class PaintableForm: public ABCustomForm {
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return PaintableForm::NULL_PAINTABLE_FORM as PaintableForm;
+                        return PaintableForm::NULL_PAINTABLE_FORM;
     
 }
 
@@ -102,8 +90,9 @@ class PaintableForm: public ABCustomForm {
 
     protected: FormType formType = FormTypeFactory::getInstance().NULL_FORM_TYPE;
 
-public: PaintableForm(std::string title, std::vector<ABCustomItem> items, BasicColor backgroundBasicColor, BasicColor foregroundBasicColor){
-            super(title, items, backgroundBasicColor, foregroundBasicColor);
+public: PaintableForm(std::string title, std::vector<ABCustomItem> items, BasicColor backgroundBasicColor, BasicColor foregroundBasicColor) : ABCustomForm(title, items, backgroundBasicColor, foregroundBasicColor){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.

@@ -21,11 +21,11 @@
         #ifndef ORG_ALLBINARY_BUSINESS_USER_COMMERCE_MONEY_TAX_MODULES_SIMPLESTATETAXMODULE_H
         #define ORG_ALLBINARY_BUSINESS_USER_COMMERCE_MONEY_TAX_MODULES_SIMPLESTATETAXMODULE_H
 
-            #include "../../../../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../../../../../../java/lang/Float.h"
+            #include "java/lang/Float.h"
         
 #include <org/allbinary/business/context/modules/storefront/StoreFrontInterface.h>
 
@@ -46,6 +46,9 @@
 
       
 #include <org/allbinary/data/tree/dom/document/DomDocumentHelper.h>
+
+      
+#include <org/allbinary/data/tree/dom/document/XmlDocumentHelper.h>
 
       
 #include <org/allbinary/globals/FREEBLISKET_PATH_GLOBALS.h>

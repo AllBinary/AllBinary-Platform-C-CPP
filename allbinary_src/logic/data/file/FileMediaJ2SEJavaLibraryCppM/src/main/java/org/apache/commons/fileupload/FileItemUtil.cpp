@@ -6,9 +6,9 @@
 
             #include <vector>
         
-            #include "../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/io/ByteArrayOutputStream.h>
 
@@ -144,7 +144,7 @@ this->logUtil.putF(stringBuffer.toString(), this, "write()");
 
                         }
                             
-outputStream= streamUtil.get(inputStream, outputStream, new Array(16384)) as ByteArrayOutputStream;
+outputStream= streamUtil.get(inputStream, outputStream, std::vector<int8_t>(16384));
     
 
 

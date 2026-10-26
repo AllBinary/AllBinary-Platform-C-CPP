@@ -21,7 +21,7 @@
         #ifndef ORG_ALLBINARY_GAME_LAYER_HUD_BASIC_LAPWIDGET_H
         #define ORG_ALLBINARY_GAME_LAYER_HUD_BASIC_LAPWIDGET_H
 
-            #include "../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <javax/microedition/lcdui/Graphics.h>
 

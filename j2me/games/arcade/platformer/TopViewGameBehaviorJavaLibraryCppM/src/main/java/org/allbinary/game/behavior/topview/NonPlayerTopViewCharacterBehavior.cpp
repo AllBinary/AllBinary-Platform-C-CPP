@@ -20,7 +20,7 @@
 
             #include <vector>
         
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/media/graphics/geography/map/MultiGeographicMapBehavior.h>
 
@@ -61,6 +61,9 @@
 #include <org/allbinary/media/graphics/geography/map/GeographicMapCellType.h>
 
       
+#include <org/allbinary/media/graphics/geography/map/SimpleGeographicMapCellPositionFactory.h>
+
+      
 
 
 
@@ -91,19 +94,17 @@ class NonPlayerTopViewCharacterBehavior: public TopViewCharacterBehavior {
             
     public: void terrainEvent(AllBinaryLayer layer, Direction direction, int32_t x, int32_t y, std::vector<BasicGeographicMap> geographicMapInterfaceArray, std::vector<GeographicMapCellType> geographicMapCellTypeArray, GeographicMapCellPosition geographicMapCellPosition){
 
-    int32_t maxColumns = geographicMapInterfaceArray[0]!.getAllBinaryTiledLayer().getColumns();;
+    int32_t maxColumns = geographicMapInterfaceArray[0].getAllBinaryTiledLayer().getColumns();;
     
 
                         if(geographicMapCellPosition.getColumn() > 0 && geographicMapCellPosition.getColumn() < maxColumns)
                         
                                     {
                                     
-    GeographicMapCellPosition nextTerrainGeographicMapCellPosition = 
-                null
-            ;;
+    GeographicMapCellPosition nextTerrainGeographicMapCellPosition = SimpleGeographicMapCellPositionFactory::NULL_GEOGRAPHIC_MAP_CELL_POSITION;;
     
 
-    BasicGeographicMapCellPositionFactory geographicMapCellPositionFactory = geographicMapInterfaceArray[0]!.getGeographicMapCellPositionFactory();;
+    BasicGeographicMapCellPositionFactory geographicMapCellPositionFactory = geographicMapInterfaceArray[0].getGeographicMapCellPositionFactory();;
     
 
                         if(direction == DirectionFactory::getInstance().LEFT)

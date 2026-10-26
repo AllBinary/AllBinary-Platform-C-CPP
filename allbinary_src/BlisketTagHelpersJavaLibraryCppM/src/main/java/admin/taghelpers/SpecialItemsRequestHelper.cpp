@@ -18,9 +18,9 @@
 
 
 
-            #include "../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../java/lang/Long.h"
+            #include "java/lang/Long.h"
         
 #include <java/util/Calendar.h>
 
@@ -108,8 +108,8 @@ class SpecialItemsRequestHelper: public ModifyTable {
 
     private: std::string lastModified;
 
-public: SpecialItemsRequestHelper(HashMap<any, any> hashMap, PageContext pageContext){
-this->request= pageContext.getRequest() as HttpServletRequest;
+public: SpecialItemsRequestHelper(HashMap<Object*, Object*> hashMap, PageContext pageContext){
+this->request= pageContext.getRequest();
     
 this->getFormData();
     
@@ -136,9 +136,9 @@ this->lastModified= this->request.getParameter(EntryData::getInstance().LASTMODI
 }
 
 
-    private: HashMap<any, any> getHashMap(){
+    private: HashMap<Object*, Object*> getHashMap(){
 
-    HashMap<any, any> values = StdUtil::getInstance().createHashMap();;
+    HashMap<Object*, Object*> values = StdUtil::getInstance().createHashMap();;
     
 values.put(basicItemData.ID, this->id);
     
@@ -301,7 +301,7 @@ SpecialItemsEntityFactory::getInstance().getSpecialItemsEntityInstance().insert(
     std::string success = "Update Successful";;
     
 
-    HashMap<any, any> values = this->getHashMap();;
+    HashMap<Object*, Object*> values = this->getHashMap();;
     
 SpecialItemsEntityFactory::getInstance().getSpecialItemsEntityInstance().update(values);
     

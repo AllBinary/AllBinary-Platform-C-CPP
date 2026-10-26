@@ -21,7 +21,7 @@
         #ifndef ORG_ALLBINARY_BUSINESS_INIT_LICENSEINITINFO_H
         #define ORG_ALLBINARY_BUSINESS_INIT_LICENSEINITINFO_H
 
-            #include "../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
 #include <org/allbinary/debug/DebugFactory.h>
 

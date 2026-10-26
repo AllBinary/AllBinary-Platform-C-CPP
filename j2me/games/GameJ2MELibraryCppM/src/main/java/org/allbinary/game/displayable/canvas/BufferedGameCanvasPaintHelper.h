@@ -23,7 +23,7 @@
 
             #include <vector>
         
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <javax/microedition/lcdui/Canvas.h>
 
@@ -78,7 +78,7 @@ class BufferedGameCanvasPaintHelper: public ProcessPaintable {
 
     private: Canvas gameCanvas = NullCanvas::NULL_CANVAS;
 
-    private: const std::vector<Image> offScreenImage = new Array(BufferedGameCanvasPaintHelper::MAX_IMAGES);
+    private: const std::vector<Image> offScreenImage = std::vector<Image>(BufferedGameCanvasPaintHelper::MAX_IMAGES);
 
     private: Image previousImage = NullImage::NULL_IMAGE;
 

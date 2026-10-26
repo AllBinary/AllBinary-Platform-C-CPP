@@ -21,9 +21,9 @@
         #ifndef ORG_ALLBINARY_BUSINESS_CATEGORY_PROPERTIES_CATEGORYPROPERTIESFACTORY_H
         #define ORG_ALLBINARY_BUSINESS_CATEGORY_PROPERTIES_CATEGORYPROPERTIESFACTORY_H
 
-            #include "../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
 
@@ -71,7 +71,7 @@ public: CategoryPropertiesFactory(std::string name);
 
 public: CategoryPropertiesFactory(Node node);
 
-public: CategoryPropertiesFactory(HashMap<any, any> categoryPropertiesHashMap);
+public: CategoryPropertiesFactory(HashMap<Object*, Object*> categoryPropertiesHashMap);
 
     public: CategoryPropertiesInterface getInstance();
 

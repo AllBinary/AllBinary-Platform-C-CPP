@@ -18,9 +18,9 @@
 
 
 
-            #include "../../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
 
@@ -110,13 +110,13 @@ this->transformInfoInterface= transformInfoInterface;
 
         try {
             
-    CategoryPropertiesFactoryInterface categoryPropertiesFactoryInterface = RootStoreThemeCategoryPropertiesFactory(this->transformInfoInterface) as CategoryPropertiesFactoryInterface;;
+    CategoryPropertiesFactoryInterface categoryPropertiesFactoryInterface = RootStoreThemeCategoryPropertiesFactory(this->transformInfoInterface);;
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return StoreThemeCategory(this->transformInfoInterface, categoryPropertiesFactoryInterface, 0) as CategoryInterface;
+                        return StoreThemeCategory(this->transformInfoInterface, categoryPropertiesFactoryInterface, 0);
     
 
                 //: 
@@ -149,13 +149,13 @@ this->transformInfoInterface= transformInfoInterface;
     int32_t level = CategoryUtil::getPathLevel(categoryAbPath);;
     
 
-    CategoryPropertiesFactoryInterface categoryPropertiesFactoryInterface = RootStoreThemeCategoryPropertiesFactory(this->transformInfoInterface, categoryAbPath) as CategoryPropertiesFactoryInterface;;
+    CategoryPropertiesFactoryInterface categoryPropertiesFactoryInterface = RootStoreThemeCategoryPropertiesFactory(this->transformInfoInterface, categoryAbPath);;
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return StoreThemeCategory(this->transformInfoInterface, categoryPropertiesFactoryInterface, level) as CategoryInterface;
+                        return StoreThemeCategory(this->transformInfoInterface, categoryPropertiesFactoryInterface, level);
     
 
                 //: 
@@ -185,7 +185,7 @@ this->transformInfoInterface= transformInfoInterface;
 
         try {
             
-    CategoryPropertiesFactoryInterface categoryPropertiesFactoryInterface = RootStoreThemeCategoryPropertiesFactory(this->transformInfoInterface, node) as CategoryPropertiesFactoryInterface;;
+    CategoryPropertiesFactoryInterface categoryPropertiesFactoryInterface = RootStoreThemeCategoryPropertiesFactory(this->transformInfoInterface, node);;
     
 
     AbPath categoryPath = AbPath(CategoryUtil::getNameFromNode(node), StringUtil::getInstance().EMPTY_STRING);;
@@ -197,7 +197,7 @@ this->transformInfoInterface= transformInfoInterface;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return StoreThemeCategory(this->transformInfoInterface, node, categoryPropertiesFactoryInterface, level) as CategoryInterface;
+                        return StoreThemeCategory(this->transformInfoInterface, node, categoryPropertiesFactoryInterface, level);
     
 
                 //: 
@@ -227,13 +227,13 @@ this->transformInfoInterface= transformInfoInterface;
 
         try {
             
-    CategoryPropertiesFactoryInterface categoryPropertiesFactoryInterface = CategoryPropertiesFactory(categoryPath) as CategoryPropertiesFactoryInterface;;
+    CategoryPropertiesFactoryInterface categoryPropertiesFactoryInterface = CategoryPropertiesFactory(categoryPath);;
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return StoreThemeCategory(this->transformInfoInterface, categoryPropertiesFactoryInterface, level) as CategoryInterface;
+                        return StoreThemeCategory(this->transformInfoInterface, categoryPropertiesFactoryInterface, level);
     
 
                 //: 
@@ -263,13 +263,13 @@ this->transformInfoInterface= transformInfoInterface;
 
         try {
             
-    CategoryPropertiesFactoryInterface categoryPropertiesFactoryInterface = CategoryPropertiesFactory(categoryPath) as CategoryPropertiesFactoryInterface;;
+    CategoryPropertiesFactoryInterface categoryPropertiesFactoryInterface = CategoryPropertiesFactory(categoryPath);;
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return StoreThemeCategory(this->transformInfoInterface, rootCategoryInterface, parentCategoryInterface, categoryPropertiesFactoryInterface) as CategoryInterface;
+                        return StoreThemeCategory(this->transformInfoInterface, rootCategoryInterface, parentCategoryInterface, categoryPropertiesFactoryInterface);
     
 
                 //: 
@@ -299,13 +299,13 @@ this->transformInfoInterface= transformInfoInterface;
 
         try {
             
-    CategoryPropertiesFactoryInterface categoryPropertiesFactoryInterface = CategoryPropertiesFactory(node) as CategoryPropertiesFactoryInterface;;
+    CategoryPropertiesFactoryInterface categoryPropertiesFactoryInterface = CategoryPropertiesFactory(node);;
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return StoreThemeCategory(this->transformInfoInterface, categoryPropertiesFactoryInterface, level) as CategoryInterface;
+                        return StoreThemeCategory(this->transformInfoInterface, categoryPropertiesFactoryInterface, level);
     
 
                 //: 
@@ -335,13 +335,13 @@ this->transformInfoInterface= transformInfoInterface;
 
         try {
             
-    CategoryPropertiesFactoryInterface categoryPropertiesFactoryInterface = CategoryPropertiesFactory(node) as CategoryPropertiesFactoryInterface;;
+    CategoryPropertiesFactoryInterface categoryPropertiesFactoryInterface = CategoryPropertiesFactory(node);;
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return StoreThemeCategory(this->transformInfoInterface, rootCategoryInterface, parentCategoryInterface, categoryPropertiesFactoryInterface) as CategoryInterface;
+                        return StoreThemeCategory(this->transformInfoInterface, rootCategoryInterface, parentCategoryInterface, categoryPropertiesFactoryInterface);
     
 
                 //: 
@@ -367,17 +367,17 @@ this->transformInfoInterface= transformInfoInterface;
 }
 
 
-    public: CategoryInterface getInstance(HashMap<any, any> categoryPropertiesHashMap, int32_t level){
+    public: CategoryInterface getInstance(HashMap<Object*, Object*> categoryPropertiesHashMap, int32_t level){
 
         try {
             
-    CategoryPropertiesFactoryInterface categoryPropertiesFactoryInterface = CategoryPropertiesFactory(categoryPropertiesHashMap) as CategoryPropertiesFactoryInterface;;
+    CategoryPropertiesFactoryInterface categoryPropertiesFactoryInterface = CategoryPropertiesFactory(categoryPropertiesHashMap);;
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return StoreThemeCategory(this->transformInfoInterface, categoryPropertiesFactoryInterface, level) as CategoryInterface;
+                        return StoreThemeCategory(this->transformInfoInterface, categoryPropertiesFactoryInterface, level);
     
 
                 //: 
@@ -403,17 +403,17 @@ this->transformInfoInterface= transformInfoInterface;
 }
 
 
-    public: CategoryInterface getInstance(CategoryInterface rootCategoryInterface, CategoryInterface parentCategoryInterface, HashMap<any, any> categoryPropertiesHashMap){
+    public: CategoryInterface getInstance(CategoryInterface rootCategoryInterface, CategoryInterface parentCategoryInterface, HashMap<Object*, Object*> categoryPropertiesHashMap){
 
         try {
             
-    CategoryPropertiesFactoryInterface categoryPropertiesFactoryInterface = CategoryPropertiesFactory(categoryPropertiesHashMap) as CategoryPropertiesFactoryInterface;;
+    CategoryPropertiesFactoryInterface categoryPropertiesFactoryInterface = CategoryPropertiesFactory(categoryPropertiesHashMap);;
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return StoreThemeCategory(this->transformInfoInterface, rootCategoryInterface, parentCategoryInterface, categoryPropertiesFactoryInterface) as CategoryInterface;
+                        return StoreThemeCategory(this->transformInfoInterface, rootCategoryInterface, parentCategoryInterface, categoryPropertiesFactoryInterface);
     
 
                 //: 

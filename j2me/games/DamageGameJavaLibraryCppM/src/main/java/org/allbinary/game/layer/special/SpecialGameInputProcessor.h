@@ -21,16 +21,7 @@
         #ifndef ORG_ALLBINARY_GAME_LAYER_SPECIAL_SPECIALGAMEINPUTPROCESSOR_H
         #define ORG_ALLBINARY_GAME_LAYER_SPECIAL_SPECIALGAMEINPUTPROCESSOR_H
 
-#include <jsinterop/annotations/JsType.h>
-
-      
 #include <org/allbinary/game/input/GameInputProcessor.h>
-
-      
-#include <jsinterop/annotations/JsConstructor.h>
-
-      
-#include <jsinterop/annotations/JsProperty.h>
 
       
 

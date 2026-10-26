@@ -21,7 +21,7 @@
         #ifndef ORG_ALLBINARY_GAME_AG_AI_THRUSTAIVISITOR_H
         #define ORG_ALLBINARY_GAME_AG_AI_THRUSTAIVISITOR_H
 
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <javax/microedition/lcdui/Canvas.h>
 

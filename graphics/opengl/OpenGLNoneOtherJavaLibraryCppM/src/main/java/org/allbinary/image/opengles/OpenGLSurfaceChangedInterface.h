@@ -7,7 +7,7 @@
         #ifndef ORG_ALLBINARY_IMAGE_OPENGLES_OPENGLSURFACECHANGEDINTERFACE_H
         #define ORG_ALLBINARY_IMAGE_OPENGLES_OPENGLSURFACECHANGEDINTERFACE_H
 
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <javax/microedition/khronos/opengles/GL.h>
 

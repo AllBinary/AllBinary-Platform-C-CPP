@@ -46,8 +46,9 @@
 
 class NoThirdPartyStore: public ThirdPartyStore {
 
-: NoThirdPartyStore(){
-            super(StringUtil::getInstance().EMPTY_STRING);
+: NoThirdPartyStore() : ThirdPartyStore(StringUtil::getInstance().EMPTY_STRING){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.

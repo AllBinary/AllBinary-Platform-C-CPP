@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
 
@@ -66,7 +66,7 @@ class TransformInfoHelper: public BasicTable {
 
     private: Portion portion;
 
-public: TransformInfoHelper(HashMap<any, any> hashMap, PageContext pageContext){
+public: TransformInfoHelper(HashMap<Object*, Object*> hashMap, PageContext pageContext){
 this->portion= Portion(hashMap);
     
 }

@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/business/DynamicObjectData.h>
 
@@ -79,16 +79,17 @@ class NewView: public WorkFlowView, public ValidationComponentInterface {
 
     private: const AbeClientInformationInterface abeClientInformation = ServiceClientInformationInterfaceFactory::getInstance();
 
-public: NewView(TransformInfoInterface transformInfoInterface){
-            super(transformInfoInterface);
+public: NewView(TransformInfoInterface transformInfoInterface) : WorkFlowView(transformInfoInterface){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
                     
 
-    TransformInfoHttpInterface httpTransformInfoInterface = this->getTransformInfoInterface() as TransformInfoHttpInterface;;
+    TransformInfoHttpInterface httpTransformInfoInterface = this->getTransformInfoInterface();;
     
-this->workFlowInterface= NewWorkFlowFactory::getInstance().getInstance(this->abeClientInformation, httpTransformInfoInterface.getPropertiesHashMap().get(DynamicObjectData::NAME) as string);
+this->workFlowInterface= NewWorkFlowFactory::getInstance().getInstance(this->abeClientInformation, httpTransformInfoInterface.getPropertiesHashMap().get(DynamicObjectData::NAME));
     
 }
 

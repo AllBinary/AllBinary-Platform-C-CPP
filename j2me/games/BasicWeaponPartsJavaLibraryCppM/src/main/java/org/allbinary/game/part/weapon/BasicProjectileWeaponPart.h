@@ -21,7 +21,7 @@
         #ifndef ORG_ALLBINARY_GAME_PART_WEAPON_BASICPROJECTILEWEAPONPART_H
         #define ORG_ALLBINARY_GAME_PART_WEAPON_BASICPROJECTILEWEAPONPART_H
 
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/animation/Animation.h>
 

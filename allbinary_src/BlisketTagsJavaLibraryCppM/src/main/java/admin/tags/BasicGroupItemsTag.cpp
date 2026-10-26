@@ -49,7 +49,7 @@
 
 class BasicGroupItemsTag: public TableTag {
 
-    private: HashMap<any, any> propertiesHashMap;
+    private: HashMap<Object*, Object*> propertiesHashMap;
 
 public: BasicGroupItemsTag(){
 this->setTagHelperFactory(BasicGroupItemsHelperFactory());

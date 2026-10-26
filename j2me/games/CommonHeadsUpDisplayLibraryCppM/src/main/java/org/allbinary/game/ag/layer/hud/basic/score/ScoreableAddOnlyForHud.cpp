@@ -45,8 +45,9 @@ class ScoreableAddOnlyForHud: public Scoreable {
 
     private: ScoreHudWidget scoreHudWidget;
 
-public: ScoreableAddOnlyForHud(ScoreHudWidget scoreVectorGraphic){
-            super(0);
+public: ScoreableAddOnlyForHud(ScoreHudWidget scoreVectorGraphic) : Scoreable(0){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.

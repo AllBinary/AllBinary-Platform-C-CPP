@@ -20,19 +20,10 @@
 
             #include <vector>
         
-#include <jsinterop/annotations/JsType.h>
-
-      
 #include <org/allbinary/game/input/LocalPlayerInputIdFactory.h>
 
       
 #include <org/allbinary/logic/util/event/EventListenerInterface.h>
-
-      
-#include <jsinterop/annotations/JsMethod.h>
-
-      
-#include <jsinterop/annotations/JsConstructor.h>
 
       
 
@@ -84,7 +75,7 @@ class DownGameKeyEventHandler: public DownGameKeyEventHandlerBase {
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return DownGameKeyEventHandler::instanceArray[playerInputId]!;
+                        return DownGameKeyEventHandler::instanceArray[playerInputId];
     
 }
 
@@ -94,7 +85,7 @@ class DownGameKeyEventHandler: public DownGameKeyEventHandlerBase {
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return DownGameKeyEventHandler::instanceArray[playerInputId]!;
+                        return DownGameKeyEventHandler::instanceArray[playerInputId];
     
 }
 
@@ -113,7 +104,7 @@ super.removeAllListeners();
                         for (
     int32_t index = DownGameKeyEventHandler::instanceArray.size() -1;index >= 0; index--)
         {
-DownGameKeyEventHandler::instanceArray[index]!.removeAllListeners();
+DownGameKeyEventHandler::instanceArray[index].removeAllListeners();
     
 }
 
@@ -130,7 +121,7 @@ super.removeListenerSingleThreaded(eventListenerInterface);
                         for (
     int32_t index = DownGameKeyEventHandler::instanceArray.size() -1;index >= 0; index--)
         {
-DownGameKeyEventHandler::instanceArray[index]!.removeListenerSingleThreaded(eventListenerInterface);
+DownGameKeyEventHandler::instanceArray[index].removeListenerSingleThreaded(eventListenerInterface);
     
 }
 
@@ -148,7 +139,7 @@ super.removeListener(eventListenerInterface);
                         for (
     int32_t index = DownGameKeyEventHandler::instanceArray.size() -1;index >= 0; index--)
         {
-DownGameKeyEventHandler::instanceArray[index]!.removeListener(eventListenerInterface);
+DownGameKeyEventHandler::instanceArray[index].removeListener(eventListenerInterface);
     
 }
 

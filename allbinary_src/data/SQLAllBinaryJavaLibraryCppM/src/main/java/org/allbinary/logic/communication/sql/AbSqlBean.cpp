@@ -20,7 +20,7 @@
 
             #include <vector>
         
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/sql/ResultSet.h>
 
@@ -68,8 +68,9 @@ class AbSqlBean: public AbSqlRow {
 
     private: const std::string METHOD_IS_SUBSET_OF_ENTRY = "isSubsetOfEntry";
 
-public: AbSqlBean(DbConnectionInfo databaseConnectionInfoInterface){
-            super(databaseConnectionInfoInterface);
+public: AbSqlBean(DbConnectionInfo databaseConnectionInfoInterface) : AbSqlRow(databaseConnectionInfoInterface){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -172,7 +173,7 @@ this->logUtil.putF(stringBuffer.toString(), this, this->METHOD_GET_FIELD);
 }
 
 
-    public: std::string getField(HashMap<any, any> keysAndValues, std::string requestedField){
+    public: std::string getField(HashMap<Object*, Object*> keysAndValues, std::string requestedField){
 
     StringMaker stringBuffer = StringMaker();;
     
@@ -213,7 +214,7 @@ stringBuffer.append(this->sqlStrings.WHERE);
                         for (
     int32_t i = 0;i < size; i++)
         {
-key= keyArray[i]! as string;
+key= keyArray[i];
     
 value= .toCharArray();
     
@@ -307,7 +308,7 @@ this->logUtil.putF(stringBuffer.toString(), this, this->METHOD_GET_FIELD);
 }
 
 
-    public: std::string isSubsetOfEntry(std::string key, std::string value, HashMap<any, any> columnsAndValues){
+    public: std::string isSubsetOfEntry(std::string key, std::string value, HashMap<Object*, Object*> columnsAndValues){
 
     StringMaker stringBuffer = StringMaker();;
     
@@ -334,7 +335,7 @@ stringBuffer.append(key);
         {
 stringBuffer.append(this->commonSeps.SPACE);
     
-stringBuffer.append(keyArray[i]!.toString());
+stringBuffer.append(keyArray[i].toString());
     
 }
 
@@ -380,12 +381,12 @@ stringBuffer.append(this->sqlStrings.CLOSE_QUOTE);
                         for (
     int32_t i = 0;i < size2; i++)
         {
-columnName= keyArray2[i]!.toString();
+columnName= keyArray2[i].toString();
     
 field= rset.getObject(columnName).toString();
     
 
-                        if(field.compareTo(columnsAndValues.get(columnName) as string) != 0)
+                        if(field.compare(columnsAndValues.get(columnName)) != 0)
                         
                                     {
                                     

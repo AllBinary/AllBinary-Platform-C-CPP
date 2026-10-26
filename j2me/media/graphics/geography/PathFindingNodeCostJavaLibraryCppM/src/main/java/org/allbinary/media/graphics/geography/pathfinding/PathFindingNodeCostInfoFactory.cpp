@@ -20,7 +20,7 @@
 
             #include <vector>
         
-            #include "../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/media/graphics/geography/map/BasicGeographicMap.h>
 
@@ -54,8 +54,7 @@ class PathFindingNodeCostInfoFactory: public PathFindingNodeCostInfoFactoryBase 
     private: std::vector<std::vector<PathFindingNodeCostInfo>> pathFindingNodeCostInfoAdjacencyList;
 
 public: PathFindingNodeCostInfoFactory(int32_t max){
-this->pathFindingNodeCostInfoAdjacencyList= new Array(max).fill(null).map(() => new Array(max).fill(0))
-                                                            ;
+this->pathFindingNodeCostInfoAdjacencyList= std::vector<std::vector<PathFindingNodeCostInfo>>(max, std::vector<PathFindingNodeCostInfo>(max));
     
 }
 
@@ -84,7 +83,7 @@ this->getInstance(goingToGeographicMapCellPosition, geographicMapCellPosition, c
     
 pathFindingNodeCostInfo.setCalculatedTotalCost();
     
-this->pathFindingNodeCostInfoAdjacencyList[geographicMapCellPosition.getId()]![goingToGeographicMapCellPosition.getId()]= pathFindingNodeCostInfo;
+this->pathFindingNodeCostInfoAdjacencyList[geographicMapCellPosition.getId()][goingToGeographicMapCellPosition.getId()]= pathFindingNodeCostInfo;
     
 
                                     }
@@ -113,7 +112,7 @@ pathFindingNodeCostInfo.setCalculatedTotalCost();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->pathFindingNodeCostInfoAdjacencyList[geographicMapCellPosition.getId()]![goingToFromGeographicMapCellPosition.getId()]!;
+                        return this->pathFindingNodeCostInfoAdjacencyList[geographicMapCellPosition.getId()][goingToFromGeographicMapCellPosition.getId()];
     
 }
 

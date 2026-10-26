@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
 
 
@@ -50,7 +50,7 @@ class TrackedStrings
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return instance;
+                        return TrackedStrings::instance();
     
 }
 
@@ -74,6 +74,8 @@ class TrackedStrings
     public: const std::string ERROR_UNMATCH_OPTION = "--error-unmatch";
 
     public: const std::string PATHSPEC_SEPARATOR = "--";
+
+    public: const std::string SEP_BY_NULL_CHAR_INSTEAD_OF_NEW_LINE = "-z";
 
 };
 

@@ -20,17 +20,11 @@
 
             #include <vector>
         
-            #include "../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-#include <jsinterop/annotations/JsType.h>
-
-      
 #include <java/util/Enumeration.h>
-
-      
-#include <java/util/Hashtable.h>
 
       
 #include <javax/microedition/lcdui/ChoiceGroup.h>
@@ -48,6 +42,9 @@
 #include <org/allbinary/string/CommonLabels.h>
 
       
+#include <org/allbinary/util/ABHashtable.h>
+
+      
 #include <org/allbinary/util/BasicArrayList.h>
 
       
@@ -55,12 +52,6 @@
 
       
 #include <org/allbinary/util/HashtableUtil.h>
-
-      
-#include <jsinterop/annotations/JsMethod.h>
-
-      
-#include <jsinterop/annotations/JsProperty.h>
 
       
 
@@ -127,7 +118,7 @@ class GameFeatureUtil
     std::string SELECTED_SEP = "] = ";;
     
 
-    std::vector<bool> selectedArray_return = new Array(choiceGroup.size());;
+    std::vector<bool> selectedArray_return = std::vector<bool>(choiceGroup.size());;
     
 
     int32_t total = choiceGroup.getSelectedFlags(selectedArray_return);;
@@ -209,7 +200,7 @@ choiceGroup.setSelectedIndex(index, false);
     std::string SELECTED_SEP = "] = ";;
     
 
-    std::vector<bool> selectedArray_return = new Array(choiceGroup.size());;
+    std::vector<bool> selectedArray_return = std::vector<bool>(choiceGroup.size());;
     
 
     int32_t total = choiceGroup.getSelectedFlags(selectedArray_return);;
@@ -290,7 +281,7 @@ this->logUtil.putF(stringBuffer.toString(), this, METHOD_NAME);
     std::string SELECTED_SEP = "] = ";;
     
 
-    std::vector<bool> selectedArray_return = new Array(choiceGroup.size());;
+    std::vector<bool> selectedArray_return = std::vector<bool>(choiceGroup.size());;
     
 
     int32_t total = choiceGroup.getSelectedFlags(selectedArray_return);;
@@ -342,7 +333,7 @@ this->updateExclusive(selectedChoiceLabel);
 
     public: bool isExclusive(std::string itemLabel){
 
-    Enumeration<any> enumeration = GameFeatureChoiceGroups::getExclusiveInstance().get().keys();;
+    Enumeration<Object*> enumeration = GameFeatureChoiceGroups::getExclusiveInstance().get().keys();;
     
 
     std::string name;;
@@ -350,7 +341,7 @@ this->updateExclusive(selectedChoiceLabel);
 
         while(this->enumerationUtil.hasMoreElements(enumeration))
         {
-name= this->enumerationUtil.nextElement(enumeration)! as string;
+name= this->enumerationUtil.nextElement(enumeration);
     
 
                         if(this->tsUtil.compareTo(itemLabel, name) == 0)
@@ -385,7 +376,7 @@ this->logUtil.putF(StringMaker().append(CommonLabels::getInstance().ITEM_LABEL).
     Feature gameFeature = Feature::getInstance(selectedChoiceLabel);;
     
 
-    Hashtable<any, any> hashtable = GameFeatureChoiceGroups::getExclusiveInstance().get();;
+    ABHashtable<Object*, Object*> hashtable = GameFeatureChoiceGroups::getExclusiveInstance().get();;
     
 
     std::vector<Object*> objectArray = HashtableUtil::getInstance().getKeysAsArray(hashtable);;
@@ -406,9 +397,9 @@ this->logUtil.putF(StringMaker().append(CommonLabels::getInstance().ITEM_LABEL).
                         for (
     int32_t index = 0;index < size; index++)
         {
-anyType= objectArray[index]!;
+anyType= objectArray[index];
     
-basicArrayList= hashtable.get(anyType) as BasicArrayList;
+basicArrayList= hashtable.get(anyType);
     
 this->updateExclusiveList(gameFeature, basicArrayList);
     
@@ -444,13 +435,13 @@ this->updateExclusiveList(gameFeature, basicArrayList);
                         if(addIndex != index)
                         
                                     {
-                                    features.remove(list.objectArray[index]! as Feature);
+                                    features.remove(list.objectArray[index]);
     
 
                                     }
                                 
                         else {
-                            features.add(list.objectArray[index]! as Feature);
+                            features.add(list.objectArray[index]);
     
 
                         }

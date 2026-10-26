@@ -49,7 +49,7 @@
 
 class BasicOptionItemsTag: public TableTag {
 
-    private: HashMap<any, any> propertiesHashMap;
+    private: HashMap<Object*, Object*> propertiesHashMap;
 
 public: BasicOptionItemsTag(){
 this->setTagHelperFactory(BasicOptionItemsHelperFactory());

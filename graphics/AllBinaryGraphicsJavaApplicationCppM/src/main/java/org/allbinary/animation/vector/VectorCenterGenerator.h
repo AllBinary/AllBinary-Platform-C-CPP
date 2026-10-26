@@ -23,11 +23,11 @@
 
             #include <vector>
         
-            #include "../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../../java/lang/Integer.h"
+            #include "java/lang/Integer.h"
         
 #include <java/util/HashMap.h>
 
@@ -113,11 +113,11 @@ public: VectorCenterGenerator();
 
                 //@Throws(Exception.constructor)
             
-    public: void calculate(HashMap<any, any> hashMap);
+    public: void calculate(HashMap<Object*, Object*> hashMap);
 
                 //@Throws(Exception.constructor)
             
-    public: void transform(HashMap<any, any> hashMap);
+    public: void transform(HashMap<Object*, Object*> hashMap);
 
                 //@Throws(Exception.constructor)
             

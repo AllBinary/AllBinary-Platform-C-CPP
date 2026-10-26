@@ -18,11 +18,8 @@
 
 
 
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-#include <jsinterop/annotations/JsType.h>
-
-      
 #include <org/allbinary/game/input/PlayerGameInput.h>
 
       
@@ -45,12 +42,6 @@
 
       
 #include <org/allbinary/util/BasicArrayListD.h>
-
-      
-#include <jsinterop/annotations/JsMethod.h>
-
-      
-#include <jsinterop/annotations/JsConstructor.h>
 
       
 
@@ -137,9 +128,9 @@ super.removeListener(eventListenerInterface);
 
         try {
             
-    PlayerGameInput playerGameInput = this->list.objectArray[index]! as PlayerGameInput;;
+    PlayerGameInput playerGameInput = this->list.objectArray[index];;
     
-playerGameInput.onDownGameKeyEvent(eventObject as GameKeyEvent);
+playerGameInput.onDownGameKeyEvent(eventObject);
     
 
                 //: 
@@ -160,9 +151,9 @@ super.fireEvent(eventObject);
             
     protected: void process(AllBinaryEventObject eventObject, EventListenerInterface eventListenerInterface){
 
-    DownGameKeyEventListenerInterface downGameKeyEventListenerInterface = eventListenerInterface as DownGameKeyEventListenerInterface;;
+    DownGameKeyEventListenerInterface downGameKeyEventListenerInterface = eventListenerInterface;;
     
-downGameKeyEventListenerInterface.onDownGameKeyEvent(eventObject as GameKeyEvent);
+downGameKeyEventListenerInterface.onDownGameKeyEvent(eventObject);
     
 }
 
@@ -191,7 +182,7 @@ stringBuffer.appendint(this->list.size());
         {
 
         try {
-            eventListenerInterface= this->list.get(index) as EventListenerInterface;
+            eventListenerInterface= this->list.get(index);
     
 stringBuffer.append(DownGameKeyEventHandlerBase::LISTENER_LABEL);
     

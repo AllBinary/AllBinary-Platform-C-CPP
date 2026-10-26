@@ -20,7 +20,7 @@
 
             #include <vector>
         
-            #include "../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/ai/ArtificialIntelligenceInterface.h>
 
@@ -56,8 +56,9 @@
 
 class ComboSequenceAI: public SequenceAI {
 
-public: ComboSequenceAI(std::vector<ArtificialIntelligenceInterface> artificialIntelligenceInterface, AllBinaryLayer ownerLayerInterface, GameInput gameInput){
-            super(artificialIntelligenceInterface, ownerLayerInterface, gameInput);
+public: ComboSequenceAI(std::vector<ArtificialIntelligenceInterface> artificialIntelligenceInterface, AllBinaryLayer ownerLayerInterface, GameInput gameInput) : SequenceAI(artificialIntelligenceInterface, ownerLayerInterface, gameInput){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.

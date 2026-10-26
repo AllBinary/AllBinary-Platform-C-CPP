@@ -21,9 +21,9 @@
         #ifndef ORG_ALLBINARY_ANDROID_VIEW_ALLBINARYRENDERER_H
         #define ORG_ALLBINARY_ANDROID_VIEW_ALLBINARYRENDERER_H
 
-            #include "../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../java/lang/Runnable.h"
+            #include "java/lang/Runnable.h"
         
 
 

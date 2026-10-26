@@ -23,15 +23,13 @@
 
             #include <vector>
         
-            #include "../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../java/lang/RuntimeException.h"
+            #include "java/lang/RuntimeException.h"
         
-            #include "../../../java/lang/System.h"
+            #include "java/lang/Integer.h"
         
-            #include "../../../java/lang/Integer.h"
-        
-            #include "../../../java/lang/Thread.h"
+            #include "java/lang/Thread.h"
         
 #include <java/io/InputStream.h>
 
@@ -40,6 +38,9 @@
 
       
 #include <javax/microedition/lcdui/NullImage.h>
+
+      
+#include <org/allbinary/TsUtil.h>
 
       
 #include <org/allbinary/logic/communication/log/LogUtil.h>
@@ -55,6 +56,9 @@
 
       
 #include <org/allbinary/game/gd/resource/GDResources.h>
+
+      
+#include <org/allbinary/logic/ABSystemWrapper.h>
 
       
 #include <org/allbinary/logic/string/StringUtil.h>
@@ -90,6 +94,10 @@ class ImageCache: public ImageCacheBase {
     protected: const LogUtil logUtil = LogUtil::getInstance();
 
     protected: const CommonStrings commonStrings = CommonStrings::getInstance();
+
+    private: const ABSystemWrapper systemWrapper = ABSystemWrapper::getInstance();
+
+    private: const TsUtil tsUtil = TsUtil::getInstance();
 
 public: ImageCache();
 

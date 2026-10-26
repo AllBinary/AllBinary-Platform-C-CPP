@@ -21,9 +21,9 @@
         #ifndef VIEWS_ADMIN_ORDERHISTORY_DATERANGEORDERHISTORYVIEW_H
         #define VIEWS_ADMIN_ORDERHISTORY_DATERANGEORDERHISTORYVIEW_H
 
-            #include "../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../java/lang/Long.h"
+            #include "java/lang/Long.h"
         
 #include <java/util/Calendar.h>
 

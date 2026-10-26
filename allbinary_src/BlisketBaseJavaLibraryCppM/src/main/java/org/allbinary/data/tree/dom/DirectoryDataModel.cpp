@@ -18,11 +18,11 @@
 
 
 
-            #include "../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-#include <org/allbinary/data/tree/dom/document/DomDocumentHelper.h>
+#include <org/allbinary/data/tree/dom/document/XmlDocumentHelper.h>
 
       
 #include <org/allbinary/logic/io/file/AbFile.h>
@@ -84,7 +84,7 @@ class DirectoryDataModel
 public: DirectoryDataModel(AbFile file){
 this->fileBasicArrayList= Directory::getInstance().search(file);
     
-this->transformDocumentInterface= TransformDocumentFactory::getInstance() as TransformDocumentInterface;
+this->transformDocumentInterface= TransformDocumentFactory::getInstance();
     
 }
 
@@ -151,7 +151,7 @@ this->transformDocumentInterface= transformDocumentInterface;
                         for (
     int32_t index = 0;index < size; index++)
         {
-nextFile= this->fileBasicArrayList.get(index) as AbFile;
+nextFile= this->fileBasicArrayList.get(index);
     
 fileNode= FileDomDataModel(nextFile).toXmlNode(document);
     
@@ -192,7 +192,7 @@ this->getTransformDocumentInterface().getBaseNode().appendChild(node);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return DomDocumentHelper::toString(this->getTransformDocumentInterface().getDoc());;
+                        return XmlDocumentHelper::toString(this->getTransformDocumentInterface().getDoc());;
     
 }
 

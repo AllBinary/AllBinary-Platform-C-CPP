@@ -18,11 +18,11 @@
 
 
 
-            #include "../../../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../../../../../java/lang/Integer.h"
+            #include "java/lang/Integer.h"
         
 #include <java/util/HashMap.h>
 
@@ -102,8 +102,9 @@ class WeblisketSession
 
     private: HttpSession session;
 
-public: WeblisketSession(HashMap<any, any> hashMap, PageContext pageContext){
-            this(hashMap, pageContext.getRequest() as HttpServletRequest);
+public: WeblisketSession(HashMap<Object*, Object*> hashMap, PageContext pageContext) : WeblisketSession(hashMap, pageContext.getRequest()){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -111,9 +112,9 @@ public: WeblisketSession(HashMap<any, any> hashMap, PageContext pageContext){
 }
 
 
-public: WeblisketSession(HashMap<any, any> hashMap, HttpServletRequest httpServletRequest){
+public: WeblisketSession(HashMap<Object*, Object*> hashMap, HttpServletRequest httpServletRequest){
 
-    HashMap<any, any> propertiesHashMap = hashMap;;
+    HashMap<Object*, Object*> propertiesHashMap = hashMap;;
     
 
     HttpServletRequest request = httpServletRequest;;
@@ -126,7 +127,7 @@ this->session= request.getSession(true);
                                 )
                         
                                     {
-                                    this->setStoreName(propertiesHashMap.get(StoreFrontData::getInstance().NAME) as string);
+                                    this->setStoreName(propertiesHashMap.get(StoreFrontData::getInstance().NAME));
     
 
                                     }
@@ -197,7 +198,7 @@ this->session.setAttribute(StoreFrontData::getInstance().NAME, value);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->session.getAttribute(org.allbinary.globals.GLOBALS2.WEBAPPPATH) as string;
+                        return this->session.getAttribute(org.allbinary.globals.GLOBALS2.WEBAPPPATH);
     
 }
 
@@ -207,7 +208,7 @@ this->session.setAttribute(StoreFrontData::getInstance().NAME, value);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->session.getAttribute(UserData::USERNAME) as string;
+                        return this->session.getAttribute(UserData::USERNAME);
     
 }
 
@@ -217,7 +218,7 @@ this->session.setAttribute(StoreFrontData::getInstance().NAME, value);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->session.getAttribute(UserData::PASSWORD) as string;
+                        return this->session.getAttribute(UserData::PASSWORD);
     
 }
 
@@ -227,7 +228,7 @@ this->session.setAttribute(StoreFrontData::getInstance().NAME, value);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->session.getAttribute(PaymentGatewayData::NAME.toString()) as string;
+                        return this->session.getAttribute(PaymentGatewayData::NAME.toString());
     
 }
 
@@ -237,7 +238,7 @@ this->session.setAttribute(StoreFrontData::getInstance().NAME, value);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->session.getAttribute(WeblisketSessionData::AUTHENTICATED) as string;
+                        return this->session.getAttribute(WeblisketSessionData::AUTHENTICATED);
     
 }
 
@@ -247,7 +248,7 @@ this->session.setAttribute(StoreFrontData::getInstance().NAME, value);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->session.getAttribute(WeblisketSessionData::ATTEMPTS) as Integer;
+                        return this->session.getAttribute(WeblisketSessionData::ATTEMPTS);
     
 }
 
@@ -257,7 +258,7 @@ this->session.setAttribute(StoreFrontData::getInstance().NAME, value);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->session.getAttribute(WeblisketSessionData::TIMEOUT) as string;
+                        return this->session.getAttribute(WeblisketSessionData::TIMEOUT);
     
 }
 
@@ -267,7 +268,7 @@ this->session.setAttribute(StoreFrontData::getInstance().NAME, value);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->session.getAttribute(StoreFrontData::getInstance().NAME) as string;
+                        return this->session.getAttribute(StoreFrontData::getInstance().NAME);
     
 }
 
@@ -276,7 +277,7 @@ this->session.setAttribute(StoreFrontData::getInstance().NAME, value);
             
     public: UserRole getRole(){
 
-    UserRole userRole = this->session.getAttribute(UserRoleData::NAME.toString()) as UserRole;;
+    UserRole userRole = this->session.getAttribute(UserRoleData::NAME.toString());;
     
 
                         if(userRole != 
@@ -320,7 +321,7 @@ this->session.setAttribute(StoreFrontData::getInstance().NAME, value);
                         
                                     {
                                     
-    OrderInterface orderInterface = this->session.getAttribute(basketName) as OrderInterface;;
+    OrderInterface orderInterface = this->session.getAttribute(basketName);;
     
 
                         if(orderInterface == 
@@ -328,7 +329,7 @@ this->session.setAttribute(StoreFrontData::getInstance().NAME, value);
                                 )
                         
                                     {
-                                    orderInterface= Order(Basket()) as OrderInterface;
+                                    orderInterface= Order(Basket());
     
 
                                     }

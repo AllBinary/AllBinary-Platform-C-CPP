@@ -21,17 +21,8 @@
         #ifndef ORG_ALLBINARY_LOGIC_JAVA_BOOL_BOOLEANFACTORY_H
         #define ORG_ALLBINARY_LOGIC_JAVA_BOOL_BOOLEANFACTORY_H
 
-            #include "../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-#include <jsinterop/annotations/JsType.h>
-
-      
-#include <jsinterop/annotations/JsMethod.h>
-
-      
-#include <jsinterop/annotations/JsProperty.h>
-
-      
 
 
 

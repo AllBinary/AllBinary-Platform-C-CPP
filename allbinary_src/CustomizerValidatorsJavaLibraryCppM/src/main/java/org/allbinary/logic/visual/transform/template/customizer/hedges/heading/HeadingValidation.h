@@ -21,7 +21,7 @@
         #ifndef ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_TEMPLATE_CUSTOMIZER_HEDGES_HEADING_HEADINGVALIDATION_H
         #define ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_TEMPLATE_CUSTOMIZER_HEDGES_HEADING_HEADINGVALIDATION_H
 
-            #include "../../../../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
 
@@ -94,11 +94,11 @@ public: HeadingValidation();
 
 public: HeadingValidation(Document document);
 
-public: HeadingValidation(HashMap<any, any> hashMap);
+public: HeadingValidation(HashMap<Object*, Object*> hashMap);
 
                 //@Throws(Exception.constructor)
             
-    public: void getFormData(HashMap<any, any> hashMap);
+    public: void getFormData(HashMap<Object*, Object*> hashMap);
 
     public: Boolean isValid();
 

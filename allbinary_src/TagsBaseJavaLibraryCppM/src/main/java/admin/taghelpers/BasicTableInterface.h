@@ -21,7 +21,7 @@
         #ifndef ADMIN_TAGHELPERS_BASICTABLEINTERFACE_H
         #define ADMIN_TAGHELPERS_BASICTABLEINTERFACE_H
 
-            #include "../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 
 

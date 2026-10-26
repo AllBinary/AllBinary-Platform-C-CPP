@@ -21,7 +21,7 @@
         #ifndef ADMIN_TAGHELPERS_ORDERHISTORYHELPER_H
         #define ADMIN_TAGHELPERS_ORDERHISTORYHELPER_H
 
-            #include "../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
 
@@ -67,7 +67,7 @@ class OrderHistoryHelper: public BasicTable {
 
     private: Portion portion;
 
-public: OrderHistoryHelper(HashMap<any, any> hashMap, PageContext pageContext);
+public: OrderHistoryHelper(HashMap<Object*, Object*> hashMap, PageContext pageContext);
 
     public: std::string drop();
 

@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
 #include <java/awt/image/BufferedImage.h>
 
@@ -95,7 +95,7 @@ this->bufferedImage= bufferedImage;
 
     StringMaker stringBuffer = StringMaker();;
     
-stringBuffer.append(this->constructor.name.toString()!);
+stringBuffer.append(this->constructor.name.toString());
     
 stringBuffer.append(" ");
     

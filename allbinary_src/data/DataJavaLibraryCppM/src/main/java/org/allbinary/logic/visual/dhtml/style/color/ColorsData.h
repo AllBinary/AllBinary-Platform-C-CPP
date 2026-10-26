@@ -21,7 +21,7 @@
         #ifndef ORG_ALLBINARY_LOGIC_VISUAL_DHTML_STYLE_COLOR_COLORSDATA_H
         #define ORG_ALLBINARY_LOGIC_VISUAL_DHTML_STYLE_COLOR_COLORSDATA_H
 
-            #include "../../../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
 
 

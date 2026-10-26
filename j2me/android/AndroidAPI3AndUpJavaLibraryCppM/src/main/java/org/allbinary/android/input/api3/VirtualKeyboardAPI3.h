@@ -21,9 +21,9 @@
         #ifndef ORG_ALLBINARY_ANDROID_INPUT_API3_VIRTUALKEYBOARDAPI3_H
         #define ORG_ALLBINARY_ANDROID_INPUT_API3_VIRTUALKEYBOARDAPI3_H
 
-            #include "../../../../../java/lang/Integer.h"
+            #include "java/lang/Integer.h"
         
-            #include "../../../../../java/lang/Runnable.h"
+            #include "java/lang/Runnable.h"
         
 #include <android/app/Activity.h>
 

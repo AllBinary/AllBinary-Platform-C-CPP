@@ -21,7 +21,7 @@
         #ifndef ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_DEMOLIMITEDCOMMANDTEXTITEMARRAYFACTORY_H
         #define ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_DEMOLIMITEDCOMMANDTEXTITEMARRAYFACTORY_H
 
-            #include "../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
 #include <org/allbinary/graphics/form/item/CommandTextItemArrayFactory.h>
 

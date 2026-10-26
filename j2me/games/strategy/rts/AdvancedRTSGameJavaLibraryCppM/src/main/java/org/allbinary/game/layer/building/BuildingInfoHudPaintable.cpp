@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <javax/microedition/lcdui/Font.h>
 
@@ -149,8 +149,9 @@ private: BuildingInfoHudPaintable(){
 //inner=true member= isStatic=
 class ProductivityNumberStringHud: public NumberStringHud {
 
-: ProductivityNumberStringHud(){
-            super("Productivity:", 999, basicHudFactory.ABSOLUTE, basicHudFactory.HORIZONTAL, 0, basicColor);
+: ProductivityNumberStringHud() : SelectionHudPaintable("Productivity:", 999, basicHudFactory.ABSOLUTE, basicHudFactory.HORIZONTAL, 0, basicColor){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -188,8 +189,9 @@ index++;
 //inner=true member= isStatic=
 class EfficiencyNumberStringHud: public NumberStringHud {
 
-: EfficiencyNumberStringHud(){
-            super("Efficiency:", 999, basicHudFactory.ABSOLUTE, basicHudFactory.HORIZONTAL, 0, basicColor);
+: EfficiencyNumberStringHud() : SelectionHudPaintable("Efficiency:", 999, basicHudFactory.ABSOLUTE, basicHudFactory.HORIZONTAL, 0, basicColor){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -230,8 +232,9 @@ index++;
 //inner=true member= isStatic=
 class HealthNumberStringHud: public NumberStringHud {
 
-: HealthNumberStringHud(){
-            super(HEALTH, 99999, basicHudFactory.ABSOLUTE, basicHudFactory.HORIZONTAL, 0, basicColor);
+: HealthNumberStringHud() : SelectionHudPaintable(HEALTH, 99999, basicHudFactory.ABSOLUTE, basicHudFactory.HORIZONTAL, 0, basicColor){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -270,8 +273,9 @@ healthHud= HealthNumberStringHud();
 //inner=true member= isStatic=
 class MaxHealthNumberStringHud: public NumberStringHud {
 
-: MaxHealthNumberStringHud(){
-            super("/ ", 99999, basicHudFactory.ABSOLUTE, basicHudFactory.HORIZONTAL, 0, basicColor);
+: MaxHealthNumberStringHud() : SelectionHudPaintable("/ ", 99999, basicHudFactory.ABSOLUTE, basicHudFactory.HORIZONTAL, 0, basicColor){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -370,7 +374,7 @@ this->getAnimationInterface().paintXY(graphics, this->imageX, this->y);
 
     public: void updateSelectionInfo(){
 
-    BuildingLayer buildingLayer = this->rtsLayer as BuildingLayer;;
+    BuildingLayer buildingLayer = this->rtsLayer;;
     
 this->setName(buildingLayer.getName());
     

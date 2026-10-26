@@ -21,9 +21,9 @@
         #ifndef ORG_ALLBINARY_LOGIC_VISUAL_THEME_THEMEVALIDATION_H
         #define ORG_ALLBINARY_LOGIC_VISUAL_THEME_THEMEVALIDATION_H
 
-            #include "../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
 
@@ -166,7 +166,7 @@ class ThemeValidation
 
 public: ThemeValidation(TransformInfoInterface transformInfoInterface, CssStyleValidation cssStyleValidation, std::string categoryThemePath);
 
-public: ThemeValidation(TransformInfoInterface transformInfoInterface, HashMap<any, any> hashMap);
+public: ThemeValidation(TransformInfoInterface transformInfoInterface, HashMap<Object*, Object*> hashMap);
 
 public: ThemeValidation(StoreThemeCategoryInterface storeThemeCategoryInterface, Node node);
 
@@ -206,7 +206,7 @@ public: ThemeValidation(StoreThemeCategoryInterface storeThemeCategoryInterface,
 
     public: BasicArrayList toVector();
 
-    public: HashMap<any, any> toHashMap();
+    public: HashMap<Object*, Object*> toHashMap();
 
                 //@Throws(Exception.constructor)
             

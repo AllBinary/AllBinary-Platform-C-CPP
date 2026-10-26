@@ -50,8 +50,9 @@ class AdjustCustomTextAnimation: public CustomTextAnimation {
 
     private: int32_t dy;
 
-public: AdjustCustomTextAnimation(std::string text, int32_t fontSize, int32_t dx, int32_t dy, AnimationBehavior animationBehavior){
-            super(text, fontSize, animationBehavior);
+public: AdjustCustomTextAnimation(std::string text, int32_t fontSize, int32_t dx, int32_t dy, AnimationBehavior animationBehavior) : CustomTextAnimation(text, fontSize, animationBehavior){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.

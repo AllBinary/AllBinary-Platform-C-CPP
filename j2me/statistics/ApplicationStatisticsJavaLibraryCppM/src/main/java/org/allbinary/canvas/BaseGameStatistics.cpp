@@ -20,15 +20,12 @@
 
             #include <vector>
         
-            #include "../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../java/lang/Integer.h"
+            #include "java/lang/Integer.h"
         
-            #include "../../../java/lang/Long.h"
+            #include "java/lang/Long.h"
         
-#include <jsinterop/annotations/JsType.h>
-
-      
 #include <org/allbinary/logic/math/PrimitiveLongSingleton.h>
 
       
@@ -51,15 +48,6 @@
 
       
 #include <org/allbinary/time/TimeDelayHelper.h>
-
-      
-#include <jsinterop/annotations/JsMethod.h>
-
-      
-#include <jsinterop/annotations/JsConstructor.h>
-
-      
-#include <jsinterop/annotations/JsProperty.h>
 
       
 
@@ -213,9 +201,9 @@ totalTime= (totalTime>>this->DEFAULT_SCALE_FACTOR);
                         if(framesPerSec < 10)
                         
                                     {
-                                    this->CHAR_ARRAY[1]![0]= this->SPACE_CHAR;
+                                    this->CHAR_ARRAY[1][0]= this->SPACE_CHAR;
     
-this->CHAR_ARRAY[1]![1]= this->primitiveLongSingleton.NUMBER_CHAR_ARRAY[framesPerSec]!;
+this->CHAR_ARRAY[1][1]= this->primitiveLongSingleton.NUMBER_CHAR_ARRAY[framesPerSec];
     
 
                                     }
@@ -230,17 +218,17 @@ this->CHAR_ARRAY[1]![1]= this->primitiveLongSingleton.NUMBER_CHAR_ARRAY[framesPe
 
     int32_t removeTens = tens *10;;
     
-this->CHAR_ARRAY[1]![0]= this->primitiveLongSingleton.NUMBER_CHAR_ARRAY[tens]!;
+this->CHAR_ARRAY[1][0]= this->primitiveLongSingleton.NUMBER_CHAR_ARRAY[tens];
     
-this->CHAR_ARRAY[1]![1]= this->primitiveLongSingleton.NUMBER_CHAR_ARRAY[framesPerSec -removeTens]!;
+this->CHAR_ARRAY[1][1]= this->primitiveLongSingleton.NUMBER_CHAR_ARRAY[framesPerSec -removeTens];
     
 
                                     }
                                 
                         else {
-                            this->CHAR_ARRAY[1]![0]= this->PLUS_CHAR;
+                            this->CHAR_ARRAY[1][0]= this->PLUS_CHAR;
     
-this->CHAR_ARRAY[1]![1]= this->PLUS_CHAR;
+this->CHAR_ARRAY[1][1]= this->PLUS_CHAR;
     
 
                         }
@@ -252,9 +240,9 @@ this->CHAR_ARRAY[1]![1]= this->PLUS_CHAR;
                         if(refreshesPerSec < 10)
                         
                                     {
-                                    this->CHAR_ARRAY[3]![0]= this->X_CHAR;
+                                    this->CHAR_ARRAY[3][0]= this->X_CHAR;
     
-this->CHAR_ARRAY[3]![1]= this->primitiveLongSingleton.NUMBER_CHAR_ARRAY[refreshesPerSec]!;
+this->CHAR_ARRAY[3][1]= this->primitiveLongSingleton.NUMBER_CHAR_ARRAY[refreshesPerSec];
     
 
                                     }
@@ -269,17 +257,17 @@ this->CHAR_ARRAY[3]![1]= this->primitiveLongSingleton.NUMBER_CHAR_ARRAY[refreshe
 
     int32_t removeTens = tens *10;;
     
-this->CHAR_ARRAY[3]![0]= this->primitiveLongSingleton.NUMBER_CHAR_ARRAY[refreshesPerSec /10]!;
+this->CHAR_ARRAY[3][0]= this->primitiveLongSingleton.NUMBER_CHAR_ARRAY[refreshesPerSec /10];
     
-this->CHAR_ARRAY[3]![1]= this->primitiveLongSingleton.NUMBER_CHAR_ARRAY[refreshesPerSec -removeTens]!;
+this->CHAR_ARRAY[3][1]= this->primitiveLongSingleton.NUMBER_CHAR_ARRAY[refreshesPerSec -removeTens];
     
 
                                     }
                                 
                         else {
-                            this->CHAR_ARRAY[3]![0]= this->PLUS_CHAR;
+                            this->CHAR_ARRAY[3][0]= this->PLUS_CHAR;
     
-this->CHAR_ARRAY[3]![1]= this->PLUS_CHAR;
+this->CHAR_ARRAY[3][1]= this->PLUS_CHAR;
     
 
                         }
@@ -349,15 +337,15 @@ this->STRING_ARRAY[9]= string;
 
     StringMaker stringBuffer = StringMaker();;
     
-stringBuffer.append(this->STRING_ARRAY[0]!);
+stringBuffer.append(this->STRING_ARRAY[0]);
     
 stringBuffer.appendlong(totalTime);
     
-stringBuffer.append(this->STRING_ARRAY[2]!);
+stringBuffer.append(this->STRING_ARRAY[2]);
     
 stringBuffer.appendlong(this->totalFrames);
     
-stringBuffer.append(this->STRING_ARRAY[4]!);
+stringBuffer.append(this->STRING_ARRAY[4]);
     
 stringBuffer.appendlong(this->totalFrames /totalTime);
     
@@ -365,11 +353,11 @@ stringBuffer.appendlong(this->totalFrames /totalTime);
                         if(this->totalRefreshes > 0)
                         
                                     {
-                                    stringBuffer.append(this->STRING_ARRAY[6]!);
+                                    stringBuffer.append(this->STRING_ARRAY[6]);
     
 stringBuffer.appendlong(this->totalRefreshes);
     
-stringBuffer.append(this->STRING_ARRAY[8]!);
+stringBuffer.append(this->STRING_ARRAY[8]);
     
 stringBuffer.appendlong(this->totalRefreshes /totalTime);
     

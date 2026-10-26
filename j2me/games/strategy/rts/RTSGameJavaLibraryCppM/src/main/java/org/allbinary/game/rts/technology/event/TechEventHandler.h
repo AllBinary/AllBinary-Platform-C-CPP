@@ -20,7 +20,7 @@
         #ifndef ORG_ALLBINARY_GAME_RTS_TECHNOLOGY_EVENT_TECHEVENTHANDLER_H
         #define ORG_ALLBINARY_GAME_RTS_TECHNOLOGY_EVENT_TECHEVENTHANDLER_H
 
-            #include "../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/logic/util/event/AllBinaryEventObject.h>
 

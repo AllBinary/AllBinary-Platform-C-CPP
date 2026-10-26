@@ -117,7 +117,7 @@ this->totalCharArray= this->getPrimitiveLongUtil().getCharArray(size);
     int32_t index = list.size() -1;index >= 0; index--)
         {
 
-    RTSLayer rtsLayer = list.get(index) as RTSLayer;;
+    RTSLayer rtsLayer = list.get(index);;
     
 
                         if(!this->rootNameList.contains(rtsLayer.getRootName()))
@@ -144,7 +144,7 @@ this->totalCharArray= this->getPrimitiveLongUtil().getCharArray(size);
     int32_t index = this->rootNameList.size() -1;index >= 0; index--)
         {
 
-    std::string rootName = this->rootNameList.get(index) as string;;
+    std::string rootName = this->rootNameList.get(index);;
     
 stringBuffer.append(rootName);
     

@@ -20,11 +20,11 @@
 
             #include <vector>
         
-            #include "../../../../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../../../../java/lang/Class.h"
+            #include "java/lang/Class.h"
         
-            #include "../../../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/business/user/UserInterface.h>
 
@@ -66,10 +66,10 @@ class UserEmailEventListenerFactory
             
     public: static UserEmailEventListenerInterface getInstance(AbeClientInformationInterface abeClientInformation, UserEmailEventConfigurationInterface userEmailEventConfigurationInterface, UserInterface userInterface){
 
-    std::vector<Object*> params = new Array(1);;
+    std::vector<Object*> params = std::vector<Object*>(1);;
     
 
-    std::vector<Function> classes = new Array(1);;
+    std::vector<Class*> classes = std::vector<Class>(1);;
     
 classes[0]= 
                                     //Otherwise - expression - AssignExpr - value - ClassExpr
@@ -81,7 +81,7 @@ params[0]= userInterface;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return AbeFactory::getInstance().getInstance(abeClientInformation, userEmailEventConfigurationInterface.getEventListenerClassPath(), classes, params) as UserEmailEventListenerInterface;
+                        return AbeFactory::getInstance().getInstance(abeClientInformation, userEmailEventConfigurationInterface.getEventListenerClassPath(), classes, params);
     
 }
 

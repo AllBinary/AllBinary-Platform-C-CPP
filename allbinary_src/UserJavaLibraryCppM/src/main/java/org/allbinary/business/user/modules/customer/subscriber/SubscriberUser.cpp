@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
 
@@ -55,8 +55,9 @@ class SubscriberUser: public User {
 
     private: Subscription subscription;
 
-public: SubscriberUser(){
-            super();
+public: SubscriberUser() : User(){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -66,8 +67,9 @@ this->subscription= Subscription();
 }
 
 
-public: SubscriberUser(HashMap<any, any> userHashMap){
-            super(userHashMap);
+public: SubscriberUser(HashMap<Object*, Object*> userHashMap) : User(userHashMap){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.

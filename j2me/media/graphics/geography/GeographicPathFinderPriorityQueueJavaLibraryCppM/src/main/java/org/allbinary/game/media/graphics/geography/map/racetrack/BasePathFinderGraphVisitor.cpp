@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/logic/string/StringUtil.h>
 
@@ -95,7 +95,7 @@ this->maxPathWeight= maxPathWeight;
                         for (
     int32_t index = startPathFindingNodeList.size() -1;index >= 0; index--)
         {
-startPathFindingNode= startPathFindingNodeList.get(index) as PathFindingNode;
+startPathFindingNode= startPathFindingNodeList.get(index);
     
 pathList.remove(startPathFindingNode.geographicMapCellPosition);
     

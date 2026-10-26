@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/canvas/Processor.h>
 
@@ -30,9 +30,6 @@
 
       
 #include <org/allbinary/image/ImageCacheFactory.h>
-
-      
-#include <org/allbinary/logic/communication/log/LogUtil.h>
 
       
 
@@ -57,10 +54,9 @@
 
 class LazyProgressCanvas: public ProgressCanvas {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+public: LazyProgressCanvas(std::string title, BasicColor backgroundBasicColor, BasicColor foregroundBasicColor) : ProgressCanvas(title, backgroundBasicColor, foregroundBasicColor){
 
-protected: LazyProgressCanvas(std::string title, BasicColor backgroundBasicColor, BasicColor foregroundBasicColor){
-            super(title, backgroundBasicColor, foregroundBasicColor);
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -83,7 +79,7 @@ this->hasPainted= false;
     
 this->endActual();
     
-this->paintable= GAUGE_PAINTABLE;
+this->paintable= this->GAUGE_PAINTABLE;
     
 ImageCacheFactory::getInstance().runTask();
     
@@ -101,7 +97,7 @@ this->logUtil.putF(this->commonStrings.EXCEPTION, this, this->commonStrings.END_
 
 
     public: void inGame(){
-inGameProcessor= Processor::getInstance();
+this->inGameProcessor= Processor::getInstance();
     
 }
 
@@ -116,7 +112,7 @@ this->paintable= NullPaintable::getInstance();
 
     public: void endIfPaintedSinceStart(){
 
-                        if(this->paintable == GAUGE_PAINTABLE && this->hasPainted)
+                        if(this->paintable == this->GAUGE_PAINTABLE && this->hasPainted)
                         
                                     {
                                     this->endFromInitialLazyLoadingComplete();

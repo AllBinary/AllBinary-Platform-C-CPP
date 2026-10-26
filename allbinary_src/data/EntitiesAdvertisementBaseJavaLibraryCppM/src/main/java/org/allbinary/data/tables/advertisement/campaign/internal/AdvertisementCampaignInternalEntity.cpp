@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
 
@@ -94,8 +94,9 @@ class AdvertisementCampaignInternalEntity: public AbSqlBean, public Advertisemen
 
     protected: const std::string tableName = "adCampaignInternal";
 
-public: AdvertisementCampaignInternalEntity(){
-            super(UserDbInitInfo());
+public: AdvertisementCampaignInternalEntity() : AbSqlBean(UserDbInitInfo()){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -139,7 +140,7 @@ this->setTableName(this->tableName);
 
     public: AdvertisementCampaignsInterface getCampaignsInStore(std::string storeName){
 
-    HashMap<any, any> keysAndValues = StdUtil::getInstance().createHashMap();;
+    HashMap<Object*, Object*> keysAndValues = StdUtil::getInstance().createHashMap();;
     
 keysAndValues.put(StoreFrontData::getInstance().NAME, storeName);
     
@@ -160,7 +161,7 @@ keysAndValues.put(StoreFrontData::getInstance().NAME, storeName);
     int32_t index = 0;index < size; index++)
         {
 
-    HashMap<any, any> hashMap = hashMapVector.get(index) as HashMap<any, any>;;
+    HashMap<Object*, Object*> hashMap = hashMapVector.get(index);;
     
 
                         if(hashMap != 
@@ -168,7 +169,7 @@ keysAndValues.put(StoreFrontData::getInstance().NAME, storeName);
                                 )
                         
                                     {
-                                    vector.add(AdvertisementCampaign(hashMap) as AdvertisementCampaignInterface);
+                                    vector.add(AdvertisementCampaign(hashMap));
     
 
                                     }
@@ -179,21 +180,21 @@ keysAndValues.put(StoreFrontData::getInstance().NAME, storeName);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return AdvertisementCampaigns(vector) as AdvertisementCampaignsInterface;
+                        return AdvertisementCampaigns(vector);
     
 }
 
 
     public: AdvertisementCampaignInterface get(std::string storeName, std::string name){
 
-    HashMap<any, any> keysAndValues = StdUtil::getInstance().createHashMap();;
+    HashMap<Object*, Object*> keysAndValues = StdUtil::getInstance().createHashMap();;
     
 keysAndValues.put(StoreFrontData::getInstance().NAME, storeName);
     
 keysAndValues.put(AdvertisementCampaignData::getInstance().NAME, name);
     
 
-    HashMap<any, any> hashMap = super.getRow(keysAndValues);;
+    HashMap<Object*, Object*> hashMap = super.getRow(keysAndValues);;
     
 
                         if(hashMap != 
@@ -205,7 +206,7 @@ keysAndValues.put(AdvertisementCampaignData::getInstance().NAME, name);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return AdvertisementCampaign(hashMap) as AdvertisementCampaignInterface;
+                        return AdvertisementCampaign(hashMap);
     
 
                                     }
@@ -223,8 +224,8 @@ keysAndValues.put(AdvertisementCampaignData::getInstance().NAME, name);
 }
 
 
-    public: void update(HashMap<any, any> updatedValues){
-super.updateWhere(EntryData::getInstance().getInstance().ID, updatedValues.get(EntryData::getInstance().getInstance().ID) as string, updatedValues);
+    public: void update(HashMap<Object*, Object*> updatedValues){
+super.updateWhere(EntryData::getInstance().getInstance().ID, updatedValues.get(EntryData::getInstance().getInstance().ID), updatedValues);
     
 }
 

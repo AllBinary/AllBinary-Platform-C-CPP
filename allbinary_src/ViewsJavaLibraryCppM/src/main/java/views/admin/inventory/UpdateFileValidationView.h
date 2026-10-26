@@ -21,7 +21,7 @@
         #ifndef VIEWS_ADMIN_INVENTORY_UPDATEFILEVALIDATIONVIEW_H
         #define VIEWS_ADMIN_INVENTORY_UPDATEFILEVALIDATIONVIEW_H
 
-            #include "../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/business/context/modules/storefront/StoreFrontFactory.h>
 

@@ -21,9 +21,9 @@
         #ifndef ORG_ALLBINARY_MEDIA_IMAGE_IMAGECOPYUTIL_H
         #define ORG_ALLBINARY_MEDIA_IMAGE_IMAGECOPYUTIL_H
 
-            #include "../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/awt/image/BufferedImage.h>
 

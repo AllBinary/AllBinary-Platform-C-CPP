@@ -18,9 +18,9 @@
 
 
 
-            #include "../../../../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
 
@@ -75,25 +75,25 @@ class RootStoreThemeCategoryPropertiesFactory
     private: CategoryPropertiesInterface categoryPropertiesInterface;
 
 public: RootStoreThemeCategoryPropertiesFactory(TransformInfoInterface transformInfoInterface){
-this->categoryPropertiesInterface= RootStoreThemeCategoryProperties(transformInfoInterface) as CategoryPropertiesInterface;
+this->categoryPropertiesInterface= RootStoreThemeCategoryProperties(transformInfoInterface);
     
 }
 
 
 public: RootStoreThemeCategoryPropertiesFactory(TransformInfoInterface transformInfoInterface, AbPath abPath){
-this->categoryPropertiesInterface= RootStoreThemeCategoryProperties(transformInfoInterface, abPath) as CategoryPropertiesInterface;
+this->categoryPropertiesInterface= RootStoreThemeCategoryProperties(transformInfoInterface, abPath);
     
 }
 
 
 public: RootStoreThemeCategoryPropertiesFactory(TransformInfoInterface transformInfoInterface, Node node){
-this->categoryPropertiesInterface= RootStoreThemeCategoryProperties(transformInfoInterface, node) as CategoryPropertiesInterface;
+this->categoryPropertiesInterface= RootStoreThemeCategoryProperties(transformInfoInterface, node);
     
 }
 
 
-public: RootStoreThemeCategoryPropertiesFactory(TransformInfoInterface transformInfoInterface, HashMap<any, any> categoryPropertiesHashMap){
-this->categoryPropertiesInterface= RootStoreThemeCategoryProperties(transformInfoInterface, categoryPropertiesHashMap) as CategoryPropertiesInterface;
+public: RootStoreThemeCategoryPropertiesFactory(TransformInfoInterface transformInfoInterface, HashMap<Object*, Object*> categoryPropertiesHashMap){
+this->categoryPropertiesInterface= RootStoreThemeCategoryProperties(transformInfoInterface, categoryPropertiesHashMap);
     
 }
 
@@ -105,7 +105,7 @@ this->categoryPropertiesInterface= RootStoreThemeCategoryProperties(transformInf
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->categoryPropertiesInterface as CategoryPropertiesInterface;
+                        return this->categoryPropertiesInterface;
     
 
                 //: 

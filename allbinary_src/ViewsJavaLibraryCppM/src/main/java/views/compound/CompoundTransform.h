@@ -21,7 +21,7 @@
         #ifndef VIEWS_COMPOUND_COMPOUNDTRANSFORM_H
         #define VIEWS_COMPOUND_COMPOUNDTRANSFORM_H
 
-            #include "../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/io/InputStream.h>
 

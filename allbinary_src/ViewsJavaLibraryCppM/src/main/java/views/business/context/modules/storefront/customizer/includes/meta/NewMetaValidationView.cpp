@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/data/tree/dom/DomNodeInterface.h>
 
@@ -68,8 +68,9 @@ class NewMetaValidationView: public MetaView, public ValidationComponentInterfac
 
     protected: const LogUtil logUtil = LogUtil::getInstance();
 
-public: NewMetaValidationView(TransformInfoInterface transformInfoInterface){
-            super(transformInfoInterface);
+public: NewMetaValidationView(TransformInfoInterface transformInfoInterface) : MetaView(transformInfoInterface){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -95,7 +96,7 @@ public: NewMetaValidationView(TransformInfoInterface transformInfoInterface){
             
 
                             {
-                            CustomizerUtil::getInstance().insert(this->getTransformInfoInterface(), this as DomNodeInterface);
+                            CustomizerUtil::getInstance().insert(this->getTransformInfoInterface(), this);
     
 
                             }

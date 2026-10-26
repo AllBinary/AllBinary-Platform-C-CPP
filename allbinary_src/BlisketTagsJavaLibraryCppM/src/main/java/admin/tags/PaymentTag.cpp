@@ -18,9 +18,9 @@
 
 
 
-            #include "../../java/lang/Class.h"
+            #include "java/lang/Class.h"
         
-            #include "../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/lang/reflect/Method.h>
 
@@ -78,7 +78,7 @@ class PaymentTag: public TableTag {
 
     private: std::string storeName;
 
-    private: HashMap<any, any> propertiesHashMap;
+    private: HashMap<Object*, Object*> propertiesHashMap;
 
 public: PaymentTag(){
 this->setTagHelperFactory(PaymentHelperFactory());
@@ -103,7 +103,7 @@ this->storeName= value;
     Object* anyType = PaymentHelperFactory().getInstance(this->getPropertiesHashMap(), pageContext);;
     
 
-    Function addressHelperClass = anyType->constructor;;
+    Class* addressHelperClass = anyType->getClass();;
     
 
     Method method = addressHelperClass.getMethod("select", 
@@ -111,7 +111,7 @@ this->storeName= value;
     
 
     std::string result = method.invoke(anyType, 
-                            nullptr) as string;;
+                            nullptr);;
     
 
 

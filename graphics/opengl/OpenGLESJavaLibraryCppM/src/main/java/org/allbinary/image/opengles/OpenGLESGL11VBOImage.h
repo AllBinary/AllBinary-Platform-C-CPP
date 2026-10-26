@@ -88,11 +88,35 @@ public: OpenGLESGL11VBOImage(Image image, PlatformBitmapBaseFactory bitmapFactor
 
     public: void set(GL gl);
 
-    protected: const std::vector<float> regionRectangleFloatArray = {0,0,0,0,0,0,0,0,0,0,0,0};
+    protected: const std::vector<float> regionRectangleFloatArray = {
+                                //Otherwise - values - DoubleLiteralExpr
+
+                                //Otherwise - values - DoubleLiteralExpr
+
+                                //Otherwise - values - DoubleLiteralExpr
+
+                                //Otherwise - values - DoubleLiteralExpr
+
+                                //Otherwise - values - DoubleLiteralExpr
+
+                                //Otherwise - values - DoubleLiteralExpr
+
+                                //Otherwise - values - DoubleLiteralExpr
+
+                                //Otherwise - values - DoubleLiteralExpr
+
+                                //Otherwise - values - DoubleLiteralExpr
+
+                                //Otherwise - values - DoubleLiteralExpr
+
+                                //Otherwise - values - DoubleLiteralExpr
+
+                                //Otherwise - values - DoubleLiteralExpr
+};
 
     protected: FloatBuffer regionRectangleVertexFloatBuffer = ByteBuffer::allocateDirect(4 *4 *3).order(ByteOrder::nativeOrder()).asFloatBuffer();
 
-    private: const std::vector<float> regionTextureRectangleFloatArray = new Array(8);
+    private: const std::vector<float> regionTextureRectangleFloatArray = std::vector<float>(8);
 
     private: FloatBuffer regionTextureVertexFloatBuffer = ByteBuffer::allocateDirect(4 *4 *2).order(ByteOrder::nativeOrder()).asFloatBuffer();
 

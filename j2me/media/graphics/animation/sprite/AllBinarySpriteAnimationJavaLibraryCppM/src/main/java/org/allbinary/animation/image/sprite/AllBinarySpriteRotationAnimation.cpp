@@ -18,9 +18,6 @@
 
 
 
-#include <jsinterop/annotations/JsType.h>
-
-      
 #include <javax/microedition/lcdui/Image.h>
 
       
@@ -40,12 +37,6 @@
 
       
 #include <org/allbinary/math/AngleInfo.h>
-
-      
-#include <jsinterop/annotations/JsMethod.h>
-
-      
-#include <jsinterop/annotations/JsConstructor.h>
 
       
 
@@ -70,8 +61,9 @@
 
 class AllBinarySpriteRotationAnimation: public HackRotationSpriteIndexedAnimation {
 
-public: AllBinarySpriteRotationAnimation(Sprite sprite, Image image, AnimationBehavior animationBehavior){
-            super(sprite, image, AngleInfo::getInstance((AngleFactory::getInstance().TOTAL_ANGLE /sprite.getRawFrameCount())), animationBehavior);
+public: AllBinarySpriteRotationAnimation(Sprite sprite, Image image, AnimationBehavior animationBehavior) : HackRotationSpriteIndexedAnimation(sprite, image, AngleInfo::getInstance((AngleFactory::getInstance().TOTAL_ANGLE /sprite.getRawFrameCount())), animationBehavior){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.

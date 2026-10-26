@@ -21,9 +21,9 @@
         #ifndef VIEWS_GENERIC_ADDRESS_SHIPPING_SHIPPINGADDRESSESVIEW_H
         #define VIEWS_GENERIC_ADDRESS_SHIPPING_SHIPPINGADDRESSESVIEW_H
 
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../../java/lang/Integer.h"
+            #include "java/lang/Integer.h"
         
 #include <org/allbinary/util/BasicArrayList.h>
 

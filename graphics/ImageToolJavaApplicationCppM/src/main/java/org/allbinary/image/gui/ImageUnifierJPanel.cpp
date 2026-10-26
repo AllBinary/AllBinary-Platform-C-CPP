@@ -20,11 +20,11 @@
 
             #include <vector>
         
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../../java/lang/Integer.h"
+            #include "java/lang/Integer.h"
         
-            #include "../../../../java/lang/Double.h"
+            #include "java/lang/Double.h"
         
 #include <java/awt/image/BufferedImage.h>
 
@@ -158,7 +158,7 @@ this->setImageProcessorInput(imageProcessorInput);
 
     std::vector<BufferedImage> bufferedImageArray = imageProcessorInput.getBufferedImageArray();;
     
-this->icon= new Array(bufferedImageArray.length);
+this->icon= std::vector<ImageIconUnique>(bufferedImageArray.length);
     
 
     DefaultListModel defaultListModel = DefaultListModel();;
@@ -171,10 +171,10 @@ this->icon= new Array(bufferedImageArray.length);
     int32_t index = 0;index < bufferedImageArray.size(); index++)
         {
 
-    double width = bufferedImageArray[index]!.getWidth();;
+    double width = bufferedImageArray[index].getWidth();;
     
 
-    double height = bufferedImageArray[index]!.getHeight();;
+    double height = bufferedImageArray[index].getHeight();;
     
 
     int32_t newWidth = 52;;
@@ -186,11 +186,11 @@ this->icon= new Array(bufferedImageArray.length);
     int32_t newHeight = static_cast<int32_t>((newWidth /oldRatio));;
     
 
-    BufferedImage iconBufferedImage = ImageUtil::getInstance().createBufferedImage(bufferedImageArray[index]!, newWidth, newHeight, true);;
+    BufferedImage iconBufferedImage = ImageUtil::getInstance().createBufferedImage(bufferedImageArray[index], newWidth, newHeight, true);;
     
 this->icon[index]= ImageIconUnique(iconBufferedImage, index);
     
-defaultListModel.addElement(this->icon[index]!);
+defaultListModel.addElement(this->icon[index]);
     
 }
 
@@ -216,7 +216,7 @@ this->logUtil.put(this->commonStrings.EXCEPTION, this, this->commonStrings.INIT,
     std::vector<BufferedImage> bufferedImageArray = this->getImageProcessorInput().getBufferedImageArray();;
     
 
-    std::vector<BufferedImage> tempBufferedImageArray = new Array(bufferedImageArray.length);;
+    std::vector<BufferedImage> tempBufferedImageArray = std::vector<BufferedImage>(bufferedImageArray.length);;
     
 
 
@@ -226,10 +226,10 @@ this->logUtil.put(this->commonStrings.EXCEPTION, this, this->commonStrings.INIT,
     int32_t index = 0;index < bufferedImageArray.size(); index++)
         {
 
-    ImageIconUnique indexedImageIcon = this->imageJList.getModel().getElementAt(index) as ImageIconUnique;;
+    ImageIconUnique indexedImageIcon = this->imageJList.getModel().getElementAt(index);;
     
 
-    BufferedImage bufferedImage = ImageUtil::getInstance().createBufferedImage(bufferedImageArray[indexedImageIcon.getId()]!, this->imageUnifierProperties.getImageUnifierCell().getWidth(), this->imageUnifierProperties.getImageUnifierCell().getHeight(), false);;
+    BufferedImage bufferedImage = ImageUtil::getInstance().createBufferedImage(bufferedImageArray[indexedImageIcon.getId()], this->imageUnifierProperties.getImageUnifierCell().getWidth(), this->imageUnifierProperties.getImageUnifierCell().getHeight(), false);;
     
 tempBufferedImageArray[index]= bufferedImage;
     
@@ -293,7 +293,7 @@ this->logUtil.put(this->commonStrings.EXCEPTION, this, "updateImage", e);
     std::vector<BufferedImage> bufferedImageArray = this->getImageProcessorInput().getBufferedImageArray();;
     
 
-    std::vector<BufferedImage> tempBufferedImageArray = new Array(bufferedImageArray.length);;
+    std::vector<BufferedImage> tempBufferedImageArray = std::vector<BufferedImage>(bufferedImageArray.length);;
     
 
 
@@ -303,10 +303,10 @@ this->logUtil.put(this->commonStrings.EXCEPTION, this, "updateImage", e);
     int32_t index = 0;index < bufferedImageArray.size(); index++)
         {
 
-    ImageIconUnique indexedImageIcon = this->imageJList.getModel().getElementAt(index) as ImageIconUnique;;
+    ImageIconUnique indexedImageIcon = this->imageJList.getModel().getElementAt(index);;
     
 
-    BufferedImage bufferedImage = ImageUtil::getInstance().createBufferedImage(bufferedImageArray[indexedImageIcon.getId()]!, this->imageUnifierProperties.getImageUnifierCell().getWidth(), this->imageUnifierProperties.getImageUnifierCell().getHeight(), false);;
+    BufferedImage bufferedImage = ImageUtil::getInstance().createBufferedImage(bufferedImageArray[indexedImageIcon.getId()], this->imageUnifierProperties.getImageUnifierCell().getWidth(), this->imageUnifierProperties.getImageUnifierCell().getHeight(), false);;
     
 tempBufferedImageArray[index]= bufferedImage;
     
@@ -729,14 +729,14 @@ this->logUtil.put(this->commonStrings.EXCEPTION, this, "jButton1ActionPerformed"
     int32_t index = this->imageJList.getSelectedIndex();;
     
 
-    DefaultListModel defaultListModel = this->imageJList.getModel() as DefaultListModel;;
+    DefaultListModel defaultListModel = this->imageJList.getModel();;
     
 
                         if(index >= 0 && index +1 < defaultListModel.size())
                         
                                     {
                                     
-    ImageIconUnique indexedImageIcon = defaultListModel.remove(index) as ImageIconUnique;;
+    ImageIconUnique indexedImageIcon = defaultListModel.remove(index);;
     
 defaultListModel.insertElementAt(indexedImageIcon, index +1);
     
@@ -759,10 +759,10 @@ this->updateImage();
                         
                                     {
                                     
-    DefaultListModel defaultListModel = this->imageJList.getModel() as DefaultListModel;;
+    DefaultListModel defaultListModel = this->imageJList.getModel();;
     
 
-    ImageIconUnique indexedImageIcon = defaultListModel.remove(index) as ImageIconUnique;;
+    ImageIconUnique indexedImageIcon = defaultListModel.remove(index);;
     
 defaultListModel.insertElementAt(indexedImageIcon, index -1);
     
@@ -778,7 +778,7 @@ this->updateImage();
 
     private: void jButtonOrderActionPerformed(java::awt::event::ActionEvent evt){
 
-    DefaultListModel defaultListModel = this->imageJList.getModel() as DefaultListModel;;
+    DefaultListModel defaultListModel = this->imageJList.getModel();;
     
 
     int32_t size = defaultListModel.size();;
@@ -794,7 +794,7 @@ this->updateImage();
     int32_t index = last;index >= 0; index--)
         {
 
-    ImageIconUnique indexedImageIcon = defaultListModel.remove(last) as ImageIconUnique;;
+    ImageIconUnique indexedImageIcon = defaultListModel.remove(last);;
     
 defaultListModel.insertElementAt(indexedImageIcon, last -index);
     

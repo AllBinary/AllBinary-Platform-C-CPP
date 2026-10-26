@@ -18,11 +18,8 @@
 
 
 
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-#include <jsinterop/annotations/JsType.h>
-
-      
 #include <org/allbinary/graphics/CustomGPoint.h>
 
       
@@ -101,7 +98,7 @@ this->touchButtonRecognizer= TouchButtonRecognizer();
                         
                                     {
                                     
-    CustomGPoint point = AllMotionRecognizer::pointCircularPool.getNextInstance() as CustomGPoint;;
+    CustomGPoint point = AllMotionRecognizer::pointCircularPool.getNextInstance();;
     
 point.setX(x);
     
@@ -130,7 +127,7 @@ this->motionGestureRecognizer.processPressedMotionEvent(point, deviceId, modifie
                         
                                     {
                                     
-    CustomGPoint point = AllMotionRecognizer::pointCircularPool.getNextInstance() as CustomGPoint;;
+    CustomGPoint point = AllMotionRecognizer::pointCircularPool.getNextInstance();;
     
 point.setX(x);
     
@@ -170,7 +167,7 @@ this->motionGestureRecognizer.processReleasedMotionEvent(point, deviceId, modifi
                         
                                     {
                                     
-    CustomGPoint point = AllMotionRecognizer::pointCircularPool.getNextInstance() as CustomGPoint;;
+    CustomGPoint point = AllMotionRecognizer::pointCircularPool.getNextInstance();;
     
 point.setX(x);
     
@@ -200,7 +197,7 @@ this->motionGestureRecognizer.processDraggedMotionEvent(point, deviceId, modifie
 this->lastY= y;
     
 
-    CustomGPoint point = AllMotionRecognizer::pointCircularPool.getNextInstance() as CustomGPoint;;
+    CustomGPoint point = AllMotionRecognizer::pointCircularPool.getNextInstance();;
     
 point.setX(x);
     
@@ -218,7 +215,7 @@ this->motionGestureRecognizer.processMovedMotionEvent(point, deviceId, modifiers
             
     public: void processScrolledMotionEvent(int32_t x, int32_t y, int32_t deviceId, int32_t modifiers){
 
-    CustomGPoint point = AllMotionRecognizer::pointCircularPool.getNextInstance() as CustomGPoint;;
+    CustomGPoint point = AllMotionRecognizer::pointCircularPool.getNextInstance();;
     
 point.setX(x);
     

@@ -18,11 +18,8 @@
 
 
 
-            #include "../../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-#include <java/util/Hashtable.h>
-
-      
 #include <org/allbinary/logic/StdUtil.h>
 
       
@@ -33,6 +30,9 @@
 
       
 #include <org/allbinary/logic/string/StringValidationUtil.h>
+
+      
+#include <org/allbinary/util/ABHashtable.h>
 
       
 #include <org/allbinary/util/BasicArrayList.h>
@@ -68,7 +68,7 @@ class AbeClientLicense
             : public Object
         : public AbeLicenseInterface {
 
-    public: static bool hasRequiredKeys(Hashtable<any, any> resultHashtable){
+    public: static bool hasRequiredKeys(ABHashtable<Object*, Object*> resultHashtable){
 
     AbeClientInformationData abeClientInformationData = AbeClientInformationData::getInstance();;
     
@@ -98,7 +98,7 @@ class AbeClientLicense
 }
 
 
-    private: Hashtable<any, any> hashtable;
+    private: ABHashtable<Object*, Object*> hashtable;
 
     private: std::string id;
 
@@ -108,7 +108,7 @@ class AbeClientLicense
 
     private: LicenseType licenseType;
 
-public: AbeClientLicense(Hashtable<any, any> hashtable){
+public: AbeClientLicense(ABHashtable<Object*, Object*> hashtable){
 this->hashtable= StdUtil::getInstance().createHashtable();
     
 
@@ -135,10 +135,10 @@ this->hashtable= StdUtil::getInstance().createHashtable();
 
                                     }
                                 
-this->id= hashtable.get(abeClientInformationData.LICENSEID) as string;
+this->id= hashtable.get(abeClientInformationData.LICENSEID);
     
 
-    BasicArrayList vector = hashtable.get(abeClientInformationData.LICENSESERVERS) as BasicArrayList;;
+    BasicArrayList vector = hashtable.get(abeClientInformationData.LICENSESERVERS);;
     
 this->servers= BasicArrayListD();
     
@@ -159,10 +159,10 @@ this->servers.add(vector.get(index));
 
     StringUtil stringUtil = StringUtil::getInstance();;
     
-this->setSpecial(stringUtil.getNonNull(hashtable.get(abeClientInformationData.SPECIAL) as string));
+this->setSpecial(stringUtil.getNonNull(hashtable.get(abeClientInformationData.SPECIAL)));
     
 
-    std::string licenseTypeString = stringUtil.getNonNull(hashtable.get(abeClientInformationData.LICENSE_TYPE) as string);;
+    std::string licenseTypeString = stringUtil.getNonNull(hashtable.get(abeClientInformationData.LICENSE_TYPE));;
     
 this->licenseType= LicenseTypeFactory::getInstance().getInstance(licenseTypeString);
     
@@ -184,7 +184,7 @@ this->licenseType= LicenseTypeFactory::getInstance().getInstance(licenseTypeStri
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->hashtable.get(keyName) as string;
+                        return this->hashtable.get(keyName);
     
 }
 
@@ -274,7 +274,7 @@ stringBuffer.append(BREAK);
     int32_t index = 0;index < size; index++)
         {
 
-    std::string nextServerString = serverVector.get(index) as string;;
+    std::string nextServerString = serverVector.get(index);;
     
 stringBuffer.append("Server: ");
     

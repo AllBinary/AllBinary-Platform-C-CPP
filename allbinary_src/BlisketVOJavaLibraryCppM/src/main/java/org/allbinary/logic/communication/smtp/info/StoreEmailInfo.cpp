@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/business/context/configuration/ContextConfigurationInterface.h>
 
@@ -61,8 +61,9 @@ class StoreEmailInfo: public BasicEmailInfo {
 
     private: StoreFrontInterface storeFrontInterface;
 
-public: StoreEmailInfo(StoreFrontInterface storeFrontInterface, std::string subject, std::string textBody){
-            super(subject, textBody);
+public: StoreEmailInfo(StoreFrontInterface storeFrontInterface, std::string subject, std::string textBody) : BasicEmailInfo(subject, textBody){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.

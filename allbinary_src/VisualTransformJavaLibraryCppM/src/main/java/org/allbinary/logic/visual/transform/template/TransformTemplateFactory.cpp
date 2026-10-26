@@ -18,9 +18,9 @@
 
 
 
-            #include "../../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
 
@@ -90,7 +90,7 @@ private: TransformTemplateFactory(){
 
                 //@Throws(Exception.constructor)
             
-    public: TransformTemplateInterface getInstance(AbeClientInformationInterface abeClientInformation, std::string templateName, HashMap<any, any> propertiesHashMap, PageContext pageContext){
+    public: TransformTemplateInterface getInstance(AbeClientInformationInterface abeClientInformation, std::string templateName, HashMap<Object*, Object*> propertiesHashMap, PageContext pageContext){
 
         try {
             
@@ -103,7 +103,7 @@ private: TransformTemplateFactory(){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return TransformInfoObjectFactory::getInstance().getInstance(abeClientInformation, transformInfoInterface) as TransformTemplateInterface;
+                        return TransformInfoObjectFactory::getInstance().getInstance(abeClientInformation, transformInfoInterface);
     
 
                 //: 

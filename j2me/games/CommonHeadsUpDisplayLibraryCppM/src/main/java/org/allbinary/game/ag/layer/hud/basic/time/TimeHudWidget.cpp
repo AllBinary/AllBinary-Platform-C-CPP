@@ -20,7 +20,7 @@
 
             #include <vector>
         
-            #include "../../../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <javax/microedition/lcdui/Font.h>
 
@@ -86,8 +86,9 @@ class TimeHudWidget: public BasicHud {
 
     private: Timer timer;
 
-public: TimeHudWidget(int32_t location, int32_t direction, int32_t bufferZone, BasicColor basicColor, Timer timer){
-            super(location, direction, bufferZone, basicColor);
+public: TimeHudWidget(int32_t location, int32_t direction, int32_t bufferZone, BasicColor basicColor, Timer timer) : BasicHud(location, direction, bufferZone, basicColor){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.

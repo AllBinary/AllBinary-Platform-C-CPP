@@ -21,20 +21,14 @@
         #ifndef ORG_ALLBINARY_IMAGE_IMAGEFACTORY_H
         #define ORG_ALLBINARY_IMAGE_IMAGEFACTORY_H
 
-            #include "../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-#include <jsinterop/annotations/JsType.h>
-
-      
 #include <java/io/InputStream.h>
 
       
 #include <javax/microedition/lcdui/Image.h>
-
-      
-#include <jsinterop/annotations/JsMethod.h>
 
       
 
@@ -75,6 +69,10 @@ class ImageFactory
                 //@Throws(Exception.constructor)
             
     public: Image createImageFromInputStream(Object* key, InputStream inputStream);
+
+                //@Throws(Exception.constructor)
+            
+    public: Image createImageFromInputStream(InputStream inputStream);
 
 };
 

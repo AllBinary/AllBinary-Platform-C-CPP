@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/animation/NullAnimationFactory.h>
 
@@ -75,8 +75,9 @@ class RaceTrackPickupLayer: public PickupLayer {
 
     private: static const std::string NAME = "RaceTrackPickupLayer";
 
-public: RaceTrackPickupLayer(){
-            super(NAME, RemoteInfo::REMOTE_INFO, 0, CountedPickedUpLayerInterfaceFactory::NULL_COUNTED_PICKUP_LAYER_FACTORY, NullAnimationFactory::getFactoryInstance().getInstance(0), Rectangle(PointFactory::getInstance().ZERO_ZERO, 0, 0), TileLayerPositionIntoViewPosition());
+public: RaceTrackPickupLayer() : PickupLayer(NAME, RemoteInfo::REMOTE_INFO, 0, CountedPickedUpLayerInterfaceFactory::NULL_COUNTED_PICKUP_LAYER_FACTORY, NullAnimationFactory::getFactoryInstance().getInstance(0), Rectangle(PointFactory::getInstance().ZERO_ZERO, 0, 0), TileLayerPositionIntoViewPosition()){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -88,11 +89,11 @@ public: RaceTrackPickupLayer(){
 
     public: void setTiledLayer(AllBinaryTiledLayer tiledLayer){
 
-    TileLayerPositionIntoViewPosition viewPosition = this->getViewPosition() as TileLayerPositionIntoViewPosition;;
+    TileLayerPositionIntoViewPosition viewPosition = this->getViewPosition();;
     
 viewPosition.setTiledLayer(tiledLayer);
     
-this->viewPositionEventHandler.addListener(this as AllBinaryLayer);
+this->viewPositionEventHandler.addListener(this);
     
 }
 

@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
 
@@ -27,6 +27,9 @@
 
       
 #include <org/allbinary/data/tree/dom/document/DomDocumentHelper.h>
+
+      
+#include <org/allbinary/data/tree/dom/document/XmlDocumentHelper.h>
 
       
 #include <org/allbinary/logic/StdUtil.h>
@@ -79,8 +82,9 @@ class NoTemplateTransformInfoObjectConfig: public TransformInfoObjectConfig {
 
     protected: const LogUtil logUtil = LogUtil::getInstance();
 
-public: NoTemplateTransformInfoObjectConfig(Object transformInfoInterface){
-            super(transformInfoInterface);
+public: NoTemplateTransformInfoObjectConfig(Object transformInfoInterface) : TransformInfoObjectConfig(transformInfoInterface){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -88,8 +92,9 @@ public: NoTemplateTransformInfoObjectConfig(Object transformInfoInterface){
 }
 
 
-public: NoTemplateTransformInfoObjectConfig(Object transformInfoInterface, Object document){
-            super(transformInfoInterface, document);
+public: NoTemplateTransformInfoObjectConfig(Object transformInfoInterface, Object document) : TransformInfoObjectConfig(transformInfoInterface, document){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -99,8 +104,9 @@ this->setDocument(this->generate(this->toXmlDoc()));
 }
 
 
-public: NoTemplateTransformInfoObjectConfig(Object transformInfoInterface, std::string name, std::string type){
-            super(transformInfoInterface, name, type);
+public: NoTemplateTransformInfoObjectConfig(Object transformInfoInterface, std::string name, std::string type) : TransformInfoObjectConfig(transformInfoInterface, name, type){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -114,7 +120,7 @@ this->setDocument(this->generate(this->toXmlDoc()));
             
     protected: Document generate(Document objectConfigDocument){
 
-    std::string docString = DomDocumentHelper::toString(objectConfigDocument);;
+    std::string docString = XmlDocumentHelper::toString(objectConfigDocument);;
     
 
                         if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEW))
@@ -132,7 +138,7 @@ this->setDocument(this->generate(this->toXmlDoc()));
     std::string viewName = this->getTransformInfoInterface().getName();;
     
 
-    HashMap<any, any> hashMap = StdUtil::getInstance().createHashMap();;
+    HashMap<Object*, Object*> hashMap = StdUtil::getInstance().createHashMap();;
     
 
     std::string VARKEY = TransformInfoObjectConfigData::getInstance().VARKEY;;
@@ -156,7 +162,7 @@ hashMap.put(VARKEY +TransformInfoData::getInstance().PARTIAL, pageName);
                         if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEW))
                         
                                     {
-                                    this->logUtil.putF("Final ObjectConfig: " +DomDocumentHelper::toString(newObjectConfigDocument), this, "generate()");
+                                    this->logUtil.putF("Final ObjectConfig: " +XmlDocumentHelper::toString(newObjectConfigDocument), this, "generate()");
     
 
                                     }

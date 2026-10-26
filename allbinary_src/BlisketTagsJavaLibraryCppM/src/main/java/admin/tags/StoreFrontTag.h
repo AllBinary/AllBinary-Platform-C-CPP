@@ -21,7 +21,7 @@
         #ifndef ADMIN_TAGS_STOREFRONTTAG_H
         #define ADMIN_TAGS_STOREFRONTTAG_H
 
-            #include "../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/lang/reflect/Method.h>
 
@@ -80,7 +80,7 @@ class StoreFrontTag: public CustomTagSupport {
 
     private: std::string storeName;
 
-    private: HashMap<any, any> propertiesHashMap;
+    private: HashMap<Object*, Object*> propertiesHashMap;
 
 public: StoreFrontTag();
 

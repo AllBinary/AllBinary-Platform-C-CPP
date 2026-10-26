@@ -20,7 +20,7 @@
 
             #include <vector>
         
-            #include "../../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
 #include <org/allbinary/game/identification/Group.h>
 
@@ -54,7 +54,7 @@ class CapitalEventHandlerFactory
                     static int32_t initResult = CapitalEventHandlerFactory::init();
                 static int32_t init() { 
                     
-capitalEventHandlerArray= new Array(10);
+capitalEventHandlerArray= std::vector<CapitalEventHandler>(10);
     
 
 
@@ -77,7 +77,7 @@ CapitalEventHandlerFactory::capitalEventHandlerArray[index]= CapitalEventHandler
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return CapitalEventHandlerFactory::capitalEventHandlerArray[static_cast<int32_t>(groupInterface.getGroupId();)]!;
+                        return CapitalEventHandlerFactory::capitalEventHandlerArray[static_cast<int32_t>(groupInterface.getGroupId();)];
     
 }
 
@@ -90,7 +90,7 @@ CapitalEventHandlerFactory::capitalEventHandlerArray[index]= CapitalEventHandler
                         for (
     int32_t index = CapitalEventHandlerFactory::capitalEventHandlerArray.size() -1;index >= 0; index--)
         {
-CapitalEventHandlerFactory::capitalEventHandlerArray[index]!.removeAllListeners();
+CapitalEventHandlerFactory::capitalEventHandlerArray[index].removeAllListeners();
     
 }
 

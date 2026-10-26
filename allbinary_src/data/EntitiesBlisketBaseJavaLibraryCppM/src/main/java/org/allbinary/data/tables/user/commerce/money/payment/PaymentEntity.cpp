@@ -18,11 +18,11 @@
 
 
 
-            #include "../../../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../../../../../../java/lang/Integer.h"
+            #include "java/lang/Integer.h"
         
-            #include "../../../../../../../../java/lang/Long.h"
+            #include "java/lang/Long.h"
         
 #include <java/util/Calendar.h>
 
@@ -104,8 +104,9 @@ class PaymentEntity: public AbSqlBean, public PaymentEntityInterface {
 
     private: const std::string tableName = "payment";
 
-public: PaymentEntity(){
-            super(UserDbInitInfo());
+public: PaymentEntity() : AbSqlBean(UserDbInitInfo()){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -129,10 +130,10 @@ this->setTableName(this->tableName);
 
         try {
             
-    HashMap<any, any> updateKeyAndValue = StdUtil::getInstance().createHashMap();;
+    HashMap<Object*, Object*> updateKeyAndValue = StdUtil::getInstance().createHashMap();;
     
 
-    HashMap<any, any> whereKeyAndValue = StdUtil::getInstance().createHashMap();;
+    HashMap<Object*, Object*> whereKeyAndValue = StdUtil::getInstance().createHashMap();;
     
 whereKeyAndValue.put(UserData::USERNAME, userName);
     
@@ -194,7 +195,7 @@ super.updateWhere(whereKeyAndValue, updateKeyAndValue);
     BasicArrayList paymentVector = BasicArrayListD();;
     
 
-    HashMap<any, any> keyAndValue = StdUtil::getInstance().createHashMap();;
+    HashMap<Object*, Object*> keyAndValue = StdUtil::getInstance().createHashMap();;
     
 keyAndValue.put(UserData::USERNAME, userName);
     
@@ -212,7 +213,7 @@ keyAndValue.put(UserData::USERNAME, userName);
     int32_t index = 0;index < size; index++)
         {
 
-    HashMap<any, any> paymentHashMap = paymentList.get(index) as HashMap<any, any>;;
+    HashMap<Object*, Object*> paymentHashMap = paymentList.get(index);;
     
 
     Payment payment = Payment(paymentHashMap);;
@@ -264,10 +265,10 @@ keyAndValue.put(UserData::USERNAME, userName);
 
         try {
             
-    HashMap<any, any> paymentHashMap = StdUtil::getInstance().createHashMap();;
+    HashMap<Object*, Object*> paymentHashMap = StdUtil::getInstance().createHashMap();;
     
 
-    HashMap<any, any> updateKeyAndValue = StdUtil::getInstance().createHashMap();;
+    HashMap<Object*, Object*> updateKeyAndValue = StdUtil::getInstance().createHashMap();;
     
 updateKeyAndValue.put(EntryData::getInstance().DEFAULT, EntryData::getInstance().DEFAULT);
     
@@ -297,7 +298,7 @@ paymentHashMap= super.getRow(updateKeyAndValue);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return payment as PaymentInterface;
+                        return payment;
     
 
                                     }
@@ -340,11 +341,11 @@ paymentHashMap= super.getRow(updateKeyAndValue);
 
         try {
             
-    HashMap<any, any> whereHashMap = StdUtil::getInstance().createHashMap();;
+    HashMap<Object*, Object*> whereHashMap = StdUtil::getInstance().createHashMap();;
     
 whereHashMap.put(UserData::USERNAME, userName);
     
-whereHashMap.put(PaymentData::ID, std::to_string(index) as string);
+whereHashMap.put(PaymentData::ID, std::to_string(index));
     
 super.deleteWhere(whereHashMap);
     

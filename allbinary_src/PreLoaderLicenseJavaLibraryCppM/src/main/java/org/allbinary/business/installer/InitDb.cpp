@@ -18,11 +18,11 @@
 
 
 
-            #include "../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../java/lang/Class.h"
+            #include "java/lang/Class.h"
         
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/lang/reflect/Method.h>
 
@@ -98,7 +98,7 @@ this->anyType= anyType;
 
         try {
             
-    Function dynamicClass = this->anyType.constructor;;
+    Class* dynamicClass = this->anyType->getClass();;
     
 
     Method method = dynamicClass.getMethod(this->METHOD_CALL_GET_HOST_NAME, 
@@ -106,7 +106,7 @@ this->anyType= anyType;
     
 
     std::string result = method.invoke(this->anyType, 
-                            nullptr) as string;;
+                            nullptr);;
     
 
 
@@ -133,7 +133,7 @@ this->anyType= anyType;
 
         try {
             
-    Function dynamicClass = this->anyType.constructor;;
+    Class* dynamicClass = this->anyType->getClass();;
     
 
     Method method = dynamicClass.getMethod(this->METHOD_CALL_ADD_USERS, 
@@ -141,7 +141,7 @@ this->anyType= anyType;
     
 
     Boolean result = method.invoke(this->anyType, 
-                            nullptr) as Boolean;;
+                            nullptr);;
     
 
 
@@ -168,7 +168,7 @@ this->anyType= anyType;
 
         try {
             
-    Function dynamicClass = this->anyType.constructor;;
+    Class* dynamicClass = this->anyType->getClass();;
     
 
     Method method = dynamicClass.getMethod(this->METHOD_CALL_ADD_DATABASES, 
@@ -176,7 +176,7 @@ this->anyType= anyType;
     
 
     Boolean result = method.invoke(this->anyType, 
-                            nullptr) as Boolean;;
+                            nullptr);;
     
 
 
@@ -203,7 +203,7 @@ this->anyType= anyType;
 
         try {
             
-    Function dynamicClass = this->anyType.constructor;;
+    Class* dynamicClass = this->anyType->getClass();;
     
 
     Method method = dynamicClass.getMethod(this->METHOD_CALL_ADD_TABLES, 
@@ -211,7 +211,7 @@ this->anyType= anyType;
     
 
     Boolean result = method.invoke(this->anyType, 
-                            nullptr) as Boolean;;
+                            nullptr);;
     
 
 
@@ -238,7 +238,7 @@ this->anyType= anyType;
 
         try {
             
-    Function dynamicClass = this->anyType.constructor;;
+    Class* dynamicClass = this->anyType->getClass();;
     
 
     Method method = dynamicClass.getMethod(this->METHOD_CALL_TEMP_MAIN_PATH, 
@@ -246,7 +246,7 @@ this->anyType= anyType;
     
 
     Boolean result = method.invoke(this->anyType, 
-                            nullptr) as Boolean;;
+                            nullptr);;
     
 
 
@@ -273,7 +273,7 @@ this->anyType= anyType;
 
         try {
             
-    Function dynamicClass = this->anyType.constructor;;
+    Class* dynamicClass = this->anyType->getClass();;
     
 
     Method method = dynamicClass.getMethod(this->METHOD_CALL_MAIN_PATH, 
@@ -281,7 +281,7 @@ this->anyType= anyType;
     
 
     Boolean result = method.invoke(this->anyType, 
-                            nullptr) as Boolean;;
+                            nullptr);;
     
 
 

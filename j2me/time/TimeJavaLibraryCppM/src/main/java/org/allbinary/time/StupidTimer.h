@@ -7,9 +7,9 @@
         #ifndef ORG_ALLBINARY_TIME_STUPIDTIMER_H
         #define ORG_ALLBINARY_TIME_STUPIDTIMER_H
 
-            #include "../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/logic/NullUtil.h>
 

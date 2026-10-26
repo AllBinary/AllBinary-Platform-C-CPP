@@ -21,11 +21,11 @@
         #ifndef ORG_ALLBINARY_LOGIC_COMMUNICATION_HTTP_REQUEST_SESSION_WEBLISKETSESSION_H
         #define ORG_ALLBINARY_LOGIC_COMMUNICATION_HTTP_REQUEST_SESSION_WEBLISKETSESSION_H
 
-            #include "../../../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../../../../../java/lang/Integer.h"
+            #include "java/lang/Integer.h"
         
 #include <java/util/HashMap.h>
 
@@ -105,9 +105,9 @@ class WeblisketSession
 
     private: HttpSession session;
 
-public: WeblisketSession(HashMap<any, any> hashMap, PageContext pageContext);
+public: WeblisketSession(HashMap<Object*, Object*> hashMap, PageContext pageContext);
 
-public: WeblisketSession(HashMap<any, any> hashMap, HttpServletRequest httpServletRequest);
+public: WeblisketSession(HashMap<Object*, Object*> hashMap, HttpServletRequest httpServletRequest);
 
     public: std::string getId();
 

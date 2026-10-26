@@ -23,7 +23,7 @@
 
             #include <vector>
         
-            #include "../../../../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
 #include <java/util/HashMap.h>
 
@@ -84,9 +84,9 @@ class UploadMediaSingleton
 
     protected: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    private: HashMap<any, any> readerFileTypesHashMap;
+    private: HashMap<Object*, Object*> readerFileTypesHashMap;
 
-    private: HashMap<any, any> writerFileTypesHashMap;
+    private: HashMap<Object*, Object*> writerFileTypesHashMap;
 
 private: UploadMediaSingleton();
 
@@ -102,7 +102,7 @@ private: UploadMediaSingleton();
 
     public: bool isWriterMedia(std::string mediaFileType, std::string aMediaType);
 
-    private: bool isMedia(std::string mediaFileType, std::string aMediaType, HashMap<any, any> hashMap);
+    private: bool isMedia(std::string mediaFileType, std::string aMediaType, HashMap<Object*, Object*> hashMap);
 
 };
 

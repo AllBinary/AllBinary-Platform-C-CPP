@@ -18,12 +18,6 @@
 
 
 
-#include <jsinterop/annotations/JsType.h>
-
-      
-#include <jsinterop/annotations/JsConstructor.h>
-
-      
 
 
 
@@ -46,8 +40,9 @@
 
 class GameFeature: public Feature {
 
-public: GameFeature(std::string name){
-            super(name);
+public: GameFeature(std::string name) : Feature(name){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.

@@ -21,11 +21,14 @@
         #ifndef ORG_ALLBINARY_OSGI_OSGIACTIVATORUTIL_H
         #define ORG_ALLBINARY_OSGI_OSGIACTIVATORUTIL_H
 
-            #include "../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-#include <java/util/Hashtable.h>
+#include <org/allbinary/logic/StdUtil.h>
+
+      
+#include <org/allbinary/util/ABHashtable.h>
 
       
 #include <org/osgi/framework/BundleContext.h>
@@ -69,7 +72,7 @@ class OSGIActivatorUtil
 
                 //@Throws(Exception.constructor)
             
-    public: static void registerAsService(BundleContext bundleContext, Object* anyType, std::string serviceName, Hashtable<any, any> properties);
+    public: static void registerAsService(BundleContext bundleContext, Object* anyType, std::string serviceName, ABHashtable<Object*, Object*> properties);
 
 private: OSGIActivatorUtil();
 

@@ -21,7 +21,7 @@
         #ifndef ADMIN_TAGHELPERS_PAYMENTGATEWAYHELPER_H
         #define ADMIN_TAGHELPERS_PAYMENTGATEWAYHELPER_H
 
-            #include "../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
 
@@ -89,7 +89,7 @@ class PaymentGatewayHelper: public BasicTable {
 
     private: const Portion portion;
 
-public: PaymentGatewayHelper(HashMap<any, any> hashMap, PageContext pageContext);
+public: PaymentGatewayHelper(HashMap<Object*, Object*> hashMap, PageContext pageContext);
 
     public: std::string insert();
 

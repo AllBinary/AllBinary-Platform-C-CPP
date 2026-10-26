@@ -20,9 +20,9 @@
 
             #include <vector>
         
-            #include "../../../../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/io/DataOutputStream.h>
 
@@ -46,6 +46,9 @@
 
       
 #include <org/allbinary/data/tree/dom/document/DomDocumentHelper.h>
+
+      
+#include <org/allbinary/data/tree/dom/document/XmlDocumentHelper.h>
 
       
 #include <org/allbinary/data/tree/dom/document/mapping/DomDocumentMappingInterface.h>
@@ -109,7 +112,7 @@ class GenericProfiles
 
     protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: HashMap<any, any> hashMap;
+    private: HashMap<Object*, Object*> hashMap;
 
     private: DefaultListModelHelper profilesDefaultListModelHelper;
 
@@ -127,7 +130,7 @@ this->hashMap= StdUtil::getInstance().createHashMap();
                         
                                     {
                                     
-    std::vector<int8_t> bytes = new Array(100000);;
+    std::vector<int8_t> bytes = std::vector<int8_t>(100000);;
     
 
     FileInputStream idFile = FileInputStream(fileName);;
@@ -234,7 +237,7 @@ this->getDefaultListModelHelper().add(genericProfile.getName());
             
     public: GenericProfile get(std::string name){
 
-    GenericProfile genericProfile = this->hashMap.get(name) as GenericProfile;;
+    GenericProfile genericProfile = this->hashMap.get(name);;
     
 
                         if(genericProfile == 
@@ -310,7 +313,7 @@ this->save();
     int32_t index = 0;index < size; index++)
         {
 
-    GenericProfile genericProfile = this->hashMap.get(nameArray[index]! as string) as GenericProfile;;
+    GenericProfile genericProfile = this->hashMap.get(nameArray[index]);;
     
 node.appendChild(genericProfile.toXmlNode(document));
     
@@ -355,7 +358,7 @@ document.appendChild(node);
     DataOutputStream idOutData = DataOutputStream(idFile);;
     
 
-    std::string documentString = DomDocumentHelper::toString(this->toXmlDoc());;
+    std::string documentString = XmlDocumentHelper::toString(this->toXmlDoc());;
     
 idOutData.writeBytes(documentString);
     

@@ -20,9 +20,9 @@
 
             #include <vector>
         
-            #include "../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <javax/swing.h>
 
@@ -94,7 +94,7 @@ public: DesktopBundle(){
     std::string symbolicName = bundle.getSymbolicName();;
     
 
-                        if(symbolicName.compareTo(DesktopBundle::DESKTOP_SYMBOLIC_NAME) == 0)
+                        if(symbolicName.compare(DesktopBundle::DESKTOP_SYMBOLIC_NAME) == 0)
                         
                                     {
                                     this->bundle= bundle;

@@ -21,13 +21,10 @@
         #ifndef ORG_ALLBINARY_GAME_AG_AI_SCROLLER_FLOCKINGAI_H
         #define ORG_ALLBINARY_GAME_AG_AI_SCROLLER_FLOCKINGAI_H
 
-            #include "../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../../../../java/lang/Integer.h"
+            #include "java/lang/Integer.h"
         
-#include <java/util/Hashtable.h>
-
-      
 #include <javax/microedition/lcdui/Canvas.h>
 
       
@@ -53,6 +50,9 @@
 
       
 #include <org/allbinary/logic/math/MathUtil.h>
+
+      
+#include <org/allbinary/util/ABHashtable.h>
 
       
 #include <org/allbinary/util/BasicArrayList.h>
@@ -82,7 +82,7 @@ class FlockingAI: public BasicAI {
 
     private: int32_t allowedDistance;
 
-public: FlockingAI(Hashtable<any, any> hashtable, AllBinaryLayer ownerLayerInterface, GameInput gameInput);
+public: FlockingAI(ABHashtable<Object*, Object*> hashtable, AllBinaryLayer ownerLayerInterface, GameInput gameInput);
 
                 //@Throws(Exception.constructor)
             

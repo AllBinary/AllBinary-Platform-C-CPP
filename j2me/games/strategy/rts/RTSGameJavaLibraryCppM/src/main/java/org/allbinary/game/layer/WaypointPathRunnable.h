@@ -21,9 +21,9 @@
         #ifndef ORG_ALLBINARY_GAME_LAYER_WAYPOINTPATHRUNNABLE_H
         #define ORG_ALLBINARY_GAME_LAYER_WAYPOINTPATHRUNNABLE_H
 
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../../java/lang/Thread.h"
+            #include "java/lang/Thread.h"
         
 #include <org/allbinary/logic/communication/log/LogUtil.h>
 

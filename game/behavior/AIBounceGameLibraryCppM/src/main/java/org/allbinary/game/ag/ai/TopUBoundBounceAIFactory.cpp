@@ -18,13 +18,10 @@
 
 
 
-            #include "../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-#include <java/util/Hashtable.h>
-
-      
 #include <org/allbinary/ai/ArtificialIntelligenceInterface.h>
 
       
@@ -58,6 +55,9 @@
 #include <org/allbinary/layer/AllBinaryLayer.h>
 
       
+#include <org/allbinary/util/ABHashtable.h>
+
+      
 
 
 
@@ -85,12 +85,12 @@ class TopUBoundBounceAIFactory
 
                 //@Throws(Exception.constructor)
             
-    public: ArtificialIntelligenceInterface getInstance(Hashtable<any, any> hashtable, AllBinaryLayer ownerLayerInterface, GameInput gameInput){
+    public: ArtificialIntelligenceInterface getInstance(ABHashtable<Object*, Object*> hashtable, AllBinaryLayer ownerLayerInterface, GameInput gameInput){
 
-    VelocityInterfaceCompositeInterface velocityInterfaceCompositeInterface = ownerLayerInterface as VelocityInterfaceCompositeInterface;;
+    VelocityInterfaceCompositeInterface velocityInterfaceCompositeInterface = ownerLayerInterface;;
     
 
-    VelocityInterface velocityInterface = velocityInterfaceCompositeInterface.getVelocityProperties() as VelocityInterface;;
+    VelocityInterface velocityInterface = velocityInterfaceCompositeInterface.getVelocityProperties();;
     
 
     int32_t maxDistancePerTick = (velocityInterface.getMaxForwardVelocity()>>velocityInterface.getVelocityXBasicDecimalP().getScaledFactor());;

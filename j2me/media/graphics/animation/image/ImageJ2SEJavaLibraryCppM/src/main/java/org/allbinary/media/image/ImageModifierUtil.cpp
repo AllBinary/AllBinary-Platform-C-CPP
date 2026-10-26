@@ -20,9 +20,9 @@
 
             #include <vector>
         
-            #include "../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/awt/image/BufferedImage.h>
 
@@ -91,7 +91,7 @@ class ImageModifierUtil
 }
 
 
-    private: const std::vector<int32_t> colorArray = new Array(1);
+    private: const std::vector<int32_t> colorArray = std::vector<int32_t>(1);
 
     public: void setColor(Image unusedOriginalImage, Image image, int32_t imageIndex, BasicColor basicColor){
 
@@ -302,7 +302,7 @@ raster.setPixel(index, index2, this->colorArray);
 
         try {
             
-    std::vector<Image> newImageArray = new Array(originalImageArray.length);;
+    std::vector<Image> newImageArray = std::vector<Image>(originalImageArray.length);;
     
 
     int32_t size = newImageArray.size();;
@@ -317,7 +317,7 @@ raster.setPixel(index, index2, this->colorArray);
                         for (
     int32_t index = 0;index < size; index++)
         {
-originalImage= originalImageArray[index]!;
+originalImage= originalImageArray[index];
     
 
     Image image = ImageCreationUtil::getInstance().createImageWH(originalImage.getWidth(), originalImage.getHeight());;

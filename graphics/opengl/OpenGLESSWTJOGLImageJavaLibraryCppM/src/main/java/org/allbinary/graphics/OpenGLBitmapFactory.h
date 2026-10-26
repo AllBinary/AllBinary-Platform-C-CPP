@@ -7,6 +7,8 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_OPENGLBITMAPFACTORY_H
         #define ORG_ALLBINARY_GRAPHICS_OPENGLBITMAPFACTORY_H
 
+            #include "java/lang/Exception.h"
+        
 #include <java/io/IOException.h>
 
       
@@ -14,6 +16,9 @@
 
       
 #include <javax/microedition/lcdui/Image.h>
+
+      
+#include <org/allbinary/image/ImageFactory.h>
 
       
 #include <org/allbinary/platform/graphics/PlatformBitmapBaseFactory.h>
@@ -68,7 +73,7 @@ private: Config(Object* bitmapConfig);
 
     public: OpenGLBitmap createBitmap(int32_t width, int32_t height, OpenGLBitmapFactory::Config config);
 
-                //@Throws(IOException.constructor)
+                //@Throws(Exception.constructor)
             
     public: OpenGLBitmap decodeStream(InputStream inputStream);
 

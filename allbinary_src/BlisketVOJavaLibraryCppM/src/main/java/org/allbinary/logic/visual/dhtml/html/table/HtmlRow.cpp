@@ -72,9 +72,9 @@ class HtmlRow: public HtmlTag {
     private: BasicArrayList htmlCellsVector;
 
 public: HtmlRow(std::string before, std::string after){
-this->before= before.toCharArray().slice(0, ).join('');
+this->before= std::string(before);
     
-this->after= after.toCharArray().slice(0, ).join('');
+this->after= std::string(after);
     
 this->htmlCellsVector= BasicArrayListD();
     
@@ -129,13 +129,13 @@ result += " ";
     int32_t i = 0;i < attributeSize; i++)
         {
 
-    std::string key = attributeKeys[i]! as string;;
+    std::string key = attributeKeys[i];;
     
 
-    std::string value = otherAttributes.get(key) as string;;
+    std::string value = otherAttributes.get(key);;
     
 
-                        if(true && value.compareTo(stringUtil.EMPTY_STRING) != 0)
+                        if(true && value.compare(stringUtil.EMPTY_STRING) != 0)
                         
                                     {
                                     result += key;

@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/game/input/event/GameKeyEvent.h>
 
@@ -49,8 +49,9 @@
 
 class RTSPlayerLeftGameInputProcessor: public RTSPlayerGameInputProcessor {
 
-public: RTSPlayerLeftGameInputProcessor(RTSPlayerGameInput rtsPlayerGameInput){
-            super(rtsPlayerGameInput);
+public: RTSPlayerLeftGameInputProcessor(RTSPlayerGameInput rtsPlayerGameInput) : RTSPlayerGameInputProcessor(rtsPlayerGameInput){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.

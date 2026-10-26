@@ -21,9 +21,9 @@
         #ifndef ORG_ALLBINARY_IMAGE_OPENGLES_OPENGLIMAGEFACTORY_H
         #define ORG_ALLBINARY_IMAGE_OPENGLES_OPENGLIMAGEFACTORY_H
 
-            #include "../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../java/lang/RuntimeException.h"
+            #include "java/lang/RuntimeException.h"
         
 #include <javax/microedition/lcdui/Image.h>
 

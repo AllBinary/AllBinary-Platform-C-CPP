@@ -18,9 +18,9 @@
 
 
 
-            #include "../../../../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/business/context/modules/storefront/StoreFrontFactory.h>
 
@@ -154,10 +154,10 @@ this->notifyUser();
     std::string adminEmailTextBody = "Order attempt: " +this->orderHistory.getId() +" Preprocessing by: " +this->user.getUserName();;
     
 
-    BasicEmailInfo adminBasicEmailInfo = AdminEmailInfo(adminEmailSubject, adminEmailTextBody) as BasicEmailInfo;;
+    BasicEmailInfo adminBasicEmailInfo = AdminEmailInfo(adminEmailSubject, adminEmailTextBody);;
     
 
-    BasicEmailInfo storeAdminBasicEmailInfo = StoreEmailInfo(this->storeFrontInterface, adminEmailSubject, adminEmailTextBody) as BasicEmailInfo;;
+    BasicEmailInfo storeAdminBasicEmailInfo = StoreEmailInfo(this->storeFrontInterface, adminEmailSubject, adminEmailTextBody);;
     
 
     EmailInfo storeAdminEmailInfo = EmailInfo(storeAdminBasicEmailInfo);;
@@ -217,7 +217,7 @@ adminUserEmailEventHandler.receiveEmailInfo(userEmailEventNameData, adminEmailIn
     std::string textBody = "Order attempt: " +this->orderHistory.getId() +" Preprocessing by: " +this->user.getUserName();;
     
 
-    BasicEmailInfo basicEmailInfo = StoreEmailInfo(this->storeFrontInterface, subject, textBody) as BasicEmailInfo;;
+    BasicEmailInfo basicEmailInfo = StoreEmailInfo(this->storeFrontInterface, subject, textBody);;
     
 
     EmailInfo emailInfo = EmailInfo(basicEmailInfo);;

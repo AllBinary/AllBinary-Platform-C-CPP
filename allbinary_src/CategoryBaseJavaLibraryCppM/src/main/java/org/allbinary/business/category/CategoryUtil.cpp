@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
 #include <org/allbinary/data/tree/dom/DomNodeHelper.h>
 
@@ -91,7 +91,7 @@ class CategoryUtil
     NamedNodeMap attributes = node.getAttributes();;
     
 
-    Attr attrNode = attributes.getNamedItem(CategoryData::getInstance().LABEL) as Attr;;
+    Attr attrNode = attributes.getNamedItem(CategoryData::getInstance().LABEL);;
     
 
                         if(attrNode != 

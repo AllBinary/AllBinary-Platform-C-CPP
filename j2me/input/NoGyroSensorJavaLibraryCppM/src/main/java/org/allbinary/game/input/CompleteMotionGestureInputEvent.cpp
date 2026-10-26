@@ -18,11 +18,8 @@
 
 
 
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-#include <jsinterop/annotations/JsType.h>
-
-      
 #include <org/allbinary/input/motion/gesture/MotionGestureInput.h>
 
       
@@ -39,15 +36,6 @@
 
       
 #include <org/allbinary/string/CommonStrings.h>
-
-      
-#include <jsinterop/annotations/JsMethod.h>
-
-      
-#include <jsinterop/annotations/JsConstructor.h>
-
-      
-#include <jsinterop/annotations/JsProperty.h>
 
       
 
@@ -78,8 +66,9 @@ class CompleteMotionGestureInputEvent: public AllBinaryEventObject, public Compl
 
     private: MotionGestureInput motionGestureInput = TouchMotionGestureFactory::getInstance().NO_MOTION;
 
-public: CompleteMotionGestureInputEvent(std::string name, MotionGestureInput motionGestureInput){
-            super(motionGestureInput);
+public: CompleteMotionGestureInputEvent(std::string name, MotionGestureInput motionGestureInput) : AllBinaryEventObject(motionGestureInput){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.

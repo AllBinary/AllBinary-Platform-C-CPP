@@ -18,11 +18,8 @@
 
 
 
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-#include <jsinterop/annotations/JsType.h>
-
-      
 #include <javax/microedition/lcdui/Font.h>
 
       
@@ -87,15 +84,6 @@
 
       
 #include <org/allbinary/graphics/threed/SWTJOGLProcessor.h>
-
-      
-#include <jsinterop/annotations/JsMethod.h>
-
-      
-#include <jsinterop/annotations/JsConstructor.h>
-
-      
-#include <jsinterop/annotations/JsProperty.h>
 
       
 
@@ -269,7 +257,7 @@ this->rectangle= rectangle;
                                 
                         else {
                             
-    RectangleFilledAnimation rectangleFilledAnimation = this->animationInterface as RectangleFilledAnimation;;
+    RectangleFilledAnimation rectangleFilledAnimation = this->animationInterface;;
     
 rectangleFilledAnimation.setWidth(width);
     

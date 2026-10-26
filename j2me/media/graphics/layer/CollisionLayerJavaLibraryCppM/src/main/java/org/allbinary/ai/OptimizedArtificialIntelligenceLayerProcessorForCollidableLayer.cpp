@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/game/layer/CollidableCompositeLayer.h>
 
@@ -54,8 +54,9 @@
 
 class OptimizedArtificialIntelligenceLayerProcessorForCollidableLayer: public LayerProcessor {
 
-public: OptimizedArtificialIntelligenceLayerProcessorForCollidableLayer(){
-            super(OptimizedArtificialIntelligenceLayerManager());
+public: OptimizedArtificialIntelligenceLayerProcessorForCollidableLayer() : LayerProcessor(OptimizedArtificialIntelligenceLayerManager()){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -67,7 +68,7 @@ public: OptimizedArtificialIntelligenceLayerProcessorForCollidableLayer(){
             
     public: void processAt(AllBinaryLayerManager allBinaryLayerManager, AllBinaryLayer layerInterface, int32_t index){
 
-    CollidableCompositeLayer artificialIntelligenceCompositeInterface = layerInterface as CollidableCompositeLayer;;
+    CollidableCompositeLayer artificialIntelligenceCompositeInterface = layerInterface;;
     
 artificialIntelligenceCompositeInterface.getArtificialIntelligenceInterface().processAI(allBinaryLayerManager);
     

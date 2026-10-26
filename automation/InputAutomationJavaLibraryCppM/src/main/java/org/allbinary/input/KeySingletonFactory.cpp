@@ -20,16 +20,13 @@
 
             #include <vector>
         
-            #include "../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../java/lang/Integer.h"
+            #include "java/lang/Integer.h"
         
 #include <java/awt/event/KeyEvent.h>
-
-      
-#include <java/util/Hashtable.h>
 
       
 #include <org/allbinary/logic/StdUtil.h>
@@ -39,6 +36,9 @@
 
       
 #include <org/allbinary/string/CommonStrings.h>
+
+      
+#include <org/allbinary/util/ABHashtable.h>
 
       
 
@@ -64,7 +64,7 @@ class KeySingletonFactory
             : public Object
          {
 
-    private: static Hashtable<any, any> keyStringHashtable = StdUtil::getInstance().createHashtable();
+    private: static ABHashtable<Object*, Object*> keyStringHashtable = StdUtil::getInstance().createHashtable();
 
     private: static std::vector<Integer> keyArray = 
                                                         {
@@ -93,9 +93,9 @@ class KeySingletonFactory
     int32_t index = 0;index < keyArray.size(); index++)
         {
 
-    std::string keyAsString = KeyEvent::getKeyText(keyArray[index]!);;
+    std::string keyAsString = KeyEvent::getKeyText(keyArray[index]);;
     
-KeySingletonFactory::keyStringHashtable.put(keyAsString, keyArray[index]!);
+KeySingletonFactory::keyStringHashtable.put(keyAsString, keyArray[index]);
     
 }
 
@@ -112,7 +112,7 @@ logUtil.put(commonStrings.EXCEPTION, "KeySingleFactory", STATIC_BLOCK, e);
                     return 0;
                 }
             
-    public: static Hashtable<any, any> getHashtable(){
+    public: static ABHashtable<Object*, Object*> getHashtable(){
 
 
 

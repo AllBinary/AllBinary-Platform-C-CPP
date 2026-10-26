@@ -21,13 +21,10 @@
         #ifndef ORG_ALLBINARY_IMAGE_ANIMATIONFACTORYIMAGESCALEUTIL_H
         #define ORG_ALLBINARY_IMAGE_ANIMATIONFACTORYIMAGESCALEUTIL_H
 
-            #include "../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-#include <jsinterop/annotations/JsType.h>
-
-      
 #include <javax/microedition/lcdui/Image.h>
 
       
@@ -37,13 +34,22 @@
 #include <org/allbinary/animation/image/BaseImageAnimationFactory.h>
 
       
+#include <org/allbinary/logic/communication/log/LogUtil.h>
+
+      
+#include <org/allbinary/logic/string/StringMaker.h>
+
+      
 #include <org/allbinary/media/ScaleProperties.h>
 
       
 #include <org/allbinary/media/image/ImageJ2MEScaleUtil.h>
 
       
-#include <jsinterop/annotations/JsMethod.h>
+#include <org/allbinary/string/CommonLabels.h>
+
+      
+#include <org/allbinary/string/CommonStrings.h>
 
       
 

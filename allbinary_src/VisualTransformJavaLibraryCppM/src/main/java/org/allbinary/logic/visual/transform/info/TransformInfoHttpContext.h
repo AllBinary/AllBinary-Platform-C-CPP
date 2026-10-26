@@ -21,7 +21,7 @@
         #ifndef ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_INFO_TRANSFORMINFOHTTPCONTEXT_H
         #define ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_INFO_TRANSFORMINFOHTTPCONTEXT_H
 
-            #include "../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
 
@@ -74,9 +74,9 @@ class TransformInfoHttpContext: public TransformInfoHttp {
 
     protected: const LogUtil logUtil = LogUtil::getInstance();
 
-public: TransformInfoHttpContext(HashMap<any, any> databaseHashMap, HashMap<any, any> propertiesHashMap, PageContext pageContext);
+public: TransformInfoHttpContext(HashMap<Object*, Object*> databaseHashMap, HashMap<Object*, Object*> propertiesHashMap, PageContext pageContext);
 
-public: TransformInfoHttpContext(HashMap<any, any> propertiesHashMap, PageContext pageContext);
+public: TransformInfoHttpContext(HashMap<Object*, Object*> propertiesHashMap, PageContext pageContext);
 
                 //@Throws(Exception.constructor)
             

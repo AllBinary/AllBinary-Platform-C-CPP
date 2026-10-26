@@ -40,9 +40,10 @@
 
 class UserDbInitInfo: public DbInitInfo {
 
-public: UserDbInitInfo(){
-            super(
-                            nullptr, false);
+public: UserDbInitInfo() : DbInitInfo(
+                            nullptr, false){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -50,9 +51,10 @@ public: UserDbInitInfo(){
 }
 
 
-public: UserDbInitInfo(bool read){
-            super(
-                            nullptr, false);
+public: UserDbInitInfo(bool read) : DbInitInfo(
+                            nullptr, false){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.

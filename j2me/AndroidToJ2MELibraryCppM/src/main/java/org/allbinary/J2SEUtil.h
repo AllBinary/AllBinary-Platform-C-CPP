@@ -23,7 +23,7 @@
 
             #include <vector>
         
-            #include "../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
 #include <java/util/HashMap.h>
 
@@ -61,11 +61,11 @@ class J2SEUtil
 
     public: static J2SEUtil getInstance();
 
-    public: std::vector<Object*> getHashMapAsArray(HashMap<any, any> hashMap);
+    public: std::vector<Object*> getHashMapAsArray(HashMap<Object*, Object*> hashMap);
 
-    public: std::vector<Object*> getMapAsArray(Map<any, any> map);
+    public: std::vector<Object*> getMapAsArray(Map<Object*, Object*> map);
 
-    public: std::vector<Object*> getSetAsArray(Set<string> set);
+    public: std::vector<Object*> getSetAsArray(Set<std::string> set);
 
 };
 

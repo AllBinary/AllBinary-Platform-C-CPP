@@ -21,7 +21,7 @@
         #ifndef ORG_ALLBINARY_BUSINESS_ENTRY_ENTRYDATA_H
         #define ORG_ALLBINARY_BUSINESS_ENTRY_ENTRYDATA_H
 
-            #include "../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
 
 

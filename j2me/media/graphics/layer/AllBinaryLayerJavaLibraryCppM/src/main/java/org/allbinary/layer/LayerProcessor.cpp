@@ -18,23 +18,11 @@
 
 
 
-            #include "../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-#include <jsinterop/annotations/JsType.h>
-
-      
 #include <org/allbinary/string/CommonStrings.h>
-
-      
-#include <jsinterop/annotations/JsMethod.h>
-
-      
-#include <jsinterop/annotations/JsConstructor.h>
-
-      
-#include <jsinterop/annotations/JsProperty.h>
 
       
 
@@ -122,7 +110,7 @@ this->layerManager= layerManager;
                         for (
     int32_t index = 0;index < size; index++)
         {
-this->processAt(allBinaryLayerManager, layerManager.getLayerAt(index) as AllBinaryLayer, index);
+this->processAt(allBinaryLayerManager, layerManager.getLayerAt(index), index);
     
 }
 

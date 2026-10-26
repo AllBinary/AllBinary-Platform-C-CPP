@@ -21,11 +21,8 @@
         #ifndef ORG_ALLBINARY_GAME_LAYER_WEAPON_WEAPONLAYERCIRCULARPOOL_H
         #define ORG_ALLBINARY_GAME_LAYER_WEAPON_WEAPONLAYERCIRCULARPOOL_H
 
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-#include <jsinterop/annotations/JsType.h>
-
-      
 #include <org/allbinary/game/combat/weapon/WeaponProperties.h>
 
       
@@ -36,12 +33,6 @@
 
       
 #include <org/allbinary/layer/AllBinaryLayerCircularPool.h>
-
-      
-#include <jsinterop/annotations/JsMethod.h>
-
-      
-#include <jsinterop/annotations/JsConstructor.h>
 
       
 

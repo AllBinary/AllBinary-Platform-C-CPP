@@ -21,9 +21,9 @@
         #ifndef ADMIN_TAGHELPERS_CUSTOMLOADERHELPER_H
         #define ADMIN_TAGHELPERS_CUSTOMLOADERHELPER_H
 
-            #include "../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
 
@@ -70,7 +70,7 @@ class CustomLoaderHelper
 
     protected: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-public: CustomLoaderHelper(HashMap<any, any> hashMap, PageContext pageContext);
+public: CustomLoaderHelper(HashMap<Object*, Object*> hashMap, PageContext pageContext);
 
 public: CustomLoaderHelper();
 

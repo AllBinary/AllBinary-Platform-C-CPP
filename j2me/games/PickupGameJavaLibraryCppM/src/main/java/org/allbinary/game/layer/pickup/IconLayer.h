@@ -21,9 +21,6 @@
         #ifndef ORG_ALLBINARY_GAME_LAYER_PICKUP_ICONLAYER_H
         #define ORG_ALLBINARY_GAME_LAYER_PICKUP_ICONLAYER_H
 
-#include <jsinterop/annotations/JsType.h>
-
-      
 #include <javax/microedition/lcdui/Graphics.h>
 
       
@@ -46,15 +43,6 @@
 
       
 #include <org/allbinary/view/ViewPosition.h>
-
-      
-#include <jsinterop/annotations/JsMethod.h>
-
-      
-#include <jsinterop/annotations/JsConstructor.h>
-
-      
-#include <jsinterop/annotations/JsProperty.h>
 
       
 

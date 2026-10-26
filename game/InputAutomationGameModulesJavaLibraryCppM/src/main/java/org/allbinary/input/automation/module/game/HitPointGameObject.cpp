@@ -20,9 +20,9 @@
 
             #include <vector>
         
-            #include "../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../../../../java/lang/Integer.h"
+            #include "java/lang/Integer.h"
         
 #include <java/awt/image/BufferedImage.h>
 
@@ -66,14 +66,15 @@ class HitPointGameObject: public MeteredGameObject, public HitPointGameObjectInt
 
     private: const std::string IS_CLOSE_DEATH_LABEL = "isCloseDeath: ";
 
-public: HitPointGameObject(std::vector<BufferedImage> bufferedImage, Integer minX, Integer maxX, Integer y){
-            super(bufferedImage, minX, maxX, y);
+public: HitPointGameObject(std::vector<BufferedImage> bufferedImage, Integer minX, Integer maxX, Integer y) : MeteredGameObject(bufferedImage, minX, maxX, y){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
                     
 
-                        if(this->getRatios()[bufferedImage.size() -1]!.doubleValue() < 1.0F)
+                        if(this->getRatios()[bufferedImage.size() -1].doubleValue() < 1.0F)
                         
                                     {
                                     this->setDamaged(true);
@@ -88,7 +89,7 @@ public: HitPointGameObject(std::vector<BufferedImage> bufferedImage, Integer min
                         }
                             
 
-                        if(this->getRatios()[bufferedImage.size() -1]!.doubleValue() > 0.25F)
+                        if(this->getRatios()[bufferedImage.size() -1].doubleValue() > 0.25F)
                         
                                     {
                                     this->closeDeath= false;
@@ -107,7 +108,7 @@ public: HitPointGameObject(std::vector<BufferedImage> bufferedImage, Integer min
 
     public: bool isMoreThan(float aFloat){
 
-                        if(this->getRatios()[this->getRatios().length -1]!.doubleValue() > aFloat)
+                        if(this->getRatios()[this->getRatios().length -1].doubleValue() > aFloat)
                         
                                     {
                                     

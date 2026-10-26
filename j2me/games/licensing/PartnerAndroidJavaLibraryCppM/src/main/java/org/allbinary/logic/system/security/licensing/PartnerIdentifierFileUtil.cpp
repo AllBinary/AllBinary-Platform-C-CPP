@@ -20,9 +20,9 @@
 
             #include <vector>
         
-            #include "../../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/io/InputStream.h>
 
@@ -94,10 +94,7 @@ class PartnerIdentifierFileUtil
     InputStreamReader inputStreamReader = InputStreamReader(inputStream);;
     
 
-    std::vector<char> chars = 
-                                                        
-                                                        std::vector<char>(30)
-                                                    ;;
+    std::vector<char> chars = std::vector<char>(30);;
     
 
     int32_t size = inputStreamReader.read(chars);;

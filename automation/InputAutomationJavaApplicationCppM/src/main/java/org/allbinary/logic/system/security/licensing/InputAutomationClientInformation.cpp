@@ -40,8 +40,9 @@
 
 class InputAutomationClientInformation: public AbeClientInformation {
 
-public: InputAutomationClientInformation(){
-            super("InputAutomationTool", "0.0.1", "InputAutomationTool 0.0.1", "IA");
+public: InputAutomationClientInformation() : AbeClientInformation("InputAutomationTool", "0.0.1", "InputAutomationTool 0.0.1", "IA"){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.

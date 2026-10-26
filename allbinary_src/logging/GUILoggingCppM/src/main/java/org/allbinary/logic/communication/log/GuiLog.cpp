@@ -18,11 +18,11 @@
 
 
 
-            #include "../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../../../java/lang/System.h"
+            #include "java/lang/System.h"
         
 #include <java/awt.h>
 
@@ -150,7 +150,7 @@ error.show();
 
         try {
             
-    std::string data = this->logFormatUtil.get(specialMessage, anyType->constructor.name.toString()!, functionName, exception);;
+    std::string data = this->logFormatUtil.get(specialMessage, anyType->constructor.name.toString(), functionName, exception);;
     
 this->showDialog(data);
     

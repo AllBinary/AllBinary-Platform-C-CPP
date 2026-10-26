@@ -21,9 +21,9 @@
         #ifndef ORG_ALLBINARY_DATA_TABLES_GENERATOR_IDGENERATORENTITYINTERFACE_H
         #define ORG_ALLBINARY_DATA_TABLES_GENERATOR_IDGENERATORENTITYINTERFACE_H
 
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../../../java/lang/Long.h"
+            #include "java/lang/Long.h"
         
 #include <java/util/HashMap.h>
 
@@ -66,7 +66,7 @@ class IdGeneratorEntityInterface: public BasicDataTableInterface {
 
     void insert(BasicArrayList values);
 
-    void update(HashMap<any, any> updatedValues);
+    void update(HashMap<Object*, Object*> updatedValues);
 
 };
 

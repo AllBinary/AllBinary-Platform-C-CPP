@@ -4,13 +4,13 @@
 
 
 
-            #include "../../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../../../../java/lang/Runtime.h"
+            #include "java/lang/Runtime.h"
         
-            #include "../../../../../../java/lang/System.h"
+            #include "java/lang/System.h"
         
 #include <java/io/BufferedReader.h>
 
@@ -119,7 +119,7 @@ public: RuntimeEnvironmentVariables(){
     OperatingSystems operatingSystems = OperatingSystems::getInstance();;
     
 
-                        if(osName.compareTo(operatingSystems.LINUX) == 0)
+                        if(osName.compare(operatingSystems.LINUX) == 0)
                         
                                     {
                                     process= Runtime::getRuntime().exec(linuxCommand);
@@ -137,7 +137,7 @@ public: RuntimeEnvironmentVariables(){
                                     }
                                 
                              else 
-                        if(osName.compareTo(operatingSystems.SOLARIS) == 0)
+                        if(osName.compare(operatingSystems.SOLARIS) == 0)
                         
                                     {
                                     process= Runtime::getRuntime().exec(solarisCommand);
@@ -442,7 +442,7 @@ System.setProperty("java.library.path", libPath +":" +existingPath);
     std::string windowsCommand = "cmd.exe /c set" +var +"=" +val;;
     
 
-                        if(osName.compareTo(operatingSystems.LINUX) == 0)
+                        if(osName.compare(operatingSystems.LINUX) == 0)
                         
                                     {
                                     
@@ -463,7 +463,7 @@ System.setProperty("java.library.path", libPath +":" +existingPath);
                                     }
                                 
                              else 
-                        if(osName.compareTo(operatingSystems.SOLARIS) == 0)
+                        if(osName.compare(operatingSystems.SOLARIS) == 0)
                         
                                     {
                                     

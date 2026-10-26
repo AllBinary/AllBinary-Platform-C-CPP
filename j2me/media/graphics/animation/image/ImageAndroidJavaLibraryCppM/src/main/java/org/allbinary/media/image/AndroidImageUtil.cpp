@@ -20,7 +20,7 @@
 
             #include <hilog/log.h>
         
-            #include "../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
 #include <android/graphics/Bitmap.h>
 
@@ -93,7 +93,7 @@ canvas.drawBitmap(originalBitmap, 0.0, 0.0, paint);
 
     public: void paint(Image image, Image originalImage, Paint paint){
 
-    AndroidImageInterface androidImage = image as AndroidImageInterface;;
+    AndroidImageInterface androidImage = image;;
     
 androidImage.getBitmap().eraseColor(Color::TRANSPARENT);
     
@@ -101,7 +101,7 @@ androidImage.getBitmap().eraseColor(Color::TRANSPARENT);
     Canvas canvas = androidImage.getCanvas();;
     
 
-    AndroidImageInterface originalAndroidImage = originalImage as AndroidImageInterface;;
+    AndroidImageInterface originalAndroidImage = originalImage;;
     
 canvas.drawBitmap(originalAndroidImage.getBitmap(), 0.0, 0.0, paint);
     
@@ -110,7 +110,7 @@ canvas.drawBitmap(originalAndroidImage.getBitmap(), 0.0, 0.0, paint);
 
     public: void rotate(Image image, Image originalImage, Matrix matrix, Paint paint){
 
-    AndroidImageInterface androidImage = image as AndroidImageInterface;;
+    AndroidImageInterface androidImage = image;;
     
 androidImage.getBitmap().eraseColor(Color::TRANSPARENT);
     
@@ -120,7 +120,7 @@ androidImage.getBitmap().eraseColor(Color::TRANSPARENT);
 canvas.concat(matrix);
     
 
-    AndroidImageInterface originalAndroidImage = originalImage as AndroidImageInterface;;
+    AndroidImageInterface originalAndroidImage = originalImage;;
     
 canvas.drawBitmap(originalAndroidImage.getBitmap(), 0.0, 0.0, paint);
     

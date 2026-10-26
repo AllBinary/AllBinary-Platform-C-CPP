@@ -21,7 +21,7 @@
         #ifndef ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_INFO_OBJECTCONFIG_GENERICSTORETRANSFORMINFOOBJECTCONFIG_H
         #define ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_INFO_OBJECTCONFIG_GENERICSTORETRANSFORMINFOOBJECTCONFIG_H
 
-            #include "../../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
 
@@ -30,6 +30,9 @@
 
       
 #include <org/allbinary/data/tree/dom/document/DomDocumentHelper.h>
+
+      
+#include <org/allbinary/data/tree/dom/document/XmlDocumentHelper.h>
 
       
 #include <org/allbinary/logic/StdUtil.h>
@@ -116,15 +119,15 @@ public: GenericStoreTransformInfoObjectConfig(Object abeClientInformation, Objec
 
                 //@Throws(Exception.constructor)
             
-    private: HashMap<any, any> createReplaceHashMap(TransformInfoHttp transformInfoHttpStoreInterface, std::string objectConfigDocumentString);
+    private: HashMap<Object*, Object*> createReplaceHashMap(TransformInfoHttp transformInfoHttpStoreInterface, std::string objectConfigDocumentString);
 
                 //@Throws(Exception.constructor)
             
-    private: HashMap<any, any> createHashMap(TransformInfoHttp transformInfoHttpStoreInterface, std::string objectConfigDocumentString);
+    private: HashMap<Object*, Object*> createHashMap(TransformInfoHttp transformInfoHttpStoreInterface, std::string objectConfigDocumentString);
 
                 //@Throws(Exception.constructor)
             
-    private: Document generate(std::string objectConfigDocumentString, HashMap<any, any> hashMap);
+    private: Document generate(std::string objectConfigDocumentString, HashMap<Object*, Object*> hashMap);
 
 };
 

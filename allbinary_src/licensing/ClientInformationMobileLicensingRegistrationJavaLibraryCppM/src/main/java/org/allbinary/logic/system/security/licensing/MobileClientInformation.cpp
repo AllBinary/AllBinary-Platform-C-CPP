@@ -18,14 +18,8 @@
 
 
 
-            #include "../../../../../../java/lang/Integer.h"
+            #include "java/lang/Integer.h"
         
-#include <jsinterop/annotations/JsType.h>
-
-      
-#include <java/util/Hashtable.h>
-
-      
 #include <org/allbinary/logic/string/StringMaker.h>
 
       
@@ -38,13 +32,7 @@
 #include <org/allbinary/string/CommonStrings.h>
 
       
-#include <jsinterop/annotations/JsMethod.h>
-
-      
-#include <jsinterop/annotations/JsConstructor.h>
-
-      
-#include <jsinterop/annotations/JsProperty.h>
+#include <org/allbinary/util/ABHashtable.h>
 
       
 
@@ -74,8 +62,9 @@ class MobileClientInformation: public AbeClientInformation {
 
     protected: static const std::string ANDROID_DESC = "Android" +MobileClientInformation::DESC;
 
-public: MobileClientInformation(std::string name, std::string version, std::string specialName, std::string shortName){
-            super(name, version, StringMaker().append(specialName).append(CommonSeps::getInstance().SPACE).append(PartnerIdentifierFileUtil::getInstance().get()).toString(), shortName);
+public: MobileClientInformation(std::string name, std::string version, std::string specialName, std::string shortName) : AbeClientInformation(name, version, StringMaker().append(specialName).append(CommonSeps::getInstance().SPACE).append(PartnerIdentifierFileUtil::getInstance().get()).toString(), shortName){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -118,9 +107,9 @@ public: MobileClientInformation(std::string name, std::string version, std::stri
 }
 
 
-    public: Hashtable<any, any> toHashtable(){
+    public: ABHashtable<Object*, Object*> toHashtable(){
 
-    Hashtable<any, any> hashtable = super.toHashtable();;
+    ABHashtable<Object*, Object*> hashtable = super.toHashtable();;
     
 
     RegistrationConfiguration registrationConfiguration = RegistrationConfiguration::getInstance();;

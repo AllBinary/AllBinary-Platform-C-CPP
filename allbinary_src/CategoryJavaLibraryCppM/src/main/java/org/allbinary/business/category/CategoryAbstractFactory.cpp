@@ -18,11 +18,11 @@
 
 
 
-            #include "../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../../java/lang/RuntimeException.h"
+            #include "java/lang/RuntimeException.h"
         
 #include <java/util/HashMap.h>
 
@@ -119,13 +119,13 @@ public: CategoryAbstractFactory(){
                                     }
                                 
 
-    CategoryPropertiesFactoryInterface categoryPropertiesFactoryInterface = CategoryPropertiesFactory(categoryName) as CategoryPropertiesFactoryInterface;;
+    CategoryPropertiesFactoryInterface categoryPropertiesFactoryInterface = CategoryPropertiesFactory(categoryName);;
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return Category(categoryPropertiesFactoryInterface) as CategoryInterface;
+                        return Category(categoryPropertiesFactoryInterface);
     
 
                 //: 
@@ -164,13 +164,13 @@ public: CategoryAbstractFactory(){
                                     }
                                 
 
-    CategoryPropertiesFactoryInterface categoryPropertiesFactoryInterface = CategoryPropertiesFactory(categoryName) as CategoryPropertiesFactoryInterface;;
+    CategoryPropertiesFactoryInterface categoryPropertiesFactoryInterface = CategoryPropertiesFactory(categoryName);;
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return Category(rootCategoryInterface, parentCategoryInterface, categoryPropertiesFactoryInterface) as CategoryInterface;
+                        return Category(rootCategoryInterface, parentCategoryInterface, categoryPropertiesFactoryInterface);
     
 
                 //: 
@@ -209,13 +209,13 @@ public: CategoryAbstractFactory(){
                                     }
                                 
 
-    CategoryPropertiesFactoryInterface categoryPropertiesFactoryInterface = CategoryPropertiesFactory(node) as CategoryPropertiesFactoryInterface;;
+    CategoryPropertiesFactoryInterface categoryPropertiesFactoryInterface = CategoryPropertiesFactory(node);;
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return Category(categoryPropertiesFactoryInterface) as CategoryInterface;
+                        return Category(categoryPropertiesFactoryInterface);
     
 
                 //: 
@@ -254,13 +254,13 @@ public: CategoryAbstractFactory(){
                                     }
                                 
 
-    CategoryPropertiesFactoryInterface categoryPropertiesFactoryInterface = CategoryPropertiesFactory(node) as CategoryPropertiesFactoryInterface;;
+    CategoryPropertiesFactoryInterface categoryPropertiesFactoryInterface = CategoryPropertiesFactory(node);;
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return Category(rootCategoryInterface, parentCategoryInterface, categoryPropertiesFactoryInterface) as CategoryInterface;
+                        return Category(rootCategoryInterface, parentCategoryInterface, categoryPropertiesFactoryInterface);
     
 
                 //: 
@@ -286,7 +286,7 @@ public: CategoryAbstractFactory(){
 }
 
 
-    public: CategoryInterface getInstance(CategoryInterface rootCategoryInterface, CategoryInterface parentCategoryInterface, HashMap<any, any> categoryPropertiesHashMap){
+    public: CategoryInterface getInstance(CategoryInterface rootCategoryInterface, CategoryInterface parentCategoryInterface, HashMap<Object*, Object*> categoryPropertiesHashMap){
 
         try {
             
@@ -299,13 +299,13 @@ public: CategoryAbstractFactory(){
                                     }
                                 
 
-    CategoryPropertiesFactoryInterface categoryPropertiesFactoryInterface = CategoryPropertiesFactory(categoryPropertiesHashMap) as CategoryPropertiesFactoryInterface;;
+    CategoryPropertiesFactoryInterface categoryPropertiesFactoryInterface = CategoryPropertiesFactory(categoryPropertiesHashMap);;
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return Category(rootCategoryInterface, parentCategoryInterface, categoryPropertiesFactoryInterface) as CategoryInterface;
+                        return Category(rootCategoryInterface, parentCategoryInterface, categoryPropertiesFactoryInterface);
     
 
                 //: 

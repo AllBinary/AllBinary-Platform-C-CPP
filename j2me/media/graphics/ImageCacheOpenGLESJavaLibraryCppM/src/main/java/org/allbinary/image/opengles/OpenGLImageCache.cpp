@@ -18,9 +18,9 @@
 
 
 
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../../java/lang/RuntimeException.h"
+            #include "java/lang/RuntimeException.h"
         
 #include <java/io/InputStream.h>
 
@@ -97,7 +97,7 @@ public: OpenGLImageCache(){
 
 
     public: void addListener(Object* renderer){
-this->renderer= renderer as AllBinaryRendererBase3;
+this->renderer= *dynamic_cast<AllBinaryRendererBase3*>(renderer);
     
 }
 
@@ -122,7 +122,7 @@ this->gl= gl;
     int32_t index = this->list.size() -1;index >= 0; index--)
         {
 
-    OpenGLESImage openGLESImage = (this->list.objectArray[index]! as OpenGLESImage);;
+    OpenGLESImage openGLESImage = (this->list.objectArray[index]);;
     
 
                         if(openGLESImage != OpenGLESImage::NULL_OPENGL_IMAGE)

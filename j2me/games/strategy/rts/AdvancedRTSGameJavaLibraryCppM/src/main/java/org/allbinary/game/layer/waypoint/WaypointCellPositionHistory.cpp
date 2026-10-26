@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
 #include <org/allbinary/util/BasicArrayList.h>
 
@@ -87,7 +87,7 @@ this->layerList.add(layerInterface);
                         for (
     int32_t index = list.size() -1;index >= 0; index--)
         {
-this->add(list.get(index) as CellPosition, layerInterface);
+this->add(list.get(index), layerInterface);
     
 }
 
@@ -164,7 +164,7 @@ this->layerList.clear();
     int32_t index = list.size() -1;index >= 0; index--)
         {
 
-                        if(this->isCellPositionWithDrop(list.get(index) as CellPosition))
+                        if(this->isCellPositionWithDrop(list.get(index)))
                         
                                     {
                                     
@@ -199,7 +199,7 @@ this->layerList.clear();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->layerList.get(index) as AllBinaryLayer;
+                        return this->layerList.get(index);
     
 
                                     }

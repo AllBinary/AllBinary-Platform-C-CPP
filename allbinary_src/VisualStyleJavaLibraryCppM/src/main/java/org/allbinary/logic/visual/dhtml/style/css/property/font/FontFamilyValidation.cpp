@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/logic/communication/log/LogUtil.h>
 
@@ -59,8 +59,9 @@ class FontFamilyValidation: public FontFamilyView, public ValidationInterface {
 
     protected: const LogUtil logUtil = LogUtil::getInstance();
 
-public: FontFamilyValidation(){
-            super();
+public: FontFamilyValidation() : FontFamilyView(){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -68,8 +69,9 @@ public: FontFamilyValidation(){
 }
 
 
-public: FontFamilyValidation(Node node){
-            super(node);
+public: FontFamilyValidation(Node node) : FontFamilyView(node){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.

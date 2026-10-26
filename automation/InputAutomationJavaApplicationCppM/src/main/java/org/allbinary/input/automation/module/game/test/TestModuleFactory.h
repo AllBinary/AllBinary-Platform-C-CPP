@@ -21,7 +21,7 @@
         #ifndef ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_GAME_TEST_TESTMODULEFACTORY_H
         #define ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_GAME_TEST_TESTMODULEFACTORY_H
 
-            #include "../../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <javax/swing.h>
 

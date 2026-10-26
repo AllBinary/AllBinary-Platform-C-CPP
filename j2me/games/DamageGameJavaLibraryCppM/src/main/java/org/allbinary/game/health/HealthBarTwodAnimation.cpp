@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <javax/microedition/lcdui/Graphics.h>
 
@@ -48,8 +48,9 @@
 
 class HealthBarTwodAnimation: public HealthBarAnimation {
 
-public: HealthBarTwodAnimation(AllBinaryLayer layerInterface, int32_t location){
-            super(layerInterface, location);
+public: HealthBarTwodAnimation(AllBinaryLayer layerInterface, int32_t location) : HealthBarAnimation(layerInterface, location){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.

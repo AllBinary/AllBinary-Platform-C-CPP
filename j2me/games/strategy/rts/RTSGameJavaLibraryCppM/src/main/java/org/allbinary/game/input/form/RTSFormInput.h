@@ -23,13 +23,10 @@
 
             #include <vector>
         
-            #include "../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-#include <java/util/Hashtable.h>
-
-      
 #include <org/allbinary/game/identification/GroupCommonFactory.h>
 
       
@@ -87,6 +84,9 @@
 #include <org/allbinary/media/graphics/geography/map/SimpleGeographicMapCellPositionFactory.h>
 
       
+#include <org/allbinary/util/ABHashtable.h>
+
+      
 
 
 
@@ -114,9 +114,9 @@ class RTSFormInput
 
     private: const GroupCommonFactory groupCommonFactory = GroupCommonFactory::getInstance();
 
-    private: const Hashtable<any, any> hashtable = StdUtil::getInstance().createHashtable();
+    private: const ABHashtable<Object*, Object*> hashtable = StdUtil::getInstance().createHashtable();
 
-    protected: const std::vector<CollidableDestroyableDamageableLayer> newUnconstructedRTSLayerInterfaceArray = new Array(7);
+    protected: const std::vector<CollidableDestroyableDamageableLayer> newUnconstructedRTSLayerInterfaceArray = std::vector<CollidableDestroyableDamageableLayer>(7);
 
     protected: std::vector<Group> groupInterfaceArray;
 
@@ -182,7 +182,7 @@ public: RTSFormInput(std::vector<Group> groupInterfaceArray);
 
     public: void setSelectedStickyItemIndex(int32_t selectedStickyItemIndex);
 
-    public: Hashtable<any, any> getHashtable();
+    public: ABHashtable<Object*, Object*> getHashtable();
 
 };
 

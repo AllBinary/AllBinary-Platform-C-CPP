@@ -21,7 +21,7 @@
         #ifndef ORG_ALLBINARY_BOUNDS_EVENT_BOUNDSCHANGEEVENTHANDLER_H
         #define ORG_ALLBINARY_BOUNDS_EVENT_BOUNDSCHANGEEVENTHANDLER_H
 
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/logic/util/event/AllBinaryEventObject.h>
 

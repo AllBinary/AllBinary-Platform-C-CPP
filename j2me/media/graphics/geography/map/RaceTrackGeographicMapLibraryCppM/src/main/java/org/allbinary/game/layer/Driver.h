@@ -21,9 +21,9 @@
         #ifndef ORG_ALLBINARY_GAME_LAYER_DRIVER_H
         #define ORG_ALLBINARY_GAME_LAYER_DRIVER_H
 
-            #include "../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../java/lang/Integer.h"
+            #include "java/lang/Integer.h"
         
 #include <org/allbinary/logic/math/SmallIntegerSingletonFactory.h>
 

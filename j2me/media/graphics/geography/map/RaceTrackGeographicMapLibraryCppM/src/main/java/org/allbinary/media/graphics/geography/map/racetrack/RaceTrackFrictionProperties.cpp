@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
 #include <org/allbinary/game/physics/friction/FrictionData.h>
 

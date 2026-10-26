@@ -18,9 +18,9 @@
 
 
 
-            #include "../../../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../../../java/lang/System.h"
+            #include "java/lang/System.h"
         
 #include <org/allbinary/logic/string/StringMaker.h>
 
@@ -91,7 +91,7 @@ PreLogUtil::put(StringMaker().append("pathList.add(cellPositionFactory.getInstan
         {
 console.log(StringMaker().append(" Path ").appendint(index).append(CommonLabels::getInstance().COLON_SEP).toString());
     
-this->printPath(list.get(index) as BasicArrayList);
+this->printPath(list.get(index));
     
 }
 

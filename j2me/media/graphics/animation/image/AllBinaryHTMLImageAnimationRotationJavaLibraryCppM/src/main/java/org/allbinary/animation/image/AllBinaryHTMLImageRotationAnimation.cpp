@@ -20,7 +20,7 @@
 
             #include <vector>
         
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <javax/microedition/lcdui/Graphics.h>
 
@@ -85,9 +85,9 @@ class AllBinaryHTMLImageRotationAnimation: public ImageBaseRotationAnimation {
 
     private: Image originalImage;
 
-    private: const std::vector<Image> twoImages = new Array(2);
+    private: const std::vector<Image> twoImages = std::vector<Image>(2);
 
-    private: const std::vector<CanvasSurface> canvasSurfaceArray = new Array(2);
+    private: const std::vector<CanvasSurface> canvasSurfaceArray = std::vector<CanvasSurface>(2);
 
     private: Image imageToShow;
 
@@ -95,8 +95,9 @@ class AllBinaryHTMLImageRotationAnimation: public ImageBaseRotationAnimation {
 
     private: AlphaBaseProcessor alphaProcessor = AlphaBaseProcessor::getInstance();
 
-protected: AllBinaryHTMLImageRotationAnimation(Image originalImage, Image image, AngleInfo angleInfo, int16_t totalAngle, AnimationBehavior animationBehavior){
-            super(image, angleInfo, totalAngle, animationBehavior);
+protected: AllBinaryHTMLImageRotationAnimation(Image originalImage, Image image, AngleInfo angleInfo, int16_t totalAngle, AnimationBehavior animationBehavior) : ImageBaseRotationAnimation(image, angleInfo, totalAngle, animationBehavior){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -109,19 +110,19 @@ this->twoImages[0]= image;
     
 this->twoImages[1]= ImageCopyUtil::getInstance().createImage(image);
     
-this->canvasSurfaceArray[0]= this->getCanvasSurface(this->twoImages[0]!);
+this->canvasSurfaceArray[0]= this->getCanvasSurface(this->twoImages[0]);
     
-this->canvasSurfaceArray[1]= this->getCanvasSurface(this->twoImages[1]!);
+this->canvasSurfaceArray[1]= this->getCanvasSurface(this->twoImages[1]);
     
 }
 
 
     public: CanvasSurface getCanvasSurface(Image image){
 
-    PlaynMutableImage htmlImage = image as PlaynMutableImage;;
+    PlaynMutableImage htmlImage = image;;
     
 
-    CanvasImage canvasImage = htmlImage.getImage() as CanvasImage;;
+    CanvasImage canvasImage = htmlImage.getImage();;
     
 
     CanvasSurface canvasSurface = htmlImage.getCanvasSurface(canvasImage);;
@@ -217,9 +218,9 @@ this->updateImage();
     
 canvasSurface.save();
     
-this->imageRotationUtil.rotateImageCanvasSurfaceClear(this->originalImage, this->twoImages[this->bufferedImageIndex]!, canvasSurface, this->angleInfo.getAngle() +90);
+this->imageRotationUtil.rotateImageCanvasSurfaceClear(this->originalImage, this->twoImages[this->bufferedImageIndex], canvasSurface, this->angleInfo.getAngle() +90);
     
-this->alphaProcessor.setAlpha(this->imageModifierUtil, this->originalImage, this->twoImages[this->bufferedImageIndex]!, this->alphaP);
+this->alphaProcessor.setAlpha(this->imageModifierUtil, this->originalImage, this->twoImages[this->bufferedImageIndex], this->alphaP);
     
 this->imageRotationUtil.drawImage(this->originalImage, imageToShow, canvasSurface);
     
@@ -239,7 +240,7 @@ this->updateImage();
 
 
     public: void swap(){
-this->imageToShow= this->twoImages[this->bufferedImageIndex]!;
+this->imageToShow= this->twoImages[this->bufferedImageIndex];
     
 
                         if(this->bufferedImageIndex == 0)

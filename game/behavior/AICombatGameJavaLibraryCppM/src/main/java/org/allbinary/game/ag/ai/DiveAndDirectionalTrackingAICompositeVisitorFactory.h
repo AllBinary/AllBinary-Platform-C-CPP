@@ -21,7 +21,7 @@
         #ifndef ORG_ALLBINARY_GAME_AG_AI_DIVEANDDIRECTIONALTRACKINGAICOMPOSITEVISITORFACTORY_H
         #define ORG_ALLBINARY_GAME_AG_AI_DIVEANDDIRECTIONALTRACKINGAICOMPOSITEVISITORFACTORY_H
 
-            #include "../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
 #include <org/allbinary/logic/util/visitor/Visitor.h>
 

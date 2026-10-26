@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/logic/communication/log/LogUtil.h>
 
@@ -68,8 +68,9 @@ class EditTitleBodyValidationView: public TitleBodyCustomizerView, public Valida
 
     protected: const LogUtil logUtil = LogUtil::getInstance();
 
-public: EditTitleBodyValidationView(TransformInfoInterface transformInfoInterface){
-            super(transformInfoInterface);
+public: EditTitleBodyValidationView(TransformInfoInterface transformInfoInterface) : TitleBodyCustomizerView(transformInfoInterface){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.

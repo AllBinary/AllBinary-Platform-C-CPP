@@ -23,11 +23,11 @@
 
             #include <vector>
         
-            #include "../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../java/lang/Class.h"
+            #include "java/lang/Class.h"
         
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
 
@@ -85,7 +85,7 @@ private: DbWorkFlowFactory();
 
                 //@Throws(Exception.constructor, LicensingException.constructor)
             
-    public: WorkFlowInterface getInstance(AbeClientInformationInterface abeClientInformation, HashMap<any, any> hashMap);
+    public: WorkFlowInterface getInstance(AbeClientInformationInterface abeClientInformation, HashMap<Object*, Object*> hashMap);
 
 };
 

@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/data/tree/dom/document/DomDocumentHelper.h>
 
@@ -143,7 +143,7 @@ private: TransformInfoObjectConfigAndManipulatorFactory(){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return GenericStoreTransformInfoObjectConfig(abeClientInformation, transformInfoInterface) as TransformInfoObjectConfigInterface;
+                        return GenericStoreTransformInfoObjectConfig(abeClientInformation, transformInfoInterface);
     
 
                                     }
@@ -153,7 +153,7 @@ private: TransformInfoObjectConfigAndManipulatorFactory(){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return TransformInfoObjectConfig(transformInfoInterface) as TransformInfoObjectConfigInterface;
+                        return TransformInfoObjectConfig(transformInfoInterface);
     
 
                         }
@@ -213,7 +213,7 @@ private: TransformInfoObjectConfigAndManipulatorFactory(){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return GenericStoreTransformInfoObjectConfig(abeClientInformation, transformInfoInterface, document) as TransformInfoObjectConfigInterface;
+                        return GenericStoreTransformInfoObjectConfig(abeClientInformation, transformInfoInterface, document);
     
 
                                     }
@@ -223,7 +223,7 @@ private: TransformInfoObjectConfigAndManipulatorFactory(){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return TransformInfoObjectConfig(transformInfoInterface, document) as TransformInfoObjectConfigInterface;
+                        return TransformInfoObjectConfig(transformInfoInterface, document);
     
 
                         }

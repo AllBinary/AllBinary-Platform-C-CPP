@@ -21,7 +21,7 @@
         #ifndef ADMIN_TAGHELPERS_QUOTEREQUESTHELPERFACTORY_H
         #define ADMIN_TAGHELPERS_QUOTEREQUESTHELPERFACTORY_H
 
-            #include "../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
 
@@ -64,7 +64,7 @@ public: QuoteRequestHelperFactory();
 
                 //@Throws(LicensingException.constructor)
             
-    public: Object* getInstance(HashMap<any, any> hashMap, PageContext pageContext);
+    public: Object* getInstance(HashMap<Object*, Object*> hashMap, PageContext pageContext);
 
 };
 

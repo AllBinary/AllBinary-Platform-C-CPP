@@ -32,8 +32,9 @@ class BouncyCastleProvider: public Provider {
 
     public: static std::string PROVIDER_NAME = "BC";
 
-public: BouncyCastleProvider(){
-            super(BouncyCastleProvider::PROVIDER_NAME, 1.41, BouncyCastleProvider::info);
+public: BouncyCastleProvider() : Provider(BouncyCastleProvider::PROVIDER_NAME, 1.41, BouncyCastleProvider::info){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.

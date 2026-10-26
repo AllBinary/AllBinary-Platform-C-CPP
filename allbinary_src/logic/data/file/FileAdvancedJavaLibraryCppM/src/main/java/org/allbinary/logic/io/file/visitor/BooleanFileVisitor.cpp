@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
 #include <org/allbinary/logic/communication/log/PreLogUtil.h>
 
@@ -75,7 +75,7 @@ PreLogUtil::put("Filter BasicArrayList: " +this->getFilterStringBasicArrayList()
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->visit(anyType as AbFile);
+                        return this->visit(*dynamic_cast<AbFile*>(anyType));
     
 }
 
@@ -97,7 +97,7 @@ PreLogUtil::put("Filter BasicArrayList: " +this->getFilterStringBasicArrayList()
                         for (
     int32_t index = 0;index < size; index++)
         {
-nextFileFilterString= list.get(index) as string;
+nextFileFilterString= list.get(index);
     
 
                         if(this->visit(file, nextFileFilterString).valueOf())

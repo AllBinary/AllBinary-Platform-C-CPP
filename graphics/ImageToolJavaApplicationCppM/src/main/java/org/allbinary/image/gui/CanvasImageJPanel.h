@@ -21,11 +21,11 @@
         #ifndef ORG_ALLBINARY_IMAGE_GUI_CANVASIMAGEJPANEL_H
         #define ORG_ALLBINARY_IMAGE_GUI_CANVASIMAGEJPANEL_H
 
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../../java/lang/Integer.h"
+            #include "java/lang/Integer.h"
         
-            #include "../../../../java/lang/Thread.h"
+            #include "java/lang/Thread.h"
         
 #include <java/awt.h>
 

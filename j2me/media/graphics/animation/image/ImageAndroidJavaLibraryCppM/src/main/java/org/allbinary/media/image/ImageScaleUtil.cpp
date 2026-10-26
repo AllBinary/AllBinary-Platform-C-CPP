@@ -18,11 +18,11 @@
 
 
 
-            #include "../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../../java/lang/Float.h"
+            #include "java/lang/Float.h"
         
 #include <android/graphics/Bitmap.h>
 
@@ -147,7 +147,7 @@ private: ImageScaleUtil(){
             
     public: Image createImage(ImageCache imageCache, Image originalImage, float scaleX, float scaleY, bool cached){
 
-    AndroidImageInterface originalAndroidImage = originalImage as AndroidImageInterface;;
+    AndroidImageInterface originalAndroidImage = originalImage;;
     
 
     Bitmap originalBitmap = originalAndroidImage.getBitmap();;
@@ -200,7 +200,7 @@ private: ImageScaleUtil(){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->scaledImageBasicArrayList.get(index) as Image;
+                        return this->scaledImageBasicArrayList.get(index);
     
 
                                     }
@@ -239,7 +239,7 @@ this->scaleYBasicArrayList.add(scaleY);
                         if(cached)
                         
                                     {
-                                    image= imageCache.get(this->constructor.name.toString()!, width, height);
+                                    image= imageCache.get(this->constructor.name.toString(), width, height);
     
 
                                     }
@@ -286,7 +286,7 @@ image.getGraphics().drawImage(originalImage, 0, 0, this->anchor);
 matrix.setScale(scaleX, scaleY);
     
 
-    Canvas canvas = (image as AndroidImageInterface).getCanvas();;
+    Canvas canvas = (image).getCanvas();;
     
 canvas.concat(matrix);
     

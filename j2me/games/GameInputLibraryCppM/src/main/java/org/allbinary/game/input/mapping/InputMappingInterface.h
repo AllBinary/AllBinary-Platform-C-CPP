@@ -21,7 +21,7 @@
         #ifndef ORG_ALLBINARY_GAME_INPUT_MAPPING_INPUTMAPPINGINTERFACE_H
         #define ORG_ALLBINARY_GAME_INPUT_MAPPING_INPUTMAPPINGINTERFACE_H
 
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/game/input/GameKey.h>
 

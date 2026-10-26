@@ -21,14 +21,8 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_FORM_ITEMPAINTABLEFACTORY_H
         #define ORG_ALLBINARY_GRAPHICS_FORM_ITEMPAINTABLEFACTORY_H
 
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-#include <jsinterop/annotations/JsType.h>
-
-      
-#include <jsinterop/annotations/JsMethod.h>
-
-      
 
 
 

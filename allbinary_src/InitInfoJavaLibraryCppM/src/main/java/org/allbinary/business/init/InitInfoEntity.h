@@ -21,7 +21,7 @@
         #ifndef ORG_ALLBINARY_BUSINESS_INIT_INITINFOENTITY_H
         #define ORG_ALLBINARY_BUSINESS_INIT_INITINFOENTITY_H
 
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
 

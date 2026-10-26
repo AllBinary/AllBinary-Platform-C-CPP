@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/game/layer/pickup/PickedUpLayerInterface.h>
 
@@ -68,8 +68,9 @@ class CollidableVehicleBehavior: public CollidableDestroyableDamageableBehavior 
 
     protected: int64_t totalImpactVelocity = 0;
 
-public: CollidableVehicleBehavior(bool collidable){
-            super(collidable);
+public: CollidableVehicleBehavior(bool collidable) : CollidableDestroyableDamageableBehavior(collidable){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -91,9 +92,9 @@ public: CollidableVehicleBehavior(bool collidable){
                         
                                     {
                                     
-    CollidableDestroyableDamageableLayer collidableDestroyableDamageableLayer = (ownerLayer as CollidableDestroyableDamageableLayer);;
+    CollidableDestroyableDamageableLayer collidableDestroyableDamageableLayer = (ownerLayer);;
     
-collidableDestroyableDamageableLayer.getPickupBehavior().doPickupLayer(collidableInterfaceCompositeInterface as PickedUpLayerInterface);
+collidableDestroyableDamageableLayer.getPickupBehavior().doPickupLayer(collidableInterfaceCompositeInterface);
     
 
                                     }
@@ -108,7 +109,7 @@ collidableDestroyableDamageableLayer.getPickupBehavior().doPickupLayer(collidabl
                                     }
                                 
                         else {
-                            this->collideVehicle(ownerLayer, collidableInterfaceCompositeInterface as VehiclePropertiesCompositeInterface);
+                            this->collideVehicle(ownerLayer, collidableInterfaceCompositeInterface);
     
 
                         }
@@ -128,7 +129,7 @@ ForcedLogUtil::log("Don't Use Interface Version It Is Slower", this);
 
     protected: void collideVehicle(CollidableCompositeLayer ownerLayer, VehiclePropertiesCompositeInterface vehiclePropertiesCompositeInterface){
 
-    VehiclePropertiesCompositeInterface ownerVehicleLayerInterface = (ownerLayer as VehiclePropertiesCompositeInterface);;
+    VehiclePropertiesCompositeInterface ownerVehicleLayerInterface = (ownerLayer);;
     
 
     VehicleProperties ownerVehicleProperties = ownerVehicleLayerInterface.getVehicleProperties();;

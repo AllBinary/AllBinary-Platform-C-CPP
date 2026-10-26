@@ -18,9 +18,9 @@
 
 
 
-            #include "../../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/logic/NullUtil.h>
 
@@ -92,7 +92,7 @@ this->setGeographicMapCellPositionP(geographicMapCellPosition);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->parent as PathFindingNode;
+                        return this->parent;
     
 }
 
@@ -107,7 +107,7 @@ this->geographicMapCellPosition= geographicMapCellPosition;
 
     StringMaker stringBuffer = StringMaker();;
     
-stringBuffer.append(this->constructor.name.toString()!);
+stringBuffer.append(this->constructor.name.toString());
     
 stringBuffer.append(CommonLabels::getInstance().COLON_SEP);
     

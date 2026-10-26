@@ -18,7 +18,7 @@
 
 
 
-            #include "../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
 
@@ -74,11 +74,11 @@ class BasicTextEmailHelper: public TagHelper {
 
     private: const AbeClientInformationInterface abeClientInformation = ServiceClientInformationInterfaceFactory::getInstance();
 
-    private: HashMap<any, any> hashMap;
+    private: HashMap<Object*, Object*> hashMap;
 
     private: PageContext pageContext;
 
-public: BasicTextEmailHelper(HashMap<any, any> hashMap, PageContext pageContext){
+public: BasicTextEmailHelper(HashMap<Object*, Object*> hashMap, PageContext pageContext){
 this->pageContext= pageContext;
     
 this->hashMap= hashMap;
@@ -90,13 +90,13 @@ this->hashMap= hashMap;
             
     public: void send(){
 
-    std::string adminEmailSubject = this->hashMap.get("Subject") as string;;
+    std::string adminEmailSubject = this->hashMap.get("Subject");;
     
 
-    std::string adminEmailTextBody = this->hashMap.get("Body") as string;;
+    std::string adminEmailTextBody = this->hashMap.get("Body");;
     
 
-    BasicEmailInfo adminBasicEmailInfo = AdminEmailInfo(adminEmailSubject, adminEmailTextBody) as BasicEmailInfo;;
+    BasicEmailInfo adminBasicEmailInfo = AdminEmailInfo(adminEmailSubject, adminEmailTextBody);;
     
 
     EmailInfo adminEmailInfo = EmailInfo(adminBasicEmailInfo);;

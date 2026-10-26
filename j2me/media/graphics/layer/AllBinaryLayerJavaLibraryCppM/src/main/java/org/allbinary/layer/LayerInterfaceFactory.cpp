@@ -18,15 +18,12 @@
 
 
 
-            #include "../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../java/lang/Integer.h"
+            #include "java/lang/Integer.h"
         
-#include <java/util/Hashtable.h>
-
-      
 #include <org/allbinary/logic/communication/log/LogUtil.h>
 
       
@@ -37,6 +34,9 @@
 
       
 #include <org/allbinary/string/CommonStrings.h>
+
+      
+#include <org/allbinary/util/ABHashtable.h>
 
       
 #include <org/allbinary/util/BasicArrayList.h>
@@ -100,17 +100,17 @@ this->list= BasicArrayListD();
 
                 //@Throws(Exception.constructor)
             
-    public: AllBinaryLayer getNexInstance(Hashtable<any, any> hashtable, int32_t x, int32_t y, int32_t z){
+    public: AllBinaryLayer getNexInstance(ABHashtable<Object*, Object*> hashtable, int32_t x, int32_t y, int32_t z){
 
     CommonStrings commonStrings = CommonStrings::getInstance();;
     
 this->logUtil.putF(StringMaker().append(this->HASHTABLE_LABEL).append(StringUtil::getInstance().toString(hashtable)).toString(), this, commonStrings.GET_INSTANCE);
     
 
-    Integer typeInteger = hashtable.get(Layer::ID) as Integer;;
+    Integer typeInteger = hashtable.get(Layer::ID);;
     
 
-    LayerInterfaceFactoryInterface layerInterfaceFactoryInterface = this->list.objectArray[typeInteger.intValue() -1]! as LayerInterfaceFactoryInterface;;
+    LayerInterfaceFactoryInterface layerInterfaceFactoryInterface = this->list.objectArray[typeInteger.intValue() -1];;
     
 
 

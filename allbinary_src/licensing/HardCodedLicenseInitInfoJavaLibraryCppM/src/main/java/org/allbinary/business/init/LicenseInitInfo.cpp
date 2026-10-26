@@ -18,11 +18,8 @@
 
 
 
-            #include "../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-#include <jsinterop/annotations/JsType.h>
-
-      
 #include <org/allbinary/debug/DebugFactory.h>
 
       
@@ -36,12 +33,6 @@
 
       
 #include <org/allbinary/util/BasicArrayListD.h>
-
-      
-#include <jsinterop/annotations/JsMethod.h>
-
-      
-#include <jsinterop/annotations/JsConstructor.h>
 
       
 
@@ -90,7 +81,7 @@ class LicenseInitInfo
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->serverList.get(index) as string;
+                        return this->serverList.get(index);
     
 }
 

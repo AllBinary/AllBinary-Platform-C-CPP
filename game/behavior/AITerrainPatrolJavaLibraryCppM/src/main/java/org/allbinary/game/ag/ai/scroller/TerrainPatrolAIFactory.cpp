@@ -18,13 +18,10 @@
 
 
 
-            #include "../../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-#include <java/util/Hashtable.h>
-
-      
 #include <org/allbinary/ai/ArtificialIntelligenceInterface.h>
 
       
@@ -38,6 +35,9 @@
 
       
 #include <org/allbinary/logic/math/SmallIntegerSingletonFactory.h>
+
+      
+#include <org/allbinary/util/ABHashtable.h>
 
       
 
@@ -67,7 +67,7 @@ class TerrainPatrolAIFactory
 
                 //@Throws(Exception.constructor)
             
-    public: ArtificialIntelligenceInterface getInstance(Hashtable<any, any> hashtable, AllBinaryLayer ownerLayerInterface, GameInput gameInput){
+    public: ArtificialIntelligenceInterface getInstance(ABHashtable<Object*, Object*> hashtable, AllBinaryLayer ownerLayerInterface, GameInput gameInput){
 hashtable.put(BasePatrolAI::MAX_DISTANCE, SmallIntegerSingletonFactory::getInstance().getAt(220));
     
 

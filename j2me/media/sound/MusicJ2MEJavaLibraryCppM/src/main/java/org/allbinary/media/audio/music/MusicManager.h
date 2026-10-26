@@ -7,13 +7,13 @@
         #ifndef ORG_ALLBINARY_MEDIA_AUDIO_MUSIC_MUSICMANAGER_H
         #define ORG_ALLBINARY_MEDIA_AUDIO_MUSIC_MUSICMANAGER_H
 
-            #include "../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../java/lang/Class.h"
+            #include "java/lang/Class.h"
         
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../../../java/lang/Thread.h"
+            #include "java/lang/Thread.h"
         
 #include <org/allbinary/thread/ARunnable.h>
 
@@ -43,6 +43,9 @@
 
       
 #include <org/allbinary/media/audio/Sound.h>
+
+      
+#include <org/allbinary/string/CommonLabels.h>
 
       
 #include <org/allbinary/string/CommonSeps.h>
@@ -84,7 +87,8 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        
+        //#include "MusicManagerPlayerListener.h"
+
 class MusicManager
             : public Object
          {
@@ -100,19 +104,24 @@ class MusicManager
     private: const PlayerStateUtil playerStateUtil = PlayerStateUtil::getInstance();
 
     private: const TimeDelayHelper timeDelayHelper = TimeDelayHelper(0);
+//Handle Media ending for Avian
+//inner= member=true isStatic=
+class MusicManagerPlayerListener
+            : public Object
+        : public PlayerListener {
 
-    private: const PlayerListener playerListener = class extends PlayerListener
-                                {
-                                
     public: void playerUpdate(Player player, std::string event, Object* eventData);
-                                }
-                            ;
+
+};
+
+            
+    private: const PlayerListener playerListener = MusicManagerPlayerListener();
 
     private: const std::string PLAY = "Play ";
 
     private: const std::string SONG = " for: ";
 
-    private: const std::string NEXT_SONG = "Next Song: ";
+    private: const std::string NEXT_SONG = CommonLabels::getInstance().NEXT +" Song: ";
 
     private: const std::string STOPPING = "Stopping Current Song: ";
 
@@ -136,7 +145,7 @@ class MusicManager
 
     private: bool stopped = true;
 
-public: MusicManager(Function musicServiceClass, BasicArrayList songList);
+public: MusicManager(Class* musicServiceClass, BasicArrayList songList);
 
     public: void startNewSong();
 

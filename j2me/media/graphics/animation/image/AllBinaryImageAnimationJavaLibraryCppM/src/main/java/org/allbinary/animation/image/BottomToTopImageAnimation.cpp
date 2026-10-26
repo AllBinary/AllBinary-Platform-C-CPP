@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <javax/microedition/lcdui/Graphics.h>
 
@@ -64,8 +64,9 @@ class BottomToTopImageAnimation: public ImageSegmentAnimation {
 
     private: int32_t currentHeight= 0;
 
-public: BottomToTopImageAnimation(Image image, AnimationBehavior animationBehavior){
-            super(image, PrimitiveIntUtil::getArrayInstance(), animationBehavior);
+public: BottomToTopImageAnimation(Image image, AnimationBehavior animationBehavior) : ImageSegmentAnimation(image, PrimitiveIntUtil::getArrayInstance(), animationBehavior){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.

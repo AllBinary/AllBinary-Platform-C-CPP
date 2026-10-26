@@ -21,11 +21,8 @@
         #ifndef ORG_ALLBINARY_LOGIC_SYSTEM_HARDWARE_NOHARDWARE_H
         #define ORG_ALLBINARY_LOGIC_SYSTEM_HARDWARE_NOHARDWARE_H
 
-            #include "../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-#include <java/util/Hashtable.h>
-
-      
 #include <org/allbinary/logic/StdUtil.h>
 
       
@@ -33,6 +30,9 @@
 
       
 #include <org/allbinary/logic/system/hardware/components/interfaces/NoHardwareComponent.h>
+
+      
+#include <org/allbinary/util/ABHashtable.h>
 
       
 
@@ -69,7 +69,7 @@ class NoHardware
 
     public: bool compareTo(HardwareInterface hardwareInterface);
 
-    public: Hashtable<any, any> difference(HardwareInterface hardwareInterface);
+    public: ABHashtable<Object*, Object*> difference(HardwareInterface hardwareInterface);
 
 };
 

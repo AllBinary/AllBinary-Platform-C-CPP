@@ -21,7 +21,7 @@
         #ifndef ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_RACETRACK_RACETRACKROADSGEOGRAPHICMAPCELLHISTORYFACTORY_H
         #define ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_RACETRACK_RACETRACKROADSGEOGRAPHICMAPCELLHISTORYFACTORY_H
 
-            #include "../../../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
 #include <org/allbinary/media/graphics/geography/map/GeographicMapCellHistory.h>
 

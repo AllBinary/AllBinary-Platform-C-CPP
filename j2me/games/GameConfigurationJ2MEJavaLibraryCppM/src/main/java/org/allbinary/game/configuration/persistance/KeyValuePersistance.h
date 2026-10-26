@@ -23,11 +23,8 @@
 
             #include <vector>
         
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-#include <jsinterop/annotations/JsType.h>
-
-      
 #include <java/io/ByteArrayInputStream.h>
 
       
@@ -38,9 +35,6 @@
 
       
 #include <java/io/DataOutputStream.h>
-
-      
-#include <java/util/Hashtable.h>
 
       
 #include <javax/microedition/rms/RecordEnumeration.h>
@@ -70,13 +64,10 @@
 #include <org/allbinary/string/CommonSeps.h>
 
       
+#include <org/allbinary/util/ABHashtable.h>
+
+      
 #include <org/allbinary/util/HashtableUtil.h>
-
-      
-#include <jsinterop/annotations/JsMethod.h>
-
-      
-#include <jsinterop/annotations/JsConstructor.h>
 
       
 
@@ -118,9 +109,9 @@ protected: KeyValuePersistance(std::string recordId);
 
                 //@Throws(Exception.constructor)
             
-    public: void save(AbeClientInformationInterface abeClientInformation, Hashtable<any, any> hashtable);
+    public: void save(AbeClientInformationInterface abeClientInformation, ABHashtable<Object*, Object*> hashtable);
 
-    public: Hashtable<any, any> get(int32_t index);
+    public: ABHashtable<Object*, Object*> get(int32_t index);
 
 };
 

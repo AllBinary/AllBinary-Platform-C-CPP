@@ -20,9 +20,9 @@
 
             #include <vector>
         
-            #include "../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../java/lang/Integer.h"
+            #include "java/lang/Integer.h"
         
 #include <java/util/Calendar.h>
 
@@ -120,8 +120,9 @@ class AuthenticationHelper: public TagHelper {
 
     private: Integer attemptsInteger;
 
-public: AuthenticationHelper(HashMap<any, any> hashMap, PageContext pageContext){
-            this(hashMap, pageContext.getRequest() as HttpServletRequest);
+public: AuthenticationHelper(HashMap<Object*, Object*> hashMap, PageContext pageContext) : AuthenticationHelper(hashMap, pageContext.getRequest()){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -129,7 +130,7 @@ public: AuthenticationHelper(HashMap<any, any> hashMap, PageContext pageContext)
 }
 
 
-public: AuthenticationHelper(HashMap<any, any> hashMap, HttpServletRequest httpServletRequest){
+public: AuthenticationHelper(HashMap<Object*, Object*> hashMap, HttpServletRequest httpServletRequest){
 this->weblisketSession= WeblisketSession(hashMap, httpServletRequest);
     
 this->getFormData();
@@ -500,7 +501,7 @@ stringBuffer.append("Trying New login<p/>");
     int32_t index = 0;index < size; index++)
         {
 
-    BasicUserRole mustBeOfRole = basicUserRoleArray[index]! as BasicUserRole;;
+    BasicUserRole mustBeOfRole = basicUserRoleArray[index];;
     
 
                         if(basicUserRole === mustBeOfRole)
@@ -635,7 +636,7 @@ stringBuffer.append("Trying New login<p/>");
                                     }
                                 
 
-                        if(true && userName.compareTo(StringUtil::getInstance().EMPTY_STRING) != 0 && true && password.compareTo(StringUtil::getInstance().EMPTY_STRING) != 0)
+                        if(true && userName.compare(StringUtil::getInstance().EMPTY_STRING) != 0 && true && password.compare(StringUtil::getInstance().EMPTY_STRING) != 0)
                         
                                     {
                                     
@@ -647,7 +648,7 @@ stringBuffer.append("Trying New login<p/>");
 login= userEntityInterface.login(userName, password);
     
 
-                        if(login.compareTo(GLOBALS2::LOGINSUCCESS) == 0)
+                        if(login.compare(GLOBALS2::LOGINSUCCESS) == 0)
                         
                                     {
                                     

@@ -23,7 +23,7 @@
 
             #include <vector>
         
-            #include "../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
 
@@ -141,7 +141,7 @@ class InventoryItemView: public HttpStoreComponentView, public RequestMapInterfa
 
     protected: BasicArrayList downloadableItemVector;
 
-    private: HashMap<any, any> requestHashMap;
+    private: HashMap<Object*, Object*> requestHashMap;
 
 public: InventoryItemView(TransformInfoInterface transformInfoInterface);
 
@@ -165,9 +165,9 @@ public: InventoryItemView(TransformInfoInterface transformInfoInterface, std::st
             
     protected: void processImageFiles();
 
-    private: void setRequestHashMap(HashMap<any, any> requestHashMap);
+    private: void setRequestHashMap(HashMap<Object*, Object*> requestHashMap);
 
-    public: HashMap<any, any> getRequestHashMap();
+    public: HashMap<Object*, Object*> getRequestHashMap();
 
 };
 

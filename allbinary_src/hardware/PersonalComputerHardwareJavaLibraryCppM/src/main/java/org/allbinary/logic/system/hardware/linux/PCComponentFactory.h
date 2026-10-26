@@ -21,9 +21,9 @@
         #ifndef ORG_ALLBINARY_LOGIC_SYSTEM_HARDWARE_LINUX_PCCOMPONENTFACTORY_H
         #define ORG_ALLBINARY_LOGIC_SYSTEM_HARDWARE_LINUX_PCCOMPONENTFACTORY_H
 
-            #include "../../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/logic/communication/log/LogUtil.h>
 

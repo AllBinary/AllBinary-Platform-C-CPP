@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <javax/microedition/lcdui/Graphics.h>
 
@@ -65,8 +65,9 @@ class LapWidget: public BasicHud {
 
     private: std::string string = StringUtil::getInstance().EMPTY_STRING;
 
-public: LapWidget(int32_t location, int32_t direction, BasicColor basicColor){
-            super(location, direction, 2, basicColor);
+public: LapWidget(int32_t location, int32_t direction, BasicColor basicColor) : BasicHud(location, direction, 2, basicColor){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.

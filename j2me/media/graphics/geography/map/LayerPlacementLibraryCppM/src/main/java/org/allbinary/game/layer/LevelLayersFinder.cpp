@@ -18,20 +18,20 @@
 
 
 
-            #include "../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../java/lang/Integer.h"
+            #include "java/lang/Integer.h"
         
 #include <java/util/Enumeration.h>
-
-      
-#include <java/util/Hashtable.h>
 
       
 #include <org/allbinary/layer/Layer.h>
 
       
 #include <org/allbinary/logic/math/SmallIntegerSingletonFactory.h>
+
+      
+#include <org/allbinary/util/ABHashtable.h>
 
       
 #include <org/allbinary/util/BasicArrayList.h>
@@ -80,7 +80,7 @@ class LevelLayersFinder
 
     private: const EnumerationUtil enumerationUtil = EnumerationUtil::getInstance();
 
-    public: BasicArrayList get(Hashtable<any, any> hashtable){
+    public: BasicArrayList get(ABHashtable<Object*, Object*> hashtable){
 
     SmallIntegerSingletonFactory smallIntegerSingletonFactory = SmallIntegerSingletonFactory::getInstance();;
     
@@ -88,10 +88,10 @@ class LevelLayersFinder
     BasicArrayList list = BasicArrayListD();;
     
 
-    Enumeration<any> enumeration = hashtable.keys();;
+    Enumeration<Object*> enumeration = hashtable.keys();;
     
 
-    Hashtable<any, any> layerHashtableCanBeNull;;
+    ABHashtable<Object*, Object*> layerHashtableCanBeNull;;
     
 
     Integer integerCanBeNull;;
@@ -102,9 +102,9 @@ class LevelLayersFinder
 
         while(this->enumerationUtil.hasMoreElements(enumeration))
         {
-layerHashtableCanBeNull= hashtable.get(this->enumerationUtil.nextElement(enumeration)!) as Hashtable<any, any>;
+layerHashtableCanBeNull= hashtable.get(this->enumerationUtil.nextElement(enumeration));
     
-integerCanBeNull= layerHashtableCanBeNull.get(Layer::ID) as Integer;
+integerCanBeNull= layerHashtableCanBeNull.get(Layer::ID);
     
 cachedIntegerCanBeNull= smallIntegerSingletonFactory.getAt(integerCanBeNull.intValue());
     

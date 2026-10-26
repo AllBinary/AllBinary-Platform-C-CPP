@@ -23,7 +23,7 @@
 
             #include <vector>
         
-            #include "../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
 #include <org/allbinary/game/input/InputFactory.h>
 
@@ -60,7 +60,7 @@ class CancelTouchButtonInputFactory
 
     public: static CancelTouchButtonInputFactory getInstance();
 
-    private: const std::vector<TouchButtonInput> cancelInputArray = new Array(InputFactory::getInstance().MAX);
+    private: const std::vector<TouchButtonInput> cancelInputArray = std::vector<TouchButtonInput>(InputFactory::getInstance().MAX);
 
 private: CancelTouchButtonInputFactory();
 

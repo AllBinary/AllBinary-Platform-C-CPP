@@ -18,9 +18,9 @@
 
 
 
-            #include "../../../../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/util/BasicArrayList.h>
 
@@ -201,7 +201,7 @@ this->paymentTypeVector.add(paymentType);
     int32_t i = 0;i < size; i++)
         {
 
-    PaymentType paymentType = this->paymentTypeVector.get(i) as PaymentType;;
+    PaymentType paymentType = this->paymentTypeVector.get(i);;
     
 
                         if(paymentType.getBasicPaymentType().getName().compareTo(paymentTypeString) == 0)
@@ -256,7 +256,7 @@ stringBuffer.append(AbPathData::getInstance().SEPARATOR);
 stringBuffer.append(this->PAYMENTGATEWAYFILEPATHSTRING);
     
 
-    AbPath abPath = AbPath(stringBuffer.toString(), this->SHIPPINGMETHODSFILENAME) as AbPath;;
+    AbPath abPath = AbPath(stringBuffer.toString(), this->SHIPPINGMETHODSFILENAME);;
     
 
     std::string data = CryptFileReader(TransformInfoObjectConfigData::getInstance().UNCRYPTED_EXTENSION, TransformInfoObjectConfigData::getInstance().ENCRYPTED_EXTENSION).get(abPath);;
@@ -369,7 +369,7 @@ this->initDefault(storeName);
     int32_t i = 0;i < size; i++)
         {
 
-    PaymentType paymentType = this->paymentTypeVector.get(i) as PaymentType;;
+    PaymentType paymentType = this->paymentTypeVector.get(i);;
     
 
                         if(!a_PaymentTypeVector.contains(paymentType))

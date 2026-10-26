@@ -20,15 +20,12 @@
 
             #include <vector>
         
-            #include "../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../../java/lang/Long.h"
+            #include "java/lang/Long.h"
         
-#include <jsinterop/annotations/JsType.h>
-
-      
 #include <java/io/ByteArrayOutputStream.h>
 
       
@@ -42,12 +39,6 @@
 
       
 #include <org/allbinary/string/CommonSeps.h>
-
-      
-#include <jsinterop/annotations/JsMethod.h>
-
-      
-#include <jsinterop/annotations/JsConstructor.h>
 
       
 

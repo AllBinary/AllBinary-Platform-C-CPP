@@ -4,9 +4,6 @@
 
 
 
-#include <jsinterop/annotations/JsType.h>
-
-      
 #include <javax/microedition/lcdui/Canvas.h>
 
       
@@ -20,12 +17,6 @@
 
       
 #include <org/allbinary/logic/util/visitor/Visitor.h>
-
-      
-#include <jsinterop/annotations/JsMethod.h>
-
-      
-#include <jsinterop/annotations/JsConstructor.h>
 
       
 
@@ -52,8 +43,9 @@ class ABTextFieldItem: public ABTextItem {
 
     private: Font font;
 
-public: ABTextFieldItem(Canvas canvas, Visitor visitor, std::string label, std::string value, int32_t maxSize, int32_t layout, std::string altText, Font font, BasicColor backgroundBasicColor, BasicColor foregroundBasicColor){
-            super(label, layout, altText, backgroundBasicColor, foregroundBasicColor);
+public: ABTextFieldItem(Canvas canvas, Visitor visitor, std::string label, std::string value, int32_t maxSize, int32_t layout, std::string altText, Font font, BasicColor backgroundBasicColor, BasicColor foregroundBasicColor) : ABTextItem(label, layout, altText, backgroundBasicColor, foregroundBasicColor){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.

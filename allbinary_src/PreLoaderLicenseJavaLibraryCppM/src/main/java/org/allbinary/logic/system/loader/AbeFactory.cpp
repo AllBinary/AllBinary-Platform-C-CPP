@@ -20,13 +20,13 @@
 
             #include <vector>
         
-            #include "../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../java/lang/Class.h"
+            #include "java/lang/Class.h"
         
-            #include "../../../../../java/lang/ClassLoader.h"
+            #include "java/lang/ClassLoader.h"
         
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/lang/reflect/Constructor.h>
 
@@ -155,7 +155,7 @@ private: AbeFactory(){
                 //@Throws(LicensingException.constructor)
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: Object* getInstance(AbeClientInformationInterface abeClientInformation, std::string className, std::vector<Function> classes, std::vector<Object*> params){
+    public: Object* getInstance(AbeClientInformationInterface abeClientInformation, std::string className, std::vector<Class*> classes, std::vector<Object*> params){
 
     Constructor constructor = 
                 null
@@ -174,7 +174,7 @@ private: AbeFactory(){
     ClassLoader loader = AbeClassLoader(parent, AbKeys::getInstance().getKey(abeClientInformation, className));;
     
 
-    Function myClass = loader.loadClass(className);;
+    Class* myClass = loader.loadClass(className);;
     
 constructor= myClass.getConstructor(classes);
     
@@ -189,7 +189,7 @@ constructor= myClass.getConstructor(classes);
                                 
                         else {
                             
-    Function myClass = parent.loadClass(className);;
+    Class* myClass = parent.loadClass(className);;
     
 constructor= myClass.getConstructor(classes);
     
@@ -270,7 +270,7 @@ this->logUtil.put(stringBuffer.toString(), this, "getInstance(className,params)"
                 //@Throws(LicensingException.constructor)
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: Function constructor(AbeClientInformationInterface abeClientInformation, std::string className){
+    public: Class* getClass()(AbeClientInformationInterface abeClientInformation, std::string className){
 
         try {
             
@@ -284,7 +284,7 @@ this->logUtil.put(stringBuffer.toString(), this, "getInstance(className,params)"
     ClassLoader loader = AbeClassLoader(parent, AbKeys::getInstance().getKey(abeClientInformation, className));;
     
 
-    Function c = loader.loadClass(className);;
+    Class* c = loader.loadClass(className);;
     
 
 
@@ -297,7 +297,7 @@ this->logUtil.put(stringBuffer.toString(), this, "getInstance(className,params)"
                                 
                         else {
                             
-    Function c = parent.loadClass(className);;
+    Class* c = parent.loadClass(className);;
     
 
 

@@ -18,9 +18,6 @@
 
 
 
-#include <jsinterop/annotations/JsType.h>
-
-      
 #include <org/allbinary/animation/AnimationBehavior.h>
 
       
@@ -28,12 +25,6 @@
 
       
 #include <org/allbinary/animation/IndexedAnimationBehavior.h>
-
-      
-#include <jsinterop/annotations/JsMethod.h>
-
-      
-#include <jsinterop/annotations/JsConstructor.h>
 
       
 
@@ -70,8 +61,9 @@ class SpecialAnimation: public IndexedAnimation, public SpecialAnimationInterfac
 }
 
 
-public: SpecialAnimation(AnimationBehavior animationBehavior){
-            super(animationBehavior);
+public: SpecialAnimation(AnimationBehavior animationBehavior) : IndexedAnimation(animationBehavior){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -81,7 +73,7 @@ public: SpecialAnimation(AnimationBehavior animationBehavior){
 
     public: void nextFrame(){
 
-    IndexedAnimationBehavior indexedAnimationBehavior = (this->animationBehaviorP as IndexedAnimationBehavior);;
+    IndexedAnimationBehavior indexedAnimationBehavior = (this->animationBehaviorP);;
     
 indexedAnimationBehavior.loopIndex++;
     

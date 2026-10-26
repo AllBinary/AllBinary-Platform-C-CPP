@@ -21,11 +21,8 @@
         #ifndef ORG_ALLBINARY_GAME_TERRAIN_TERRAINEVENTHANDLER_H
         #define ORG_ALLBINARY_GAME_TERRAIN_TERRAINEVENTHANDLER_H
 
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-#include <java/util/Hashtable.h>
-
-      
 #include <org/allbinary/logic/StdUtil.h>
 
       
@@ -39,6 +36,9 @@
 
       
 #include <org/allbinary/logic/util/event/handler/BasicEventHandler.h>
+
+      
+#include <org/allbinary/util/ABHashtable.h>
 
       
 #include <org/allbinary/util/BasicArrayList.h>
@@ -71,7 +71,7 @@
 
 class TerrainEventHandler: public BasicEventHandler {
 
-    private: static Hashtable<any, any> hashtable = StdUtil::getInstance().NULL_TABLE;
+    private: static ABHashtable<Object*, Object*> hashtable = StdUtil::getInstance().NULL_TABLE;
 
     public: static void init();
 

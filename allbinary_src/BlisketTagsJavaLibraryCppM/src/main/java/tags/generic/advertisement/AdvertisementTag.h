@@ -21,7 +21,7 @@
         #ifndef TAGS_GENERIC_ADVERTISEMENT_ADVERTISEMENTTAG_H
         #define TAGS_GENERIC_ADVERTISEMENT_ADVERTISEMENTTAG_H
 
-            #include "../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <javax/servlet/jsp/JspTagException.h>
 

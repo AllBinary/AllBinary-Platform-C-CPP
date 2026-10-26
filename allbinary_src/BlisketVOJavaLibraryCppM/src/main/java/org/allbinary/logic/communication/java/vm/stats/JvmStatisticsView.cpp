@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
 
@@ -58,8 +58,9 @@
 
 class JvmStatisticsView: public JvmStatisticsMapping, public DomNodeInterface {
 
-public: JvmStatisticsView(){
-            super();
+public: JvmStatisticsView() : JvmStatisticsMapping(){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -71,7 +72,7 @@ public: JvmStatisticsView(){
             
     public: Node toXmlNode(Document document){
 
-    HashMap<any, any> hashMap = this->toHashMap();;
+    HashMap<Object*, Object*> hashMap = this->toHashMap();;
     
 
     Node node = ModDomHelper::createNameValueNodes(document, JvmStatisticsData::NAME, hashMap);;

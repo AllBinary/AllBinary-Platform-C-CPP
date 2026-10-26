@@ -62,8 +62,9 @@ class AndroidGameKey: public Input {
 }
 
 
-: AndroidGameKey(int32_t keyCode, std::string name){
-            super(keyCode, name);
+: AndroidGameKey(int32_t keyCode, std::string name) : Input(keyCode, name){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.

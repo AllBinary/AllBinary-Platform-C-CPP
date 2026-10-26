@@ -21,11 +21,8 @@
         #ifndef ORG_ALLBINARY_GAME_COLLISION_COLLIDABLEINTERFACE_H
         #define ORG_ALLBINARY_GAME_COLLISION_COLLIDABLEINTERFACE_H
 
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-#include <jsinterop/annotations/JsType.h>
-
-      
 #include <org/allbinary/game/layer/CollidableCompositeLayer.h>
 
       
@@ -33,9 +30,6 @@
 
       
 #include <org/allbinary/layer/NamedInterface.h>
-
-      
-#include <jsinterop/annotations/JsMethod.h>
 
       
 

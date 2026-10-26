@@ -20,15 +20,12 @@
 
             #include <vector>
         
-            #include "../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../../../java/lang/Integer.h"
+            #include "java/lang/Integer.h"
         
-#include <java/util/Hashtable.h>
-
-      
 #include <org/allbinary/ai/ArtificialIntelligenceInterface.h>
 
       
@@ -45,6 +42,9 @@
 
       
 #include <org/allbinary/string/CommonStrings.h>
+
+      
+#include <org/allbinary/util/ABHashtable.h>
 
       
 #include <org/allbinary/util/BasicArrayList.h>
@@ -82,7 +82,7 @@ class NumberOnOwnGroupSequenceAIFactory
 
                 //@Throws(Exception.constructor)
             
-    public: ArtificialIntelligenceInterface getInstance(Hashtable<any, any> hashtable, std::vector<ArtificialIntelligenceInterface> artificialIntelligenceInterface, AllBinaryLayer ownerLayerInterface, GameInput gameInput){
+    public: ArtificialIntelligenceInterface getInstance(ABHashtable<Object*, Object*> hashtable, std::vector<ArtificialIntelligenceInterface> artificialIntelligenceInterface, AllBinaryLayer ownerLayerInterface, GameInput gameInput){
 
     std::vector<Integer> integerArray = NumberInSameGroupSequence::getInstance().NUMBER_ON_SAME_TEAM_SEQUENCE;;
     
@@ -97,7 +97,7 @@ class NumberOnOwnGroupSequenceAIFactory
     int32_t index = 0;index < integerArray.size(); index++)
         {
 
-    Object* integerCanBeNull = hashtable.get(integerArray[index]!);;
+    Object* integerCanBeNull = hashtable.get(integerArray[index]);;
     
 
                         if(integerCanBeNull == 
@@ -158,7 +158,7 @@ this->logUtil.putF(stringBuffer.toString(), this, commonStrings.GET_INSTANCE);
                                     }
                                 
 
-    std::vector<Integer> numberOnSameTeam = new Array(list.size());;
+    std::vector<Integer> numberOnSameTeam = std::vector<Integer>(list.size());;
     
 
 
@@ -167,7 +167,7 @@ this->logUtil.putF(stringBuffer.toString(), this, commonStrings.GET_INSTANCE);
                         for (
     int32_t index = 0;index < numberOnSameTeam.size(); index++)
         {
-numberOnSameTeam[index]= list.objectArray[index]! as Integer;
+numberOnSameTeam[index]= list.objectArray[index];
     
 }
 

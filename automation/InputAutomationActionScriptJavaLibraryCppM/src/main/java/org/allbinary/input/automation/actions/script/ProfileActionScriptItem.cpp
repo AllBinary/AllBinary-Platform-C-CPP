@@ -18,11 +18,11 @@
 
 
 
-            #include "../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../../../../java/lang/RuntimeException.h"
+            #include "java/lang/RuntimeException.h"
         
-            #include "../../../../../../java/lang/Long.h"
+            #include "java/lang/Long.h"
         
 #include <java/awt/event/ActionEvent.h>
 
@@ -99,8 +99,9 @@ class ProfileActionScriptItem: public DefaultMutableTreeNode, public ProfileActi
 
     private: JPopupMenu jPopupMenu;
 
-public: ProfileActionScriptItem(std::string label, Node node){
-            super(label);
+public: ProfileActionScriptItem(std::string label, Node node) : DefaultMutableTreeNode(label){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -112,8 +113,9 @@ this->logUtil.putF("Label: " +label, this, this->commonStrings.CONSTRUCTOR);
 }
 
 
-public: ProfileActionScriptItem(std::string label){
-            super(label);
+public: ProfileActionScriptItem(std::string label) : DefaultMutableTreeNode(label){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.

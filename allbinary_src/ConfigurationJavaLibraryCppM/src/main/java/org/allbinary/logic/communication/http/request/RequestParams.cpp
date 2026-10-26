@@ -20,9 +20,9 @@
 
             #include <vector>
         
-            #include "../../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
 
@@ -158,7 +158,7 @@ this->map= map;
     int32_t i = 0;i < size; i++)
         {
 
-    std::string key = keyArray[i]! as string;;
+    std::string key = keyArray[i];;
     
 
     std::vector<std::string> values = this->map.get(key) as string[];;
@@ -171,11 +171,11 @@ stringBuffer.append(key);
     
 stringBuffer.append(this->VALUE);
     
-stringBuffer.append(values[0]!);
+stringBuffer.append(values[0]);
     
 this->logUtil.putF(stringBuffer.toString(), this, "toXmlNode(document)");
     
-node.appendChild(ModDomHelper::createNameValueNodes(document, RequestData::PARAMETER, key.toCharArray().slice(0, ).join(''), .toCharArray()));
+node.appendChild(ModDomHelper::createNameValueNodes(document, RequestData::PARAMETER, std::string(key), .toCharArray()));
     
 }
 
@@ -204,9 +204,9 @@ this->logUtil.put(this->commonStrings.EXCEPTION, this, "toXmlNode(document)", e)
 
                 //@Throws(Exception.constructor)
             
-    public: HashMap<any, any> toHashMap(){
+    public: HashMap<Object*, Object*> toHashMap(){
 
-    HashMap<any, any> hashMap = StdUtil::getInstance().createHashMap();;
+    HashMap<Object*, Object*> hashMap = StdUtil::getInstance().createHashMap();;
     
 
     Set keys = this->map.keySet();;
@@ -228,12 +228,12 @@ this->logUtil.put(this->commonStrings.EXCEPTION, this, "toXmlNode(document)", e)
     int32_t i = 0;i < size; i++)
         {
 
-    std::string key = keyArray[i]! as string;;
+    std::string key = keyArray[i];;
     
 
     std::vector<std::string> values = this->map.get(key) as string[];;
     
-hashMap.put(key.toCharArray().slice(0, ).join(''), .toCharArray());
+hashMap.put(std::string(key), .toCharArray());
     
 }
 

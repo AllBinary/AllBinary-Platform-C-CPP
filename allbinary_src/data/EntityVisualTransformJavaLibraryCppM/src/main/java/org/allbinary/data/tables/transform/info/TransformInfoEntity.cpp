@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
 
@@ -114,8 +114,9 @@ class TransformInfoEntity: public AbSqlBean, public TransformInfoEntityInterface
 
     private: TransformInfoObjectConfigGeneratorFactoryInterface transformInfoObjectConfigGeneratorFactoryInterface;
 
-public: TransformInfoEntity(TransformInfoObjectConfigGeneratorFactoryInterface transformInfoObjectConfigGeneratorFactoryInterface, TransformInfoObjectConfigAndManipulatorFactoryBase transformInfoObjectConfigAndManipulatorFactoryInterface, TransformInfoFactoryInterface transformInfoFactoryInterface){
-            super(UserDbInitInfo());
+public: TransformInfoEntity(TransformInfoObjectConfigGeneratorFactoryInterface transformInfoObjectConfigGeneratorFactoryInterface, TransformInfoObjectConfigAndManipulatorFactoryBase transformInfoObjectConfigAndManipulatorFactoryInterface, TransformInfoFactoryInterface transformInfoFactoryInterface) : AbSqlBean(UserDbInitInfo()){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -197,17 +198,17 @@ this->transformInfoFactoryInterface= transformInfoFactoryInterface;
 
                 //@Throws(Exception.constructor)
             
-    public: TransformInfoInterface get(std::string name, HashMap<any, any> propertiesHashMap, PageContext pageContext){
+    public: TransformInfoInterface get(std::string name, HashMap<Object*, Object*> propertiesHashMap, PageContext pageContext){
 
     TransformInfoData transformInfoData = TransformInfoData::getInstance();;
     
 
-    HashMap<any, any> keysAndValues = StdUtil::getInstance().createHashMap();;
+    HashMap<Object*, Object*> keysAndValues = StdUtil::getInstance().createHashMap();;
     
 keysAndValues.put(transformInfoData.NAME, name);
     
 
-    HashMap<any, any> hashMap = super.getRow(keysAndValues);;
+    HashMap<Object*, Object*> hashMap = super.getRow(keysAndValues);;
     
 
                         if(hashMap != 
@@ -225,7 +226,7 @@ keysAndValues.put(transformInfoData.NAME, name);
                         
                                     {
                                     
-    std::string string = anyType as string;;
+    std::string string = anyType;;
     
 hashMap.put(transformInfoData.OBJECTCONFIG, decode.toCharArray());
     
@@ -242,7 +243,7 @@ hashMap.put(transformInfoData.OBJECTCONFIG, decode.toCharArray());
                         
                                     {
                                     
-    std::string string = objectData as string;;
+    std::string string = objectData;;
     
 hashMap.put(transformInfoData.DATA, decode.toCharArray());
     
@@ -291,11 +292,11 @@ hashMap.put(transformInfoData.DATA, decode.toCharArray());
     int32_t i = 0;i < size; i++)
         {
 
-    std::string objectConfigString = objectConfigColumnVector.get(i) as string;;
+    std::string objectConfigString = objectConfigColumnVector.get(i);;
     
 objectConfigString= decode.toCharArray();
     
-objectConfigVector.add(this->transformInfoObjectConfigAndManipulatorFactoryInterface.getInstance(this->abeClientInformation, this as TransformInfoInterface, DomDocumentHelper::create(objectConfigString)));
+objectConfigVector.add(this->transformInfoObjectConfigAndManipulatorFactoryInterface.getInstance(this->abeClientInformation, this, DomDocumentHelper::create(objectConfigString)));
     
 }
 
@@ -328,7 +329,7 @@ objectConfigVector.add(this->transformInfoObjectConfigAndManipulatorFactoryInter
     int32_t i = 0;i < size; i++)
         {
 
-    std::string viewNameString = columnVector.get(i) as string;;
+    std::string viewNameString = columnVector.get(i);;
     
 viewNameVector.add(viewNameString);
     
@@ -427,8 +428,8 @@ stringBuffer.append(this->sqlStrings.END);
 }
 
 
-    public: void update(HashMap<any, any> updatedValues){
-super.updateWhere(TransformInfoData::getInstance().NAME, updatedValues.get(TransformInfoData::getInstance().NAME) as string, updatedValues);
+    public: void update(HashMap<Object*, Object*> updatedValues){
+super.updateWhere(TransformInfoData::getInstance().NAME, updatedValues.get(TransformInfoData::getInstance().NAME), updatedValues);
     
 }
 

@@ -20,7 +20,7 @@
 
             #include <vector>
         
-            #include "../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
 #include <java/net/URL.h>
 
@@ -90,7 +90,7 @@ class JavaHelpSetNotifier
     int32_t i = 0;i < size; i++)
         {
 
-    URL nextURL = urlArray[i]! as URL;;
+    URL nextURL = urlArray[i];;
     
 
                         if(url.toString().compareTo(nextURL.toString()) == 0)

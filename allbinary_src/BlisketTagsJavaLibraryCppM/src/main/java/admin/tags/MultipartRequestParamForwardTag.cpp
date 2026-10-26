@@ -18,7 +18,7 @@
 
 
 
-            #include "../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
 
@@ -106,12 +106,12 @@ this->paramVector= paramVector;
 
         try {
             
-    HelperTag parentTag = this->getParent() as HelperTag;;
+    HelperTag parentTag = this->getParent();;
     
 ParentInventoryTagHelper::getInstance().isValid(this, parentTag);
     
 
-    HashMap<any, any> hashMap = StdUtil::getInstance().createHashMap();;
+    HashMap<Object*, Object*> hashMap = StdUtil::getInstance().createHashMap();;
     
 hashMap.put(AbTagData::PARENT, parentTag);
     

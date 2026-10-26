@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <javax/microedition/lcdui/Command.h>
 
@@ -99,8 +99,9 @@ class LicenseRegistrationTextBox: public CustomTextBox {
 
     private: Paintable paintable = NullPaintable::getInstance();
 
-public: LicenseRegistrationTextBox(CommandListener cmdListener, BasicColor backgrounBasicColor, BasicColor foregroundBasicColor){
-            super(cmdListener, "Enter Registration Code:", StringUtil::getInstance().EMPTY_STRING, 60, TextField::ANY, Font::getDefaultFont(), backgrounBasicColor, foregroundBasicColor);
+public: LicenseRegistrationTextBox(CommandListener cmdListener, BasicColor backgrounBasicColor, BasicColor foregroundBasicColor) : CustomTextBox(cmdListener, "Enter Registration Code:", StringUtil::getInstance().EMPTY_STRING, 60, TextField::ANY, Font::getDefaultFont(), backgrounBasicColor, foregroundBasicColor){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.

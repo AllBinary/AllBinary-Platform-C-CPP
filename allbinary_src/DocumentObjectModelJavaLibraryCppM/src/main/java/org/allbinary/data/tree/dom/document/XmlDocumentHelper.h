@@ -21,10 +21,13 @@
         #ifndef ORG_ALLBINARY_DATA_TREE_DOM_DOCUMENT_XMLDOCUMENTHELPER_H
         #define ORG_ALLBINARY_DATA_TREE_DOM_DOCUMENT_XMLDOCUMENTHELPER_H
 
-            #include "../../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
+#include <java/io/ByteArrayOutputStream.h>
+
+      
 #include <java/io/StringReader.h>
 
       
@@ -96,6 +99,10 @@ class XmlDocumentHelper
     private: static XmlDocumentHelper instance() { return XmlDocumentHelper(); }
 
     public: static XmlDocumentHelper getInstance();
+
+                //@Throws(Exception.constructor)
+            
+    public: static std::string toString(Document document);
 
     protected: const LogUtil logUtil = LogUtil::getInstance();
 

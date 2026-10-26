@@ -73,9 +73,9 @@ class StoreFrontHelper: public TagHelper {
 
     private: const std::string currentHomeLocation;
 
-public: StoreFrontHelper(HashMap<any, any> hashMap, PageContext pageContext){
+public: StoreFrontHelper(HashMap<Object*, Object*> hashMap, PageContext pageContext){
 
-    std::string storeName = hashMap.get(StoreFrontData::getInstance().NAME) as string;;
+    std::string storeName = hashMap.get(StoreFrontData::getInstance().NAME);;
     
 
                         if(true)

@@ -20,20 +20,14 @@
 
             #include <vector>
         
-            #include "../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-#include <java/util/Hashtable.h>
-
-      
 #include <javax/microedition/lcdui/Image.h>
 
       
 #include <org/allbinary/image/GameFeatureImageCacheFactory.h>
-
-      
-#include <org/allbinary/string/CommonStrings.h>
 
       
 #include <org/allbinary/logic/communication/log/PreLogUtil.h>
@@ -66,7 +60,8 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        
+        #include "Hashtable.h"
+
 class ImageCompleteUtil
             : public Object
          {
@@ -101,7 +96,7 @@ this->waitForATime(image, name, this->timeDelayHelper);
             
     public: bool isReady(Image image, std::string name, TimeDelayHelper timeDelayHelper){
 
-    PlaynImage playnImage = image as PlaynImage;;
+    PlaynImage playnImage = image;;
     
 
                         if(!playnImage.getImage().isReady() && playnImage.getImage().width() +playnImage.getImage().height() == 0)
@@ -141,7 +136,7 @@ this->waitForATime(image, name, this->timeDelayHelper);
             
     private: void waitForATime(Image image, std::string name, TimeDelayHelper timeDelayHelper){
 
-    PlaynImage playnImage = image as PlaynImage;;
+    PlaynImage playnImage = image;;
     
 
         while(!playnImage.getImage().isReady() && playnImage.getImage().width() +playnImage.getImage().height() == 0)
@@ -169,7 +164,7 @@ this->waitForATime(image, name, this->timeDelayHelper);
 this->allTimeDelayHelper.setStartTime();
     
 
-    Hashtable<any, any> hashtable = GameFeatureImageCacheFactory::getInstance().getHashtable();;
+    Hashtable<Object*, Object*> hashtable = GameFeatureImageCacheFactory::getInstance().getHashtable();;
     
 
     std::vector<Object*> objectArray = HashtableUtil::getInstance().getKeysAsArray(hashtable);;
@@ -186,7 +181,7 @@ PreLogUtil::put("Total: " +size, this, "waitForAll");
                         for (
     int32_t index = 0;index < size; index++)
         {
-this->waitForATime(hashtable.get(objectArray[index]!) as Image, objectArray[index]! as string, this->allTimeDelayHelper);
+this->waitForATime(hashtable.get(objectArray[index]), objectArray[index], this->allTimeDelayHelper);
     
 }
 

@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
 
@@ -71,8 +71,9 @@ class TransformInfoBasic: public AbContext, public TransformInfoHttpInterface {
 
     private: StoreFrontInterface storeFrontInterface;
 
-public: TransformInfoBasic(StoreFrontInterface storeFrontInterface, HashMap<any, any> propertiesHashMap, PageContext pageContext){
-            super(propertiesHashMap, pageContext);
+public: TransformInfoBasic(StoreFrontInterface storeFrontInterface, HashMap<Object*, Object*> propertiesHashMap, PageContext pageContext) : AbContext(propertiesHashMap, pageContext){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -102,7 +103,7 @@ this->storeFrontInterface= storeFrontInterface;
 }
 
 
-    public: void override(HashMap<any, any> hashMap){
+    public: void override(HashMap<Object*, Object*> hashMap){
 }
 
 
@@ -301,7 +302,7 @@ this->storeFrontInterface= storeFrontInterface;
 
                 //@Throws(Exception.constructor)
             
-    public: HashMap<any, any> toHashMap(){
+    public: HashMap<Object*, Object*> toHashMap(){
 
 
 

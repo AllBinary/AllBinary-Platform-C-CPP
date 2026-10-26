@@ -18,7 +18,7 @@
 
 
 
-            #include "../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
 
@@ -86,12 +86,12 @@ class PaymentGatewayHelper: public BasicTable {
 
     private: const Portion portion;
 
-public: PaymentGatewayHelper(HashMap<any, any> hashMap, PageContext pageContext){
+public: PaymentGatewayHelper(HashMap<Object*, Object*> hashMap, PageContext pageContext){
 
         try {
             this->weblisketSession= WeblisketSession(hashMap, pageContext);
     
-this->httpServletRequest= pageContext.getRequest() as HttpServletRequest;
+this->httpServletRequest= pageContext.getRequest();
     
 this->portion= Portion(hashMap);
     

@@ -21,11 +21,11 @@
         #ifndef ORG_ALLBINARY_DATA_GENERATOR_UNIQUEIDGENERATOR_H
         #define ORG_ALLBINARY_DATA_GENERATOR_UNIQUEIDGENERATOR_H
 
-            #include "../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../../java/lang/Long.h"
+            #include "java/lang/Long.h"
         
 #include <java/io/IOException.h>
 

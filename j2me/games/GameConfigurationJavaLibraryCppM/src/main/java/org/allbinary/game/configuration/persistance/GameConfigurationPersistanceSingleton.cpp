@@ -53,8 +53,9 @@ class GameConfigurationPersistanceSingleton: public KeyValuePersistance {
 }
 
 
-private: GameConfigurationPersistanceSingleton(){
-            super(GamePersistanceStrings::getInstance().SAVED_GAME_CONFIGURATION_RECORD_ID);
+private: GameConfigurationPersistanceSingleton() : KeyValuePersistance(GamePersistanceStrings::getInstance().SAVED_GAME_CONFIGURATION_RECORD_ID){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.

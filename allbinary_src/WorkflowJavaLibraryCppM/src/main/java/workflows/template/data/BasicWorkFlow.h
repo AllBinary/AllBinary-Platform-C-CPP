@@ -21,11 +21,11 @@
         #ifndef WORKFLOWS_TEMPLATE_DATA_BASICWORKFLOW_H
         #define WORKFLOWS_TEMPLATE_DATA_BASICWORKFLOW_H
 
-            #include "../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../java/lang/Integer.h"
+            #include "java/lang/Integer.h"
         
 #include <java/util/HashMap.h>
 
@@ -91,17 +91,17 @@ class BasicWorkFlow
 
     private: ValidationComponentInterface validationDomNodeInterface;
 
-    private: HashMap<any, any> propertiesHashMap;
+    private: HashMap<Object*, Object*> propertiesHashMap;
 
     private: PageContext pageContext;
 
-public: BasicWorkFlow(HashMap<any, any> propertiesHashMap, PageContext pageContext);
+public: BasicWorkFlow(HashMap<Object*, Object*> propertiesHashMap, PageContext pageContext);
 
                 //@Throws(Exception.constructor)
             
     public: std::string getName();
 
-    protected: HashMap<any, any> getPropertiesHashMap();
+    protected: HashMap<Object*, Object*> getPropertiesHashMap();
 
     protected: PageContext getPageContext();
 

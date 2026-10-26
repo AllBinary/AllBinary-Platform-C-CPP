@@ -21,11 +21,8 @@
         #ifndef ORG_ALLBINARY_GAME_INPUT_GAMEKEYFACTORY_H
         #define ORG_ALLBINARY_GAME_INPUT_GAMEKEYFACTORY_H
 
-            #include "../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-#include <jsinterop/annotations/JsType.h>
-
-      
 #include <javax/microedition/lcdui/Canvas.h>
 
       
@@ -33,12 +30,6 @@
 
       
 #include <org/allbinary/string/CommonPhoneStrings.h>
-
-      
-#include <jsinterop/annotations/JsMethod.h>
-
-      
-#include <jsinterop/annotations/JsProperty.h>
 
       
 

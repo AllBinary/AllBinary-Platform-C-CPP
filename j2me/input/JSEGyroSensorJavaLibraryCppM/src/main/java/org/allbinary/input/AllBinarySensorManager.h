@@ -21,7 +21,7 @@
         #ifndef ORG_ALLBINARY_INPUT_ALLBINARYSENSORMANAGER_H
         #define ORG_ALLBINARY_INPUT_ALLBINARYSENSORMANAGER_H
 
-            #include "../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
 #include <org/allbinary/logic/NullUtil.h>
 

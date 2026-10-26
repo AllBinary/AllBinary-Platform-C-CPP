@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <android/view/MotionEvent.h>
 
@@ -75,7 +75,7 @@ class GameInputMotionEventProcessorAPI1: public BaseGameInputMotionEventProcesso
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return GameInputMotionEventProcessorAPI1::instance() as GameInputMotionEventProcessorAPI1;
+                        return GameInputMotionEventProcessorAPI1::instance();
     
 }
 

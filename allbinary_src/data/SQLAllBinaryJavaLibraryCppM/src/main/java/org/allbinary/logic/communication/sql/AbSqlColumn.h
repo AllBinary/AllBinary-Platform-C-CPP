@@ -21,9 +21,9 @@
         #ifndef ORG_ALLBINARY_LOGIC_COMMUNICATION_SQL_ABSQLCOLUMN_H
         #define ORG_ALLBINARY_LOGIC_COMMUNICATION_SQL_ABSQLCOLUMN_H
 
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../../../java/lang/Integer.h"
+            #include "java/lang/Integer.h"
         
 #include <java/sql/ResultSet.h>
 

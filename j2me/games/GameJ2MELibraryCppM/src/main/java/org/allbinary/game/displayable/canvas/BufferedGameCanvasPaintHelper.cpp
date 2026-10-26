@@ -20,7 +20,7 @@
 
             #include <vector>
         
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <javax/microedition/lcdui/Canvas.h>
 
@@ -75,7 +75,7 @@ class BufferedGameCanvasPaintHelper: public ProcessPaintable {
 
     private: Canvas gameCanvas = NullCanvas::NULL_CANVAS;
 
-    private: const std::vector<Image> offScreenImage = new Array(BufferedGameCanvasPaintHelper::MAX_IMAGES);
+    private: const std::vector<Image> offScreenImage = std::vector<Image>(BufferedGameCanvasPaintHelper::MAX_IMAGES);
 
     private: Image previousImage = NullImage::NULL_IMAGE;
 
@@ -94,9 +94,9 @@ public: BufferedGameCanvasPaintHelper(AllBinaryGameCanvas gameCanvas){
 
     public: void process(){
 
-    MyCanvas myCanvas = (this->gameCanvas as MyCanvas);;
+    MyCanvas myCanvas = (this->gameCanvas);;
     
-myCanvas.draw(this->offScreenImage[this->circularIndexUtil.getIndex()]!.getGraphics());
+myCanvas.draw(this->offScreenImage[this->circularIndexUtil.getIndex()].getGraphics());
     
 this->circularIndexUtil.next();
     
@@ -108,7 +108,7 @@ this->drawCircularIndexUtil.next();
     private: int32_t anchor = Anchor::TOP_LEFT;
 
     public: void paint(Graphics graphics){
-this->previousImage= this->offScreenImage[this->drawCircularIndexUtil.getIndex()]!;
+this->previousImage= this->offScreenImage[this->drawCircularIndexUtil.getIndex()];
     
 graphics.drawImage(this->previousImage, 0, 0, this->anchor);
     

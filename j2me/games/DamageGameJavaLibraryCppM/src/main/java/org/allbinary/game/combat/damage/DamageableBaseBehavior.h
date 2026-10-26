@@ -21,9 +21,9 @@
         #ifndef ORG_ALLBINARY_GAME_COMBAT_DAMAGE_DAMAGEABLEBASEBEHAVIOR_H
         #define ORG_ALLBINARY_GAME_COMBAT_DAMAGE_DAMAGEABLEBASEBEHAVIOR_H
 
-            #include "../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 
 

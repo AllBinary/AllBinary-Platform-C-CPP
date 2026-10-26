@@ -18,7 +18,7 @@
 
 
 
-            #include "../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
 
@@ -98,7 +98,7 @@ class OrderHistoryHelper: public TagHelper {
 
     private: StoreFrontInterface storeFrontInterface;
 
-    private: HashMap<any, any> propertiesHashMap;
+    private: HashMap<Object*, Object*> propertiesHashMap;
 
     private: PageContext pageContext;
 
@@ -114,17 +114,17 @@ class OrderHistoryHelper: public TagHelper {
 
     private: std::string newStatus;
 
-public: OrderHistoryHelper(HashMap<any, any> propertiesHashMap, PageContext pageContext){
+public: OrderHistoryHelper(HashMap<Object*, Object*> propertiesHashMap, PageContext pageContext){
 this->propertiesHashMap= propertiesHashMap;
     
 this->pageContext= pageContext;
     
-this->request= pageContext.getRequest() as HttpServletRequest;
+this->request= pageContext.getRequest();
     
 
-    std::string storeName = propertiesHashMap.get(StoreFrontData::getInstance().NAME) as string;;
+    std::string storeName = propertiesHashMap.get(StoreFrontData::getInstance().NAME);;
     
-this->newStatus= propertiesHashMap.get(OrderHistoryData::STATUS) as string;
+this->newStatus= propertiesHashMap.get(OrderHistoryData::STATUS);
     
 
                         if(true)
@@ -170,7 +170,7 @@ this->groupId= this->request.getParameter(ShippingMethodData::GROUP);
     std::string status = orderReviewInterface.getStatus();;
     
 
-                        if(status.compareTo(OrderHistoryData::CANCELLED) == 0)
+                        if(status.compare(OrderHistoryData::CANCELLED) == 0)
                         
                                     {
                                     
@@ -183,7 +183,7 @@ this->groupId= this->request.getParameter(ShippingMethodData::GROUP);
                                     }
                                 
                              else 
-                        if(status.compareTo(OrderHistoryData::SHIPPED) == 0)
+                        if(status.compare(OrderHistoryData::SHIPPED) == 0)
                         
                                     {
                                     
@@ -196,7 +196,7 @@ this->groupId= this->request.getParameter(ShippingMethodData::GROUP);
                                     }
                                 
                              else 
-                        if(status.compareTo(OrderHistoryData::PREPROCESSING) == 0)
+                        if(status.compare(OrderHistoryData::PREPROCESSING) == 0)
                         
                                     {
                                     
@@ -209,7 +209,7 @@ this->groupId= this->request.getParameter(ShippingMethodData::GROUP);
                                     }
                                 
                              else 
-                        if(status.compareTo(OrderHistoryData::PARTIALLYSHIPPED) == 0)
+                        if(status.compare(OrderHistoryData::PARTIALLYSHIPPED) == 0)
                         
                                     {
                                     
@@ -222,7 +222,7 @@ this->groupId= this->request.getParameter(ShippingMethodData::GROUP);
                                     }
                                 
                              else 
-                        if(status.compareTo(OrderHistoryData::PROCESSING) == 0)
+                        if(status.compare(OrderHistoryData::PROCESSING) == 0)
                         
                                     {
                                     

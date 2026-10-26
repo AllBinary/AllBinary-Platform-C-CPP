@@ -21,7 +21,7 @@
         #ifndef ORG_ALLBINARY_DATA_TABLES_USER_COMMERCE_INVENTORY_ITEM_INVENTORYENTITYINTERFACE_H
         #define ORG_ALLBINARY_DATA_TABLES_USER_COMMERCE_INVENTORY_ITEM_INVENTORYENTITYINTERFACE_H
 
-            #include "../../../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
 
@@ -79,7 +79,7 @@ class InventoryEntityInterface: public BasicDataTableInterface {
 
     void insert(BasicArrayList values);
 
-    void update(HashMap<any, any> updatedValues);
+    void update(HashMap<Object*, Object*> updatedValues);
 
 };
 

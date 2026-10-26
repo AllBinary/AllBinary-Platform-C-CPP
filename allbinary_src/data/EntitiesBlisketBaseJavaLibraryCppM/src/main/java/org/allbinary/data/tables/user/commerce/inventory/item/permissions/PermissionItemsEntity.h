@@ -21,7 +21,7 @@
         #ifndef ORG_ALLBINARY_DATA_TABLES_USER_COMMERCE_INVENTORY_ITEM_PERMISSIONS_PERMISSIONITEMSENTITY_H
         #define ORG_ALLBINARY_DATA_TABLES_USER_COMMERCE_INVENTORY_ITEM_PERMISSIONS_PERMISSIONITEMSENTITY_H
 
-            #include "../../../../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
 
@@ -91,7 +91,7 @@ public: PermissionItemsEntity();
 
     public: std::string createTable();
 
-    public: void update(HashMap<any, any> updatedValues);
+    public: void update(HashMap<Object*, Object*> updatedValues);
 
     public: std::string dropTable();
 

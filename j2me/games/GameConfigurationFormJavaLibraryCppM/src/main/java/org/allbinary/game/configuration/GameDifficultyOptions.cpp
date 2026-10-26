@@ -18,9 +18,9 @@
 
 
 
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../../java/lang/Integer.h"
+            #include "java/lang/Integer.h"
         
 #include <javax/microedition/lcdui/Choice.h>
 
@@ -44,6 +44,9 @@
 
       
 #include <org/allbinary/graphics/displayable/screen/CommandForm.h>
+
+      
+#include <org/allbinary/logic/MEUtil.h>
 
       
 #include <org/allbinary/logic/string/StringMaker.h>
@@ -76,10 +79,13 @@
         
 class GameDifficultyOptions: public CommandForm {
 
+    private: const MEUtil meUtil = MEUtil::getInstance();
+
     private: BasicArrayList list;
 
-public: GameDifficultyOptions(CommandListener commandListener, std::string title, BasicArrayList list, BasicColor backgrounBasicColor, BasicColor foregroundBasicColor){
-            super(commandListener, title, backgrounBasicColor, foregroundBasicColor);
+public: GameDifficultyOptions(CommandListener commandListener, std::string title, BasicArrayList list, BasicColor backgrounBasicColor, BasicColor foregroundBasicColor) : CommandForm(commandListener, title, backgrounBasicColor, foregroundBasicColor){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -163,7 +169,7 @@ super.update();
 
                                     }
                                 
-this->append(choiceGroup);
+this->meUtil.appendItem(this, choiceGroup);
     
 }
 
@@ -182,14 +188,16 @@ this->append(choiceGroup);
     int32_t size = list.size();;
     
 
+    Object* anyType;;
+    
+
 
 
 
                         for (
     int32_t index = 0;index < size; index++)
         {
-
-    Object* anyType = list.objectArray[index];;
+anyType= list.objectArray[index];
     
 this->logUtil.putF(StringMaker().append(NAME).append(anyType->toString()).toString(), this, METHOD_NAME);
     
@@ -208,7 +216,7 @@ choiceGroup.append(anyType->toString(), NullImage::NULL_IMAGE);
 
     public: void setSelectedId(int32_t id){
 
-    ChoiceGroup choiceGroup = this->get(0) as ChoiceGroup;;
+    ChoiceGroup choiceGroup = this->get(0);;
     
 choiceGroup.setSelectedIndex(id, true);
     
@@ -217,7 +225,7 @@ choiceGroup.setSelectedIndex(id, true);
 
     public: int32_t getSelectedId(){
 
-    ChoiceGroup choiceGroup = this->get(0) as ChoiceGroup;;
+    ChoiceGroup choiceGroup = this->get(0);;
     
 
 
@@ -230,7 +238,7 @@ choiceGroup.setSelectedIndex(id, true);
 
     public: int32_t getSelectedText(){
 
-    ChoiceGroup choiceGroup = this->get(0) as ChoiceGroup;;
+    ChoiceGroup choiceGroup = this->get(0);;
     
 
     int32_t value = Integer::valueOf(choiceGroup.getString(choiceGroup.getSelectedIndex())).intValue();;

@@ -21,7 +21,7 @@
         #ifndef ORG_ALLBINARY_LAYER_ALLBINARYLAYERFACTORY_H
         #define ORG_ALLBINARY_LAYER_ALLBINARYLAYERFACTORY_H
 
-            #include "../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
 #include <org/allbinary/graphics/Rectangle.h>
 

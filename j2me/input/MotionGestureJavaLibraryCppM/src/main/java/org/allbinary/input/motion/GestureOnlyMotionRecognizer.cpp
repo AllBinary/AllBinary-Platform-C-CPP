@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/graphics/CustomGPoint.h>
 
@@ -71,7 +71,7 @@ this->motionGestureRecognizer= MotionGestureRecognizer(this->id);
             
     public: void processStartMotionEvent(int32_t x, int32_t y, int32_t deviceId, int32_t modifiers){
 
-    CustomGPoint point = GestureOnlyMotionRecognizer::pointCircularPool.getNextInstance() as CustomGPoint;;
+    CustomGPoint point = GestureOnlyMotionRecognizer::pointCircularPool.getNextInstance();;
     
 point.setX(x);
     
@@ -86,7 +86,7 @@ this->motionGestureRecognizer.processPressedMotionEvent(point, deviceId, modifie
             
     public: void processEndMotionEvent(int32_t x, int32_t y, int32_t deviceId, int32_t modifiers){
 
-    CustomGPoint point = GestureOnlyMotionRecognizer::pointCircularPool.getNextInstance() as CustomGPoint;;
+    CustomGPoint point = GestureOnlyMotionRecognizer::pointCircularPool.getNextInstance();;
     
 point.setX(x);
     
@@ -101,7 +101,7 @@ this->motionGestureRecognizer.processReleasedMotionEvent(point, deviceId, modifi
             
     public: void processDraggedMotionEvent(int32_t x, int32_t y, int32_t deviceId, int32_t modifiers){
 
-    CustomGPoint point = GestureOnlyMotionRecognizer::pointCircularPool.getNextInstance() as CustomGPoint;;
+    CustomGPoint point = GestureOnlyMotionRecognizer::pointCircularPool.getNextInstance();;
     
 point.setX(x);
     

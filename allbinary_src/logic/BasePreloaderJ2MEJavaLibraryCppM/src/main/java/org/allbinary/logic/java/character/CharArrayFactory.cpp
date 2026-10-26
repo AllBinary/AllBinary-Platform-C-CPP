@@ -20,7 +20,7 @@
 
             #include <vector>
         
-            #include "../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
 
 
@@ -57,10 +57,7 @@ class CharArrayFactory
 }
 
 
-    private: const std::vector<char> zeroCharArray = 
-                                                        
-                                                        std::vector<char>(0)
-                                                    ;
+    private: const std::vector<char> zeroCharArray = std::vector<char>(0);
 
     public: std::vector<char> getZeroCharArray(){
 

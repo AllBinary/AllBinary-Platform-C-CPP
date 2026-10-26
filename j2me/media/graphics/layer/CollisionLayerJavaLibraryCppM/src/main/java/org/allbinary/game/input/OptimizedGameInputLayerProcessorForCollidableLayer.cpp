@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/game/layer/AllBinaryGameLayer.h>
 
@@ -54,8 +54,9 @@
 
 class OptimizedGameInputLayerProcessorForCollidableLayer: public LayerProcessor {
 
-public: OptimizedGameInputLayerProcessorForCollidableLayer(){
-            super(OptimizedGameInputLayerManager());
+public: OptimizedGameInputLayerProcessorForCollidableLayer() : LayerProcessor(OptimizedGameInputLayerManager()){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -67,7 +68,7 @@ public: OptimizedGameInputLayerProcessorForCollidableLayer(){
             
     public: void processAt(AllBinaryLayerManager allBinaryLayerManager, AllBinaryLayer layerInterface, int32_t index){
 
-    AllBinaryGameLayer gameInputInterface = layerInterface as AllBinaryGameLayer;;
+    AllBinaryGameLayer gameInputInterface = layerInterface;;
     
 gameInputInterface.processInput(allBinaryLayerManager);
     

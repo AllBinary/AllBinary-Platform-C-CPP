@@ -7,13 +7,13 @@
         #ifndef ORG_ALLBINARY_THREAD_THREADOBJECTUTIL_H
         #define ORG_ALLBINARY_THREAD_THREADOBJECTUTIL_H
 
-            #include "../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../java/lang/Thread.h"
+            #include "java/lang/Thread.h"
         
-            #include "../../../java/lang/Runnable.h"
+            #include "java/lang/Runnable.h"
         
 #include <org/allbinary/TsUtil.h>
 

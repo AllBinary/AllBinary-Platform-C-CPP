@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/animation/resource/BaseResourceAnimationInterfaceFactoryInterfaceFactory.h>
 
@@ -72,8 +72,9 @@ class TouchButtonResourceAnimationInterfaceFactoryInterfaceFactory: public BaseR
 }
 
 
-public: TouchButtonResourceAnimationInterfaceFactoryInterfaceFactory(std::string name){
-            super(name, StdUtil::getInstance().createHashtable(), StdUtil::getInstance().createHashtable(), StdUtil::getInstance().createHashtable());
+public: TouchButtonResourceAnimationInterfaceFactoryInterfaceFactory(std::string name) : BaseResourceAnimationInterfaceFactoryInterfaceFactory(name, StdUtil::getInstance().createHashtable(), StdUtil::getInstance().createHashtable(), StdUtil::getInstance().createHashtable()){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.

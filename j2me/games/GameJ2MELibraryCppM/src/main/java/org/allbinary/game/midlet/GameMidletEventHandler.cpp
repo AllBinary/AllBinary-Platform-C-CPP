@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/logic/util/event/AllBinaryEventObject.h>
 
@@ -71,7 +71,7 @@ private: GameMidletEventHandler(){
             
     protected: void process(AllBinaryEventObject eventObject, EventListenerInterface eventListenerInterface){
 
-    GameMidletEventListener gameMidletEventListener = eventListenerInterface as GameMidletEventListener;;
+    GameMidletEventListener gameMidletEventListener = eventListenerInterface;;
     
 gameMidletEventListener.onGameEnd(eventObject);
     

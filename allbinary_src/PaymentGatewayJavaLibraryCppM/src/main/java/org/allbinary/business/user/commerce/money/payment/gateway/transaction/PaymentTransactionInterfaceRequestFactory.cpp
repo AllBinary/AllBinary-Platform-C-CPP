@@ -18,9 +18,9 @@
 
 
 
-            #include "../../../../../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
 
@@ -148,19 +148,19 @@ private: PaymentTransactionInterfaceRequestFactory(){
 
         try {
             
-    TransformInfoHttpInterface httpTransformInfoInterface = transformInfoInterface as TransformInfoHttpInterface;;
+    TransformInfoHttpInterface httpTransformInfoInterface = transformInfoInterface;;
     
 
     PageContext pageContext = httpTransformInfoInterface.getPageContext();;
     
 
-    HttpServletRequest httpServletRequest = pageContext.getRequest() as HttpServletRequest;;
+    HttpServletRequest httpServletRequest = pageContext.getRequest();;
     
 
     std::string command = httpServletRequest.getParameter(org.allbinary.globals.GLOBALS2.ADMINCOMMAND);;
     
 
-                        if(true && command.compareTo(org.allbinary.globals.GLOBALS2.AUTHORIZEFORMEVALBODYONERROR) == 0)
+                        if(true && command.compare(org.allbinary.globals.GLOBALS2.AUTHORIZEFORMEVALBODYONERROR) == 0)
                         
                                     {
                                     
@@ -174,7 +174,7 @@ private: PaymentTransactionInterfaceRequestFactory(){
                                 
                         else {
                             
-    HashMap<any, any> propertiesHashMap = httpTransformInfoInterface.getPropertiesHashMap();;
+    HashMap<Object*, Object*> propertiesHashMap = httpTransformInfoInterface.getPropertiesHashMap();;
     
 
     WeblisketSession weblisketSession = WeblisketSession(propertiesHashMap, pageContext);;
@@ -253,10 +253,10 @@ orderReview.setPaymentInfo(orderPaymentInfo);
 
         try {
             
-    TransformInfoHttpInterface httpTransformInfoInterface = transformInfoInterface as TransformInfoHttpInterface;;
+    TransformInfoHttpInterface httpTransformInfoInterface = transformInfoInterface;;
     
 
-    HashMap<any, any> propertiesHashMap = httpTransformInfoInterface.getPropertiesHashMap();;
+    HashMap<Object*, Object*> propertiesHashMap = httpTransformInfoInterface.getPropertiesHashMap();;
     
 
     PageContext pageContext = httpTransformInfoInterface.getPageContext();;
@@ -268,10 +268,10 @@ orderReview.setPaymentInfo(orderPaymentInfo);
     StoreFrontInterface storeFrontInterface = StoreFrontFactory::getInstance(weblisketSession.getStoreName());;
     
 
-    HttpServletRequest httpServletRequest = pageContext.getRequest() as HttpServletRequest;;
+    HttpServletRequest httpServletRequest = pageContext.getRequest();;
     
 
-    std::string gatewayName = weblisketSession.getPaymentMethod() as string;;
+    std::string gatewayName = weblisketSession.getPaymentMethod();;
     
 
                         if(StringValidationUtil::getInstance().isEmpty(gatewayName))
@@ -308,7 +308,7 @@ orderReview.setUserName("testing");
     std::string orderId = httpServletRequest.getParameter("orderNumber");;
     
 
-                        if(false || orderId.compareTo(StringUtil::getInstance().EMPTY_STRING) == 0)
+                        if(false || orderId.compare(StringUtil::getInstance().EMPTY_STRING) == 0)
                         
                                     {
                                     orderId= OrderIdGenerator().getNext();

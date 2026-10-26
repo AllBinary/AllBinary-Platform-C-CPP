@@ -18,9 +18,9 @@
 
 
 
-            #include "../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/game/collision/CollidableBaseBehavior.h>
 
@@ -87,7 +87,7 @@ private: AllBinaryCollisionManager(){
     int32_t index = startIndex +1;index < size; index++)
         {
 
-    CollidableInterfaceCompositeInterface collidableInterfaceCompositeInterface2 = layerManager.getLayerAt(index) as CollidableInterfaceCompositeInterface;;
+    CollidableInterfaceCompositeInterface collidableInterfaceCompositeInterface2 = layerManager.getLayerAt(index);;
     
 this->collide(layerManager, collidableInterfaceCompositeInterface, collidableInterfaceCompositeInterface2);
     
@@ -106,16 +106,16 @@ this->collide(layerManager, collidableInterfaceCompositeInterface, collidableInt
     CollidableBaseBehavior collidableBase = collidableInterfaceCompositeInterface.getCollidableInferface();;
     
 
-                        if(collidableBase2.isCollidable(collidableInterfaceCompositeInterface as CollidableCompositeLayer))
+                        if(collidableBase2.isCollidable(collidableInterfaceCompositeInterface))
                         
                                     {
                                     
-                        if(collidableBase.isCollisionInterface(collidableInterfaceCompositeInterface as CollidableCompositeLayer, collidableInterfaceCompositeInterface2))
+                        if(collidableBase.isCollisionInterface(collidableInterfaceCompositeInterface, collidableInterfaceCompositeInterface2))
                         
                                     {
-                                    collidableBase.collideInterface(collidableInterfaceCompositeInterface as CollidableCompositeLayer, collidableInterfaceCompositeInterface2);
+                                    collidableBase.collideInterface(collidableInterfaceCompositeInterface, collidableInterfaceCompositeInterface2);
     
-collidableBase2.collideInterface(collidableInterfaceCompositeInterface as CollidableCompositeLayer, collidableInterfaceCompositeInterface);
+collidableBase2.collideInterface(collidableInterfaceCompositeInterface, collidableInterfaceCompositeInterface);
     
 
                                     }

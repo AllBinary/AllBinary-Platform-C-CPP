@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/util/BasicArrayList.h>
 
@@ -68,8 +68,9 @@ class SelectNewView: public PaymentGatewayViewAbstract {
 
     protected: const LogUtil logUtil = LogUtil::getInstance();
 
-public: SelectNewView(TransformInfoInterface transformInfoInterface){
-            super(transformInfoInterface);
+public: SelectNewView(TransformInfoInterface transformInfoInterface) : PaymentGatewayViewAbstract(transformInfoInterface){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.

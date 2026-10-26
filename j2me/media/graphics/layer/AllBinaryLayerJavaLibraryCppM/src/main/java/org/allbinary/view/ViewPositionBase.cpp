@@ -18,19 +18,7 @@
 
 
 
-#include <jsinterop/annotations/JsType.h>
-
-      
 #include <org/allbinary/graphics/GPoint.h>
-
-      
-#include <jsinterop/annotations/JsMethod.h>
-
-      
-#include <jsinterop/annotations/JsConstructor.h>
-
-      
-#include <jsinterop/annotations/JsProperty.h>
 
       
 
@@ -56,8 +44,9 @@ class ViewPositionBase: public GPoint {
 
     public: static const ViewPositionBase NULL_VIEW_POSITION = ViewPositionBase(0, 0, 0);
 
-protected: ViewPositionBase(int32_t x, int32_t y, int32_t z){
-            super(x, y, z);
+protected: ViewPositionBase(int32_t x, int32_t y, int32_t z) : GPoint(x, y, z){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.

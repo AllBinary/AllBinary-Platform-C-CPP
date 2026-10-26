@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
 #include <org/allbinary/logic/util/cache/CacheableInterface.h>
 
@@ -59,7 +59,7 @@ public: IIOImageCacheableFactory(){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return IIOImageCacheable(key as string);
+                        return IIOImageCacheable(key);
     
 }
 

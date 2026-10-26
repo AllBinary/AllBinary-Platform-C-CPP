@@ -18,19 +18,10 @@
 
 
 
-#include <jsinterop/annotations/JsType.h>
-
-      
 #include <org/allbinary/logic/java/bool/BooleanFactory.h>
 
       
 #include <org/allbinary/logic/util/visitor/Visitor.h>
-
-      
-#include <jsinterop/annotations/JsMethod.h>
-
-      
-#include <jsinterop/annotations/JsConstructor.h>
 
       
 

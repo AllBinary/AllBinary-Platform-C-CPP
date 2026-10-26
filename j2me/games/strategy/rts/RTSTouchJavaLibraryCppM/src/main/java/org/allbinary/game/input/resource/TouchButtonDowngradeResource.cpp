@@ -57,8 +57,9 @@ class TouchButtonDowngradeResource: public TouchButtonResource {
 }
 
 
-private: TouchButtonDowngradeResource(){
-            super("/touch_button_downgrade_64_by_64.png", "/touch_button_downgrade_hint_64_by_64.png");
+private: TouchButtonDowngradeResource() : TouchButtonResource("/touch_button_downgrade_64_by_64.png", "/touch_button_downgrade_hint_64_by_64.png"){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.

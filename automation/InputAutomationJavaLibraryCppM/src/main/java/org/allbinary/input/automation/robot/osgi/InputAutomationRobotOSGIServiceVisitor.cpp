@@ -20,9 +20,9 @@
 
             #include <vector>
         
-            #include "../../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <bundle/input/automation/robot/InputAutomationRobotServiceInterface.h>
 
@@ -81,7 +81,7 @@ public: InputAutomationRobotOSGIServiceVisitor(){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->visit(anyType as OSGIServiceInterface);;
+                        return this->visit(*dynamic_cast<OSGIServiceInterface*>(anyType));;
     
 }
 
@@ -92,7 +92,7 @@ public: InputAutomationRobotOSGIServiceVisitor(){
             this->logUtil.putF(this->commonStrings.START, this, "visit");
     
 
-    InputAutomationRobotServiceInterface inputAutomationRobotServiceInterface = osgiServiceInterface as InputAutomationRobotServiceInterface;;
+    InputAutomationRobotServiceInterface inputAutomationRobotServiceInterface = osgiServiceInterface;;
     
 
     std::vector<InputRobotInterface> inputRobotInterfaceArray = inputAutomationRobotServiceInterface.getInputRobotInterfaceArray();;
@@ -104,9 +104,9 @@ public: InputAutomationRobotOSGIServiceVisitor(){
                         for (
     int32_t index = 0;index < inputRobotInterfaceArray.size(); index++)
         {
-this->logUtil.putF("Adding: " +inputRobotInterfaceArray[index]!.getName(), this, "visit");
+this->logUtil.putF("Adding: " +inputRobotInterfaceArray[index].getName(), this, "visit");
     
-InputRobotFactory::getInstance().add(inputRobotInterfaceArray[index]!);
+InputRobotFactory::getInstance().add(inputRobotInterfaceArray[index]);
     
 }
 

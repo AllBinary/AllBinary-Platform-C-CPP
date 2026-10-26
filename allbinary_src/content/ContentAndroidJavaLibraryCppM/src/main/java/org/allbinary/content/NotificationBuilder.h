@@ -21,9 +21,9 @@
         #ifndef ORG_ALLBINARY_CONTENT_NOTIFICATIONBUILDER_H
         #define ORG_ALLBINARY_CONTENT_NOTIFICATIONBUILDER_H
 
-            #include "../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../java/lang/Integer.h"
+            #include "java/lang/Integer.h"
         
 #include <org/allbinary/android/NullParcelable.h>
 

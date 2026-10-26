@@ -18,9 +18,9 @@
 
 
 
-            #include "../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/util/BasicArrayList.h>
 
@@ -85,7 +85,7 @@ this->defaultListModel= DefaultListModel();
     int32_t index = 0;index < size; index++)
         {
 
-    std::string moduleName = this->vector.get(index) as string;;
+    std::string moduleName = this->vector.get(index);;
     
 this->defaultListModel.addElement(moduleName);
     
@@ -99,7 +99,7 @@ this->defaultListModel.addElement(moduleName);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->defaultListModel as ListModel;
+                        return this->defaultListModel;
     
 }
 

@@ -18,11 +18,11 @@
 
 
 
-            #include "../../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../../../../java/lang/Long.h"
+            #include "java/lang/Long.h"
         
 #include <org/allbinary/logic/string/StringMaker.h>
 
@@ -122,7 +122,7 @@ this->costFromStartP += cost;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return java.lang.Long.compare(this->totalCostP, pathFindingNodeCostInfo.totalCostP);;
+                        return Long.compare(this->totalCostP, pathFindingNodeCostInfo.totalCostP);;
     
 }
 
@@ -131,7 +131,7 @@ this->costFromStartP += cost;
 
     StringMaker stringBuffer = StringMaker();;
     
-stringBuffer.append(this->constructor.name.toString()!);
+stringBuffer.append(this->constructor.name.toString());
     
 stringBuffer.append(CommonLabels::getInstance().COLON_SEP);
     

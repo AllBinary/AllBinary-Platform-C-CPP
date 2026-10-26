@@ -7,9 +7,9 @@
         #ifndef ORG_ALLBINARY_CONFIGURATION_APPLICATIONCONFIGURATION_H
         #define ORG_ALLBINARY_CONFIGURATION_APPLICATIONCONFIGURATION_H
 
-            #include "../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/io/Closeable.h>
 

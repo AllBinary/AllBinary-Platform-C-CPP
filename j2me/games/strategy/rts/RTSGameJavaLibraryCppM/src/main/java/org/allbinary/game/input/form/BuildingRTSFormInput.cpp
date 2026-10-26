@@ -20,9 +20,9 @@
 
             #include <vector>
         
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../../../java/lang/RuntimeException.h"
+            #include "java/lang/RuntimeException.h"
         
 #include <org/allbinary/game/input/RTSPlayerGameInput.h>
 
@@ -170,8 +170,9 @@ class BuildingRTSFormInput: public RTSFormInput {
 
     private: const DropCellPositionHistory dropCellPositionHistory = DropCellPositionHistory::getInstance();
 
-public: BuildingRTSFormInput(std::vector<Group> groupInterface, bool isUnitProducer){
-            super(groupInterface);
+public: BuildingRTSFormInput(std::vector<Group> groupInterface, bool isUnitProducer) : RTSFormInput(groupInterface){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -211,7 +212,7 @@ this->mapEdgeGameNotificationEvent= GameNotificationEvent(this, RTSGameStrings::
 super.setAllBinaryGameLayerManager(allBinaryGameLayerManager);
     
 
-    GeographicMapCompositeInterface geographicMapCompositeInterface = allBinaryGameLayerManager as GeographicMapCompositeInterface;;
+    GeographicMapCompositeInterface geographicMapCompositeInterface = allBinaryGameLayerManager;;
     
 
     BasicGeographicMap geographicMapInterface = geographicMapCompositeInterface.getGeographicMapInterface()[0];;
@@ -259,10 +260,10 @@ this->buildFromMotionInput(rtsPlayerLayerInterface, layerManager, item, itemInde
 
     private: bool isDemoLocked(ABCustomItem item){
 
-    LayerInterfaceFactoryImageItem factoryItem = item as LayerInterfaceFactoryImageItem;;
+    LayerInterfaceFactoryImageItem factoryItem = item;;
     
 
-    DemoLockedWithCostLayerInterfaceFactoryInterface layerInterfaceFactoryInterface = factoryItem.getLayerInterfaceFactoryInterface() as DemoLockedWithCostLayerInterfaceFactoryInterface;;
+    DemoLockedWithCostLayerInterfaceFactoryInterface layerInterfaceFactoryInterface = factoryItem.getLayerInterfaceFactoryInterface();;
     
 
                         if(LockedUtil::getInstance().isLocked() && layerInterfaceFactoryInterface.isDemoLocked())
@@ -313,7 +314,7 @@ this->logUtil.putF(commonStrings.START, this, "buildFromMotionInput");
                                     }
                                 
 
-    GeographicMapCompositeInterface geographicMapCompositeInterface = layerManager as GeographicMapCompositeInterface;;
+    GeographicMapCompositeInterface geographicMapCompositeInterface = layerManager;;
     
 
     BasicGeographicMap geographicMapInterface = geographicMapCompositeInterface.getGeographicMapInterface()[0];;
@@ -350,7 +351,7 @@ LockedFeatureNotificationUtil::getInstance().fireWithColor(geographicMapInterfac
     GeographicMapCellType geographicMapCellType = geographicMapInterface.getCellTypeAt(geographicMapCellPosition);;
     
 
-    RaceTrackGeographicMapCellTypeFactory raceTrackGeographicMapCellTypeFactory = geographicMapInterface.getGeographicMapCellTypeFactory() as RaceTrackGeographicMapCellTypeFactory;;
+    RaceTrackGeographicMapCellTypeFactory raceTrackGeographicMapCellTypeFactory = geographicMapInterface.getGeographicMapCellTypeFactory();;
     
 
                         if(!raceTrackGeographicMapCellTypeFactory.isPath(geographicMapCellType))
@@ -367,7 +368,7 @@ LockedFeatureNotificationUtil::getInstance().fireWithColor(geographicMapInterfac
                                 
                         else {
                             
-    RTSLayer rtsLayer = this->newUnconstructedRTSLayerInterfaceArray[itemIndex]! as RTSLayer;;
+    RTSLayer rtsLayer = this->newUnconstructedRTSLayerInterfaceArray[itemIndex];;
     
 
     GPoint cellPoint = geographicMapCellPosition.getPoint();;
@@ -380,7 +381,7 @@ rtsLayer.geographicMapCellPositionAreaBase.update(geographicMapInterface);
                         }
                             
 
-    RTSLayer rtsLayer = this->newUnconstructedRTSLayerInterfaceArray[itemIndex]! as RTSLayer;;
+    RTSLayer rtsLayer = this->newUnconstructedRTSLayerInterfaceArray[itemIndex];;
     
 this->attemptBuild(rtsPlayerLayerInterface, layerManager, rtsLayer, itemIndex);
     
@@ -476,15 +477,15 @@ this->logUtil.putF(StringMaker().append("Layer: ").append(StringUtil::getInstanc
     int32_t index = occupyList.size() -1;index >= 0; index--)
         {
 
-    GeographicMapCompositeInterface geographicMapCompositeInterface = layerManager as GeographicMapCompositeInterface;;
+    GeographicMapCompositeInterface geographicMapCompositeInterface = layerManager;;
     
 
     BasicGeographicMap geographicMapInterface = geographicMapCompositeInterface.getGeographicMapInterface()[0];;
     
-geographicMapCellType= geographicMapInterface.getCellTypeAt(occupyList.get(index) as GeographicMapCellPosition);
+geographicMapCellType= geographicMapInterface.getCellTypeAt(occupyList.get(index));
     
 
-    RaceTrackGeographicMapCellTypeFactory raceTrackGeographicMapCellTypeFactory = geographicMapInterface.getGeographicMapCellTypeFactory() as RaceTrackGeographicMapCellTypeFactory;;
+    RaceTrackGeographicMapCellTypeFactory raceTrackGeographicMapCellTypeFactory = geographicMapInterface.getGeographicMapCellTypeFactory();;
     
 
                         if(raceTrackGeographicMapCellTypeFactory.isPath(geographicMapCellType))
@@ -686,7 +687,7 @@ this->add(rtsPlayerLayerInterface, layerManager, layerInterface);
 this->dropCellPositionHistory.addAll(occupyList, layerInterface);
     
 
-    RTSPlayerGameInput rtsPlayerGameInput = rtsPlayerLayerInterface.getPlayerGameInput() as RTSPlayerGameInput;;
+    RTSPlayerGameInput rtsPlayerGameInput = rtsPlayerLayerInterface.getPlayerGameInput();;
     
 rtsPlayerGameInput.setSelectedRTSLayer(layerInterface, this->getSelectedGeographicCellPosition());
     

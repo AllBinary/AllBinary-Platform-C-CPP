@@ -23,7 +23,7 @@
 
             #include <vector>
         
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/io/ByteArrayInputStream.h>
 
@@ -135,7 +135,7 @@ class DownloadableInventoryItemView: public HttpStoreComponentView, public Reque
 
     protected: DownloadableItem downloadableItem;
 
-    private: HashMap<any, any> requestHashMap;
+    private: HashMap<Object*, Object*> requestHashMap;
 
 public: DownloadableInventoryItemView(TransformInfoInterface transformInfoInterface);
 
@@ -163,9 +163,9 @@ public: DownloadableInventoryItemView(TransformInfoInterface transformInfoInterf
 
     private: std::string getItemFilePath();
 
-    private: void setRequestHashMap(HashMap<any, any> requestHashMap);
+    private: void setRequestHashMap(HashMap<Object*, Object*> requestHashMap);
 
-    public: HashMap<any, any> getRequestHashMap();
+    public: HashMap<Object*, Object*> getRequestHashMap();
 
     public: DownloadableItem getDownloadableItem();
 

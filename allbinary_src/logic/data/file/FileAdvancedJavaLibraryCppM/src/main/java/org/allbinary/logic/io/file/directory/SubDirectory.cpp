@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
 #include <java/io/FileFilter.h>
 
@@ -89,7 +89,7 @@ class SubDirectory
     int32_t index = 0;index < size; index++)
         {
 
-    AbFile file = files.get(index) as AbFile;;
+    AbFile file = files.get(index);;
     
 stringBuffer.append(file.getPath());
     

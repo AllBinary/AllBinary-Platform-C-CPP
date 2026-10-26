@@ -21,7 +21,7 @@
         #ifndef ORG_ALLBINARY_DATA_TABLES_TABLEMAPPINGINTERFACE_H
         #define ORG_ALLBINARY_DATA_TABLES_TABLEMAPPINGINTERFACE_H
 
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
 
@@ -60,7 +60,7 @@ class TableMappingInterface {
 
                 //@Throws(Exception.constructor)
             
-    HashMap<any, any> toHashMap();
+    HashMap<Object*, Object*> toHashMap();
 
 };
 

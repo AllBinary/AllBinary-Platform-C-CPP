@@ -20,9 +20,9 @@
 
             #include <vector>
         
-            #include "../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/data/tree/dom/DomNodeInterface.h>
 
@@ -86,7 +86,7 @@ this->categoryInterface= categoryInterface;
     int32_t i = 0;i < size; i++)
         {
 
-    CategoryInterface childCategoryInterface = childArray[i]! as CategoryInterface;;
+    CategoryInterface childCategoryInterface = childArray[i];;
     
 
     Node childCategoryNode = CategoriesView(childCategoryInterface).toXmlNode(document);;

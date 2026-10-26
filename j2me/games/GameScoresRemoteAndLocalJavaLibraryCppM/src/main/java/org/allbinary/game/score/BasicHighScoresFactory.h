@@ -23,11 +23,8 @@
 
             #include <vector>
         
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-#include <jsinterop/annotations/JsType.h>
-
-      
 #include <org/allbinary/thread/ARunnable.h>
 
       
@@ -100,7 +97,7 @@ class BasicHighScoresFactory: public HighScoresBase {
 
 public: BasicHighScoresFactory(AbeClientInformationInterface abeClientInformation, SoftwareInformation softwareInformation);
 
-    private: const std::vector<HighScores> highScoresArray = new Array(2);
+    private: const std::vector<HighScores> highScoresArray = std::vector<HighScores>(2);
 
     private: const std::string TOP = "Top";
 

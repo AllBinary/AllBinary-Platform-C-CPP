@@ -20,9 +20,9 @@
 
             #include <vector>
         
-            #include "../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/awt.h>
 
@@ -91,7 +91,7 @@ private: ImagesRatioUtil(){
                         end= bufferedImageArray.size();
                                 
 
-    double ratio = (bufferedImageArray[0]!.getWidth() /bufferedImageArray[0]!.getHeight());;
+    double ratio = (bufferedImageArray[0].getWidth() /bufferedImageArray[0].getHeight());;
     
 
 
@@ -101,7 +101,7 @@ private: ImagesRatioUtil(){
     int32_t index = 1;index < end; index++)
         {
 
-                        if(ratio != (bufferedImageArray[index]!.getWidth() /bufferedImageArray[index]!.getHeight()))
+                        if(ratio != (bufferedImageArray[index].getWidth() /bufferedImageArray[index].getHeight()))
                         
                                     {
                                     
@@ -142,7 +142,7 @@ private: ImagesRatioUtil(){
                         for (
     int32_t index = 0;index < end; index++)
         {
-ratio += (bufferedImageArray[index]!.getWidth() /bufferedImageArray[index]!.getHeight());
+ratio += (bufferedImageArray[index].getWidth() /bufferedImageArray[index].getHeight());
     
 }
 
@@ -283,7 +283,7 @@ g.drawImage(bufferedImage, point.x, point.y, bufferedImage.getWidth(), bufferedI
                         end= bufferedImageArray.size();
                                 
 
-    std::vector<BufferedImage> fudgedBufferedImageArray = new Array(end);;
+    std::vector<BufferedImage> fudgedBufferedImageArray = std::vector<BufferedImage>(end);;
     
 
 
@@ -292,7 +292,7 @@ g.drawImage(bufferedImage, point.x, point.y, bufferedImage.getWidth(), bufferedI
                         for (
     int32_t index = 0;index < end; index++)
         {
-fudgedBufferedImageArray[index]= fudge(bufferedImageArray[index]!, ratio);
+fudgedBufferedImageArray[index]= fudge(bufferedImageArray[index], ratio);
     
 }
 

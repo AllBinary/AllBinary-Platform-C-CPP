@@ -20,7 +20,7 @@
 
             #include <vector>
         
-            #include "../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
 #include <jsinterop/annotations/JsType.h>
 
@@ -68,7 +68,7 @@ class EnumerationUtil
 }
 
 
-    public: bool hasMoreElements(Enumeration<any> enumeration){
+    public: bool hasMoreElements(Enumeration<Object*> enumeration){
 
 
 
@@ -78,24 +78,24 @@ class EnumerationUtil
 }
 
 
-    public: Object* nextElement(Enumeration<any> enumeration){
+    public: Object* nextElement(Enumeration<Object*> enumeration){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return enumeration.nextElement()!;;
+                        return enumeration.nextElement();;
     
 }
 
 
-    public: std::vector<Object*> getAsArray(Enumeration<any> enumeration){
+    public: std::vector<Object*> getAsArray(Enumeration<Object*> enumeration){
 
     BasicArrayList basicArrayList = BasicArrayListD();;
     
 
         while(this->hasMoreElements(enumeration))
         {
-basicArrayList.add(this->nextElement(enumeration)!);
+basicArrayList.add(this->nextElement(enumeration));
     
 }
 

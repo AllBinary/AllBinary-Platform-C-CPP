@@ -21,7 +21,7 @@
         #ifndef ADMIN_TAGS_USERTAG_H
         #define ADMIN_TAGS_USERTAG_H
 
-            #include "../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <javax/servlet/jsp/JspTagException.h>
 

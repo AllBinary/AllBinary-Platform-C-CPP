@@ -84,7 +84,7 @@ class AllBinaryVibration: public AllBinaryVibrationME {
 }
 
 
-    private: const Vibrator vibrator = ResourceUtil::getInstance().getContext().getSystemService(Context::VIBRATOR_SERVICE) as unknown as Vibrator;
+    private: const Vibrator vibrator = ResourceUtil::getInstance().getContext().getSystemService(Context::VIBRATOR_SERVICE) as unknown;
 
 protected: AllBinaryVibration(){
 }

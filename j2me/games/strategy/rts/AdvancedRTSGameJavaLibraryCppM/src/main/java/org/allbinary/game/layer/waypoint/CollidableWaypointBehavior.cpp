@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/game/layer/CollidableCompositeLayer.h>
 
@@ -50,8 +50,9 @@
         
 class CollidableWaypointBehavior: public CollidableRTSBehavior {
 
-public: CollidableWaypointBehavior(bool collidable){
-            super(collidable);
+public: CollidableWaypointBehavior(bool collidable) : CollidableRTSBehavior(collidable){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.

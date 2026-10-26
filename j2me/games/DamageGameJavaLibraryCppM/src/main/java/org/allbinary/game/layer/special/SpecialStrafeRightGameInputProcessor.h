@@ -21,7 +21,7 @@
         #ifndef ORG_ALLBINARY_GAME_LAYER_SPECIAL_SPECIALSTRAFERIGHTGAMEINPUTPROCESSOR_H
         #define ORG_ALLBINARY_GAME_LAYER_SPECIAL_SPECIALSTRAFERIGHTGAMEINPUTPROCESSOR_H
 
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/game/input/event/GameKeyEvent.h>
 

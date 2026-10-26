@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/business/user/commerce/inventory/basket/BasketData.h>
 
@@ -70,8 +70,9 @@ class MiniBasketView: public HttpStoreComponentView, public DomNodeInterface {
 
     protected: const LogUtil logUtil = LogUtil::getInstance();
 
-public: MiniBasketView(TransformInfoInterface transformInfoInterface){
-            super(transformInfoInterface);
+public: MiniBasketView(TransformInfoInterface transformInfoInterface) : HttpStoreComponentView(transformInfoInterface){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -150,7 +151,7 @@ basketNode.appendChild(subTotalNode);
 
 
     public: void addDomNodeInterfaces(){
-this->addDomNodeInterface(this as DomNodeInterface);
+this->addDomNodeInterface(this);
     
 }
 

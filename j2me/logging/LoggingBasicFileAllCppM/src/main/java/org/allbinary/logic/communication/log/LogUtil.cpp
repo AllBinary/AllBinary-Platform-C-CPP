@@ -18,9 +18,9 @@
 
 
 
-            #include "../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../java/lang/Throwable.h"
+            #include "java/lang/Throwable.h"
         
 #include <org/allbinary/log/FileLog.h>
 
@@ -105,7 +105,7 @@ FileLog::put(specialMessage, className, functionName);
 
 
     /*actual*/ public: void put(std::string specialMessage, Object* anyType, std::string functionName, Object* exception){
-FileLog::put(specialMessage, anyType, functionName, exception as Throwable);
+FileLog::put(specialMessage, anyType, functionName, *dynamic_cast<Throwable*>(exception));
     
 }
 

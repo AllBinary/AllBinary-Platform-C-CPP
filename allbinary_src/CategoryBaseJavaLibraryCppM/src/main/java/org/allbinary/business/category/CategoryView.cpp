@@ -18,9 +18,9 @@
 
 
 
-            #include "../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/util/BasicArrayList.h>
 
@@ -137,7 +137,7 @@ this->categoryInterface= categoryInterface;
                         if(InterfaceUtil::isImplemented("CategoryPropertiesInterface", anyType))
                         
                                     {
-                                    categoryPropertiesInterface= anyType as CategoryPropertiesInterface;
+                                    categoryPropertiesInterface= *dynamic_cast<CategoryPropertiesInterface*>(anyType);
     
 
                                     }
@@ -147,7 +147,7 @@ this->categoryInterface= categoryInterface;
                         
                                     {
                                     
-    CategoryInterface categoryInterface = anyType as CategoryInterface;;
+    CategoryInterface categoryInterface = *dynamic_cast<CategoryInterface*>(anyType);;
     
 categoryPropertiesInterface= categoryInterface.getProperties();
     
@@ -156,7 +156,7 @@ categoryPropertiesInterface= categoryInterface.getProperties();
                                 
                         else {
                             
-    std::string isImpl = InterfaceUtil::viewAll(anyType->constructor, CommonSeps::getInstance().NEW_LINE);;
+    std::string isImpl = InterfaceUtil::viewAll(anyType->getClass(), CommonSeps::getInstance().NEW_LINE);;
     
 
 

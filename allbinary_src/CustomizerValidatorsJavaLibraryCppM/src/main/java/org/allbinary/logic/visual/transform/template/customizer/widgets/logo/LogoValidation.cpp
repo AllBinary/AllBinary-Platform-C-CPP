@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
 
@@ -125,7 +125,7 @@ this->logoFile= DomSearchHelper::getNode(LogoData::getInstance().IMAGEFILENAME, 
 }
 
 
-public: LogoValidation(HashMap<any, any> hashMap){
+public: LogoValidation(HashMap<Object*, Object*> hashMap){
 this->isFile= true;
     
 this->getFormData(hashMap);
@@ -135,10 +135,10 @@ this->getFormData(hashMap);
 
                 //@Throws(Exception.constructor)
             
-    public: void getFormData(HashMap<any, any> hashMap){
-this->logoFileItem= hashMap.get(LogoData::getInstance().IMAGE) as FileItem;
+    public: void getFormData(HashMap<Object*, Object*> hashMap){
+this->logoFileItem= hashMap.get(LogoData::getInstance().IMAGE);
     
-this->logoAbPath= AbPath(hashMap.get(LogoData::getInstance().IMAGEPATH) as string, StringUtil::getInstance().EMPTY_STRING);
+this->logoAbPath= AbPath(hashMap.get(LogoData::getInstance().IMAGEPATH), StringUtil::getInstance().EMPTY_STRING);
     
 
                         if(this->logoFileItem != 
@@ -377,12 +377,12 @@ stringBuffer.append("Logo is not valid.");
 }
 
 
-    public: HashMap<any, any> toHashMap(){
+    public: HashMap<Object*, Object*> toHashMap(){
 
     StringUtil stringUtil = StringUtil::getInstance();;
     
 
-    HashMap<any, any> hashMap = StdUtil::getInstance().createHashMap();;
+    HashMap<Object*, Object*> hashMap = StdUtil::getInstance().createHashMap();;
     
 hashMap.put(LogoData::getInstance().IMAGE, stringUtil.EMPTY_STRING);
     
@@ -419,7 +419,7 @@ hashMap.put(LogoData::getInstance().IMAGEFILENAME, this->logoFile);
             
     public: Node toXmlNode(Document document){
 
-    HashMap<any, any> hashMap = this->toHashMap();;
+    HashMap<Object*, Object*> hashMap = this->toHashMap();;
     
 
 

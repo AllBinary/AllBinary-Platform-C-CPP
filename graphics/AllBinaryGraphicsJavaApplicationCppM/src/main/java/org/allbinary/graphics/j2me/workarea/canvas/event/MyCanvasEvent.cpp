@@ -44,8 +44,9 @@
 
 class MyCanvasEvent: public java::util::EventObject {
 
-public: MyCanvasEvent(Object* source){
-            super(source);
+public: MyCanvasEvent(Object* source) : java::util::EventObject(source){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -75,7 +76,7 @@ public: MyCanvasEvent(Object* source){
 
     public: std::string getCommand(){
 
-    MyCanvasEventSource myEventSource = this->getSource() as MyCanvasEventSource;;
+    MyCanvasEventSource myEventSource = this->getSource();;
     
 
 
@@ -88,7 +89,7 @@ public: MyCanvasEvent(Object* source){
 
     public: MutableTreeNode getTreeNode(){
 
-    MyCanvasEventSource myEventSource = this->getSource() as MyCanvasEventSource;;
+    MyCanvasEventSource myEventSource = this->getSource();;
     
 
 
@@ -101,7 +102,7 @@ public: MyCanvasEvent(Object* source){
 
     public: double getAngle(){
 
-    MyCanvasEventSource myEventSource = this->getSource() as MyCanvasEventSource;;
+    MyCanvasEventSource myEventSource = this->getSource();;
     
 
 

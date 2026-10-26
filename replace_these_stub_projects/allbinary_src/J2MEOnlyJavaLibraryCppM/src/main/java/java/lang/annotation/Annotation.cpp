@@ -4,7 +4,7 @@
 
 
 
-            #include "../../../java/lang/Class.h"
+            #include "java/lang/Class.h"
         
 
 
@@ -27,7 +27,7 @@
         
 class Annotation {
 
-    Function annotationType()
+    Class* annotationType()
 
 };
 

@@ -46,8 +46,9 @@ class ScrollMapEvent: public AllBinaryEventObject {
 
     private: int32_t dy= 0;
 
-public: ScrollMapEvent(Object* anyType){
-            super(anyType);
+public: ScrollMapEvent(Object* anyType) : AllBinaryEventObject(anyType){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.

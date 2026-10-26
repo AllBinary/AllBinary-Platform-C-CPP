@@ -21,7 +21,7 @@
         #ifndef VIEWS_GENERIC_ORDER_HISTORY_VALIDATIONVIEW_H
         #define VIEWS_GENERIC_ORDER_HISTORY_VALIDATIONVIEW_H
 
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/globals/MESSAGES.h>
 

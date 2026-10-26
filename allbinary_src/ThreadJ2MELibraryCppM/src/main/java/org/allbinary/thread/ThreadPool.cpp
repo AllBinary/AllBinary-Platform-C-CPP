@@ -18,17 +18,17 @@
 
 
 
-            #include "../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../java/lang/RuntimeException.h"
+            #include "java/lang/RuntimeException.h"
         
-            #include "../../../java/lang/InterruptedException.h"
+            #include "java/lang/InterruptedException.h"
         
-            #include "../../../java/lang/Thread.h"
+            #include "java/lang/Thread.h"
         
-            #include "../../../java/lang/Runnable.h"
+            #include "java/lang/Runnable.h"
         
 #include <org/allbinary/logic/communication/log/LogUtil.h>
 
@@ -197,7 +197,7 @@ pooledThread.start();
                         for (
     int32_t index = 0;index < size; index++)
         {
-runnable= this->taskQueue.get(index) as PriorityRunnable;
+runnable= this->taskQueue.get(index);
     
 
                         if(runnable.getPriority() > task.getPriority())
@@ -307,7 +307,7 @@ this->wait();
 }
 
 
-    Runnable runnable = this->taskQueue.removeAt(0) as Runnable;;
+    Runnable runnable = this->taskQueue.removeAt(0);;
     
 
 

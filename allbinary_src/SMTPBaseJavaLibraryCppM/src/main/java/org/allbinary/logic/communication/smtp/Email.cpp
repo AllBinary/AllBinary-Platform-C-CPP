@@ -20,9 +20,9 @@
 
             #include <vector>
         
-            #include "../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/io/ByteArrayOutputStream.h>
 
@@ -164,13 +164,13 @@ this->init(from, to, subject, server, textBody, htmlAttachment, contentBase);
     StringValidationUtil stringValidationUtil = StringValidationUtil::getInstance();;
     
 
-    std::vector<MimeBodyPart> mimeBodyParts = new Array(
+    std::vector<MimeBodyPart> mimeBodyParts = std::vector<MimeBodyPart>(
                             //Otherwise - levels - level - dimension - ConditionalExpr
 );;
     
 mimeBodyParts[0]= MimeBodyPart();
     
-mimeBodyParts[0]!.setText(textBody);
+mimeBodyParts[0].setText(textBody);
     
 
                         if(!stringValidationUtil.isEmpty(htmlAttachment))
@@ -195,7 +195,7 @@ mimeBodyParts[1]= MimeBodyPart(internetHeaders, htmlAttachment.getBytes());
 
                                     }
                                 
-this->init(server, nullptr as Authenticator, 
+this->init(server, nullptr, 
                                                 {
                                                     InternetAddress(from)
                                                 }, 
@@ -326,7 +326,7 @@ this->msg.setSubject(subject);
                         for (
     int32_t i = 0;i < mimeBodyParts.size(); i++)
         {
-mimeMultipart.addBodyPart(mimeBodyParts[i]!);
+mimeMultipart.addBodyPart(mimeBodyParts[i]);
     
 }
 
@@ -388,13 +388,13 @@ this->msg.setContent(mimeMultipart);
 
                 //@Throws(Exception.constructor)
             
-    public: HashMap<any, any> toHashMap(){
+    public: HashMap<Object*, Object*> toHashMap(){
 
         try {
             
-    HashMap<any, any> hashMap = StdUtil::getInstance().createHashMap();;
+    HashMap<Object*, Object*> hashMap = StdUtil::getInstance().createHashMap();;
     
-hashMap.put(EmailData::SERVER, this->properties.get(Email::SMTP_HOST) as string);
+hashMap.put(EmailData::SERVER, this->properties.get(Email::SMTP_HOST));
     
 
     std::vector<Address> addresses = this->msg.getFrom();;
@@ -412,7 +412,7 @@ hashMap.put(EmailData::SERVER, this->properties.get(Email::SMTP_HOST) as string)
                         for (
     int32_t index = 0;index < addresses.size(); index++)
         {
-hashMap.put(EmailData::FROM, addresses[index]!.toString());
+hashMap.put(EmailData::FROM, addresses[index].toString());
     
 }
 
@@ -434,7 +434,7 @@ addresses= this->msg.getRecipients(Message::RecipientType.TO);
                         for (
     int32_t index = 0;index < addresses.size(); index++)
         {
-hashMap.put(EmailData::TO, addresses[index]!.toString());
+hashMap.put(EmailData::TO, addresses[index].toString());
     
 }
 
@@ -456,7 +456,7 @@ addresses= this->msg.getRecipients(Message::RecipientType.CC);
                         for (
     int32_t index = 0;index < addresses.size(); index++)
         {
-hashMap.put(EmailData::CC, addresses[index]!.toString());
+hashMap.put(EmailData::CC, addresses[index].toString());
     
 }
 
@@ -478,7 +478,7 @@ addresses= this->msg.getRecipients(Message::RecipientType.BCC);
                         for (
     int32_t index = 0;index < addresses.size(); index++)
         {
-hashMap.put(EmailData::BCC, addresses[index]!.toString());
+hashMap.put(EmailData::BCC, addresses[index].toString());
     
 }
 
@@ -488,7 +488,7 @@ hashMap.put(EmailData::BCC, addresses[index]!.toString());
 hashMap.put(EmailData::SUBJECT, this->msg.getSubject());
     
 
-    MimeMultipart mimeMultipart = msg.getContent() as MimeMultipart;;
+    MimeMultipart mimeMultipart = msg.getContent();;
     
 
                         if(mimeMultipart != 
@@ -504,7 +504,7 @@ hashMap.put(EmailData::SUBJECT, this->msg.getSubject());
     int32_t index = 0;index < mimeMultipart.getCount(); index++)
         {
 
-    std::string content = mimeMultipart.getBodyPart(index).getContent() as string;;
+    std::string content = mimeMultipart.getBodyPart(index).getContent();;
     
 hashMap.put(EmailData::CONTENT, content);
     

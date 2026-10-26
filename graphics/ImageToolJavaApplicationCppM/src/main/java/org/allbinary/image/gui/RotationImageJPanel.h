@@ -21,9 +21,9 @@
         #ifndef ORG_ALLBINARY_IMAGE_GUI_ROTATIONIMAGEJPANEL_H
         #define ORG_ALLBINARY_IMAGE_GUI_ROTATIONIMAGEJPANEL_H
 
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../../java/lang/Thread.h"
+            #include "java/lang/Thread.h"
         
 #include <java/awt.h>
 

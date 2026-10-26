@@ -20,7 +20,7 @@
 
             #include <vector>
         
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/io/File.h>
 
@@ -121,8 +121,9 @@ class TrueTypeFontUtil: public TrueTypeFontUtilBase {
 
     public: OpenGLESImage fontImage = OpenGLESImage::NULL_OPENGL_IMAGE;
 
-private: TrueTypeFontUtil(){
-            super(1);
+private: TrueTypeFontUtil() : TrueTypeFontUtilBase(1){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -148,7 +149,7 @@ this->logUtil.putF(path, this, commonStrings.CONSTRUCTOR);
     FileOutputStream fos = FileOutputStream(path);;
     
 
-    Bitmap bitmap = (getImage as AndroidImageInterface).getBitmap();;
+    Bitmap bitmap = (getImage).getBitmap();;
     
 bitmap.compress(Bitmap::CompressFormat.PNG, 100, fos);
     
@@ -330,7 +331,7 @@ canvas.save();
 
     Image image = AndroidImmutableImage::create(bitmap);;
     
-this->fontImage= this->preResourceImageUtil.encapsulate(image) as OpenGLESImage;
+this->fontImage= this->preResourceImageUtil.encapsulate(image);
     
 
 

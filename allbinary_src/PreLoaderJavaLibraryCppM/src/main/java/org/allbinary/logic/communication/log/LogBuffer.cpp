@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
 #include <org/allbinary/util/BasicArrayList.h>
 
@@ -82,7 +82,7 @@ this->logEntryVector.add(log);
     int32_t index = 0;index < size; index++)
         {
 
-    Log log = this->logEntryVector.get(index) as Log;;
+    Log log = this->logEntryVector.get(index);;
     
 this->logUtil.putL(log);
     

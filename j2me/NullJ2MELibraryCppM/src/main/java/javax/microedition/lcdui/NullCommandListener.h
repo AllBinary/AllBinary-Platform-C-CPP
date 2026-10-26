@@ -7,7 +7,7 @@
         #ifndef JAVAX_MICROEDITION_LCDUI_NULLCOMMANDLISTENER_H
         #define JAVAX_MICROEDITION_LCDUI_NULLCOMMANDLISTENER_H
 
-            #include "../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
 
 

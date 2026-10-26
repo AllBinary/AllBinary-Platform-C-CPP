@@ -193,12 +193,12 @@ add(this->jScrollPane1);
                         
                                     {
                                     
-    CustomTreeNodeInterface customTreeNodeInterface = anyType as CustomTreeNodeInterface;;
+    CustomTreeNodeInterface customTreeNodeInterface = *dynamic_cast<CustomTreeNodeInterface*>(anyType);;
     
 
     JPopupMenu jPopupMenu = customTreeNodeInterface.getJPopupMenu();;
     
-jPopupMenu.show(evt.getSource() as JComponent, evt.getX(), evt.getY());
+jPopupMenu.show(evt.getSource(), evt.getX(), evt.getY());
     
 
                                     }

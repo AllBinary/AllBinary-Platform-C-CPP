@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/logic/control/validate/ValidationComponentInterface.h>
 
@@ -54,8 +54,9 @@
 
 class AutoValidationInventoryView: public InventoryView, public ValidationComponentInterface {
 
-public: AutoValidationInventoryView(TransformInfoInterface transformInfoInterface){
-            super(transformInfoInterface);
+public: AutoValidationInventoryView(TransformInfoInterface transformInfoInterface) : InventoryView(transformInfoInterface){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.

@@ -18,9 +18,9 @@
 
 
 
-            #include "../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
 
@@ -53,13 +53,13 @@ class MediaData
             : public Object
          {
 
-    private: static HashMap<any, any> hashMap = StdUtil::getInstance().createHashMap();
+    private: static HashMap<Object*, Object*> hashMap = StdUtil::getInstance().createHashMap();
 
                 //@Throws(Exception.constructor)
             
     public: static MediaData get(std::string a_Name){
 
-    MediaData mediaData = MediaData::hashMap.get(a_Name) as MediaData;;
+    MediaData mediaData = MediaData::hashMap.get(a_Name);;
     
 
                         if(mediaData != 
@@ -98,7 +98,7 @@ class MediaData
 }
 
 
-    public: static HashMap<any, any> toHashMap(){
+    public: static HashMap<Object*, Object*> toHashMap(){
 
 
 

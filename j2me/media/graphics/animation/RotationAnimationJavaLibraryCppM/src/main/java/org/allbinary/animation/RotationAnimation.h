@@ -21,9 +21,6 @@
         #ifndef ORG_ALLBINARY_ANIMATION_ROTATIONANIMATION_H
         #define ORG_ALLBINARY_ANIMATION_ROTATIONANIMATION_H
 
-#include <jsinterop/annotations/JsType.h>
-
-      
 #include <org/allbinary/direction/Direction.h>
 
       
@@ -43,15 +40,6 @@
 
       
 #include <org/allbinary/util/CircularIndexUtil.h>
-
-      
-#include <jsinterop/annotations/JsMethod.h>
-
-      
-#include <jsinterop/annotations/JsConstructor.h>
-
-      
-#include <jsinterop/annotations/JsProperty.h>
 
       
 

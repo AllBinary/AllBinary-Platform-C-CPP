@@ -21,7 +21,7 @@
         #ifndef VIEWS_BUSINESS_CONTEXT_MODULES_STOREFRONT_CUSTOMIZER_INCLUDES_STYLE_THEME_INSERTTHEMEVALIDATIONVIEW_H
         #define VIEWS_BUSINESS_CONTEXT_MODULES_STOREFRONT_CUSTOMIZER_INCLUDES_STYLE_THEME_INSERTTHEMEVALIDATIONVIEW_H
 
-            #include "../../../../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
 
@@ -83,7 +83,7 @@ class InsertThemeValidationView: public ThemeCustomizerView, public ValidationCo
 
     protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: HashMap<any, any> requestHashMap;
+    private: HashMap<Object*, Object*> requestHashMap;
 
 public: InsertThemeValidationView(TransformInfoInterface transformInfoInterface);
 

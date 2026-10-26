@@ -18,9 +18,9 @@
 
 
 
-            #include "../../../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/data/tree/dom/DomNodeHelper.h>
 
@@ -156,7 +156,7 @@ PreLogUtil::putSE("Unable to initialize LogConfigTypes", "LogConfigTypes", "init
                         for (
     int32_t index = 0;index < size; index++)
         {
-logConfigType= availableLogConfigTypes.get(index) as LogConfigType;
+logConfigType= availableLogConfigTypes.get(index);
     
 
                         if(logConfigType.getName().compareTo(name) == 0)

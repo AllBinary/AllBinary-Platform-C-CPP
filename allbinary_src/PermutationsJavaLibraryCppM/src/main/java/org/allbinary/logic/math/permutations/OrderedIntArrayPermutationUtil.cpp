@@ -20,9 +20,9 @@
 
             #include <vector>
         
-            #include "../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../java/lang/System.h"
+            #include "java/lang/System.h"
         
 #include <org/allbinary/logic/util/visitor/Visitor.h>
 
@@ -68,7 +68,7 @@ class OrderedIntArrayPermutationUtil
     int32_t TOTAL = 3;;
     
 
-    std::vector<int32_t> data = new Array(TOTAL);;
+    std::vector<int32_t> data = std::vector<int32_t>(TOTAL);;
     
 
 
@@ -152,7 +152,7 @@ j--;
 
     int32_t temp = data[a];;
     
-data[a]= data[b]!;
+data[a]= data[b];
     
 data[b]= temp;
     

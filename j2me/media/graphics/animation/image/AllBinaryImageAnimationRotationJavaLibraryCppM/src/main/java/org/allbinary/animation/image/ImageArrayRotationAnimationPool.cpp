@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/logic/util/cache/BasicArrayListResetablePool.h>
 
@@ -68,8 +68,9 @@ class ImageArrayRotationAnimationPool: public BasicArrayListResetablePool {
 }
 
 
-public: ImageArrayRotationAnimationPool(CacheableInterfaceFactoryInterface cacheableInterfaceFactoryInterface){
-            super(cacheableInterfaceFactoryInterface);
+public: ImageArrayRotationAnimationPool(CacheableInterfaceFactoryInterface cacheableInterfaceFactoryInterface) : BasicArrayListResetablePool(cacheableInterfaceFactoryInterface){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -84,10 +85,10 @@ public: ImageArrayRotationAnimationPool(CacheableInterfaceFactoryInterface cache
     CacheableInterface cacheableInterface = super.remove(key);;
     
 
-    ImageArrayRotationAnimationInfo allBinaryImageRotationAnimationInfo = key as ImageArrayRotationAnimationInfo;;
+    ImageArrayRotationAnimationInfo allBinaryImageRotationAnimationInfo = *dynamic_cast<ImageArrayRotationAnimationInfo*>(key);;
     
 
-    ImageArrayRotationAnimationCacheable imageArrayRotationAnimationCacheable = (cacheableInterface as ImageArrayRotationAnimationCacheable);;
+    ImageArrayRotationAnimationCacheable imageArrayRotationAnimationCacheable = (cacheableInterface);;
     
 imageArrayRotationAnimationCacheable.setImageArray(allBinaryImageRotationAnimationInfo.getImageArray());
     

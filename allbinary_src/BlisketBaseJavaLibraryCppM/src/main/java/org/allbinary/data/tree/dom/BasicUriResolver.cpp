@@ -18,9 +18,9 @@
 
 
 
-            #include "../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <javax/xml/transform/Source.h>
 
@@ -119,7 +119,7 @@ stringBuffer.append(FREEBLISKET_PATH_GLOBALS::getInstance().XSLPATH);
 stringBuffer.append(href);
     
 
-    AbPath abPath = AbFilePath(stringBuffer.toString()) as AbPath;;
+    AbPath abPath = AbFilePath(stringBuffer.toString());;
     
 
                         if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().XMLLOGGING))

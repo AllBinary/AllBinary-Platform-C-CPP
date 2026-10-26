@@ -21,7 +21,7 @@
         #ifndef ORG_ALLBINARY_INPUT_GYRO_NOGYROSENSOR_H
         #define ORG_ALLBINARY_INPUT_GYRO_NOGYROSENSOR_H
 
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/input/AllBinarySensorListener.h>
 

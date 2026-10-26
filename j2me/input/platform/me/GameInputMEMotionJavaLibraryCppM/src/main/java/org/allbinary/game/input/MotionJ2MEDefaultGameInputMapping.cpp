@@ -55,8 +55,9 @@
 
 class MotionJ2MEDefaultGameInputMapping: public PersistentInputMapping {
 
-public: MotionJ2MEDefaultGameInputMapping(){
-            super(GamePersistanceStrings::getInstance().DEFAULT_INPUT_MAPPING_RECORD_ID);
+public: MotionJ2MEDefaultGameInputMapping() : PersistentInputMapping(GamePersistanceStrings::getInstance().DEFAULT_INPUT_MAPPING_RECORD_ID){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.

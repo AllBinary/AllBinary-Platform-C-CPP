@@ -21,7 +21,7 @@
         #ifndef ORG_ALLBINARY_INPUT_GYRO_ORIENTATIONMOTIONGESTUREFACTORY_H
         #define ORG_ALLBINARY_INPUT_GYRO_ORIENTATIONMOTIONGESTUREFACTORY_H
 
-            #include "../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
 #include <org/allbinary/game/input/InputFactory.h>
 

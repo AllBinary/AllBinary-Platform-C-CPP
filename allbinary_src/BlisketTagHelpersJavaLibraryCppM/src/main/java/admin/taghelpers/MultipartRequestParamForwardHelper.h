@@ -21,9 +21,9 @@
         #ifndef ADMIN_TAGHELPERS_MULTIPARTREQUESTPARAMFORWARDHELPER_H
         #define ADMIN_TAGHELPERS_MULTIPARTREQUESTPARAMFORWARDHELPER_H
 
-            #include "../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
 

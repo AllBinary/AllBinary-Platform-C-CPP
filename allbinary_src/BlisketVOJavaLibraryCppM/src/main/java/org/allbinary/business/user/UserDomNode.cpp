@@ -18,9 +18,9 @@
 
 
 
-            #include "../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
 
@@ -85,7 +85,7 @@ this->dataMappingInterface= dataMappingInterface;
     std::string EMPTY_STRING = StringUtil::getInstance().EMPTY_STRING;;
     
 
-    HashMap<any, any> hashMap = this->dataMappingInterface.toHashMap();;
+    HashMap<Object*, Object*> hashMap = this->dataMappingInterface.toHashMap();;
     
 hashMap.put(EntryData::getInstance().LASTMODIFIED, EMPTY_STRING);
     

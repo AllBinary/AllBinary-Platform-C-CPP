@@ -21,13 +21,10 @@
         #ifndef ORG_ALLBINARY_GAME_AG_AI_SCROLLER_BASEPATROLAI_H
         #define ORG_ALLBINARY_GAME_AG_AI_SCROLLER_BASEPATROLAI_H
 
-            #include "../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../../../../java/lang/Integer.h"
+            #include "java/lang/Integer.h"
         
-#include <java/util/Hashtable.h>
-
-      
 #include <javax/microedition/lcdui/Canvas.h>
 
       
@@ -50,6 +47,9 @@
 
       
 #include <org/allbinary/logic/math/SmallIntegerSingletonFactory.h>
+
+      
+#include <org/allbinary/util/ABHashtable.h>
 
       
 
@@ -91,7 +91,7 @@ class BasePatrolAI: public BasicAI {
 
     protected: int32_t keyDirection = Canvas::RIGHT;
 
-public: BasePatrolAI(Hashtable<any, any> hashtable, AllBinaryLayer ownerLayerInterface, GameInput gameInput);
+public: BasePatrolAI(ABHashtable<Object*, Object*> hashtable, AllBinaryLayer ownerLayerInterface, GameInput gameInput);
 
     protected: void update();
 

@@ -18,11 +18,11 @@
 
 
 
-            #include "../../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../../../../../java/lang/Integer.h"
+            #include "java/lang/Integer.h"
         
-            #include "../../../../../../../java/lang/Long.h"
+            #include "java/lang/Long.h"
         
 #include <java/util/HashMap.h>
 
@@ -87,8 +87,9 @@ class TimeIntervalActionScriptCondition: public BasicProfileActionScriptConditio
 
     private: TimeDelayHelper timeHelper;
 
-public: TimeIntervalActionScriptCondition(Node node){
-            super(TimeIntervalActionScriptCondition::NAME, node);
+public: TimeIntervalActionScriptCondition(Node node) : BasicProfileActionScriptCondition(TimeIntervalActionScriptCondition::NAME, node){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -155,8 +156,9 @@ this->init();
 }
 
 
-public: TimeIntervalActionScriptCondition(){
-            super(TimeIntervalActionScriptCondition::NAME);
+public: TimeIntervalActionScriptCondition() : BasicProfileActionScriptCondition(TimeIntervalActionScriptCondition::NAME){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -180,9 +182,9 @@ this->timeIntervalActionScriptConditionJPanel.getTimeIntervalActionJDialog().set
 }
 
 
-    public: HashMap<any, any> toHashMap(){
+    public: HashMap<Object*, Object*> toHashMap(){
 
-    HashMap<any, any> hashMap = StdUtil::getInstance().createHashMap();;
+    HashMap<Object*, Object*> hashMap = StdUtil::getInstance().createHashMap();;
     
 hashMap.put(TimeIntervalActionScriptConditionData::TIME, std::to_string(delay));
     

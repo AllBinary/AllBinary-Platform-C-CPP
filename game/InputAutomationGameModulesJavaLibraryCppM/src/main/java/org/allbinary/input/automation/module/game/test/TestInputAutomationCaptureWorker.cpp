@@ -20,7 +20,7 @@
 
             #include <vector>
         
-            #include "../../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
 
@@ -97,8 +97,9 @@ class TestInputAutomationCaptureWorker: public AbstractInputAutomationWorker {
 
     private: const std::string IMAGE_NOT_AVAILABLE = "Image Not Available";
 
-public: TestInputAutomationCaptureWorker(InputAutomationActionInterface inputAutomationActionInterface, GenericProfileActions genericProfileActions, ImageComparatorConstraintsInterface imageComparatorConstraintsInterface, MotionRectangleConstraintsInterface motionRectangleConstraintsInterface){
-            super(inputAutomationActionInterface);
+public: TestInputAutomationCaptureWorker(InputAutomationActionInterface inputAutomationActionInterface, GenericProfileActions genericProfileActions, ImageComparatorConstraintsInterface imageComparatorConstraintsInterface, MotionRectangleConstraintsInterface motionRectangleConstraintsInterface) : AbstractInputAutomationWorker(inputAutomationActionInterface){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -114,7 +115,7 @@ this->setGenericProfileActions(genericProfileActions);
             
     public: void processDataWorkerResults(){
 
-    J2SECacheInterface cacheInterface = CapturedBufferedImagesCacheSingleton::getInstance() as J2SECacheInterface;;
+    J2SECacheInterface cacheInterface = CapturedBufferedImagesCacheSingleton::getInstance();;
     
 
                         if(cacheInterface.keySet().size() > 0)
@@ -126,7 +127,7 @@ this->setGenericProfileActions(genericProfileActions);
     Object* anyType = cacheInterface.keySet().()[0];;
     
 
-    HashMap<any, any> hashMap = this->getGenericProfileActions().getHashMap();;
+    HashMap<Object*, Object*> hashMap = this->getGenericProfileActions().getHashMap();;
     
 
     Set set = hashMap.keys();;
@@ -145,10 +146,10 @@ this->setGenericProfileActions(genericProfileActions);
     int32_t index = 0;index < size; index++)
         {
 
-    std::string actionNameString = actionNameArray[index]! as string;;
+    std::string actionNameString = actionNameArray[index];;
     
 
-    GenericProfileAction genericProfileAction = hashMap.get(actionNameString) as GenericProfileAction;;
+    GenericProfileAction genericProfileAction = hashMap.get(actionNameString);;
     
 
     GenericProfileActionScript genericProfileActionScript = genericProfileAction.getGenericProfileActionScript();;

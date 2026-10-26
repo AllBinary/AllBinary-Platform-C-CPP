@@ -21,7 +21,7 @@
         #ifndef VIEWS_GENERIC_USER_USERSVALIDATIONVIEW_H
         #define VIEWS_GENERIC_USER_USERSVALIDATIONVIEW_H
 
-            #include "../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/data/tables/user/UserEntityFactory.h>
 

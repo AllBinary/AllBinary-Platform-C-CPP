@@ -18,9 +18,9 @@
 
 
 
-            #include "../../../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/business/DynamicObjectData.h>
 
@@ -205,7 +205,7 @@ stringBuffer.append(AbPathData::getInstance().SEPARATOR);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return AbeFactory::getInstance().getInstance(abeClientInformation, className) as TaxModuleInterface;
+                        return AbeFactory::getInstance().getInstance(abeClientInformation, className);
     
 
                                     }
@@ -245,7 +245,7 @@ stringBuffer.append(AbPathData::getInstance().SEPARATOR);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return SimpleStateTaxModule() as TaxModuleInterface;
+                        return SimpleStateTaxModule();
     
 }
 

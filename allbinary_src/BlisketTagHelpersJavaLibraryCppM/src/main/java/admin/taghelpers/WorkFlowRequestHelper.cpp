@@ -18,7 +18,7 @@
 
 
 
-            #include "../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
 
@@ -78,7 +78,7 @@ class WorkFlowRequestHelper: public ModifyTable {
 
     private: WorkFlowInterface workFlowInterface;
 
-public: WorkFlowRequestHelper(HashMap<any, any> hashMap, PageContext pageContext){
+public: WorkFlowRequestHelper(HashMap<Object*, Object*> hashMap, PageContext pageContext){
 this->workFlowInterface= NewWorkFlowFactory::getInstance().getInstance(this->abeClientInformation, hashMap, pageContext);
     
 }

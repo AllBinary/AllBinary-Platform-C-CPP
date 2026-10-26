@@ -20,9 +20,9 @@
 
             #include <vector>
         
-            #include "../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../java/lang/RuntimeException.h"
+            #include "java/lang/RuntimeException.h"
         
 #include <jsinterop/annotations/JsType.h>
 
@@ -118,7 +118,7 @@ LogUtil::getInstance().putF(stringMaker.toString(), "main", "main");
 
     public: const int16_t QUARTER_TOTAL_ANGLE = 90;
 
-    private: const std::vector<Angle> angleArray = new Array(static_cast<int32_t>(this->TOTAL_ANGLE));
+    private: const std::vector<Angle> angleArray = std::vector<Angle>(static_cast<int32_t>(this->TOTAL_ANGLE));
 
     private: const int16_t NEGATIVE_ONE =  -1;
 
@@ -212,7 +212,7 @@ this->angleArray[index]= Angle(index);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->angleArray[adjustedIndex]!;
+                        return this->angleArray[adjustedIndex];
     
 }
 

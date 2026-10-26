@@ -21,9 +21,6 @@
         #ifndef ORG_ALLBINARY_ANIMATION_SPECIAL_SPECIALANIMATION_H
         #define ORG_ALLBINARY_ANIMATION_SPECIAL_SPECIALANIMATION_H
 
-#include <jsinterop/annotations/JsType.h>
-
-      
 #include <org/allbinary/animation/AnimationBehavior.h>
 
       
@@ -31,12 +28,6 @@
 
       
 #include <org/allbinary/animation/IndexedAnimationBehavior.h>
-
-      
-#include <jsinterop/annotations/JsMethod.h>
-
-      
-#include <jsinterop/annotations/JsConstructor.h>
 
       
 

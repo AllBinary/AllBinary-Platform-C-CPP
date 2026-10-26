@@ -20,15 +20,15 @@
 
             #include <vector>
         
-            #include "../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../java/lang/Class.h"
+            #include "java/lang/Class.h"
         
-            #include "../../../../../java/lang/ClassLoader.h"
+            #include "java/lang/ClassLoader.h"
         
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../../../java/lang/System.h"
+            #include "java/lang/System.h"
         
 #include <java/lang/reflect/Constructor.h>
 
@@ -79,19 +79,19 @@ this->setLibraryName(libraryName);
             
     public: void load(){
 
-    std::vector<Object*> params = new Array(1);;
+    std::vector<Object*> params = std::vector<Object*>(1);;
     
 params[0]= this->getLibraryName();
     
 
-    std::vector<Function> classes = new Array(1);;
+    std::vector<Class*> classes = std::vector<Class>(1);;
     
-classes[0]= this->getLibraryName().constructor;
+classes[0]= this->getLibraryName().getClass();
     
 this->loader= NativeLibraryClassLoader(this->constructor.namegetClassLoader());
     
 
-    Function myClass = this->loader.loadClass("dynamic.NativeLibraryHelper");;
+    Class* myClass = this->loader.loadClass("dynamic.NativeLibraryHelper");;
     
 
     Constructor constructor = myClass.getConstructor(classes);;
@@ -102,7 +102,7 @@ this->anyType= constructor.newInstance(params);
     CommonStrings commonStrings = CommonStrings::getInstance();;
     
 
-    Method method = this->anyType.constructor.name.getMethod(commonStrings.LOAD, 
+    Method method = this->anyType->constructor.name.getMethod(commonStrings.LOAD, 
                             nullptr);;
     
 method.invoke(this->anyType, 

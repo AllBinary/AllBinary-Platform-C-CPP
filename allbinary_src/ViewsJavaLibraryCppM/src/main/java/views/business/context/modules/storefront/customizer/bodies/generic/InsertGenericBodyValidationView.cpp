@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
 
@@ -80,14 +80,15 @@ class InsertGenericBodyValidationView: public GenericBodyCustomizerView, public 
 
     protected: const LogUtil logUtil = LogUtil::getInstance();
 
-public: InsertGenericBodyValidationView(TransformInfoInterface transformInfoInterface){
-            super(transformInfoInterface);
+public: InsertGenericBodyValidationView(TransformInfoInterface transformInfoInterface) : GenericBodyCustomizerView(transformInfoInterface){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
                     
 
-    HashMap<any, any> requestHashMap = RequestParams(this->getPageContext()).toHashMap();;
+    HashMap<Object*, Object*> requestHashMap = RequestParams(this->getPageContext()).toHashMap();;
     
 this->body= GenericBodyValidation(requestHashMap);
     
@@ -125,7 +126,7 @@ this->body= GenericBodyValidation(requestHashMap);
                         if(isValid == Boolean::TRUE)
                         
                                     {
-                                    CustomizerUtil::getInstance().insert(this->getTransformInfoInterface(), this->body as DomNodeInterface);
+                                    CustomizerUtil::getInstance().insert(this->getTransformInfoInterface(), this->body);
     
 
                                     }

@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/business/context/modules/storefront/StoreFrontFactory.h>
 
@@ -65,9 +65,6 @@
 #include <org/allbinary/logic/io/path/AbPathData.h>
 
       
-#include <org/allbinary/logic/io/path/PathUtil.h>
-
-      
 #include <org/allbinary/logic/string/StringMaker.h>
 
       
@@ -78,6 +75,9 @@
 
       
 #include <org/allbinary/logic/visual/transform/info/TransformInfoInterface.h>
+
+      
+#include <org/allbinary/string/CommonLabels.h>
 
       
 #include <org/apache/commons/fileupload/FileItem.h>
@@ -113,14 +113,15 @@ class AddFileValidationView: public InventoryItemView, public ValidationComponen
 
     private: static const std::string ADDPRODUCT = "Add Product";
 
-    private: static const std::string NEXTSTEP = "Next Step";
+    private: static const std::string NEXTSTEP = CommonLabels::getInstance().NEXT +" Step";
 
     protected: const LogUtil logUtil = LogUtil::getInstance();
 
     protected: const BasicItemData basicItemData = BasicItemData::getInstance();
 
-public: AddFileValidationView(TransformInfoInterface transformInfoInterface){
-            super(transformInfoInterface);
+public: AddFileValidationView(TransformInfoInterface transformInfoInterface) : InventoryItemView(transformInfoInterface){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -132,10 +133,10 @@ public: AddFileValidationView(TransformInfoInterface transformInfoInterface){
 
         try {
             
-    std::string command = this->getRequestHashMap().get(GLOBALS2::ADMINCOMMAND) as string;;
+    std::string command = this->getRequestHashMap().get(GLOBALS2::ADMINCOMMAND);;
     
 
-                        if(StringValidationUtil::getInstance().isEmpty(command) || (command.compareTo(AddFileValidationView::ADDPRODUCT) != 0 && command.compareTo(NEXTSTEP) != 0))
+                        if(StringValidationUtil::getInstance().isEmpty(command) || (command.compare(AddFileValidationView::ADDPRODUCT) != 0 && command.compare(NEXTSTEP) != 0))
                         
                                     {
                                     
@@ -261,7 +262,7 @@ this->itemInterface.setCategory(storeFrontInterface.getCategoryPath() +this->ite
                         
                                     {
                                     
-    FileItem fileItem = imageFileItemObject as FileItem;;
+    FileItem fileItem = *dynamic_cast<FileItem*>(imageFileItemObject);;
     
 
     std::string fileName = fileItem.getName();;
@@ -344,10 +345,10 @@ HttpFileUploadUtil::log(fileItem);
     StringMaker stringBuffer = StringMaker();;
     
 
-    std::string command = this->getRequestHashMap().get(GLOBALS2::ADMINCOMMAND) as string;;
+    std::string command = this->getRequestHashMap().get(GLOBALS2::ADMINCOMMAND);;
     
 
-                        if(StringValidationUtil::getInstance().isEmpty(command) || (command.compareTo(AddFileValidationView::ADDPRODUCT) != 0 && command.compareTo(NEXTSTEP) != 0))
+                        if(StringValidationUtil::getInstance().isEmpty(command) || (command.compare(AddFileValidationView::ADDPRODUCT) != 0 && command.compare(NEXTSTEP) != 0))
                         
                                     {
                                     
@@ -440,7 +441,7 @@ stringBuffer.append(" does not exist.<br />");
                         
                                     {
                                     
-    FileItem fileItem = anyType as FileItem;;
+    FileItem fileItem = *dynamic_cast<FileItem*>(anyType);;
     
 
     std::string fileName = fileItem.getName();;
@@ -625,7 +626,7 @@ this->logUtil.putF(stringBuffer.toString(), this, this->commonStrings.IS_VALID);
                         
                                     {
                                     
-                        if(fileItemFieldName.compareTo(basicItemData.IMAGE) == 0)
+                        if(fileItemFieldName.compare(basicItemData.IMAGE) == 0)
                         
                                     {
                                     

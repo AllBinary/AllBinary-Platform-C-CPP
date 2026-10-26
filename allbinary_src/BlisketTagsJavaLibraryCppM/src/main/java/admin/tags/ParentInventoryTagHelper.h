@@ -21,9 +21,9 @@
         #ifndef ADMIN_TAGS_PARENTINVENTORYTAGHELPER_H
         #define ADMIN_TAGS_PARENTINVENTORYTAGHELPER_H
 
-            #include "../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <javax/servlet/jsp/tagext/Tag.h>
 

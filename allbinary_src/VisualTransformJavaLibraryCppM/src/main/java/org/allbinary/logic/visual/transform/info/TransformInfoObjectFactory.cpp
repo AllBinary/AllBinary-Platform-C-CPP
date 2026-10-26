@@ -20,11 +20,11 @@
 
             #include <vector>
         
-            #include "../../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../../java/lang/Class.h"
+            #include "java/lang/Class.h"
         
-            #include "../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/logic/communication/log/LogUtil.h>
 
@@ -107,10 +107,10 @@ this->logUtil.putF("Creating View: " +transformInfoInterface.getName(), this, co
                                     }
                                 
 
-    std::vector<Object*> params = new Array(1);;
+    std::vector<Object*> params = std::vector<Object*>(1);;
     
 
-    std::vector<Function> classes = new Array(1);;
+    std::vector<Class*> classes = std::vector<Class>(1);;
     
 classes[0]= 
                                     //Otherwise - expression - AssignExpr - value - ClassExpr
@@ -119,7 +119,7 @@ classes[0]=
 params[0]= transformInfoInterface;
     
 
-    TransformInterface anyType = AbeFactory::getInstance().getInstance(abeClientInformation, transformInfoInterface.getObjectFile(), classes, params) as TransformInterface;;
+    TransformInterface anyType = AbeFactory::getInstance().getInstance(abeClientInformation, transformInfoInterface.getObjectFile(), classes, params);;
     
 
                         if(anyType == 

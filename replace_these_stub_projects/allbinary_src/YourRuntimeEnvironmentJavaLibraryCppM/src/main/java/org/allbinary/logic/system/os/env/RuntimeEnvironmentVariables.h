@@ -7,13 +7,13 @@
         #ifndef ORG_ALLBINARY_LOGIC_SYSTEM_OS_ENV_RUNTIMEENVIRONMENTVARIABLES_H
         #define ORG_ALLBINARY_LOGIC_SYSTEM_OS_ENV_RUNTIMEENVIRONMENTVARIABLES_H
 
-            #include "../../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../../../../java/lang/Runtime.h"
+            #include "java/lang/Runtime.h"
         
-            #include "../../../../../../java/lang/System.h"
+            #include "java/lang/System.h"
         
 #include <java/io/BufferedReader.h>
 

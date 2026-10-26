@@ -20,7 +20,7 @@
 
             #include <vector>
         
-            #include "../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/util/Arrays.h>
 
@@ -112,8 +112,9 @@ class CustomizersView: public HttpStoreComponentView, public DomNodeInterface {
 
     protected: BasicArrayList customizersVector;
 
-public: CustomizersView(TransformInfoInterface transformInfoInterface){
-            super(transformInfoInterface);
+public: CustomizersView(TransformInfoInterface transformInfoInterface) : HttpStoreComponentView(transformInfoInterface){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -143,7 +144,7 @@ this->customizersVector= TransformInfoEntityBuilder::getInstance().getNames(this
     int32_t index = 0;index < size; index++)
         {
 
-    std::string viewName = this->customizersVector.get(index) as string;;
+    std::string viewName = this->customizersVector.get(index);;
     
 
                         if(viewName.indexOf(CustomizerTransformInfoData::NAME) > 0 && viewName.indexOf(GLOBALS2::EDIT) > 0 && viewName.indexOf(BodyData::getInstance().VIEWNAMEKEY) > 0 && viewName.indexOf(TitleData::getInstance().VIEWNAMEKEY) > 0)
@@ -169,7 +170,7 @@ Arrays::sort(objectArray, StringComparator());
     int32_t index = 0;index < objectArray.size(); index++)
         {
 
-    std::string viewName = objectArray[index]! as string;;
+    std::string viewName = objectArray[index];;
     
 
     Node viewNameNode = ModDomHelper::createNameValueNodes(document, TransformTemplateCustomizerData::NAME, viewName, TransformTemplateCustomizerUtil::getInstance().getPageNameHack(viewName, this->getWeblisketSession().getStoreName()));;
@@ -209,7 +210,7 @@ node.appendChild(viewNameNode);
 
 
     public: void addDomNodeInterfaces(){
-this->addDomNodeInterface(this as DomNodeInterface);
+this->addDomNodeInterface(this);
     
 }
 

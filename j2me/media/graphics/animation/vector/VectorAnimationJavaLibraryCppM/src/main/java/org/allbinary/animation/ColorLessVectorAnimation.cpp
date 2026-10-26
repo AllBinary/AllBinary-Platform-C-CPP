@@ -49,8 +49,9 @@
 
 class ColorLessVectorAnimation: public VectorAnimation {
 
-public: ColorLessVectorAnimation(std::vector<std::vector<std::vector<int32_t>>> currentPoints, AnimationBehavior animationBehavior){
-            super(currentPoints, BasicColorFactory::getInstance().WHITE, animationBehavior);
+public: ColorLessVectorAnimation(std::vector<std::vector<std::vector<int32_t>>> currentPoints, AnimationBehavior animationBehavior) : VectorAnimation(currentPoints, BasicColorFactory::getInstance().WHITE, animationBehavior){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.

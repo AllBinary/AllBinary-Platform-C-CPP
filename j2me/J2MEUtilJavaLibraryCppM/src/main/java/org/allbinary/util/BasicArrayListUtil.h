@@ -23,9 +23,9 @@
 
             #include <vector>
         
-            #include "../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../java/lang/System.h"
+            #include "java/lang/System.h"
         
 #include <jsinterop/annotations/JsType.h>
 
@@ -80,8 +80,7 @@ class BasicArrayListUtil
 
     public: static void main(std::vector<std::string> args);
 
-    public: const std::vector<std::vector<BasicArrayList>> NULL_ARRAY_OF_ARRAY = new Array(0).fill(null).map(() => new Array(0).fill(0))
-                                                            ;
+    public: const std::vector<std::vector<BasicArrayList>> NULL_ARRAY_OF_ARRAY = std::vector<std::vector<BasicArrayList>>(0, std::vector<BasicArrayList>(0));
 
     private: const MyRandomFactory myRandomFactory = MyRandomFactory::getInstance();
 

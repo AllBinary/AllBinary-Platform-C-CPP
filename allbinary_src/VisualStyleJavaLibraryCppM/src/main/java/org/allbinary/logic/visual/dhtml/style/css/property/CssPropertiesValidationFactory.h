@@ -21,9 +21,9 @@
         #ifndef ORG_ALLBINARY_LOGIC_VISUAL_DHTML_STYLE_CSS_PROPERTY_CSSPROPERTIESVALIDATIONFACTORY_H
         #define ORG_ALLBINARY_LOGIC_VISUAL_DHTML_STYLE_CSS_PROPERTY_CSSPROPERTIESVALIDATIONFACTORY_H
 
-            #include "../../../../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
 
@@ -75,7 +75,7 @@ class CssPropertiesValidationFactory
             
     public: static BasicArrayList getInstance(NodeList nodeList);
 
-    public: static BasicArrayList getInstance(HashMap<any, any> hashMap);
+    public: static BasicArrayList getInstance(HashMap<Object*, Object*> hashMap);
 
 private: CssPropertiesValidationFactory();
 

@@ -21,7 +21,7 @@
         #ifndef ORG_ALLBINARY_IMAGE_OPENGLES_OPENGLESIMAGEDRAW_H
         #define ORG_ALLBINARY_IMAGE_OPENGLES_OPENGLESIMAGEDRAW_H
 
-            #include "../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
 #include <javax/microedition/khronos/opengles/GL10.h>
 

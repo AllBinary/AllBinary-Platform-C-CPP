@@ -21,7 +21,7 @@
         #ifndef ORG_ALLBINARY_THREAD_SOUNDTHREADPOOL_H
         #define ORG_ALLBINARY_THREAD_SOUNDTHREADPOOL_H
 
-            #include "../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
 
 

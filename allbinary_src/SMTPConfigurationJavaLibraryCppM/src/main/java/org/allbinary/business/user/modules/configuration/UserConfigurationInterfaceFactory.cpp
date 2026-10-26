@@ -18,9 +18,9 @@
 
 
 
-            #include "../../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/business/user/role/UserRole.h>
 
@@ -91,7 +91,7 @@ class UserConfigurationInterfaceFactory
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return UserConfigurationView(configurationNode).getUserConfigurationInterface() as UserConfigurationInterface;
+                        return UserConfigurationView(configurationNode).getUserConfigurationInterface();
     
 }
 

@@ -21,9 +21,9 @@
         #ifndef ORG_ALLBINARY_GAME_AG_AI_SCROLLER_TIMEDFIREAI_H
         #define ORG_ALLBINARY_GAME_AG_AI_SCROLLER_TIMEDFIREAI_H
 
-            #include "../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../../../../java/lang/Integer.h"
+            #include "java/lang/Integer.h"
         
 #include <javax/microedition/lcdui/Canvas.h>
 

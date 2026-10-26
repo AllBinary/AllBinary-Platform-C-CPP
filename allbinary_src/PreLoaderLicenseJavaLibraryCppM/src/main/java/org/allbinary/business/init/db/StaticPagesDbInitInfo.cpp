@@ -42,8 +42,9 @@ class StaticPagesDbInitInfo: public DbInitInfo {
 
     private: static const std::string INITFILE = "staticpagesbinitdata.dat";
 
-public: StaticPagesDbInitInfo(){
-            super(INITFILE, true);
+public: StaticPagesDbInitInfo() : DbInitInfo(INITFILE, true){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -51,8 +52,9 @@ public: StaticPagesDbInitInfo(){
 }
 
 
-public: StaticPagesDbInitInfo(bool read){
-            super(INITFILE, read);
+public: StaticPagesDbInitInfo(bool read) : DbInitInfo(INITFILE, read){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.

@@ -21,9 +21,9 @@
         #ifndef ORG_ALLBINARY_ANIMATION_NULLSPECIALANIMATIONFACTORY_H
         #define ORG_ALLBINARY_ANIMATION_NULLSPECIALANIMATIONFACTORY_H
 
-            #include "../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/animation/special/SpecialAnimation.h>
 

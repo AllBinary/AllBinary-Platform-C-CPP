@@ -21,9 +21,6 @@
         #ifndef ORG_ALLBINARY_GAME_INPUT_COMPLETEMOTIONGESTUREINPUTINTERFACE_H
         #define ORG_ALLBINARY_GAME_INPUT_COMPLETEMOTIONGESTUREINPUTINTERFACE_H
 
-#include <jsinterop/annotations/JsType.h>
-
-      
 #include <org/allbinary/layer/NamedInterface.h>
 
       

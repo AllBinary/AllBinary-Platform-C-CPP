@@ -21,11 +21,8 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_RECTANGLE_H
         #define ORG_ALLBINARY_GRAPHICS_RECTANGLE_H
 
-            #include "../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-#include <jsinterop/annotations/JsType.h>
-
-      
 #include <org/allbinary/logic/string/StringMaker.h>
 
       
@@ -33,12 +30,6 @@
 
       
 #include <org/allbinary/string/CommonSeps.h>
-
-      
-#include <jsinterop/annotations/JsMethod.h>
-
-      
-#include <jsinterop/annotations/JsConstructor.h>
 
       
 

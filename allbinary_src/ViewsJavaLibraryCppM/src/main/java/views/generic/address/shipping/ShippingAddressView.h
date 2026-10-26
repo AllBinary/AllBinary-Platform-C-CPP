@@ -21,7 +21,7 @@
         #ifndef VIEWS_GENERIC_ADDRESS_SHIPPING_SHIPPINGADDRESSVIEW_H
         #define VIEWS_GENERIC_ADDRESS_SHIPPING_SHIPPINGADDRESSVIEW_H
 
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <javax/servlet/http/HttpServletRequest.h>
 

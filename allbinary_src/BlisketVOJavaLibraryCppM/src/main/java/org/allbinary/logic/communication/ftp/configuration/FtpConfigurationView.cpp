@@ -18,9 +18,9 @@
 
 
 
-            #include "../../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
 
@@ -73,7 +73,7 @@ class FtpConfigurationView
     private: FtpConfigurationInterface ftpConfigurationInterface;
 
 public: FtpConfigurationView(Node node){
-this->setFtpConfigurationInterface(FtpConfiguration() as FtpConfigurationInterface);
+this->setFtpConfigurationInterface(FtpConfiguration());
     
 
     NodeList chileNodeList = node.getChildNodes();;
@@ -114,7 +114,7 @@ this->setFtpConfigurationInterface(ftpConfigurationInterface);
     FtpConfigurationMapping ftpConfigurationMapping = FtpConfigurationMapping(this->getFtpConfigurationInterface());;
     
 
-    HashMap<any, any> hashMap = ftpConfigurationMapping.toHashMap();;
+    HashMap<Object*, Object*> hashMap = ftpConfigurationMapping.toHashMap();;
     
 
     Node node = ModDomHelper::createNameValueNodes(document, FtpConfigurationData::NAME, hashMap);;

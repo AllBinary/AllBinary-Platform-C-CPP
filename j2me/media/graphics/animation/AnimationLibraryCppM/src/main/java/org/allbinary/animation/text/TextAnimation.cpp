@@ -20,11 +20,8 @@
 
             #include <vector>
         
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-#include <jsinterop/annotations/JsType.h>
-
-      
 #include <javax/microedition/lcdui/Font.h>
 
       
@@ -52,9 +49,6 @@
 #include <org/allbinary/graphics/threed/SWTJOGLProcessor.h>
 
       
-#include <org/allbinary/logic/communication/log/LogUtil.h>
-
-      
 #include <org/allbinary/logic/string/StringMaker.h>
 
       
@@ -65,15 +59,6 @@
 
       
 #include <org/allbinary/util/BasicArrayListD.h>
-
-      
-#include <jsinterop/annotations/JsMethod.h>
-
-      
-#include <jsinterop/annotations/JsConstructor.h>
-
-      
-#include <jsinterop/annotations/JsProperty.h>
 
       
 
@@ -98,8 +83,6 @@
 
 class TextAnimation: public IndexedAnimation, public UpdateMyFontInterface {
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
-
     private: const MyFontProcessor updateMyFontProcessor = UpdateMyFontProcessor(this);
 
     protected: MyFontProcessor myFontProcessor = this->updateMyFontProcessor;
@@ -114,8 +97,9 @@ class TextAnimation: public IndexedAnimation, public UpdateMyFontInterface {
 
     private: TextChangeListener textChangeListener = TextChangeListener::getInstance();
 
-public: TextAnimation(std::string text, AnimationBehavior animationBehavior){
-            super(animationBehavior);
+public: TextAnimation(std::string text, AnimationBehavior animationBehavior) : IndexedAnimation(animationBehavior){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -179,7 +163,7 @@ this->basicSetColorUtil.setBasicColorP3(graphics, this->getBasicColorP(), this->
                         for (
     int32_t index = 0;index < size; index++)
         {
-graphics.drawString(this->textArrayP[index]!, x, y +this->offsetY +(index *this->fontHeight), this->anchor);
+graphics.drawString(this->textArrayP[index], x, y +this->offsetY +(index *this->fontHeight), this->anchor);
     
 }
 
@@ -253,7 +237,7 @@ index++;
                         
                                     {
                                     
-    std::vector<std::string> textArray = new Array(list.size());;
+    std::vector<std::string> textArray = std::vector<std::string>(list.size());;
     
 
     int32_t size = list.size();;
@@ -265,7 +249,7 @@ index++;
                         for (
     int32_t index = 0;index < size; index++)
         {
-textArray[index]= list.get(index) as string;
+textArray[index]= list.get(index);
     
 }
 

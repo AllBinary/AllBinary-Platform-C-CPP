@@ -18,7 +18,7 @@
 
 
 
-            #include "../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <javax/servlet/jsp/JspTagException.h>
 
@@ -67,8 +67,9 @@ class TransformTag: public TransformInfoTag {
 
     protected: const LogUtil logUtil = LogUtil::getInstance();
 
-public: TransformTag(){
-            super(ViewHelperFactory());
+public: TransformTag() : TransformInfoTag(ViewHelperFactory()){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -85,8 +86,9 @@ public: TransformTag(){
 }
 
 
-public: TransformTag(TagHelperFactoryInterface tagHelperFactoryInterface){
-            super(tagHelperFactoryInterface);
+public: TransformTag(TagHelperFactoryInterface tagHelperFactoryInterface) : TransformInfoTag(tagHelperFactoryInterface){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -111,7 +113,7 @@ public: TransformTag(TagHelperFactoryInterface tagHelperFactoryInterface){
             
     std::string result = this->getHelper().constructor.name.getMethod("view", 
                             nullptr).invoke(this->getHelper(), 
-                            nullptr) as string;;
+                            nullptr);;
     
 
 

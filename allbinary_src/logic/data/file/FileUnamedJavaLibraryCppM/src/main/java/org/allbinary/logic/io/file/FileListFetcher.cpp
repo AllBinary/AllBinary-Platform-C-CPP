@@ -20,11 +20,11 @@
 
             #include <vector>
         
-            #include "../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../../../java/lang/System.h"
+            #include "java/lang/System.h"
         
 #include <org/allbinary/logic/io/file/directory/DirectoryBooleanFileVisitor.h>
 
@@ -132,7 +132,7 @@ console.log("Error: " +e +"\nMsg: " +e.message);
                         for (
     int32_t index = 0;index < size; index++)
         {
-includeExtensionBasicArrayList.add(includeExtensions[index]!);
+includeExtensionBasicArrayList.add(includeExtensions[index]);
     
 }
 
@@ -261,7 +261,7 @@ console.log("Error: " +e +"\nMsg: " +e.message);
                         for (
     int32_t index = 0;index < size; index++)
         {
-includeExtensionBasicArrayList.add(includeExtensions[index]!);
+includeExtensionBasicArrayList.add(includeExtensions[index]);
     
 }
 

@@ -23,11 +23,11 @@
 
             #include <vector>
         
-            #include "../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../java/lang/Class.h"
+            #include "java/lang/Class.h"
         
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
 
@@ -116,9 +116,9 @@ class InitializerDatabase
 
 public: InitializerDatabase(AbeClientInformationInterface abeClientInformation, Map map);
 
-public: InitializerDatabase(AbeClientInformationInterface abeClientInformation, HashMap<any, any> initHashMap);
+public: InitializerDatabase(AbeClientInformationInterface abeClientInformation, HashMap<Object*, Object*> initHashMap);
 
-    public: void getFormData(AbeClientInformationInterface abeClientInformation, HashMap<any, any> hashMap);
+    public: void getFormData(AbeClientInformationInterface abeClientInformation, HashMap<Object*, Object*> hashMap);
 
     private: bool isJdbcDriverValid(std::string jdbcDriverClassPathString);
 

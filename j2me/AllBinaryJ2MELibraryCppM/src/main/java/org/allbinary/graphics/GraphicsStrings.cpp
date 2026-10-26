@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
 
 
@@ -66,6 +66,10 @@ class GraphicsStrings
     public: const std::string OPACITY = "opacity";
 
     public: const std::string HTML = "HTML";
+
+    public: const std::string WIDTH = "width";
+
+    public: const std::string HEIGHT = "height";
 
 };
 

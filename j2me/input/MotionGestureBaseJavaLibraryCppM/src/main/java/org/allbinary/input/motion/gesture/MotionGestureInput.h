@@ -21,16 +21,10 @@
         #ifndef ORG_ALLBINARY_INPUT_MOTION_GESTURE_MOTIONGESTUREINPUT_H
         #define ORG_ALLBINARY_INPUT_MOTION_GESTURE_MOTIONGESTUREINPUT_H
 
-#include <jsinterop/annotations/JsType.h>
-
-      
 #include <org/allbinary/game/input/Input.h>
 
       
 #include <org/allbinary/game/input/InputFactory.h>
-
-      
-#include <jsinterop/annotations/JsConstructor.h>
 
       
 

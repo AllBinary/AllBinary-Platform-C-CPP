@@ -21,11 +21,11 @@
         #ifndef ORG_ALLBINARY_BUSINESS_USER_PASSWORD_PASSWORD_H
         #define ORG_ALLBINARY_BUSINESS_USER_PASSWORD_PASSWORD_H
 
-            #include "../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../../../java/lang/Integer.h"
+            #include "java/lang/Integer.h"
         
 #include <java/util/HashMap.h>
 
@@ -102,7 +102,7 @@ public: Password(std::string password);
 
     public: BasicArrayList toVector(std::string secret);
 
-    public: HashMap<any, any> toHashMap(std::string secret);
+    public: HashMap<Object*, Object*> toHashMap(std::string secret);
 
 };
 

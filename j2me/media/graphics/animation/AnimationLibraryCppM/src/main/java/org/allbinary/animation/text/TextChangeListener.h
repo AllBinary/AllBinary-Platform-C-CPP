@@ -21,14 +21,8 @@
         #ifndef ORG_ALLBINARY_ANIMATION_TEXT_TEXTCHANGELISTENER_H
         #define ORG_ALLBINARY_ANIMATION_TEXT_TEXTCHANGELISTENER_H
 
-            #include "../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-#include <jsinterop/annotations/JsType.h>
-
-      
-#include <jsinterop/annotations/JsMethod.h>
-
-      
 
 
 
@@ -56,7 +50,7 @@ class TextChangeListener
 
     public: static TextChangeListener getInstance();
 
-    void onMeasure();
+    public: void onMeasure();
 
 };
 

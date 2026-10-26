@@ -21,7 +21,7 @@
         #ifndef ORG_ALLBINARY_LOGIC_COMMUNICATION_HTTP_HTTPDATA_H
         #define ORG_ALLBINARY_LOGIC_COMMUNICATION_HTTP_HTTPDATA_H
 
-            #include "../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
 #include <org/allbinary/string/CommonSeps.h>
 

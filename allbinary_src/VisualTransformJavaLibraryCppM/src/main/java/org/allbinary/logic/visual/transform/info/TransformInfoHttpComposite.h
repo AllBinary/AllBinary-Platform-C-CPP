@@ -21,9 +21,9 @@
         #ifndef ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_INFO_TRANSFORMINFOHTTPCOMPOSITE_H
         #define ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_INFO_TRANSFORMINFOHTTPCOMPOSITE_H
 
-            #include "../../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
 
@@ -81,7 +81,7 @@ public: TransformInfoHttpComposite(TransformInfoInterface transformInfoInterface
 
     public: PageContext getPageContext();
 
-    public: HashMap<any, any> getPropertiesHashMap();
+    public: HashMap<Object*, Object*> getPropertiesHashMap();
 
 };
 

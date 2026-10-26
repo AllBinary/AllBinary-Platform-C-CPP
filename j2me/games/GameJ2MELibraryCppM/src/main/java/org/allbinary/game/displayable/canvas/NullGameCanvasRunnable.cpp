@@ -18,15 +18,12 @@
 
 
 
-            #include "../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../../../java/lang/Thread.h"
+            #include "java/lang/Thread.h"
         
-#include <java/util/Hashtable.h>
-
-      
 #include <javax/microedition/lcdui/CommandListener.h>
 
       
@@ -46,6 +43,9 @@
 
       
 #include <org/allbinary/logic/string/StringUtil.h>
+
+      
+#include <org/allbinary/util/ABHashtable.h>
 
       
 
@@ -152,7 +152,7 @@ class NullGameCanvasRunnable
 
                 //@Throws(Exception.constructor)
             
-    public: Hashtable<any, any> getCurrentStateHashtable(){
+    public: ABHashtable<Object*, Object*> getCurrentStateHashtable(){
 
 
 
@@ -164,7 +164,7 @@ class NullGameCanvasRunnable
 
                 //@Throws(Exception.constructor)
             
-    public: Hashtable<any, any> getLoadStateHashtable(){
+    public: ABHashtable<Object*, Object*> getLoadStateHashtable(){
 
 
 
@@ -176,7 +176,7 @@ class NullGameCanvasRunnable
 
                 //@Throws(Exception.constructor)
             
-    public: void setLoadStateHashtable(Hashtable<any, any> hashtable){
+    public: void setLoadStateHashtable(ABHashtable<Object*, Object*> hashtable){
 }
 
 

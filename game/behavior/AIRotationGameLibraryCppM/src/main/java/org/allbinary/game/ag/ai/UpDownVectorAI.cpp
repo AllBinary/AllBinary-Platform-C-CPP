@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/game/ai/BasicAI.h>
 
@@ -66,14 +66,15 @@ class UpDownVectorAI: public BasicAI {
 
     private: int32_t index = 0;
 
-public: UpDownVectorAI(AllBinaryLayer ownerLayerInterface, GameInput gameInput){
-            super(ownerLayerInterface, gameInput);
+public: UpDownVectorAI(AllBinaryLayer ownerLayerInterface, GameInput gameInput) : BasicAI(ownerLayerInterface, gameInput){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
                     
 
-    VelocityInterfaceCompositeInterface velocityInterfaceCompositeInterface = this->getOwnerLayerInterface() as unknown as VelocityInterfaceCompositeInterface;;
+    VelocityInterfaceCompositeInterface velocityInterfaceCompositeInterface = this->getOwnerLayerInterface() as unknown;;
     
 this->velocityInterface= velocityInterfaceCompositeInterface.getVelocityProperties();
     

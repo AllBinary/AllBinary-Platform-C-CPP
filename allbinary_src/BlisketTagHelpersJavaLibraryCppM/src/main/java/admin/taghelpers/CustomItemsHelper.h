@@ -21,7 +21,7 @@
         #ifndef ADMIN_TAGHELPERS_CUSTOMITEMSHELPER_H
         #define ADMIN_TAGHELPERS_CUSTOMITEMSHELPER_H
 
-            #include "../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
 
@@ -67,7 +67,7 @@ class CustomItemsHelper: public BasicTable {
 
     private: Portion portion;
 
-public: CustomItemsHelper(HashMap<any, any> hashMap, PageContext pageContext);
+public: CustomItemsHelper(HashMap<Object*, Object*> hashMap, PageContext pageContext);
 
     public: std::string create();
 

@@ -21,7 +21,7 @@
         #ifndef ORG_ALLBINARY_GAME_LAYER_CAPITAL_CAPITAL_H
         #define ORG_ALLBINARY_GAME_LAYER_CAPITAL_CAPITAL_H
 
-            #include "../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
 
 

@@ -18,9 +18,9 @@
 
 
 
-            #include "../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <javax/servlet/http/HttpServletRequest.h>
 
@@ -114,7 +114,7 @@ private: AcceptableResponseGenerator(){
     int32_t index = 0;index < size; index++)
         {
 
-                        if(acceptable.compareTo(acceptableResponseUtil.get(index)) == 0)
+                        if(acceptable.compare(acceptableResponseUtil.get(index)) == 0)
                         
                                     {
                                     result= acceptableResponseUtil.getTagName(index);

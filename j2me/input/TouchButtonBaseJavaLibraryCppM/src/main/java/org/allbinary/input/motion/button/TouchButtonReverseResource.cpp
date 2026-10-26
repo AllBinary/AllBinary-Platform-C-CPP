@@ -52,8 +52,9 @@ class TouchButtonReverseResource: public TouchButtonResource {
 }
 
 
-private: TouchButtonReverseResource(){
-            super("/touch_button_reverse_64_by_64.png", "/touch_button_reverse_hint_64_by_64.png");
+private: TouchButtonReverseResource() : TouchButtonResource("/touch_button_reverse_64_by_64.png", "/touch_button_reverse_hint_64_by_64.png"){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.

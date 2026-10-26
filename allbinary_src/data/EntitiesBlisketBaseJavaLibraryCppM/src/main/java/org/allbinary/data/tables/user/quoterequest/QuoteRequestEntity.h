@@ -21,9 +21,9 @@
         #ifndef ORG_ALLBINARY_DATA_TABLES_USER_QUOTEREQUEST_QUOTEREQUESTENTITY_H
         #define ORG_ALLBINARY_DATA_TABLES_USER_QUOTEREQUEST_QUOTEREQUESTENTITY_H
 
-            #include "../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../../../../java/lang/Integer.h"
+            #include "java/lang/Integer.h"
         
 #include <java/util/HashMap.h>
 
@@ -105,7 +105,7 @@ public: QuoteRequestEntity();
 
     public: std::string dropTable();
 
-    public: void update(std::string userName, HashMap<any, any> updatedValues);
+    public: void update(std::string userName, HashMap<Object*, Object*> updatedValues);
 
 };
 

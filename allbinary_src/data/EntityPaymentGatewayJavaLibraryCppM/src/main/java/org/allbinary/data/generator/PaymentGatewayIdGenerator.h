@@ -21,7 +21,7 @@
         #ifndef ORG_ALLBINARY_DATA_GENERATOR_PAYMENTGATEWAYIDGENERATOR_H
         #define ORG_ALLBINARY_DATA_GENERATOR_PAYMENTGATEWAYIDGENERATOR_H
 
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/globals/PATH_GLOBALS.h>
 

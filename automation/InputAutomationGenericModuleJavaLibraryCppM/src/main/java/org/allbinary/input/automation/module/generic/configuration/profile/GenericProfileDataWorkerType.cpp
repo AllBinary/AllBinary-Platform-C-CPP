@@ -18,9 +18,9 @@
 
 
 
-            #include "../../../../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
 
@@ -69,7 +69,7 @@ class GenericProfileDataWorkerType
             : public Object
         : public GenericProfileDataWorkerTypeInterface {
 
-    private: static HashMap<any, any> hashMap = StdUtil::getInstance().createHashMap();
+    private: static HashMap<Object*, Object*> hashMap = StdUtil::getInstance().createHashMap();
 
     public: static GenericProfileDataWorkerType SAVED_CAPTURE = SavedCaptureGenericProfileDataWorkerType::SAVED_CAPTURE;
 
@@ -87,7 +87,7 @@ class GenericProfileDataWorkerType
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return GenericProfileDataWorkerType::hashMap.get(name) as GenericProfileDataWorkerType;
+                        return GenericProfileDataWorkerType::hashMap.get(name);
     
 }
 

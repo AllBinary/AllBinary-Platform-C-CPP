@@ -18,15 +18,12 @@
 
 
 
-            #include "../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../../../java/lang/Math.h"
+            #include "java/lang/Math.h"
         
-#include <jsinterop/annotations/JsType.h>
-
-      
 #include <org/allbinary/graphics/GPoint.h>
 
       
@@ -145,7 +142,7 @@ this->logUtil.put(commonStrings.EXCEPTION, this, commonStrings.CONSTRUCTOR, e);
     
 }
 
-this->motionGesturesHandler= motionGesturesHandler as BasicMotionGesturesHandler;
+this->motionGesturesHandler= motionGesturesHandler;
     
 this->movedMotionGesturesHandler= movedMotionGesturesHandler;
     

@@ -20,7 +20,7 @@
 
             #include <vector>
         
-            #include "../../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/util/BasicArrayList.h>
 
@@ -507,7 +507,7 @@ genericProfileActionsJPanel.setGenericProfileActions(this->getSelectedGenericPro
 genericProfileActionsJPanel.selectFirstElement();
     
 
-    javax::swing::GroupLayout layout = this->getBlankGenericProfileActionsJPanel().getLayout() as javax::swing::GroupLayout;;
+    javax::swing::GroupLayout layout = this->getBlankGenericProfileActionsJPanel().getLayout();;
     
 layout.setHorizontalGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING).addGap(0, 395, Short::MAX_VALUE).addComponent(genericProfileActionsJPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE));
     
@@ -540,7 +540,7 @@ this->genericProfilesJList.setModel(this->getGenericProfiles().getDefaultListMod
                                     {
                                     this->genericProfilesJList.setSelectedValue(this->genericProfilesJList.getModel().getElementAt(0), true);
     
-this->updateProfileUI(this->genericProfilesJList.getModel().getElementAt(0) as string);
+this->updateProfileUI(this->genericProfilesJList.getModel().getElementAt(0));
     
 
                                     }
@@ -578,7 +578,7 @@ this->captureMotionAnalysisJCheckBox.setSelected(false);
     int32_t index = 0;index < size; index++)
         {
 
-    GenericProfileDataWorkerType genericProfileDataWorkerType = vector.get(index) as GenericProfileDataWorkerType;;
+    GenericProfileDataWorkerType genericProfileDataWorkerType = vector.get(index);;
     
 this->logUtil.putF(genericProfile.getName() +" has GenericProfileDataWorkerType: " +genericProfileDataWorkerType.toString(), this, "updateProfileOptions");
     
@@ -696,7 +696,7 @@ this->selectedGenericProfile= selectedGenericProfile;
 
         try {
             
-    std::string profileNameString = this->genericProfilesJList.getSelectedValue() as string;;
+    std::string profileNameString = this->genericProfilesJList.getSelectedValue();;
     
 this->updateProfileUI(profileNameString);
     
@@ -725,7 +725,7 @@ this->logUtil.put(this->commonStrings.EXCEPTION, this, "genericProfilesJListValu
     int32_t index = 0;index < anyType.size(); index++)
         {
 
-    std::string nextSelectedValueString = anyType[index]! as string;;
+    std::string nextSelectedValueString = anyType[index];;
     
 this->getGenericProfiles().remove(nextSelectedValueString);
     

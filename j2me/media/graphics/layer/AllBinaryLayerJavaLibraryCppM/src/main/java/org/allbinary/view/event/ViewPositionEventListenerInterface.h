@@ -21,15 +21,9 @@
         #ifndef ORG_ALLBINARY_VIEW_EVENT_VIEWPOSITIONEVENTLISTENERINTERFACE_H
         #define ORG_ALLBINARY_VIEW_EVENT_VIEWPOSITIONEVENTLISTENERINTERFACE_H
 
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-#include <jsinterop/annotations/JsType.h>
-
-      
 #include <org/allbinary/logic/util/event/EventListenerInterface.h>
-
-      
-#include <jsinterop/annotations/JsMethod.h>
 
       
 

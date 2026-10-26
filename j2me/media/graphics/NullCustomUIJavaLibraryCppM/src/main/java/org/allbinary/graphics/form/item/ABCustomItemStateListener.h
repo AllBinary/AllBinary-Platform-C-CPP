@@ -7,9 +7,6 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_FORM_ITEM_ABCUSTOMITEMSTATELISTENER_H
         #define ORG_ALLBINARY_GRAPHICS_FORM_ITEM_ABCUSTOMITEMSTATELISTENER_H
 
-#include <jsinterop/annotations/JsType.h>
-
-      
 
 
 

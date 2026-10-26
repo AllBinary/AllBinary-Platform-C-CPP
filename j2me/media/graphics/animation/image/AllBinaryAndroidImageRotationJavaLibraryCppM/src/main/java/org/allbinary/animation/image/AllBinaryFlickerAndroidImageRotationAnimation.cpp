@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <android/graphics/Matrix.h>
 
@@ -77,8 +77,9 @@ class AllBinaryFlickerAndroidImageRotationAnimation: public ImageBaseRotationAni
 
     private: Image originalImage;
 
-public: AllBinaryFlickerAndroidImageRotationAnimation(Image originalImage, Image image, AngleInfo angleInfo, int16_t totalAngle, AnimationBehavior animationBehavior){
-            super(image, angleInfo, totalAngle, animationBehavior);
+public: AllBinaryFlickerAndroidImageRotationAnimation(Image originalImage, Image image, AngleInfo angleInfo, int16_t totalAngle, AnimationBehavior animationBehavior) : ImageBaseRotationAnimation(image, angleInfo, totalAngle, animationBehavior){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.

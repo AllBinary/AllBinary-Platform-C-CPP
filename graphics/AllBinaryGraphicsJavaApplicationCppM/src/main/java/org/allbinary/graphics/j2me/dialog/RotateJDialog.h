@@ -23,11 +23,11 @@
 
             #include <vector>
         
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../../../java/lang/System.h"
+            #include "java/lang/System.h"
         
-            #include "../../../../../java/lang/Integer.h"
+            #include "java/lang/Integer.h"
         
 #include <org/allbinary/thread/ARunnable.h>
 
@@ -86,7 +86,7 @@ class RotateJDialog: public javax::swing::JDialog {
 
     protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: HashMap<any, any> hashMap = StdUtil::getInstance().createHashMap();
+    private: HashMap<Object*, Object*> hashMap = StdUtil::getInstance().createHashMap();
 
 public: RotateJDialog(java::awt::Frame parent, bool modal);
 

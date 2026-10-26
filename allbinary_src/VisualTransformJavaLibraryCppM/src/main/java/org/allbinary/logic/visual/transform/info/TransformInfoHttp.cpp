@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
 
@@ -90,8 +90,9 @@ class TransformInfoHttp: public TransformInfo, public TransformInfoHttpInterface
 
     private: AbContext abContext;
 
-public: TransformInfoHttp(HashMap<any, any> propertiesHashMap, PageContext pageContext, bool crud){
-            super();
+public: TransformInfoHttp(HashMap<Object*, Object*> propertiesHashMap, PageContext pageContext, bool crud) : TransformInfo(){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -112,8 +113,9 @@ this->override(propertiesHashMap);
 }
 
 
-public: TransformInfoHttp(HttpServletRequest request, HashMap<any, any> propertiesHashMap, PageContext pageContext){
-            super();
+public: TransformInfoHttp(HttpServletRequest request, HashMap<Object*, Object*> propertiesHashMap, PageContext pageContext) : TransformInfo(){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -129,15 +131,16 @@ this->abContext= AbContext(propertiesHashMap, pageContext);
 
                                     }
                                 
-this->set(RequestParams(request as HttpServletRequest).toHashMap());
+this->set(RequestParams(request).toHashMap());
     
 this->override(propertiesHashMap);
     
 }
 
 
-public: TransformInfoHttp(HashMap<any, any> databaseHashMap, HashMap<any, any> propertiesHashMap, PageContext pageContext){
-            super();
+public: TransformInfoHttp(HashMap<Object*, Object*> databaseHashMap, HashMap<Object*, Object*> propertiesHashMap, PageContext pageContext) : TransformInfo(){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -158,8 +161,9 @@ this->set(databaseHashMap);
 }
 
 
-public: TransformInfoHttp(HashMap<any, any> propertiesHashMap, PageContext pageContext){
-            super();
+public: TransformInfoHttp(HashMap<Object*, Object*> propertiesHashMap, PageContext pageContext) : TransformInfo(){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -180,8 +184,9 @@ this->set(propertiesHashMap);
 }
 
 
-public: TransformInfoHttp(TransformInfoHttp parentViewOfThisTransformInfoInterface){
-            super();
+public: TransformInfoHttp(TransformInfoHttp parentViewOfThisTransformInfoInterface) : TransformInfo(){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -193,7 +198,7 @@ this->abContext= AbContext(parentViewOfThisTransformInfoInterface.getPropertiesH
 
                 //@Throws(Exception.constructor)
             
-    private: void set(HashMap<any, any> hashMap){
+    private: void set(HashMap<Object*, Object*> hashMap){
 
                         if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEW))
                         
@@ -206,19 +211,19 @@ this->abContext= AbContext(parentViewOfThisTransformInfoInterface.getPropertiesH
 
     TransformInfoData transformInfoData = TransformInfoData::getInstance();;
     
-this->setName(hashMap.get(transformInfoData.NAME) as string);
+this->setName(hashMap.get(transformInfoData.NAME));
     
-this->setStoreName(hashMap.get(StoreFrontData::getInstance().NAME) as string);
+this->setStoreName(hashMap.get(StoreFrontData::getInstance().NAME));
     
-this->setObjectFile(hashMap.get(transformInfoData.OBJECTFILENAME) as string);
+this->setObjectFile(hashMap.get(transformInfoData.OBJECTFILENAME));
     
-this->setObject(hashMap.get(transformInfoData.OBJECT) as string);
+this->setObject(hashMap.get(transformInfoData.OBJECT));
     
 
     StringValidationUtil stringValidationUtil = StringValidationUtil::getInstance();;
     
 
-    std::string objectConfigString = hashMap.get(transformInfoData.OBJECTCONFIG) as string;;
+    std::string objectConfigString = hashMap.get(transformInfoData.OBJECTCONFIG);;
     
 
                         if(stringValidationUtil.isValidRequired(objectConfigString, 10, AbSqlData::MAXBLOB))
@@ -236,21 +241,21 @@ this->setObject(hashMap.get(transformInfoData.OBJECT) as string);
                         }
                             
 
-                        if(!stringValidationUtil.isEmpty(hashMap.get(transformInfoData.OBJECTCONFIGFILENAME) as string))
+                        if(!stringValidationUtil.isEmpty(hashMap.get(transformInfoData.OBJECTCONFIGFILENAME)))
                         
                                     {
-                                    this->setObjectConfigFile(hashMap.get(transformInfoData.OBJECTCONFIGFILENAME) as string);
+                                    this->setObjectConfigFile(hashMap.get(transformInfoData.OBJECTCONFIGFILENAME));
     
 
                                     }
                                 
-this->setTemplateFile(hashMap.get(transformInfoData.TEMPLATEFILENAME) as string);
+this->setTemplateFile(hashMap.get(transformInfoData.TEMPLATEFILENAME));
     
-this->setTemplate(hashMap.get(transformInfoData.TEMPLATE) as string);
+this->setTemplate(hashMap.get(transformInfoData.TEMPLATE));
     
-this->setDataFile(hashMap.get(transformInfoData.DATAFILENAME) as string);
+this->setDataFile(hashMap.get(transformInfoData.DATAFILENAME));
     
-this->setData(hashMap.get(transformInfoData.DATA) as string);
+this->setData(hashMap.get(transformInfoData.DATA));
     
 
                         if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().TAGHELPERFACTORY))
@@ -284,7 +289,7 @@ this->setData(hashMap.get(transformInfoData.DATA) as string);
 }
 
 
-    public: HashMap<any, any> getPropertiesHashMap(){
+    public: HashMap<Object*, Object*> getPropertiesHashMap(){
 
 
 

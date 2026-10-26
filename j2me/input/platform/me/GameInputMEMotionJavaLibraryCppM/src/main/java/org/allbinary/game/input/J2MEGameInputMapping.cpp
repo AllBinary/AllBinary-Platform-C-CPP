@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/game/configuration/persistance/GamePersistanceStrings.h>
 
@@ -53,8 +53,9 @@
 
 class J2MEGameInputMapping: public PersistentInputMapping {
 
-public: J2MEGameInputMapping(){
-            super(GamePersistanceStrings::getInstance().SAVED_INPUT_CONFIGURATION_RECORD_ID);
+public: J2MEGameInputMapping() : PersistentInputMapping(GamePersistanceStrings::getInstance().SAVED_INPUT_CONFIGURATION_RECORD_ID){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.

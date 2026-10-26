@@ -20,11 +20,11 @@
 
             #include <vector>
         
-            #include "../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../../java/lang/Integer.h"
+            #include "java/lang/Integer.h"
         
 #include <javax/microedition/khronos/opengles/GL10.h>
 
@@ -474,11 +474,11 @@ openGLImageSpecificFactory.setImageFactory(OpenGLESGL10ImageFactory());
                         }
                             
 
-    std::vector<int32_t> maxTextureSizeArray = new Array(1);;
+    std::vector<int32_t> maxTextureSizeArray = std::vector<int32_t>(1);;
     
 gl.glGetIntegerv(GL10::GL_MAX_TEXTURE_SIZE, maxTextureSizeArray, 0);
     
-this->maxTextureSize= maxTextureSizeArray[0]!;
+this->maxTextureSize= maxTextureSizeArray[0];
     
 this->initialized= true;
     
@@ -722,7 +722,7 @@ stringBuffer.append(" GL_EXTENSIONS: ");
         {
 stringBuffer.append(commonSeps.NEW_LINE);
     
-stringBuffer.append(this->stringUtil.toString(list.objectArray[index]!));
+stringBuffer.append(this->stringUtil.toString(list.objectArray[index]));
     
 }
 

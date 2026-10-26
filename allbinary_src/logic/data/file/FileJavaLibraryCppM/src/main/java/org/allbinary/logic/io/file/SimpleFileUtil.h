@@ -23,11 +23,11 @@
 
             #include <vector>
         
-            #include "../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../../../java/lang/CharSequence.h"
+            #include "java/lang/CharSequence.h"
         
 #include <java/io/ByteArrayOutputStream.h>
 

@@ -18,9 +18,9 @@
 
 
 
-            #include "../../java/lang/Class.h"
+            #include "java/lang/Class.h"
         
-            #include "../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/lang/reflect/Method.h>
 
@@ -79,7 +79,7 @@ class ShippingTag: public CustomTagSupport {
 
     private: std::string storeName;
 
-    private: HashMap<any, any> propertiesHashMap;
+    private: HashMap<Object*, Object*> propertiesHashMap;
 
 public: ShippingTag(){
 }
@@ -106,7 +106,7 @@ this->storeName= value;
     Object* anyType = ShippingHelperFactory().getInstance(this->propertiesHashMap, this->pageContext);;
     
 
-    Function addressHelperClass = anyType->constructor;;
+    Class* addressHelperClass = anyType->getClass();;
     
 
     Method method = addressHelperClass.getMethod("setShippingType", 
@@ -114,7 +114,7 @@ this->storeName= value;
     
 
     std::string result = method.invoke(anyType, 
-                            nullptr) as string;;
+                            nullptr);;
     
 
 
@@ -173,7 +173,7 @@ this->storeName= value;
 this->propertiesHashMap.put(StoreFrontData::getInstance().NAME, this->storeName);
     
 
-                        if(this->command.compareTo(org.allbinary.globals.GLOBALS2.SETSHIPPINGTYPE) == 0)
+                        if(this->command.compare(org.allbinary.globals.GLOBALS2.SETSHIPPINGTYPE) == 0)
                         
                                     {
                                     this->setShippingType();

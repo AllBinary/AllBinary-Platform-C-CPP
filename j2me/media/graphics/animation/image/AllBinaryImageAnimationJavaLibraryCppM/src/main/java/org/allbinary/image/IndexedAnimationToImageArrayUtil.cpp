@@ -20,9 +20,9 @@
 
             #include <vector>
         
-            #include "../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <javax/microedition/lcdui/Image.h>
 
@@ -61,7 +61,7 @@ class IndexedAnimationToImageArrayUtil
     int32_t size = sequentialAnimationInterface.getAnimationSize();;
     
 
-    std::vector<Image> imageArray = new Array(size);;
+    std::vector<Image> imageArray = std::vector<Image>(size);;
     
 
 

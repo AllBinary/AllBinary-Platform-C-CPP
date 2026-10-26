@@ -1,0 +1,178 @@
+
+        /*
+                *  
+                *  AllBinary Open License Version 1 
+                *  Copyright (c) 2025 AllBinary 
+                *   
+                *  By agreeing to this license you and any business entity you represent are 
+                *  legally bound to the AllBinary Open License Version 1 legal agreement. 
+                *   
+                *  You may obtain the AllBinary Open License Version 1 legal agreement from 
+                *  AllBinary or the root directory of AllBinary's AllBinary Platform repository. 
+                *   
+                *  Created By: Travis Berthelot    
+        */
+        
+        /* Generated Code Do Not Modify */
+        
+
+
+
+            #include <vector>
+        
+            #include "java/lang/Object.h"
+        
+            #include "java/lang/InterruptedException.h"
+        
+            #include "java/lang/System.h"
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                        
+        //Current folder imports from return types, extended types, and scope (deduplicated)
+        //None - Do not use
+class TsUtil
+            : public Object
+         {
+
+    private: static TsUtil instance() { return TsUtil(); }
+
+    public: static TsUtil getInstance(){
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return TsUtil::instance();
+    
+}
+
+
+    public: int32_t hashCode(Object* anyType){
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return anyType->hashCode();;
+    
+}
+
+
+                //@Throws(InterruptedException.constructor)
+            
+    public: void waitFor(Object* any, int64_t timeoutMillis){
+
+    Object* anyType = any;;
+    
+;
+    
+}
+
+
+    public: std::vector<int8_t> getRecord(Object* anyType, int32_t recordId){
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return std::vector<int8_t>(0);
+    
+}
+
+
+    public: int32_t compareTo(std::string a, std::string b){
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return a.compare(b);;
+    
+}
+
+
+    public: bool equalIgnoreCase(std::string a, std::string b){
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return a.equalsIgnoreCase(b);;
+    
+}
+
+
+    public: bool equalsNotstring(Object* anyType, Object* object2){
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return anyType === object2;;
+    
+}
+
+
+    public: int32_t toNumberFromChar(char value){
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return static_cast<int32_t>(value);
+    
+}
+
+
+    public: int32_t toNumber(int32_t value){
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return value;
+    
+}
+
+
+    public: std::vector<int8_t> getByteArray(std::string string){
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return string.getBytes();;
+    
+}
+
+
+    public: bool isItemListener(Object* owner){
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return false;
+    
+}
+
+
+    public: void printAvailableMethods(Object* anyType){
+}
+
+
+    public: void gc(){
+System.gc();
+    
+}
+
+
+};
+
+            
+

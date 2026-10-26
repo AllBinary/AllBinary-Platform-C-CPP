@@ -53,8 +53,9 @@ class RectangleFilledAdjustedAnimation: public RectangleFilledAnimation, public 
 
     private: int32_t offsetY;
 
-public: RectangleFilledAdjustedAnimation(int32_t width, int32_t height, int32_t offsetX, int32_t offsetY, BasicColor basicColor){
-            super(width, height, basicColor);
+public: RectangleFilledAdjustedAnimation(int32_t width, int32_t height, int32_t offsetX, int32_t offsetY, BasicColor basicColor) : RectangleFilledAnimation(width, height, basicColor){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.

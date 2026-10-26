@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/media/graphics/geography/map/BasicGeographicMap.h>
 
@@ -74,10 +74,10 @@ public: PathFindingNodeCostInfoFactory(int32_t max){
     GeographicMapCellType geographicMapCellType2 = geographicMapInterface.getCellTypeAt(geographicMapCellPosition);;
     
 
-    RaceTrackGeographicMapCellType raceTrackGeographicMapCellType = geographicMapCellType as RaceTrackGeographicMapCellType;;
+    RaceTrackGeographicMapCellType raceTrackGeographicMapCellType = geographicMapCellType;;
     
 
-    RaceTrackGeographicMapCellType raceTrackGeographicMapCellType2 = geographicMapCellType2 as RaceTrackGeographicMapCellType;;
+    RaceTrackGeographicMapCellType raceTrackGeographicMapCellType2 = geographicMapCellType2;;
     
 
 

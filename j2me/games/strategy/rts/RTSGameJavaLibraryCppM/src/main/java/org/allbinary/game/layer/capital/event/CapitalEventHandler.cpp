@@ -17,7 +17,7 @@
 
 
 
-            #include "../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/logic/util/event/AllBinaryEventObject.h>
 
@@ -59,9 +59,9 @@ public: CapitalEventHandler(){
             
     protected: void process(AllBinaryEventObject eventObject, EventListenerInterface eventListenerInterface){
 
-    CapitalEventListenerInterface capitalEventListenerInterface = (eventListenerInterface as CapitalEventListenerInterface);;
+    CapitalEventListenerInterface capitalEventListenerInterface = (eventListenerInterface);;
     
-capitalEventListenerInterface.onCapitalChangeEvent(eventObject as CapitalEvent);
+capitalEventListenerInterface.onCapitalChangeEvent(eventObject);
     
 }
 

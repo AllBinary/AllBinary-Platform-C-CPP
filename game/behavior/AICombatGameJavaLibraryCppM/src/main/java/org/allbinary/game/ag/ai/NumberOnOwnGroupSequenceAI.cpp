@@ -20,9 +20,9 @@
 
             #include <vector>
         
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../../../java/lang/Integer.h"
+            #include "java/lang/Integer.h"
         
 #include <org/allbinary/ai/ArtificialIntelligenceInterface.h>
 
@@ -65,8 +65,9 @@ class NumberOnOwnGroupSequenceAI: public SequenceAI {
 
     private: std::vector<Integer> numberOnSameTeam;
 
-public: NumberOnOwnGroupSequenceAI(std::vector<Integer> numberOnSameTeam, std::vector<ArtificialIntelligenceInterface> artificialIntelligenceInterface, AllBinaryLayer ownerLayerInterface, GameInput gameInput){
-            super(artificialIntelligenceInterface, ownerLayerInterface, gameInput);
+public: NumberOnOwnGroupSequenceAI(std::vector<Integer> numberOnSameTeam, std::vector<ArtificialIntelligenceInterface> artificialIntelligenceInterface, AllBinaryLayer ownerLayerInterface, GameInput gameInput) : SequenceAI(artificialIntelligenceInterface, ownerLayerInterface, gameInput){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -93,7 +94,7 @@ this->numberOnSameTeam= numberOnSameTeam;
     int32_t size = GroupLayerManagerListener::getInstance().getGroupSizeFromInterface(layerInterface);;
     
 
-                        if(this->numberOnSameTeam[index]!.intValue() > size)
+                        if(this->numberOnSameTeam[index].intValue() > size)
                         
                                     {
                                     this->next();

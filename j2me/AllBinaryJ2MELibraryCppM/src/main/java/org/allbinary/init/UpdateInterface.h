@@ -21,7 +21,7 @@
         #ifndef ORG_ALLBINARY_INIT_UPDATEINTERFACE_H
         #define ORG_ALLBINARY_INIT_UPDATEINTERFACE_H
 
-            #include "../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 
 

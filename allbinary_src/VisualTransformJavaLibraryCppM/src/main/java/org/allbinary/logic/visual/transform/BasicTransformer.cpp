@@ -20,7 +20,7 @@
 
             #include <vector>
         
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/io/ByteArrayInputStream.h>
 
@@ -104,8 +104,9 @@ class BasicTransformer: public AbTransformer {
 
     private: AbeClientInformationInterface abeClientInformation;
 
-public: BasicTransformer(AbeClientInformationInterface abeClientInformation, TransformInfoInterface transformInfoInterface){
-            super(transformInfoInterface);
+public: BasicTransformer(AbeClientInformationInterface abeClientInformation, TransformInfoInterface transformInfoInterface) : AbTransformer(transformInfoInterface){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -136,7 +137,7 @@ this->setTemplateAsInputStream();
     
 inputStream= AbFileInputStream(file);
     
-outputStream= this->streamUtil.get(inputStream, outputStream, new Array(16384)) as ByteArrayOutputStream;
+outputStream= this->streamUtil.get(inputStream, outputStream, std::vector<int8_t>(16384));
     
 
     AbCrypt abCrypt = AbCrypt(KeySpecFactory::DESEDE, AbKeys::getInstance().getKey(this->abeClientInformation, file.getAbsolutePath()));;
@@ -155,9 +156,9 @@ outputStream= this->streamUtil.get(inputStream, outputStream, new Array(16384)) 
 
                                     }
                                 
-this->setInputStream(ByteArrayInputStream(decrypted) as InputStream);
+this->setInputStream(ByteArrayInputStream(decrypted));
     
-this->setURIResolver(BasicUriResolver(TransformInfoTemplateData::getInstance().ENCRYPTED_EXTENSION) as URIResolver);
+this->setURIResolver(BasicUriResolver(TransformInfoTemplateData::getInstance().ENCRYPTED_EXTENSION));
     
 
                 //: 
@@ -220,7 +221,7 @@ this->streamUtil.close(inputStream);
     
 inputStream= ByteArrayInputStream(this->getTransformInfoInterface().getTemplate().getBytes());
     
-outputStream= this->streamUtil.get(inputStream, outputStream, new Array(16384)) as ByteArrayOutputStream;
+outputStream= this->streamUtil.get(inputStream, outputStream, std::vector<int8_t>(16384));
     
 
     AbCrypt abCrypt = AbCrypt(KeySpecFactory::DESEDE, AbKeys::getInstance().getKey(this->abeClientInformation, this->getTransformInfoInterface().getName()));;
@@ -237,9 +238,9 @@ outputStream= this->streamUtil.get(inputStream, outputStream, new Array(16384)) 
 
                                     }
                                 
-this->setInputStream(ByteArrayInputStream(decrypted) as InputStream);
+this->setInputStream(ByteArrayInputStream(decrypted));
     
-this->setURIResolver(BasicUriResolver(TransformInfoTemplateData::getInstance().ENCRYPTED_EXTENSION) as URIResolver);
+this->setURIResolver(BasicUriResolver(TransformInfoTemplateData::getInstance().ENCRYPTED_EXTENSION));
     
 
                 //: 
@@ -324,7 +325,7 @@ this->streamUtil.close(inputStream);
                                     }
                                 
 
-                        if(extension.compareTo(transformInfoTemplateData.UNCRYPTED_EXTENSION) == 0)
+                        if(extension.compare(transformInfoTemplateData.UNCRYPTED_EXTENSION) == 0)
                         
                                     {
                                     
@@ -412,7 +413,7 @@ this->logUtil.putF(stringBuffer.toString(), this, "setTemplateAsInputStream()");
     
 outputStream= ByteArrayOutputStream();
     
-outputStream= this->streamUtil.get(inputStream, outputStream, new Array(16384)) as ByteArrayOutputStream;
+outputStream= this->streamUtil.get(inputStream, outputStream, std::vector<int8_t>(16384));
     
 
                         if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().TAGHELPERFACTORY))
@@ -423,9 +424,9 @@ outputStream= this->streamUtil.get(inputStream, outputStream, new Array(16384)) 
 
                                     }
                                 
-this->setInputStream(ByteArrayInputStream(outputStream.toByteArray()) as InputStream);
+this->setInputStream(ByteArrayInputStream(outputStream.toByteArray()));
     
-this->setURIResolver(BasicUriResolver(transformInfoTemplateData.UNCRYPTED_EXTENSION) as URIResolver);
+this->setURIResolver(BasicUriResolver(transformInfoTemplateData.UNCRYPTED_EXTENSION));
     
 
 
@@ -443,7 +444,7 @@ this->setURIResolver(BasicUriResolver(transformInfoTemplateData.UNCRYPTED_EXTENS
                                     }
                                 
                              else 
-                        if(extension.compareTo(transformInfoTemplateData.ENCRYPTED_EXTENSION) == 0)
+                        if(extension.compare(transformInfoTemplateData.ENCRYPTED_EXTENSION) == 0)
                         
                                     {
                                     

@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/business/context/modules/storefront/StoreFrontFactory.h>
 
@@ -65,8 +65,9 @@ class EditValidationStoreFrontView: public StoreFrontComponent, public Validatio
 
     protected: const LogUtil logUtil = LogUtil::getInstance();
 
-public: EditValidationStoreFrontView(TransformInfoInterface transformInfoInterface){
-            super(transformInfoInterface);
+public: EditValidationStoreFrontView(TransformInfoInterface transformInfoInterface) : StoreFrontComponent(transformInfoInterface){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.

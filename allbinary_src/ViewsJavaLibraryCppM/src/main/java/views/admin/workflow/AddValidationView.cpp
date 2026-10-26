@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/data/tables/workflow/WorkFlowEntityFactory.h>
 
@@ -76,8 +76,9 @@ class AddValidationView: public WorkFlowView, public ValidationComponentInterfac
 
     private: const AbeClientInformationInterface abeClientInformation = ServiceClientInformationInterfaceFactory::getInstance();
 
-public: AddValidationView(TransformInfoInterface transformInfoInterface){
-            super(transformInfoInterface);
+public: AddValidationView(TransformInfoInterface transformInfoInterface) : WorkFlowView(transformInfoInterface){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.

@@ -4,9 +4,9 @@
 
 
 
-            #include "../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/logic/NullUtil.h>
 
@@ -66,7 +66,7 @@ class StupidTimer
 
     private: bool visitBool(Visitor visitorInterface){
 
-    Boolean result = visitorInterface.visit(this->nullUtil.NULL_OBJECT) as Boolean;;
+    Boolean result = visitorInterface.visit(this->nullUtil.NULL_OBJECT);;
     
 
     bool result2 = result.valueOf();;

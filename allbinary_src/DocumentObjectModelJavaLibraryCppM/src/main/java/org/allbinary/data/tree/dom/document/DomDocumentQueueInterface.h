@@ -21,7 +21,7 @@
         #ifndef ORG_ALLBINARY_DATA_TREE_DOM_DOCUMENT_DOMDOCUMENTQUEUEINTERFACE_H
         #define ORG_ALLBINARY_DATA_TREE_DOM_DOCUMENT_DOMDOCUMENTQUEUEINTERFACE_H
 
-            #include "../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/data/tree/dom/document/mapping/DomDocumentMappingInterface.h>
 

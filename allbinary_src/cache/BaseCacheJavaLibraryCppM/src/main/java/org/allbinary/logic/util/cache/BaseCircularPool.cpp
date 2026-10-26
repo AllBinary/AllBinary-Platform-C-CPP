@@ -20,9 +20,9 @@
 
             #include <vector>
         
-            #include "../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <jsinterop/annotations/JsType.h>
 
@@ -112,7 +112,7 @@ this->OBJECT_ARRAY[index]= allBinaryObjectFactoryInterface.getInstance();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->OBJECT_ARRAY[index]!;
+                        return this->OBJECT_ARRAY[index];
     
 }
 

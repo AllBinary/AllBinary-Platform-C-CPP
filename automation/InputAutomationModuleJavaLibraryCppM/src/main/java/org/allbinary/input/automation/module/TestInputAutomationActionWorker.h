@@ -23,13 +23,10 @@
 
             #include <vector>
         
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../../../java/lang/Thread.h"
+            #include "java/lang/Thread.h"
         
-#include <java/util/Hashtable.h>
-
-      
 #include <java/util/Set.h>
 
       
@@ -46,6 +43,9 @@
 
       
 #include <org/allbinary/media/image/comparison/motion/MotionRectangleConstraintsInterface.h>
+
+      
+#include <org/allbinary/util/ABHashtable.h>
 
       
 

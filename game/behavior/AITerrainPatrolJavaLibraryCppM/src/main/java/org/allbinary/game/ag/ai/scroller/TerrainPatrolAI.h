@@ -21,14 +21,8 @@
         #ifndef ORG_ALLBINARY_GAME_AG_AI_SCROLLER_TERRAINPATROLAI_H
         #define ORG_ALLBINARY_GAME_AG_AI_SCROLLER_TERRAINPATROLAI_H
 
-            #include "../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-#include <org/allbinary/game/ag/ai/scroller/PacePatrolAI.h>
-
-      
-#include <java/util/Hashtable.h>
-
-      
 #include <org/allbinary/game/input/GameInput.h>
 
       
@@ -56,6 +50,9 @@
 #include <org/allbinary/math/AngleFactory.h>
 
       
+#include <org/allbinary/util/ABHashtable.h>
+
+      
 #include <org/allbinary/util/BasicArrayList.h>
 
       
@@ -77,7 +74,8 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        
+        #include "PacePatrolAI.h"
+
 class TerrainPatrolAI: public PacePatrolAI {
 
     private: const TerrainEventListener terrainEventListener = TerrainEventListener();
@@ -86,7 +84,7 @@ class TerrainPatrolAI: public PacePatrolAI {
 
     private: const BasicTerrainInfo CLIFF = BasicTerrainInfo(this->DOWN);
 
-public: TerrainPatrolAI(Hashtable<any, any> hashtable, AllBinaryLayer ownerLayerInterface, GameInput gameInput);
+public: TerrainPatrolAI(ABHashtable<Object*, Object*> hashtable, AllBinaryLayer ownerLayerInterface, GameInput gameInput);
 
     protected: void update();
 

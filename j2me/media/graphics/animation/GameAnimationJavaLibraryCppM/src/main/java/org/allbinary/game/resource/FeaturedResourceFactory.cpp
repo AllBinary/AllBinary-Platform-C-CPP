@@ -18,13 +18,10 @@
 
 
 
-            #include "../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-#include <jsinterop/annotations/JsType.h>
-
-      
 #include <org/allbinary/game/configuration/feature/Features.h>
 
       
@@ -56,15 +53,6 @@
 
       
 #include <org/allbinary/util/BasicArrayListD.h>
-
-      
-#include <jsinterop/annotations/JsMethod.h>
-
-      
-#include <jsinterop/annotations/JsConstructor.h>
-
-      
-#include <jsinterop/annotations/JsProperty.h>
 
       
 
@@ -133,7 +121,7 @@ public: FeaturedResourceFactory(){
     int32_t index = 0;index < size; index++)
         {
 
-    GameFeatureControlledInterface featureInterface = this->list.objectArray[index]! as GameFeatureControlledInterface;;
+    GameFeatureControlledInterface featureInterface = this->list.objectArray[index];;
     
 
     bool isLoadingLevel = featureInterface.isLoadingLevel(level);;

@@ -21,7 +21,7 @@
         #ifndef ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_GAME_BASICGAMEINPUTAUTOMATIONACTIONINTERFACE_H
         #define ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_GAME_BASICGAMEINPUTAUTOMATIONACTIONINTERFACE_H
 
-            #include "../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/awt.h>
 

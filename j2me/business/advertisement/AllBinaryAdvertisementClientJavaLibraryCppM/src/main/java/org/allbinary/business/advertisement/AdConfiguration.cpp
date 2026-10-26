@@ -20,24 +20,12 @@
 
             #include <vector>
         
-            #include "../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-#include <jsinterop/annotations/JsType.h>
-
-      
 #include <org/allbinary/direction/Direction.h>
 
       
 #include <org/allbinary/game/state/GameState.h>
-
-      
-#include <jsinterop/annotations/JsMethod.h>
-
-      
-#include <jsinterop/annotations/JsConstructor.h>
-
-      
-#include <jsinterop/annotations/JsProperty.h>
 
       
 
@@ -70,11 +58,11 @@ class AdConfiguration
     public: std::string ADMOB;
 
 public: AdConfiguration(std::vector<Object*> advertIdArray){
-this->INNERACTIVE= advertIdArray[0]! as string;
+this->INNERACTIVE= advertIdArray[0];
     
-this->ADMOB= advertIdArray[1]! as string;
+this->ADMOB= advertIdArray[1];
     
-this->LEADBOLT= advertIdArray[2]! as string;
+this->LEADBOLT= advertIdArray[2];
     
 }
 

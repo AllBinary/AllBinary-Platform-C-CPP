@@ -20,11 +20,11 @@
 
             #include <vector>
         
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../../java/lang/Integer.h"
+            #include "java/lang/Integer.h"
         
-            #include "../../../../java/lang/Thread.h"
+            #include "java/lang/Thread.h"
         
 #include <java/awt.h>
 
@@ -110,8 +110,9 @@ class RotationSpriteImageJPanel: public javax::swing::JPanel, public ImageProces
 
     private: BufferedImage result;
 
-public: RotationSpriteImageJPanel(ImageProcessorInput imageProcessorInput){
-            super();
+public: RotationSpriteImageJPanel(ImageProcessorInput imageProcessorInput) : javax::swing::JPanel(){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -150,12 +151,12 @@ class extends Thread
     int32_t index = 0;index < bufferedImageArray.size(); index++)
         {
 
-    Integer totalFrames = Integer::valueOf(this->totalFramesJComboBox.getSelectedItem() as string);;
+    Integer totalFrames = Integer::valueOf(this->totalFramesJComboBox.getSelectedItem());;
     
 
-    Integer totalAngle = Integer::valueOf(this->totalAngleJComboBox.getSelectedItem() as string);;
+    Integer totalAngle = Integer::valueOf(this->totalAngleJComboBox.getSelectedItem());;
     
-generatedBufferedImageArray= ImageJ2SERotationUtil::getInstance().getRotatedImages(bufferedImageArray[index]!, totalFrames, totalAngle);
+generatedBufferedImageArray= ImageJ2SERotationUtil::getInstance().getRotatedImages(bufferedImageArray[index], totalFrames, totalAngle);
     
 this->result= ImageJ2SERotationUtil::getInstance().createSpriteImage(generatedBufferedImageArray);
     
@@ -184,7 +185,7 @@ file= File(filePath);
                                     }
                                 
 
-    bool isWritten = ImageIO::write(this->result as RenderedImage, imageStrings.PNG, file);;
+    bool isWritten = ImageIO::write(this->result, imageStrings.PNG, file);;
     
 logUtil.putF("File: " +file +" Wrote: " +isWritten, this, commonStrings.RUN);
     

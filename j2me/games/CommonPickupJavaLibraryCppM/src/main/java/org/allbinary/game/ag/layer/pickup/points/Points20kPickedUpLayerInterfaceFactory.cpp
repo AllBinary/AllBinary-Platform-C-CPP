@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/animation/FeaturedAnimationInterfaceFactoryInterfaceFactory.h>
 
@@ -93,8 +93,9 @@ Points20kPickedUpLayerInterfaceFactory::pickedUpLayerInterfaceFactoryInterface= 
 
     private: PointsLayerCircularStaticPool pool = PointsLayerCircularStaticPool(PointsLayerFactory(GameConfigurationUtil::getInstance().getCompetitionValue() *20000), 1);
 
-private: Points20kPickedUpLayerInterfaceFactory(){
-            super(PickedUpLayerTypeFactory::getInstance().POINTS, IconLayerFactory::getInstance(FeaturedAnimationInterfaceFactoryInterfaceFactory::getInstance().get(PointsResources::getInstance().RESOURCE_2).getInstance(0), 10, 10), FeaturedAnimationInterfaceFactoryInterfaceFactory::getInstance().get(PointsResources::getInstance().RESOURCE_2).getInstance(0));
+private: Points20kPickedUpLayerInterfaceFactory() : PickedUpLayerInterfaceFactory(PickedUpLayerTypeFactory::getInstance().POINTS, IconLayerFactory::getInstance(FeaturedAnimationInterfaceFactoryInterfaceFactory::getInstance().get(PointsResources::getInstance().RESOURCE_2).getInstance(0), 10, 10), FeaturedAnimationInterfaceFactoryInterfaceFactory::getInstance().get(PointsResources::getInstance().RESOURCE_2).getInstance(0)){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.

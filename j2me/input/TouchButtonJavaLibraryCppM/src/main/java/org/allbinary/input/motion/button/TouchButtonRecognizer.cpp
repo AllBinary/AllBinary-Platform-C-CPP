@@ -18,9 +18,9 @@
 
 
 
-            #include "../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/game/input/event/DownGameKeyEventHandler.h>
 
@@ -141,7 +141,8 @@ this->touchButtonRecognizer.currentlyPressedTouchButtonSingleton.removeAt(index)
 class MultitouchReleaseHelper: public ReleaseHelper {
 
 public: MultitouchReleaseHelper(TouchButtonRecognizer touchButtonRecognizer){
-            super(touchButtonRecognizer);
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -275,7 +276,7 @@ this->processRelease(touchButtonInput, deviceId);
                         for (
     int32_t index = list.size() -1;index >= 0; index--)
         {
-touchButton= list.objectArray[index]! as TouchButton;
+touchButton= list.objectArray[index];
     
 rectangle= touchButton.getRectangle();
     
@@ -341,7 +342,7 @@ this->processRelease(touchButtonInput, deviceId);
                         for (
     int32_t index = list.size() -1;index >= 0; index--)
         {
-touchButton= list.objectArray[index]! as TouchButton;
+touchButton= list.objectArray[index];
     
 rectangle= touchButton.getRectangle();
     

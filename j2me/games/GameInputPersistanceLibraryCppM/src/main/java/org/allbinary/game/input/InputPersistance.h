@@ -23,13 +23,10 @@
 
             #include <vector>
         
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../../java/lang/Integer.h"
+            #include "java/lang/Integer.h"
         
-#include <jsinterop/annotations/JsType.h>
-
-      
 #include <java/io/ByteArrayInputStream.h>
 
       
@@ -40,9 +37,6 @@
 
       
 #include <java/io/DataOutputStream.h>
-
-      
-#include <java/util/Hashtable.h>
 
       
 #include <javax/microedition/rms/RecordEnumeration.h>
@@ -90,13 +84,10 @@
 #include <org/allbinary/util/HashtableUtil.h>
 
       
-#include <jsinterop/annotations/JsMethod.h>
-
-      
-#include <jsinterop/annotations/JsConstructor.h>
-
-      
 #include <org/allbinary/logic/StdUtil.h>
+
+      
+#include <org/allbinary/util/ABHashtable.h>
 
       
 
@@ -135,7 +126,7 @@ public: InputPersistance(std::string name);
 
                 //@Throws(Exception.constructor)
             
-    public: void save(AbeClientInformationInterface abeClientInformation, Hashtable<any, any> hashtable);
+    public: void save(AbeClientInformationInterface abeClientInformation, ABHashtable<Object*, Object*> hashtable);
 
 };
 

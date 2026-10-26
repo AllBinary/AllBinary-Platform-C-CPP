@@ -21,7 +21,7 @@
         #ifndef SERVLET_REQUEST_REQUESTHANDLER_H
         #define SERVLET_REQUEST_REQUESTHANDLER_H
 
-            #include "../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/io.h>
 

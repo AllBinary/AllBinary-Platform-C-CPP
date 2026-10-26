@@ -21,7 +21,7 @@
         #ifndef ORG_ALLBINARY_UTIL_BASICARRAYLISTS_H
         #define ORG_ALLBINARY_UTIL_BASICARRAYLISTS_H
 
-            #include "../../../java/lang/IllegalArgumentException.h"
+            #include "java/lang/IllegalArgumentException.h"
         
 #include <jsinterop/annotations/JsType.h>
 

@@ -21,18 +21,12 @@
         #ifndef ORG_ALLBINARY_PHYSICS_MOVEMENT_MOVEMENTINTERFACE_H
         #define ORG_ALLBINARY_PHYSICS_MOVEMENT_MOVEMENTINTERFACE_H
 
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-#include <jsinterop/annotations/JsType.h>
-
-      
 #include <org/allbinary/game/layer/AllBinaryGameLayer.h>
 
       
 #include <org/allbinary/logic/math/BasicDecimal.h>
-
-      
-#include <jsinterop/annotations/JsMethod.h>
 
       
 

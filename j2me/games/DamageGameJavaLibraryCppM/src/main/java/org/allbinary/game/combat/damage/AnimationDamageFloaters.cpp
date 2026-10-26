@@ -20,7 +20,7 @@
 
             #include <vector>
         
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <javax/microedition/lcdui/Graphics.h>
 
@@ -93,7 +93,7 @@ this->animationInterfaceArray= animationInterfaceArray;
                         for (
     int32_t index = this->animationInterfaceArray.size() -1;index >= 0; index--)
         {
-this->animationInterfaceArray[index]!.setFrame(this->animationInterfaceArray[index]!.getSize() -1);
+this->animationInterfaceArray[index].setFrame(this->animationInterfaceArray[index].getSize() -1);
     
 }
 
@@ -112,7 +112,7 @@ this->dy= dy;
 
     int32_t i = this->circularIndexUtil.getIndex();;
     
-this->animationInterfaceArray[i]!.setFrame(0);
+this->animationInterfaceArray[i].setFrame(0);
     
 this->circularIndexUtil.next();
     

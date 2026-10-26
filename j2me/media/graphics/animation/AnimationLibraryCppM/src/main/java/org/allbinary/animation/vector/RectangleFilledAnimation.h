@@ -21,9 +21,6 @@
         #ifndef ORG_ALLBINARY_ANIMATION_VECTOR_RECTANGLEFILLEDANIMATION_H
         #define ORG_ALLBINARY_ANIMATION_VECTOR_RECTANGLEFILLEDANIMATION_H
 
-#include <jsinterop/annotations/JsType.h>
-
-      
 #include <javax/microedition/lcdui/Graphics.h>
 
       
@@ -34,15 +31,6 @@
 
       
 #include <org/allbinary/graphics/color/ColorCompositeInterface.h>
-
-      
-#include <jsinterop/annotations/JsMethod.h>
-
-      
-#include <jsinterop/annotations/JsConstructor.h>
-
-      
-#include <jsinterop/annotations/JsProperty.h>
 
       
 

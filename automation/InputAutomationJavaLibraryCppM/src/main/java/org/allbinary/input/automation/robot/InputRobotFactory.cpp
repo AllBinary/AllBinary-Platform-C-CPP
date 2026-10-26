@@ -20,17 +20,17 @@
 
             #include <vector>
         
-            #include "../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-#include <java/awt.h>
+#include <java/awt/GraphicsDevice.h>
+
+      
+#include <java/awt/GraphicsEnvironment.h>
 
       
 #include <java/util/Collection.h>
-
-      
-#include <java/util/Hashtable.h>
 
       
 #include <java/util/Iterator.h>
@@ -66,6 +66,9 @@
 #include <org/allbinary/string/CommonStrings.h>
 
       
+#include <org/allbinary/util/ABHashtable.h>
+
+      
 
 
 
@@ -84,9 +87,7 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "GraphicsEnvironment.h"
-#include "GraphicsDevice.h"
-#include "InputRobotInterface.h"
+        #include "InputRobotInterface.h"
 #include "InputRobot.h"
 
 class InputRobotFactory
@@ -121,7 +122,7 @@ logUtil.putF("Loading Libraries", "InputRobotFactory", "loadLibraries");
 
         while(iterator.hasNext())
         {
-InputRobotFactory::loadLibrary(iterator.next() as InputRobotInterface);
+InputRobotFactory::loadLibrary(iterator.next());
     
 }
 
@@ -141,7 +142,7 @@ InputRobotFactory::loadLibrary(iterator.next() as InputRobotInterface);
                                     logUtil.putF("Loading Library: " +inputRobotInterface.getName(), "InputRobotFactory", "loadLibraries");
     
 
-    SecuredNativeLibraryInterface securedNativeLibraryInterface = inputRobotInterface as SecuredNativeLibraryInterface;;
+    SecuredNativeLibraryInterface securedNativeLibraryInterface = inputRobotInterface;;
     
 securedNativeLibraryInterface.load();
     
@@ -155,7 +156,7 @@ securedNativeLibraryInterface.load();
 
     private: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    private: const Hashtable<any, any> hashtable = StdUtil::getInstance().createHashtable();
+    private: const ABHashtable<Object*, Object*> hashtable = StdUtil::getInstance().createHashtable();
 
     private: HelpSetListener helpSetListenerInterface;
 
@@ -178,7 +179,7 @@ private: InputRobotFactory(){
                         for (
     int32_t i = 0;i < screens.size(); i++)
         {
-inputRobotInterface= InputRobot(screens[i]!) as InputRobotInterface;
+inputRobotInterface= InputRobot(screens[i]);
     
 this->logUtil.putF("Adding Robot: " +inputRobotInterface.getName(), this, "getRobots");
     
@@ -186,7 +187,7 @@ this->get().put(inputRobotInterface.getName(), inputRobotInterface);
     
 }
 
-this->logUtil.putF("Number Of Robots: " +this->hashtable.length, this, "getRobots");
+this->logUtil.putF("Number Of Robots: " +this->hashtable.size(), this, "getRobots");
     
 
                 //: 
@@ -282,7 +283,7 @@ this->logUtil.putF("Loading Libraries", this, "loadLibraries");
     int32_t index = 0;index < size; index++)
         {
 
-    InputRobotInterface inputRobotInterface = InputRobotFactory::getInstance().get(nameArray[index]! as string);;
+    InputRobotInterface inputRobotInterface = InputRobotFactory::getInstance().get(nameArray[index]);;
     
 InputRobotFactory::loadLibrary(inputRobotInterface);
     
@@ -315,7 +316,7 @@ this->logUtil.putF("Unloading Libraries", this, "unloadLibraries");
                         for (
     int32_t index = 0;index < size; index++)
         {
-inputRobotInterface= this->get(inputRobotArray[index]! as string);
+inputRobotInterface= this->get(inputRobotArray[index]);
     
 
                         if(InterfaceUtil::isImplemented(SecuredNativeLibraryInterface.constructor, inputRobotInterface))
@@ -324,7 +325,7 @@ inputRobotInterface= this->get(inputRobotArray[index]! as string);
                                     this->logUtil.putF("Unloading Library: " +inputRobotInterface.getName(), this, "unloadLibraries");
     
 
-    SecuredNativeLibraryInterface securedNativeLibraryInterface = inputRobotInterface as SecuredNativeLibraryInterface;;
+    SecuredNativeLibraryInterface securedNativeLibraryInterface = inputRobotInterface;;
     
 securedNativeLibraryInterface.unload();
     
@@ -338,7 +339,7 @@ securedNativeLibraryInterface.unload();
 
                 //@Throws(Exception.constructor)
             
-    public: Hashtable<any, any> get(){
+    public: ABHashtable<Object*, Object*> get(){
 
 
 
@@ -355,7 +356,7 @@ this->logUtil.putF("Getting Robot: " +name, this, "getRobots");
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->hashtable.get(name) as InputRobotInterface;
+                        return this->hashtable.get(name);
     
 }
 

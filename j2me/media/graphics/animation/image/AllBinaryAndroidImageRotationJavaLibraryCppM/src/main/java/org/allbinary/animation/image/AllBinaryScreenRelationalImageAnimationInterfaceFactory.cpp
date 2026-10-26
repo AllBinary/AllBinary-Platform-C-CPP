@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <javax/microedition/lcdui/Image.h>
 
@@ -72,8 +72,9 @@ class AllBinaryScreenRelationalImageAnimationInterfaceFactory: public BaseImageA
 
     private: Image lastImage = NullImage::NULL_IMAGE;
 
-public: AllBinaryScreenRelationalImageAnimationInterfaceFactory(Image image, AnimationBehaviorFactory animationBehaviorFactory){
-            super(image, PrimitiveIntUtil::getArrayInstance(), 0, 0, 0, 0, animationBehaviorFactory);
+public: AllBinaryScreenRelationalImageAnimationInterfaceFactory(Image image, AnimationBehaviorFactory animationBehaviorFactory) : BaseImageAnimationFactory(image, PrimitiveIntUtil::getArrayInstance(), 0, 0, 0, 0, animationBehaviorFactory){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -83,7 +84,7 @@ public: AllBinaryScreenRelationalImageAnimationInterfaceFactory(Image image, Ani
                         
                                     {
                                     
-    AndroidImageInterface androidImageInterface = this->lastImage as AndroidImageInterface;;
+    AndroidImageInterface androidImageInterface = this->lastImage;;
     
 androidImageInterface.getBitmap().recycle();
     

@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
 #include <java/util/HashMap.h>
 
@@ -65,11 +65,11 @@ class AbContext
 
     protected: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    private: HashMap<any, any> propertiesHashMap;
+    private: HashMap<Object*, Object*> propertiesHashMap;
 
     private: PageContext pageContext;
 
-public: AbContext(HashMap<any, any> propertiesHashMap, PageContext pageContext){
+public: AbContext(HashMap<Object*, Object*> propertiesHashMap, PageContext pageContext){
 
                         if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEW))
                         
@@ -106,7 +106,7 @@ this->pageContext= pageContext;
 }
 
 
-    public: HashMap<any, any> getPropertiesHashMap(){
+    public: HashMap<Object*, Object*> getPropertiesHashMap(){
 
 
 

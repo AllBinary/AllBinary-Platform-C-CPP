@@ -23,7 +23,7 @@
 
             #include <vector>
         
-            #include "../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
 
@@ -56,6 +56,9 @@
 
       
 #include <org/allbinary/data/tree/dom/document/DomDocumentHelper.h>
+
+      
+#include <org/allbinary/data/tree/dom/document/XmlDocumentHelper.h>
 
       
 #include <org/allbinary/logic/StdUtil.h>
@@ -113,27 +116,27 @@ public: NameSpaceRequestParams(PageContext pageContext);
 
                 //@Throws(Exception.constructor)
             
-    private: Node createPackageNode(Document document, std::string packageName, HashMap<any, any> packagePropertiesHashMap);
+    private: Node createPackageNode(Document document, std::string packageName, HashMap<Object*, Object*> packagePropertiesHashMap);
 
                 //@Throws(Exception.constructor)
             
-    private: Node createPackageMultiNode(Document document, NameSpaceRequestParam nameSpaceRequestParam, std::string packageName, HashMap<any, any> packagePropertiesHashMap);
+    private: Node createPackageMultiNode(Document document, NameSpaceRequestParam nameSpaceRequestParam, std::string packageName, HashMap<Object*, Object*> packagePropertiesHashMap);
 
                 //@Throws(Exception.constructor)
             
-    private: Node getRootNode(std::string rootElementPackage, HashMap<any, any> packagePropertiesHashMap, Document document);
+    private: Node getRootNode(std::string rootElementPackage, HashMap<Object*, Object*> packagePropertiesHashMap, Document document);
 
                 //@Throws(Exception.constructor)
             
-    private: Node addNewProperties(Document document, Node node, HashMap<any, any> nextPackagePropertiesHashMap);
+    private: Node addNewProperties(Document document, Node node, HashMap<Object*, Object*> nextPackagePropertiesHashMap);
 
                 //@Throws(Exception.constructor)
             
-    private: bool isElementValueTextNodeEqual(HashMap<any, any> nextPackagePropertiesHashMap, Node node);
+    private: bool isElementValueTextNodeEqual(HashMap<Object*, Object*> nextPackagePropertiesHashMap, Node node);
 
                 //@Throws(Exception.constructor)
             
-    private: int32_t isElementValueTextNodeUnique(HashMap<any, any> nextPackagePropertiesHashMap, BasicArrayList elementNodeVector);
+    private: int32_t isElementValueTextNodeUnique(HashMap<Object*, Object*> nextPackagePropertiesHashMap, BasicArrayList elementNodeVector);
 
                 //@Throws(Exception.constructor)
             
@@ -145,7 +148,7 @@ public: NameSpaceRequestParams(PageContext pageContext);
 
                 //@Throws(Exception.constructor)
             
-    public: HashMap<any, any> toHashMap();
+    public: HashMap<Object*, Object*> toHashMap();
 
 };
 

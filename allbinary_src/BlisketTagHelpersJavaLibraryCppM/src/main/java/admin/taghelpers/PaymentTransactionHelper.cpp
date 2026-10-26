@@ -18,7 +18,7 @@
 
 
 
-            #include "../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
 
@@ -64,7 +64,7 @@ class PaymentTransactionHelper: public BasicTable {
 
     private: Portion portion;
 
-public: PaymentTransactionHelper(HashMap<any, any> hashMap, PageContext pageContext){
+public: PaymentTransactionHelper(HashMap<Object*, Object*> hashMap, PageContext pageContext){
 this->portion= Portion(hashMap);
     
 }

@@ -21,15 +21,12 @@
         #ifndef ORG_ALLBINARY_LAYER_LAYERINTERFACEFACTORY_H
         #define ORG_ALLBINARY_LAYER_LAYERINTERFACEFACTORY_H
 
-            #include "../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../java/lang/Integer.h"
+            #include "java/lang/Integer.h"
         
-#include <java/util/Hashtable.h>
-
-      
 #include <org/allbinary/logic/communication/log/LogUtil.h>
 
       
@@ -40,6 +37,9 @@
 
       
 #include <org/allbinary/string/CommonStrings.h>
+
+      
+#include <org/allbinary/util/ABHashtable.h>
 
       
 #include <org/allbinary/util/BasicArrayList.h>
@@ -91,7 +91,7 @@ class LayerInterfaceFactory
 
                 //@Throws(Exception.constructor)
             
-    public: AllBinaryLayer getNexInstance(Hashtable<any, any> hashtable, int32_t x, int32_t y, int32_t z);
+    public: AllBinaryLayer getNexInstance(ABHashtable<Object*, Object*> hashtable, int32_t x, int32_t y, int32_t z);
 
     public: void add(LayerInterfaceFactoryInterface layerInterfaceFactoryInterface);
 

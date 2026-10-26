@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <javax/swing.h>
 
@@ -61,8 +61,9 @@ class TestModuleFactory: public AbstractInputAutomationFactory {
 
     private: BlankModuleConfigurationJPanel blankModuleConfigurationJPanel;
 
-public: TestModuleFactory(){
-            super(NAME, BlankModuleConfigurationJPanel());
+public: TestModuleFactory() : AbstractInputAutomationFactory(NAME, BlankModuleConfigurationJPanel()){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.

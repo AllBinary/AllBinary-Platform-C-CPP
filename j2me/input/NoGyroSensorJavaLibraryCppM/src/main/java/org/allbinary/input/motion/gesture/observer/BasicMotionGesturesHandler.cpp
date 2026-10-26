@@ -18,11 +18,8 @@
 
 
 
-            #include "../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-#include <jsinterop/annotations/JsType.h>
-
-      
 #include <org/allbinary/logic/util/event/AllBinaryEventObject.h>
 
       
@@ -30,12 +27,6 @@
 
       
 #include <org/allbinary/logic/util/event/handler/BasicEventHandler.h>
-
-      
-#include <jsinterop/annotations/JsMethod.h>
-
-      
-#include <jsinterop/annotations/JsConstructor.h>
 
       
 
@@ -81,9 +72,9 @@ protected: BasicMotionGesturesHandler(){
             
     protected: void process(AllBinaryEventObject eventObject, EventListenerInterface eventListenerInterface){
 
-    BaseMotionGestureEventListener baseMotionGestureEventListener = eventListenerInterface as BaseMotionGestureEventListener;;
+    BaseMotionGestureEventListener baseMotionGestureEventListener = eventListenerInterface;;
     
-baseMotionGestureEventListener.onMotionGestureEvent(eventObject as MotionGestureEvent);
+baseMotionGestureEventListener.onMotionGestureEvent(eventObject);
     
 }
 

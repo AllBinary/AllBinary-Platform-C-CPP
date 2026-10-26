@@ -20,7 +20,7 @@
 
             #include <vector>
         
-            #include "../../../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/game/layer/pickup/PickedUpLayerInterfaceFactoryInterface.h>
 
@@ -126,7 +126,7 @@ this->cellHeight= tiledLayer.getCellHeight() /this->cellsPerRowOrColumn;
             
     protected: void drop(AllBinaryLayerManager allBinaryLayerManager, int32_t index){
 
-    GeographicMapCellPosition geographicMapCellPosition = this->list.get(index) as GeographicMapCellPosition;;
+    GeographicMapCellPosition geographicMapCellPosition = this->list.get(index);;
     
 
     GPoint point = geographicMapCellPosition.getPoint();;
@@ -153,7 +153,7 @@ this->cellHeight= tiledLayer.getCellHeight() /this->cellsPerRowOrColumn;
     AllBinaryTiledLayer tiledLayer = this->raceTrackGeographicMap.getAllBinaryTiledLayer();;
     
 
-    RaceTrackPickupLayer pickupLayer = PickupLayerCircularStaticPool::getInstance().getInstanceXYZ(pickedUpLayerInterfaceFactory, x, y, tiledLayer.getZP() +3) as RaceTrackPickupLayer;;
+    RaceTrackPickupLayer pickupLayer = PickupLayerCircularStaticPool::getInstance().getInstanceXYZ(pickedUpLayerInterfaceFactory, x, y, tiledLayer.getZP() +3);;
     
 pickupLayer.setTiledLayer(tiledLayer);
     

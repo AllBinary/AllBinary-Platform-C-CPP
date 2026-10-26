@@ -20,7 +20,7 @@
 
             #include <vector>
         
-            #include "../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
 #include <org/allbinary/game/input/InputFactory.h>
 
@@ -69,12 +69,12 @@ class CancelTouchButtonInputFactory
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return CancelTouchButtonInputFactory::instance() as CancelTouchButtonInputFactory;
+                        return CancelTouchButtonInputFactory::instance();
     
 }
 
 
-    private: const std::vector<TouchButtonInput> cancelInputArray = new Array(InputFactory::getInstance().MAX);
+    private: const std::vector<TouchButtonInput> cancelInputArray = std::vector<TouchButtonInput>(InputFactory::getInstance().MAX);
 
 private: CancelTouchButtonInputFactory(){
 
@@ -107,7 +107,7 @@ this->cancelInputArray[basicTouchInputFactory.RIGHT.getSourceId()]= basicTouchIn
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->cancelInputArray[touchButtonInput.getSourceId()]!;
+                        return this->cancelInputArray[touchButtonInput.getSourceId()];
     
 }
 

@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
 #include <org/allbinary/game/input/InputFactory.h>
 
@@ -68,7 +68,7 @@ class OrientationMotionGestureFactory
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return OrientationMotionGestureFactory::instance() as OrientationMotionGestureFactory;
+                        return OrientationMotionGestureFactory::instance();
     
 }
 

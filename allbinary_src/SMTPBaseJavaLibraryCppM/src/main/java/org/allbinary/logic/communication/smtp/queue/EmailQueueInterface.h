@@ -21,7 +21,7 @@
         #ifndef ORG_ALLBINARY_LOGIC_COMMUNICATION_SMTP_QUEUE_EMAILQUEUEINTERFACE_H
         #define ORG_ALLBINARY_LOGIC_COMMUNICATION_SMTP_QUEUE_EMAILQUEUEINTERFACE_H
 
-            #include "../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/logic/communication/smtp/EmailInterface.h>
 

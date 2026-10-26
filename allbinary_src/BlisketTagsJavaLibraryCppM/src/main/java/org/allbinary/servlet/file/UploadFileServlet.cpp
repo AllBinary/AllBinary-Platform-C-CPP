@@ -20,7 +20,7 @@
 
             #include <vector>
         
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/io/IOException.h>
 
@@ -119,7 +119,7 @@ class UploadFileServlet: public HttpServlet {
 
     protected: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    protected: HashMap<any, any> requestHashMap;
+    protected: HashMap<Object*, Object*> requestHashMap;
 
     private: std::string fileName;
 
@@ -141,7 +141,7 @@ class UploadFileServlet: public HttpServlet {
 this->requestHashMap= MultipartRequestParams(request).toHashMap();
     
 
-    std::string filePath = this->requestHashMap.get(FileUploadData::getInstance().UPLOAD_TO_FILE_PATH) as string;;
+    std::string filePath = this->requestHashMap.get(FileUploadData::getInstance().UPLOAD_TO_FILE_PATH);;
     
 
                         if(false)
@@ -161,10 +161,10 @@ response.sendError(HttpServletResponse::SC_NOT_FOUND);
                                     }
                                 
 
-    HashMap<any, any> hashMap = StdUtil::getInstance().createHashMap();;
+    HashMap<Object*, Object*> hashMap = StdUtil::getInstance().createHashMap();;
     
 
-    AuthenticationHelper authenticationHelper = AuthenticationHelperFactory().getInstance(hashMap, request) as AuthenticationHelper;;
+    AuthenticationHelper authenticationHelper = AuthenticationHelperFactory().getInstance(hashMap, request);;
     
 
                         if(authenticationHelper.isAuthenticated())
@@ -255,7 +255,7 @@ response.sendError(HttpServletResponse::SC_NOT_FOUND);
 
         try {
             
-    FileItem fileItem = this->requestHashMap.get(FileUploadData::getInstance().FILE_DATA) as FileItem;;
+    FileItem fileItem = this->requestHashMap.get(FileUploadData::getInstance().FILE_DATA);;
     
 
                         if(fileItem != 

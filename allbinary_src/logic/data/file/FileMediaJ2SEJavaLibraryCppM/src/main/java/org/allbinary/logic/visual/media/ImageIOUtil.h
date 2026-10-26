@@ -7,9 +7,9 @@
         #ifndef ORG_ALLBINARY_LOGIC_VISUAL_MEDIA_IMAGEIOUTIL_H
         #define ORG_ALLBINARY_LOGIC_VISUAL_MEDIA_IMAGEIOUTIL_H
 
-            #include "../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/awt/image/BufferedImage.h>
 

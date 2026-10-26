@@ -18,9 +18,9 @@
 
 
 
-            #include "../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/util/BasicArrayList.h>
 
@@ -114,7 +114,7 @@ this->emailInfoVector= BasicArrayListD();
     int32_t index = 0;index < size; index++)
         {
 
-    Email email = this->emailInfoVector.get(index) as Email;;
+    Email email = this->emailInfoVector.get(index);;
     
 
     Node emailNode = email.toXmlNode(document);;

@@ -18,7 +18,7 @@
 
 
 
-            #include "../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
 
@@ -76,8 +76,8 @@ class OrderItemsRequestHelper: public TagHelper {
 
     private: std::string status;
 
-public: OrderItemsRequestHelper(HashMap<any, any> hashMap, PageContext pageContext){
-this->request= pageContext.getRequest() as HttpServletRequest;
+public: OrderItemsRequestHelper(HashMap<Object*, Object*> hashMap, PageContext pageContext){
+this->request= pageContext.getRequest();
     
 this->getFormData();
     

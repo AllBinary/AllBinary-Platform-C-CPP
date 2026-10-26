@@ -23,9 +23,9 @@
 
             #include <vector>
         
-            #include "../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/util/CircularIndexUtil.h>
 
@@ -62,8 +62,7 @@ class WeaponLayerArrayLayerCircularStaticPool
 
     private: CircularIndexUtil circularIndexUtil = CircularIndexUtil::createInstance(this->MAX);
 
-    private: std::vector<std::vector<std::vector<Object*>>> ALL_WEAPONLAYER_ARRAY = new Array(4)
-                                                        ;
+    private: std::vector<std::vector<std::vector<Object*>>> ALL_WEAPONLAYER_ARRAY = std::vector<std::vector<std::vector<Object*>>>(4);
 
     public: void init();
 

@@ -21,14 +21,8 @@
         #ifndef ORG_ALLBINARY_GAME_LAYER_PICKUP_COUNTEDPICKEDUPLAYERINTERFACEFACTORY_H
         #define ORG_ALLBINARY_GAME_LAYER_PICKUP_COUNTEDPICKEDUPLAYERINTERFACEFACTORY_H
 
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-#include <jsinterop/annotations/JsType.h>
-
-      
-#include <java/util/Hashtable.h>
-
-      
 #include <org/allbinary/animation/Animation.h>
 
       
@@ -41,16 +35,10 @@
 #include <org/allbinary/string/CommonStrings.h>
 
       
+#include <org/allbinary/util/ABHashtable.h>
+
+      
 #include <org/allbinary/util/BasicArrayList.h>
-
-      
-#include <jsinterop/annotations/JsMethod.h>
-
-      
-#include <jsinterop/annotations/JsConstructor.h>
-
-      
-#include <jsinterop/annotations/JsProperty.h>
 
       
 
@@ -88,7 +76,7 @@ public: CountedPickedUpLayerInterfaceFactory(PickedUpLayerType pickeUpLayerType,
 
                 //@Throws(Exception.constructor)
             
-    public: AllBinaryLayer getNextInstance(Hashtable<any, any> hashtable, int32_t x, int32_t y, int32_t z);
+    public: AllBinaryLayer getNextInstance(ABHashtable<Object*, Object*> hashtable, int32_t x, int32_t y, int32_t z);
 
     public: int32_t getTotal();
 

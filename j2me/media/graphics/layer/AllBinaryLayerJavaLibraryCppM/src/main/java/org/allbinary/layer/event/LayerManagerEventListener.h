@@ -21,17 +21,11 @@
         #ifndef ORG_ALLBINARY_LAYER_EVENT_LAYERMANAGEREVENTLISTENER_H
         #define ORG_ALLBINARY_LAYER_EVENT_LAYERMANAGEREVENTLISTENER_H
 
-            #include "../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-#include <jsinterop/annotations/JsType.h>
-
-      
 #include <org/allbinary/logic/util/event/AllBinaryEventObject.h>
-
-      
-#include <jsinterop/annotations/JsMethod.h>
 
       
 

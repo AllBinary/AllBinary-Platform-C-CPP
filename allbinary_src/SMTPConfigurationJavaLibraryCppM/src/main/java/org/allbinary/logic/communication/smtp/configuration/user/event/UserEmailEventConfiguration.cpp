@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
 #include <java/util/HashMap.h>
 
@@ -77,10 +77,10 @@ this->setEventListenerClassPath(StringUtil::getInstance().EMPTY_STRING);
 }
 
 
-public: UserEmailEventConfiguration(HashMap<any, any> hashMap){
-this->setName(hashMap.get(UserEmailEventConfigurationData::NAME) as string);
+public: UserEmailEventConfiguration(HashMap<Object*, Object*> hashMap){
+this->setName(hashMap.get(UserEmailEventConfigurationData::NAME));
     
-this->setEventListenerClassPath(hashMap.get(UserEmailEventConfigurationData::LISTENER_CLASSPATH) as string);
+this->setEventListenerClassPath(hashMap.get(UserEmailEventConfigurationData::LISTENER_CLASSPATH));
     
 
                         if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().EMAILLOGGING))

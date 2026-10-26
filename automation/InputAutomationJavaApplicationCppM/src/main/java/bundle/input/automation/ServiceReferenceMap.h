@@ -23,7 +23,7 @@
 
             #include <vector>
         
-            #include "../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
 #include <java/util/Collection.h>
 
@@ -89,7 +89,7 @@ public: ServiceReferenceMap(ServiceReference serviceReference);
 
     public: Set keySet();
 
-    public: Collection<any> values();
+    public: Collection<Object*> values();
 
     public: Set entrySet();
 

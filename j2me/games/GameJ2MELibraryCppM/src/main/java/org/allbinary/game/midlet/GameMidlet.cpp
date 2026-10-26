@@ -18,17 +18,11 @@
 
 
 
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../../java/lang/Thread.h"
+            #include "java/lang/Thread.h"
         
-#include <jsinterop/annotations/JsType.h>
-
-      
 #include <java/util/Enumeration.h>
-
-      
-#include <java/util/Hashtable.h>
 
       
 #include <javax/microedition/lcdui/Canvas.h>
@@ -289,16 +283,10 @@
 #include <org/allbinary/util/EnumerationUtil.h>
 
       
-#include <jsinterop/annotations/JsMethod.h>
-
-      
-#include <jsinterop/annotations/JsConstructor.h>
-
-      
-#include <jsinterop/annotations/JsProperty.h>
-
-      
 #include <org/allbinary/logic/StdUtil.h>
+
+      
+#include <org/allbinary/util/ABHashtable.h>
 
       
 
@@ -380,8 +368,9 @@ class GameMidlet: public ProgressMidlet, public CommandListener {
 
     private: bool resized= false;
 
-public: GameMidlet(ClientInformationFactory clientInformationFactory){
-            super(clientInformationFactory);
+public: GameMidlet(ClientInformationFactory clientInformationFactory) : ProgressMidlet(clientInformationFactory){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -712,7 +701,7 @@ PreLogUtil::put(StringMaker().append(this->COMMAND_NAME).append(label).append(th
                         if(this->getDisplay().getCurrent() != gameCanvasRunnableInterface && allbinaryGameCanvasRunnableInterface.getType() != NullGameCanvasRunnable::NULL_GAME_CANVAS_RUNNABLE.getType())
                         
                                     {
-                                    this->setDisplay(gameCanvasRunnableInterface as Displayable);
+                                    this->setDisplay(*dynamic_cast<Displayable*>(gameCanvasRunnableInterface));
     
 
                                     }
@@ -727,11 +716,11 @@ this->unPauseAppBackground(false);
                         
                                     {
                                     
-    MenuListener menuListener = displayable as unknown as MenuListener;;
+    MenuListener menuListener = displayable as unknown;;
     
 menuListener.close();
     
-this->setDisplay(gameCanvasRunnableInterface as Displayable);
+this->setDisplay(*dynamic_cast<Displayable*>(gameCanvasRunnableInterface));
     
 this->unPauseAppBackground(false);
     
@@ -828,7 +817,7 @@ this->gameMidletStateFactory.setCurrentGameState(this->gameStateFactory.PLAYING_
     BasicArrayList list = LockableFeatureFactory::getInstance().getList();;
     
 
-    LockableFeature lockableFeature = list.get(0) as LockableFeature;;
+    LockableFeature lockableFeature = list.get(0);;
     
 
                         if(list.size() > 0 && !inApplicationPurchaseFactory.isPurchased(lockableFeature))
@@ -861,7 +850,7 @@ this->gameMidletStateFactory.setCurrentGameState(this->gameStateFactory.PLAYING_
                         
                                     {
                                     
-    MenuListener menuListener = displayable as unknown as MenuListener;;
+    MenuListener menuListener = displayable as unknown;;
     
 menuListener.close();
     
@@ -916,7 +905,7 @@ this->setDisplay(displayable);
                                     this->pauseAppBackground(false);
     
 
-    MenuListener menuListener = displayable as unknown as MenuListener;;
+    MenuListener menuListener = displayable as unknown;;
     
 menuListener.open();
     
@@ -932,7 +921,7 @@ this->setDisplay(displayable);
                                     this->debugInterface.start();
     
 
-    AllBinaryGameCanvas gameCanvas = allbinaryGameCanvasRunnableInterface as AllBinaryGameCanvas;;
+    AllBinaryGameCanvas gameCanvas = allbinaryGameCanvasRunnableInterface;;
     
 gameCanvas.addCommand(gameCommandsFactory.STOP_TRACE);
     
@@ -952,7 +941,7 @@ this->debugInterface.stop();
 this->unPauseAppBackground(false);
     
 
-    AllBinaryGameCanvas gameCanvas = allbinaryGameCanvasRunnableInterface as AllBinaryGameCanvas;;
+    AllBinaryGameCanvas gameCanvas = allbinaryGameCanvasRunnableInterface;;
     
 gameCanvas.addCommand(gameCommandsFactory.START_TRACE);
     
@@ -972,7 +961,7 @@ gameCanvas.removeCommand(gameCommandsFactory.STOP_TRACE);
                         if(tempDisplayable instanceof GameOptionsForm)
                         
                                     {
-                                    GameFeatureFormUtil::getInstance().setDefault(tempDisplayable as CommandForm);
+                                    GameFeatureFormUtil::getInstance().setDefault(tempDisplayable);
     
 
                                     }
@@ -992,7 +981,7 @@ gameCanvas.removeCommand(gameCommandsFactory.STOP_TRACE);
                         
                                     {
                                     
-    GameInputMappingCanvas gameInputMappingCanvas = tempDisplayable as GameInputMappingCanvas;;
+    GameInputMappingCanvas gameInputMappingCanvas = tempDisplayable;;
     
 gameInputMappingCanvas.update();
     
@@ -1016,7 +1005,7 @@ this->commandAction(gameCommandsFactory.SET_MENU_DISPLAYABLE, this->getInputMapp
                         
                                     {
                                     
-    HighScoresCanvas highScoresCanvas = tempDisplayable as HighScoresCanvas;;
+    HighScoresCanvas highScoresCanvas = tempDisplayable;;
     
 highScoresCanvas.updateCommand(command);
     
@@ -1040,7 +1029,7 @@ highScoresCanvas.updateCommand(command);
                         
                                     {
                                     
-    MenuListener menuListener = displayable as unknown as MenuListener;;
+    MenuListener menuListener = displayable as unknown;;
     
 menuListener.close();
     
@@ -1079,7 +1068,7 @@ this->commandAction(gameCommandsFactory.SET_MENU_DISPLAYABLE, this->getInputMapp
                         
                                     {
                                     
-    GameInputMappingCanvas gameInputMappingCanvas = tempDisplayable as GameInputMappingCanvas;;
+    GameInputMappingCanvas gameInputMappingCanvas = tempDisplayable;;
     
 gameInputMappingCanvas.setDefault();
     
@@ -1123,7 +1112,7 @@ this->commandAction(gameCommandsFactory.SET_MENU_DISPLAYABLE, inGameOptionsForm)
                         
                                     {
                                     
-    InGameOptionsForm inGameOptionsForm = InGameOptionsFormFactory::getInstance().get() as InGameOptionsForm;;
+    InGameOptionsForm inGameOptionsForm = InGameOptionsFormFactory::getInstance().get();;
     
 GameFeatureFormUtil::getInstance().setDefault(inGameOptionsForm);
     
@@ -1230,7 +1219,7 @@ this->commandAction(gameCommandsFactory.SET_MENU_DISPLAYABLE, this->getLoadGameF
                         
                                     {
                                     
-    LoadGameForm loadGameForm = this->getLoadGameForm() as LoadGameForm;;
+    LoadGameForm loadGameForm = this->getLoadGameForm();;
     
 
     int32_t index = loadGameForm.getSelectedId();;
@@ -1266,7 +1255,7 @@ PreLogUtil::put(BasicMotionGesturesHandler::getInstance().toString(), this, this
                         
                                     {
                                     
-    LoadGameForm loadGameForm = this->getLoadGameForm() as LoadGameForm;;
+    LoadGameForm loadGameForm = this->getLoadGameForm();;
     
 
     int32_t index = loadGameForm.getSelectedText();;
@@ -1319,7 +1308,7 @@ this->unPauseAppBackground(false);
                         
                                     {
                                     
-    HighScoreTextBox highScoreTextBox = displayable as unknown as HighScoreTextBox;;
+    HighScoreTextBox highScoreTextBox = displayable as unknown;;
     
 highScoreTextBox.submitted= true;
     
@@ -1397,7 +1386,7 @@ this->updateFullScreen();
                 //: 
 } catch(e) 
             {
-this->logUtil.put(this->commonStrings.EXCEPTION, this, this->midletStrings.COMMAND_ACTION, e);
+this->logUtil.put(StringMaker().append(this->commonStrings.EXCEPTION_LABEL).append(command.getLabel()).toString(), this, this->midletStrings.COMMAND_ACTION, e);
     
 
                         if(command != GameCommandsFactory::getInstance().EXIT_COMMAND)
@@ -1428,7 +1417,7 @@ this->logUtil.put(this->commonStrings.EXCEPTION, this, this->midletStrings.COMMA
                         
                                     {
                                     
-    Canvas canvas = displayable as unknown as Canvas;;
+    Canvas canvas = displayable as unknown;;
     
 canvas.setFullScreenMode(isFullScreen);
     
@@ -1623,7 +1612,7 @@ this->allbinaryGameCanvasRunnableInterface= gameCanvasRunnableInterface;
 this->logUtil.putF(this->commonStrings.START, this, this->commonStrings.SAVE);
     
 
-    Hashtable<any, any> hashtable = this->getCurrentStateHashtable();;
+    ABHashtable<Object*, Object*> hashtable = this->getCurrentStateHashtable();;
     
 GamePersistanceSingleton::getInstance().save(this->abeClientInformation, hashtable);
     
@@ -1632,21 +1621,21 @@ GamePersistanceSingleton::getInstance().save(this->abeClientInformation, hashtab
 
                 //@Throws(Exception.constructor)
             
-    public: Hashtable<any, any> getCurrentStateHashtable(){
+    public: ABHashtable<Object*, Object*> getCurrentStateHashtable(){
 this->logUtil.putF(this->commonStrings.START, this, "getCurrentStateHashtable");
     
 
-    Hashtable<any, any> hashtable = StdUtil::getInstance().createHashtable();;
+    ABHashtable<Object*, Object*> hashtable = StdUtil::getInstance().createHashtable();;
     
 
                         if(this->allbinaryGameCanvasRunnableInterface != NullGameCanvasRunnable::NULL_GAME_CANVAS_RUNNABLE)
                         
                                     {
                                     
-    Hashtable<any, any> currentHashtable = this->allbinaryGameCanvasRunnableInterface.getCurrentStateHashtable();;
+    ABHashtable<Object*, Object*> currentHashtable = this->allbinaryGameCanvasRunnableInterface.getCurrentStateHashtable();;
     
 
-    Enumeration<any> enumeration = currentHashtable.keys();;
+    Enumeration<Object*> enumeration = currentHashtable.keys();;
     
 
     Object* key;;
@@ -1654,7 +1643,7 @@ this->logUtil.putF(this->commonStrings.START, this, "getCurrentStateHashtable");
 
         while(this->enumerationUtil.hasMoreElements(enumeration))
         {
-key= this->enumerationUtil.nextElement(enumeration)!;
+key= this->enumerationUtil.nextElement(enumeration);
     
 hashtable.put(key, currentHashtable.get(key));
     
@@ -1728,7 +1717,7 @@ this->resized= resized;
                         
                                     {
                                     
-    DemoCanvas demoCanvas = displayable as unknown as DemoCanvas;;
+    DemoCanvas demoCanvas = displayable as unknown;;
     
 
                         if(demoCanvas.isDemoLoading())

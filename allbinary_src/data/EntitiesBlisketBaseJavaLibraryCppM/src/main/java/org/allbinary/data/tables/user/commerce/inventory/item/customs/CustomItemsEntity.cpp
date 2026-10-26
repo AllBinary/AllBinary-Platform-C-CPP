@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
 
@@ -81,8 +81,9 @@ class CustomItemsEntity: public AbSqlBean, public CustomItemsEntityInterface {
 
     protected: const std::string tableName = "customitems";
 
-public: CustomItemsEntity(){
-            super(InventoryDbInitInfo());
+public: CustomItemsEntity() : AbSqlBean(InventoryDbInitInfo()){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -181,8 +182,8 @@ stringBuffer.append(this->sqlStrings.CREATE_TABLE).append(tableName).append(this
 }
 
 
-    public: void update(HashMap<any, any> updatedValues){
-super.updateWhere(basicItemData.ID, updatedValues.get(basicItemData.ID) as string, updatedValues);
+    public: void update(HashMap<Object*, Object*> updatedValues){
+super.updateWhere(basicItemData.ID, updatedValues.get(basicItemData.ID), updatedValues);
     
 }
 

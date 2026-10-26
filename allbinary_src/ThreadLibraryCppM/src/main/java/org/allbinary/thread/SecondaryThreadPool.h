@@ -21,9 +21,9 @@
         #ifndef ORG_ALLBINARY_THREAD_SECONDARYTHREADPOOL_H
         #define ORG_ALLBINARY_THREAD_SECONDARYTHREADPOOL_H
 
-            #include "../../../java/lang/System.h"
+            #include "java/lang/System.h"
         
-            #include "../../../java/lang/Runnable.h"
+            #include "java/lang/Runnable.h"
         
 #include <org/allbinary/logic/communication/log/LogUtil.h>
 

@@ -20,7 +20,7 @@
 
             #include <vector>
         
-            #include "../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/logic/string/StringMaker.h>
 
@@ -58,15 +58,15 @@
 
 class PathFindingNodeCost: public PathFindingNode, public Comparable<PathFindingNodeCost> {
 
-    public: static const std::vector<std::vector<PathFindingNodeCost>> NULL_PATH_FINDING_NODE_COST_ARRAY_ARRAY = new Array(0).fill(null).map(() => new Array(0).fill(0))
-                                                            ;
+    public: static const std::vector<std::vector<PathFindingNodeCost>> NULL_PATH_FINDING_NODE_COST_ARRAY_ARRAY = std::vector<std::vector<PathFindingNodeCost>>(0, std::vector<PathFindingNodeCost>(0));
 
     private: const CommonSeps commonSeps = CommonSeps::getInstance();
 
     public: PathFindingNodeCostInfo pathFindingNodeCostInfoP;
 
-public: PathFindingNodeCost(Object* parent, GeographicMapCellPosition geographicMapCellPosition, PathFindingNodeCostInfo pathFindingNodeCostInfo){
-            super(parent, geographicMapCellPosition);
+public: PathFindingNodeCost(Object* parent, GeographicMapCellPosition geographicMapCellPosition, PathFindingNodeCostInfo pathFindingNodeCostInfo) : PathFindingNode(parent, geographicMapCellPosition){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -134,7 +134,7 @@ this->pathFindingNodeCostInfoP= pathFindingNodeCostInfo;
 
     StringMaker stringBuffer = StringMaker();;
     
-stringBuffer.append(this->constructor.name.toString()!);
+stringBuffer.append(this->constructor.name.toString());
     
 stringBuffer.append(CommonLabels::getInstance().COLON_SEP);
     
@@ -145,7 +145,7 @@ stringBuffer.append(" Path: ");
 stringBuffer.append(this->geographicMapCellPosition.toString());
     
 
-    PathFindingNode pathFindingNode = this->parent as PathFindingNode;;
+    PathFindingNode pathFindingNode = this->parent;;
     
 
         while(pathFindingNode != 
@@ -156,7 +156,7 @@ stringBuffer.append(pathFindingNode.geographicMapCellPosition.toString());
     
 stringBuffer.append(this->commonSeps.SPACE);
     
-pathFindingNode= pathFindingNode.parent as PathFindingNode;
+pathFindingNode= pathFindingNode.parent;
     
 }
 

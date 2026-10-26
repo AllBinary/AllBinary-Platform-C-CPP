@@ -21,11 +21,11 @@
         #ifndef ORG_ALLBINARY_MEDIA_AUDIO_MEDIAPLAYERUTIL_H
         #define ORG_ALLBINARY_MEDIA_AUDIO_MEDIAPLAYERUTIL_H
 
-            #include "../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../../java/lang/Thread.h"
+            #include "java/lang/Thread.h"
         
 #include <android/media/MediaPlayer.h>
 

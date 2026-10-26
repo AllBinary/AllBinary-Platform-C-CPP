@@ -21,7 +21,7 @@
         #ifndef VIEWS_ADMIN_PAYMENT_GATEWAYS_PAYMENTGATEWAYSVIEW_H
         #define VIEWS_ADMIN_PAYMENT_GATEWAYS_PAYMENTGATEWAYSVIEW_H
 
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
 

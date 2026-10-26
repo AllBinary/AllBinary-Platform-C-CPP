@@ -18,8 +18,11 @@
 
 
 
-            #include "../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
+#include <org/allbinary/logic/string/StringUtil.h>
+
+      
 
 
 
@@ -46,7 +49,12 @@ class ToDomHelper
     public: static std::string convertNull(std::string value){
 
                         if(false)
-                        value= "null";
+                        
+                                    {
+                                    value= StringUtil::getInstance().NULL_STRING;
+    
+
+                                    }
                                 
 
 

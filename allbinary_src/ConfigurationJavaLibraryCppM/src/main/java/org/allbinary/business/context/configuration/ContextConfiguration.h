@@ -21,7 +21,7 @@
         #ifndef ORG_ALLBINARY_BUSINESS_CONTEXT_CONFIGURATION_CONTEXTCONFIGURATION_H
         #define ORG_ALLBINARY_BUSINESS_CONTEXT_CONFIGURATION_CONTEXTCONFIGURATION_H
 
-            #include "../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
 #include <java/util/HashMap.h>
 
@@ -70,7 +70,7 @@ class ContextConfiguration
 
 public: ContextConfiguration();
 
-public: ContextConfiguration(HashMap<any, any> hashMap);
+public: ContextConfiguration(HashMap<Object*, Object*> hashMap);
 
     public: EmailServerConfigurationInterface getEmailServerConfigurationInterface();
 

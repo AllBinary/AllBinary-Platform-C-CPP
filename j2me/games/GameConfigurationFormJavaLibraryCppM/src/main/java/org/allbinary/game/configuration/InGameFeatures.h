@@ -21,9 +21,6 @@
         #ifndef ORG_ALLBINARY_GAME_CONFIGURATION_INGAMEFEATURES_H
         #define ORG_ALLBINARY_GAME_CONFIGURATION_INGAMEFEATURES_H
 
-#include <jsinterop/annotations/JsType.h>
-
-      
 #include <org/allbinary/game/configuration/feature/Features.h>
 
       
@@ -49,9 +46,6 @@
 
       
 #include <org/allbinary/util/BasicArrayListD.h>
-
-      
-#include <jsinterop/annotations/JsMethod.h>
 
       
 

@@ -20,13 +20,13 @@
 
             #include <vector>
         
-            #include "../../../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../../../../../java/lang/Integer.h"
+            #include "java/lang/Integer.h"
         
-            #include "../../../../../../../java/lang/Float.h"
+            #include "java/lang/Float.h"
         
 #include <java/util/HashSet.h>
 
@@ -126,7 +126,7 @@ this->items.add(item);
     int32_t index = 0;index < size; index++)
         {
 
-    Item item = itemArray[index]! as Item;;
+    Item item = itemArray[index];;
     
 
                         if(item.getId().compareTo(id) == 0)
@@ -157,7 +157,7 @@ this->items.add(item);
     int32_t index = 0;index < size; index++)
         {
 
-    Item item = itemArray[index]! as Item;;
+    Item item = itemArray[index];;
     
 
                         if(item.getId().compareTo(id) == 0)
@@ -191,7 +191,7 @@ this->items.add(item);
     int32_t index = 0;index < size; index++)
         {
 
-    Item item = itemArray[index]! as Item;;
+    Item item = itemArray[index];;
     
 weightFloat += number(item.getWeight());
     
@@ -234,7 +234,7 @@ weightFloat += number(item.getWeight());
     int32_t index = 0;index < size; index++)
         {
 
-    Item item = itemArray[index]! as Item;;
+    Item item = itemArray[index];;
     
 idSet.add(item.getId());
     
@@ -244,7 +244,7 @@ idSet.add(item.getId());
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return idSet as Set;
+                        return idSet;
     
 }
 
@@ -264,7 +264,7 @@ idSet.add(item.getId());
     int32_t index = 0;index < size; index++)
         {
 
-    Item item = itemArray[index]! as Item;;
+    Item item = itemArray[index];;
     
 
                         if(item.getId().compareTo(id) == 0)
@@ -310,7 +310,7 @@ idSet.add(item.getId());
     int32_t index = 0;index < size; index++)
         {
 
-    Item item = itemArray[index]! as Item;;
+    Item item = itemArray[index];;
     
 node.appendChild(ItemView(item, BasicArrayListD()).toXmlNode(document));
     

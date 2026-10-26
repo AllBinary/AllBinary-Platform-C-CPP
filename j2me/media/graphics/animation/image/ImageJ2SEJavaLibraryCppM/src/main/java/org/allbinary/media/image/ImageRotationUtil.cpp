@@ -18,9 +18,9 @@
 
 
 
-            #include "../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/awt/image/BufferedImage.h>
 
@@ -86,10 +86,10 @@ private: ImageRotationUtil(){
                         
                                     {
                                     
-    J2SEMutableImage j2seImage = image as J2SEMutableImage;;
+    J2SEMutableImage j2seImage = image;;
     
 
-    BufferedImage newBufferedImage = j2seImage.getImage() as BufferedImage;;
+    BufferedImage newBufferedImage = j2seImage.getImage();;
     
 
     java::awt::Image originalAwtImage = 
@@ -101,18 +101,18 @@ private: ImageRotationUtil(){
                         
                                     {
                                     
-    J2SEMutableImage originalJ2SEImage = originalImage as J2SEMutableImage;;
+    J2SEMutableImage originalJ2SEImage = originalImage;;
     
-originalAwtImage= originalJ2SEImage.getImage() as java::awt::Image;
+originalAwtImage= originalJ2SEImage.getImage();
     
 
                                     }
                                 
                         else {
                             
-    J2SEImmutableImage originalJ2SEImage = originalImage as J2SEImmutableImage;;
+    J2SEImmutableImage originalJ2SEImage = originalImage;;
     
-originalAwtImage= originalJ2SEImage.getImage() as java::awt::Image;
+originalAwtImage= originalJ2SEImage.getImage();
     
 
                         }
@@ -151,27 +151,27 @@ this->imageJ2SERotationUtil.rotateImage(originalAwtImage, newBufferedImage, tota
                         
                                     {
                                     
-    J2SEMutableImage originalJ2SEImage = originalImage as J2SEMutableImage;;
+    J2SEMutableImage originalJ2SEImage = originalImage;;
     
-originalAwtImage= originalJ2SEImage.getImage() as java::awt::Image;
+originalAwtImage= originalJ2SEImage.getImage();
     
 
                                     }
                                 
                         else {
                             
-    J2SEImmutableImage originalJ2SEImage = originalImage as J2SEImmutableImage;;
+    J2SEImmutableImage originalJ2SEImage = originalImage;;
     
-originalAwtImage= originalJ2SEImage.getImage() as java::awt::Image;
+originalAwtImage= originalJ2SEImage.getImage();
     
 
                         }
                             
 
-    J2SEMutableImage j2seImage = image as J2SEMutableImage;;
+    J2SEMutableImage j2seImage = image;;
     
 
-    BufferedImage newBufferedImage = j2seImage.getImage() as BufferedImage;;
+    BufferedImage newBufferedImage = j2seImage.getImage();;
     
 
     BufferedImage bufferedImage = this->imageJ2SERotationUtil.createRotatedImage(originalAwtImage, newBufferedImage, rotationInDegrees);;

@@ -23,9 +23,9 @@
 
             #include <vector>
         
-            #include "../../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../../../../../java/lang/Long.h"
+            #include "java/lang/Long.h"
         
 //#include <java/util/Date.h>
 
@@ -142,7 +142,7 @@ public: OrderHistory(BasketInterface basketInterface);
 
 public: OrderHistory(BasketInterface basketInterface, OrderHistory orderHistory);
 
-public: OrderHistory(BasketInterface basketInterface, HashMap<any, any> orderHistoryHashMap);
+public: OrderHistory(BasketInterface basketInterface, HashMap<Object*, Object*> orderHistoryHashMap);
 
     public: void setUserName(std::string value);
 
@@ -196,7 +196,7 @@ public: OrderHistory(BasketInterface basketInterface, HashMap<any, any> orderHis
 
     public: Money getTotal();
 
-    public: HashMap<any, any> toHashMap();
+    public: HashMap<Object*, Object*> toHashMap();
 
                 //@Throws(Exception.constructor)
             

@@ -18,7 +18,7 @@
 
 
 
-            #include "../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/lang/reflect/Method.h>
 
@@ -91,7 +91,7 @@ this->body= value;
 
         try {
             
-    HashMap<any, any> propertiesHashMap = StdUtil::getInstance().createHashMap();;
+    HashMap<Object*, Object*> propertiesHashMap = StdUtil::getInstance().createHashMap();;
     
 propertiesHashMap.put("Subject", this->subject);
     

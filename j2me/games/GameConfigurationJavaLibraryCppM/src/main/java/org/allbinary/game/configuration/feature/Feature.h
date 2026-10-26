@@ -21,24 +21,15 @@
         #ifndef ORG_ALLBINARY_GAME_CONFIGURATION_FEATURE_FEATURE_H
         #define ORG_ALLBINARY_GAME_CONFIGURATION_FEATURE_FEATURE_H
 
-            #include "../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-#include <jsinterop/annotations/JsType.h>
-
-      
-#include <java/util/Hashtable.h>
-
-      
 #include <org/allbinary/game/configuration/event/ChangedGameFeatureListener.h>
 
       
-#include <jsinterop/annotations/JsMethod.h>
-
-      
-#include <jsinterop/annotations/JsConstructor.h>
-
-      
 #include <org/allbinary/logic/StdUtil.h>
+
+      
+#include <org/allbinary/util/ABHashtable.h>
 
       
 
@@ -64,7 +55,7 @@ class Feature
             : public Object
          {
 
-    private: static Hashtable<any, any> hashtable = StdUtil::getInstance().createHashtable();
+    private: static ABHashtable<Object*, Object*> hashtable = StdUtil::getInstance().createHashtable();
 
     public: static Feature getInstance(std::string name);
 

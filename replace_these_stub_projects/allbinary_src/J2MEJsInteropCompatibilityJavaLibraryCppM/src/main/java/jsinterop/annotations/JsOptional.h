@@ -7,7 +7,7 @@
         #ifndef JSINTEROP_ANNOTATIONS_JSOPTIONAL_H
         #define JSINTEROP_ANNOTATIONS_JSOPTIONAL_H
 
-            #include "../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
 
 

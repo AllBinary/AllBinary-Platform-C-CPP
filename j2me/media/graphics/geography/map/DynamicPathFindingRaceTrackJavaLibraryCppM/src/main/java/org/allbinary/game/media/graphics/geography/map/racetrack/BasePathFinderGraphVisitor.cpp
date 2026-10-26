@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/jgrapht/GraphPath.h>
 
@@ -60,6 +60,7 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+template<typename V, typename E>
 class BasePathFinderGraphVisitor: public PathFinderGraphVisitorBase {
 
     protected: BasicGeographicMap geographicMapInterface;
@@ -99,7 +100,7 @@ this->maxPathWeight= maxPathWeight;
     int32_t index = startPathFindingNodeList.size() -1;index >= 0; index--)
         {
 
-    PathFindingNode startPathFindingNode = startPathFindingNodeList.get(index) as PathFindingNode;;
+    PathFindingNode startPathFindingNode = startPathFindingNodeList.get(index);;
     
 pathList.remove(startPathFindingNode.geographicMapCellPosition);
     

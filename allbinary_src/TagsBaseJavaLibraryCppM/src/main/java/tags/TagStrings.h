@@ -21,7 +21,7 @@
         #ifndef TAGS_TAGSTRINGS_H
         #define TAGS_TAGSTRINGS_H
 
-            #include "../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
 
 

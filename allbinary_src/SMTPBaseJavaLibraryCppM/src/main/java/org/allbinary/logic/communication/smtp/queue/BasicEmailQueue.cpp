@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <javax/mail/Transport.h>
 
@@ -154,7 +154,7 @@ this->processAllUnsent();
     int32_t index = 0;index < size; index++)
         {
 
-    EmailInterface emailInterface = queueVector.get(index) as EmailInterface;;
+    EmailInterface emailInterface = queueVector.get(index);;
     
 
                         if(this->send(emailInterface))

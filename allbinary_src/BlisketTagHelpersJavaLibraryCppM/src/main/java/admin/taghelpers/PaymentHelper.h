@@ -21,9 +21,9 @@
         #ifndef ADMIN_TAGHELPERS_PAYMENTHELPER_H
         #define ADMIN_TAGHELPERS_PAYMENTHELPER_H
 
-            #include "../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../java/lang/Integer.h"
+            #include "java/lang/Integer.h"
         
 #include <java/util/HashMap.h>
 
@@ -93,7 +93,7 @@ class PaymentHelper: public Table {
 
     private: Portion portion;
 
-public: PaymentHelper(HashMap<any, any> hashMap, PageContext pageContext);
+public: PaymentHelper(HashMap<Object*, Object*> hashMap, PageContext pageContext);
 
     private: void getFormData();
 

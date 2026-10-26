@@ -18,7 +18,7 @@
 
 
 
-            #include "../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <javax/servlet/jsp/JspTagException.h>
 
@@ -58,8 +58,9 @@ class StoreValidationTransformTag: public ValidationTransformTag {
 
     private: std::string storeName;
 
-public: StoreValidationTransformTag(){
-            super();
+public: StoreValidationTransformTag() : ValidationTransformTag(){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.

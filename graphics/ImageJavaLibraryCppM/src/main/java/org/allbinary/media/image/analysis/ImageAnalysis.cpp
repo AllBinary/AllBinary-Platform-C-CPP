@@ -20,11 +20,11 @@
 
             #include <vector>
         
-            #include "../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../../../java/lang/Integer.h"
+            #include "java/lang/Integer.h"
         
 #include <java/awt.h>
 
@@ -120,7 +120,7 @@ class ImageAnalysis
     Integer keyInteger = Integer::valueOf(bufferedImage.getRGB(indexX, indexY));;
     
 
-    ColorCacheable colorCacheable = ColorCacheFactory::getInstance().get(keyInteger) as ColorCacheable;;
+    ColorCacheable colorCacheable = ColorCacheFactory::getInstance().get(keyInteger);;
     
 
     Color color = colorCacheable.getColor();;
@@ -252,7 +252,7 @@ private: ImageAnalysis(){
 this->logUtil.putF(CommonLabels::getInstance().START +colorRangeInterface.toString(), this, commonStrings.PROCESS);
     
 
-    std::vector<ImageAnalysisResults> imageAnalysisResultsArray = new Array(bufferedImageArray.length);;
+    std::vector<ImageAnalysisResults> imageAnalysisResultsArray = std::vector<ImageAnalysisResults>(bufferedImageArray.length);;
     
 
 
@@ -261,7 +261,7 @@ this->logUtil.putF(CommonLabels::getInstance().START +colorRangeInterface.toStri
                         for (
     int32_t index = 0;index < bufferedImageArray.size(); index++)
         {
-imageAnalysisResultsArray[index]= ImageAnalysis::process(bufferedImageArray[index]!, colorRangeInterface);
+imageAnalysisResultsArray[index]= ImageAnalysis::process(bufferedImageArray[index], colorRangeInterface);
     
 }
 

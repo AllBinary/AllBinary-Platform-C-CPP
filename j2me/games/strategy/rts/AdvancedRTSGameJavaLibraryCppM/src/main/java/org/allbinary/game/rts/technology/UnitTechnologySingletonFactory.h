@@ -21,7 +21,7 @@
         #ifndef ORG_ALLBINARY_GAME_RTS_TECHNOLOGY_UNITTECHNOLOGYSINGLETONFACTORY_H
         #define ORG_ALLBINARY_GAME_RTS_TECHNOLOGY_UNITTECHNOLOGYSINGLETONFACTORY_H
 
-            #include "../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
 
 

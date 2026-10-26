@@ -4,7 +4,7 @@
 
 
 
-            #include "../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 
 
@@ -27,8 +27,9 @@
         
 class XmlRpcException: public Exception {
 
-public: XmlRpcException(int32_t code, std::string message){
-            super(message);
+public: XmlRpcException(int32_t code, std::string message) : Exception(message){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.

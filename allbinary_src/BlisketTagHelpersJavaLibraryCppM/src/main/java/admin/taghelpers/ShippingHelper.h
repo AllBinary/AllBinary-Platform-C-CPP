@@ -21,7 +21,7 @@
         #ifndef ADMIN_TAGHELPERS_SHIPPINGHELPER_H
         #define ADMIN_TAGHELPERS_SHIPPINGHELPER_H
 
-            #include "../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
 
@@ -81,7 +81,7 @@ class ShippingHelper: public TagHelper {
 
     private: StoreFrontInterface storeFrontInterface;
 
-    private: HashMap<any, any> propertiesHashMap;
+    private: HashMap<Object*, Object*> propertiesHashMap;
 
     private: PageContext pageContext;
 
@@ -89,7 +89,7 @@ class ShippingHelper: public TagHelper {
 
     private: std::string shippingType;
 
-public: ShippingHelper(HashMap<any, any> hashMap, PageContext pageContext);
+public: ShippingHelper(HashMap<Object*, Object*> hashMap, PageContext pageContext);
 
     private: void getFormData();
 

@@ -62,11 +62,11 @@
         
 class LineAnimation: public Animation, public ColorCompositeInterface, public PositionInterface {
 
-    private: std::vector<std::vector<int32_t>> newLine = new Array(2).fill(null).map(() => new Array(2).fill(0));
+    private: std::vector<std::vector<int32_t>> newLine = std::vector<std::vector<int32_t>>(2, std::vector<int32_t>(2));
 
     private: std::vector<std::vector<int32_t>> tempLine = NullUtil::getInstance().NULL_INT_ARRAY_ARRAY;
 
-    private: std::vector<std::vector<int32_t>> line = new Array(2).fill(null).map(() => new Array(2).fill(0));
+    private: std::vector<std::vector<int32_t>> line = std::vector<std::vector<int32_t>>(2, std::vector<int32_t>(2));
 
 public: LineAnimation(BasicColor basicColor);
 

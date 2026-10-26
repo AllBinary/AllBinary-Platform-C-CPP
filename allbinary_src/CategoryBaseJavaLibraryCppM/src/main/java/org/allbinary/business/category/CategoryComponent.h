@@ -21,7 +21,7 @@
         #ifndef ORG_ALLBINARY_BUSINESS_CATEGORY_CATEGORYCOMPONENT_H
         #define ORG_ALLBINARY_BUSINESS_CATEGORY_CATEGORYCOMPONENT_H
 
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/data/tree/dom/document/DomDocumentHelper.h>
 

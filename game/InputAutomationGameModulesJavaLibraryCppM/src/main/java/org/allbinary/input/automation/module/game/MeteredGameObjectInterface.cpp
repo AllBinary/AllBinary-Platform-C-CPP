@@ -20,7 +20,7 @@
 
             #include <vector>
         
-            #include "../../../../../../java/lang/Double.h"
+            #include "java/lang/Double.h"
         
 
 

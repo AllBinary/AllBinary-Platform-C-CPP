@@ -21,26 +21,23 @@
         #ifndef ORG_ALLBINARY_LOGIC_COMMUNICATION_LOG_XMLRPCREMOTELOGCLIENT_H
         #define ORG_ALLBINARY_LOGIC_COMMUNICATION_LOG_XMLRPCREMOTELOGCLIENT_H
 
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../../../java/lang/System.h"
+            #include "java/lang/System.h"
         
 #include <java/io/IOException.h>
-
-      
-#include <java/util/Hashtable.h>
-
-      
-#include <org/allbinary/util/BasicArrayList.h>
-
-      
-#include <org/allbinary/util/BasicArrayListD.h>
 
       
 #include <org/apache/xmlrpc/XmlRpcClient.h>
 
       
 #include <org/apache/xmlrpc/XmlRpcException.h>
+
+      
+#include <org/allbinary/util/BasicArrayList.h>
+
+      
+#include <org/allbinary/util/BasicArrayListD.h>
 
       
 #include <org/allbinary/logic/communication/xmlrpc/XmlRpcAbeClient.h>
@@ -56,6 +53,9 @@
 
       
 #include <org/allbinary/string/CommonSeps.h>
+
+      
+#include <org/allbinary/util/ABHashtable.h>
 
       
 

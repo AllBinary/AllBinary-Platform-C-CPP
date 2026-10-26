@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/logic/communication/log/PreLogUtil.h>
 
@@ -45,8 +45,9 @@
 //import org.allbinary.logic.communication.log.config.type.LogConfigTypes;
 class DbInitInfo: public DbConnectionInfo {
 
-public: DbInitInfo(std::string initFileName, bool read){
-            super();
+public: DbInitInfo(std::string initFileName, bool read) : DbConnectionInfo(){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.

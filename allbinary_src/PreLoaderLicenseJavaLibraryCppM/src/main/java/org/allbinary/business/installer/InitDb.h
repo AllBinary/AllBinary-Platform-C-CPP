@@ -21,11 +21,11 @@
         #ifndef ORG_ALLBINARY_BUSINESS_INSTALLER_INITDB_H
         #define ORG_ALLBINARY_BUSINESS_INSTALLER_INITDB_H
 
-            #include "../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../java/lang/Class.h"
+            #include "java/lang/Class.h"
         
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/lang/reflect/Method.h>
 

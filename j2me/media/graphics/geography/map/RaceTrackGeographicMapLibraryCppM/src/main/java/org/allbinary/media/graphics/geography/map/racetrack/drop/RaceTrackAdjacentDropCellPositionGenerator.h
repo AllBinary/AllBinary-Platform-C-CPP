@@ -23,11 +23,8 @@
 
             #include <vector>
         
-            #include "../../../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-#include <java/util/Hashtable.h>
-
-      
 #include <org/allbinary/game/identification/GroupCommonFactory.h>
 
       
@@ -97,6 +94,9 @@
 #include <org/allbinary/media/graphics/geography/map/racetrack/RaceTrackGeographicMapCellTypeFactory.h>
 
       
+#include <org/allbinary/util/ABHashtable.h>
+
+      
 
 
 
@@ -128,7 +128,7 @@ class RaceTrackAdjacentDropCellPositionGenerator: public RaceTrackDropCellPositi
 
     private: const GroupCommonFactory groupCommonFactory = GroupCommonFactory::getInstance();
 
-    private: std::vector<GeographicMapCellPosition> surroundingCellPositions = new Array(4);
+    private: std::vector<GeographicMapCellPosition> surroundingCellPositions = std::vector<GeographicMapCellPosition>(4);
 
 private: RaceTrackAdjacentDropCellPositionGenerator();
 
@@ -136,7 +136,7 @@ private: RaceTrackAdjacentDropCellPositionGenerator();
             
     private: GeographicMapCellPosition getFirstNonRoadAdjacentCellPosition(int32_t column, int32_t row);
 
-    private: const Hashtable<any, any> hashtable = StdUtil::getInstance().createHashtable();
+    private: const ABHashtable<Object*, Object*> hashtable = StdUtil::getInstance().createHashtable();
 
                 //@Throws(Exception.constructor)
             

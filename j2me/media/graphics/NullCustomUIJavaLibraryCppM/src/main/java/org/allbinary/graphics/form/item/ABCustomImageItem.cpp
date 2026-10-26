@@ -4,7 +4,7 @@
 
 
 
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <javax/microedition/lcdui/Image.h>
 
@@ -39,8 +39,9 @@ class ABCustomImageItem: public ABCustomItem {
 
     protected: int32_t yOffset = 0;
 
-public: ABCustomImageItem(std::string label, Image image, int32_t layout, std::string altText, BasicColor basicColor, int32_t yOffset){
-            super(label, basicColor, basicColor);
+public: ABCustomImageItem(std::string label, Image image, int32_t layout, std::string altText, BasicColor basicColor, int32_t yOffset) : ABCustomItem(label, basicColor, basicColor){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.

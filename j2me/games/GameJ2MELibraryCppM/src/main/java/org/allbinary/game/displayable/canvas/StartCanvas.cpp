@@ -20,11 +20,8 @@
 
             #include <vector>
         
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-#include <java/util/Hashtable.h>
-
-      
 #include <javax/microedition/lcdui/Command.h>
 
       
@@ -271,6 +268,9 @@
 #include <org/allbinary/time/TimeDelayHelper.h>
 
       
+#include <org/allbinary/util/ABHashtable.h>
+
+      
 #include <org/allbinary/util/BasicArrayList.h>
 
       
@@ -368,8 +368,9 @@ class StartCanvas: public RunnableCanvas, public GameCanvasRunnableInterface, pu
 
     private: PaintableInterface progressPaintable = ProgressCanvasFactory::getLazyInstance();
 
-public: StartCanvas(AbeClientInformationInterface abeClientInformation, CommandListener commandListener, HighScoresFactoryInterface highScoresFactoryInterface, Paintable paintable, InitUpdatePaintable overlayPaintable, BasicBuildGameInitializerFactory gameInitializationInterfaceFactoryInterface, bool isContinue){
-            super(commandListener, CurrentDisplayableFactory::getInstance().DEFAULT_CHILD_NAME_LIST, true);
+public: StartCanvas(AbeClientInformationInterface abeClientInformation, CommandListener commandListener, HighScoresFactoryInterface highScoresFactoryInterface, Paintable paintable, InitUpdatePaintable overlayPaintable, BasicBuildGameInitializerFactory gameInitializationInterfaceFactoryInterface, bool isContinue) : RunnableCanvas(commandListener, CurrentDisplayableFactory::getInstance().DEFAULT_CHILD_NAME_LIST, true){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -495,7 +496,7 @@ commandList.add(gameCommandsFactory.START_COMMAND);
     BasicArrayList list = LockableFeatureFactory::getInstance().getList();;
     
 
-                        if(list.size() > 0 && !inApplicationPurchaseFactory.isPurchased(list.get(0) as LockableFeature))
+                        if(list.size() > 0 && !inApplicationPurchaseFactory.isPurchased(list.get(0)))
                         
                                     {
                                     commandList.add(gameCommandsFactory.BUY_COMMAND);
@@ -574,7 +575,7 @@ this->removeAllCommands();
                         for (
     int32_t index = 0;index < size; index++)
         {
-this->addCommand(commandArray[index]! as Command);
+this->addCommand(commandArray[index]);
     
 }
 
@@ -819,7 +820,7 @@ this->logUtil.putF(StringMaker().append(this->commonStrings.NOT_IMPLEMENTED).app
 
                 //@Throws(Exception.constructor)
             
-    public: void setLoadStateHashtable(Hashtable<any, any> hashtable){
+    public: void setLoadStateHashtable(ABHashtable<Object*, Object*> hashtable){
 this->logUtil.putF("Trying to continue a demo lol - only continue a game canvas not the demo", this, "setLoadStateHashtable");
     
 }
@@ -827,7 +828,7 @@ this->logUtil.putF("Trying to continue a demo lol - only continue a game canvas 
 
                 //@Throws(Exception.constructor)
             
-    public: Hashtable<any, any> getLoadStateHashtable(){
+    public: ABHashtable<Object*, Object*> getLoadStateHashtable(){
 this->logUtil.putF("Trying to continue a demo lol - only continue a game canvas not the demo", this, "getLoadStateHashtable");
     
 
@@ -841,7 +842,7 @@ this->logUtil.putF("Trying to continue a demo lol - only continue a game canvas 
 
                 //@Throws(Exception.constructor)
             
-    public: Hashtable<any, any> getCurrentStateHashtable(){
+    public: ABHashtable<Object*, Object*> getCurrentStateHashtable(){
 this->logUtil.putF("Trying to save the AI lol", this, "getCurrentStateHashtable");
     
 
@@ -1060,7 +1061,7 @@ this->preDemoProcess();
                         
                                     {
                                     
-    IndexedAnimationBehavior indexedAnimationBehavior = this->getSpecialAnimationInterface().getAnimationBehavior() as IndexedAnimationBehavior;;
+    IndexedAnimationBehavior indexedAnimationBehavior = this->getSpecialAnimationInterface().getAnimationBehavior();;
     
 
                         if(indexedAnimationBehavior.loopIndex < 1)
@@ -1072,7 +1073,7 @@ this->preDemoProcess();
                                     }
                                 
 
-    DemoGameMidlet demoGameMidlet = this->getCustomCommandListener() as DemoGameMidlet;;
+    DemoGameMidlet demoGameMidlet = this->getCustomCommandListener();;
     
 
                                     }

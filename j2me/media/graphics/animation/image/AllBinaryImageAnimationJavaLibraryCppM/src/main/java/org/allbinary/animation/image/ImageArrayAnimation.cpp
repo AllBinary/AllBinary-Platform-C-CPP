@@ -20,11 +20,8 @@
 
             #include <vector>
         
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-#include <jsinterop/annotations/JsType.h>
-
-      
 #include <javax/microedition/lcdui/Graphics.h>
 
       
@@ -47,15 +44,6 @@
 
       
 #include <org/allbinary/util/CircularIndexUtil.h>
-
-      
-#include <jsinterop/annotations/JsMethod.h>
-
-      
-#include <jsinterop/annotations/JsConstructor.h>
-
-      
-#include <jsinterop/annotations/JsProperty.h>
 
       
 
@@ -85,8 +73,9 @@ class ImageArrayAnimation: public IndexedAnimation {
 
     protected: CircularIndexUtil circularIndexUtil = CircularIndexUtil::NULL_CIRCULAR_INDEX_UTIL;
 
-public: ImageArrayAnimation(std::vector<Image> imageArray, AnimationBehavior animationBehavior){
-            super(animationBehavior);
+public: ImageArrayAnimation(std::vector<Image> imageArray, AnimationBehavior animationBehavior) : IndexedAnimation(animationBehavior){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -165,7 +154,7 @@ this->circularIndexUtil.setIndex(index);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->imageArray[index]!;
+                        return this->imageArray[index];
     
 }
 
@@ -193,7 +182,7 @@ this->circularIndexUtil= CircularIndexUtil::createInstance(this->totalFrames);
     private: int32_t anchor = Anchor::TOP_LEFT;
 
     public: void paintXY(Graphics graphics, int32_t x, int32_t y){
-graphics.drawImage(this->imageArray[this->circularIndexUtil.getIndex()]!, x, y, this->anchor);
+graphics.drawImage(this->imageArray[this->circularIndexUtil.getIndex()], x, y, this->anchor);
     
 }
 

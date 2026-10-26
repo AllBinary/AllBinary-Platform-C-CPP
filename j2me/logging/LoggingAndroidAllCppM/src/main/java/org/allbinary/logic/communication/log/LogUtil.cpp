@@ -20,9 +20,9 @@
 
             #include <hilog/log.h>
         
-            #include "../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../java/lang/Integer.h"
+            #include "java/lang/Integer.h"
         
 #include <org/allbinary/logic/NullUtil.h>
 
@@ -120,7 +120,7 @@ this->putS(specialMessage, string, functionName, NullUtil::getInstance().NULL_OB
 
     std::string className = this->LABEL;;
     
-className= StringMaker().append(anyType->constructor.name.toString()!).append(this->commonSeps.COLON).append(Integer::toHexString(TsUtil::getInstance().hashCode(anyType))).toString();
+className= StringMaker().append(anyType->constructor.name.toString()).append(this->commonSeps.COLON).append(Integer::toHexString(TsUtil::getInstance().hashCode(anyType))).toString();
     
 
     std::string message = this->logFormatUtil.get(className, functionName, specialMessage, exception);;

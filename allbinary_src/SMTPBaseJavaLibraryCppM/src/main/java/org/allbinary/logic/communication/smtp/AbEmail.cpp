@@ -18,9 +18,9 @@
 
 
 
-            #include "../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
 
@@ -114,7 +114,7 @@ public: AbEmail(std::string server, std::string from, std::string to, std::strin
 
                 //@Throws(Exception.constructor)
             
-    public: HashMap<any, any> toHashMap(){
+    public: HashMap<Object*, Object*> toHashMap(){
 
 
 
@@ -141,7 +141,7 @@ public: AbEmail(std::string server, std::string from, std::string to, std::strin
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->email as Email;
+                        return this->email;
     
 }
 

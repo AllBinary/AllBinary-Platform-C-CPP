@@ -106,11 +106,11 @@ class AboutPaintable: public Paintable, public UpdateMyFontInterface {
 private: AboutPaintable(std::vector<std::string> info, std::vector<std::string> developers){
 this->info= info;
     
-this->infoBeginWidth= new Array(this->info.length);
+this->infoBeginWidth= std::vector<int32_t>(this->info.length);
     
 this->developers= developers;
     
-this->developersBeginWidth= new Array(this->developers.length);
+this->developersBeginWidth= std::vector<int32_t>(this->developers.length);
     
 }
 
@@ -133,7 +133,7 @@ this->aboutBeginWidth= (font.stringWidth(this->ABOUT)>>1);
                         for (
     int32_t index = 0;index < infoSize; index++)
         {
-this->infoBeginWidth[index]= (font.stringWidth(this->info[index]!)>>1);
+this->infoBeginWidth[index]= (font.stringWidth(this->info[index])>>1);
     
 }
 
@@ -147,7 +147,7 @@ this->infoBeginWidth[index]= (font.stringWidth(this->info[index]!)>>1);
                         for (
     int32_t index = 0;index < size; index++)
         {
-this->developersBeginWidth[index]= (font.stringWidth(this->developers[index]!)>>1);
+this->developersBeginWidth[index]= (font.stringWidth(this->developers[index])>>1);
     
 }
 
@@ -184,7 +184,7 @@ graphics.drawString(this->ABOUT, halfWidth -this->aboutBeginWidth, 2 *this->char
                         for (
     int32_t index = 0;index < infoSize; index++)
         {
-graphics.drawString(this->info[index]!, halfWidth -this->infoBeginWidth[index], (4 +index) *this->charHeight, this->anchor);
+graphics.drawString(this->info[index], halfWidth -this->infoBeginWidth[index], (4 +index) *this->charHeight, this->anchor);
     
 }
 
@@ -198,7 +198,7 @@ graphics.drawString(this->info[index]!, halfWidth -this->infoBeginWidth[index], 
                         for (
     int32_t index = 0;index < size; index++)
         {
-graphics.drawString(this->developers[index]!, halfWidth -this->developersBeginWidth[index], (5 +infoSize +index) *this->charHeight, this->anchor);
+graphics.drawString(this->developers[index], halfWidth -this->developersBeginWidth[index], (5 +infoSize +index) *this->charHeight, this->anchor);
     
 }
 

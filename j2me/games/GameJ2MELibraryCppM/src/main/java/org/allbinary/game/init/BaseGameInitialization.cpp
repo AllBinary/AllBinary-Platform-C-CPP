@@ -20,13 +20,10 @@
 
             #include <vector>
         
-            #include "../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-#include <jsinterop/annotations/JsType.h>
-
-      
 #include <javax/microedition/lcdui/CommandListener.h>
 
       
@@ -79,15 +76,6 @@
 
       
 #include <org/allbinary/logic/system/security/licensing/AbeClientInformationInterface.h>
-
-      
-#include <jsinterop/annotations/JsMethod.h>
-
-      
-#include <jsinterop/annotations/JsConstructor.h>
-
-      
-#include <jsinterop/annotations/JsProperty.h>
 
       
 
@@ -212,7 +200,7 @@ GameFeatureImageCacheFactory::init();
     
 progressCanvas.addNormalPortion(localPortion, "Image Cache");
     
-this->resourceInitializationArray[this->EARLY_RESOURCES]!.init();
+this->resourceInitializationArray[this->EARLY_RESOURCES].init();
     
 
                                     }
@@ -236,7 +224,7 @@ this->resourceInitializationArray[this->EARLY_RESOURCES]!.init();
                                     {
                                     this->clearResources();
     
-this->resourceInitializationArray[this->EARLY_CHANGABLE_RESOURCES]!.init();
+this->resourceInitializationArray[this->EARLY_CHANGABLE_RESOURCES].init();
     
 
                                     }
@@ -258,12 +246,12 @@ this->resourceInitializationArray[this->EARLY_CHANGABLE_RESOURCES]!.init();
                         if(FeaturedAnimationInterfaceFactoryInterfaceFactory::getInstance().getList().size() == 0)
                         
                                     {
-                                    this->resourceInitializationArray[this->EARLY_CHANGABLE_RESOURCES]!.init();
+                                    this->resourceInitializationArray[this->EARLY_CHANGABLE_RESOURCES].init();
     
 
                                     }
                                 
-this->resourceInitializationArray[this->GAME_CHANGABLE_RESOURCES]!.init();
+this->resourceInitializationArray[this->GAME_CHANGABLE_RESOURCES].init();
     
 this->allLoaded= true;
     

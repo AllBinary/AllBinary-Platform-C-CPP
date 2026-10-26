@@ -20,11 +20,11 @@
 
             #include <vector>
         
-            #include "../../../../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../../../../../../java/lang/Long.h"
+            #include "java/lang/Long.h"
         
 #include <java/util/HashMap.h>
 
@@ -83,7 +83,7 @@ class StoreFrontUsersStatistics
 
     private: Long totalNumberOfUsers;
 
-    private: HashMap<any, any> totalUsersByRoleHashMap;
+    private: HashMap<Object*, Object*> totalUsersByRoleHashMap;
 
 public: StoreFrontUsersStatistics(StoreFrontInterface storeFrontInterface){
 this->totalUsersByRoleHashMap= StdUtil::getInstance().createHashMap();
@@ -107,7 +107,7 @@ this->totalNumberOfUsers= Long(userVector.size());
     int32_t index = 0;index < size; index++)
         {
 
-    UserInterface userInterface = userVector.get(index) as UserInterface;;
+    UserInterface userInterface = userVector.get(index);;
     
 
     UserRole nextUserRole = userInterface.getRole();;
@@ -124,7 +124,7 @@ this->totalUsersByRoleHashMap.put(nextUserRole, currentNumberOfUsersForRole);
 
     private: Long getNewTotal(UserRole userRole){
 
-    Long numberOfUsersForRoleLong = this->totalUsersByRoleHashMap.get(userRole) as Long;;
+    Long numberOfUsersForRoleLong = this->totalUsersByRoleHashMap.get(userRole);;
     
 
                         if(numberOfUsersForRoleLong == 
@@ -158,7 +158,7 @@ this->totalUsersByRoleHashMap.put(nextUserRole, currentNumberOfUsersForRole);
 
     public: Long getNumberOfUsersByRole(std::string role){
 
-    Long totalForRole = this->totalUsersByRoleHashMap.get(role) as Long;;
+    Long totalForRole = this->totalUsersByRoleHashMap.get(role);;
     
 
 
@@ -169,9 +169,9 @@ this->totalUsersByRoleHashMap.put(nextUserRole, currentNumberOfUsersForRole);
 }
 
 
-    public: HashMap<any, any> toHashMap(){
+    public: HashMap<Object*, Object*> toHashMap(){
 
-    HashMap<any, any> hashMap = StdUtil::getInstance().createHashMap();;
+    HashMap<Object*, Object*> hashMap = StdUtil::getInstance().createHashMap();;
     
 hashMap.put(StoreFrontUsersStatisticsData::getInstance().NUMBEROFUSERS, this->getNumberOfUsers().toString());
     
@@ -194,10 +194,10 @@ hashMap.put(StoreFrontUsersStatisticsData::getInstance().NUMBEROFUSERS, this->ge
                         for (
     int32_t index = 0;index < size; index++)
         {
-nextUserRole= userRoleArray[index]! as UserRole;
+nextUserRole= userRoleArray[index];
     
 
-    Long totalForRole = this->totalUsersByRoleHashMap.get(nextUserRole) as Long;;
+    Long totalForRole = this->totalUsersByRoleHashMap.get(nextUserRole);;
     
 hashMap.put(nextUserRole.toString(), totalForRole.toString());
     

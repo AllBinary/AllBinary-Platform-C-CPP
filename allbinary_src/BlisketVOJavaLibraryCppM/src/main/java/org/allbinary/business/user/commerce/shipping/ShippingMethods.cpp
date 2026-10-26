@@ -18,9 +18,9 @@
 
 
 
-            #include "../../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/util/BasicArrayList.h>
 
@@ -110,10 +110,10 @@ this->shippingVector= ShippingMethodsFactory(abeClientInformation, storeFrontInt
                         for (
     int32_t index = 0;index < size; index++)
         {
-shipping= this->shippingVector.get(index) as ShippingInterface;
+shipping= this->shippingVector.get(index);
     
 
-                        if(name.compareTo(shipping.getName()) == 0)
+                        if(name.compare(shipping.getName()) == 0)
                         
 
 

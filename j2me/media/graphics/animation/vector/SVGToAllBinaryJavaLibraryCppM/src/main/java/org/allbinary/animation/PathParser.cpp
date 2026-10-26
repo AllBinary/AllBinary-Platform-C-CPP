@@ -6,9 +6,9 @@
 
             #include <vector>
         
-            #include "../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../java/lang/Double.h"
+            #include "java/lang/Double.h"
         
 #include <org/allbinary/util/BasicArrayList.h>
 
@@ -113,7 +113,7 @@ tokens.add(c.slice(, ).join(''));
                         tokens.add(sb.toString());
                                 
 
-    std::vector<std::string> res = new Array(tokens.size());;
+    std::vector<std::string> res = std::vector<std::string>(tokens.size());;
     
 tokens.toArrayType(res);
     
@@ -131,7 +131,7 @@ tokens.toArrayType(res);
     std::vector<std::string> tokens = tokenize(d);;
     
 
-    std::vector<int32_t> count = [0];;
+    std::vector<int32_t> count = {0};;
     
 
     FixedPoint fixedPoint = FixedPoint::getInstance();;
@@ -159,10 +159,10 @@ tokens.toArrayType(res);
                         
                                     {
                                     
-    int32_t x = fixedPoint.toFixed(Double::parseDouble(tokens[idx++]!));;
+    int32_t x = fixedPoint.toFixed(Double::parseDouble(tokens[idx++]));;
     
 
-    int32_t y = fixedPoint.toFixed(Double::parseDouble(tokens[idx++]!));;
+    int32_t y = fixedPoint.toFixed(Double::parseDouble(tokens[idx++]));;
     
 
                         if(cmd == 'm')
@@ -197,10 +197,10 @@ count[0]++;
                         
                                     {
                                     
-    int32_t x = fixedPoint.toFixed(Double::parseDouble(tokens[idx++]!));;
+    int32_t x = fixedPoint.toFixed(Double::parseDouble(tokens[idx++]));;
     
 
-    int32_t y = fixedPoint.toFixed(Double::parseDouble(tokens[idx++]!));;
+    int32_t y = fixedPoint.toFixed(Double::parseDouble(tokens[idx++]));;
     
 
                         if(cmd == 'l')
@@ -231,7 +231,7 @@ count[0]++;
                         
                                     {
                                     
-    int32_t y = fixedPoint.toFixed(Double::parseDouble(tokens[idx++]!));;
+    int32_t y = fixedPoint.toFixed(Double::parseDouble(tokens[idx++]));;
     
 
                         if(cmd == 'v')
@@ -258,22 +258,22 @@ count[0]++;
                         
                                     {
                                     
-    int32_t x1 = fixedPoint.toFixed(Double::parseDouble(tokens[idx++]!));;
+    int32_t x1 = fixedPoint.toFixed(Double::parseDouble(tokens[idx++]));;
     
 
-    int32_t y1 = fixedPoint.toFixed(Double::parseDouble(tokens[idx++]!));;
+    int32_t y1 = fixedPoint.toFixed(Double::parseDouble(tokens[idx++]));;
     
 
-    int32_t x2 = fixedPoint.toFixed(Double::parseDouble(tokens[idx++]!));;
+    int32_t x2 = fixedPoint.toFixed(Double::parseDouble(tokens[idx++]));;
     
 
-    int32_t y2 = fixedPoint.toFixed(Double::parseDouble(tokens[idx++]!));;
+    int32_t y2 = fixedPoint.toFixed(Double::parseDouble(tokens[idx++]));;
     
 
-    int32_t x3 = fixedPoint.toFixed(Double::parseDouble(tokens[idx++]!));;
+    int32_t x3 = fixedPoint.toFixed(Double::parseDouble(tokens[idx++]));;
     
 
-    int32_t y3 = fixedPoint.toFixed(Double::parseDouble(tokens[idx++]!));;
+    int32_t y3 = fixedPoint.toFixed(Double::parseDouble(tokens[idx++]));;
     
 
                         if(cmd == 'c')
@@ -321,17 +321,17 @@ count[0]++;
                                     }
                                 
 
-        while(idx < tokens.size() && !isCommand(tokens[idx]!))
+        while(idx < tokens.size() && !isCommand(tokens[idx]))
         {
 
                         if(cmd == 'M' || cmd == 'm' || cmd == 'L' || cmd == 'l')
                         
                                     {
                                     
-    int32_t x = fixedPoint.toFixed(Double::parseDouble(tokens[idx++]!));;
+    int32_t x = fixedPoint.toFixed(Double::parseDouble(tokens[idx++]));;
     
 
-    int32_t y = fixedPoint.toFixed(Double::parseDouble(tokens[idx++]!));;
+    int32_t y = fixedPoint.toFixed(Double::parseDouble(tokens[idx++]));;
     
 
                         if(cmd == 'm' || cmd == 'l')
@@ -362,7 +362,7 @@ count[0]++;
                         
                                     {
                                     
-    int32_t y = fixedPoint.toFixed(Double::parseDouble(tokens[idx++]!));;
+    int32_t y = fixedPoint.toFixed(Double::parseDouble(tokens[idx++]));;
     
 
                         if(cmd == 'v')
@@ -392,7 +392,7 @@ count[0]++;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return count[0]!;
+                        return count[0];
     
 }
 

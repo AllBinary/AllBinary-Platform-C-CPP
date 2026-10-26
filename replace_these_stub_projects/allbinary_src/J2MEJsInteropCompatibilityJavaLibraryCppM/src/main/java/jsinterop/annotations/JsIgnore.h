@@ -7,7 +7,7 @@
         #ifndef JSINTEROP_ANNOTATIONS_JSIGNORE_H
         #define JSINTEROP_ANNOTATIONS_JSIGNORE_H
 
-            #include "../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
 
 

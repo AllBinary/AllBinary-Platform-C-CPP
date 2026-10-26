@@ -21,7 +21,7 @@
         #ifndef ORG_ALLBINARY_GAME_RTS_TECHNOLOGY_HEALTHTECHNOLOGY_H
         #define ORG_ALLBINARY_GAME_RTS_TECHNOLOGY_HEALTHTECHNOLOGY_H
 
-            #include "../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
 #include <org/allbinary/game/layer/RTSInterface.h>
 

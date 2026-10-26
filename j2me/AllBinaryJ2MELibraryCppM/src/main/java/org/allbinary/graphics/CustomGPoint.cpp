@@ -68,8 +68,9 @@ class CustomGPoint: public GPoint {
 
     private: int32_t cz= 0;
 
-public: CustomGPoint(int32_t x, int32_t y, int32_t z){
-            super(x, y, z);
+public: CustomGPoint(int32_t x, int32_t y, int32_t z) : GPoint(x, y, z){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.

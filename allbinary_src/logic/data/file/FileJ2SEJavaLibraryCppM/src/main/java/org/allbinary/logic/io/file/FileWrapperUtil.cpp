@@ -20,9 +20,9 @@
 
             #include <vector>
         
-            #include "../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/io/File.h>
 
@@ -58,7 +58,7 @@ class FileWrapperUtil
 
         try {
             
-    std::vector<AbFile> abFileArray = new Array(files.length);;
+    std::vector<AbFile> abFileArray = std::vector<AbFile>(files.length);;
     
 
 
@@ -67,7 +67,7 @@ class FileWrapperUtil
                         for (
     int32_t index = files.size() -1;index >= 0; index--)
         {
-abFileArray[index]= AbFile(files[index]! as File);
+abFileArray[index]= AbFile(files[index]);
     
 }
 

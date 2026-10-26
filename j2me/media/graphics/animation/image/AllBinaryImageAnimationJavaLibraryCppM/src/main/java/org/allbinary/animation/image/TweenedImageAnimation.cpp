@@ -20,9 +20,9 @@
 
             #include <vector>
         
-            #include "../../../../java/lang/Throwable.h"
+            #include "java/lang/Throwable.h"
         
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <javax/microedition/lcdui/Graphics.h>
 
@@ -79,8 +79,9 @@ class TweenedImageAnimation: public IndexedAnimation {
 
     protected: CircularIndexUtil circularIndexUtil;
 
-public: TweenedImageAnimation(Image image, int32_t dx, int32_t dy, int32_t totalFrames, AnimationBehavior animationBehavior){
-            super(animationBehavior);
+public: TweenedImageAnimation(Image image, int32_t dx, int32_t dy, int32_t totalFrames, AnimationBehavior animationBehavior) : IndexedAnimation(animationBehavior){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.

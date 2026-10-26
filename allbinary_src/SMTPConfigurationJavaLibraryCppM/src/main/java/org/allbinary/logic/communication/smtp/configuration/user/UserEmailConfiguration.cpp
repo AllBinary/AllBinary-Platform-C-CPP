@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
 #include <java/util/HashMap.h>
 
@@ -80,7 +80,7 @@ this->setUserEmailEventsConfigurationInterface(UserEmailEventsConfiguration());
 }
 
 
-public: UserEmailConfiguration(HashMap<any, any> hashMap){
+public: UserEmailConfiguration(HashMap<Object*, Object*> hashMap){
 
                         if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().EMAILLOGGING))
                         

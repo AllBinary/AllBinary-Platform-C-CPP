@@ -18,9 +18,9 @@
 
 
 
-            #include "../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/util/Collection.h>
 
@@ -88,7 +88,7 @@ class InputAutomationModuleFactoryFactory
 
     protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: HashMap<any, any> hashMap;
+    private: HashMap<Object*, Object*> hashMap;
 
     private: DefaultListModelHelper defaultListModelHelper;
 
@@ -113,7 +113,7 @@ this->hashMap= StdUtil::getInstance().createHashMap();
 
         while(iterator.hasNext())
         {
-inputAutomationModuleConfiguration= iterator.next() as InputAutomationModuleConfiguration;
+inputAutomationModuleConfiguration= iterator.next();
     
 this->add(inputAutomationModuleConfiguration);
     
@@ -157,7 +157,7 @@ this->helpSetListenerInterface.helpSetAdded(helpSetEvent);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->defaultListModelHelper.getListModel() as ListModel;
+                        return this->defaultListModelHelper.getListModel();
     
 }
 
@@ -169,7 +169,7 @@ this->helpSetListenerInterface.helpSetAdded(helpSetEvent);
 this->logUtil.putF("Getting Module: " +moduleName, this, commonStrings.GET_INSTANCE);
     
 
-    InputAutomationModuleFactoryInterface inputAutomationModuleFactoryInterface = this->hashMap.get(moduleName) as InputAutomationModuleFactoryInterface;;
+    InputAutomationModuleFactoryInterface inputAutomationModuleFactoryInterface = this->hashMap.get(moduleName);;
     
 
                         if(inputAutomationModuleFactoryInterface == 

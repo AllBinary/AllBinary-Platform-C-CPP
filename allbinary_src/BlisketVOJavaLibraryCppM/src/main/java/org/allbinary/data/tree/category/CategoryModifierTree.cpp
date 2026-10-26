@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/business/category/CategoryFactoryInterface.h>
 
@@ -70,8 +70,9 @@ class CategoryModifierTree: public CategoryPrivateTree, public CategoryModifierT
 
     private: const Directory directory = Directory::getInstance();
 
-public: CategoryModifierTree(CategoryFactoryInterface categoryFactoryInterface){
-            super(categoryFactoryInterface);
+public: CategoryModifierTree(CategoryFactoryInterface categoryFactoryInterface) : CategoryPrivateTree(categoryFactoryInterface){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.

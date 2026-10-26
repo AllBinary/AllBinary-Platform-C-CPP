@@ -20,9 +20,9 @@
 
             #include <vector>
         
-            #include "../../java/lang/Class.h"
+            #include "java/lang/Class.h"
         
-            #include "../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/lang/reflect/Method.h>
 
@@ -78,7 +78,7 @@ class CustomLoaderTag: public CustomTagSupport {
 
     private: std::string webappPath;
 
-    private: HashMap<any, any> propertiesHashMap;
+    private: HashMap<Object*, Object*> propertiesHashMap;
 
 public: CustomLoaderTag(){
 }
@@ -105,12 +105,12 @@ this->webappPath= value;
     Object* anyType = CustomLoaderHelperFactory().getInstance(this->propertiesHashMap, pageContext);;
     
 
-    Function helperClass = anyType->constructor;;
+    Class* helperClass = anyType->getClass();;
     
 
-    std::vector<Function> methodParams = 
+    std::vector<Class*> methodParams = 
                                                         {
-                                                            this->webappPath.constructor
+                                                            this->webappPath.getClass()
                                                         };;
     
 
@@ -173,7 +173,7 @@ setMethod.invoke(anyType, methodArgs);
                                     this->propertiesHashMap= StdUtil::getInstance().createHashMap();
     
 
-                        if(this->command.compareTo(org.allbinary.globals.GLOBALS2.SET) == 0)
+                        if(this->command.compare(org.allbinary.globals.GLOBALS2.SET) == 0)
                         
                                     {
                                     this->setCustomLoaderWebappPath();

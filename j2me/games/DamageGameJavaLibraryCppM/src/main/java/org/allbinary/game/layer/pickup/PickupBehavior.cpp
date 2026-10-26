@@ -20,22 +20,10 @@
 
             #include <vector>
         
-            #include "../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-#include <jsinterop/annotations/JsConstructor.h>
-
-      
-#include <jsinterop/annotations/JsMethod.h>
-
-      
-#include <jsinterop/annotations/JsProperty.h>
-
-      
-#include <jsinterop/annotations/JsType.h>
-
-      
 #include <org/allbinary/game/health/HealthInterfaceCompositeInterface.h>
 
       
@@ -110,7 +98,7 @@ class PickupBehavior
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return PickupBehavior::NULL_PICKUP_BEHAVIOR as PickupBehavior;
+                        return PickupBehavior::NULL_PICKUP_BEHAVIOR;
     
 }
 
@@ -133,7 +121,7 @@ this->countedIndex= countedIndex;
 
         try {
             
-    HealthInterfaceCompositeInterface healthInterfaceCompositeInterface = this->ownerLayerInterface as unknown  as HealthInterfaceCompositeInterface;;
+    HealthInterfaceCompositeInterface healthInterfaceCompositeInterface = this->ownerLayerInterface as unknown ;;
     
 
                         if(healthInterfaceCompositeInterface.getHealthInterface().isAlive())
@@ -174,7 +162,7 @@ this->logUtil.put(commonStrings.EXCEPTION, this, "doPickup", e);
                         if(pickedUpLayerType == pickedUpLayerTypeFactory.BEAM || pickedUpLayerType == pickedUpLayerTypeFactory.MINE || pickedUpLayerType == pickedUpLayerTypeFactory.PROJECTILE || pickedUpLayerType == pickedUpLayerTypeFactory.ENHANCEMENT)
                         
                                     {
-                                    this->add(pickedUpLayerInterfaceFactoryInterface as CountedPickedUpLayerInterfaceFactoryInterface);
+                                    this->add(pickedUpLayerInterfaceFactoryInterface);
     
 
                                     }
@@ -184,7 +172,7 @@ this->logUtil.put(commonStrings.EXCEPTION, this, "doPickup", e);
                         
                                     {
                                     
-    CollidableDestroyableDamageableLayer collidableDestroyableDamageableLayer = this->ownerLayerInterface as CollidableDestroyableDamageableLayer;;
+    CollidableDestroyableDamageableLayer collidableDestroyableDamageableLayer = this->ownerLayerInterface;;
     
 collidableDestroyableDamageableLayer.addPart(pickedUpLayerInterfaceFactoryInterface);
     
@@ -200,7 +188,7 @@ collidableDestroyableDamageableLayer.addPart(pickedUpLayerInterfaceFactoryInterf
                                 
                         else {
                             
-    PickupProcessorInterface pickupProcessorInterface = pickedUpLayerInterfaceFactoryInterface as unknown  as PickupProcessorInterface;;
+    PickupProcessorInterface pickupProcessorInterface = pickedUpLayerInterfaceFactoryInterface as unknown ;;
     
 this->doPickup(pickupProcessorInterface);
     
@@ -234,10 +222,10 @@ this->addAt(countedPickedUpLayerInterfaceFactoryInterface, partIndex);
 
     protected: void addAt(CountedPickedUpLayerInterfaceFactoryInterface countedPickedUpLayerInterfaceFactoryInterface, int32_t partIndex){
 
-    CollidableDestroyableDamageableLayer collidableDestroyableDamageableLayer = this->ownerLayerInterface as CollidableDestroyableDamageableLayer;;
+    CollidableDestroyableDamageableLayer collidableDestroyableDamageableLayer = this->ownerLayerInterface;;
     
 
-    CountedLayerInterfaceFactoryPart countedLayerInterfaceFactory = collidableDestroyableDamageableLayer.getPartInterfaceArray()[partIndex]! as CountedLayerInterfaceFactoryPart;;
+    CountedLayerInterfaceFactoryPart countedLayerInterfaceFactory = collidableDestroyableDamageableLayer.getPartInterfaceArray()[partIndex];;
     
 countedLayerInterfaceFactory.setTotal(countedLayerInterfaceFactory.getTotal() +countedPickedUpLayerInterfaceFactoryInterface.getTotal());
     
@@ -246,7 +234,7 @@ countedLayerInterfaceFactory.setTotal(countedLayerInterfaceFactory.getTotal() +c
 
     public: CountedLayerInterfaceFactoryPart getFirstAvailableCountedLayerInterfaceFactory(std::vector<PickedUpLayerType> pickedUpLayerTypeArray){
 
-    CollidableDestroyableDamageableLayer collidableDestroyableDamageableLayer = this->ownerLayerInterface as CollidableDestroyableDamageableLayer;;
+    CollidableDestroyableDamageableLayer collidableDestroyableDamageableLayer = this->ownerLayerInterface;;
     
 
     std::vector<PartInterface> partInterfaceArray = collidableDestroyableDamageableLayer.getPartInterfaceArray();;
@@ -267,7 +255,7 @@ countedLayerInterfaceFactory.setTotal(countedLayerInterfaceFactory.getTotal() +c
                         for (
     int32_t index = this->countedIndex;index < size; index++)
         {
-nextCountedLayerInterfaceFactory= collidableDestroyableDamageableLayer.getPartInterfaceArray()[index]! as CountedLayerInterfaceFactoryPart;
+nextCountedLayerInterfaceFactory= collidableDestroyableDamageableLayer.getPartInterfaceArray()[index];
     
 countedPickedUpLayerInterfaceFactory= nextCountedLayerInterfaceFactory.getCountedPickedUpLayerInterfaceFactory();
     
@@ -318,7 +306,7 @@ countedPickedUpLayerInterfaceFactory= nextCountedLayerInterfaceFactory.getCounte
     int32_t currentSlot = 0;;
     
 
-    CollidableDestroyableDamageableLayer collidableDestroyableDamageableLayer = this->ownerLayerInterface as CollidableDestroyableDamageableLayer;;
+    CollidableDestroyableDamageableLayer collidableDestroyableDamageableLayer = this->ownerLayerInterface;;
     
 
     std::vector<PartInterface> partInterfaceArray = collidableDestroyableDamageableLayer.getPartInterfaceArray();;
@@ -336,7 +324,7 @@ countedPickedUpLayerInterfaceFactory= nextCountedLayerInterfaceFactory.getCounte
                         for (
     int32_t index = this->countedIndex;index < size; index++)
         {
-nextCountedLayerInterfaceFactory= collidableDestroyableDamageableLayer.getPartInterfaceArray()[index]! as CountedLayerInterfaceFactoryPart;
+nextCountedLayerInterfaceFactory= collidableDestroyableDamageableLayer.getPartInterfaceArray()[index];
     
 
                         if(nextCountedLayerInterfaceFactory.getTotal() > 0)

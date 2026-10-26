@@ -18,7 +18,9 @@
 
 
 
-            #include "../../../java/lang/Object.h"
+            #include <vector>
+        
+            #include "java/lang/Object.h"
         
 
 
@@ -46,6 +48,8 @@ class RectangleFactory
          {
 
     public: static const Rectangle SINGLETON = Rectangle(PointFactory::getInstance().ZERO_ZERO, 0, 0);
+
+    public: static const std::vector<std::vector<Rectangle>> ARRAY_OF_ARRAYS = std::vector<std::vector<Rectangle>>(0, std::vector<Rectangle>(0));
 
 };
 

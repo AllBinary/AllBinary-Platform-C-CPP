@@ -21,9 +21,9 @@
         #ifndef ORG_ALLBINARY_LOGIC_VISUAL_MEDIA_MEDIADATA_H
         #define ORG_ALLBINARY_LOGIC_VISUAL_MEDIA_MEDIADATA_H
 
-            #include "../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
 
@@ -56,7 +56,7 @@ class MediaData
             : public Object
          {
 
-    private: static HashMap<any, any> hashMap = StdUtil::getInstance().createHashMap();
+    private: static HashMap<Object*, Object*> hashMap = StdUtil::getInstance().createHashMap();
 
                 //@Throws(Exception.constructor)
             
@@ -64,7 +64,7 @@ class MediaData
 
     public: static MediaData getDefault();
 
-    public: static HashMap<any, any> toHashMap();
+    public: static HashMap<Object*, Object*> toHashMap();
 
     private: std::string name;
 

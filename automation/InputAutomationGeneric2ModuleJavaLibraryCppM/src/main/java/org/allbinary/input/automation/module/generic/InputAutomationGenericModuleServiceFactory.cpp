@@ -20,7 +20,7 @@
 
             #include <vector>
         
-            #include "../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/input/automation/module/InputAutomationModuleFactoryInterface.h>
 
@@ -71,7 +71,7 @@ public: InputAutomationGenericModuleServiceFactory(){
 
         try {
             
-    std::vector<InputAutomationModuleFactoryInterface> inputAutomationModuleInterfaceArray = new Array(1);;
+    std::vector<InputAutomationModuleFactoryInterface> inputAutomationModuleInterfaceArray = std::vector<InputAutomationModuleFactoryInterface>(1);;
     
 inputAutomationModuleInterfaceArray[0]= GenericModuleFactory();
     

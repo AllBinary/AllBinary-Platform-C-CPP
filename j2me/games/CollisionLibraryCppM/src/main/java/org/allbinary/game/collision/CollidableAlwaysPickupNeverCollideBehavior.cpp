@@ -45,8 +45,9 @@
 
 class CollidableAlwaysPickupNeverCollideBehavior: public CollidableNeverCollideBehavior {
 
-: CollidableAlwaysPickupNeverCollideBehavior(){
-            super(true);
+: CollidableAlwaysPickupNeverCollideBehavior() : CollidableNeverCollideBehavior(true){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.

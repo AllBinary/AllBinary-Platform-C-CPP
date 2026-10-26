@@ -18,18 +18,12 @@
 
 
 
-            #include "../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../../java/lang/Runnable.h"
+            #include "java/lang/Runnable.h"
         
-#include <jsinterop/annotations/JsType.h>
-
-      
-#include <java/util/Hashtable.h>
-
-      
 #include <org/allbinary/graphics/canvas/transition/progress/ProgressCanvas.h>
 
       
@@ -45,13 +39,7 @@
 #include <org/allbinary/string/CommonStrings.h>
 
       
-#include <jsinterop/annotations/JsMethod.h>
-
-      
-#include <jsinterop/annotations/JsConstructor.h>
-
-      
-#include <jsinterop/annotations/JsProperty.h>
+#include <org/allbinary/util/ABHashtable.h>
 
       
 
@@ -87,11 +75,11 @@ class CreateGameRunnable
 
     private: DemoGameMidlet demoGameMidlet;
 
-    private: Hashtable<any, any> hashtable;
+    private: ABHashtable<Object*, Object*> hashtable;
 
     private: DemoGameMidletEvent startGameMidletEvent;
 
-public: CreateGameRunnable(DemoGameMidlet demoGameMidlet, Hashtable<any, any> hashtable){
+public: CreateGameRunnable(DemoGameMidlet demoGameMidlet, ABHashtable<Object*, Object*> hashtable){
 this->demoGameMidlet= demoGameMidlet;
     
 this->hashtable= hashtable;

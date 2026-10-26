@@ -18,9 +18,6 @@
 
 
 
-#include <jsinterop/annotations/JsType.h>
-
-      
 #include <org/allbinary/graphics/GPoint.h>
 
       
@@ -48,12 +45,6 @@
 #include <org/allbinary/string/CommonLabels.h>
 
       
-#include <jsinterop/annotations/JsMethod.h>
-
-      
-#include <jsinterop/annotations/JsConstructor.h>
-
-      
 
 
 
@@ -75,8 +66,6 @@
         
 class MotionGestureEvent: public AllBinaryEventObject {
 
-    private: static const std::string CURRENT = CommonLabels::getInstance().CURRENT;
-
     private: static const std::string PREVIOUS = " Previous: ";
 
     private: static const std::string HASHCODE = " hashcode: ";
@@ -89,8 +78,9 @@ class MotionGestureEvent: public AllBinaryEventObject {
 
     private: GPoint currentPoint = PointFactory::getInstance().ZERO_ZERO;
 
-public: MotionGestureEvent(Object* source, int32_t id, MotionGestureInput motionGesture){
-            super(source);
+public: MotionGestureEvent(Object* source, int32_t id, MotionGestureInput motionGesture) : AllBinaryEventObject(source){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -150,6 +140,8 @@ this->currentPoint= currentPoint;
 }
 
 
+    private: const CommonLabels commonLabels = CommonLabels::getInstance();
+
     public: std::string toString(){
 
     StringMaker stringBuffer = StringMaker();;
@@ -159,7 +151,7 @@ this->currentPoint= currentPoint;
     
 stringBuffer.append(stringUtil.toString(this->motionGesture));
     
-stringBuffer.append(MotionGestureEvent::CURRENT);
+stringBuffer.append(this->commonLabels.CURRENT);
     
 stringBuffer.append(stringUtil.toString(this->currentPoint));
     

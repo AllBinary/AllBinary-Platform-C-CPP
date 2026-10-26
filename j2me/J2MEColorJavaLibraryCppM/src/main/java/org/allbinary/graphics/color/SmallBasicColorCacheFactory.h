@@ -23,7 +23,7 @@
 
             #include <vector>
         
-            #include "../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
 #include <org/allbinary/logic/string/StringUtil.h>
 
@@ -59,9 +59,9 @@ class SmallBasicColorCacheFactory
 
     private: const int32_t SIZE = 255;
 
-    private: const std::vector<int32_t> INDEX_TO_COLOR = new Array(this->SIZE);
+    private: const std::vector<int32_t> INDEX_TO_COLOR = std::vector<int32_t>(this->SIZE);
 
-    private: const std::vector<BasicColor> BASIC_COLOR_ARRAY = new Array(this->SIZE);
+    private: const std::vector<BasicColor> BASIC_COLOR_ARRAY = std::vector<BasicColor>(this->SIZE);
 
     private: int32_t colorIndex = 0;
 

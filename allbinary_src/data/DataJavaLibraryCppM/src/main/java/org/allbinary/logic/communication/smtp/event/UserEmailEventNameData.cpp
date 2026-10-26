@@ -18,9 +18,9 @@
 
 
 
-            #include "../../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
 
@@ -54,7 +54,7 @@ class UserEmailEventNameData
             : public Object
          {
 
-    private: static HashMap<any, any> userNameEvenNameHashMap = StdUtil::getInstance().createHashMap();
+    private: static HashMap<Object*, Object*> userNameEvenNameHashMap = StdUtil::getInstance().createHashMap();
 
     private: static int32_t nextId = 0;
 
@@ -111,7 +111,7 @@ class UserEmailEventNameData
 
     public: static UserEmailEventNameData getInstance(std::string userEmailEventNameString){
 
-    UserEmailEventNameData userEmailEventNameData = UserEmailEventNameData::userNameEvenNameHashMap.get(userEmailEventNameString) as UserEmailEventNameData;;
+    UserEmailEventNameData userEmailEventNameData = UserEmailEventNameData::userNameEvenNameHashMap.get(userEmailEventNameString);;
     
 
                         if(userEmailEventNameData == 

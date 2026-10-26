@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/logic/string/StringUtil.h>
 
@@ -47,8 +47,9 @@
 
 class AbFilePath: public AbPath {
 
-public: AbFilePath(std::string aPath){
-            super(StringUtil::getInstance().EMPTY_STRING, StringUtil::getInstance().EMPTY_STRING);
+public: AbFilePath(std::string aPath) : AbPath(StringUtil::getInstance().EMPTY_STRING, StringUtil::getInstance().EMPTY_STRING){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.

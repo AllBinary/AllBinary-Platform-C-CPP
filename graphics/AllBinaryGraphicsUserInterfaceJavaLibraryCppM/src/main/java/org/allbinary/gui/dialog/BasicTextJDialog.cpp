@@ -72,8 +72,9 @@ BasicTextJDialog(javax::swing::JFrame(), true, "Test").setVisible(true);
 
     private: CloseJDialogListenerInterface closeListenerInterface;
 
-public: BasicTextJDialog(java::awt::Frame parent, bool modal, std::string text){
-            super(parent, modal);
+public: BasicTextJDialog(java::awt::Frame parent, bool modal, std::string text) : javax::swing::JDialog(parent, modal){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.

@@ -18,9 +18,9 @@
 
 
 
-            #include "../../../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/business/context/modules/storefront/StoreFrontInterface.h>
 
@@ -82,13 +82,13 @@ class RealTimeStoreFrontStatistics
     private: StoreFrontOrdersHistoryStatisticsInterface storeFrontOrderHistoryStatisticsInterface;
 
 public: RealTimeStoreFrontStatistics(StoreFrontInterface storeFrontInterface){
-this->storeFrontAdvertisementsStatisticsInterface= StoreFrontAdvertisementsStatistics(storeFrontInterface) as StoreFrontAdvertisementsStatisticsInterface;
+this->storeFrontAdvertisementsStatisticsInterface= StoreFrontAdvertisementsStatistics(storeFrontInterface);
     
-this->storeFrontUsersStatisticsInterface= StoreFrontUsersStatistics(storeFrontInterface) as StoreFrontUsersStatisticsInterface;
+this->storeFrontUsersStatisticsInterface= StoreFrontUsersStatistics(storeFrontInterface);
     
-this->storeFrontInventoryStatisticsInterface= StoreFrontInventoryStatistics(storeFrontInterface) as StoreFrontInventoryStatisticsInterface;
+this->storeFrontInventoryStatisticsInterface= StoreFrontInventoryStatistics(storeFrontInterface);
     
-this->storeFrontOrderHistoryStatisticsInterface= StoreFrontOrdersHistoryStatistics(storeFrontInterface) as StoreFrontOrdersHistoryStatisticsInterface;
+this->storeFrontOrderHistoryStatisticsInterface= StoreFrontOrdersHistoryStatistics(storeFrontInterface);
     
 }
 

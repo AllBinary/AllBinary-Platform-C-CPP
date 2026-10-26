@@ -18,11 +18,11 @@
 
 
 
-            #include "../../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../../../../java/lang/RuntimeException.h"
+            #include "java/lang/RuntimeException.h"
         
 #include <java/util/HashMap.h>
 
@@ -213,9 +213,9 @@ public: RootCategoryPropertiesAbstract(){
 }
 
 
-    public: HashMap<any, any> toHashMap(){
+    public: HashMap<Object*, Object*> toHashMap(){
 
-    HashMap<any, any> categoryHashMap = StdUtil::getInstance().createHashMap();;
+    HashMap<Object*, Object*> categoryHashMap = StdUtil::getInstance().createHashMap();;
     
 categoryHashMap.put(CategoryData::getInstance().NAME, this->category);
     

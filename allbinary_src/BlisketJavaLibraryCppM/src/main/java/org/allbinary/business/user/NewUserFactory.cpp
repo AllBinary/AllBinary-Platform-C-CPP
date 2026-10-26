@@ -18,9 +18,9 @@
 
 
 
-            #include "../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
 
@@ -84,16 +84,16 @@ class NewUserFactory
             
     public: static UserInterface getInstance(TransformInfoInterface transformInfoInterface){
 
-    TransformInfoHttpInterface httpTransformInfoInterface = transformInfoInterface as TransformInfoHttpInterface;;
+    TransformInfoHttpInterface httpTransformInfoInterface = transformInfoInterface;;
     
 
-    HttpServletRequest httpServletRequest = httpTransformInfoInterface.getPageContext().getRequest() as HttpServletRequest;;
+    HttpServletRequest httpServletRequest = httpTransformInfoInterface.getPageContext().getRequest();;
     
 
-    HashMap<any, any> hashMap = RequestParams(httpServletRequest).toHashMap();;
+    HashMap<Object*, Object*> hashMap = RequestParams(httpServletRequest).toHashMap();;
     
 
-    std::string role = httpTransformInfoInterface.getPropertiesHashMap().get(UserRoleData::NAME.toString()) as string;;
+    std::string role = httpTransformInfoInterface.getPropertiesHashMap().get(UserRoleData::NAME.toString());;
     
 hashMap.put(UserRoleData::NAME.toString(), role);
     
@@ -108,7 +108,7 @@ hashMap.put(UserRoleData::NAME.toString(), role);
 
                 //@Throws(Exception.constructor)
             
-    public: static UserInterface getInstance(HttpServletRequest httpServletRequest, HashMap<any, any> propertiesHashMap){
+    public: static UserInterface getInstance(HttpServletRequest httpServletRequest, HashMap<Object*, Object*> propertiesHashMap){
 
                         if(propertiesHashMap != 
                                     nullptr
@@ -116,10 +116,10 @@ hashMap.put(UserRoleData::NAME.toString(), role);
                         
                                     {
                                     
-    HashMap<any, any> requestHashMap = RequestParams(httpServletRequest).toHashMap();;
+    HashMap<Object*, Object*> requestHashMap = RequestParams(httpServletRequest).toHashMap();;
     
 
-    std::string roleString = propertiesHashMap.get(UserRoleData::NAME.toString()) as string;;
+    std::string roleString = propertiesHashMap.get(UserRoleData::NAME.toString());;
     
 requestHashMap.put(UserRoleData::NAME.toString(), roleString);
     

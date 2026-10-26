@@ -21,11 +21,8 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_FORM_ITEM_CUSTOMTEXTBOX_H
         #define ORG_ALLBINARY_GRAPHICS_FORM_ITEM_CUSTOMTEXTBOX_H
 
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-#include <jsinterop/annotations/JsType.h>
-
-      
 #include <javax/microedition/lcdui/CommandListener.h>
 
       
@@ -66,12 +63,6 @@
 
       
 #include <org/allbinary/string/CommonSeps.h>
-
-      
-#include <jsinterop/annotations/JsMethod.h>
-
-      
-#include <jsinterop/annotations/JsConstructor.h>
 
       
 

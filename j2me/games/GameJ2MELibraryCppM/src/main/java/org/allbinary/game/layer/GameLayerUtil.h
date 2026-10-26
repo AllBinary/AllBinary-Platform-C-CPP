@@ -21,7 +21,7 @@
         #ifndef ORG_ALLBINARY_GAME_LAYER_GAMELAYERUTIL_H
         #define ORG_ALLBINARY_GAME_LAYER_GAMELAYERUTIL_H
 
-            #include "../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
 #include <org/allbinary/graphics/displayable/DisplayInfoSingleton.h>
 

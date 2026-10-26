@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../../../../../java/lang/Integer.h"
+            #include "java/lang/Integer.h"
         
 #include <java/awt.h>
 
@@ -54,8 +54,9 @@
 
 class NoImageComparatorConstraints: public ImageComparatorConstraints {
 
-public: NoImageComparatorConstraints(){
-            super(1);
+public: NoImageComparatorConstraints() : ImageComparatorConstraints(1){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.

@@ -20,7 +20,7 @@
 
             #include <vector>
         
-            #include "../../../../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
 #include <java/util/HashMap.h>
 
@@ -100,9 +100,9 @@ class UploadMediaSingleton
 
     protected: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    private: HashMap<any, any> readerFileTypesHashMap;
+    private: HashMap<Object*, Object*> readerFileTypesHashMap;
 
-    private: HashMap<any, any> writerFileTypesHashMap;
+    private: HashMap<Object*, Object*> writerFileTypesHashMap;
 
 private: UploadMediaSingleton(){
 this->readerFileTypesHashMap= StdUtil::getInstance().createHashMap();
@@ -110,7 +110,7 @@ this->readerFileTypesHashMap= StdUtil::getInstance().createHashMap();
 this->writerFileTypesHashMap= StdUtil::getInstance().createHashMap();
     
 
-    HashMap<any, any> hashMap = MediaData::toHashMap();;
+    HashMap<Object*, Object*> hashMap = MediaData::toHashMap();;
     
 
     Set set = hashMap.keys();;
@@ -129,10 +129,10 @@ this->writerFileTypesHashMap= StdUtil::getInstance().createHashMap();
     int32_t index = 0;index < size; index++)
         {
 
-    std::string mediaDataName = mediaDataNameArray[index]! as string;;
+    std::string mediaDataName = mediaDataNameArray[index];;
     
 
-    MediaData mediaData = hashMap.get(mediaDataName) as MediaData;;
+    MediaData mediaData = hashMap.get(mediaDataName);;
     
 this->readerFileTypesHashMap.put(mediaData.getName(), mediaData.getType());
     
@@ -154,7 +154,7 @@ this->readerFileTypesHashMap.put(mediaData.getName(), mediaData.getType());
                         for (
     int32_t index = 0;index < readerFileTypes.size(); index++)
         {
-this->readerFileTypesHashMap.put(readerFileTypes[index]!, RESIZABLE_MEDIA);
+this->readerFileTypesHashMap.put(readerFileTypes[index], RESIZABLE_MEDIA);
     
 }
 
@@ -168,7 +168,7 @@ this->readerFileTypesHashMap.put(readerFileTypes[index]!, RESIZABLE_MEDIA);
                         for (
     int32_t index = 0;index < writerFileTypes.size(); index++)
         {
-this->writerFileTypesHashMap.put(writerFileTypes[index]!, RESIZABLE_MEDIA);
+this->writerFileTypesHashMap.put(writerFileTypes[index], RESIZABLE_MEDIA);
     
 }
 
@@ -255,16 +255,16 @@ this->logUtil.putF(stringBuffer.toString(), this, this->commonStrings.CONSTRUCTO
 }
 
 
-    private: bool isMedia(std::string mediaFileType, std::string aMediaType, HashMap<any, any> hashMap){
+    private: bool isMedia(std::string mediaFileType, std::string aMediaType, HashMap<Object*, Object*> hashMap){
 
                         if(hashMap.containsKey(mediaFileType))
                         
                                     {
                                     
-    std::string mediaType = hashMap.get(mediaFileType) as string;;
+    std::string mediaType = hashMap.get(mediaFileType);;
     
 
-                        if(mediaType.compareTo(aMediaType) == 0)
+                        if(mediaType.compare(aMediaType) == 0)
                         
                                     {
                                     

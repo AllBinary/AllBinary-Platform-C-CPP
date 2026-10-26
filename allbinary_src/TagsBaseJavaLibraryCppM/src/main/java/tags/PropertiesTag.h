@@ -54,11 +54,11 @@ class PropertiesTag: public CommandTag {
 
     protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: HashMap<any, any> propertiesHashMap;
+    private: HashMap<Object*, Object*> propertiesHashMap;
 
 public: PropertiesTag();
 
-    protected: HashMap<any, any> getPropertiesHashMap();
+    protected: HashMap<Object*, Object*> getPropertiesHashMap();
 
     public: int32_t doEndTag();
 

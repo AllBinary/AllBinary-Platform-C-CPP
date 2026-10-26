@@ -20,11 +20,11 @@
 
             #include <vector>
         
-            #include "../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../../../java/lang/Integer.h"
+            #include "java/lang/Integer.h"
         
 #include <java/util/HashMap.h>
 
@@ -74,7 +74,7 @@ class SearchParams
             : public Object
          {
 
-    private: HashMap<any, any> columnsAndSearchValues;
+    private: HashMap<Object*, Object*> columnsAndSearchValues;
 
     private: std::string order;
 
@@ -163,7 +163,7 @@ this->endPage= value;
 }
 
 
-    public: HashMap<any, any> get(){
+    public: HashMap<Object*, Object*> get(){
 
 
 
@@ -329,10 +329,10 @@ paramsNode.appendChild(this->getLengthNode(document));
     int32_t index = 0;index < size; index++)
         {
 
-    std::string key = searchValueArray[index]! as string;;
+    std::string key = searchValueArray[index];;
     
 
-    std::string searchValue = this->columnsAndSearchValues.get(key) as string;;
+    std::string searchValue = this->columnsAndSearchValues.get(key);;
     
 fieldsNode.appendChild(ModDomHelper::createNameValueNodes(document, SearchData::FIELD, key, ToDomHelper::convertNull(searchValue)));
     

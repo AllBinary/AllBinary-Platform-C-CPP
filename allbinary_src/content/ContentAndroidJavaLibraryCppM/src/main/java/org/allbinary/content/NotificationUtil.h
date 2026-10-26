@@ -21,9 +21,9 @@
         #ifndef ORG_ALLBINARY_CONTENT_NOTIFICATIONUTIL_H
         #define ORG_ALLBINARY_CONTENT_NOTIFICATIONUTIL_H
 
-            #include "../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../java/lang/Integer.h"
+            #include "java/lang/Integer.h"
         
 #include <javax/microedition/lcdui/Command.h>
 
@@ -87,7 +87,7 @@ class NotificationUtil
 
     protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: NotificationManager notificationManager = ResourceUtil::getInstance().getContext().getSystemService(Context::NOTIFICATION_SERVICE) as NotificationManager;
+    private: NotificationManager notificationManager = ResourceUtil::getInstance().getContext().getSystemService(Context::NOTIFICATION_SERVICE);
 
     private: const NotificationBuilder notificationBuilder;
 

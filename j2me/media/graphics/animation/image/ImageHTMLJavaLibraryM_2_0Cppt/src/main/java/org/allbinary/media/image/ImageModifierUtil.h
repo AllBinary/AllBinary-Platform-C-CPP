@@ -23,11 +23,11 @@
 
             #include <vector>
         
-            #include "../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../java/lang/Throwable.h"
+            #include "java/lang/Throwable.h"
         
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <javax/microedition/lcdui/Graphics.h>
 
@@ -62,16 +62,13 @@
 #include <playn/core/Canvas.h>
 
       
+#include <playn/core/CoreImage.h>
+
+      
 #include <playn/core/ImageImpl.h>
 
       
-#include <playn/core/PlayN.h>
-
-      
-#include <playn/html/HtmlGraphics.h>
-
-      
-#include <playn/html/HtmlImage.h>
+#include <playn/html/HTMLPlaynUtil.h>
 
       
 
@@ -105,6 +102,8 @@ class ImageModifierUtil
 
     private: const ResourceCallbackStrings resourceCallbackStrings = ResourceCallbackStrings::getInstance();
 
+    private: const HTMLPlaynUtil playnUtil = HTMLPlaynUtil::getInstance();
+
     private: std::vector<bool> alphaArray;
 
     public: void setColor(Image unusedOriginalImage, Image image, int32_t imageIndex, BasicColor basicColor);
@@ -123,7 +122,7 @@ class ImageModifierUtil
 
     public: void handleImage(std::vector<Image> imageArray, int32_t index, Image image);
 
-    public: void copy(std::vector<Image> imageArray, int32_t index, Image image, playn::core::Image image3);
+    public: void copy(std::vector<Image> imageArray, int32_t index, Image image, CoreImage image3);
 
     public: void reset();
 

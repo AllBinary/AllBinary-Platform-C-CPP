@@ -21,21 +21,12 @@
         #ifndef ORG_ALLBINARY_MEDIA_SCALEPROPERTIES_H
         #define ORG_ALLBINARY_MEDIA_SCALEPROPERTIES_H
 
-            #include "../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-#include <jsinterop/annotations/JsType.h>
-
-      
 #include <org/allbinary/logic/string/StringMaker.h>
 
       
 #include <org/allbinary/string/CommonLabels.h>
-
-      
-#include <jsinterop/annotations/JsMethod.h>
-
-      
-#include <jsinterop/annotations/JsProperty.h>
 
       
 

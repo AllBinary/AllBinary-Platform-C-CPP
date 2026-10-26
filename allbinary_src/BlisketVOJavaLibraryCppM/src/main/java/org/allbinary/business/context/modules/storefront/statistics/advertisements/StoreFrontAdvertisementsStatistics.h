@@ -21,9 +21,9 @@
         #ifndef ORG_ALLBINARY_BUSINESS_CONTEXT_MODULES_STOREFRONT_STATISTICS_ADVERTISEMENTS_STOREFRONTADVERTISEMENTSSTATISTICS_H
         #define ORG_ALLBINARY_BUSINESS_CONTEXT_MODULES_STOREFRONT_STATISTICS_ADVERTISEMENTS_STOREFRONTADVERTISEMENTSSTATISTICS_H
 
-            #include "../../../../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
 
@@ -66,7 +66,7 @@ class StoreFrontAdvertisementsStatistics
 
 public: StoreFrontAdvertisementsStatistics(StoreFrontInterface storeFrontInterface);
 
-    public: HashMap<any, any> toHashMap();
+    public: HashMap<Object*, Object*> toHashMap();
 
     public: BasicArrayList toVector();
 

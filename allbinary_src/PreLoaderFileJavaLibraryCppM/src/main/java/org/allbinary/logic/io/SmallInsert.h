@@ -21,11 +21,11 @@
         #ifndef ORG_ALLBINARY_LOGIC_IO_SMALLINSERT_H
         #define ORG_ALLBINARY_LOGIC_IO_SMALLINSERT_H
 
-            #include "../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../../java/lang/System.h"
+            #include "java/lang/System.h"
         
 #include <java/io/DataOutputStream.h>
 

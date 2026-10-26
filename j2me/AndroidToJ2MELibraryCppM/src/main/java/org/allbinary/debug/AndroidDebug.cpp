@@ -18,11 +18,11 @@
 
 
 
-            #include "../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../java/lang/System.h"
+            #include "java/lang/System.h"
         
-            #include "../../../java/lang/Long.h"
+            #include "java/lang/Long.h"
         
 #include <android/os/Debug.h>
 
@@ -58,7 +58,7 @@ class AndroidDebug
     private: int32_t bufferSize = 32 *1024 *1024;
 
     public: void start(){
-this->setStartTime(Date.now());
+this->setStartTime(System.currentTimeMillis());
     
 Debug::startMethodTracing("trace", this->bufferSize);
     

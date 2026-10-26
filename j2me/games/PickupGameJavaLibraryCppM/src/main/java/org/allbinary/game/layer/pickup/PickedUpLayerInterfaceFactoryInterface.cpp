@@ -18,16 +18,10 @@
 
 
 
-#include <jsinterop/annotations/JsType.h>
-
-      
 #include <org/allbinary/animation/Animation.h>
 
       
 #include <org/allbinary/layer/AllBinaryLayer.h>
-
-      
-#include <jsinterop/annotations/JsMethod.h>
 
       
 

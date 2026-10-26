@@ -55,7 +55,7 @@ class AdvertisementCampaignInternalEntityInterface: public BasicDataTableInterfa
 
     void insert(BasicArrayList values)
 
-    void update(HashMap<any, any> updatedValues)
+    void update(HashMap<Object*, Object*> updatedValues)
 
 };
 

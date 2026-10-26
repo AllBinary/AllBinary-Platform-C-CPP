@@ -18,9 +18,9 @@
 
 
 
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../../java/lang/Math.h"
+            #include "java/lang/Math.h"
         
 #include <org/allbinary/graphics/GPoint.h>
 
@@ -56,8 +56,9 @@
 
 class GraphicsPipeline: public BasicGraphicsPipeline {
 
-public: GraphicsPipeline(BasicArrayList points){
-            super(points);
+public: GraphicsPipeline(BasicArrayList points) : BasicGraphicsPipeline(points){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -82,7 +83,7 @@ public: GraphicsPipeline(BasicArrayList points){
     int32_t index = 0;index < size; index++)
         {
 
-    GPoint secondPoint = pointBasicArrayList.get(index) as GPoint;;
+    GPoint secondPoint = pointBasicArrayList.get(index);;
     
 
     double secondX = (secondPoint.getX() *Math::cos(aTheta)) -(secondPoint.getY() *Math::sin(aTheta));;

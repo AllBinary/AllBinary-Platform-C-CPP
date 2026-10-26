@@ -6,7 +6,7 @@
 
             #include <vector>
         
-            #include "../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
 #include <java/awt.h>
 
@@ -84,8 +84,8 @@ rows= (bufferedImageArray.size() /columns);
                                     }
                                 
 
-    BufferedImage bufferedImage = this->imageUtil.create(bufferedImageArray[0]!.getWidth(
-                            nullptr) *columns, bufferedImageArray[0]!.getHeight(
+    BufferedImage bufferedImage = this->imageUtil.create(bufferedImageArray[0].getWidth(
+                            nullptr) *columns, bufferedImageArray[0].getHeight(
                             nullptr) *rows);;
     
 
@@ -115,10 +115,10 @@ columnIndex= 0;
 
                                     }
                                 
-g.drawImage(bufferedImageArray[index]!, bufferedImageArray[index]!.getWidth(
-                            nullptr) *columnIndex, bufferedImageArray[index]!.getHeight(
-                            nullptr) *rowIndex, bufferedImageArray[index]!.getWidth(
-                            nullptr), bufferedImageArray[index]!.getHeight(
+g.drawImage(bufferedImageArray[index], bufferedImageArray[index].getWidth(
+                            nullptr) *columnIndex, bufferedImageArray[index].getHeight(
+                            nullptr) *rowIndex, bufferedImageArray[index].getWidth(
+                            nullptr), bufferedImageArray[index].getHeight(
                             nullptr), 
                             nullptr);
     

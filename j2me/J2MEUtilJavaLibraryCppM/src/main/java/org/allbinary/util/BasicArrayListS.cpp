@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../java/lang/IllegalArgumentException.h"
+            #include "java/lang/IllegalArgumentException.h"
         
 #include <jsinterop/annotations/JsType.h>
 
@@ -54,8 +54,9 @@
 
 class BasicArrayListS: public BasicArrayList {
 
-public: BasicArrayListS(int32_t size){
-            super(NullUtil::getInstance().NULL_OBJECT_ARRAY);
+public: BasicArrayListS(int32_t size) : BasicArrayList(NullUtil::getInstance().NULL_OBJECT_ARRAY){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -72,7 +73,7 @@ public: BasicArrayListS(int32_t size){
 
                                     }
                                 
-this->objectArray= new Array(size);
+this->objectArray= std::vector<Object*>(size);
     
 }
 

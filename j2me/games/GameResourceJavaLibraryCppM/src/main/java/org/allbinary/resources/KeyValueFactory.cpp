@@ -18,12 +18,12 @@
 
 
 
-            #include "../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-#include <java/util/Hashtable.h>
+#include <org/allbinary/logic/StdUtil.h>
 
       
-#include <org/allbinary/logic/StdUtil.h>
+#include <org/allbinary/util/ABHashtable.h>
 
       
 
@@ -61,11 +61,11 @@ class KeyValueFactory
 }
 
 
-    public: const Hashtable<any, any> MAP = StdUtil::getInstance().createHashtable();
+    public: const ABHashtable<Object*, Object*> MAP = StdUtil::getInstance().createHashtable();
 
     public: std::string get(std::string key){
 
-    std::string value = this->MAP.get(key) as string;;
+    std::string value = this->MAP.get(key);;
     
 
                         if(false)

@@ -21,7 +21,7 @@
         #ifndef ORG_ALLBINARY_GAME_MIDLET_LICENSELEVELUTIL_H
         #define ORG_ALLBINARY_GAME_MIDLET_LICENSELEVELUTIL_H
 
-            #include "../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
 
 

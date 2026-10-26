@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <javax/microedition/lcdui/Image.h>
 
@@ -48,8 +48,9 @@
 
 class AllBinaryPlatformImageRotationAnimationFactory: public AllBinaryAndroidImageRotationAnimationFactory {
 
-public: AllBinaryPlatformImageRotationAnimationFactory(Image image, int32_t width, int32_t height, int16_t angleIncrement, AnimationBehaviorFactory animationBehaviorFactory, bool resizeCanvasForRotation){
-            super(image, width, height, angleIncrement, animationBehaviorFactory, resizeCanvasForRotation);
+public: AllBinaryPlatformImageRotationAnimationFactory(Image image, int32_t width, int32_t height, int16_t angleIncrement, AnimationBehaviorFactory animationBehaviorFactory, bool resizeCanvasForRotation) : AllBinaryAndroidImageRotationAnimationFactory(image, width, height, angleIncrement, animationBehaviorFactory, resizeCanvasForRotation){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.

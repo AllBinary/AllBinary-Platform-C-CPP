@@ -18,11 +18,11 @@
 
 
 
-            #include "../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../../java/lang/RuntimeException.h"
+            #include "java/lang/RuntimeException.h"
         
 #include <org/allbinary/game/layer/special/CollidableDestroyableDamageableLayer.h>
 
@@ -92,7 +92,7 @@ this->ownedWaypointList= BasicArrayListS(1);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->constructor.name.toString()!;;
+                        return this->constructor.name.toString();;
     
 }
 

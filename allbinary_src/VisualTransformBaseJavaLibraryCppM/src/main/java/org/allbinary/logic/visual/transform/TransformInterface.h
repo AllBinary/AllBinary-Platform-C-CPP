@@ -21,7 +21,7 @@
         #ifndef ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_TRANSFORMINTERFACE_H
         #define ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_TRANSFORMINTERFACE_H
 
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/data/tree/dom/document/mapping/DomDocumentMappingInterface.h>
 

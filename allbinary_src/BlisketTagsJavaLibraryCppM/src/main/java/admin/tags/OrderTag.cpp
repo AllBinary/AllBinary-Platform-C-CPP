@@ -18,9 +18,9 @@
 
 
 
-            #include "../../java/lang/Class.h"
+            #include "java/lang/Class.h"
         
-            #include "../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/lang/reflect/Method.h>
 
@@ -85,7 +85,7 @@ class OrderTag: public CustomTagSupport {
 
     private: std::string storeName;
 
-    private: HashMap<any, any> propertiesHashMap;
+    private: HashMap<Object*, Object*> propertiesHashMap;
 
 public: OrderTag(){
 }
@@ -112,7 +112,7 @@ this->storeName= value;
     Object* anyType = OrderHelperFactory().getInstance(this->propertiesHashMap, this->pageContext);;
     
 
-    Function helperClass = anyType->constructor;;
+    Class* helperClass = anyType->getClass();;
     
 
     Method method = helperClass.getMethod(commonStrings.PROCESS, 
@@ -120,7 +120,7 @@ this->storeName= value;
     
 
     std::string result = method.invoke(anyType, 
-                            nullptr) as string;;
+                            nullptr);;
     
 
 
@@ -174,7 +174,7 @@ this->storeName= value;
     Object* anyType = OrderHelperFactory().getInstance(this->propertiesHashMap, this->pageContext);;
     
 
-    Function addressHelperClass = anyType->constructor;;
+    Class* addressHelperClass = anyType->getClass();;
     
 
     Method method = addressHelperClass.getMethod("setPaymentGateway", 
@@ -182,7 +182,7 @@ this->storeName= value;
     
 
     Boolean result = method.invoke(anyType, 
-                            nullptr) as Boolean;;
+                            nullptr);;
     
 
 
@@ -241,7 +241,7 @@ this->storeName= value;
 this->propertiesHashMap.put(StoreFrontData::getInstance().NAME, this->storeName);
     
 
-                        if(this->command.compareTo(org.allbinary.globals.GLOBALS2.PROCESS) == 0)
+                        if(this->command.compare(org.allbinary.globals.GLOBALS2.PROCESS) == 0)
                         
                                     {
                                     this->process();
@@ -250,7 +250,7 @@ this->propertiesHashMap.put(StoreFrontData::getInstance().NAME, this->storeName)
                                     }
                                 
                              else 
-                        if(this->command.compareTo(PaymentGatewayData::NAME.toString()) == 0)
+                        if(this->command.compare(PaymentGatewayData::NAME.toString()) == 0)
                         
                                     {
                                     

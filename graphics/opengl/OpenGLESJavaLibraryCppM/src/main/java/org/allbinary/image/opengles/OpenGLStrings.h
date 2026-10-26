@@ -7,7 +7,7 @@
         #ifndef ORG_ALLBINARY_IMAGE_OPENGLES_OPENGLSTRINGS_H
         #define ORG_ALLBINARY_IMAGE_OPENGLES_OPENGLSTRINGS_H
 
-            #include "../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
 
 

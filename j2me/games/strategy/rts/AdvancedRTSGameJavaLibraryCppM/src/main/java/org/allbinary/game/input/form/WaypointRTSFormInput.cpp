@@ -20,7 +20,7 @@
 
             #include <vector>
         
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/logic/string/StringMaker.h>
 
@@ -177,8 +177,9 @@ class WaypointRTSFormInput: public RTSFormInput {
 
     private: PathFindingLayerInterface stickyAssociatedRtsLayer = NullPathFindingLayer::NULL_PATH_FINDING_LAYER;
 
-public: WaypointRTSFormInput(std::vector<Group> groupInterface, bool isPrimaryWaypointCreator){
-            super(groupInterface);
+public: WaypointRTSFormInput(std::vector<Group> groupInterface, bool isPrimaryWaypointCreator) : RTSFormInput(groupInterface){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -212,7 +213,7 @@ this->noMoneyGameNotificationEvent= GameNotificationEvent(this, RTSGameStrings::
 super.setAllBinaryGameLayerManager(allBinaryGameLayerManager);
     
 
-    GeographicMapCompositeInterface geographicMapCompositeInterface = allBinaryGameLayerManager as GeographicMapCompositeInterface;;
+    GeographicMapCompositeInterface geographicMapCompositeInterface = allBinaryGameLayerManager;;
     
 
     BasicGeographicMap geographicMapInterface = geographicMapCompositeInterface.getGeographicMapInterface()[0];;
@@ -246,7 +247,7 @@ super.process(layerManager);
                         
                                     {
                                     
-    GeographicMapCompositeInterface geographicMapCompositeInterface = layerManager as GeographicMapCompositeInterface;;
+    GeographicMapCompositeInterface geographicMapCompositeInterface = layerManager;;
     
 
     BasicGeographicMap geographicMapInterface = geographicMapCompositeInterface.getGeographicMapInterface()[0];;
@@ -320,12 +321,12 @@ this->processCellPosition(rtsPlayerLayerInterface, layerManager, geographicMapCe
     GPoint cellPoint = geographicMapCellPosition.getPoint();;
     
 
-    RTSLayer rtsLayer = this->newUnconstructedRTSLayerInterfaceArray[itemIndex]! as RTSLayer;;
+    RTSLayer rtsLayer = this->newUnconstructedRTSLayerInterfaceArray[itemIndex];;
     
 rtsLayer.setPosition(cellPoint.getX(), cellPoint.getY(), rtsLayer.getZP());
     
 
-    GeographicMapCompositeInterface geographicMapCompositeInterface = rtsLayer.allBinaryGameLayerManagerP as GeographicMapCompositeInterface;;
+    GeographicMapCompositeInterface geographicMapCompositeInterface = rtsLayer.allBinaryGameLayerManagerP;;
     
 
     BasicGeographicMap geographicMapInterface = geographicMapCompositeInterface.getGeographicMapInterface()[0];;
@@ -335,7 +336,7 @@ rtsLayer.geographicMapCellPositionAreaBase.update(geographicMapInterface);
 
                         }
                             
-this->attemptBuild(rtsPlayerLayerInterface, layerManager, this->newUnconstructedRTSLayerInterfaceArray[itemIndex]! as RTSLayer, itemIndex);
+this->attemptBuild(rtsPlayerLayerInterface, layerManager, this->newUnconstructedRTSLayerInterfaceArray[itemIndex], itemIndex);
     
 }
 
@@ -351,7 +352,7 @@ this->setSelectedStickyItemIndex(index);
     
 this->setStickyItemSelected(true);
     
-this->stickyAssociatedRtsLayer= associatedRtsLayer as RTSLayer;
+this->stickyAssociatedRtsLayer= associatedRtsLayer;
     
 this->getHashtable().put(Layer::ID, associatedRtsLayer);
     
@@ -411,13 +412,13 @@ this->logUtil.putF("Layer: " +layerInterface, this, "attemptBuild");
                                     }
                                 
 
-    GeographicMapCompositeInterface geographicMapCompositeInterface = layerManager as GeographicMapCompositeInterface;;
+    GeographicMapCompositeInterface geographicMapCompositeInterface = layerManager;;
     
 
     BasicGeographicMap geographicMapInterface = geographicMapCompositeInterface.getGeographicMapInterface()[0];;
     
 
-    RaceTrackGeographicMapCellTypeFactory raceTrackGeographicMapCellTypeFactory = geographicMapInterface.getGeographicMapCellTypeFactory() as RaceTrackGeographicMapCellTypeFactory;;
+    RaceTrackGeographicMapCellTypeFactory raceTrackGeographicMapCellTypeFactory = geographicMapInterface.getGeographicMapCellTypeFactory();;
     
 
     GeographicMapCellType geographicMapCellType;;
@@ -429,7 +430,7 @@ this->logUtil.putF("Layer: " +layerInterface, this, "attemptBuild");
                         for (
     int32_t index = list.size();--index >= 0; )
         {
-geographicMapCellType= geographicMapInterface.getCellTypeAt(list.get(index) as GeographicMapCellPosition);
+geographicMapCellType= geographicMapInterface.getCellTypeAt(list.get(index));
     
 
                         if(raceTrackGeographicMapCellTypeFactory.isPath(geographicMapCellType))
@@ -496,24 +497,24 @@ WaypointCellPositionHistory::getInstance().addList(list, layerInterface);
     GeographicMapCellPosition geographicMapCellPosition = geographicMapInterface.getCellPositionAtXY(layerInterface.getXP(), layerInterface.getYP());;
     
 
-    WaypointLayer waypointLayer = layerInterface as WaypointLayer;;
+    WaypointLayer waypointLayer = layerInterface;;
     
 this->addWayPoint(waypointLayer);
     
 
-    RTSPlayerGameInput rtsPlayerGameInput = rtsPlayerLayerInterface.getPlayerGameInput() as RTSPlayerGameInput;;
+    RTSPlayerGameInput rtsPlayerGameInput = rtsPlayerLayerInterface.getPlayerGameInput();;
     
 rtsPlayerGameInput.setSelectedRTSLayer(layerInterface, geographicMapCellPosition);
     
 
-    AdvancedRTSPlayerLayerInterface advancedRTSPlayerLayerInterface = rtsPlayerLayerInterface as AdvancedRTSPlayerLayerInterface;;
+    AdvancedRTSPlayerLayerInterface advancedRTSPlayerLayerInterface = rtsPlayerLayerInterface;;
     
 advancedRTSPlayerLayerInterface.getAdvancedPlayerOwnedRTSLayers().addWaypoint(layerInterface);
     
 layerManager.append(layerInterface);
     
 
-    AdvancedRTSGameLayer waypointAvancedRTSGameLayer = waypointLayer as AdvancedRTSGameLayer;;
+    AdvancedRTSGameLayer waypointAvancedRTSGameLayer = waypointLayer;;
     
 rtsPlayerLayerInterface.add(waypointAvancedRTSGameLayer.getWaypointBehavior().getWaypoint().getSound());
     
@@ -563,7 +564,7 @@ rtsPlayerLayerInterface.add(waypointAvancedRTSGameLayer.getWaypointBehavior().ge
             
     private: void addWayPoint(WaypointLayer layerInterface){
 
-    AdvancedRTSGameLayer stickyAssociatedAdvandedRtsLayer = this->stickyAssociatedRtsLayer as AdvancedRTSGameLayer;;
+    AdvancedRTSGameLayer stickyAssociatedAdvandedRtsLayer = this->stickyAssociatedRtsLayer;;
     
 
     BasicArrayList list = stickyAssociatedAdvandedRtsLayer.getWaypointBehavior().getOwnedWaypointList();;
@@ -583,7 +584,7 @@ list.add(layerInterface);
                                 
 this->WAYPOINT_EVENT.setRtsLayer(layerInterface);
     
-WaypointEventHandlerFactory::getInstance(layerInterface.getGroupInterface()[0]!).fireEvent(this->WAYPOINT_EVENT);
+WaypointEventHandlerFactory::getInstance(layerInterface.getGroupInterface()[0]).fireEvent(this->WAYPOINT_EVENT);
     
 }
 

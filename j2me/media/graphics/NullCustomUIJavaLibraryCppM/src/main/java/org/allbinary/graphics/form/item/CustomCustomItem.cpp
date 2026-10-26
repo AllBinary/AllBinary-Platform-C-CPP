@@ -45,8 +45,9 @@ class CustomCustomItem: public ABCustomItem, public UpdateMyFontInterface {
 
     protected: MyFontProcessor myFontProcessor = this->updateMyFontProcessor;
 
-protected: CustomCustomItem(std::string label, BasicColor backgroundBasicColor, BasicColor foregroundBasicColor){
-            super(label, backgroundBasicColor, foregroundBasicColor);
+protected: CustomCustomItem(std::string label, BasicColor backgroundBasicColor, BasicColor foregroundBasicColor) : ABCustomItem(label, backgroundBasicColor, foregroundBasicColor){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.

@@ -21,14 +21,8 @@
         #ifndef ORG_ALLBINARY_ANIMATION_TRANSITION_SHAKE_SHAKEEVENT_H
         #define ORG_ALLBINARY_ANIMATION_TRANSITION_SHAKE_SHAKEEVENT_H
 
-            #include "../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-#include <jsinterop/annotations/JsType.h>
-
-      
-#include <jsinterop/annotations/JsConstructor.h>
-
-      
 
 
 

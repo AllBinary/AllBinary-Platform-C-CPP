@@ -18,9 +18,9 @@
 
 
 
-            #include "../../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/graphics/GPoint.h>
 
@@ -99,7 +99,7 @@ class PixelDeltaFactory
         try {
             logUtil.putF(commonStrings.START, instance, STATIC_BLOCK);
     
-PixelDeltaFactory::cacheInterface= CacheInterfaceFactory::getInstance(CacheTypeFactory::getInstance().CACHE, CachePolicyFactory::getInstance().THIRTY_MINUTES_TEN_THOUSAND_MAX) as AutomaticCacheInterface;
+PixelDeltaFactory::cacheInterface= CacheInterfaceFactory::getInstance(CacheTypeFactory::getInstance().CACHE, CachePolicyFactory::getInstance().THIRTY_MINUTES_TEN_THOUSAND_MAX);
     
 logUtil.putF(commonStrings.END, instance, STATIC_BLOCK);
     
@@ -126,7 +126,7 @@ logUtil.put(commonStrings.EXCEPTION, instance, STATIC_BLOCK, e);
     ColorDelta colorDelta = ColorDeltaFactory::getInstance(rgb1, rgb2);;
     
 
-    PixelDelta pixelDelta = PixelDeltaFactory::cacheInterface.get(PixelDelta::getKey(point, colorDelta)) as PixelDelta;;
+    PixelDelta pixelDelta = PixelDeltaFactory::cacheInterface.get(PixelDelta::getKey(point, colorDelta));;
     
 
                         if(pixelDelta == 

@@ -21,7 +21,7 @@
         #ifndef ORG_ALLBINARY_LOGIC_VISUAL_THEME_THEMESVALIDATION_H
         #define ORG_ALLBINARY_LOGIC_VISUAL_THEME_THEMESVALIDATION_H
 
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
 
@@ -75,7 +75,7 @@ public: ThemesValidation();
 
 public: ThemesValidation(Node node);
 
-public: ThemesValidation(HashMap<any, any> hashMap);
+public: ThemesValidation(HashMap<Object*, Object*> hashMap);
 
     public: Boolean isValid();
 

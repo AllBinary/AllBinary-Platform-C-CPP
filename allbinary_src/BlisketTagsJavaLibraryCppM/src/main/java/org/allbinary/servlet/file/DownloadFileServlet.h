@@ -21,7 +21,7 @@
         #ifndef ORG_ALLBINARY_SERVLET_FILE_DOWNLOADFILESERVLET_H
         #define ORG_ALLBINARY_SERVLET_FILE_DOWNLOADFILESERVLET_H
 
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/io/IOException.h>
 

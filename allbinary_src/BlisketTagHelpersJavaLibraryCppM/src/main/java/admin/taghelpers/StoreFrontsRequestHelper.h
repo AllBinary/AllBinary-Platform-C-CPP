@@ -21,7 +21,7 @@
         #ifndef ADMIN_TAGHELPERS_STOREFRONTSREQUESTHELPER_H
         #define ADMIN_TAGHELPERS_STOREFRONTSREQUESTHELPER_H
 
-            #include "../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
 
@@ -127,7 +127,7 @@ class StoreFrontsRequestHelper: public ModifyTable {
 
     private: Portion portion;
 
-public: StoreFrontsRequestHelper(HashMap<any, any> hashMap, PageContext pageContext);
+public: StoreFrontsRequestHelper(HashMap<Object*, Object*> hashMap, PageContext pageContext);
 
                 //@Throws(Exception.constructor)
             

@@ -20,7 +20,7 @@
 
             #include <vector>
         
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <javax/microedition/lcdui/Canvas.h>
 
@@ -132,7 +132,7 @@
 
 class SelectedRTSLayersPlayerGameInput: public PlayerGameInput {
 
-    protected: const std::vector<GameInputProcessor> inputProcessorArray = new Array(InputFactory::getInstance().MAX);
+    protected: const std::vector<GameInputProcessor> inputProcessorArray = std::vector<GameInputProcessor>(InputFactory::getInstance().MAX);
 
     private: BasicArrayList list;
 
@@ -154,8 +154,9 @@ class SelectedRTSLayersPlayerGameInput: public PlayerGameInput {
 
     private: GameNotificationEvent downgradeGameNotificationEvent;
 
-public: SelectedRTSLayersPlayerGameInput(RTSLayerInfoPaintable towerInfoPaintable, RTSPlayerLayerInterface rtsPlayerLayerInterface, BasicArrayList list, int32_t playerInputId, SelectRTSLayerVisitorFactoryInterface selectRTSLayerVisitorFactoryInterface){
-            super(list, BasicArrayListD(), playerInputId);
+public: SelectedRTSLayersPlayerGameInput(RTSLayerInfoPaintable towerInfoPaintable, RTSPlayerLayerInterface rtsPlayerLayerInterface, BasicArrayList list, int32_t playerInputId, SelectRTSLayerVisitorFactoryInterface selectRTSLayerVisitorFactoryInterface) : PlayerGameInput(list, BasicArrayListD(), playerInputId){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -187,7 +188,7 @@ this->downgradeGameNotificationEvent= GameNotificationEvent(this, RTSGameStrings
             
     public: void setAllBinaryGameLayerManager(AllBinaryGameLayerManager allBinaryGameLayerManager){
 
-    GeographicMapCompositeInterface geographicMapCompositeInterface = allBinaryGameLayerManager as GeographicMapCompositeInterface;;
+    GeographicMapCompositeInterface geographicMapCompositeInterface = allBinaryGameLayerManager;;
     
 
     BasicGeographicMap geographicMapInterface = geographicMapCompositeInterface.getGeographicMapInterface()[0];;
@@ -242,7 +243,7 @@ this->downgradeGameNotificationEvent.setBasicColorP(geographicMapInterface.getFo
     int32_t index = this->selectedRTSLayersList.size() -1;index >= 0; index--)
         {
 
-    RTSLayer rtsLayer = this->selectedRTSLayersList.get(index) as RTSLayer;;
+    RTSLayer rtsLayer = this->selectedRTSLayersList.get(index);;
     
 
                         if(rtsLayer.isUpgradeable())
@@ -303,7 +304,7 @@ capital.removeMoney(upgradeCost);
                         
                                     {
                                     
-    RTSPlayerGameInput rtsPlayerGameInput = (this->rtsPlayerLayerInterface.getPlayerGameInput() as RTSPlayerGameInput);;
+    RTSPlayerGameInput rtsPlayerGameInput = (this->rtsPlayerLayerInterface.getPlayerGameInput());;
     
 rtsPlayerGameInput.updatePaintable();
     
@@ -327,7 +328,7 @@ rtsPlayerGameInput.updatePaintable();
     int32_t index = this->selectedRTSLayersList.size();--index >= 0; )
         {
 
-    RTSLayer rtsLayer = this->selectedRTSLayersList.get(index) as RTSLayer;;
+    RTSLayer rtsLayer = this->selectedRTSLayersList.get(index);;
     
 
                         if(rtsLayer.isDowngradeable())
@@ -366,7 +367,7 @@ capital.addMoney(downgradeCost);
                         
                                     {
                                     
-    RTSPlayerGameInput rtsPlayerGameInput = (this->rtsPlayerLayerInterface.getPlayerGameInput() as RTSPlayerGameInput);;
+    RTSPlayerGameInput rtsPlayerGameInput = (this->rtsPlayerLayerInterface.getPlayerGameInput());;
     
 rtsPlayerGameInput.updatePaintable();
     
@@ -395,7 +396,7 @@ GameInputProcessorUtil::init(this->inputProcessorArray);
                                 )
                         
                                     {
-                                    this->inputProcessorArray[key]!.processEvent(AllBinaryGameLayerManager::getNullInstance(), GameKeyEvent::NONE);
+                                    this->inputProcessorArray[key].processEvent(AllBinaryGameLayerManager::getNullInstance(), GameKeyEvent::NONE);
     
 
                                     }
@@ -422,7 +423,7 @@ GameInputProcessorUtil::init(this->inputProcessorArray);
     int32_t index = 0;index < size; index++)
         {
 
-    GameKeyEvent gameKeyEvent = this->list.get(index) as GameKeyEvent;;
+    GameKeyEvent gameKeyEvent = this->list.get(index);;
     
 key= gameKeyEvent.getKey();
     
@@ -564,7 +565,7 @@ this->paintSelectedRTSLayersList= this->selectedRTSLayersList;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->selectedRTSLayersList.get(this->selectedRTSLayersList.size() -1) as CollidableDestroyableDamageableLayer;
+                        return this->selectedRTSLayersList.get(this->selectedRTSLayersList.size() -1);
     
 
                                     }
@@ -600,7 +601,7 @@ this->logUtil.putF(stringBuffer.toString(), this, "selectAllPreselected");
     int32_t index = this->preSelectedRTSLayersList.size() -1;index >= 0; index--)
         {
 
-    RTSLayer rtsLayer = this->preSelectedRTSLayersList.get(index) as RTSLayer;;
+    RTSLayer rtsLayer = this->preSelectedRTSLayersList.get(index);;
     
 rtsLayer.select();
     
@@ -627,7 +628,7 @@ this->logUtil.putF(stringBuffer.toString(), this, "deselectAllPreselected");
     int32_t index = this->preSelectedRTSLayersList.size() -1;index >= 0; index--)
         {
 
-    RTSLayer rtsLayer = this->preSelectedRTSLayersList.get(index) as RTSLayer;;
+    RTSLayer rtsLayer = this->preSelectedRTSLayersList.get(index);;
     
 rtsLayer.deselect();
     
@@ -647,7 +648,7 @@ this->preSelectedRTSLayersList.clear();
     int32_t index = this->selectedRTSLayersList.size() -1;index >= 0; index--)
         {
 
-    RTSLayer rtsLayer = this->selectedRTSLayersList.get(index) as RTSLayer;;
+    RTSLayer rtsLayer = this->selectedRTSLayersList.get(index);;
     
 rtsLayer.deselect();
     

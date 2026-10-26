@@ -18,7 +18,7 @@
 
 
 
-            #include "../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
 
@@ -67,7 +67,7 @@ class BasicOptionItemsHelper: public BasicTable {
 
     private: Portion portion;
 
-public: BasicOptionItemsHelper(HashMap<any, any> hashMap, PageContext pageContext){
+public: BasicOptionItemsHelper(HashMap<Object*, Object*> hashMap, PageContext pageContext){
 this->portion= Portion(hashMap);
     
 }

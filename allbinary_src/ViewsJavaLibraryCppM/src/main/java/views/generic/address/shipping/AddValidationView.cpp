@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/business/user/address/StreetAddress.h>
 
@@ -57,8 +57,9 @@
 
 class AddValidationView: public ShippingAddressView, public ValidationComponentInterface {
 
-public: AddValidationView(TransformInfoInterface transformInfoInterface){
-            super(transformInfoInterface);
+public: AddValidationView(TransformInfoInterface transformInfoInterface) : ShippingAddressView(transformInfoInterface){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.

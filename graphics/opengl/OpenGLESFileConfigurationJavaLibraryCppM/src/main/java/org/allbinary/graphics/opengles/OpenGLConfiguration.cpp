@@ -18,9 +18,9 @@
 
 
 
-            #include "../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/io/Closeable.h>
 
@@ -123,7 +123,7 @@ class OpenGLConfiguration
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return OpenGLConfiguration::instance() as OpenGLConfiguration;
+                        return OpenGLConfiguration::instance();
     
 }
 
@@ -580,7 +580,7 @@ modified= true;
                         if(gameFeature != this->getType())
                         
                                     {
-                                    this->setType(gameFeature as OpenGLFeature);
+                                    this->setType(gameFeature);
     
 modified= true;
     
@@ -605,7 +605,7 @@ modified= true;
                         if(this->getImageColor() != gameFeature)
                         
                                     {
-                                    this->setImageColor(gameFeature as OpenGLFeature);
+                                    this->setImageColor(gameFeature);
     
 
                         if(colorLocked)
@@ -664,7 +664,7 @@ modified= true;
                         if(this->getColor() != gameFeature)
                         
                                     {
-                                    this->setColor(gameFeature as OpenGLFeature);
+                                    this->setColor(gameFeature);
     
 modified= true;
     
@@ -685,7 +685,7 @@ modified= true;
                         if(features.isFeature(gameFeature))
                         
                                     {
-                                    this->setVersionSelector(gameFeature as OpenGLFeature);
+                                    this->setVersionSelector(gameFeature);
     
 
                                     }

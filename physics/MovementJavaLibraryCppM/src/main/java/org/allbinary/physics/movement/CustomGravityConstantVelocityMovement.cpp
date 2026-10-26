@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/game/layer/AllBinaryGameLayer.h>
 
@@ -56,8 +56,9 @@ class CustomGravityConstantVelocityMovement: public BasicConstantVelocityMovemen
 
     private: int32_t customGravity;
 
-public: CustomGravityConstantVelocityMovement(BasicDecimal speedBasicDecimal, int32_t customGravity){
-            super(speedBasicDecimal, VelocityProperties(static_cast<int32_t>(speedBasicDecimal.getUnscaled()), static_cast<int32_t>(speedBasicDecimal.getUnscaled())));
+public: CustomGravityConstantVelocityMovement(BasicDecimal speedBasicDecimal, int32_t customGravity) : BasicConstantVelocityMovement(speedBasicDecimal, VelocityProperties(static_cast<int32_t>(speedBasicDecimal.getUnscaled()), static_cast<int32_t>(speedBasicDecimal.getUnscaled()))){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -77,7 +78,7 @@ super.process(layer);
 this->gravityUtil.process(this->getVelocityProperties(), this->customGravity);
     
 
-    VelocityProperties velocityProperties = this->getVelocityProperties() as VelocityProperties;;
+    VelocityProperties velocityProperties = this->getVelocityProperties();;
     
 velocityProperties.limitMaxYForwardVelocity();
     

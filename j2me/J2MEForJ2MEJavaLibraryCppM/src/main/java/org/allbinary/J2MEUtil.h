@@ -21,7 +21,7 @@
         #ifndef ORG_ALLBINARY_J2MEUTIL_H
         #define ORG_ALLBINARY_J2MEUTIL_H
 
-            #include "../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
 
 

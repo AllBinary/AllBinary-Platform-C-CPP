@@ -19,7 +19,7 @@
 
             #include <vector>
         
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/game/layer/AdvancedPlayerOwnedRTSLayers.h>
 
@@ -108,8 +108,9 @@ class BuildingAdvancedRTSFormInput: public BuildingRTSFormInput {
 
     protected: GameNotificationEvent atLeastOneHouseGameNotificationEvent;
 
-public: BuildingAdvancedRTSFormInput(std::vector<Group> groupInterface, bool isUnitProducer){
-            super(groupInterface, isUnitProducer);
+public: BuildingAdvancedRTSFormInput(std::vector<Group> groupInterface, bool isUnitProducer) : BuildingRTSFormInput(groupInterface, isUnitProducer){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -128,7 +129,7 @@ this->atLeastOneHouseGameNotificationEvent= GameNotificationEvent(this, "Build A
 super.setAllBinaryGameLayerManager(allBinaryGameLayerManager);
     
 
-    GeographicMapCompositeInterface geographicMapCompositeInterface = allBinaryGameLayerManager as GeographicMapCompositeInterface;;
+    GeographicMapCompositeInterface geographicMapCompositeInterface = allBinaryGameLayerManager;;
     
 
     BasicGeographicMap geographicMapInterface = geographicMapCompositeInterface.getGeographicMapInterface()[0];;
@@ -169,7 +170,7 @@ this->atLeastOneHouseGameNotificationEvent.setBasicColorP(geographicMapInterface
             
     protected: bool isBuildAttemptValid(RTSPlayerLayerInterface rtsPlayerLayerInterface, RTSLayer layerInterface){
 
-    AdvancedRTSPlayerLayerInterface advancedRTSPlayerLayerInterface = rtsPlayerLayerInterface as AdvancedRTSPlayerLayerInterface;;
+    AdvancedRTSPlayerLayerInterface advancedRTSPlayerLayerInterface = rtsPlayerLayerInterface;;
     
 
     AdvancedPlayerOwnedRTSLayers advancedPlayerOwnedRTSLayers = advancedRTSPlayerLayerInterface.getAdvancedPlayerOwnedRTSLayers();;
@@ -220,7 +221,7 @@ this->BUILD_BUILDING_RTS_LAYER_EVENT.setRtsLayer(layerInterface);
 BuildingEventHandler::getInstance().fireEvent(this->BUILD_BUILDING_RTS_LAYER_EVENT);
     
 
-                        if((rtsPlayerLayerInterface as AdvancedRTSPlayerLayerInterface).isLocalPlayer())
+                        if((rtsPlayerLayerInterface).isLocalPlayer())
                         
                                     {
                                     LocalPlayerBuildingEventHandler::getInstance().fireEvent(this->BUILD_BUILDING_RTS_LAYER_EVENT);

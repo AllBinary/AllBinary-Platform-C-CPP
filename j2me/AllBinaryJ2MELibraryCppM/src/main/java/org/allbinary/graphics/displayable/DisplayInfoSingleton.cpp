@@ -20,13 +20,10 @@
 
             #include <vector>
         
-            #include "../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-#include <jsinterop/annotations/JsType.h>
-
-      
 #include <javax/microedition/lcdui/Displayable.h>
 
       
@@ -81,15 +78,6 @@
 #include <org/allbinary/util/BasicArrayListD.h>
 
       
-#include <jsinterop/annotations/JsMethod.h>
-
-      
-#include <jsinterop/annotations/JsConstructor.h>
-
-      
-#include <jsinterop/annotations/JsProperty.h>
-
-      
 
 
 
@@ -141,11 +129,11 @@ class DisplayInfoSingleton
 
     public: const std::string ADJUSTING_FOR_SCALING_IN_LANDSCAPE = "Adjusting for Scaling in landscape display ratio: ";
 
-    private: std::vector<int32_t> last = new Array(4);
+    private: std::vector<int32_t> last = std::vector<int32_t>(4);
 
-    private: std::vector<int32_t> lastHalf = new Array(4);
+    private: std::vector<int32_t> lastHalf = std::vector<int32_t>(4);
 
-    private: std::vector<int32_t> full = new Array(4);
+    private: std::vector<int32_t> full = std::vector<int32_t>(4);
 
     private: int32_t top= 0;
 
@@ -450,7 +438,7 @@ this->add(this->SET_LAST_SIZE_METHOD_NAME);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->isPortraitWH(this->last[this->WIDTH]!, this->last[this->HEIGHT]!);;
+                        return this->isPortraitWH(this->last[this->WIDTH], this->last[this->HEIGHT]);;
     
 }
 
@@ -721,7 +709,7 @@ stringBuffer.append(this->FULL);
     
 stringBuffer.append(this->commonLabels.WIDTH_LABEL);
     
-stringBuffer.appendint(this->full[this->WIDTH]!);
+stringBuffer.appendint(this->full[this->WIDTH]);
     
 stringBuffer.append(this->commonSeps.SPACE);
     
@@ -729,7 +717,7 @@ stringBuffer.append(this->FULL);
     
 stringBuffer.append(this->commonLabels.HEIGHT_LABEL);
     
-stringBuffer.appendint(this->full[this->HEIGHT]!);
+stringBuffer.appendint(this->full[this->HEIGHT]);
     
 stringBuffer.append(this->commonSeps.SPACE);
     
@@ -737,7 +725,7 @@ stringBuffer.append(this->LAST);
     
 stringBuffer.append(this->commonLabels.WIDTH_LABEL);
     
-stringBuffer.appendint(this->last[this->WIDTH]!);
+stringBuffer.appendint(this->last[this->WIDTH]);
     
 stringBuffer.append(this->commonSeps.SPACE);
     
@@ -745,7 +733,7 @@ stringBuffer.append(this->LAST);
     
 stringBuffer.append(this->commonLabels.HEIGHT_LABEL);
     
-stringBuffer.appendint(this->last[this->HEIGHT]!);
+stringBuffer.appendint(this->last[this->HEIGHT]);
     
 stringBuffer.append(this->commonSeps.SPACE);
     
@@ -753,7 +741,7 @@ stringBuffer.append(this->LAST_HALF);
     
 stringBuffer.append(this->commonLabels.WIDTH_LABEL);
     
-stringBuffer.appendint(this->lastHalf[this->WIDTH]!);
+stringBuffer.appendint(this->lastHalf[this->WIDTH]);
     
 stringBuffer.append(this->commonSeps.SPACE);
     
@@ -761,7 +749,7 @@ stringBuffer.append(this->LAST_HALF);
     
 stringBuffer.append(this->commonLabels.HEIGHT_LABEL);
     
-stringBuffer.appendint(this->lastHalf[this->HEIGHT]!);
+stringBuffer.appendint(this->lastHalf[this->HEIGHT]);
     
 stringBuffer.append(this->commonSeps.SPACE);
     
@@ -808,7 +796,7 @@ stringBuffer.append(this->isPortrait()
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->last[this->WIDTH]!;
+                        return this->last[this->WIDTH];
     
 }
 
@@ -818,7 +806,7 @@ stringBuffer.append(this->isPortrait()
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->last[this->HEIGHT]!;
+                        return this->last[this->HEIGHT];
     
 }
 
@@ -828,7 +816,7 @@ stringBuffer.append(this->isPortrait()
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->lastHalf[this->WIDTH]!;
+                        return this->lastHalf[this->WIDTH];
     
 }
 
@@ -838,7 +826,7 @@ stringBuffer.append(this->isPortrait()
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->lastHalf[this->HEIGHT]!;
+                        return this->lastHalf[this->HEIGHT];
     
 }
 
@@ -848,7 +836,7 @@ stringBuffer.append(this->isPortrait()
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->last[this->CUSTOM_WIDTH]!;
+                        return this->last[this->CUSTOM_WIDTH];
     
 }
 
@@ -858,7 +846,7 @@ stringBuffer.append(this->isPortrait()
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->last[this->CUSTOM_HEIGHT]!;
+                        return this->last[this->CUSTOM_HEIGHT];
     
 }
 
@@ -868,7 +856,7 @@ stringBuffer.append(this->isPortrait()
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->last[this->WIDTH]!;
+                        return this->last[this->WIDTH];
     
 }
 
@@ -878,7 +866,7 @@ stringBuffer.append(this->isPortrait()
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->last[this->HEIGHT]!;
+                        return this->last[this->HEIGHT];
     
 }
 

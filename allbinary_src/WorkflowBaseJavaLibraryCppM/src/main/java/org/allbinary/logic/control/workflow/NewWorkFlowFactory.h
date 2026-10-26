@@ -23,11 +23,11 @@
 
             #include <vector>
         
-            #include "../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../java/lang/Class.h"
+            #include "java/lang/Class.h"
         
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
 
@@ -91,7 +91,7 @@ private: NewWorkFlowFactory();
 
                 //@Throws(Exception.constructor, LicensingException.constructor)
             
-    public: WorkFlowInterface getInstance(AbeClientInformationInterface abeClientInformation, HashMap<any, any> hashMap, PageContext pageContext);
+    public: WorkFlowInterface getInstance(AbeClientInformationInterface abeClientInformation, HashMap<Object*, Object*> hashMap, PageContext pageContext);
 
                 //@Throws(Exception.constructor, LicensingException.constructor)
             

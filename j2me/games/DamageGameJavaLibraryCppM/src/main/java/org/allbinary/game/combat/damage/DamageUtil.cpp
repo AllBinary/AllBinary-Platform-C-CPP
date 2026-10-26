@@ -18,13 +18,10 @@
 
 
 
-            #include "../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-#include <jsinterop/annotations/JsType.h>
-
-      
 #include <org/allbinary/game/layer/CollidableCompositeLayer.h>
 
       
@@ -35,15 +32,6 @@
 
       
 #include <org/allbinary/logic/string/StringMaker.h>
-
-      
-#include <jsinterop/annotations/JsMethod.h>
-
-      
-#include <jsinterop/annotations/JsConstructor.h>
-
-      
-#include <jsinterop/annotations/JsProperty.h>
 
       
 
@@ -102,7 +90,7 @@ damageableInterface.damage(damageableInterface2.getDamage(0), 0);
             
     public: void debugDamage(CollidableCompositeLayer collidableInterfaceCompositeInterface1, CollidableCompositeLayer collidableInterfaceCompositeInterface){
 
-    CollidableDestroyableDamageableLayer collidableDestroyableDamageableLayer = collidableInterfaceCompositeInterface as CollidableDestroyableDamageableLayer;;
+    CollidableDestroyableDamageableLayer collidableDestroyableDamageableLayer = collidableInterfaceCompositeInterface;;
     
 
     int32_t damage = collidableDestroyableDamageableLayer.getDamage(0);;

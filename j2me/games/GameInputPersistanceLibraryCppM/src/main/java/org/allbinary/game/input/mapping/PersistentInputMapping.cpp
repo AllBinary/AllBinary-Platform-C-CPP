@@ -18,17 +18,11 @@
 
 
 
-            #include "../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-#include <jsinterop/annotations/JsType.h>
-
-      
 #include <java/util/Enumeration.h>
-
-      
-#include <java/util/Hashtable.h>
 
       
 #include <org/allbinary/game/configuration/persistance/GamePersistanceStrings.h>
@@ -67,19 +61,13 @@
 #include <org/allbinary/string/CommonStrings.h>
 
       
+#include <org/allbinary/util/ABHashtable.h>
+
+      
 #include <org/allbinary/util/BasicArrayList.h>
 
       
 #include <org/allbinary/util/EnumerationUtil.h>
-
-      
-#include <jsinterop/annotations/JsMethod.h>
-
-      
-#include <jsinterop/annotations/JsConstructor.h>
-
-      
-#include <jsinterop/annotations/JsProperty.h>
 
       
 
@@ -122,7 +110,7 @@ class PersistentInputMapping
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return PersistentInputMapping::instance() as PersistentInputMapping;
+                        return PersistentInputMapping::instance();
     
 }
 
@@ -253,10 +241,10 @@ this->inputPersistance.loadAll(abeClientInformation);
     int32_t size = list.size();;
     
 
-    Hashtable<any, any> hashtable;;
+    ABHashtable<Object*, Object*> hashtable;;
     
 
-    Enumeration<any> enumeration;;
+    Enumeration<Object*> enumeration;;
     
 
     Input mappedToInput;;
@@ -271,16 +259,16 @@ this->inputPersistance.loadAll(abeClientInformation);
                         for (
     int32_t index = 0;index < size; index++)
         {
-hashtable= list.objectArray[index]! as Hashtable<any, any>;
+hashtable= list.objectArray[index];
     
 enumeration= hashtable.keys();
     
 
         while(this->enumerationUtil.hasMoreElements(enumeration))
         {
-mappedToInput= this->enumerationUtil.nextElement(enumeration)! as Input;
+mappedToInput= this->enumerationUtil.nextElement(enumeration);
     
-gameActionInput= hashtable.get(mappedToInput) as Input;
+gameActionInput= hashtable.get(mappedToInput);
     
 totalMappedTo++;
     

@@ -23,9 +23,9 @@
 
             #include <vector>
         
-            #include "../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../java/lang/Math.h"
+            #include "java/lang/Math.h"
         
 #include <java/nio/Buffer.h>
 
@@ -67,6 +67,8 @@ class GLUtil
     public: static GLUtil getInstance();
 
     private: const int32_t BYTES_PER_FLOAT = 4;
+
+    public: const FloatBuffer NULL_FLOAT_BUFFER = ByteBuffer::allocateDirect(0).asFloatBuffer();
 
     public: FloatBuffer makeFloatBuffer3(float p_a, float p_b, float p_c);
 

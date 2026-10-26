@@ -18,9 +18,9 @@
 
 
 
-            #include "../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
 
@@ -167,7 +167,7 @@ this->pageContext.forward(stringBuffer.toString());
     std::string EQUALS = commonSeps.EQUALS;;
     
 
-    HashMap<any, any> hashMap = this->requestMapInterface.getRequestHashMap();;
+    HashMap<Object*, Object*> hashMap = this->requestMapInterface.getRequestHashMap();;
     
 
     StringMaker stringBuffer = StringMaker();;
@@ -183,10 +183,10 @@ this->pageContext.forward(stringBuffer.toString());
     int32_t index = 0;index < size; index++)
         {
 
-    std::string key = this->paramVector.get(index) as string;;
+    std::string key = this->paramVector.get(index);;
     
 
-    std::string value = hashMap.get(key) as string;;
+    std::string value = hashMap.get(key);;
     
 
                         if(index != 0)
@@ -222,13 +222,13 @@ stringBuffer.append(value);
 
     private: bool shouldForward(){
 
-    HashMap<any, any> hashMap = this->requestMapInterface.getRequestHashMap();;
+    HashMap<Object*, Object*> hashMap = this->requestMapInterface.getRequestHashMap();;
     
 
-    std::string requestCommand = hashMap.get(GLOBALS2::ADMINCOMMAND) as string;;
+    std::string requestCommand = hashMap.get(GLOBALS2::ADMINCOMMAND);;
     
 
-                        if(StringValidationUtil::getInstance().isEmpty(this->command) || (!StringValidationUtil::getInstance().isEmpty(requestCommand) && this->command.compareTo(requestCommand) == 0))
+                        if(StringValidationUtil::getInstance().isEmpty(this->command) || (!StringValidationUtil::getInstance().isEmpty(requestCommand) && this->command.compare(requestCommand) == 0))
                         
                                     {
                                     

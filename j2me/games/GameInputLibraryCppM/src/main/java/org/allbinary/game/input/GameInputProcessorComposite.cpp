@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/logic/communication/log/LogUtil.h>
 
@@ -59,8 +59,9 @@ class GameInputProcessorComposite: public PlayerGameInput {
 
     private: GameInputProcessorInterface gameInputProcessorInterface;
 
-public: GameInputProcessorComposite(std::string name, GameInputProcessorInterface gameInputProcessorInterface){
-            super(BasicArrayListD(), BasicArrayListD(),  -1);
+public: GameInputProcessorComposite(std::string name, GameInputProcessorInterface gameInputProcessorInterface) : PlayerGameInput(BasicArrayListD(), BasicArrayListD(),  -1){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.

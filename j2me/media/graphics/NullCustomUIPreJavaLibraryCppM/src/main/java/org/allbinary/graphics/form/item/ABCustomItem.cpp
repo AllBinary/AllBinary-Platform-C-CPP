@@ -4,21 +4,12 @@
 
 
 
-            #include "../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
 #include <javax/microedition/lcdui/Graphics.h>
 
       
 #include <javax/microedition/lcdui/Screen.h>
-
-      
-#include <jsinterop/annotations/JsConstructor.h>
-
-      
-#include <jsinterop/annotations/JsMethod.h>
-
-      
-#include <jsinterop/annotations/JsType.h>
 
       
 #include <org/allbinary/graphics/color/BasicColor.h>
@@ -72,7 +63,7 @@ class ABCustomItem
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return ABCustomItem::NULL_CUSTOM_ITEM as ABCustomItem;
+                        return ABCustomItem::NULL_CUSTOM_ITEM;
     
 }
 

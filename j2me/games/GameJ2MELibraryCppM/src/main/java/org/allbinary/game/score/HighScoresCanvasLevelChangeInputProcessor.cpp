@@ -86,8 +86,9 @@ class HighScoresCanvasLevelChangeInputProcessor: public HighScoresCanvasInputPro
 
     private: int32_t fontHeight = 0;
 
-public: HighScoresCanvasLevelChangeInputProcessor(HighScoresCanvas highScoresCanvas){
-            super(highScoresCanvas);
+public: HighScoresCanvasLevelChangeInputProcessor(HighScoresCanvas highScoresCanvas) : HighScoresCanvasInputProcessor(highScoresCanvas){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.

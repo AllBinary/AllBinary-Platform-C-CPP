@@ -18,9 +18,9 @@
 
 
 
-            #include "../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/globals/URLGLOBALS.h>
 
@@ -155,7 +155,7 @@ this->logUtil.putF(stringBuffer.toString(), this, "initialize()");
                         for (
     int32_t index = start;index < end; index++)
         {
-nextFile= fileBasicArrayList.get(index) as AbFile;
+nextFile= fileBasicArrayList.get(index);
     
 
         try {

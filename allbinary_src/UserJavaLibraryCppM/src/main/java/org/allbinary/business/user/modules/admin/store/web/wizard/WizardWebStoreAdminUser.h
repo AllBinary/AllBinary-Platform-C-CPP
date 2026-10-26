@@ -21,7 +21,7 @@
         #ifndef ORG_ALLBINARY_BUSINESS_USER_MODULES_ADMIN_STORE_WEB_WIZARD_WIZARDWEBSTOREADMINUSER_H
         #define ORG_ALLBINARY_BUSINESS_USER_MODULES_ADMIN_STORE_WEB_WIZARD_WIZARDWEBSTOREADMINUSER_H
 
-            #include "../../../../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
 
@@ -55,7 +55,7 @@ class WizardWebStoreAdminUser: public User {
 
 public: WizardWebStoreAdminUser();
 
-public: WizardWebStoreAdminUser(HashMap<any, any> userHashMap);
+public: WizardWebStoreAdminUser(HashMap<Object*, Object*> userHashMap);
 
     public: void validateSession(WeblisketSessionInterface weblisketSession);
 

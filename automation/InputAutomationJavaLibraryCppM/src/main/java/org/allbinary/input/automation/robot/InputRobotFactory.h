@@ -23,17 +23,17 @@
 
             #include <vector>
         
-            #include "../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-#include <java/awt.h>
+#include <java/awt/GraphicsDevice.h>
+
+      
+#include <java/awt/GraphicsEnvironment.h>
 
       
 #include <java/util/Collection.h>
-
-      
-#include <java/util/Hashtable.h>
 
       
 #include <java/util/Iterator.h>
@@ -69,6 +69,9 @@
 #include <org/allbinary/string/CommonStrings.h>
 
       
+#include <org/allbinary/util/ABHashtable.h>
+
+      
 
 
 
@@ -87,9 +90,7 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        #include "GraphicsEnvironment.h"
-#include "GraphicsDevice.h"
-#include "InputRobotInterface.h"
+        #include "InputRobotInterface.h"
 #include "InputRobot.h"
 
 class InputRobotFactory
@@ -114,7 +115,7 @@ class InputRobotFactory
 
     private: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    private: const Hashtable<any, any> hashtable = StdUtil::getInstance().createHashtable();
+    private: const ABHashtable<Object*, Object*> hashtable = StdUtil::getInstance().createHashtable();
 
     private: HelpSetListener helpSetListenerInterface;
 
@@ -136,7 +137,7 @@ private: InputRobotFactory();
 
                 //@Throws(Exception.constructor)
             
-    public: Hashtable<any, any> get();
+    public: ABHashtable<Object*, Object*> get();
 
     public: InputRobotInterface get(std::string name);
 

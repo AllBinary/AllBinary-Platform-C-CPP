@@ -21,12 +21,6 @@
         #ifndef ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_DEMOPAINTABLEINTERFACE_H
         #define ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_DEMOPAINTABLEINTERFACE_H
 
-#include <jsinterop/annotations/JsType.h>
-
-      
-#include <jsinterop/annotations/JsMethod.h>
-
-      
 
 
 

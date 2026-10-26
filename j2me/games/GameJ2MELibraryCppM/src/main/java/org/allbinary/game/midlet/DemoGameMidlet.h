@@ -21,14 +21,8 @@
         #ifndef ORG_ALLBINARY_GAME_MIDLET_DEMOGAMEMIDLET_H
         #define ORG_ALLBINARY_GAME_MIDLET_DEMOGAMEMIDLET_H
 
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-#include <jsinterop/annotations/JsType.h>
-
-      
-#include <java/util/Hashtable.h>
-
-      
 #include <org/allbinary/game/displayable/canvas/GameCanvasRunnableInterface.h>
 
       
@@ -50,13 +44,10 @@
 #include <org/allbinary/thread/PrimaryThreadPool.h>
 
       
-#include <jsinterop/annotations/JsMethod.h>
-
-      
-#include <jsinterop/annotations/JsConstructor.h>
-
-      
 #include <org/allbinary/game/displayable/canvas/NullGameCanvasRunnable.h>
+
+      
+#include <org/allbinary/util/ABHashtable.h>
 
       
 

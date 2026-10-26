@@ -18,9 +18,9 @@
 
 
 
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../../../java/lang/RuntimeException.h"
+            #include "java/lang/RuntimeException.h"
         
 #include <javax/microedition/lcdui/CommandListener.h>
 
@@ -112,7 +112,7 @@ LogUtil::getInstance().put(CommonStrings::getInstance().EXCEPTION, "NullGameCanv
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return NullGameCanvas::instance() as NullGameCanvas;
+                        return NullGameCanvas::instance();
     
 }
 
@@ -140,8 +140,9 @@ nullGameCanvas.setTitle(NullGameCanvas::NO_GAME);
 
     public: static const int32_t TYPE = 1;
 
-protected: NullGameCanvas(AllBinaryGameLayerManager gameLayerManager){
-            super(NullCommandListener::NULL_COMMAND_LISTENER, gameLayerManager, NoHighScoresFactory::getInstance(), BasicBuildGameInitializerFactory::NULL_BASE_BUILD_GMAE_INITIALIZER_FACTORY, false);
+protected: NullGameCanvas(AllBinaryGameLayerManager gameLayerManager) : AllBinaryGameCanvas(NullCommandListener::NULL_COMMAND_LISTENER, gameLayerManager, NoHighScoresFactory::getInstance(), BasicBuildGameInitializerFactory::NULL_BASE_BUILD_GMAE_INITIALIZER_FACTORY, false){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.

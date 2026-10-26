@@ -21,12 +21,6 @@
         #ifndef ORG_ALLBINARY_GAME_INTERMISSIONCOMPOSITEINTERFACE_H
         #define ORG_ALLBINARY_GAME_INTERMISSIONCOMPOSITEINTERFACE_H
 
-#include <jsinterop/annotations/JsType.h>
-
-      
-#include <jsinterop/annotations/JsMethod.h>
-
-      
 
 
 

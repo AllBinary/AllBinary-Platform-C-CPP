@@ -18,13 +18,10 @@
 
 
 
-            #include "../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-#include <jsinterop/annotations/JsType.h>
-
-      
 #include <javax/microedition/lcdui/Canvas.h>
 
       
@@ -35,9 +32,6 @@
 
       
 #include <javax/microedition/lcdui/CommandListener.h>
-
-      
-#include <jsinterop/annotations/JsMethod.h>
 
       
 
@@ -79,7 +73,7 @@ class FullScreenUtil
                 //@Throws(Exception.constructor)
             
     public: void initOnRun(Canvas fullScreenInterface, CommandListener commandListener){
-fullScreenInterface = fullScreenInterfacefullScreenInterface as RunnableCanvas
+fullScreenInterface = fullScreenInterfacefullScreenInterface
 fullScreenInterface.
                     waitOnNotify(0);
     

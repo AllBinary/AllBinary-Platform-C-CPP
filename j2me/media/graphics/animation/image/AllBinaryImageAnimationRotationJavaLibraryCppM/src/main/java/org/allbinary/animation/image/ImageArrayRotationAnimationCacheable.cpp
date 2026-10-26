@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/animation/AnimationBehavior.h>
 
@@ -55,8 +55,9 @@
 
 class ImageArrayRotationAnimationCacheable: public AdjustedImageArrayRotationAnimation, public CacheableInterface {
 
-public: ImageArrayRotationAnimationCacheable(Object* anyType, AnimationBehavior animationBehavior){
-            super((anyType as ImageArrayRotationAnimationInfo).getImageArray(), (anyType as ImageArrayRotationAnimationInfo).getAngleInfoP(), (anyType as ImageArrayRotationAnimationInfo).getTotalAngle(), (anyType as ImageArrayRotationAnimationInfo).getDx(), (anyType as ImageArrayRotationAnimationInfo).getDy(), animationBehavior);
+public: ImageArrayRotationAnimationCacheable(Object* anyType, AnimationBehavior animationBehavior) : AdjustedImageArrayRotationAnimation((anyType)).getImageArray(), (anyType)).getAngleInfoP(), (anyType)).getTotalAngle(), (anyType)).getDx(), (anyType)).getDy(), animationBehavior){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.

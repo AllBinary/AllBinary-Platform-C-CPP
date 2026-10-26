@@ -21,7 +21,7 @@
         #ifndef VIEWS_ADMIN_USER_USERSVALIDATIONVIEW_H
         #define VIEWS_ADMIN_USER_USERSVALIDATIONVIEW_H
 
-            #include "../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/business/user/role/UserRole.h>
 

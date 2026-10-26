@@ -18,9 +18,9 @@
 
 
 
-            #include "../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
 
@@ -178,14 +178,14 @@ this->hasRead= false;
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: void set(HashMap<any, any> hashMap){
+    public: void set(HashMap<Object*, Object*> hashMap){
 
         try {
-            this->testing= hashMap.get(this->TESTING) as string;
+            this->testing= hashMap.get(this->TESTING);
     
-this->mainPath= AbPath(hashMap.get(this->MAINPATH) as string, StringUtil::getInstance().EMPTY_STRING);
+this->mainPath= AbPath(hashMap.get(this->MAINPATH), StringUtil::getInstance().EMPTY_STRING);
     
-this->testHtmlPath= AbPath(hashMap.get(this->TESTHTMLPATH) as string, StringUtil::getInstance().EMPTY_STRING);
+this->testHtmlPath= AbPath(hashMap.get(this->TESTHTMLPATH), StringUtil::getInstance().EMPTY_STRING);
     
 
                 //: 
@@ -455,9 +455,9 @@ this->mainPath= value;
 }
 
 
-    public: HashMap<any, any> toHashMap(){
+    public: HashMap<Object*, Object*> toHashMap(){
 
-    HashMap<any, any> hashMap = StdUtil::getInstance().createHashMap();;
+    HashMap<Object*, Object*> hashMap = StdUtil::getInstance().createHashMap();;
     
 hashMap.put(this->TESTING, this->getTesting());
     

@@ -21,13 +21,7 @@
         #ifndef ORG_ALLBINARY_GAME_LAYER_PICKUP_COUNTEDPICKEDUPLAYERINTERFACEFACTORYINTERFACE_H
         #define ORG_ALLBINARY_GAME_LAYER_PICKUP_COUNTEDPICKEDUPLAYERINTERFACEFACTORYINTERFACE_H
 
-#include <jsinterop/annotations/JsType.h>
-
-      
 #include <org/allbinary/layer/LayerInterfaceFactoryInterface.h>
-
-      
-#include <jsinterop/annotations/JsMethod.h>
 
       
 

@@ -20,13 +20,10 @@
 
             #include <vector>
         
-            #include "../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-#include <jsinterop/annotations/JsType.h>
-
-      
 #include <org/allbinary/game/input/GameKeyEventSourceInterface.h>
 
       
@@ -40,15 +37,6 @@
 
       
 #include <org/allbinary/logic/communication/log/LogUtil.h>
-
-      
-#include <jsinterop/annotations/JsMethod.h>
-
-      
-#include <jsinterop/annotations/JsConstructor.h>
-
-      
-#include <jsinterop/annotations/JsProperty.h>
 
       
 
@@ -91,7 +79,7 @@ class GameKeyEventFactory
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return GameKeyEventFactory::instance() as GameKeyEventFactory;
+                        return GameKeyEventFactory::instance();
     
 }
 
@@ -104,8 +92,7 @@ class GameKeyEventFactory
 
     private: const int32_t MAX_SOURCES = 4;
 
-    private: std::vector<std::vector<GameKeyEvent>> ARRAY = new Array(this->MAX_SOURCES).fill(null).map(() => new Array(InputFactory::getInstance().MAX).fill(0))
-                                                            ;
+    private: std::vector<std::vector<GameKeyEvent>> ARRAY = std::vector<std::vector<GameKeyEvent>>(this->MAX_SOURCES, std::vector<GameKeyEvent>(InputFactory::getInstance().MAX));
 
 private: GameKeyEventFactory(){
 }
@@ -132,7 +119,7 @@ private: GameKeyEventFactory(){
                         for (
     int32_t index2 = size;--index2 >= 0; )
         {
-this->ARRAY[index]![index2]= GameKeyEvent::createEvent(nullUtil.NULL_OBJECT, index, index2);
+this->ARRAY[index][index2]= GameKeyEvent::createEvent(nullUtil.NULL_OBJECT, index, index2);
     
 }
 
@@ -145,7 +132,7 @@ this->ARRAY[index]![index2]= GameKeyEvent::createEvent(nullUtil.NULL_OBJECT, ind
             
     public: GameKeyEvent getInstanceForKey(GameKeyEventSourceInterface anyType, int32_t key){
 
-    GameKeyEvent gameKeyEvent = this->ARRAY[anyType.getSourceId()]![key];;
+    GameKeyEvent gameKeyEvent = this->ARRAY[anyType.getSourceId()][key];;
     
 
 
@@ -160,7 +147,7 @@ this->ARRAY[index]![index2]= GameKeyEvent::createEvent(nullUtil.NULL_OBJECT, ind
             
     public: GameKeyEvent getInstanceForInput(GameKeyEventSourceInterface anyType, Input input){
 
-    GameKeyEvent gameKeyEvent = this->ARRAY[anyType.getSourceId()]![input.getId()];;
+    GameKeyEvent gameKeyEvent = this->ARRAY[anyType.getSourceId()][input.getId()];;
     
 
 

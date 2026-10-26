@@ -18,9 +18,9 @@
 
 
 
-            #include "../java/lang/Class.h"
+            #include "java/lang/Class.h"
         
-            #include "../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/lang/reflect/Method.h>
 
@@ -73,8 +73,9 @@ class ModifyTag: public HelperTag {
 
     protected: const LogUtil logUtil = LogUtil::getInstance();
 
-public: ModifyTag(TagHelperFactoryInterface tagHelperFactoryInterface){
-            super(tagHelperFactoryInterface);
+public: ModifyTag(TagHelperFactoryInterface tagHelperFactoryInterface) : HelperTag(tagHelperFactoryInterface){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -97,7 +98,7 @@ public: ModifyTag(TagHelperFactoryInterface tagHelperFactoryInterface){
 
         try {
             
-    Function helperClass = this->getHelper().constructor;;
+    Class* helperClass = this->getHelper().getClass();;
     
 
     Method method = helperClass.getMethod("insert", 
@@ -105,7 +106,7 @@ public: ModifyTag(TagHelperFactoryInterface tagHelperFactoryInterface){
     
 
     std::string result = method.invoke(this->getHelper(), 
-                            nullptr) as string;;
+                            nullptr);;
     
 
 
@@ -146,7 +147,7 @@ public: ModifyTag(TagHelperFactoryInterface tagHelperFactoryInterface){
 
         try {
             
-    Function helperClass = this->getHelper().constructor;;
+    Class* helperClass = this->getHelper().getClass();;
     
 
     Method method = helperClass.getMethod(commonStrings.delete_, 
@@ -154,7 +155,7 @@ public: ModifyTag(TagHelperFactoryInterface tagHelperFactoryInterface){
     
 
     std::string result = method.invoke(this->getHelper(), 
-                            nullptr) as string;;
+                            nullptr);;
     
 
 
@@ -195,7 +196,7 @@ public: ModifyTag(TagHelperFactoryInterface tagHelperFactoryInterface){
 
         try {
             
-    Function helperClass = this->getHelper().constructor;;
+    Class* helperClass = this->getHelper().getClass();;
     
 
     Method method = helperClass.getMethod("update", 
@@ -203,7 +204,7 @@ public: ModifyTag(TagHelperFactoryInterface tagHelperFactoryInterface){
     
 
     std::string result = method.invoke(this->getHelper(), 
-                            nullptr) as string;;
+                            nullptr);;
     
 
 
@@ -248,7 +249,7 @@ public: ModifyTag(TagHelperFactoryInterface tagHelperFactoryInterface){
                         
                                     {
                                     
-    HttpServletRequest request = this->pageContext.getRequest() as HttpServletRequest;;
+    HttpServletRequest request = this->pageContext.getRequest();;
     
 
     StringMaker stringBuffer = StringMaker();;

@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/util/BasicArrayList.h>
 
@@ -72,8 +72,9 @@
 
 class TaxValidationView: public ShippingAddressView, public ValidationComponentInterface {
 
-public: TaxValidationView(TransformInfoInterface transformInfoInterface){
-            super(transformInfoInterface);
+public: TaxValidationView(TransformInfoInterface transformInfoInterface) : ShippingAddressView(transformInfoInterface){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -114,7 +115,7 @@ public: TaxValidationView(TransformInfoInterface transformInfoInterface){
     int32_t index = 0;index < size; index++)
         {
 
-    StreetAddress aStreetAddress = streetAddressList.get(index) as StreetAddress;;
+    StreetAddress aStreetAddress = streetAddressList.get(index);;
     
 
                         if(aStreetAddress.getName().compareTo(ShippingAddressData::TAX) == 0)

@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
 
@@ -55,8 +55,9 @@ class AffiliateUser: public User {
 
     private: AffiliateSales affiliateSales;
 
-public: AffiliateUser(){
-            super();
+public: AffiliateUser() : User(){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -66,8 +67,9 @@ this->affiliateSales= AffiliateSales();
 }
 
 
-public: AffiliateUser(HashMap<any, any> userHashMap){
-            super(userHashMap);
+public: AffiliateUser(HashMap<Object*, Object*> userHashMap) : User(userHashMap){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.

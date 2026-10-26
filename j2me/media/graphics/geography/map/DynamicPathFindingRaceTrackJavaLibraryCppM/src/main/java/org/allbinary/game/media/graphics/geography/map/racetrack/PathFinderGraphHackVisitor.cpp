@@ -20,7 +20,7 @@
 
             #include <vector>
         
-            #include "../../../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/jgrapht/GraphPath.h>
 
@@ -82,12 +82,14 @@
         #include "BasePathFinderGraphVisitor.h"
 #include "CellPositionArray.h"
 
+template<typename V, typename E>
 class PathFinderGraphHackVisitor: public BasePathFinderGraphVisitor<V, E> {
 
     protected: const LogUtil logUtil = LogUtil::getInstance();
 
-public: PathFinderGraphHackVisitor(BasicGeographicMap geographicMapInterface, int32_t edgeMinimum, int32_t minPathWeight, int32_t maxPathWeight){
-            super(geographicMapInterface, edgeMinimum, minPathWeight, maxPathWeight);
+public: PathFinderGraphHackVisitor(BasicGeographicMap geographicMapInterface, int32_t edgeMinimum, int32_t minPathWeight, int32_t maxPathWeight) : BasePathFinderGraphVisitor<V, E>(geographicMapInterface, edgeMinimum, minPathWeight, maxPathWeight){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -124,7 +126,7 @@ this->fixOverPassEdges(graph);
     int32_t index = startPathFindingNodeList.size() -1;index >= 0; index--)
         {
 
-    PathFindingNode startPathFindingNode = startPathFindingNodeList.get(index) as PathFindingNode;;
+    PathFindingNode startPathFindingNode = startPathFindingNodeList.get(index);;
     
 
     GeographicMapCellPosition geographicMapCellPosition = startPathFindingNode.geographicMapCellPosition;;
@@ -172,7 +174,7 @@ graph.removeEdge(geographicMapCellPosition, geographicMapCellPositionNeighbor);
     int32_t index = endPathFindingNodeList.size() -1;index >= 0; index--)
         {
 
-    PathFindingNode endPathFindingNode = endPathFindingNodeList.get(index) as PathFindingNode;;
+    PathFindingNode endPathFindingNode = endPathFindingNodeList.get(index);;
     
 
     GeographicMapCellPosition geographicMapCellPosition = endPathFindingNode.geographicMapCellPosition;;
@@ -212,7 +214,7 @@ graph.addEdge(geographicMapCellPosition, geographicMapCellPositionNeighbor);
     BasicGeographicMapCellPositionFactory geographicMapCellPositionFactory = this->geographicMapInterface.getGeographicMapCellPositionFactory();;
     
 
-    RaceTrackGeographicMap raceTrackGeographicMap = this->geographicMapInterface as RaceTrackGeographicMap;;
+    RaceTrackGeographicMap raceTrackGeographicMap = this->geographicMapInterface;;
     
 
     std::vector<CellPosition> CellPositionArray = raceTrackGeographicMap.getRaceTrackData().getOverPassGeographicMapCellPositionArray();;
@@ -264,10 +266,10 @@ graph.addEdge(overPassGeographicMapCellPosition, leftUnderPassGeographicMapCellP
     int32_t index = startPathFindingNodeList.size() -1;index >= 0; index--)
         {
 
-    PathFindingNode endPathFindingNode = endPathFindingNodeList.get(index) as PathFindingNode;;
+    PathFindingNode endPathFindingNode = endPathFindingNodeList.get(index);;
     
 
-    PathFindingNode startPathFindingNode = startPathFindingNodeList.get(index) as PathFindingNode;;
+    PathFindingNode startPathFindingNode = startPathFindingNodeList.get(index);;
     
 
                         if(BasicGeographicMapUtil::getInstance().isSameCellPosition(startPathFindingNode.geographicMapCellPosition, endPathFindingNode.geographicMapCellPosition))
@@ -301,7 +303,7 @@ this->removeOverPassEdges(pathList);
     BasicGeographicMapCellPositionFactory geographicMapCellPositionFactory = this->geographicMapInterface.getGeographicMapCellPositionFactory();;
     
 
-    RaceTrackGeographicMap raceTrackGeographicMap = this->geographicMapInterface as RaceTrackGeographicMap;;
+    RaceTrackGeographicMap raceTrackGeographicMap = this->geographicMapInterface;;
     
 
     std::vector<CellPosition> CellPositionArray = raceTrackGeographicMap.getRaceTrackData().getOverPassGeographicMapCellPositionArray();;

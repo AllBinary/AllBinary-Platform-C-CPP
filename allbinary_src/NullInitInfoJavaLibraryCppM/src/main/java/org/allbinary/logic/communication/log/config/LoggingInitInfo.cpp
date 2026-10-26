@@ -18,9 +18,9 @@
 
 
 
-            #include "../../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/util/BasicArrayList.h>
 
@@ -179,7 +179,7 @@ LoggingInitInfo::updateIfNeeded();
     int32_t index = 0;index < size; index++)
         {
 
-    LogConfig logConfigInfo = LoggingInitInfo::logConfigInfoList.objectArray[index]! as LogConfig;;
+    LogConfig logConfigInfo = LoggingInitInfo::logConfigInfoList.objectArray[index];;
     
 
     BasicArrayList logTypeVector = logConfigInfo.getTypeVector();;

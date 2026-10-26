@@ -99,8 +99,9 @@ class AbFileOutputStream: public FileOutputStream {
 }
 
 
-public: AbFileOutputStream(std::string name, bool append){
-            super(name, append);
+public: AbFileOutputStream(std::string name, bool append) : FileOutputStream(name, append){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.

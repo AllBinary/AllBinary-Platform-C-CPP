@@ -20,9 +20,9 @@
 
             #include <vector>
         
-            #include "../../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../../java/lang/RuntimeException.h"
+            #include "java/lang/RuntimeException.h"
         
 #include <org/allbinary/logic/communication/log/LogUtil.h>
 
@@ -65,14 +65,14 @@ class GeographicMapCellTypeFactory
 
     protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const std::vector<GeographicMapCellType> geographicMapCellTypeArray = new Array(512);
+    private: const std::vector<GeographicMapCellType> geographicMapCellTypeArray = std::vector<GeographicMapCellType>(512);
 
     public: GeographicMapCellType get(int32_t type){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->geographicMapCellTypeArray[type]!;
+                        return this->geographicMapCellTypeArray[type];
     
 }
 

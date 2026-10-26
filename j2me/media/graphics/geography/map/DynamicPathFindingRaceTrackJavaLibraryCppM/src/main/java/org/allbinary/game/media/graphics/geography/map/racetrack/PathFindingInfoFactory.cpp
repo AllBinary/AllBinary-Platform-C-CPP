@@ -20,9 +20,9 @@
 
             #include <vector>
         
-            #include "../../../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../../../../../../java/lang/Integer.h"
+            #include "java/lang/Integer.h"
         
 #include <org/allbinary/string/CommonStrings.h>
 
@@ -141,7 +141,7 @@ this->basicGeographicMapPathFinder= BasicGeographicMapPathFinder(max);
     
 this->pathFindingInfo= PathFindingInfo(PathFindingNodeCostInfoFactory(max), BasicArrayListS(1), BasicArrayListS(1));
     
-this->basicGeographicMapGraph= BasicGeographicMapGraph(this->pathFindingInfo.getPathFindingNodeCostInfoFactoryInterface() as PathFindingNodeCostInfoFactory);
+this->basicGeographicMapGraph= BasicGeographicMapGraph(this->pathFindingInfo.getPathFindingNodeCostInfoFactoryInterface());
     
 this->pathFinderGraphVisitorFactoryInterface= pathFinderGraphVisitorFactoryInterface;
     
@@ -188,13 +188,13 @@ this->buildPathFindingNodes(geographicMapInterface, pathFindingInfo, mapArray);
     BasicGeographicMapCellPositionFactory geographicMapCellPositionFactory = geographicMapInterface.getGeographicMapCellPositionFactory();;
     
 
-    int32_t cellTypeId = mapArray[cellPosition.getRow()]![cellPosition.getColumn()];;
+    int32_t cellTypeId = mapArray[cellPosition.getRow()][cellPosition.getColumn()];;
     
 
     GeographicMapCellType geographicMapCellType = GeographicMapCellTypeFactory::getInstance().get(geographicMapInterface.getCellTypeFromMapCellTypeInt(cellTypeId));;
     
 
-    RaceTrackGeographicMapCellType raceTrackGeographicMapCellType = geographicMapCellType as RaceTrackGeographicMapCellType;;
+    RaceTrackGeographicMapCellType raceTrackGeographicMapCellType = geographicMapCellType;;
     
 
     AllBinaryTiledLayer allBinaryTiledLayer = geographicMapInterface.getAllBinaryTiledLayer();;

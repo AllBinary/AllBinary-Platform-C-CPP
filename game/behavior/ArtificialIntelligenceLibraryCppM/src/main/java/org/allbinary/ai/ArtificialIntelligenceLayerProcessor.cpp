@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/layer/AllBinaryLayer.h>
 
@@ -52,8 +52,9 @@
 
 class ArtificialIntelligenceLayerProcessor: public LayerProcessor {
 
-public: ArtificialIntelligenceLayerProcessor(){
-            super(ArtificialIntelligenceLayerManager());
+public: ArtificialIntelligenceLayerProcessor() : LayerProcessor(ArtificialIntelligenceLayerManager()){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -65,7 +66,7 @@ public: ArtificialIntelligenceLayerProcessor(){
             
     public: void processAt(AllBinaryLayerManager allBinaryLayerManager, AllBinaryLayer layerInterface, int32_t index){
 
-    ArtificialIntelligenceCompositeInterface artificialIntelligenceCompositeInterface = layerInterface as ArtificialIntelligenceCompositeInterface;;
+    ArtificialIntelligenceCompositeInterface artificialIntelligenceCompositeInterface = layerInterface;;
     
 artificialIntelligenceCompositeInterface.getArtificialIntelligenceInterface().processAI(allBinaryLayerManager);
     

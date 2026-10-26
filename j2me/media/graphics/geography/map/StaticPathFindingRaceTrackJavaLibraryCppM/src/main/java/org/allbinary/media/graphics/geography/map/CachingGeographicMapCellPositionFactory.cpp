@@ -18,12 +18,12 @@
 
 
 
-            #include "../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-#include <java/util/Hashtable.h>
+#include <org/allbinary/graphics/CellPosition.h>
 
       
-#include <org/allbinary/graphics/CellPosition.h>
+#include <org/allbinary/util/ABHashtable.h>
 
       
 
@@ -51,8 +51,9 @@
 
 class CachingGeographicMapCellPositionFactory: public BasicGeographicMapCellPositionFactory {
 
-protected: CachingGeographicMapCellPositionFactory(BasicGeographicMap geographicMapInterface){
-            super(geographicMapInterface);
+protected: CachingGeographicMapCellPositionFactory(BasicGeographicMap geographicMapInterface) : BasicGeographicMapCellPositionFactory(geographicMapInterface){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -64,7 +65,7 @@ protected: CachingGeographicMapCellPositionFactory(BasicGeographicMap geographic
             
     public: GeographicMapCellPosition createInstance(int32_t i_column, int32_t i_row, int32_t width, int32_t height){
 
-    Hashtable<any, any> hashtable = GeographicMapCellPositionFactory::getHashtable();;
+    ABHashtable<Object*, Object*> hashtable = GeographicMapCellPositionFactory::getHashtable();;
     
 
     std::string cellPositionKey = CellPosition::toStringColRow(i_column, i_row);;
@@ -80,7 +81,7 @@ protected: CachingGeographicMapCellPositionFactory(BasicGeographicMap geographic
                                     {
                                     cellPositionCanBeNull= this->geographicMapCellPositionFactoryInterface.getInstance(this->geographicMapInterface, i_column, i_row, this->getColumns(), this->getRows(), width, height);
     
-this->geographicMapCellPositionArray[i_row]![i_column]= cellPositionCanBeNull as GeographicMapCellPosition;
+this->geographicMapCellPositionArray[i_row][i_column]= *dynamic_cast<GeographicMapCellPosition*>(cellPositionCanBeNull);
     
 hashtable.put(cellPositionKey, cellPositionCanBeNull);
     
@@ -91,7 +92,7 @@ hashtable.put(cellPositionKey, cellPositionCanBeNull);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return cellPositionCanBeNull as GeographicMapCellPosition;
+                        return *dynamic_cast<GeographicMapCellPosition*>(cellPositionCanBeNull);
     
 }
 

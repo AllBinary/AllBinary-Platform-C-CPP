@@ -20,13 +20,10 @@
 
             #include <vector>
         
-            #include "../../../../../java/lang/Throwable.h"
+            #include "java/lang/Throwable.h"
         
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-#include <jsinterop/annotations/JsType.h>
-
-      
 #include <javax/microedition/lcdui/Canvas.h>
 
       
@@ -64,15 +61,6 @@
 
       
 #include <org/allbinary/util/BasicArrayListD.h>
-
-      
-#include <jsinterop/annotations/JsMethod.h>
-
-      
-#include <jsinterop/annotations/JsConstructor.h>
-
-      
-#include <jsinterop/annotations/JsProperty.h>
 
       
 
@@ -113,7 +101,7 @@ class InputToGameKeyMapping: public InputMapping {
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return InputToGameKeyMapping::instance() as InputToGameKeyMapping;
+                        return InputToGameKeyMapping::instance();
     
 }
 
@@ -125,7 +113,7 @@ class InputToGameKeyMapping: public InputMapping {
                                                             this->gameKeyFactory.UP,this->gameKeyFactory.DOWN,this->gameKeyFactory.LEFT,this->gameKeyFactory.RIGHT
                                                         };
 
-    private: const std::vector<GameKey> platformToGameKeyMapping = new Array(InputFactory::getInstance().MAX);
+    private: const std::vector<GameKey> platformToGameKeyMapping = std::vector<GameKey>(InputFactory::getInstance().MAX);
 
     protected: std::vector<GameKey> negativePlatformToGameKeyMapping = {};
 
@@ -194,7 +182,7 @@ this->clear();
     int32_t index = list.size() -1;index >= 0; index--)
         {
 
-    Input mappedToInput = list.objectArray[index]! as Input;;
+    Input mappedToInput = list.objectArray[index];;
     
 this->add(input, mappedToInput);
     
@@ -229,7 +217,7 @@ this->set(input, this->gameKeyFactory.NONE);
                         if(id >= 0 && id < this->platformToGameKeyMapping.size())
                         
                                     {
-                                    this->platformToGameKeyMapping[id]= input as GameKey;
+                                    this->platformToGameKeyMapping[id]= input;
     
 
                                     }
@@ -262,7 +250,7 @@ this->set(input, this->gameKeyFactory.NONE);
     int32_t index = 0;index < this->platformToGameKeyMapping.size(); index++)
         {
 
-                        if(this->platformToGameKeyMapping[index]!.getId() == id)
+                        if(this->platformToGameKeyMapping[index].getId() == id)
                         
                                     {
                                     
@@ -349,7 +337,7 @@ this->set(input, this->gameKeyFactory.NONE);
                         for (
     int32_t index = this->mappedGameKeys.size();--index >= 0; )
         {
-nextKey= canvas.getKeyCode(this->mappedGameKeys[index]!.getId());
+nextKey= canvas.getKeyCode(this->mappedGameKeys[index].getId());
     
 
                         if(nextKey < smallestKey)
@@ -395,7 +383,7 @@ nextKey= canvas.getKeyCode(this->mappedGameKeys[index]!.getId());
 
                                     }
                                 
-negativePlatformToGameKeyMapping= new Array( -smallestKey);
+negativePlatformToGameKeyMapping= std::vector<GameKey>( -smallestKey);
     
 
 
@@ -420,7 +408,7 @@ this->negativePlatformToGameKeyMapping= negativePlatformToGameKeyMapping;
                         for (
     int32_t index = this->mappedGameKeys.size();--index >= 0; )
         {
-this->initGameKey(canvas, this->mappedGameKeys[index]!);
+this->initGameKey(canvas, this->mappedGameKeys[index]);
     
 }
 
@@ -444,7 +432,7 @@ this->logUtil.put(this->commonStrings.EXCEPTION, this, this->commonStrings.INIT,
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->platformToGameKeyMapping[id]!;
+                        return this->platformToGameKeyMapping[id];
     
 
                                     }
@@ -457,7 +445,7 @@ this->logUtil.put(this->commonStrings.EXCEPTION, this, this->commonStrings.INIT,
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->negativePlatformToGameKeyMapping[ -id]!;
+                        return this->negativePlatformToGameKeyMapping[ -id];
     
 
                                     }
@@ -484,7 +472,7 @@ this->logUtil.put(this->commonStrings.EXCEPTION, this, this->commonStrings.INIT,
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->platformToGameKeyMapping[id]!;
+                        return this->platformToGameKeyMapping[id];
     
 
                                     }
@@ -497,7 +485,7 @@ this->logUtil.put(this->commonStrings.EXCEPTION, this, this->commonStrings.INIT,
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->negativePlatformToGameKeyMapping[ -id]!;
+                        return this->negativePlatformToGameKeyMapping[ -id];
     
 
                                     }

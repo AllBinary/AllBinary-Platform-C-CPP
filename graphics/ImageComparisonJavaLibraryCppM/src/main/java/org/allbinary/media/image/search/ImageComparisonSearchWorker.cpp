@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/awt/image/BufferedImage.h>
 
@@ -110,7 +110,7 @@ this->run();
 
 
     public: void onEvent(AllBinaryEventObject allBinaryEventObject){
-this->onImageComparisonResultsEvent(allBinaryEventObject as ImageComparisonResultsEvent);
+this->onImageComparisonResultsEvent(allBinaryEventObject);
     
 }
 
@@ -146,7 +146,7 @@ this->setRunning(true);
 timeHelper.setStartTimeTNT();
     
 
-    ImageComparisonResult imageComparisonInfo = this->imageComparisonInfoVector.get(0) as ImageComparisonResult;;
+    ImageComparisonResult imageComparisonInfo = this->imageComparisonInfoVector.get(0);;
     
 this->logUtil.putF(imageComparisonInfo.toString(), this, this->commonStrings.RUN);
     

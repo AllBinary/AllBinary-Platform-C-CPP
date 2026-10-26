@@ -49,8 +49,9 @@
 
 class InputAutomationRobotServiceConsumer: public InputAutomationServiceConsumer {
 
-public: InputAutomationRobotServiceConsumer(BundleContext bundleContext){
-            super(InputAutomationRobotServiceInterface.constructor.toString()!, bundleContext, InputAutomationRobotOSGIServiceVisitor());
+public: InputAutomationRobotServiceConsumer(BundleContext bundleContext) : InputAutomationServiceConsumer(InputAutomationRobotServiceInterface.constructor.toString(), bundleContext, InputAutomationRobotOSGIServiceVisitor()){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.

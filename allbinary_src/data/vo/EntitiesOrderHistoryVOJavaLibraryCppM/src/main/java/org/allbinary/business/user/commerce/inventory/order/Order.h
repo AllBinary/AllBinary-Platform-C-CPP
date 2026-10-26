@@ -23,9 +23,9 @@
 
             #include <vector>
         
-            #include "../../../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/io/Serializable.h>
 
@@ -172,7 +172,7 @@ public: Order(std::string storeName, BasketInterface basket, std::string id, std
 
     public: std::string emailOrder(std::string userName, std::string paymentMethod, StoreFrontInterface storeFrontInterface);
 
-    public: HashMap<any, any> toHashMapOrder();
+    public: HashMap<Object*, Object*> toHashMapOrder();
 
                 //@Throws(Exception.constructor)
             

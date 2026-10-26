@@ -40,8 +40,9 @@
 
 class HtmlPostForm: public HtmlForm {
 
-public: HtmlPostForm(std::string action){
-            super(action);
+public: HtmlPostForm(std::string action) : HtmlForm(action){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.

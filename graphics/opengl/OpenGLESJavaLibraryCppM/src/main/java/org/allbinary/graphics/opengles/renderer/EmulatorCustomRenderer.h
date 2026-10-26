@@ -21,11 +21,11 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_OPENGLES_RENDERER_EMULATORCUSTOMRENDERER_H
         #define ORG_ALLBINARY_GRAPHICS_OPENGLES_RENDERER_EMULATORCUSTOMRENDERER_H
 
-            #include "../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../../../java/lang/Thread.h"
+            #include "java/lang/Thread.h"
         
 #include <javax/microedition/khronos/egl/EGLConfig.h>
 

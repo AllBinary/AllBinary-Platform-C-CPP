@@ -69,7 +69,7 @@ this->paintableArray= paintableArray;
                         for (
     int32_t index = this->paintableArray.size();--index >= 0; )
         {
-this->paintableArray[index]!.paint(graphics);
+this->paintableArray[index].paint(graphics);
     
 }
 
@@ -87,7 +87,7 @@ this->paintableArray[index]!.paint(graphics);
                         for (
     int32_t index = this->paintableArray.size();--index >= 0; )
         {
-paintableInterface= this->paintableArray[index]! as PaintableInterface;
+paintableInterface= this->paintableArray[index];
     
 paintableInterface.paintThreed(graphics);
     

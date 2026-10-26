@@ -18,9 +18,9 @@
 
 
 
-            #include "../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <javax/microedition/lcdui/Graphics.h>
 
@@ -71,7 +71,7 @@ class AnimationFrameToImageUtil
             
     public: Image getInstanceTranslate(int32_t width, int32_t height, Animation animationInterface){
 
-    Image image = GameFeatureImageCacheFactory::getInstance().get(AnimationFrameToImageUtil::instance.constructor.name.toString()!, ((width *3)>>1), ((height *3)>>1));;
+    Image image = GameFeatureImageCacheFactory::getInstance().get(AnimationFrameToImageUtil::instance.constructor.name.toString(), ((width *3)>>1), ((height *3)>>1));;
     
 
     Graphics graphics = image.getGraphics();;
@@ -101,7 +101,7 @@ graphics.translate( -tranlateX,  -tranlateY);
             
     public: Image getInstanceWH(int32_t width, int32_t height, Animation animationInterface){
 
-    Image image = GameFeatureImageCacheFactory::getInstance().get(AnimationFrameToImageUtil::instance.constructor.name.toString()!, width, height);;
+    Image image = GameFeatureImageCacheFactory::getInstance().get(AnimationFrameToImageUtil::instance.constructor.name.toString(), width, height);;
     
 
     Graphics graphics = image.getGraphics();;

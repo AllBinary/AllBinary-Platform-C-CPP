@@ -7,7 +7,7 @@
         #ifndef ORG_ALLBINARY_GAME_BASICGAMEINFOFACTORY_H
         #define ORG_ALLBINARY_GAME_BASICGAMEINFOFACTORY_H
 
-            #include "../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
 
 

@@ -23,7 +23,7 @@
 
             #include <vector>
         
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <javax/microedition/khronos/opengles/GL.h>
 
@@ -67,9 +67,6 @@
 #include <org/allbinary/string/CommonSeps.h>
 
       
-#include <org/allbinary/string/CommonStrings.h>
-
-      
 #include <org/allbinary/logic/string/StringMaker.h>
 
       
@@ -104,8 +101,6 @@ class LazyImageRotationAnimation: public RotationAnimation {
     private: static const std::string SET_REAL_ANIMATION = "setRealAnimation";
 
     protected: const LogUtil logUtil = LogUtil::getInstance();
-
-    private: const CommonStrings commonStrings = CommonStrings::getInstance();
 
     public: int32_t layoutIndex;
 

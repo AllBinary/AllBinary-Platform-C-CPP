@@ -21,14 +21,8 @@
         #ifndef ORG_ALLBINARY_GAME_PHYSICS_VELOCITY_VELOCITYBEHAVIORBASE_H
         #define ORG_ALLBINARY_GAME_PHYSICS_VELOCITY_VELOCITYBEHAVIORBASE_H
 
-            #include "../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-#include <jsinterop/annotations/JsType.h>
-
-      
-#include <jsinterop/annotations/JsMethod.h>
-
-      
 
 
 

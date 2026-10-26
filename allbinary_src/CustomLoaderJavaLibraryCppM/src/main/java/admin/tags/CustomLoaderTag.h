@@ -23,9 +23,9 @@
 
             #include <vector>
         
-            #include "../../java/lang/Class.h"
+            #include "java/lang/Class.h"
         
-            #include "../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/lang/reflect/Method.h>
 
@@ -81,7 +81,7 @@ class CustomLoaderTag: public CustomTagSupport {
 
     private: std::string webappPath;
 
-    private: HashMap<any, any> propertiesHashMap;
+    private: HashMap<Object*, Object*> propertiesHashMap;
 
 public: CustomLoaderTag();
 

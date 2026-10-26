@@ -21,7 +21,7 @@
         #ifndef ORG_ALLBINARY_BUSINESS_INIT_DB_DBINITINFO_H
         #define ORG_ALLBINARY_BUSINESS_INIT_DB_DBINITINFO_H
 
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/logic/communication/log/PreLogUtil.h>
 

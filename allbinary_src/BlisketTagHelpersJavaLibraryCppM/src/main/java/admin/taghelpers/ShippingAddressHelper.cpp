@@ -18,9 +18,9 @@
 
 
 
-            #include "../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../java/lang/Integer.h"
+            #include "java/lang/Integer.h"
         
 #include <java/util/HashMap.h>
 
@@ -100,8 +100,8 @@ class ShippingAddressHelper: public BasicTable {
 
     private: Portion portion;
 
-public: ShippingAddressHelper(HashMap<any, any> hashMap, PageContext pageContext){
-this->request= pageContext.getRequest() as HttpServletRequest;
+public: ShippingAddressHelper(HashMap<Object*, Object*> hashMap, PageContext pageContext){
+this->request= pageContext.getRequest();
     
 this->weblisketSession= WeblisketSession(hashMap, pageContext);
     

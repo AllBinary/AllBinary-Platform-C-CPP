@@ -20,9 +20,9 @@
 
             #include <vector>
         
-            #include "../../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <javax/microedition/lcdui/Font.h>
 
@@ -191,7 +191,7 @@ this->visitedList.ensureCapacity(size);
                         for (
     int32_t index = 0;index < size; index++)
         {
-geographicMapCellPosition= list.get(index) as GeographicMapCellPosition;
+geographicMapCellPosition= list.get(index);
     
 this->track(geographicMapCellPosition);
     
@@ -250,7 +250,7 @@ this->visitedList.add(this->booleanFactory.FALSE);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return localList.get(index +1) as GeographicMapCellPosition;
+                        return localList.get(index +1);
     
 
                                     }
@@ -284,7 +284,7 @@ this->visitedList.add(this->booleanFactory.FALSE);
                         for (
     int32_t index = 0;index < size; index++)
         {
-value= this->visitedList.get(index) as Boolean;
+value= this->visitedList.get(index);
     
 
                         if(value == this->booleanFactory.FALSE)
@@ -294,7 +294,7 @@ value= this->visitedList.get(index) as Boolean;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return localList.get(index) as GeographicMapCellPosition;
+                        return localList.get(index);
     
 
                                     }
@@ -305,7 +305,7 @@ value= this->visitedList.get(index) as Boolean;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return localList.get(0) as GeographicMapCellPosition;
+                        return localList.get(0);
     
 }
 
@@ -327,7 +327,7 @@ value= this->visitedList.get(index) as Boolean;
                         for (
     int32_t index = 0;index < size; index++)
         {
-value= this->visitedList.get(index) as Boolean;
+value= this->visitedList.get(index);
     
 
                         if(value == this->booleanFactory.FALSE)
@@ -373,7 +373,7 @@ value= this->visitedList.get(index) as Boolean;
                         for (
     int32_t index = 0;index < size; index++)
         {
-geographicMapCellPosition= pathList.get(index) as GeographicMapCellPosition;
+geographicMapCellPosition= pathList.get(index);
     
 
                         if(!localList.contains(geographicMapCellPosition))
@@ -404,7 +404,7 @@ geographicMapCellPosition= pathList.get(index) as GeographicMapCellPosition;
                         
                                     {
                                     
-    Boolean value = this->visitedList.get(index) as Boolean;;
+    Boolean value = this->visitedList.get(index);;
     
 
                         if(value == this->booleanFactory.TRUE)
@@ -446,7 +446,7 @@ geographicMapCellPosition= pathList.get(index) as GeographicMapCellPosition;
                         if(index !=  -1)
                         
                                     {
-                                    value= this->visitedList.get(index) as Boolean;
+                                    value= this->visitedList.get(index);
     
 
     Boolean TRUE = this->booleanFactory.TRUE;;
@@ -660,9 +660,9 @@ graphics.setColor(this->RED);
                         for (
     int32_t index = size;--index >= 0; )
         {
-geographicMapCellPosition= this->list.get(index) as GeographicMapCellPosition;
+geographicMapCellPosition= this->list.get(index);
     
-isCellVisitedBoolean= localVisitedList.get(index) as Boolean;
+isCellVisitedBoolean= localVisitedList.get(index);
     
 
                         if(!isCellVisitedBoolean.valueOf())

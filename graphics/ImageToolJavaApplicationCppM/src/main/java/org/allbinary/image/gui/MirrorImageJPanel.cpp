@@ -20,9 +20,9 @@
 
             #include <vector>
         
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../../java/lang/Thread.h"
+            #include "java/lang/Thread.h"
         
 #include <java/awt.h>
 
@@ -100,8 +100,9 @@ class MirrorImageJPanel: public javax::swing::JPanel, public ImageProcessorInput
 
     private: BufferedImage result;
 
-public: MirrorImageJPanel(ImageProcessorInput imageProcessorInput){
-            super();
+public: MirrorImageJPanel(ImageProcessorInput imageProcessorInput) : javax::swing::JPanel(){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -138,7 +139,7 @@ class extends Thread
                         for (
     int32_t index = 0;index < bufferedImageArray.size(); index++)
         {
-this->result= MirrorImageUtil::getInstance().getImage(bufferedImageArray[index]!, this->verticleJCheckBox.isSelected(), this->horizontalJCheckBox.isSelected());
+this->result= MirrorImageUtil::getInstance().getImage(bufferedImageArray[index], this->verticleJCheckBox.isSelected(), this->horizontalJCheckBox.isSelected());
     
 
     File file = imageProcessorInput.getFiles()[index];;
@@ -170,7 +171,7 @@ file= File(filePath);
                                     }
                                 
 
-    bool isWritten = ImageIO::write(this->result as RenderedImage, imageStrings.PNG, file);;
+    bool isWritten = ImageIO::write(this->result, imageStrings.PNG, file);;
     
 logUtil.putF("File: " +file +" Wrote: " +isWritten, this, commonStrings.RUN);
     

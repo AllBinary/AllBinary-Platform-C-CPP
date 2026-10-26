@@ -18,9 +18,9 @@
 
 
 
-            #include "../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <javax/microedition/khronos/opengles/GL10.h>
 
@@ -69,7 +69,7 @@ class AllBinaryRendererBase3
         while(this->list.size() > 0)
         {
 
-    OpenGLESImage openGLESImage = this->list.removeAt(0) as OpenGLESImage;;
+    OpenGLESImage openGLESImage = this->list.removeAt(0);;
     
 
                         if(openGLESImage != 

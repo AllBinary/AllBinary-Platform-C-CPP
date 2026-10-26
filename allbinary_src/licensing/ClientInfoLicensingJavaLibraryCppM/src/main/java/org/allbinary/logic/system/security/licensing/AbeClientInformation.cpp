@@ -18,11 +18,8 @@
 
 
 
-            #include "../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-#include <jsinterop/annotations/JsType.h>
-
-      
 #include <org/allbinary/business/init/LicenseInitInfo.h>
 
       
@@ -45,15 +42,6 @@
 
       
 #include <org/allbinary/string/CommonStrings.h>
-
-      
-#include <jsinterop/annotations/JsMethod.h>
-
-      
-#include <jsinterop/annotations/JsConstructor.h>
-
-      
-#include <jsinterop/annotations/JsProperty.h>
 
       
 
@@ -80,8 +68,9 @@ class AbeClientInformation: public ClientInformation {
 
     protected: const LogUtil logUtil = LogUtil::getInstance();
 
-public: AbeClientInformation(std::string name, std::string version, std::string specialName, std::string shortName){
-            super(name, version, specialName, shortName);
+public: AbeClientInformation(std::string name, std::string version, std::string specialName, std::string shortName) : ClientInformation(name, version, specialName, shortName){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -131,7 +120,7 @@ PreLogUtil::put(StringMaker().append("Special Name: ").append(this->getSpecialNa
 
     CommonStrings commonStrings = CommonStrings::getInstance();;
     
-this->logUtil.put(commonStrings.EXCEPTION, this, commonStrings.CONSTRUCTOR, e);
+logUtil.put(commonStrings.EXCEPTION, this, commonStrings.CONSTRUCTOR, e);
     
 }
 

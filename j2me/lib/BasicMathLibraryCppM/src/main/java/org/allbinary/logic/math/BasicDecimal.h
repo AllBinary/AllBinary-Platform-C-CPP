@@ -21,22 +21,10 @@
         #ifndef ORG_ALLBINARY_LOGIC_MATH_BASICDECIMAL_H
         #define ORG_ALLBINARY_LOGIC_MATH_BASICDECIMAL_H
 
-            #include "../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../java/lang/Long.h"
+            #include "java/lang/Long.h"
         
-#include <jsinterop/annotations/JsType.h>
-
-      
-#include <jsinterop/annotations/JsMethod.h>
-
-      
-#include <jsinterop/annotations/JsConstructor.h>
-
-      
-#include <jsinterop/annotations/JsProperty.h>
-
-      
 
 
 

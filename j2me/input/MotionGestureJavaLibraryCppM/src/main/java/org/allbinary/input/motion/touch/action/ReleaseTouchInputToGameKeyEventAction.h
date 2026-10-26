@@ -21,7 +21,7 @@
         #ifndef ORG_ALLBINARY_INPUT_MOTION_TOUCH_ACTION_RELEASETOUCHINPUTTOGAMEKEYEVENTACTION_H
         #define ORG_ALLBINARY_INPUT_MOTION_TOUCH_ACTION_RELEASETOUCHINPUTTOGAMEKEYEVENTACTION_H
 
-            #include "../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/game/input/GameKey.h>
 

@@ -20,7 +20,7 @@
 
             #include <vector>
         
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <javax/microedition/lcdui/Canvas.h>
 
@@ -150,9 +150,9 @@
 
 class RTSPlayerGameInput: public PlayerGameInput {
 
-    protected: const std::vector<GameInputProcessor> inputProcessorArray = new Array(InputFactory::getInstance().MAX);
+    protected: const std::vector<GameInputProcessor> inputProcessorArray = std::vector<GameInputProcessor>(InputFactory::getInstance().MAX);
 
-    protected: const std::vector<GameInputProcessor> removeInputProcessorArray = new Array(InputFactory::getInstance().MAX);
+    protected: const std::vector<GameInputProcessor> removeInputProcessorArray = std::vector<GameInputProcessor>(InputFactory::getInstance().MAX);
 
     private: BasicArrayList inputList;
 
@@ -174,8 +174,9 @@ class RTSPlayerGameInput: public PlayerGameInput {
 
     private: RTSFormInput selectedRtsFormInput = NullRTSFormInputFactory::getInstance();
 
-public: RTSPlayerGameInput(AllBinaryGameCanvas gameCanvas, BasicArrayList inputList, int32_t playerInputId, RTSLayerInfoPaintable towerInfoPaintable, RTSPlayerLayerInterface rtsPlayerLayerInterface, LayerPositionFinderInterface layerPositionFinderInterface, SelectRTSLayerVisitorFactoryInterface selectRTSLayerVisitorFactoryInterface){
-            super(inputList, BasicArrayListD(), playerInputId);
+public: RTSPlayerGameInput(AllBinaryGameCanvas gameCanvas, BasicArrayList inputList, int32_t playerInputId, RTSLayerInfoPaintable towerInfoPaintable, RTSPlayerLayerInterface rtsPlayerLayerInterface, LayerPositionFinderInterface layerPositionFinderInterface, SelectRTSLayerVisitorFactoryInterface selectRTSLayerVisitorFactoryInterface) : PlayerGameInput(inputList, BasicArrayListD(), playerInputId){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -202,7 +203,7 @@ this->selectedRTSLayerPlayerGameInput= SelectedRTSLayersPlayerGameInput(this->ge
                                     }
                                 
 
-    GeographicMapCompositeInterface geographicMapCompositeInterface = this->gameCanvas.getLayerManager() as GeographicMapCompositeInterface;;
+    GeographicMapCompositeInterface geographicMapCompositeInterface = this->gameCanvas.getLayerManager();;
     
 
     BasicGeographicMap geographicMapInterface = geographicMapCompositeInterface.getGeographicMapInterface()[0];;
@@ -268,25 +269,25 @@ this->rtsPlayerLayerInterface.getCurrentScrollSelectionForm().processInputKey(Ca
     public: void initInputProcessors(){
 this->inputProcessorArray[Canvas::LEFT]= RTSPlayerLeftGameInputProcessor(this);
     
-this->inputProcessorArray[Canvas::KEY_NUM0]= this->inputProcessorArray[Canvas::LEFT]!;
+this->inputProcessorArray[Canvas::KEY_NUM0]= this->inputProcessorArray[Canvas::LEFT];
     
 this->inputProcessorArray[Canvas::RIGHT]= RTSPlayerRightGameInputProcessor(this);
     
-this->inputProcessorArray[Canvas::KEY_POUND]= this->inputProcessorArray[Canvas::RIGHT]!;
+this->inputProcessorArray[Canvas::KEY_POUND]= this->inputProcessorArray[Canvas::RIGHT];
     
 this->removeInputProcessorArray[Canvas::KEY_NUM1]= RTSPlayerFireGameInputProcessor(this);
     
-this->removeInputProcessorArray[Canvas::KEY_NUM3]= this->removeInputProcessorArray[Canvas::KEY_NUM1]!;
+this->removeInputProcessorArray[Canvas::KEY_NUM3]= this->removeInputProcessorArray[Canvas::KEY_NUM1];
     
-this->removeInputProcessorArray[Canvas::KEY_NUM3]= this->removeInputProcessorArray[Canvas::KEY_NUM1]!;
+this->removeInputProcessorArray[Canvas::KEY_NUM3]= this->removeInputProcessorArray[Canvas::KEY_NUM1];
     
-this->removeInputProcessorArray[Canvas::LEFT]= this->removeInputProcessorArray[Canvas::KEY_NUM1]!;
+this->removeInputProcessorArray[Canvas::LEFT]= this->removeInputProcessorArray[Canvas::KEY_NUM1];
     
-this->removeInputProcessorArray[Canvas::RIGHT]= this->removeInputProcessorArray[Canvas::KEY_NUM1]!;
+this->removeInputProcessorArray[Canvas::RIGHT]= this->removeInputProcessorArray[Canvas::KEY_NUM1];
     
-this->removeInputProcessorArray[Canvas::KEY_NUM0]= this->removeInputProcessorArray[Canvas::KEY_NUM1]!;
+this->removeInputProcessorArray[Canvas::KEY_NUM0]= this->removeInputProcessorArray[Canvas::KEY_NUM1];
     
-this->removeInputProcessorArray[Canvas::KEY_POUND]= this->removeInputProcessorArray[Canvas::KEY_NUM1]!;
+this->removeInputProcessorArray[Canvas::KEY_POUND]= this->removeInputProcessorArray[Canvas::KEY_NUM1];
     
 GameInputProcessorUtil::init(this->inputProcessorArray);
     
@@ -316,7 +317,7 @@ GameInputProcessorUtil::init(this->removeInputProcessorArray);
     int32_t index = 0;index < size; index++)
         {
 
-    GameKeyEvent gameKeyEvent = this->inputList.get(index) as GameKeyEvent;;
+    GameKeyEvent gameKeyEvent = this->inputList.get(index);;
     
 key= gameKeyEvent.getKey();
     
@@ -324,9 +325,9 @@ this->getScrollPlayerGameInput().processInputKey(key);
     
 this->getSelectedBuildingPlayerGameInput().processInputKey(key);
     
-this->inputProcessorArray[key]!.processEvent(layerManager, gameKeyEvent);
+this->inputProcessorArray[key].processEvent(layerManager, gameKeyEvent);
     
-this->removeInputProcessorArray[key]!.processEvent(layerManager, gameKeyEvent);
+this->removeInputProcessorArray[key].processEvent(layerManager, gameKeyEvent);
     
 }
 
@@ -369,7 +370,7 @@ this->logUtil.put(this->commonStrings.EXCEPTION, this, this->gameInputStrings.PR
     GPoint point = motionGestureEvent.getCurrentPoint();;
     
 
-    GeographicMapCompositeInterface geographicMapCompositeInterface = this->gameCanvas.getLayerManager() as GeographicMapCompositeInterface;;
+    GeographicMapCompositeInterface geographicMapCompositeInterface = this->gameCanvas.getLayerManager();;
     
 
     BasicGeographicMap geographicMapInterface = geographicMapCompositeInterface.getGeographicMapInterface()[0];;
@@ -411,7 +412,7 @@ this->logUtil.put(this->commonStrings.EXCEPTION, this, this->gameInputStrings.PR
                         }
                             
 
-    CollidableDestroyableDamageableLayer foundRTSLayer = layer as CollidableDestroyableDamageableLayer;;
+    CollidableDestroyableDamageableLayer foundRTSLayer = layer;;
     
 this->setSelectedRTSLayer(foundRTSLayer, geographicMapCellPosition);
     
@@ -443,7 +444,7 @@ this->getSelectedBuildingPlayerGameInput().setSelectedRTSLayer(rtsLayer);
     GeographicMapCellPosition geographicMapCellPosition = this->getSelectedRtsFormInput().getSelectedGeographicCellPosition();;
     
 
-    GeographicMapCompositeInterface geographicMapCompositeInterface = this->gameCanvas.getLayerManager() as GeographicMapCompositeInterface;;
+    GeographicMapCompositeInterface geographicMapCompositeInterface = this->gameCanvas.getLayerManager();;
     
 
     BasicGeographicMap geographicMapInterface = geographicMapCompositeInterface.getGeographicMapInterface()[0];;
@@ -474,7 +475,7 @@ graphics.setColor(BasicColorFactory::getInstance().GREEN.intValue());
     int32_t index = list.size() -1;index >= 0; index--)
         {
 
-    RTSLayer rtsLayer = list.get(index) as RTSLayer;;
+    RTSLayer rtsLayer = list.get(index);;
     
 width= rtsLayer.getWidth();
     

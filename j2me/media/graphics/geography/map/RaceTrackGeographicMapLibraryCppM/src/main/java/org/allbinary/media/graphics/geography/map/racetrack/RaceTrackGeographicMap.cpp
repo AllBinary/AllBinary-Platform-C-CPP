@@ -20,7 +20,7 @@
 
             #include <vector>
         
-            #include "../../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/logic/string/StringMaker.h>
 
@@ -67,8 +67,9 @@ class RaceTrackGeographicMap: public BaseRaceTrackGeographicMap {
 
     private: CustomMapGeneratorBase customMapGenerator;
 
-public: RaceTrackGeographicMap(RaceTrackInfo raceTrackInfo, RaceTrackData raceTrackData, AllBinaryTiledLayerFactoryInterface tiledLayerFactoryInterface, GeographicMapCellPositionFactoryInterface geographicMapCellPositionFactoryInterface, GeographicMapCellPositionBaseFactory geographicMapCellPositionBaseFactory, GeographicMapCellTypeFactory geographicMapCellTypeFactory, CustomMapGeneratorBaseFactory customMapGeneratorBaseFactory){
-            super(raceTrackInfo, raceTrackData, tiledLayerFactoryInterface.getInstance(raceTrackInfo, raceTrackData), BasicGeographicMapFactory().getInstance(raceTrackInfo, raceTrackData, tiledLayerFactoryInterface, geographicMapCellPositionFactoryInterface, geographicMapCellTypeFactory), geographicMapCellPositionFactoryInterface, geographicMapCellPositionBaseFactory, geographicMapCellTypeFactory);
+public: RaceTrackGeographicMap(RaceTrackInfo raceTrackInfo, RaceTrackData raceTrackData, AllBinaryTiledLayerFactoryInterface tiledLayerFactoryInterface, GeographicMapCellPositionFactoryInterface geographicMapCellPositionFactoryInterface, GeographicMapCellPositionBaseFactory geographicMapCellPositionBaseFactory, GeographicMapCellTypeFactory geographicMapCellTypeFactory, CustomMapGeneratorBaseFactory customMapGeneratorBaseFactory) : BaseRaceTrackGeographicMap(raceTrackInfo, raceTrackData, tiledLayerFactoryInterface.getInstance(raceTrackInfo, raceTrackData), BasicGeographicMapFactory().getInstance(raceTrackInfo, raceTrackData, tiledLayerFactoryInterface, geographicMapCellPositionFactoryInterface, geographicMapCellTypeFactory), geographicMapCellPositionFactoryInterface, geographicMapCellPositionBaseFactory, geographicMapCellTypeFactory){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -95,7 +96,7 @@ this->customMapGenerator= customMapGeneratorBaseFactory.create(this);
     std::vector<std::vector<int32_t>> customMapArray = this->customMapGenerator.getCustomMapArray();;
     
 
-                        if(geographicMapCellPosition.getColumn() >= customMapArray[0]!.size())
+                        if(geographicMapCellPosition.getColumn() >= customMapArray[0].size())
                         
                                     {
                                     
@@ -107,12 +108,12 @@ stringBuffer.appendint(geographicMapCellPosition.getColumn());
     
 stringBuffer.append(" not in: ");
     
-stringBuffer.appendint(customMapArray[0]!.size());
+stringBuffer.appendint(customMapArray[0].size());
     
 this->logUtil.putF(stringBuffer.toString(), this, this->commonStrings.IS_VALID);
     
 
-                        if(geographicMapCellPosition.getColumn() == customMapArray[0]!.size())
+                        if(geographicMapCellPosition.getColumn() == customMapArray[0].size())
                         
                                     {
                                     

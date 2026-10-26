@@ -18,22 +18,23 @@
 
 
 
-            #include "../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../java/lang/System.h"
+            #include "java/lang/Thread.h"
         
-            #include "../../../java/lang/Thread.h"
-        
-#include <jsinterop/annotations/JsType.h>
+#include <javax/microedition/lcdui/CommandListener.h>
 
       
-#include <javax/microedition/lcdui/CommandListener.h>
+#include <org/allbinary/TsUtil.h>
 
       
 #include <org/allbinary/game/displayable/canvas/NullWaitGameRunnable.h>
 
       
 #include <org/allbinary/graphics/displayable/MyCanvas.h>
+
+      
+#include <org/allbinary/logic/ABSystemWrapper.h>
 
       
 #include <org/allbinary/logic/NullUtil.h>
@@ -69,15 +70,6 @@
 #include <org/allbinary/util/BasicArrayList.h>
 
       
-#include <jsinterop/annotations/JsMethod.h>
-
-      
-#include <jsinterop/annotations/JsConstructor.h>
-
-      
-#include <jsinterop/annotations/JsProperty.h>
-
-      
 
 
 
@@ -104,6 +96,10 @@ class RunnableCanvas: public MyCanvas, public RunnableInterface {
     protected: const NullUtil nullUtil = NullUtil::getInstance();
 
     protected: const StdUtil stdUtil = StdUtil::getInstance();
+
+    protected: const ABSystemWrapper systemWrapper = ABSystemWrapper::getInstance();
+
+    protected: const TsUtil tsUtil = TsUtil::getInstance();
 
     private: Thread thread = NullThread::NULL_THREAD;
 
@@ -135,13 +131,14 @@ class RunnableCanvas: public MyCanvas, public RunnableInterface {
 
     private: const std::string PROCESS_LOOP_SLEEP = "processLoopSleep";
 
-public: RunnableCanvas(CommandListener commandListener, BasicArrayList childNameList, bool hasParam){
-            super(CommonStrings::getInstance().UNKNOWN, childNameList);
+public: RunnableCanvas(CommandListener commandListener, BasicArrayList childNameList, bool hasParam) : MyCanvas(CommonStrings::getInstance().UNKNOWN, childNameList){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this->logUtil.putF(StringMaker().append("delay: ").appendint(this->loopTimeHelper.delay).toString(), this, this->commonStrings.CONSTRUCTOR);
+this->logUtil.putF(StringMaker().append("RunnableCanvas delay: ").appendint(this->loopTimeHelper.delay).toString(), this, this->commonStrings.CONSTRUCTOR);
     
 this->runnableCanvasRefreshHelper= RunnableCanvasRefreshHelper(this);
     
@@ -452,7 +449,10 @@ this->runnableCanvasRefreshHelper.process();
                                     {
                                     stringMaker.delete(0, stringMaker.length());
     
-this->logUtil.putF(stringMaker.append(this->START_PAUSE).appendlong(Date.now()).append(this->PAUSE_SLEEP).appendlong(this->pauseWait).toString(), this, this->PROCESS_LOOP_SLEEP);
+
+    int64_t currentTimeMillis = this->systemWrapper.currentTimeMillis();;
+    
+this->logUtil.putF(stringMaker.append(this->START_PAUSE).appendlong(currentTimeMillis).append(this->PAUSE_SLEEP).appendlong(this->pauseWait).toString(), this, this->PROCESS_LOOP_SLEEP);
     
 
         while(this->isPaused() && this->isRunning() && !this->isSingleThread())
@@ -465,7 +465,7 @@ this->processSleep();
                                     {
                                     stringMaker.delete(0, stringMaker.length());
     
-this->logUtil.putF(stringMaker.append(this->END_PAUSE).appendlong(Date.now()).toString(), this, this->PROCESS_LOOP_SLEEP);
+this->logUtil.putF(stringMaker.append(this->END_PAUSE).appendlong(currentTimeMillis).toString(), this, this->PROCESS_LOOP_SLEEP);
     
 
 

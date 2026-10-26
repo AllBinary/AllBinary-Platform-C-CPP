@@ -20,9 +20,9 @@
 
             #include <vector>
         
-            #include "../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/direction/Direction.h>
 
@@ -89,10 +89,10 @@ class TopViewCharacterBehavior
                         for (
     int32_t index = 0;index < size; index++)
         {
-basicTopViewGeographicMapCellTypeFactory= geographicMapInterfaceArray[index]!.getGeographicMapCellTypeFactory() as BasicTopViewGeographicMapCellTypeFactory;
+basicTopViewGeographicMapCellTypeFactory= geographicMapInterfaceArray[index].getGeographicMapCellTypeFactory();
     
 
-                        if(basicTopViewGeographicMapCellTypeFactory.BLOCK_CELL_TYPE.isType(geographicMapCellTypeArray[index]!))
+                        if(basicTopViewGeographicMapCellTypeFactory.BLOCK_CELL_TYPE.isType(geographicMapCellTypeArray[index]))
                         
                                     {
                                     

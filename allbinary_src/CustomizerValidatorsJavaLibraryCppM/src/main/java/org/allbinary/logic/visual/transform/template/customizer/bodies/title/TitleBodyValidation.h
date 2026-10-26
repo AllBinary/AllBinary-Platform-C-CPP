@@ -21,7 +21,7 @@
         #ifndef ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_TEMPLATE_CUSTOMIZER_BODIES_TITLE_TITLEBODYVALIDATION_H
         #define ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_TEMPLATE_CUSTOMIZER_BODIES_TITLE_TITLEBODYVALIDATION_H
 
-            #include "../../../../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
 
@@ -108,11 +108,11 @@ public: TitleBodyValidation();
 
 public: TitleBodyValidation(Document document);
 
-public: TitleBodyValidation(HashMap<any, any> hashMap);
+public: TitleBodyValidation(HashMap<Object*, Object*> hashMap);
 
                 //@Throws(Exception.constructor)
             
-    public: void getFormData(HashMap<any, any> hashMap);
+    public: void getFormData(HashMap<Object*, Object*> hashMap);
 
     public: Boolean isValid();
 

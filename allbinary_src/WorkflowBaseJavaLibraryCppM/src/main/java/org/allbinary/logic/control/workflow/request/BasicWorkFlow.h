@@ -23,11 +23,11 @@
 
             #include <vector>
         
-            #include "../../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../../../../java/lang/Long.h"
+            #include "java/lang/Long.h"
         
 #include <java/util/Calendar.h>
 
@@ -57,6 +57,9 @@
 
       
 #include <org/allbinary/data/tree/dom/document/DomDocumentHelper.h>
+
+      
+#include <org/allbinary/data/tree/dom/document/XmlDocumentHelper.h>
 
       
 #include <org/allbinary/logic/StdUtil.h>
@@ -124,9 +127,9 @@ class BasicWorkFlow
 
 public: BasicWorkFlow();
 
-public: BasicWorkFlow(HashMap<any, any> hashMap, PageContext pageContext);
+public: BasicWorkFlow(HashMap<Object*, Object*> hashMap, PageContext pageContext);
 
-public: BasicWorkFlow(HashMap<any, any> hashMap);
+public: BasicWorkFlow(HashMap<Object*, Object*> hashMap);
 
     public: std::string getName();
 
@@ -140,7 +143,7 @@ public: BasicWorkFlow(HashMap<any, any> hashMap);
 
                 //@Throws(Exception.constructor)
             
-    public: HashMap<any, any> toHashMap();
+    public: HashMap<Object*, Object*> toHashMap();
 
     public: Node toXmlNode(Document document);
 

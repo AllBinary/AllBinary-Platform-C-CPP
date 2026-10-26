@@ -21,7 +21,7 @@
         #ifndef ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_INFO_DATA_TRANSFORMINFODATADATA_H
         #define ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_INFO_DATA_TRANSFORMINFODATADATA_H
 
-            #include "../../../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
 #include <org/allbinary/logic/io/file/CommonDataFileStrings.h>
 

@@ -20,7 +20,7 @@
 
             #include <vector>
         
-            #include "../../../../../../../java/lang/RuntimeException.h"
+            #include "java/lang/RuntimeException.h"
         
 #include <javax/microedition/lcdui/Font.h>
 
@@ -86,8 +86,9 @@ class NumberStringHud: public BasicHud, public PaintableInterface {
 
     private: int32_t valueTotalDigits= 0;
 
-public: NumberStringHud(std::string prependString, int32_t max, int32_t location, int32_t direction, int32_t bufferZone, BasicColor basicColor){
-            super(location, direction, bufferZone, basicColor);
+public: NumberStringHud(std::string prependString, int32_t max, int32_t location, int32_t direction, int32_t bufferZone, BasicColor basicColor) : BasicHud(location, direction, bufferZone, basicColor){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -96,7 +97,7 @@ this->prependString= prependString;
     
 this->PREPEND_STRING= prependString.split('');
     
-this->valueString= PrimitiveLongSingleton::getInstance().NUMBER_CHAR_ARRAYS[0]!;
+this->valueString= PrimitiveLongSingleton::getInstance().NUMBER_CHAR_ARRAYS[0];
     
 this->primitiveLongUtil= PrimitiveLongUtil::createPowerOfTen(max +1);
     

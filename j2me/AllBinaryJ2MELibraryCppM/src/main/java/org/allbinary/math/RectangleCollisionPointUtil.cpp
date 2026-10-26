@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
 #include <org/allbinary/graphics/GPoint.h>
 
@@ -64,7 +64,7 @@ class RectangleCollisionPointUtil
                         for (
     int32_t index = list.size();--index >= 0; )
         {
-point= list.objectArray[index]! as GPoint;
+point= list.objectArray[index];
     
 
                         if(!rectangleCollisionUtil.isInside(rectX1, rectY1, rectX2, rectY2, point.getX(), point.getY()))
@@ -104,7 +104,7 @@ point= list.objectArray[index]! as GPoint;
                         for (
     int32_t index = list.size();--index >= 0; )
         {
-point= list.objectArray[index]! as GPoint;
+point= list.objectArray[index];
     
 
                         if(!rectangleCollisionUtil.isInside(rectX1, rectY1, rectX2, rectY2, point.getX() *xCellSize, point.getY() *yCellSize))

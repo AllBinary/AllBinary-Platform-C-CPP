@@ -20,7 +20,7 @@
 
             #include <vector>
         
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <javax/microedition/lcdui/Canvas.h>
 
@@ -211,8 +211,9 @@ class AdvancedRTSGameLayer: public RTSLayer, public DestroyedEventListenerInterf
 
     protected: TickableInterface waypointBehaviorBase = NullTickable::getInstance();
 
-public: AdvancedRTSGameLayer(RemoteInfo remoteInfo, PathFindingLayerInterface parentLayer, AdvancedRTSProperties advancedRTSProperties, std::vector<Group> groupInterface, std::string rootName, std::string name, Health healthInterface, RTSFormInput rtsFormInput, AnimationInterfaceFactoryInterface animationInterfaceFactoryInterface, AnimationInterfaceFactoryInterface emptyAnimationInterfaceFactoryInterface, AnimationInterfaceFactoryInterface baseAnimationInterfaceFactoryInterface, AnimationInterfaceFactoryInterface buildAnimationInterfaceFactoryInterface, AnimationInterfaceFactoryInterface verticleBuildAnimationInterfaceFactoryInterface, ProceduralAnimationInterfaceFactoryInterface proceduralAnimationInterfaceFactoryInterface, Rectangle rectangle, int32_t x, int32_t y, ViewPositionBase viewPosition){
-            super(remoteInfo, groupInterface, rootName, name, healthInterface, rtsFormInput, animationInterfaceFactoryInterface, emptyAnimationInterfaceFactoryInterface, baseAnimationInterfaceFactoryInterface, buildAnimationInterfaceFactoryInterface, verticleBuildAnimationInterfaceFactoryInterface, proceduralAnimationInterfaceFactoryInterface, rectangle, x, y, viewPosition);
+public: AdvancedRTSGameLayer(RemoteInfo remoteInfo, PathFindingLayerInterface parentLayer, AdvancedRTSProperties advancedRTSProperties, std::vector<Group> groupInterface, std::string rootName, std::string name, Health healthInterface, RTSFormInput rtsFormInput, AnimationInterfaceFactoryInterface animationInterfaceFactoryInterface, AnimationInterfaceFactoryInterface emptyAnimationInterfaceFactoryInterface, AnimationInterfaceFactoryInterface baseAnimationInterfaceFactoryInterface, AnimationInterfaceFactoryInterface buildAnimationInterfaceFactoryInterface, AnimationInterfaceFactoryInterface verticleBuildAnimationInterfaceFactoryInterface, ProceduralAnimationInterfaceFactoryInterface proceduralAnimationInterfaceFactoryInterface, Rectangle rectangle, int32_t x, int32_t y, ViewPositionBase viewPosition) : RTSLayer(remoteInfo, groupInterface, rootName, name, healthInterface, rtsFormInput, animationInterfaceFactoryInterface, emptyAnimationInterfaceFactoryInterface, baseAnimationInterfaceFactoryInterface, buildAnimationInterfaceFactoryInterface, verticleBuildAnimationInterfaceFactoryInterface, proceduralAnimationInterfaceFactoryInterface, rectangle, x, y, viewPosition){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -244,7 +245,7 @@ this->getWaypointBehavior().getWaypoint().setAllBinaryGameLayerManager(this->all
 
     protected: void initVisibility(RTSPlayerLayerInterface rtsPlayerLayerInterface){
 
-    AdvancedRTSPlayerLayerInterface advancedRTSPlayerLayerInterface = rtsPlayerLayerInterface as AdvancedRTSPlayerLayerInterface;;
+    AdvancedRTSPlayerLayerInterface advancedRTSPlayerLayerInterface = rtsPlayerLayerInterface;;
     
 
                         if(advancedRTSPlayerLayerInterface.isLocalPlayer() || advancedRTSPlayerLayerInterface.getGameType() == GameTypeFactory::getInstance().BOT)
@@ -320,7 +321,7 @@ this->parentLayer= parentLayer;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->waypointBehaviorBase as WaypointBehaviorBase;
+                        return this->waypointBehaviorBase;
     
 }
 
@@ -367,7 +368,7 @@ this->waypointBehaviorBase= unitWaypointHelper;
                         
                                     {
                                     
-    AdvancedRTSGameLayer parentAdvancedRTSGameLayer = this->parentLayer as AdvancedRTSGameLayer;;
+    AdvancedRTSGameLayer parentAdvancedRTSGameLayer = this->parentLayer;;
     
 
                         if(parentAdvancedRTSGameLayer.getType() != UnitLayer::getStaticType())
@@ -674,7 +675,7 @@ this->getGameKeyEventList().add(gameKeyEventFactory.getInstanceForKey(this, Canv
             
     public: BasicArrayList getSurroundingGeographicMapCellPositionList(){
 
-    GeographicMapCompositeInterface geographicMapCompositeInterface = this->allBinaryGameLayerManagerP as GeographicMapCompositeInterface;;
+    GeographicMapCompositeInterface geographicMapCompositeInterface = this->allBinaryGameLayerManagerP;;
     
 
     BasicGeographicMap geographicMapInterface = geographicMapCompositeInterface.getGeographicMapInterface()[0];;
@@ -739,7 +740,7 @@ this->waypointRunnableLogHelperP= WaypointRunnableLogHelper::getInstance();
                                     DestroyedEventHandler::getInstance().removeListener(this);
     
 
-    WaypointBase waypoint = this->getWaypointBehavior().getWaypoint() as WaypointBase;;
+    WaypointBase waypoint = this->getWaypointBehavior().getWaypoint();;
     
 waypoint.reset();
     

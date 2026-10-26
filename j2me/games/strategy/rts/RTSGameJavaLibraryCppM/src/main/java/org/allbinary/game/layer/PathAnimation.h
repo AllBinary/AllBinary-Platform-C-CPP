@@ -21,7 +21,7 @@
         #ifndef ORG_ALLBINARY_GAME_LAYER_PATHANIMATION_H
         #define ORG_ALLBINARY_GAME_LAYER_PATHANIMATION_H
 
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <javax/microedition/lcdui/Graphics.h>
 

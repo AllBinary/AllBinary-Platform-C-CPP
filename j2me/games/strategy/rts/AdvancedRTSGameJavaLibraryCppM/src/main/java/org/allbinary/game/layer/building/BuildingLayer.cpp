@@ -20,11 +20,8 @@
 
             #include <vector>
         
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-#include <java/util/Hashtable.h>
-
-      
 #include <javax/microedition/lcdui/Graphics.h>
 
       
@@ -160,6 +157,9 @@
 #include <org/allbinary/game/multiplayer/layer/RemoteInfo.h>
 
       
+#include <org/allbinary/util/ABHashtable.h>
+
+      
 
 
 
@@ -228,10 +228,11 @@ class BuildingLayer: public AdvancedRTSGameLayer, public RotationAnimationInterf
 
     private: Paintable healthBar;
 
-    private: Hashtable<any, any> pathsHashtable;
+    private: ABHashtable<Object*, Object*> pathsHashtable;
 
-public: BuildingLayer(RemoteInfo remoteInfo, BuildingPropertiesFactory buildingPropertiesFactory, AdvancedRTSProperties advancedRTSProperties, std::vector<Group> groupInterface, std::string rootName, std::string name, Health healthInterface, RTSFormInput rtsFormInput, AnimationInterfaceFactoryInterface animationInterfaceFactoryInterface, AnimationInterfaceFactoryInterface emptyAnimationInterfaceFactoryInterface, AnimationInterfaceFactoryInterface baseAnimationInterfaceFactoryInterface, AnimationInterfaceFactoryInterface buildAnimationInterfaceFactoryInterface, AnimationInterfaceFactoryInterface verticleBuildAnimationInterfaceFactoryInterface, ProceduralAnimationInterfaceFactoryInterface proceduralAnimationInterfaceFactoryInterface, Rectangle rectangle, int32_t x, int32_t y){
-            super(remoteInfo, NullPathFindingLayer::NULL_PATH_FINDING_LAYER, advancedRTSProperties, groupInterface, rootName, name, healthInterface, rtsFormInput, animationInterfaceFactoryInterface, emptyAnimationInterfaceFactoryInterface, baseAnimationInterfaceFactoryInterface, buildAnimationInterfaceFactoryInterface, verticleBuildAnimationInterfaceFactoryInterface, proceduralAnimationInterfaceFactoryInterface, rectangle, x, y, TileLayerPositionIntoViewPosition());
+public: BuildingLayer(RemoteInfo remoteInfo, BuildingPropertiesFactory buildingPropertiesFactory, AdvancedRTSProperties advancedRTSProperties, std::vector<Group> groupInterface, std::string rootName, std::string name, Health healthInterface, RTSFormInput rtsFormInput, AnimationInterfaceFactoryInterface animationInterfaceFactoryInterface, AnimationInterfaceFactoryInterface emptyAnimationInterfaceFactoryInterface, AnimationInterfaceFactoryInterface baseAnimationInterfaceFactoryInterface, AnimationInterfaceFactoryInterface buildAnimationInterfaceFactoryInterface, AnimationInterfaceFactoryInterface verticleBuildAnimationInterfaceFactoryInterface, ProceduralAnimationInterfaceFactoryInterface proceduralAnimationInterfaceFactoryInterface, Rectangle rectangle, int32_t x, int32_t y) : AdvancedRTSGameLayer(remoteInfo, NullPathFindingLayer::NULL_PATH_FINDING_LAYER, advancedRTSProperties, groupInterface, rootName, name, healthInterface, rtsFormInput, animationInterfaceFactoryInterface, emptyAnimationInterfaceFactoryInterface, baseAnimationInterfaceFactoryInterface, buildAnimationInterfaceFactoryInterface, verticleBuildAnimationInterfaceFactoryInterface, proceduralAnimationInterfaceFactoryInterface, rectangle, x, y, TileLayerPositionIntoViewPosition()){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -269,7 +270,7 @@ this->trackingEvent= buildingPropertiesFactory.getTrackingEvent(this);
 
     protected: void initVisibility(RTSPlayerLayerInterface rtsPlayerLayerInterface){
 
-    AdvancedRTSPlayerLayerInterface advancedRTSPlayerLayerInterface = rtsPlayerLayerInterface as AdvancedRTSPlayerLayerInterface;;
+    AdvancedRTSPlayerLayerInterface advancedRTSPlayerLayerInterface = rtsPlayerLayerInterface;;
     
 
                         if(advancedRTSPlayerLayerInterface.isLocalPlayer())
@@ -307,7 +308,7 @@ TrackingEventHandler::getInstance().addListenerInterface(this);
 
         try {
             
-    AdvancedRTSGameLayer layerInterface = trackingEvent.getLayerInterface() as AdvancedRTSGameLayer;;
+    AdvancedRTSGameLayer layerInterface = trackingEvent.getLayerInterface();;
     
 
                         if(layerInterface.getGroupInterface()[0] != this->getGroupInterface()[0])
@@ -571,7 +572,7 @@ this->efficiency= efficiency;
         {
 pathsList= BasicArrayListD();
     
-occupyGeographicMapCellPosition= occupyList.get(index2) as GeographicMapCellPosition;
+occupyGeographicMapCellPosition= occupyList.get(index2);
     
 
 
@@ -580,7 +581,7 @@ occupyGeographicMapCellPosition= occupyList.get(index2) as GeographicMapCellPosi
                         for (
     int32_t index = surroundList.size() -1;index >= 0; index--)
         {
-surroundGeographicMapCellPosition= surroundList.get(index) as GeographicMapCellPosition;
+surroundGeographicMapCellPosition= surroundList.get(index);
     
 
                         if(geographicMapDirectionUtil.getEightDirectionFromCellPositionToAdjacentCellPosition(surroundGeographicMapCellPosition, occupyGeographicMapCellPosition) != NO_DIRECTION)
@@ -606,7 +607,7 @@ this->pathsHashtable.put(occupyGeographicMapCellPosition, pathsList);
 
     public: BasicArrayList getMoveOutOfBuildAreaPath(GeographicMapCellPosition geographicMapCellPosition){
 
-    BasicArrayList pathsList = this->pathsHashtable.get(geographicMapCellPosition) as BasicArrayList;;
+    BasicArrayList pathsList = this->pathsHashtable.get(geographicMapCellPosition);;
     
 
 

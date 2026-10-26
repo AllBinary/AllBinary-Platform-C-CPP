@@ -18,24 +18,15 @@
 
 
 
-            #include "../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-#include <jsinterop/annotations/JsType.h>
-
-      
-#include <java/util/Hashtable.h>
-
-      
 #include <org/allbinary/game/configuration/event/ChangedGameFeatureListener.h>
 
       
-#include <jsinterop/annotations/JsMethod.h>
-
-      
-#include <jsinterop/annotations/JsConstructor.h>
-
-      
 #include <org/allbinary/logic/StdUtil.h>
+
+      
+#include <org/allbinary/util/ABHashtable.h>
 
       
 
@@ -61,14 +52,14 @@ class Feature
             : public Object
          {
 
-    private: static Hashtable<any, any> hashtable = StdUtil::getInstance().createHashtable();
+    private: static ABHashtable<Object*, Object*> hashtable = StdUtil::getInstance().createHashtable();
 
     public: static Feature getInstance(std::string name){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return Feature::hashtable.get(name) as Feature;
+                        return Feature::hashtable.get(name);
     
 }
 

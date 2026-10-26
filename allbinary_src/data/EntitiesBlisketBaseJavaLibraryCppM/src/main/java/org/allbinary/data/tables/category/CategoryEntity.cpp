@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
 
@@ -79,8 +79,9 @@ class CategoryEntity: public AbSqlBean, public CategoryEntityInterface {
 
     protected: const std::string tableName = "categories";
 
-public: CategoryEntity(CategoryFactoryInterface categoryFactoryInterface){
-            super(InventoryDbInitInfo());
+public: CategoryEntity(CategoryFactoryInterface categoryFactoryInterface) : AbSqlBean(InventoryDbInitInfo()){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -90,8 +91,9 @@ this->setTableName(this->tableName);
 }
 
 
-public: CategoryEntity(){
-            super(InventoryDbInitInfo());
+public: CategoryEntity() : AbSqlBean(InventoryDbInitInfo()){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -218,8 +220,8 @@ stringBuffer.append(this->sqlStrings.END);
 }
 
 
-    public: void update(HashMap<any, any> updatedValues){
-super.updateWhere(CategoryData::getInstance().NAME, updatedValues.get(CategoryData::getInstance().NAME) as string, updatedValues);
+    public: void update(HashMap<Object*, Object*> updatedValues){
+super.updateWhere(CategoryData::getInstance().NAME, updatedValues.get(CategoryData::getInstance().NAME), updatedValues);
     
 }
 

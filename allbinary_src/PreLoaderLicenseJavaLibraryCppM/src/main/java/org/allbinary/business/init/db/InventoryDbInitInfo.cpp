@@ -42,8 +42,9 @@ class InventoryDbInitInfo: public DbInitInfo {
 
     private: static const std::string INITFILE = "inventorydbinitdata.dat";
 
-public: InventoryDbInitInfo(){
-            super(INITFILE, true);
+public: InventoryDbInitInfo() : DbInitInfo(INITFILE, true){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -51,8 +52,9 @@ public: InventoryDbInitInfo(){
 }
 
 
-public: InventoryDbInitInfo(bool read){
-            super(INITFILE, read);
+public: InventoryDbInitInfo(bool read) : DbInitInfo(INITFILE, read){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.

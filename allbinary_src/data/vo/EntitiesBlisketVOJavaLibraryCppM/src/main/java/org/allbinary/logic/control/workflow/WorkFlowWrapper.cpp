@@ -18,13 +18,13 @@
 
 
 
-            #include "../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../java/lang/Class.h"
+            #include "java/lang/Class.h"
         
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../../../java/lang/Integer.h"
+            #include "java/lang/Integer.h"
         
 #include <java/lang/reflect/Method.h>
 
@@ -87,7 +87,7 @@ this->anyType= anyType;
 
         try {
             
-    Function helperClass = this->anyType.constructor;;
+    Class* helperClass = this->anyType->getClass();;
     
 
     Method method = helperClass.getMethod("getName", 
@@ -95,7 +95,7 @@ this->anyType= anyType;
     
 
     std::string result = method.invoke(this->anyType, 
-                            nullptr) as string;;
+                            nullptr);;
     
 
 
@@ -135,7 +135,7 @@ this->anyType= anyType;
 
         try {
             
-    Function helperClass = this->anyType.constructor;;
+    Class* helperClass = this->anyType->getClass();;
     
 
     Method method = helperClass.getMethod("getStoreName", 
@@ -143,7 +143,7 @@ this->anyType= anyType;
     
 
     std::string result = method.invoke(this->anyType, 
-                            nullptr) as string;;
+                            nullptr);;
     
 
 
@@ -183,7 +183,7 @@ this->anyType= anyType;
 
         try {
             
-    Function helperClass = this->anyType.constructor;;
+    Class* helperClass = this->anyType->getClass();;
     
 
     Method method = helperClass.getMethod(this->commonStrings.PROCESS, 
@@ -191,7 +191,7 @@ this->anyType= anyType;
     
 
     Integer result = method.invoke(this->anyType, 
-                            nullptr) as Integer;;
+                            nullptr);;
     
 
 

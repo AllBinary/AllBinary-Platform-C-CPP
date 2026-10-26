@@ -21,7 +21,7 @@
         #ifndef ORG_ALLBINARY_POSTGAMECOMMANDFACTORY_H
         #define ORG_ALLBINARY_POSTGAMECOMMANDFACTORY_H
 
-            #include "../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
 #include <javax/microedition/lcdui/Canvas.h>
 

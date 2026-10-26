@@ -18,13 +18,7 @@
 
 
 
-#include <jsinterop/annotations/JsType.h>
-
-      
 #include <org/allbinary/animation/IndexedAnimationInterface.h>
-
-      
-#include <jsinterop/annotations/JsMethod.h>
 
       
 

@@ -21,9 +21,9 @@
         #ifndef ORG_ALLBINARY_LOGIC_COMMUNICATION_LOG_FORCEDLOGUTIL_H
         #define ORG_ALLBINARY_LOGIC_COMMUNICATION_LOG_FORCEDLOGUTIL_H
 
-            #include "../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/string/CommonStrings.h>
 

@@ -20,11 +20,8 @@
 
             #include <vector>
         
-            #include "../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-#include <jsinterop/annotations/JsType.h>
-
-      
 #include <javax/microedition/khronos/opengles/GL10.h>
 
       
@@ -32,15 +29,6 @@
 
       
 #include <org/allbinary/graphics/opengles/NullOpenGLProcessorFactory.h>
-
-      
-#include <jsinterop/annotations/JsMethod.h>
-
-      
-#include <jsinterop/annotations/JsConstructor.h>
-
-      
-#include <jsinterop/annotations/JsProperty.h>
 
       
 
@@ -88,9 +76,7 @@ class ShaderComposite
 
     public: OpenGLProcessor vertexOpenGLProcessor;
 
-    public: OpenGLProcessor useProgramShaderOpenGLProcessor = 
-                null
-            ;
+    public: OpenGLProcessor useProgramShaderOpenGLProcessor = NullOpenGLProcessorFactory::getInstance();
 
     public: OpenGLProcessor shaderMatrixOpenGLProcessor = NullOpenGLProcessorFactory::getInstance();
 

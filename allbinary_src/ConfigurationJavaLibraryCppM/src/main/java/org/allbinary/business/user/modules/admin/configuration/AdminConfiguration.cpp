@@ -18,9 +18,9 @@
 
 
 
-            #include "../../../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
 
@@ -105,7 +105,7 @@ this->getFormData(RequestParams(request).toHashMap());
 }
 
 
-public: AdminConfiguration(HashMap<any, any> storeHashMap){
+public: AdminConfiguration(HashMap<Object*, Object*> storeHashMap){
 this->logUtil.putF(this->commonStrings.START, this, this->commonStrings.CONSTRUCTOR);
     
 this->getFormData(storeHashMap);
@@ -115,10 +115,10 @@ this->getFormData(storeHashMap);
 
                 //@Throws(Exception.constructor)
             
-    private: void getFormData(HashMap<any, any> storeHashMap){
+    private: void getFormData(HashMap<Object*, Object*> storeHashMap){
 this->logUtil.putF(this->commonStrings.START, this, "getFormData");
     
-this->setContextConfigurationInterface(ContextConfiguration(storeHashMap) as ContextConfigurationInterface);
+this->setContextConfigurationInterface(ContextConfiguration(storeHashMap));
     
 }
 

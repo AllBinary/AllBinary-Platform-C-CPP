@@ -18,9 +18,9 @@
 
 
 
-            #include "../../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/util/BasicArrayList.h>
 
@@ -117,7 +117,7 @@ private: StoreCustomizerComponentUtil(){
     int32_t index = 0;index < size; index++)
         {
 
-    TransformInfo nextTransformInfoInterface = allCustomizedViews.get(index) as TransformInfo;;
+    TransformInfo nextTransformInfoInterface = allCustomizedViews.get(index);;
     
 
     BasicArrayList allViewsToBeModified = customizerUtil.getTransformInfoObjectConfigComponentNodesToCustomize(transformInfoInterface, nextTransformInfoInterface);;
@@ -161,7 +161,7 @@ this->generate(abeClientInformation, transformInfoInterface, allViewsToBeModifie
     int32_t index = 0;index < size; index++)
         {
 
-    TransformInfo nextTransformInfoInterface = allViewsToBeModifiedVector.get(index) as TransformInfo;;
+    TransformInfo nextTransformInfoInterface = allViewsToBeModifiedVector.get(index);;
     
 
     TransformInfoInterface specifiedTransformInfoInterface = customizerUtil.getTransformInfoInterfaceToCustomize(transformInfoInterface, nextTransformInfoInterface);;

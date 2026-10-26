@@ -21,7 +21,7 @@
         #ifndef ORG_ALLBINARY_ANIMATION_IMAGE_ADJUSTEDRIGHTTOLEFTIMAGEANIMATION_H
         #define ORG_ALLBINARY_ANIMATION_IMAGE_ADJUSTEDRIGHTTOLEFTIMAGEANIMATION_H
 
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <javax/microedition/lcdui/Graphics.h>
 

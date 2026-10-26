@@ -75,7 +75,7 @@ class UpKeyEventHandler: public UpKeyEventHandlerBase {
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return UpKeyEventHandler::instanceArray[playerInputId]!;
+                        return UpKeyEventHandler::instanceArray[playerInputId];
     
 }
 
@@ -85,7 +85,7 @@ class UpKeyEventHandler: public UpKeyEventHandlerBase {
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return UpKeyEventHandler::instanceArray[playerInputId]!;
+                        return UpKeyEventHandler::instanceArray[playerInputId];
     
 }
 
@@ -104,7 +104,7 @@ super.removeAllListeners();
                         for (
     int32_t index = UpKeyEventHandler::instanceArray.size() -1;index >= 0; index--)
         {
-UpKeyEventHandler::instanceArray[index]!.removeAllListeners();
+UpKeyEventHandler::instanceArray[index].removeAllListeners();
     
 }
 
@@ -121,7 +121,7 @@ super.removeListenerSingleThreaded(eventListenerInterface);
                         for (
     int32_t index = UpKeyEventHandler::instanceArray.size() -1;index >= 0; index--)
         {
-UpKeyEventHandler::instanceArray[index]!.removeListenerSingleThreaded(eventListenerInterface);
+UpKeyEventHandler::instanceArray[index].removeListenerSingleThreaded(eventListenerInterface);
     
 }
 
@@ -138,7 +138,7 @@ super.removeListener(eventListenerInterface);
                         for (
     int32_t index = UpKeyEventHandler::instanceArray.size() -1;index >= 0; index--)
         {
-UpKeyEventHandler::instanceArray[index]!.removeListener(eventListenerInterface);
+UpKeyEventHandler::instanceArray[index].removeListener(eventListenerInterface);
     
 }
 

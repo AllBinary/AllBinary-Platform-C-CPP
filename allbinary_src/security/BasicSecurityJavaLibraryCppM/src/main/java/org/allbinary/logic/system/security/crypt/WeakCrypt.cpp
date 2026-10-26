@@ -20,9 +20,9 @@
 
             #include <vector>
         
-            #include "../../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/TsUtil.h>
 
@@ -80,7 +80,7 @@ class WeakCrypt
 public: WeakCrypt(int32_t key){
 
         try {
-            this->abCrypt.init(WeakCrypt::keys[key]!);
+            this->abCrypt.init(WeakCrypt::keys[key]);
     
 
                 //: 

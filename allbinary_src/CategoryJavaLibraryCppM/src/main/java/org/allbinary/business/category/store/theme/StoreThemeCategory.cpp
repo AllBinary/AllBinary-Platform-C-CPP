@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
 
@@ -88,8 +88,9 @@ class StoreThemeCategory: public Category, public StoreThemeCategoryInterface {
 
     private: BasicArrayList themeVector;
 
-public: StoreThemeCategory(TransformInfoInterface transformInfoInterface, CategoryPropertiesFactoryInterface categoryPropertiesFactoryInterface, int32_t level){
-            super(categoryPropertiesFactoryInterface, level);
+public: StoreThemeCategory(TransformInfoInterface transformInfoInterface, CategoryPropertiesFactoryInterface categoryPropertiesFactoryInterface, int32_t level) : Category(categoryPropertiesFactoryInterface, level){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -101,8 +102,9 @@ this->themeVector= BasicArrayListD();
 }
 
 
-public: StoreThemeCategory(TransformInfoInterface transformInfoInterface, CategoryInterface rootCategoryInterface, CategoryInterface parentCategoryInterface, CategoryPropertiesFactoryInterface categoryPropertiesFactoryInterface){
-            super(rootCategoryInterface, parentCategoryInterface, categoryPropertiesFactoryInterface);
+public: StoreThemeCategory(TransformInfoInterface transformInfoInterface, CategoryInterface rootCategoryInterface, CategoryInterface parentCategoryInterface, CategoryPropertiesFactoryInterface categoryPropertiesFactoryInterface) : Category(rootCategoryInterface, parentCategoryInterface, categoryPropertiesFactoryInterface){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -114,8 +116,9 @@ this->themeVector= BasicArrayListD();
 }
 
 
-public: StoreThemeCategory(TransformInfoInterface transformInfoInterface, Node node, CategoryPropertiesFactoryInterface categoryPropertiesFactoryInterface, int32_t level){
-            super(categoryPropertiesFactoryInterface, level);
+public: StoreThemeCategory(TransformInfoInterface transformInfoInterface, Node node, CategoryPropertiesFactoryInterface categoryPropertiesFactoryInterface, int32_t level) : Category(categoryPropertiesFactoryInterface, level){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -129,8 +132,9 @@ this->addThemes(node);
 }
 
 
-public: StoreThemeCategory(TransformInfoInterface transformInfoInterface, Node node, CategoryInterface rootCategoryInterface, CategoryInterface parentCategoryInterface, CategoryPropertiesFactoryInterface categoryPropertiesFactoryInterface){
-            super(rootCategoryInterface, parentCategoryInterface, categoryPropertiesFactoryInterface);
+public: StoreThemeCategory(TransformInfoInterface transformInfoInterface, Node node, CategoryInterface rootCategoryInterface, CategoryInterface parentCategoryInterface, CategoryPropertiesFactoryInterface categoryPropertiesFactoryInterface) : Category(rootCategoryInterface, parentCategoryInterface, categoryPropertiesFactoryInterface){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -230,9 +234,9 @@ this->themeVector.add(themeValidation);
 
                 //@Throws(Exception.constructor)
             
-    public: HashMap<any, any> toHashMap(){
+    public: HashMap<Object*, Object*> toHashMap(){
 
-    HashMap<any, any> categoryHashMap = super.toHashMap();;
+    HashMap<Object*, Object*> categoryHashMap = super.toHashMap();;
     
 categoryHashMap.put(ThemesData::getInstance().NAME, this->themeVector);
     

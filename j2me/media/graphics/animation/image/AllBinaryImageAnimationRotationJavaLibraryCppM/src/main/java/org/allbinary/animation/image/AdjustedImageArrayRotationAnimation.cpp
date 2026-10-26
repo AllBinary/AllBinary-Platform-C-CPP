@@ -20,7 +20,7 @@
 
             #include <vector>
         
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <javax/microedition/lcdui/Graphics.h>
 
@@ -61,7 +61,7 @@ class AdjustedImageArrayRotationAnimation: public ImageArrayRotationAnimation {
             
     public: static AdjustedImageArrayRotationAnimation createAdjustedImageArrayRotationAnimationInfo(Object* anyType, AnimationBehavior animationBehavior){
 
-    ImageArrayRotationAnimationInfo imageRotationAnimationInfo = anyType as ImageArrayRotationAnimationInfo;;
+    ImageArrayRotationAnimationInfo imageRotationAnimationInfo = *dynamic_cast<ImageArrayRotationAnimationInfo*>(anyType);;
     
 
 
@@ -79,7 +79,7 @@ class AdjustedImageArrayRotationAnimation: public ImageArrayRotationAnimation {
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return AdjustedImageArrayRotationAnimation(imageArray, angleInfo, totalAngle,  -(imageArray[0]!.getWidth()>>2),  -(imageArray[0]!.getHeight()>>2), animationBehavior);
+                        return AdjustedImageArrayRotationAnimation(imageArray, angleInfo, totalAngle,  -(imageArray[0].getWidth()>>2),  -(imageArray[0].getHeight()>>2), animationBehavior);
     
 }
 
@@ -88,8 +88,9 @@ class AdjustedImageArrayRotationAnimation: public ImageArrayRotationAnimation {
 
     private: int32_t dy= 0;
 
-public: AdjustedImageArrayRotationAnimation(std::vector<Image> imageArray, AngleInfo angleInfo, int32_t totalAngle, int32_t dx, int32_t dy, AnimationBehavior animationBehavior){
-            super(imageArray, angleInfo, totalAngle, animationBehavior);
+public: AdjustedImageArrayRotationAnimation(std::vector<Image> imageArray, AngleInfo angleInfo, int32_t totalAngle, int32_t dx, int32_t dy, AnimationBehavior animationBehavior) : ImageArrayRotationAnimation(imageArray, angleInfo, totalAngle, animationBehavior){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.

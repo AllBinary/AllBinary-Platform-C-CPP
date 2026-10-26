@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
 #include <java/util/HashMap.h>
 
@@ -55,7 +55,7 @@ class InputImageType
             : public Object
          {
 
-    private: static HashMap<any, any> hashMap = StdUtil::getInstance().createHashMap();
+    private: static HashMap<Object*, Object*> hashMap = StdUtil::getInstance().createHashMap();
 
     private: static const BasicArrayList TYPE_VECTOR = BasicArrayListD();
 
@@ -70,7 +70,7 @@ class InputImageType
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return InputImageType::hashMap.get(imageTypeString) as InputImageType;
+                        return InputImageType::hashMap.get(imageTypeString);
     
 }
 

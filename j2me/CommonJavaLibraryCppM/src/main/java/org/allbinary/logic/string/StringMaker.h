@@ -9,15 +9,15 @@
 
             #include <vector>
         
-            #include "../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../java/lang/System.h"
+            #include "java/lang/System.h"
         
-            #include "../../../../java/lang/Integer.h"
+            #include "java/lang/Integer.h"
         
-            #include "../../../../java/lang/Long.h"
+            #include "java/lang/Long.h"
         
-            #include "../../../../java/lang/Float.h"
+            #include "java/lang/Float.h"
         
 #include <jsinterop/annotations/JsType.h>
 
@@ -60,6 +60,8 @@ public: StringMaker();
     public: StringMaker append(std::string string);
 
     public: StringMaker appendchar(char c);
+
+    public: StringMaker appendCharArray(std::vector<char> charArray, int32_t start, int32_t end);
 
     public: StringMaker appendbyte(int8_t b);
 

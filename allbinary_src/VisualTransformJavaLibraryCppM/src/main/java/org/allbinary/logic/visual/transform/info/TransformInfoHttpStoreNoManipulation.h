@@ -21,7 +21,7 @@
         #ifndef ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_INFO_TRANSFORMINFOHTTPSTORENOMANIPULATION_H
         #define ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_INFO_TRANSFORMINFOHTTPSTORENOMANIPULATION_H
 
-            #include "../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
 
@@ -54,7 +54,7 @@
 
 class TransformInfoHttpStoreNoManipulation: public TransformInfoHttpStore {
 
-public: TransformInfoHttpStoreNoManipulation(HashMap<any, any> propertiesHashMap, PageContext pageContext);
+public: TransformInfoHttpStoreNoManipulation(HashMap<Object*, Object*> propertiesHashMap, PageContext pageContext);
 
                 //@Throws(Exception.constructor)
             

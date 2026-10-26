@@ -18,14 +18,8 @@
 
 
 
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-#include <jsinterop/annotations/JsType.h>
-
-      
-#include <java/util/Hashtable.h>
-
-      
 #include <org/allbinary/game/displayable/canvas/GameCanvasRunnableInterface.h>
 
       
@@ -47,13 +41,10 @@
 #include <org/allbinary/thread/PrimaryThreadPool.h>
 
       
-#include <jsinterop/annotations/JsMethod.h>
-
-      
-#include <jsinterop/annotations/JsConstructor.h>
-
-      
 #include <org/allbinary/game/displayable/canvas/NullGameCanvasRunnable.h>
+
+      
+#include <org/allbinary/util/ABHashtable.h>
 
       
 
@@ -80,8 +71,9 @@
 
 class DemoGameMidlet: public GameMidlet {
 
-public: DemoGameMidlet(ClientInformationFactory clientInformationFactory){
-            super(clientInformationFactory);
+public: DemoGameMidlet(ClientInformationFactory clientInformationFactory) : GameMidlet(clientInformationFactory){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -93,12 +85,12 @@ public: DemoGameMidlet(ClientInformationFactory clientInformationFactory){
             
     protected: bool isContinue(){
 
-    Hashtable<any, any> hashtable = this->getStartStateHashtable();;
+    ABHashtable<Object*, Object*> hashtable = this->getStartStateHashtable();;
     
 
                         if(hashtable != 
                                     nullptr
-                                 && hashtable.length > 0)
+                                 && hashtable.size() > 0)
                         
                                     {
                                     
@@ -209,7 +201,7 @@ this->logUtil.putF(this->commonStrings.START, this, CREATE_GAME);
 progressCanvas.start();
     
 
-    Hashtable<any, any> hashtable = this->getStartStateHashtable();;
+    ABHashtable<Object*, Object*> hashtable = this->getStartStateHashtable();;
     
 this->setStartStateHashtable(StdUtil::getInstance().NULL_TABLE);
     

@@ -43,8 +43,9 @@
 
 class NullJ2SEControl: public Control {
 
-: NullJ2SEControl(Type type){
-            super(type);
+: NullJ2SEControl(Type type) : Control(type){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.

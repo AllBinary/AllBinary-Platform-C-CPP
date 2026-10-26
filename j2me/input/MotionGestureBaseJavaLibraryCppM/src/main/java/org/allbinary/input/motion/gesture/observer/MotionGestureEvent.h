@@ -21,9 +21,6 @@
         #ifndef ORG_ALLBINARY_INPUT_MOTION_GESTURE_OBSERVER_MOTIONGESTUREEVENT_H
         #define ORG_ALLBINARY_INPUT_MOTION_GESTURE_OBSERVER_MOTIONGESTUREEVENT_H
 
-#include <jsinterop/annotations/JsType.h>
-
-      
 #include <org/allbinary/graphics/GPoint.h>
 
       
@@ -51,12 +48,6 @@
 #include <org/allbinary/string/CommonLabels.h>
 
       
-#include <jsinterop/annotations/JsMethod.h>
-
-      
-#include <jsinterop/annotations/JsConstructor.h>
-
-      
 
 
 
@@ -77,8 +68,6 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class MotionGestureEvent: public AllBinaryEventObject {
-
-    private: static const std::string CURRENT = CommonLabels::getInstance().CURRENT;
 
     private: static const std::string PREVIOUS = " Previous: ";
 
@@ -105,6 +94,8 @@ public: MotionGestureEvent(Object* source, int32_t id, MotionGestureInput motion
     public: GPoint getCurrentPoint();
 
     public: void setCurrentPoint(GPoint currentPoint);
+
+    private: const CommonLabels commonLabels = CommonLabels::getInstance();
 
     public: std::string toString();
 

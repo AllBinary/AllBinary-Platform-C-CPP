@@ -20,7 +20,7 @@
 
             #include <vector>
         
-            #include "../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
 #include <java/io/IOException.h>
 
@@ -238,7 +238,7 @@ class NullClip
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return Info(this->constructor, NullAudioFormat::NULL_AUDIO_FORMAT);
+                        return Info(this->getClass(), NullAudioFormat::NULL_AUDIO_FORMAT);
     
 }
 

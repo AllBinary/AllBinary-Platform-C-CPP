@@ -21,7 +21,7 @@
         #ifndef ORG_ALLBINARY_BUSINESS_USER_COMMERCE_SHIPPING_MODULES_PICKUPSHIPPINGMODULEVIEW_H
         #define ORG_ALLBINARY_BUSINESS_USER_COMMERCE_SHIPPING_MODULES_PICKUPSHIPPINGMODULEVIEW_H
 
-            #include "../../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/business/user/commerce/shipping/ShippingMethodData.h>
 

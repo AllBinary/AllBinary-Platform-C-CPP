@@ -21,7 +21,7 @@
         #ifndef ORG_ALLBINARY_GAME_INPUT_FORM_ADVANCEDRTSGAMELAYERPOSITIONFINDER_H
         #define ORG_ALLBINARY_GAME_INPUT_FORM_ADVANCEDRTSGAMELAYERPOSITIONFINDER_H
 
-            #include "../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
 #include <org/allbinary/game/input/LayerPositionFinderInterface.h>
 

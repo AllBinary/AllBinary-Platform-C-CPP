@@ -20,9 +20,9 @@
 
             #include <vector>
         
-            #include "../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/string/CommonStrings.h>
 
@@ -111,7 +111,7 @@ this->buffers.add(cacheableInterface);
                         for (
     int32_t index = 0;index < cacheableInterfaces.size(); index++)
         {
-this->buffers.add(cacheableInterfaces[index]!);
+this->buffers.add(cacheableInterfaces[index]);
     
 }
 

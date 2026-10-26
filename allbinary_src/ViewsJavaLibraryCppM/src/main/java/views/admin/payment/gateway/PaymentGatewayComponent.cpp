@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/business/user/commerce/money/payment/gateway/PaymentGatewayInterface.h>
 
@@ -69,8 +69,9 @@ class PaymentGatewayComponent: public HttpStoreComponentView {
 
     private: PaymentGatewayInterface paymentGatewayInterface;
 
-public: PaymentGatewayComponent(TransformInfoInterface transformInfoInterface, PaymentGatewayInterface paymentGatewayInterface){
-            super(transformInfoInterface);
+public: PaymentGatewayComponent(TransformInfoInterface transformInfoInterface, PaymentGatewayInterface paymentGatewayInterface) : HttpStoreComponentView(transformInfoInterface){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -90,7 +91,7 @@ this->paymentGatewayInterface= paymentGatewayInterface;
     PaymentGatewayDomNodeFactoryInterface paymentGatewayDomNodeFactoryInterface = paymentType.getPaymentGatewayDomNodeFactoryInterface();;
     
 
-    DomNodeInterface domNodeInterface = paymentGatewayDomNodeFactoryInterface.getInstance(this->paymentGatewayInterface) as DomNodeInterface;;
+    DomNodeInterface domNodeInterface = paymentGatewayDomNodeFactoryInterface.getInstance(this->paymentGatewayInterface);;
     
 this->addDomNodeInterface(domNodeInterface);
     

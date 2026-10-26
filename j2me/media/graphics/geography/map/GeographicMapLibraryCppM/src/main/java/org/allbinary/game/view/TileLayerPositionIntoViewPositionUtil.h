@@ -21,7 +21,7 @@
         #ifndef ORG_ALLBINARY_GAME_VIEW_TILELAYERPOSITIONINTOVIEWPOSITIONUTIL_H
         #define ORG_ALLBINARY_GAME_VIEW_TILELAYERPOSITIONINTOVIEWPOSITIONUTIL_H
 
-            #include "../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
 #include <org/allbinary/game/view/TileLayerPositionIntoViewPosition.h>
 

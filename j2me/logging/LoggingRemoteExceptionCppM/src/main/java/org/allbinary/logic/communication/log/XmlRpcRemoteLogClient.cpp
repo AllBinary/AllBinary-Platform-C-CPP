@@ -18,26 +18,23 @@
 
 
 
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../../../java/lang/System.h"
+            #include "java/lang/System.h"
         
 #include <java/io/IOException.h>
-
-      
-#include <java/util/Hashtable.h>
-
-      
-#include <org/allbinary/util/BasicArrayList.h>
-
-      
-#include <org/allbinary/util/BasicArrayListD.h>
 
       
 #include <org/apache/xmlrpc/XmlRpcClient.h>
 
       
 #include <org/apache/xmlrpc/XmlRpcException.h>
+
+      
+#include <org/allbinary/util/BasicArrayList.h>
+
+      
+#include <org/allbinary/util/BasicArrayListD.h>
 
       
 #include <org/allbinary/logic/communication/xmlrpc/XmlRpcAbeClient.h>
@@ -53,6 +50,9 @@
 
       
 #include <org/allbinary/string/CommonSeps.h>
+
+      
+#include <org/allbinary/util/ABHashtable.h>
 
       
 
@@ -78,8 +78,9 @@ class XmlRpcRemoteLogClient: public XmlRpcAbeClient {
 
     private: const NoCrypt noCrypt = NoCrypt();
 
-public: XmlRpcRemoteLogClient(AbeClientInformationInterface clientInfo){
-            super(clientInfo, "SSLLogServ.logUtil");
+public: XmlRpcRemoteLogClient(AbeClientInformationInterface clientInfo) : XmlRpcAbeClient(clientInfo, "SSLLogServ.logUtil"){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -113,7 +114,7 @@ xmlRpcClient.setBasicAuthentication(
                             nullptr);
     
 
-    Hashtable<any, any> hashtable = anyType as Hashtable<any, any>;;
+    ABHashtable<Object*, Object*> hashtable = *dynamic_cast<ABHashtable<Object*, Object*>*>(anyType);;
     
 param.add(hashtable);
     

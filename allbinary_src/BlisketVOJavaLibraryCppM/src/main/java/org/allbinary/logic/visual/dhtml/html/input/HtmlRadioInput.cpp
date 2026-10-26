@@ -46,8 +46,9 @@ class HtmlRadioInput: public HtmlValueInput {
 
     private: const std::string CHECKED = "checked";
 
-public: HtmlRadioInput(std::string before, std::string name, std::string value, std::string after){
-            super(before, HtmlInputData::getInstance().RADIO, name, value, after);
+public: HtmlRadioInput(std::string before, std::string name, std::string value, std::string after) : HtmlValueInput(before, HtmlInputData::getInstance().RADIO, name, value, after){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.

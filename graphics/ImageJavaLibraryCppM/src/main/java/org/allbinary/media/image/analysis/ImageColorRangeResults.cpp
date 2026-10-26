@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
 
 
@@ -52,7 +52,7 @@ class ImageColorRangeResults
     private: int64_t totalPixelsChecked= 0;
 
 public: ImageColorRangeResults(){
-this->setColorRangeInterface(ColorRange() as ColorRangeInterface);
+this->setColorRangeInterface(ColorRange());
     
 }
 

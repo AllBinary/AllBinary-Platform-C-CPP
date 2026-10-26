@@ -21,9 +21,9 @@
         #ifndef ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_INFO_TRANSFORMINFOPROPERTIESFACTORY_H
         #define ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_INFO_TRANSFORMINFOPROPERTIESFACTORY_H
 
-            #include "../../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/data/tree/dom/DomNodeHelper.h>
 
@@ -32,6 +32,9 @@
 
       
 #include <org/allbinary/logic/communication/log/LogUtil.h>
+
+      
+#include <org/allbinary/string/CommonLabels.h>
 
       
 #include <org/w3c/dom/Attr.h>

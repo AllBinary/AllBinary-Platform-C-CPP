@@ -21,11 +21,11 @@
         #ifndef ORG_ALLBINARY_INPUT_MEDIA_IMAGE_CAPTURE_SCREENCAPTUREIMAGESWORKER_H
         #define ORG_ALLBINARY_INPUT_MEDIA_IMAGE_CAPTURE_SCREENCAPTUREIMAGESWORKER_H
 
-            #include "../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../../../../java/lang/Long.h"
+            #include "java/lang/Long.h"
         
-            #include "../../../../../../java/lang/Thread.h"
+            #include "java/lang/Thread.h"
         
 #include <java/awt/image/BufferedImage.h>
 

@@ -21,7 +21,7 @@
         #ifndef ORG_ALLBINARY_THREAD_PATHFINDINGTHREADPOOL_H
         #define ORG_ALLBINARY_THREAD_PATHFINDINGTHREADPOOL_H
 
-            #include "../../../java/lang/Runnable.h"
+            #include "java/lang/Runnable.h"
         
 
 

@@ -20,11 +20,11 @@
 
             #include <vector>
         
-            #include "../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../java/lang/Class.h"
+            #include "java/lang/Class.h"
         
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
 
@@ -98,21 +98,21 @@ private: NewWorkFlowFactory(){
 
                 //@Throws(Exception.constructor, LicensingException.constructor)
             
-    public: WorkFlowInterface getInstance(AbeClientInformationInterface abeClientInformation, HashMap<any, any> hashMap, PageContext pageContext){
+    public: WorkFlowInterface getInstance(AbeClientInformationInterface abeClientInformation, HashMap<Object*, Object*> hashMap, PageContext pageContext){
 
         try {
             
-    std::string className = hashMap.get(DynamicObjectData::NAME) as string;;
+    std::string className = hashMap.get(DynamicObjectData::NAME);;
     
 
-    std::vector<Object*> params = new Array(2);;
+    std::vector<Object*> params = std::vector<Object*>(2);;
     
 
-    std::vector<Function> classes = new Array(2);;
+    std::vector<Class*> classes = std::vector<Class>(2);;
     
-classes[0]= hashMap.constructor;
+classes[0]= hashMap.getClass();
     
-classes[1]= AbeFactory::getInstance().constructor;
+classes[1]= AbeFactory::getInstance().getClass();
     
 params[0]= hashMap;
     
@@ -125,7 +125,7 @@ params[1]= pageContext;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return WorkFlowWrapper(anyType) as WorkFlowInterface;
+                        return WorkFlowWrapper(anyType);
     
 
                 //: 
@@ -184,7 +184,7 @@ this->logUtil.put(commonStrings.EXCEPTION, this, "getInstance(HashMap)", e);
     StringUtil stringUtil = StringUtil::getInstance();;
     
 
-                        if(true && className.compareTo(stringUtil.EMPTY_STRING) != 0)
+                        if(true && className.compare(stringUtil.EMPTY_STRING) != 0)
                         
                                     {
                                     
@@ -196,7 +196,7 @@ this->logUtil.put(commonStrings.EXCEPTION, this, "getInstance(HashMap)", e);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return WorkFlowWrapper(anyType) as WorkFlowInterface;
+                        return WorkFlowWrapper(anyType);
     
 
                                     }

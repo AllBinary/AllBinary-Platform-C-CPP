@@ -4,11 +4,8 @@
 
 
 
-            #include "../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-#include <jsinterop/annotations/JsType.h>
-
-      
 #include <org/allbinary/game/state/GameState.h>
 
       
@@ -24,13 +21,7 @@
 #include <org/allbinary/logic/string/StringUtil.h>
 
       
-#include <jsinterop/annotations/JsMethod.h>
-
-      
-#include <jsinterop/annotations/JsConstructor.h>
-
-      
-#include <jsinterop/annotations/JsProperty.h>
+#include <org/allbinary/string/CommonLabels.h>
 
       
 
@@ -87,7 +78,7 @@ private: GameMidletStateFactory(){
 
 
     public: void setCurrentGameState(GameState currentGameState){
-this->logUtil.putF(StringMaker().append("Current GameState: ").append(StringUtil::getInstance().toString(currentGameState)).toString(), this, "setCurrentGameState");
+this->logUtil.putF(StringMaker().append(CommonLabels::getInstance().CURRENT).append(" GameState: ").append(StringUtil::getInstance().toString(currentGameState)).toString(), this, "setCurrentGameState");
     
 this->currentGameState= currentGameState;
     

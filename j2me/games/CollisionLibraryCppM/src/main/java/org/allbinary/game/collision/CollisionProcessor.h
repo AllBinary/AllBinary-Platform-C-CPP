@@ -7,15 +7,9 @@
         #ifndef ORG_ALLBINARY_GAME_COLLISION_COLLISIONPROCESSOR_H
         #define ORG_ALLBINARY_GAME_COLLISION_COLLISIONPROCESSOR_H
 
-            #include "../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-#include <jsinterop/annotations/JsType.h>
-
-      
 #include <org/allbinary/layer/AllBinaryLayer.h>
-
-      
-#include <jsinterop/annotations/JsMethod.h>
 
       
 

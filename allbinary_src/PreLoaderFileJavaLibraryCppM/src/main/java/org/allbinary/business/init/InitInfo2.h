@@ -21,7 +21,7 @@
         #ifndef ORG_ALLBINARY_BUSINESS_INIT_INITINFO2_H
         #define ORG_ALLBINARY_BUSINESS_INIT_INITINFO2_H
 
-            #include "../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
 #include <org/allbinary/logic/io/file/directory/Directory.h>
 

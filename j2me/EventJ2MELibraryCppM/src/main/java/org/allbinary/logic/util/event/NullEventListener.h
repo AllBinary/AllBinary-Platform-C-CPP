@@ -21,7 +21,7 @@
         #ifndef ORG_ALLBINARY_LOGIC_UTIL_EVENT_NULLEVENTLISTENER_H
         #define ORG_ALLBINARY_LOGIC_UTIL_EVENT_NULLEVENTLISTENER_H
 
-            #include "../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
 
 

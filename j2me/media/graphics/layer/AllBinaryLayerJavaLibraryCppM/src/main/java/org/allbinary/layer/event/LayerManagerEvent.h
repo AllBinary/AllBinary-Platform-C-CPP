@@ -21,9 +21,6 @@
         #ifndef ORG_ALLBINARY_LAYER_EVENT_LAYERMANAGEREVENT_H
         #define ORG_ALLBINARY_LAYER_EVENT_LAYERMANAGEREVENT_H
 
-#include <jsinterop/annotations/JsType.h>
-
-      
 #include <org/allbinary/layer/AllBinaryLayer.h>
 
       
@@ -34,12 +31,6 @@
 
       
 #include <org/allbinary/logic/util/event/AllBinaryEventObject.h>
-
-      
-#include <jsinterop/annotations/JsMethod.h>
-
-      
-#include <jsinterop/annotations/JsConstructor.h>
 
       
 

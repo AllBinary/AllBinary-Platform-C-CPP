@@ -20,7 +20,7 @@
 
             #include <vector>
         
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <javax/microedition/lcdui/Image.h>
 
@@ -111,8 +111,9 @@ arrayImageRotationAnimationFactory.initDXY(dx, dy);
 
     private: int32_t angleIncrement;
 
-public: AllBinaryArrayImageRotationAnimationFactory(Image image, int32_t width, int32_t height, int32_t angleIncrement, AnimationBehaviorFactory animationBehaviorFactory){
-            super(image, PrimitiveIntUtil::getArrayInstance(), width, height, 0, 0, animationBehaviorFactory);
+public: AllBinaryArrayImageRotationAnimationFactory(Image image, int32_t width, int32_t height, int32_t angleIncrement, AnimationBehaviorFactory animationBehaviorFactory) : BaseImageAnimationFactory(image, PrimitiveIntUtil::getArrayInstance(), width, height, 0, 0, animationBehaviorFactory){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -148,7 +149,7 @@ this->animationFactoryInitializationVisitor.originalDy= dy;
             
     public: Animation getInstance(int32_t instanceId){
 
-    std::vector<Image> scaledImageArray = new Array(this->imageArray.length);;
+    std::vector<Image> scaledImageArray = std::vector<Image>(this->imageArray.length);;
     
 
     int32_t size = scaledImageArray.size();;

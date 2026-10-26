@@ -21,10 +21,13 @@
         #ifndef ORG_ALLBINARY_LOGIC_SYSTEM_OS_SYSTEMPROPERTIES_H
         #define ORG_ALLBINARY_LOGIC_SYSTEM_OS_SYSTEMPROPERTIES_H
 
-            #include "../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../java/lang/RuntimeException.h"
+            #include "java/lang/RuntimeException.h"
         
+#include <jsinterop/annotations/JsType.h>
+
+      
 
 
 
@@ -43,8 +46,8 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        //ActualPlatform
-/*actual*/ class SystemProperties
+        
+class SystemProperties
             : public Object
          {
 

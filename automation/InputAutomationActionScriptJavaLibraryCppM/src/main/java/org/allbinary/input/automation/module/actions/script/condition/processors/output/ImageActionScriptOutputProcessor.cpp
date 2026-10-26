@@ -18,11 +18,11 @@
 
 
 
-            #include "../../../../../../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../../../../../../../../java/lang/Long.h"
+            #include "java/lang/Long.h"
         
 #include <org/allbinary/util/BasicArrayList.h>
 
@@ -98,7 +98,7 @@ logUtil.putF("Start - Processing at: " +imageActionScriptOutputInterface.toStrin
     int32_t index = 0;index < size; index++)
         {
 
-    InputImageType imageType = vector.get(index) as InputImageType;;
+    InputImageType imageType = vector.get(index);;
     
 
     ImageIOInterface imageIOInterface = InputImageIOInterfaceFactory::getInstance(imageType);;

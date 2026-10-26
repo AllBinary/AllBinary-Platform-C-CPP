@@ -18,7 +18,7 @@
 
 
 
-            #include "../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/lang/reflect/Method.h>
 
@@ -93,7 +93,7 @@ this->setTagRequestHelperFactory(StoreFrontsRequestHelperFactory());
     
 
     std::string result = method.invoke(anyType, 
-                            nullptr) as string;;
+                            nullptr);;
     
 
 
@@ -152,7 +152,7 @@ this->setTagRequestHelperFactory(StoreFrontsRequestHelperFactory());
     
 
     std::string result = method.invoke(anyType, 
-                            nullptr) as string;;
+                            nullptr);;
     
 
 
@@ -211,7 +211,7 @@ this->setTagRequestHelperFactory(StoreFrontsRequestHelperFactory());
     
 
     std::string result = method.invoke(anyType, 
-                            nullptr) as string;;
+                            nullptr);;
     
 
 

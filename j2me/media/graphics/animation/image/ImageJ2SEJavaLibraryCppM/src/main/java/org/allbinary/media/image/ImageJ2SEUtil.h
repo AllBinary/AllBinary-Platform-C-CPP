@@ -21,7 +21,7 @@
         #ifndef ORG_ALLBINARY_MEDIA_IMAGE_IMAGEJ2SEUTIL_H
         #define ORG_ALLBINARY_MEDIA_IMAGE_IMAGEJ2SEUTIL_H
 
-            #include "../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
 #include <java/awt/Color.h>
 

@@ -18,9 +18,9 @@
 
 
 
-            #include "../../../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
 
@@ -75,25 +75,25 @@ class RootStoreCategoryPropertiesFactory
     private: CategoryPropertiesInterface categoryPropertiesInterface;
 
 public: RootStoreCategoryPropertiesFactory(TransformInfoInterface transformInfoInterface){
-this->categoryPropertiesInterface= RootStoreCategoryProperties(transformInfoInterface) as CategoryPropertiesInterface;
+this->categoryPropertiesInterface= RootStoreCategoryProperties(transformInfoInterface);
     
 }
 
 
 public: RootStoreCategoryPropertiesFactory(TransformInfoInterface transformInfoInterface, AbPath abPath){
-this->categoryPropertiesInterface= RootStoreCategoryProperties(transformInfoInterface, abPath) as CategoryPropertiesInterface;
+this->categoryPropertiesInterface= RootStoreCategoryProperties(transformInfoInterface, abPath);
     
 }
 
 
 public: RootStoreCategoryPropertiesFactory(TransformInfoInterface transformInfoInterface, Node node){
-this->categoryPropertiesInterface= RootStoreCategoryProperties(transformInfoInterface, node) as CategoryPropertiesInterface;
+this->categoryPropertiesInterface= RootStoreCategoryProperties(transformInfoInterface, node);
     
 }
 
 
-public: RootStoreCategoryPropertiesFactory(TransformInfoInterface transformInfoInterface, HashMap<any, any> categoryPropertiesHashMap){
-this->categoryPropertiesInterface= RootStoreCategoryProperties(transformInfoInterface, categoryPropertiesHashMap) as CategoryPropertiesInterface;
+public: RootStoreCategoryPropertiesFactory(TransformInfoInterface transformInfoInterface, HashMap<Object*, Object*> categoryPropertiesHashMap){
+this->categoryPropertiesInterface= RootStoreCategoryProperties(transformInfoInterface, categoryPropertiesHashMap);
     
 }
 
@@ -105,7 +105,7 @@ this->categoryPropertiesInterface= RootStoreCategoryProperties(transformInfoInte
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->categoryPropertiesInterface as CategoryPropertiesInterface;
+                        return this->categoryPropertiesInterface;
     
 
                 //: 

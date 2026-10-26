@@ -21,20 +21,11 @@
         #ifndef ORG_ALLBINARY_MEDIA_IMAGE_IMAGECOMPLETEUTIL_H
         #define ORG_ALLBINARY_MEDIA_IMAGE_IMAGECOMPLETEUTIL_H
 
-            #include "../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <javax/microedition/lcdui/Image.h>
-
-      
-#include <jsinterop/annotations/JsMethod.h>
-
-      
-#include <jsinterop/annotations/JsProperty.h>
-
-      
-#include <jsinterop/annotations/JsType.h>
 
       
 #include <org/allbinary/logic/communication/log/PreLogUtil.h>
@@ -47,6 +38,9 @@
 
       
 #include <org/microemu/device/playn/PlaynImage.h>
+
+      
+#include <playn/core/CoreImage.h>
 
       
 

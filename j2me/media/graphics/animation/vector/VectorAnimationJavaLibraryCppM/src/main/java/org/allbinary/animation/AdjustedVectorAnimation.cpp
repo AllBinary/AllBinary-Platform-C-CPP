@@ -53,8 +53,9 @@ class AdjustedVectorAnimation: public VectorAnimation {
 
     private: int32_t dy;
 
-public: AdjustedVectorAnimation(std::vector<std::vector<std::vector<int32_t>>> currentPoints, BasicColor basicColor, int32_t dx, int32_t dy, AnimationBehavior animationBehavior){
-            super(currentPoints, basicColor, animationBehavior);
+public: AdjustedVectorAnimation(std::vector<std::vector<std::vector<int32_t>>> currentPoints, BasicColor basicColor, int32_t dx, int32_t dy, AnimationBehavior animationBehavior) : VectorAnimation(currentPoints, basicColor, animationBehavior){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.

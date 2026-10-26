@@ -18,12 +18,6 @@
 
 
 
-#include <jsinterop/annotations/JsType.h>
-
-      
-#include <jsinterop/annotations/JsConstructor.h>
-
-      
 #include <org/allbinary/logic/util/event/AllBinaryEventObject.h>
 
       
@@ -48,8 +42,9 @@
         
 class AnalogControllerConfigurationEvent: public AllBinaryEventObject {
 
-public: AnalogControllerConfigurationEvent(Object* anyType){
-            super(anyType);
+public: AnalogControllerConfigurationEvent(Object* anyType) : AllBinaryEventObject(anyType){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.

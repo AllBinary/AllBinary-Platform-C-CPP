@@ -21,7 +21,16 @@
         #ifndef ORG_ALLBINARY_UTIL_ABHASHTABLE_H
         #define ORG_ALLBINARY_UTIL_ABHASHTABLE_H
 
+#include <java/util/Enumeration.h>
+
+      
 #include <java/util/Hashtable.h>
+
+      
+#include <java/util/Map.h>
+
+      
+#include <java/util/Set.h>
 
       
 #include <jsinterop/annotations/JsType.h>
@@ -46,7 +55,34 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class ABHashtable: public Hashtable {
+template<typename K, typename V>
+class ABHashtable: public Hashtable<K, V> {
+
+public: ABHashtable();
+
+    public: int32_t size();
+
+    public: bool isEmpty();
+
+    public: Enumeration<V> elements();
+
+    public: bool contains(Object* value);
+
+    public: bool containsValue(Object* value);
+
+    public: bool containsKey(Object* key);
+
+    public: V get(Object* key);
+
+    public: void clear();
+
+    public: Object* clone();
+
+    public: std::string toString();
+
+    public: bool equals(Object* obj);
+
+    public: int32_t hashCode();
 
 };
 

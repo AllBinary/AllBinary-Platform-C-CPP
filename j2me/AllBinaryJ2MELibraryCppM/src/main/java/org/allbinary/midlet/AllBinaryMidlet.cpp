@@ -18,14 +18,8 @@
 
 
 
-            #include "../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-#include <jsinterop/annotations/JsType.h>
-
-      
-#include <java/util/Hashtable.h>
-
-      
 #include <javax/microedition/lcdui/Command.h>
 
       
@@ -77,16 +71,10 @@
 #include <org/allbinary/system/Memory.h>
 
       
-#include <jsinterop/annotations/JsMethod.h>
-
-      
-#include <jsinterop/annotations/JsConstructor.h>
-
-      
-#include <jsinterop/annotations/JsProperty.h>
-
-      
 #include <org/allbinary/logic/NullUtil.h>
+
+      
+#include <org/allbinary/util/ABHashtable.h>
 
       
 
@@ -107,7 +95,7 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        // MIDlet methods not overridden are final
+        
 class AllBinaryMidlet: public MIDlet, public CommandListener {
 
     private: static Object* NULL_ALLBINARY_MIDLET = NullUtil::getInstance().NULL_OBJECT;
@@ -126,7 +114,7 @@ class AllBinaryMidlet: public MIDlet, public CommandListener {
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return AllBinaryMidlet::NULL_ALLBINARY_MIDLET as AllBinaryMidlet;
+                        return AllBinaryMidlet::NULL_ALLBINARY_MIDLET;
     
 }
 
@@ -143,7 +131,7 @@ class AllBinaryMidlet: public MIDlet, public CommandListener {
 
     private: const std::string SETTING_NO_TITLE = "Setting: No Title, Display: ";
 
-    private: Hashtable<any, any> hashtable = StdUtil::getInstance().createHashtable();
+    private: ABHashtable<Object*, Object*> hashtable = StdUtil::getInstance().createHashtable();
 
     private: bool midletDestroyed= false;
 
@@ -268,7 +256,7 @@ this->logUtil.put(this->commonStrings.EXCEPTION, this, METHOD_NAME, e);
 
                 //@Throws(Exception.constructor)
             
-    public: void setStartStateHashtable(Hashtable<any, any> hashtable){
+    public: void setStartStateHashtable(ABHashtable<Object*, Object*> hashtable){
 this->logUtil.putF(StringMaker().append(CommonLabels::getInstance().START_LABEL).append(StringUtil::getInstance().toString(hashtable)).toString(), this, "setStartStateHashtable");
     
 this->hashtable= hashtable;
@@ -278,7 +266,7 @@ this->hashtable= hashtable;
 
                 //@Throws(Exception.constructor)
             
-    public: Hashtable<any, any> getStartStateHashtable(){
+    public: ABHashtable<Object*, Object*> getStartStateHashtable(){
 this->logUtil.putF(StringMaker().append(CommonLabels::getInstance().START_LABEL).append(StringUtil::getInstance().toString(this->hashtable)).toString(), this, "getStartStateHashtable");
     
 
@@ -292,7 +280,7 @@ this->logUtil.putF(StringMaker().append(CommonLabels::getInstance().START_LABEL)
 
                 //@Throws(Exception.constructor)
             
-    public: Hashtable<any, any> getCurrentStateHashtable(){
+    public: ABHashtable<Object*, Object*> getCurrentStateHashtable(){
 this->logUtil.putF(this->commonStrings.START, this, "getStateHashtable");
     
 

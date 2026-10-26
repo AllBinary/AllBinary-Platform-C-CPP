@@ -45,7 +45,7 @@ class OpenGLBitmap: public PlatformBitmapBase {
     public: Image image;
 
 public: OpenGLBitmap(Object* bitmap){
-this->image= bitmap as Image;
+this->image= *dynamic_cast<Image*>(bitmap);
     
 }
 
@@ -66,7 +66,7 @@ this->image= bitmap as Image;
                         
                                     {
                                     
-    SwtMutableImage mutableImage = this->image as SwtMutableImage;;
+    SwtMutableImage mutableImage = this->image;;
     
 
 
@@ -79,7 +79,7 @@ this->image= bitmap as Image;
                                 
                         else {
                             
-    SwtImmutableImage immutableImage = this->image as SwtImmutableImage;;
+    SwtImmutableImage immutableImage = this->image;;
     
 
 
@@ -99,7 +99,7 @@ this->image= bitmap as Image;
                         
                                     {
                                     
-    SwtMutableImage mutableImage = this->image as SwtMutableImage;;
+    SwtMutableImage mutableImage = this->image;;
     
 mutableImage.getRGB(pixels, offset, stride, x, y, width, height);
     
@@ -108,7 +108,7 @@ mutableImage.getRGB(pixels, offset, stride, x, y, width, height);
                                 
                         else {
                             
-    SwtImmutableImage immutableImage = this->image as SwtImmutableImage;;
+    SwtImmutableImage immutableImage = this->image;;
     
 immutableImage.getRGB(pixels, offset, stride, x, y, width, height);
     

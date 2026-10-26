@@ -21,16 +21,10 @@
         #ifndef ORG_ALLBINARY_LOGIC_SYSTEM_HARDWARE_HARDWAREINTERFACE_H
         #define ORG_ALLBINARY_LOGIC_SYSTEM_HARDWARE_HARDWAREINTERFACE_H
 
-#include <jsinterop/annotations/JsType.h>
-
-      
-#include <java/util/Hashtable.h>
-
-      
 #include <org/allbinary/logic/system/hardware/components/interfaces/HardwareComponentInterface.h>
 
       
-#include <jsinterop/annotations/JsMethod.h>
+#include <org/allbinary/util/ABHashtable.h>
 
       
 
@@ -60,7 +54,7 @@ class HardwareInterface {
 
     bool compareTo(HardwareInterface hardwareInterface);
 
-    Hashtable<any, any> difference(HardwareInterface hardwareInterface);
+    ABHashtable<Object*, Object*> difference(HardwareInterface hardwareInterface);
 
 };
 

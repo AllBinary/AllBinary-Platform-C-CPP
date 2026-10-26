@@ -18,9 +18,9 @@
 
 
 
-            #include "../../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/data/tables/context/module/storefronts/StoreFrontsEntity.h>
 
@@ -74,7 +74,7 @@ class StoreFrontViewFactory
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return StoreFrontView(storeFronts.getStoreFrontInterface(storeName)) as DomNodeInterface;
+                        return StoreFrontView(storeFronts.getStoreFrontInterface(storeName));
     
 
                 //: 

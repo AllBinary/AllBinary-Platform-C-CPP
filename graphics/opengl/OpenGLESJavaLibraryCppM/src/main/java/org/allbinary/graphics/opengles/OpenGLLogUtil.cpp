@@ -6,7 +6,7 @@
 
             #include <vector>
         
-            #include "../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
 #include <javax/microedition/khronos/opengles/GL10.h>
 
@@ -85,11 +85,11 @@ stringBuffer.appendint(error);
                                     stringBuffer.append(this->MAX_TEXTURE);
     
 
-    std::vector<int32_t> maxTextureSize = new Array(1);;
+    std::vector<int32_t> maxTextureSize = std::vector<int32_t>(1);;
     
 gl.glGetIntegerv(GL10::GL_MAX_TEXTURE_SIZE, maxTextureSize, 0);
     
-stringBuffer.appendint(maxTextureSize[0]!);
+stringBuffer.appendint(maxTextureSize[0]);
     
 
                                     }
@@ -141,11 +141,11 @@ stringBuffer.appendint(error);
                                     stringBuffer.append(this->MAX_TEXTURE);
     
 
-    std::vector<int32_t> maxTextureSize = new Array(1);;
+    std::vector<int32_t> maxTextureSize = std::vector<int32_t>(1);;
     
 gl.glGetIntegerv(GL10::GL_MAX_TEXTURE_SIZE, maxTextureSize, 0);
     
-stringBuffer.appendint(maxTextureSize[0]!);
+stringBuffer.appendint(maxTextureSize[0]);
     
 
                                     }

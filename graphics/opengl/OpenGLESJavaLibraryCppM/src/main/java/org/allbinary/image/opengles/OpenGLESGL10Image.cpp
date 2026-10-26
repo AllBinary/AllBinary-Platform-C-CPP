@@ -86,9 +86,33 @@ class OpenGLESGL10Image: public OpenGLESImage {
     const GLUtil glUtil = GLUtil::getInstance();
     const DisplayInfoSingleton displayInfoSingleton = DisplayInfoSingleton::getInstance();
     const FloatBuffer textureVertexFloatBuffer = this->textureVertexFloatBuffer;
-    const std::vector<float> regionTextureRectangleFloatArray = new Array(8);
+    const std::vector<float> regionTextureRectangleFloatArray = std::vector<float>(8);
     const FloatBuffer regionTextureVertexFloatBuffer = ByteBuffer::allocateDirect(4 *4 *2).order(ByteOrder::nativeOrder()).asFloatBuffer();
-    const std::vector<float> regionRectangleFloatArray = {0,0,0,0,0,0,0,0,0,0,0,0};
+    const std::vector<float> regionRectangleFloatArray = {
+                                //Otherwise - values - DoubleLiteralExpr
+
+                                //Otherwise - values - DoubleLiteralExpr
+
+                                //Otherwise - values - DoubleLiteralExpr
+
+                                //Otherwise - values - DoubleLiteralExpr
+
+                                //Otherwise - values - DoubleLiteralExpr
+
+                                //Otherwise - values - DoubleLiteralExpr
+
+                                //Otherwise - values - DoubleLiteralExpr
+
+                                //Otherwise - values - DoubleLiteralExpr
+
+                                //Otherwise - values - DoubleLiteralExpr
+
+                                //Otherwise - values - DoubleLiteralExpr
+
+                                //Otherwise - values - DoubleLiteralExpr
+
+                                //Otherwise - values - DoubleLiteralExpr
+};
     const FloatBuffer regionRectangleVertexFloatBuffer = ByteBuffer::allocateDirect(4 *4 *3).order(ByteOrder::nativeOrder()).asFloatBuffer();
     const OpenGLESImageProperties openGLESImageProperties = this->openGLESImageProperties;
     public: void drawRegion(GL10 gl, int32_t viewHeight, float x_src, float y_src, float width, float height, int32_t x, int32_t y, int32_t z){
@@ -104,27 +128,27 @@ this->regionRectangleFloatArray[1]= this->regionRectangleFloatArray[7] -height;
     
 this->regionRectangleFloatArray[3]= width;
     
-this->regionRectangleFloatArray[4]= this->regionRectangleFloatArray[1]!;
+this->regionRectangleFloatArray[4]= this->regionRectangleFloatArray[1];
     
-this->regionRectangleFloatArray[9]= this->regionRectangleFloatArray[3]!;
+this->regionRectangleFloatArray[9]= this->regionRectangleFloatArray[3];
     
-this->regionRectangleFloatArray[10]= this->regionRectangleFloatArray[7]!;
+this->regionRectangleFloatArray[10]= this->regionRectangleFloatArray[7];
     
 this->regionTextureRectangleFloatArray[0]= x_src /imageWidth;
     
-this->regionTextureRectangleFloatArray[1]= () /imageHeight;
+this->regionTextureRectangleFloatArray[1]= (y_src +height) /imageHeight;
     
-this->regionTextureRectangleFloatArray[2]= () /imageWidth;
+this->regionTextureRectangleFloatArray[2]= (x_src +width) /imageWidth;
     
-this->regionTextureRectangleFloatArray[3]= this->regionTextureRectangleFloatArray[1]!;
+this->regionTextureRectangleFloatArray[3]= this->regionTextureRectangleFloatArray[1];
     
-this->regionTextureRectangleFloatArray[4]= this->regionTextureRectangleFloatArray[0]!;
+this->regionTextureRectangleFloatArray[4]= this->regionTextureRectangleFloatArray[0];
     
 this->regionTextureRectangleFloatArray[5]= y_src /imageHeight;
     
-this->regionTextureRectangleFloatArray[6]= this->regionTextureRectangleFloatArray[2]!;
+this->regionTextureRectangleFloatArray[6]= this->regionTextureRectangleFloatArray[2];
     
-this->regionTextureRectangleFloatArray[7]= this->regionTextureRectangleFloatArray[5]!;
+this->regionTextureRectangleFloatArray[7]= this->regionTextureRectangleFloatArray[5];
     
 
     float u_center = (this->regionTextureRectangleFloatArray[0] +this->regionTextureRectangleFloatArray[2]) /2.0;;
@@ -192,11 +216,11 @@ this->regionRectangleFloatArray[1]= this->regionRectangleFloatArray[7] -height;
     
 this->regionRectangleFloatArray[3]= width;
     
-this->regionRectangleFloatArray[4]= this->regionRectangleFloatArray[1]!;
+this->regionRectangleFloatArray[4]= this->regionRectangleFloatArray[1];
     
-this->regionRectangleFloatArray[9]= this->regionRectangleFloatArray[3]!;
+this->regionRectangleFloatArray[9]= this->regionRectangleFloatArray[3];
     
-this->regionRectangleFloatArray[10]= this->regionRectangleFloatArray[7]!;
+this->regionRectangleFloatArray[10]= this->regionRectangleFloatArray[7];
     
 this->regionTextureRectangleFloatArray[0]= 0;
     
@@ -268,8 +292,9 @@ gl.glPopMatrix();
 
     private: OpenGLESImageDraw openGLESImageDraw = OpenGLESImageDraw::getInstance();
 
-public: OpenGLESGL10Image(Image image, PlatformBitmapBaseFactory bitmapFactory, PlatformTextureBaseFactory textureFactory){
-            super(image, bitmapFactory, textureFactory);
+public: OpenGLESGL10Image(Image image, PlatformBitmapBaseFactory bitmapFactory, PlatformTextureBaseFactory textureFactory) : OpenGLESImage(image, bitmapFactory, textureFactory){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -303,7 +328,7 @@ this->textureVertexFloatBuffer.rewind();
 
     public: void set(GL gl){
 
-    GL10 gl10 = gl as GL10;;
+    GL10 gl10 = gl;;
     
 
                         if(super.initTexture(gl10))

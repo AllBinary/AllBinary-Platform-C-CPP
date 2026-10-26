@@ -20,7 +20,7 @@
 
             #include <vector>
         
-            #include "../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
 
 
@@ -63,7 +63,7 @@ private: ByteUtil(){
 
     public: std::vector<int8_t> xor(std::vector<int8_t> array, int8_t mask){
 
-    std::vector<int8_t> bytes = new Array(array.length);;
+    std::vector<int8_t> bytes = std::vector<int8_t>(array.length);;
     
 
     int32_t size = array.size();;
@@ -77,7 +77,7 @@ private: ByteUtil(){
 
         while(index < size)
         {
-currentByte= array[index]!;
+currentByte= array[index];
     
 bytes[index]= (currentByte ^ mask);
     
@@ -96,7 +96,7 @@ index++;
 
     public: std::vector<int8_t> not(std::vector<int8_t> array){
 
-    std::vector<int8_t> bytes = new Array(array.length);;
+    std::vector<int8_t> bytes = std::vector<int8_t>(array.length);;
     
 
     int32_t size = array.size();;

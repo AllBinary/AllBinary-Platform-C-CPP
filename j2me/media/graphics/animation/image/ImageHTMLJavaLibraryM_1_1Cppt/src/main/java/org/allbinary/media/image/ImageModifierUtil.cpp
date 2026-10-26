@@ -20,11 +20,11 @@
 
             #include <vector>
         
-            #include "../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../java/lang/Throwable.h"
+            #include "java/lang/Throwable.h"
         
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <javax/microedition/lcdui/Graphics.h>
 
@@ -140,13 +140,13 @@ this->setAlpha2(originalImage, image, imageIndex, alpha);
 
     public: void setAlpha2(Image originalImage, Image image, int32_t imageIndex, float alpha){
 
-    PlaynImage htmlImage = image as PlaynImage;;
+    PlaynImage htmlImage = image;;
     
 
-    CanvasImage canvasImage = htmlImage.getImage() as CanvasImage;;
+    CanvasImage canvasImage = htmlImage.getImage();;
     
 
-    playn::core::Image originalPlaynImage = (originalImage as PlaynImage).getImage() as playn::core::Image;;
+    playn::core::Image originalPlaynImage = (originalImage).getImage();;
     
 
     Canvas canvas = canvasImage.canvas();;
@@ -168,10 +168,10 @@ canvas.drawImage(originalPlaynImage, 0, 0);
     float alphaFloat = alphaF /255;;
     
 
-    PlaynImage htmlImage = image as PlaynImage;;
+    PlaynImage htmlImage = image;;
     
 
-    CanvasImage canvasImage = htmlImage.getImage() as CanvasImage;;
+    CanvasImage canvasImage = htmlImage.getImage();;
     
 
     Canvas canvas = canvasImage.canvas();;
@@ -185,10 +185,10 @@ canvas.setAlpha(alphaFloat);
 
     int32_t size = originalImageArray.size();;
     
-this->alphaArray= new Array(size);
+this->alphaArray= std::vector<bool>(size);
     
 
-    std::vector<Image> imageArray = new Array(size);;
+    std::vector<Image> imageArray = std::vector<Image>(size);;
     
 
 
@@ -197,9 +197,9 @@ this->alphaArray= new Array(size);
                         for (
     int32_t index = 0;index < size; index++)
         {
-imageArray[index]= originalImageArray[index]!;
+imageArray[index]= originalImageArray[index];
     
-this->handleImage(imageArray, index, originalImageArray[index]!);
+this->handleImage(imageArray, index, originalImageArray[index]);
     
 }
 
@@ -214,7 +214,7 @@ this->handleImage(imageArray, index, originalImageArray[index]!);
 
     public: void handleImage(std::vector<Image> imageArray, int32_t index, Image image){
 
-    playn::core::Image image3 = (image as PlaynImage).getImage() as playn::core::Image;;
+    playn::core::Image image3 = (image).getImage();;
     
 
                         if(image3 != 

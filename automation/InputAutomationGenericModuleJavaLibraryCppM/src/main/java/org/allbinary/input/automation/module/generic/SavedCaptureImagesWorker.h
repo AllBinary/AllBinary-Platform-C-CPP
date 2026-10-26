@@ -21,11 +21,11 @@
         #ifndef ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_GENERIC_SAVEDCAPTUREIMAGESWORKER_H
         #define ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_GENERIC_SAVEDCAPTUREIMAGESWORKER_H
 
-            #include "../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../../../../java/lang/Long.h"
+            #include "java/lang/Long.h"
         
-            #include "../../../../../../java/lang/Thread.h"
+            #include "java/lang/Thread.h"
         
 #include <java/awt/image/BufferedImage.h>
 

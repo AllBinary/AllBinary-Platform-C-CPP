@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/logic/communication/log/LogUtil.h>
 
@@ -59,8 +59,9 @@ class CssElementValidation: public CssElementView, public ValidationInterface {
 
     protected: const LogUtil logUtil = LogUtil::getInstance();
 
-public: CssElementValidation(){
-            super();
+public: CssElementValidation() : CssElementView(){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -68,8 +69,9 @@ public: CssElementValidation(){
 }
 
 
-public: CssElementValidation(Node node){
-            super(node);
+public: CssElementValidation(Node node) : CssElementView(node){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.

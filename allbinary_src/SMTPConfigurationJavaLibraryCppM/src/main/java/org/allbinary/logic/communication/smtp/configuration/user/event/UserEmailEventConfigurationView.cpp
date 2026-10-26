@@ -18,9 +18,9 @@
 
 
 
-            #include "../../../../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
 
@@ -80,7 +80,7 @@ public: UserEmailEventConfigurationView(Node node){
     NodeList childNodeList = node.getChildNodes();;
     
 
-    HashMap<any, any> hashMap = StdUtil::getInstance().createHashMap();;
+    HashMap<Object*, Object*> hashMap = StdUtil::getInstance().createHashMap();;
     
 
     std::string name = DomNodeHelper::getTextNodeValue(UserEmailEventConfigurationData::NAME, childNodeList);;
@@ -92,7 +92,7 @@ hashMap.put(UserEmailEventConfigurationData::NAME, name);
     
 hashMap.put(UserEmailEventConfigurationData::LISTENER_CLASSPATH, eventListenerClassPath);
     
-this->setUserEmailEventConfigurationInterface(UserEmailEventConfiguration(hashMap) as UserEmailEventConfigurationInterface);
+this->setUserEmailEventConfigurationInterface(UserEmailEventConfiguration(hashMap));
     
 }
 
@@ -110,7 +110,7 @@ this->setUserEmailEventConfigurationInterface(userEmailEventConfigurationInterfa
     UserEmailEventConfigurationMapping userEmailEventConfigurationMapping = UserEmailEventConfigurationMapping(this->getUserEmailEventConfigurationInterface());;
     
 
-    HashMap<any, any> hashMap = userEmailEventConfigurationMapping.toHashMap();;
+    HashMap<Object*, Object*> hashMap = userEmailEventConfigurationMapping.toHashMap();;
     
 
     Node node = ModDomHelper::createNameValueNodes(document, UserEmailEventConfigurationData::NAME, hashMap);;

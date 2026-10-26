@@ -23,11 +23,8 @@
 
             #include <vector>
         
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-#include <java/util/Hashtable.h>
-
-      
 #include <javax/microedition/lcdui/Image.h>
 
       
@@ -43,10 +40,16 @@
 #include <org/allbinary/time/TimeDelayHelper.h>
 
       
+#include <org/allbinary/util/ABHashtable.h>
+
+      
 #include <org/allbinary/util/HashtableUtil.h>
 
       
 #include <org/microemu/device/playn/PlaynImage.h>
+
+      
+#include <playn/core/CoreImage.h>
 
       
 
@@ -72,8 +75,6 @@
 class ImageWaitCompleteUtil: public ImageCompleteUtil {
 
     protected: const LogUtil logUtil = LogUtil::getInstance();
-
-    private: const std::string METHOD_NAME = "waitForLoad";
 
     private: const TimeDelayHelper timeDelayHelper = TimeDelayHelper(18000);
 

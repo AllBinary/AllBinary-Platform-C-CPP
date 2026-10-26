@@ -23,7 +23,7 @@
 
             #include <vector>
         
-            #include "../../../../../../../../../java/lang/Integer.h"
+            #include "java/lang/Integer.h"
         
 
 

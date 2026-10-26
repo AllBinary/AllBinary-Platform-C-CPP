@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
 #include <java/util/HashMap.h>
 
@@ -33,9 +33,6 @@
 
       
 #include <org/allbinary/data/tables/user/commerce/inventory/item/InventoryEntity.h>
-
-      
-#include <org/allbinary/logic/StdUtil.h>
 
       
 #include <org/allbinary/logic/communication/log/LogUtil.h>
@@ -103,10 +100,10 @@ this->logUtil.putF("Start Category: " +category, this, "getKeywords");
     int32_t index = 0;index < size; index++)
         {
 
-    HashMap<any, any> hashMap = vectorOfHashMaps.get(index) as HashMap<any, any>;;
+    HashMap<Object*, Object*> hashMap = vectorOfHashMaps.get(index);;
     
 
-    std::string categoryName = hashMap.get(basicItemData.CATEGORY) as string;;
+    std::string categoryName = hashMap.get(basicItemData.CATEGORY);;
     
 
                         if(!StringValidationUtil::getInstance().isEmpty(categoryName) && categoryName.startsWith(category))

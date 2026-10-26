@@ -21,7 +21,7 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_COLOR_COLORCACHEABLEFACTORY_H
         #define ORG_ALLBINARY_GRAPHICS_COLOR_COLORCACHEABLEFACTORY_H
 
-            #include "../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
 #include <org/allbinary/logic/util/cache/CacheableInterface.h>
 

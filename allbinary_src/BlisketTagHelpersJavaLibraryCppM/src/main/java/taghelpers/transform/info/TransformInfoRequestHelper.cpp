@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
 
@@ -72,7 +72,7 @@ class TransformInfoRequestHelper: public ModifyTable {
 
     private: TransformInfoHttpInterface transformInfoInterface;
 
-public: TransformInfoRequestHelper(HashMap<any, any> propertiesHashMap, PageContext pageContext){
+public: TransformInfoRequestHelper(HashMap<Object*, Object*> propertiesHashMap, PageContext pageContext){
 this->transformInfoInterface= TransformInfoHttpStoreNoManipulation(propertiesHashMap, pageContext);
     
 }
@@ -85,7 +85,7 @@ this->transformInfoInterface= TransformInfoHttpStoreNoManipulation(propertiesHas
     std::string success = "Updated Successfully";;
     
 
-    HashMap<any, any> hashMapData = this->transformInfoInterface.toHashMap();;
+    HashMap<Object*, Object*> hashMapData = this->transformInfoInterface.toHashMap();;
     
 TransformInfoEntityBuilder::getInstance().update(hashMapData);
     
@@ -190,7 +190,7 @@ TransformInfoEntityBuilder::getInstance().insert(values);
             
     std::string success = "Delete Successfully";;
     
-TransformInfoEntityBuilder::getInstance().delete(this->transformInfoInterface.getKey() as string);
+TransformInfoEntityBuilder::getInstance().delete(this->transformInfoInterface.getKey());
     
 
                         if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGS))

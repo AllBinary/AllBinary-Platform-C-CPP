@@ -18,11 +18,8 @@
 
 
 
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-#include <jsinterop/annotations/JsType.h>
-
-      
 #include <org/allbinary/logic/util/event/AllBinaryEventObject.h>
 
       
@@ -39,15 +36,6 @@
 
       
 #include <org/allbinary/util/BasicArrayListD.h>
-
-      
-#include <jsinterop/annotations/JsMethod.h>
-
-      
-#include <jsinterop/annotations/JsConstructor.h>
-
-      
-#include <jsinterop/annotations/JsProperty.h>
 
       
 
@@ -134,9 +122,9 @@ super.removeListener(eventListenerInterface);
 
         try {
             
-    LayerManagerEventListener layerManagerEventListener = this->list.objectArray[index]! as LayerManagerEventListener;;
+    LayerManagerEventListener layerManagerEventListener = this->list.objectArray[index];;
     
-layerManagerEventListener.onCreateLayerManagerEvent(eventObject as LayerManagerEvent);
+layerManagerEventListener.onCreateLayerManagerEvent(eventObject);
     
 
                 //: 
@@ -171,9 +159,9 @@ super.fireEvent(eventObject);
 
         try {
             
-    LayerManagerEventListener layerManagerEventListener = this->list.objectArray[index]! as LayerManagerEventListener;;
+    LayerManagerEventListener layerManagerEventListener = this->list.objectArray[index];;
     
-layerManagerEventListener.onDeleteLayerManagerEvent(eventObject as LayerManagerEvent);
+layerManagerEventListener.onDeleteLayerManagerEvent(eventObject);
     
 
                 //: 
@@ -202,11 +190,11 @@ this->logUtil.put(this->commonStrings.EXCEPTION, this, EventStrings::getInstance
         {
 
         try {
-            eventListenerInterface= eventListenerInterfaceList.objectArray[index]! as EventListenerInterface;
+            eventListenerInterface= eventListenerInterfaceList.objectArray[index];
     
-layerManagerEventListenerInterface= (eventListenerInterface as LayerManagerEventListenerInterface);
+layerManagerEventListenerInterface= (eventListenerInterface);
     
-layerManagerEventListenerInterface.onDeleteLayerManagerEvent(eventObject as LayerManagerEvent);
+layerManagerEventListenerInterface.onDeleteLayerManagerEvent(eventObject);
     
 
                 //: 
@@ -227,9 +215,9 @@ index++;
             
     protected: void process(AllBinaryEventObject eventObject, EventListenerInterface eventListenerInterface){
 
-    LayerManagerEventListenerInterface layerManagerEventListenerInterface = (eventListenerInterface as LayerManagerEventListenerInterface);;
+    LayerManagerEventListenerInterface layerManagerEventListenerInterface = (eventListenerInterface);;
     
-layerManagerEventListenerInterface.onCreateLayerManagerEvent(eventObject as LayerManagerEvent);
+layerManagerEventListenerInterface.onCreateLayerManagerEvent(eventObject);
     
 }
 

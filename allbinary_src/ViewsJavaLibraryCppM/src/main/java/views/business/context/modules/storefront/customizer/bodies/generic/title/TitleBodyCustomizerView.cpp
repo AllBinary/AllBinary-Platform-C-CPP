@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/business/page/PageData.h>
 
@@ -29,7 +29,7 @@
 #include <org/allbinary/data/tree/dom/ModDomHelper.h>
 
       
-#include <org/allbinary/data/tree/dom/document/DomDocumentHelper.h>
+#include <org/allbinary/data/tree/dom/document/XmlDocumentHelper.h>
 
       
 #include <org/allbinary/logic/communication/log/LogUtil.h>
@@ -89,8 +89,9 @@ class TitleBodyCustomizerView: public HttpStoreComponentView, public DomNodeInte
 
     protected: TitleBodyValidation titleBody;
 
-public: TitleBodyCustomizerView(TransformInfoInterface transformInfoInterface){
-            super(transformInfoInterface);
+public: TitleBodyCustomizerView(TransformInfoInterface transformInfoInterface) : HttpStoreComponentView(transformInfoInterface){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -101,9 +102,9 @@ public: TitleBodyCustomizerView(TransformInfoInterface transformInfoInterface){
                 //@Throws(Exception.constructor)
             
     public: void addDomNodeInterfaces(){
-this->addDomNodeInterface(this->titleBody as DomNodeInterface);
+this->addDomNodeInterface(this->titleBody);
     
-this->addDomNodeInterface(this as DomNodeInterface);
+this->addDomNodeInterface(this);
     
 }
 
@@ -138,7 +139,7 @@ this->addDomNodeInterface(this as DomNodeInterface);
 
         try {
             
-    std::string success = DomDocumentHelper::toString(this->getDoc());;
+    std::string success = XmlDocumentHelper::toString(this->getDoc());;
     
 
     std::string result = StoreTransformer(this->abeClientInformation, this->getTransformInfoInterface()).translate(success);;

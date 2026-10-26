@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
 
@@ -83,8 +83,9 @@
         
 class RootStoreThemeCategoryProperties: public RootStoreCategoryProperties {
 
-public: RootStoreThemeCategoryProperties(TransformInfoInterface transformInfoInterface){
-            super(transformInfoInterface);
+public: RootStoreThemeCategoryProperties(TransformInfoInterface transformInfoInterface) : RootStoreCategoryProperties(transformInfoInterface){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -92,8 +93,9 @@ public: RootStoreThemeCategoryProperties(TransformInfoInterface transformInfoInt
 }
 
 
-public: RootStoreThemeCategoryProperties(TransformInfoInterface transformInfoInterface, AbPath abPath){
-            super(transformInfoInterface, abPath);
+public: RootStoreThemeCategoryProperties(TransformInfoInterface transformInfoInterface, AbPath abPath) : RootStoreCategoryProperties(transformInfoInterface, abPath){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -101,8 +103,9 @@ public: RootStoreThemeCategoryProperties(TransformInfoInterface transformInfoInt
 }
 
 
-public: RootStoreThemeCategoryProperties(TransformInfoInterface transformInfoInterface, Node node){
-            super(transformInfoInterface, node);
+public: RootStoreThemeCategoryProperties(TransformInfoInterface transformInfoInterface, Node node) : RootStoreCategoryProperties(transformInfoInterface, node){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -110,8 +113,9 @@ public: RootStoreThemeCategoryProperties(TransformInfoInterface transformInfoInt
 }
 
 
-public: RootStoreThemeCategoryProperties(TransformInfoInterface transformInfoInterface, HashMap<any, any> categoryPropertiesHashMap){
-            super(transformInfoInterface, categoryPropertiesHashMap);
+public: RootStoreThemeCategoryProperties(TransformInfoInterface transformInfoInterface, HashMap<Object*, Object*> categoryPropertiesHashMap) : RootStoreCategoryProperties(transformInfoInterface, categoryPropertiesHashMap){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -123,7 +127,7 @@ public: RootStoreThemeCategoryProperties(TransformInfoInterface transformInfoInt
             
     public: void initPath(){
 
-    TransformInfoHttpStoreInterface transformInfoHttpStoreInterface = this->transformInfoInterface as TransformInfoHttpStoreInterface;;
+    TransformInfoHttpStoreInterface transformInfoHttpStoreInterface = this->transformInfoInterface;;
     
 
     StoreFrontInterface storeFrontInterface = StoreFrontFactory::getInstance(transformInfoHttpStoreInterface.getStoreName());;
@@ -145,7 +149,7 @@ stringBuffer.append(FREEBLISKET_PATH_GLOBALS::getInstance().THEMEPATH);
     AbPath abPath = AbPath(stringBuffer.toString(), StringUtil::getInstance().EMPTY_STRING);;
     
 
-    HttpServletRequest httpServletRequest = transformInfoHttpStoreInterface.getPageContext().getRequest() as HttpServletRequest;;
+    HttpServletRequest httpServletRequest = transformInfoHttpStoreInterface.getPageContext().getRequest();;
     
 this->webAppAbPath= AbPath(httpServletRequest.getContextPath() +abPath.toString(), StringUtil::getInstance().EMPTY_STRING);
     

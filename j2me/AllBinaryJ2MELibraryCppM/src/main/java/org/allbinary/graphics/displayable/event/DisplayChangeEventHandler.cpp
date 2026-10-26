@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/logic/util/event/AllBinaryEventObject.h>
 
@@ -72,9 +72,9 @@ private: DisplayChangeEventHandler(){
             
     protected: void process(AllBinaryEventObject eventObject, EventListenerInterface eventListenerInterface){
 
-    DisplayChangeEventListener displayChangeEventListener = (eventListenerInterface as DisplayChangeEventListener);;
+    DisplayChangeEventListener displayChangeEventListener = (eventListenerInterface);;
     
-displayChangeEventListener.onDisplayChangeEvent(eventObject as DisplayChangeEvent);
+displayChangeEventListener.onDisplayChangeEvent(eventObject);
     
 }
 

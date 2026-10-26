@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <javax/microedition/lcdui/Graphics.h>
 
@@ -122,8 +122,9 @@ class MiniMapLayer: public AllBinaryLayer, public GeographicMapCellPositionEvent
 
     private: CircleFilledAnimation animationInterface;
 
-public: MiniMapLayer(BasicGeographicMap geographicMapInterface, ViewPositionBase viewPosition){
-            super(StringUtil::getInstance().EMPTY_STRING, Rectangle(PointFactory::getInstance().createXY(0, viewPosition.getY()), geographicMapInterface.getAllBinaryTiledLayer().getWidth(), geographicMapInterface.getAllBinaryTiledLayer().getHeight()), viewPosition);
+public: MiniMapLayer(BasicGeographicMap geographicMapInterface, ViewPositionBase viewPosition) : AllBinaryLayer(StringUtil::getInstance().EMPTY_STRING, Rectangle(PointFactory::getInstance().createXY(0, viewPosition.getY()), geographicMapInterface.getAllBinaryTiledLayer().getWidth(), geographicMapInterface.getAllBinaryTiledLayer().getHeight()), viewPosition){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -166,7 +167,7 @@ ForcedLogUtil::log(EventStrings::getInstance().PERFORMANCE_MESSAGE, this);
 
     public: void onRemoveGeographicMapCellPositionEvent(GeographicMapCellPositionEvent geographicMapCellPositionEvent){
 
-    ColorCompositeInterface colorCompositeInterface = geographicMapCellPositionEvent.getSource() as ColorCompositeInterface;;
+    ColorCompositeInterface colorCompositeInterface = geographicMapCellPositionEvent.getSource();;
     
 
     int32_t index = this->list.indexOf(colorCompositeInterface);;
@@ -192,7 +193,7 @@ this->positionList.removeAt(index);
 
     public: void onGeographicMapCellPositionEvent(GeographicMapCellPositionEvent geographicMapCellPositionEvent){
 
-    ColorCompositeInterface colorCompositeInterface = geographicMapCellPositionEvent.getSource() as ColorCompositeInterface;;
+    ColorCompositeInterface colorCompositeInterface = geographicMapCellPositionEvent.getSource();;
     
 
     int32_t layerIndex =  -1;;
@@ -210,7 +211,7 @@ this->positionList.removeAt(index);
                         for (
     int32_t index = 0;index < size; index++)
         {
-nextColorCompositeInterface= this->list.get(index) as ColorCompositeInterface;
+nextColorCompositeInterface= this->list.get(index);
     
 
                         if(nextColorCompositeInterface == colorCompositeInterface)
@@ -282,9 +283,9 @@ layerIndex= this->basicColorList.size() -1;
                         for (
     int32_t index = length;--index >= 0; )
         {
-point= localPositionList.get(index) as GPoint;
+point= localPositionList.get(index);
     
-basicColor= localBasicColorList.get(index) as BasicColor;
+basicColor= localBasicColorList.get(index);
     
 graphics.setColor(basicColor.intValue());
     

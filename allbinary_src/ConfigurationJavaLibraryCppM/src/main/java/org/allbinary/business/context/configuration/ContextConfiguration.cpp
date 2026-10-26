@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
 #include <java/util/HashMap.h>
 
@@ -68,15 +68,15 @@ class ContextConfiguration
 public: ContextConfiguration(){
 this->logUtil.putF(this->commonStrings.START, this, "ContextConfiguration");
     
-this->setEmailServerConfigurationInterface(EmailServerConfiguration() as EmailServerConfigurationInterface);
+this->setEmailServerConfigurationInterface(EmailServerConfiguration());
     
 }
 
 
-public: ContextConfiguration(HashMap<any, any> hashMap){
+public: ContextConfiguration(HashMap<Object*, Object*> hashMap){
 this->logUtil.putF(this->commonStrings.START, this, "ContextConfiguration(HashMap)");
     
-this->setEmailServerConfigurationInterface(EmailServerConfiguration(hashMap) as EmailServerConfigurationInterface);
+this->setEmailServerConfigurationInterface(EmailServerConfiguration(hashMap));
     
 }
 

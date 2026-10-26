@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/business/context/modules/storefront/StoreFrontFactory.h>
 
@@ -112,8 +112,9 @@ class UpdateFileValidationView: public InventoryItemView, public ValidationCompo
 
     protected: const LogUtil logUtil = LogUtil::getInstance();
 
-public: UpdateFileValidationView(TransformInfoInterface transformInfoInterface){
-            super(transformInfoInterface);
+public: UpdateFileValidationView(TransformInfoInterface transformInfoInterface) : InventoryItemView(transformInfoInterface){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -125,10 +126,10 @@ public: UpdateFileValidationView(TransformInfoInterface transformInfoInterface){
 
         try {
             
-    std::string command = this->getRequestHashMap().get(GLOBALS2::ADMINCOMMAND) as string;;
+    std::string command = this->getRequestHashMap().get(GLOBALS2::ADMINCOMMAND);;
     
 
-                        if(false || command.compareTo(UpdateFileValidationView::UPDATEPRODUCT) != 0)
+                        if(false || command.compare(UpdateFileValidationView::UPDATEPRODUCT) != 0)
                         
                                     {
                                     
@@ -237,7 +238,7 @@ stringBuffer.append(this->itemInterface.getCategory());
                         
                                     {
                                     
-    FileItem fileItem = anyType as FileItem;;
+    FileItem fileItem = *dynamic_cast<FileItem*>(anyType);;
     
 
     int64_t size = fileItem.getSize();;
@@ -320,10 +321,10 @@ HttpFileUploadUtil::log(fileItem);
     StringMaker stringBuffer = StringMaker();;
     
 
-    std::string command = this->getRequestHashMap().get(GLOBALS2::ADMINCOMMAND) as string;;
+    std::string command = this->getRequestHashMap().get(GLOBALS2::ADMINCOMMAND);;
     
 
-                        if(false || command.compareTo(UpdateFileValidationView::UPDATEPRODUCT) != 0)
+                        if(false || command.compare(UpdateFileValidationView::UPDATEPRODUCT) != 0)
                         
                                     {
                                     
@@ -341,7 +342,7 @@ stringBuffer.append(BasicItemValidation(this->itemInterface).validationInfo());
     StoreFrontInterface storeFrontInterface = StoreFrontFactory::getInstance(this->getWeblisketSession().getStoreName());;
     
 
-    std::string fullCategory = URLGLOBALS::getWebappPath() as string +storeFrontInterface.getCurrentHostNamePath() +this->itemInterface.getCategory();;
+    std::string fullCategory = URLGLOBALS::getWebappPath() +storeFrontInterface.getCurrentHostNamePath() +this->itemInterface.getCategory();;
     
 
                         if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEW))
@@ -388,7 +389,7 @@ stringBuffer.append(BasicItemValidation(this->itemInterface).validationInfo());
                         
                                     {
                                     
-    FileItem fileItem = anyType as FileItem;;
+    FileItem fileItem = *dynamic_cast<FileItem*>(anyType);;
     
 
     int64_t size = fileItem.getSize();;
@@ -496,7 +497,7 @@ this->processImageFiles();
                         
                                     {
                                     
-                        if(fileItemFieldName.compareTo(basicItemData.IMAGE) == 0)
+                        if(fileItemFieldName.compare(basicItemData.IMAGE) == 0)
                         
                                     {
                                     

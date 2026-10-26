@@ -21,9 +21,6 @@
         #ifndef ORG_ALLBINARY_GAME_LAYER_COLLIDABLECOMPOSITELAYER_H
         #define ORG_ALLBINARY_GAME_LAYER_COLLIDABLECOMPOSITELAYER_H
 
-#include <jsinterop/annotations/JsType.h>
-
-      
 #include <org/allbinary/ai/ArtificialIntelligence.h>
 
       
@@ -61,12 +58,6 @@
 
       
 #include <org/allbinary/view/ViewPositionBase.h>
-
-      
-#include <jsinterop/annotations/JsMethod.h>
-
-      
-#include <jsinterop/annotations/JsConstructor.h>
 
       
 #include <org/allbinary/logic/NullUtil.h>

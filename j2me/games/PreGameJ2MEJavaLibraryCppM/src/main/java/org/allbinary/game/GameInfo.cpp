@@ -18,16 +18,10 @@
 
 
 
-            #include "../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../java/lang/Integer.h"
+            #include "java/lang/Integer.h"
         
-#include <jsinterop/annotations/JsType.h>
-
-      
-#include <java/util/Hashtable.h>
-
-      
 #include <org/allbinary/logic/communication/log/LogUtil.h>
 
       
@@ -40,16 +34,13 @@
 #include <org/allbinary/string/CommonSeps.h>
 
       
-#include <jsinterop/annotations/JsMethod.h>
-
-      
-#include <jsinterop/annotations/JsConstructor.h>
-
-      
-#include <jsinterop/annotations/JsProperty.h>
-
-      
 #include <org/allbinary/logic/StdUtil.h>
+
+      
+#include <org/allbinary/string/CommonLabels.h>
+
+      
+#include <org/allbinary/util/ABHashtable.h>
 
       
 
@@ -181,8 +172,6 @@ this->logUtil.putF(StringMaker().append(this->NEW_LEVEL).appendint(this->getCurr
 }
 
 
-    private: const std::string NEXT = "Next ";
-
     private: const std::string NEXT_GAME_LEVEL = "nextGameLevel";
 
     public: void nextGameLevel(){
@@ -195,7 +184,7 @@ this->logUtil.putF(StringMaker().append(this->NEW_LEVEL).appendint(this->getCurr
 
                                     }
                                 
-this->logUtil.putF(StringMaker().append(this->NEXT).append(this->NEW_LEVEL).appendint(this->getCurrentLevel()).toString(), this, this->NEXT_GAME_LEVEL);
+this->logUtil.putF(StringMaker().append(CommonLabels::getInstance().NEXT).append(CommonSeps::getInstance().SPACE).append(this->NEW_LEVEL).appendint(this->getCurrentLevel()).toString(), this, this->NEXT_GAME_LEVEL);
     
 }
 
@@ -235,9 +224,9 @@ this->logUtil.putF(StringMaker().append(this->NEXT).append(this->NEW_LEVEL).appe
 }
 
 
-    public: Hashtable<any, any> toHashtable(){
+    public: ABHashtable<Object*, Object*> toHashtable(){
 
-    Hashtable<any, any> hashtable = StdUtil::getInstance().createHashtable();;
+    ABHashtable<Object*, Object*> hashtable = StdUtil::getInstance().createHashtable();;
     
 hashtable.put(this->gameInfoData.GAME_TYPE, this->getGameType().toString());
     

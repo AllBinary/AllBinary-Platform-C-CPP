@@ -48,8 +48,9 @@ class ImageIconUnique: public ImageIcon {
 
     private: int32_t id= 0;
 
-public: ImageIconUnique(BufferedImage bufferedImage, int32_t index){
-            super(bufferedImage);
+public: ImageIconUnique(BufferedImage bufferedImage, int32_t index) : ImageIcon(bufferedImage){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.

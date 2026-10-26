@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/game/layer/AllBinaryGameLayer.h>
 
@@ -117,7 +117,7 @@ super.removeListener(eventListenerInterface);
 
         try {
             
-    AllBinaryGameLayer gameLayer = this->list.get(index) as AllBinaryGameLayer;;
+    AllBinaryGameLayer gameLayer = this->list.get(index);;
     
 gameLayer.move();
     

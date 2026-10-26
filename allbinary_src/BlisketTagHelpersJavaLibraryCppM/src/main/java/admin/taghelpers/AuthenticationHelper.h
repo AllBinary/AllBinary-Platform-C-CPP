@@ -23,9 +23,9 @@
 
             #include <vector>
         
-            #include "../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../java/lang/Integer.h"
+            #include "java/lang/Integer.h"
         
 #include <java/util/Calendar.h>
 
@@ -123,9 +123,9 @@ class AuthenticationHelper: public TagHelper {
 
     private: Integer attemptsInteger;
 
-public: AuthenticationHelper(HashMap<any, any> hashMap, PageContext pageContext);
+public: AuthenticationHelper(HashMap<Object*, Object*> hashMap, PageContext pageContext);
 
-public: AuthenticationHelper(HashMap<any, any> hashMap, HttpServletRequest httpServletRequest);
+public: AuthenticationHelper(HashMap<Object*, Object*> hashMap, HttpServletRequest httpServletRequest);
 
                 //@Throws(Exception.constructor)
             

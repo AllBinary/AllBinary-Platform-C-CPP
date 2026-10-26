@@ -18,11 +18,8 @@
 
 
 
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-#include <java/util/Hashtable.h>
-
-      
 #include <javax/microedition/lcdui/Image.h>
 
       
@@ -57,6 +54,9 @@
 
       
 #include <org/allbinary/image/ImageCacheFactory.h>
+
+      
+#include <org/allbinary/logic/StdUtil.h>
 
       
 #include <org/allbinary/logic/string/StringMaker.h>
@@ -109,8 +109,9 @@ class TouchButtonResourceAnimationInterfaceFactoryInterfaceFactory: public BaseR
 }
 
 
-public: TouchButtonResourceAnimationInterfaceFactoryInterfaceFactory(std::string name){
-            super(name, Hashtable<any, any>(), Hashtable<any, any>(), Hashtable<any, any>());
+public: TouchButtonResourceAnimationInterfaceFactoryInterfaceFactory(std::string name) : BaseResourceAnimationInterfaceFactoryInterfaceFactory(name, StdUtil::getInstance().createHashtable(), StdUtil::getInstance().createHashtable(), StdUtil::getInstance().createHashtable()){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.

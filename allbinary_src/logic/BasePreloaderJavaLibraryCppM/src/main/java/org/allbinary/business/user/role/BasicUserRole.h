@@ -21,17 +21,9 @@
         #ifndef ORG_ALLBINARY_BUSINESS_USER_ROLE_BASICUSERROLE_H
         #define ORG_ALLBINARY_BUSINESS_USER_ROLE_BASICUSERROLE_H
 
-            #include "../../../../../java/lang/Object.h"
-        
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Object.h"
         
 #include <java/io/Serializable.h>
-
-      
-#include <org/allbinary/util/BasicArrayList.h>
-
-      
-#include <org/allbinary/util/BasicArrayListD.h>
 
       
 
@@ -52,19 +44,11 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        
+        #include "BasicUserRoles.h"
+
 class BasicUserRole
             : public Object
         : public Serializable {
-
-    private: static const BasicArrayList roleVector = BasicArrayListD();
-
-                //@Throws(Exception.constructor)
-            //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
-
-    public: static BasicUserRole getRole(std::string role);
-
-    public: static BasicArrayList getAll();
 
     private: int32_t m_int_RoleId;
 

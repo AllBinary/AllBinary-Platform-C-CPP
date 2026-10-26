@@ -18,9 +18,9 @@
 
 
 
-            #include "../../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
 
@@ -34,7 +34,7 @@
 #include <org/allbinary/data/tree/dom/DomSearchHelper.h>
 
       
-#include <org/allbinary/data/tree/dom/document/DomDocumentHelper.h>
+#include <org/allbinary/data/tree/dom/document/XmlDocumentHelper.h>
 
       
 #include <org/allbinary/logic/communication/http/request/NameSpaceRequestParamData.h>
@@ -100,9 +100,9 @@ class StylesValidationFactory
 
                 //@Throws(Exception.constructor)
             
-    public: static BasicArrayList getInstance(HashMap<any, any> hashMap){
+    public: static BasicArrayList getInstance(HashMap<Object*, Object*> hashMap){
 
-    Document stylesDocument = hashMap.get(NameSpaceRequestParamData::DOCUMENT) as Document;;
+    Document stylesDocument = hashMap.get(NameSpaceRequestParamData::DOCUMENT);;
     
 
 
@@ -132,7 +132,7 @@ private: StylesValidationFactory(){
                         if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEW))
                         
                                     {
-                                    this->logUtil.putF("Style Present: " +DomDocumentHelper::toString(document), this, commonStrings.GET_INSTANCE);
+                                    this->logUtil.putF("Style Present: " +XmlDocumentHelper::toString(document), this, commonStrings.GET_INSTANCE);
     
 
                                     }
@@ -176,7 +176,7 @@ private: StylesValidationFactory(){
     int32_t styleNodesIndex = 0;styleNodesIndex < styleNodeList.size(); styleNodesIndex++)
         {
 
-    Node styleNode = styleNodeList.get(styleNodesIndex) as Node;;
+    Node styleNode = styleNodeList.get(styleNodesIndex);;
     
 
     BasicArrayList cssElementStyleNodeList = DomSearchHelper::getAllNodes(CssElementData::getInstance().NAME, styleNode.getChildNodes());;

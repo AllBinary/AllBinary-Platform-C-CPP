@@ -21,7 +21,7 @@
         #ifndef ADMIN_TAGHELPERS_DOWNLOADITEMSREQUESTHELPER_H
         #define ADMIN_TAGHELPERS_DOWNLOADITEMSREQUESTHELPER_H
 
-            #include "../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
 
@@ -83,7 +83,7 @@ class DownloadItemsRequestHelper: public ModifyTable {
 
     private: DownloadableItem downloadableItem;
 
-public: DownloadItemsRequestHelper(HashMap<any, any> hashMap, PageContext pageContext);
+public: DownloadItemsRequestHelper(HashMap<Object*, Object*> hashMap, PageContext pageContext);
 
     public: std::string insert();
 

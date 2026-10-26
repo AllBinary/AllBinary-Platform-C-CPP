@@ -18,9 +18,9 @@
 
 
 
-            #include "../../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/util/BasicArrayList.h>
 
@@ -106,7 +106,7 @@ this->run();
 
 
     public: void onEvent(AllBinaryEventObject allBinaryEventObject){
-this->onMotionRectanglesImageComparisonResultsEvent(allBinaryEventObject as MotionRectanglesResultsEvent);
+this->onMotionRectanglesImageComparisonResultsEvent(allBinaryEventObject);
     
 }
 
@@ -142,7 +142,7 @@ this->setRunning(true);
 timeHelper.setStartTimeTNT();
     
 
-    MotionRectanglesResultsEvent motionRectanglesResultsEvent = this->getMotionRectanglesVector().get(0) as MotionRectanglesResultsEvent;;
+    MotionRectanglesResultsEvent motionRectanglesResultsEvent = this->getMotionRectanglesVector().get(0);;
     
 
     MotionRectangles motionRectangles = motionRectanglesResultsEvent.getMotionRectangles();;

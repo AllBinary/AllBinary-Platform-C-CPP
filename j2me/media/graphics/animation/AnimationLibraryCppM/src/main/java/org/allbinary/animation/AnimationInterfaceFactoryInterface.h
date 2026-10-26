@@ -21,15 +21,9 @@
         #ifndef ORG_ALLBINARY_ANIMATION_ANIMATIONINTERFACEFACTORYINTERFACE_H
         #define ORG_ALLBINARY_ANIMATION_ANIMATIONINTERFACEFACTORYINTERFACE_H
 
-            #include "../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-#include <jsinterop/annotations/JsType.h>
-
-      
 #include <org/allbinary/media/ScaleProperties.h>
-
-      
-#include <jsinterop/annotations/JsMethod.h>
 
       
 

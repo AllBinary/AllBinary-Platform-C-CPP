@@ -21,14 +21,8 @@
         #ifndef ORG_ALLBINARY_GAME_LAYER_RESOURCES_ONDEMANDRESOURCESFACTORY_H
         #define ORG_ALLBINARY_GAME_LAYER_RESOURCES_ONDEMANDRESOURCESFACTORY_H
 
-            #include "../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-#include <jsinterop/annotations/JsType.h>
-
-      
-#include <jsinterop/annotations/JsMethod.h>
-
-      
 
 
 

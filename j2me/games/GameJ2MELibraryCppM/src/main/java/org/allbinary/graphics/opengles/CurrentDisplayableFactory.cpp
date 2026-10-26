@@ -18,11 +18,8 @@
 
 
 
-            #include "../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-#include <jsinterop/annotations/JsType.h>
-
-      
 #include <javax/microedition/lcdui/Displayable.h>
 
       
@@ -90,15 +87,6 @@
 
       
 #include <org/allbinary/util/BasicArrayListD.h>
-
-      
-#include <jsinterop/annotations/JsMethod.h>
-
-      
-#include <jsinterop/annotations/JsConstructor.h>
-
-      
-#include <jsinterop/annotations/JsProperty.h>
 
       
 
@@ -185,7 +173,7 @@ this->DEFAULT_CHILD_NAME_LIST.add(HighScoresCanvas::NAME);
                         
                                     {
                                     
-                        if(displayable.hasChild(this->displayable as MyCanvas))
+                        if(displayable.hasChild(this->displayable))
                         
                                     {
                                     PreLogUtil::put(StringMaker().append("Child Displayable is already set for: ").append(this->stringUtil.toString(displayable)).toString(), this, this->SET_DISPLAYABLE);
@@ -350,7 +338,7 @@ this->setUsedRunnable(NullWaitGameRunnable::getInstance());
 
 
     public: void setUsedRunnable(GameRunnable usedRunnable){
-PreLogUtil::put(StringMaker().append(this->RUNNABLE).append(this->stringUtil.toString(this->runnable)).toString(), this, this->SET_USED_RUNNABLE);
+PreLogUtil::put(StringMaker().append(this->RUNNABLE).append(this->stringUtil.toString(this->runnable)).append(CommonSeps::getInstance().COLON_SEP).append(this->stringUtil.toString(usedRunnable)).toString(), this, this->SET_USED_RUNNABLE);
     
 this->usedRunnable= usedRunnable;
     

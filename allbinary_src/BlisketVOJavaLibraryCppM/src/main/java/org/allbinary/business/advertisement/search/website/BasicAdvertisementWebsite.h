@@ -21,7 +21,7 @@
         #ifndef ORG_ALLBINARY_BUSINESS_ADVERTISEMENT_SEARCH_WEBSITE_BASICADVERTISEMENTWEBSITE_H
         #define ORG_ALLBINARY_BUSINESS_ADVERTISEMENT_SEARCH_WEBSITE_BASICADVERTISEMENTWEBSITE_H
 
-            #include "../../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
 
 

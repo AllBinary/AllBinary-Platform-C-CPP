@@ -21,7 +21,7 @@
         #ifndef VIEWS_ADMIN_STOREFRONT_STOREFRONTCOMPONENT_H
         #define VIEWS_ADMIN_STOREFRONT_STOREFRONTCOMPONENT_H
 
-            #include "../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <javax/servlet/http/HttpServletRequest.h>
 

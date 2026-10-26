@@ -66,7 +66,7 @@ class PropsTileMapPlacementVisitor: public TileMapPlacementVisitor {
     int32_t layerIndex = 0;;
     
 
-    TileLayer tileLayer = (lastMap.getLayer(layerIndex) as TileLayer);;
+    TileLayer tileLayer = (lastMap.getLayer(layerIndex));;
     
 
     std::vector<std::vector<int32_t>> mapArray = tileLayer.getMapArray();;
@@ -75,7 +75,7 @@ class PropsTileMapPlacementVisitor: public TileMapPlacementVisitor {
     int32_t size = mapData.size();;
     
 
-    int32_t size2 = mapData[0]!.size();;
+    int32_t size2 = mapData[0].size();;
     
 
 
@@ -92,7 +92,7 @@ class PropsTileMapPlacementVisitor: public TileMapPlacementVisitor {
     int32_t index2 = 0;index2 < size2; index2++)
         {
 
-                        if(mapArray[index]![index2] == 14)
+                        if(mapArray[index][index2] == 14)
                         
                                     {
                                     
@@ -109,7 +109,7 @@ class PropsTileMapPlacementVisitor: public TileMapPlacementVisitor {
                         
                                     {
                                     
-                        if(mapArray[index]![index2] == 19)
+                        if(mapArray[index][index2] == 19)
                         
                                     {
                                     
@@ -119,7 +119,7 @@ class PropsTileMapPlacementVisitor: public TileMapPlacementVisitor {
                         if(randomInt == 0)
                         
                                     {
-                                    mapData[index]![index2]= 1;
+                                    mapData[index][index2]= 1;
     
 
                                     }
@@ -128,7 +128,7 @@ class PropsTileMapPlacementVisitor: public TileMapPlacementVisitor {
                         if(randomInt == 1)
                         
                                     {
-                                    mapData[index]![index2]= 81;
+                                    mapData[index][index2]= 81;
     
 
                                     }
@@ -137,7 +137,7 @@ class PropsTileMapPlacementVisitor: public TileMapPlacementVisitor {
                         if(randomInt == 2)
                         
                                     {
-                                    mapData[index]![index2]= 97;
+                                    mapData[index][index2]= 97;
     
 
                                     }
@@ -146,17 +146,17 @@ class PropsTileMapPlacementVisitor: public TileMapPlacementVisitor {
                                     }
                                 
                              else 
-                        if(mapArray[index]![index2] == 17)
+                        if(mapArray[index][index2] == 17)
                         
                                     {
                                     
-    int32_t randomInt = randomFactory.getAbsoluteNextIntAllowZero(3);;
+    int32_t randomInt = this->randomFactory.getAbsoluteNextIntAllowZero(3);;
     
 
                         if(randomInt == 0)
                         
                                     {
-                                    mapData[index]![index2]= 17;
+                                    mapData[index][index2]= 17;
     
 
                                     }
@@ -165,7 +165,7 @@ class PropsTileMapPlacementVisitor: public TileMapPlacementVisitor {
                         if(randomInt == 1)
                         
                                     {
-                                    mapData[index]![index2]= 81;
+                                    mapData[index][index2]= 81;
     
 
                                     }
@@ -174,7 +174,7 @@ class PropsTileMapPlacementVisitor: public TileMapPlacementVisitor {
                         if(randomInt == 2)
                         
                                     {
-                                    mapData[index]![index2]= 97;
+                                    mapData[index][index2]= 97;
     
 
                                     }
@@ -190,7 +190,7 @@ class PropsTileMapPlacementVisitor: public TileMapPlacementVisitor {
                         
                                     {
                                     
-                        if(mapArray[index]![index2] == 34)
+                        if(mapArray[index][index2] == 34)
                         
                                     {
                                     
@@ -200,7 +200,7 @@ class PropsTileMapPlacementVisitor: public TileMapPlacementVisitor {
                         if(randomInt == 0)
                         
                                     {
-                                    mapData[index]![index2]= 33;
+                                    mapData[index][index2]= 33;
     
 
                                     }
@@ -209,7 +209,7 @@ class PropsTileMapPlacementVisitor: public TileMapPlacementVisitor {
                         if(randomInt == 1)
                         
                                     {
-                                    mapData[index]![index2]= 65;
+                                    mapData[index][index2]= 65;
     
 
                                     }
@@ -218,7 +218,7 @@ class PropsTileMapPlacementVisitor: public TileMapPlacementVisitor {
                         if(randomInt == 2)
                         
                                     {
-                                    mapData[index]![index2]= 81;
+                                    mapData[index][index2]= 81;
     
 
                                     }
@@ -227,7 +227,7 @@ class PropsTileMapPlacementVisitor: public TileMapPlacementVisitor {
                         if(randomInt == 3)
                         
                                     {
-                                    mapData[index]![index2]= 97;
+                                    mapData[index][index2]= 97;
     
 
                                     }
@@ -281,7 +281,7 @@ index3--;
                                     }
                                 
 
-                        if(mapArray[index3]![index4] != 14 || mapData[index3]![index4] != 0)
+                        if(mapArray[index3][index4] != 14 || mapData[index3][index4] != 0)
                         
                                     {
                                     
@@ -303,7 +303,7 @@ index3--;
     int32_t index6 = index4 +1;index6 < index2 -1; index6++)
         {
 
-                        if(mapArray[index5]![index6] != 14 || mapData[index5]![index6] != 0)
+                        if(mapArray[index5][index6] != 14 || mapData[index5][index6] != 0)
                         
                                     {
                                     
@@ -326,7 +326,7 @@ index3--;
     int32_t y = index2 -(countY /2);;
     
 
-                        if(x >= 0 && y >= 0 && x < mapData.size() && y < mapData[0]!.size())
+                        if(x >= 0 && y >= 0 && x < mapData.size() && y < mapData[0].size())
                         
                                     {
                                     

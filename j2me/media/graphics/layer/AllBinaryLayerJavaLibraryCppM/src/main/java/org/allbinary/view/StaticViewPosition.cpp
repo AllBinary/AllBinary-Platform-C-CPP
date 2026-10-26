@@ -18,15 +18,6 @@
 
 
 
-#include <jsinterop/annotations/JsType.h>
-
-      
-#include <jsinterop/annotations/JsMethod.h>
-
-      
-#include <jsinterop/annotations/JsConstructor.h>
-
-      
 
 
 
@@ -49,8 +40,9 @@
 
 class StaticViewPosition: public ViewPosition {
 
-public: StaticViewPosition(int32_t x, int32_t y, int32_t z){
-            super(x, y, z);
+public: StaticViewPosition(int32_t x, int32_t y, int32_t z) : ViewPosition(x, y, z){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.

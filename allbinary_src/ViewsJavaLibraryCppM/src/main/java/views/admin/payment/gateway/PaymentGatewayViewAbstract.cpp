@@ -56,13 +56,14 @@ class PaymentGatewayViewAbstract: public TransformInfoHttpComposite {
 
     private: PaymentGatewayPrimaryKey paymentGatewayPrimaryKey;
 
-public: PaymentGatewayViewAbstract(TransformInfoInterface transformInfoInterface){
-            super(transformInfoInterface);
+public: PaymentGatewayViewAbstract(TransformInfoInterface transformInfoInterface) : TransformInfoHttpComposite(transformInfoInterface){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this->getFormData(this->getPageContext().getRequest() as HttpServletRequest);
+this->getFormData(this->getPageContext().getRequest());
     
 }
 

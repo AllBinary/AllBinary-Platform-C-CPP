@@ -21,11 +21,8 @@
         #ifndef ORG_ALLBINARY_LOGIC_SYSTEM_SECURITY_LICENSING_ABECLIENTLICENSE_H
         #define ORG_ALLBINARY_LOGIC_SYSTEM_SECURITY_LICENSING_ABECLIENTLICENSE_H
 
-            #include "../../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-#include <java/util/Hashtable.h>
-
-      
 #include <org/allbinary/logic/StdUtil.h>
 
       
@@ -36,6 +33,9 @@
 
       
 #include <org/allbinary/logic/string/StringValidationUtil.h>
+
+      
+#include <org/allbinary/util/ABHashtable.h>
 
       
 #include <org/allbinary/util/BasicArrayList.h>
@@ -71,9 +71,9 @@ class AbeClientLicense
             : public Object
         : public AbeLicenseInterface {
 
-    public: static bool hasRequiredKeys(Hashtable<any, any> resultHashtable);
+    public: static bool hasRequiredKeys(ABHashtable<Object*, Object*> resultHashtable);
 
-    private: Hashtable<any, any> hashtable;
+    private: ABHashtable<Object*, Object*> hashtable;
 
     private: std::string id;
 
@@ -83,7 +83,7 @@ class AbeClientLicense
 
     private: LicenseType licenseType;
 
-public: AbeClientLicense(Hashtable<any, any> hashtable);
+public: AbeClientLicense(ABHashtable<Object*, Object*> hashtable);
 
     public: bool hasKey();
 

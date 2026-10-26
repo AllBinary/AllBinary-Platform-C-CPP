@@ -21,7 +21,7 @@
         #ifndef ORG_ALLBINARY_GAME_INPUT_SELECTRTSLAYERVISITORFACTORY_H
         #define ORG_ALLBINARY_GAME_INPUT_SELECTRTSLAYERVISITORFACTORY_H
 
-            #include "../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
 #include <org/allbinary/logic/util/visitor/Visitor.h>
 

@@ -21,11 +21,8 @@
         #ifndef ORG_ALLBINARY_PHYSICS_MOVEMENT_BASICCONSTANTVELOCITYMOVEMENT_H
         #define ORG_ALLBINARY_PHYSICS_MOVEMENT_BASICCONSTANTVELOCITYMOVEMENT_H
 
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-#include <jsinterop/annotations/JsType.h>
-
-      
 #include <org/allbinary/game/layer/AllBinaryGameLayer.h>
 
       
@@ -45,12 +42,6 @@
 
       
 #include <org/allbinary/math/AngleFactory.h>
-
-      
-#include <jsinterop/annotations/JsMethod.h>
-
-      
-#include <jsinterop/annotations/JsConstructor.h>
 
       
 

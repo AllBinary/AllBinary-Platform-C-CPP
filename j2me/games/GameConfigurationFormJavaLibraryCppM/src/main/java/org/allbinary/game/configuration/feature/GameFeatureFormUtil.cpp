@@ -20,13 +20,10 @@
 
             #include <vector>
         
-            #include "../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-#include <java/util/Hashtable.h>
-
-      
 #include <javax/microedition/lcdui/ChoiceGroup.h>
 
       
@@ -45,6 +42,9 @@
 #include <org/allbinary/graphics/displayable/screen/CommandForm.h>
 
       
+#include <org/allbinary/logic/MEUtil.h>
+
+      
 #include <org/allbinary/logic/communication/log/LogUtil.h>
 
       
@@ -52,6 +52,9 @@
 
       
 #include <org/allbinary/logic/string/StringUtil.h>
+
+      
+#include <org/allbinary/util/ABHashtable.h>
 
       
 #include <org/allbinary/util/BasicArrayList.h>
@@ -100,7 +103,9 @@ class GameFeatureFormUtil
 
     protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    public: ChoiceGroup getChoiceGroup(Hashtable<any, any> hashtable, std::string name, int32_t option){
+    private: const MEUtil meUtil = MEUtil::getInstance();
+
+    public: ChoiceGroup getChoiceGroup(ABHashtable<Object*, Object*> hashtable, std::string name, int32_t option){
 
     StringMaker stringMaker = StringMaker();;
     
@@ -108,7 +113,7 @@ class GameFeatureFormUtil
     ChoiceGroup choiceGroup = ChoiceGroup(name, option, StringUtil::getInstance().getArrayInstance(), NullImage::NULL_IMAGE_ARRAY);;
     
 
-    BasicArrayList list = hashtable.get(name) as BasicArrayList;;
+    BasicArrayList list = hashtable.get(name);;
     
 
     Features features = Features::getInstance();;
@@ -130,7 +135,7 @@ class GameFeatureFormUtil
     int32_t index = 0;index < size; index++)
         {
 
-    Feature gameFeature = list.objectArray[index]! as Feature;;
+    Feature gameFeature = list.objectArray[index];;
     
 stringMaker.delete(0, stringMaker.length());
     
@@ -158,7 +163,7 @@ choiceGroup.append(gameFeature.toString(), NullImage::NULL_IMAGE);
 }
 
 
-    public: void addChoiceGroup(CommandForm form, Hashtable<any, any> hashtable, int32_t option){
+    public: void addChoiceGroup(CommandForm form, ABHashtable<Object*, Object*> hashtable, int32_t option){
 
     StringMaker stringMaker = StringMaker();;
     
@@ -169,10 +174,13 @@ choiceGroup.append(gameFeature.toString(), NullImage::NULL_IMAGE);
     std::string ADD_CHOICE_GROUP = "addChoiceGroup";;
     
 
-    int32_t size = hashtable.length;;
+    int32_t size = hashtable.size();;
     
 
     std::vector<Object*> objectArray = HashtableUtil::getInstance().getKeysAsArray(hashtable);;
+    
+
+    std::string name;;
     
 
 
@@ -181,14 +189,13 @@ choiceGroup.append(gameFeature.toString(), NullImage::NULL_IMAGE);
                         for (
     int32_t index = 0;index < size; index++)
         {
-
-    std::string name = objectArray[index]! as string;;
+name= objectArray[index];
     
 stringMaker.delete(0, stringMaker.length());
     
 this->logUtil.putF(stringMaker.append(ADDING_CHOICE_GROUP).append(name).toString(), this, ADD_CHOICE_GROUP);
     
-form.append(this->getChoiceGroup(hashtable, name, option));
+this->meUtil.appendItem(form, this->getChoiceGroup(hashtable, name, option));
     
 }
 
@@ -215,7 +222,7 @@ form.append(this->getChoiceGroup(hashtable, name, option));
                         if(item instanceof GameConfigurationGauge)
                         
                                     {
-                                    GameConfigurationUtil::getInstance().setDefault(item as GameConfigurationGauge);
+                                    GameConfigurationUtil::getInstance().setDefault(item);
     
 
                                     }
@@ -224,7 +231,7 @@ form.append(this->getChoiceGroup(hashtable, name, option));
                         if(item instanceof ChoiceGroup)
                         
                                     {
-                                    GameFeatureUtil::getInstance().setDefault(item as ChoiceGroup);
+                                    GameFeatureUtil::getInstance().setDefault(item);
     
 
                                     }

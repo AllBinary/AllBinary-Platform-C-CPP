@@ -21,9 +21,9 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_COLOR_COLORCACHEABLE_H
         #define ORG_ALLBINARY_GRAPHICS_COLOR_COLORCACHEABLE_H
 
-            #include "../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../java/lang/Integer.h"
+            #include "java/lang/Integer.h"
         
 #include <java/awt.h>
 

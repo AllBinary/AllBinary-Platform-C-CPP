@@ -7,7 +7,7 @@
         #ifndef JAVA_LANG_DEPRECATED_H
         #define JAVA_LANG_DEPRECATED_H
 
-            #include "../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
 
 

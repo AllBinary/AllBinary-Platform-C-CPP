@@ -49,8 +49,9 @@ class RaceTrackGeographicMapCellType: public GeographicMapCellType {
 
     private: int32_t travelCost;
 
-public: RaceTrackGeographicMapCellType(std::string name, int32_t type, int32_t travelCost, int32_t reset){
-            super(type, reset);
+public: RaceTrackGeographicMapCellType(std::string name, int32_t type, int32_t travelCost, int32_t reset) : GeographicMapCellType(type, reset){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.

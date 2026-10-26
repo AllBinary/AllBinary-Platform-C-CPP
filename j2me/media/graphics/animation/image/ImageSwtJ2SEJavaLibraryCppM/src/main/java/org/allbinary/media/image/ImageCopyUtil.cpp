@@ -20,9 +20,9 @@
 
             #include <vector>
         
-            #include "../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <javax/microedition/lcdui/Image.h>
 
@@ -199,7 +199,7 @@ image= this->openGLUtil.addImage(image);
                         
                                     {
                                     
-    OpenGLESImage openGLESImage = (originalImage as OpenGLESImage);;
+    OpenGLESImage openGLESImage = (originalImage);;
     
 originalImage2= openGLESImage.openGLBitmap.getImage();
     
@@ -219,7 +219,7 @@ originalImage2= openGLESImage.openGLBitmap.getImage();
                         
                                     {
                                     
-    SwtMutableImage originalMutableImage = originalImage2 as SwtMutableImage;;
+    SwtMutableImage originalMutableImage = originalImage2;;
     
 image= SwtMutableImage(SwtDeviceComponent::createImage(originalMutableImage.image.getImageData()));
     
@@ -228,7 +228,7 @@ image= SwtMutableImage(SwtDeviceComponent::createImage(originalMutableImage.imag
                                 
                         else {
                             
-    SwtImmutableImage originalImmutableImage = originalImage2 as SwtImmutableImage;;
+    SwtImmutableImage originalImmutableImage = originalImage2;;
     
 image= SwtMutableImage(SwtDeviceComponent::createImage(originalImmutableImage.image.getImageData()));
     
@@ -289,7 +289,7 @@ image= this->openGLUtil.addImage(image);
                         
                                     {
                                     
-    OpenGLESImage openGLESImage = (originalImage as OpenGLESImage);;
+    OpenGLESImage openGLESImage = (originalImage);;
     
 originalImage2= openGLESImage.openGLBitmap.getImage();
     
@@ -309,7 +309,7 @@ originalImage2= openGLESImage.openGLBitmap.getImage();
                         
                                     {
                                     
-    SwtMutableImage originalMutableImage = originalImage2 as SwtMutableImage;;
+    SwtMutableImage originalMutableImage = originalImage2;;
     
 
                         if(originalMutableImage.getImage() != 
@@ -339,7 +339,7 @@ image= SwtMutableImage(SwtDeviceComponent::createImage(imageData));
                                 
                         else {
                             
-    SwtImmutableImage originalImmutableImage = originalImage2 as SwtImmutableImage;;
+    SwtImmutableImage originalImmutableImage = originalImage2;;
     
 
                         if(originalImmutableImage.getImage() != 
@@ -435,7 +435,7 @@ image= this->openGLUtil.addImage(image);
                         
                                     {
                                     
-    OpenGLESImage openGLESImage = (originalImage as OpenGLESImage);;
+    OpenGLESImage openGLESImage = (originalImage);;
     
 
     OpenGLESImageProperties openGLESImageProperties = openGLESImage.openGLESImageProperties;;
@@ -474,7 +474,7 @@ image= openGLESImage;
                             image= originalImage;
     
 
-    OpenGLESImage openGLESImage = this->openGLUtil.addImage(image) as OpenGLESImage;;
+    OpenGLESImage openGLESImage = this->openGLUtil.addImage(image);;
     
 
     OpenGLESImageProperties openGLESImageProperties = openGLESImage.openGLESImageProperties;;
@@ -490,7 +490,7 @@ openGLESImageProperties.scaleY= openGLESImageProperties.scaleY2= ((height) /open
                                     openGLESImage.openGLESImageTranslate= OpenGLESDeviceImageTranslate();
     
 
-    OpenGLESDeviceImageTranslate openGLESDeviceImageTranslate = openGLESImage.openGLESImageTranslate as OpenGLESDeviceImageTranslate;;
+    OpenGLESDeviceImageTranslate openGLESDeviceImageTranslate = openGLESImage.openGLESImageTranslate;;
     
 openGLESDeviceImageTranslate.translateX= displayInfoSingleton.getLastWidth() /1.4 /openGLESImageProperties.scaleX;
     
@@ -515,7 +515,7 @@ openGLESImageProperties.scaleY= openGLESImageProperties.scaleY *0.75;
                                     openGLESImage.openGLESImageTranslate= OpenGLESDeviceImageTranslate();
     
 
-    OpenGLESDeviceImageTranslate openGLESDeviceImageTranslate = openGLESImage.openGLESImageTranslate as OpenGLESDeviceImageTranslate;;
+    OpenGLESDeviceImageTranslate openGLESDeviceImageTranslate = openGLESImage.openGLESImageTranslate;;
     
 openGLESDeviceImageTranslate.translateX=  -displayInfoSingleton.getLastWidth() /40 /openGLESImageProperties.scaleX;
     
@@ -554,7 +554,7 @@ image= openGLESImage;
                         
                                     {
                                     
-    SwtMutableImage originalMutableImage = originalImage2 as SwtMutableImage;;
+    SwtMutableImage originalMutableImage = originalImage2;;
     
 
                         if(originalMutableImage.getImage() != 
@@ -584,7 +584,7 @@ image= SwtMutableImage(SwtDeviceComponent::createImage(imageData));
                                 
                         else {
                             
-    SwtImmutableImage originalImmutableImage = originalImage2 as SwtImmutableImage;;
+    SwtImmutableImage originalImmutableImage = originalImage2;;
     
 
                         if(originalImmutableImage.getImage() != 
@@ -683,10 +683,10 @@ image= this->openGLUtil.addImage(image);
                         
                                     {
                                     
-    ImageData originalImageData = (getImage as org::eclipse::swt::graphics::Image).getImageData();;
+    ImageData originalImageData = (getImage).getImageData();;
     
 
-    SwtMutableImage mutableImage2 = image as SwtMutableImage;;
+    SwtMutableImage mutableImage2 = image;;
     
 
     int32_t halfWidthDelta = (newWidth -originalImage.getWidth()) /2;;
@@ -695,10 +695,10 @@ image= this->openGLUtil.addImage(image);
     int32_t halfHeightDelta = (newHeight -originalImage.getHeight()) /2;;
     
 
-    std::vector<int32_t> originalPixelArray = new Array(originalImage.getWidth() *originalImage.getHeight());;
+    std::vector<int32_t> originalPixelArray = std::vector<int32_t>(originalImage.getWidth() *originalImage.getHeight());;
     
 
-    std::vector<int32_t> newPixelArray = new Array(image.getWidth() *image.getHeight());;
+    std::vector<int32_t> newPixelArray = std::vector<int32_t>(image.getWidth() *image.getHeight());;
     
 
     int32_t width = originalImage.getWidth();;
@@ -731,13 +731,13 @@ originalImageData.getPixels(0, i, width, originalPixelArray, (i *width));
                         for (
     int32_t index2 = halfHeightDelta;index2 < height; index2++)
         {
-newPixelArray[index +(index2 *width)]= originalPixelArray[(index -halfWidthDelta) +((index2 -halfHeightDelta) *width)]!;
+newPixelArray[index +(index2 *width)]= originalPixelArray[(index -halfWidthDelta) +((index2 -halfHeightDelta) *width)];
     
 }
 
 }
 
-getImage = mutableImage2.getImage()getImage as org::eclipse::swt::graphics::Image
+getImage = mutableImage2.getImage()getImage
 getImage.
                     getImageData().setPixels(0, 0, image.getWidth(), newPixelArray, 0);
     
@@ -752,10 +752,10 @@ getImage.
                                 
                         else {
                             
-    SwtImmutableImage originalImmutableImage = image as SwtImmutableImage;;
+    SwtImmutableImage originalImmutableImage = image;;
     
 
-    ImageData originalImageData = (getImage as org::eclipse::swt::graphics::Image).getImageData();;
+    ImageData originalImageData = (getImage).getImageData();;
     
 
     int32_t halfWidthDelta = (newWidth -originalImage.getWidth()) /2;;
@@ -764,10 +764,10 @@ getImage.
     int32_t halfHeightDelta = (newHeight -originalImage.getHeight()) /2;;
     
 
-    std::vector<int32_t> originalPixelArray = new Array(originalImage.getWidth() *originalImage.getHeight());;
+    std::vector<int32_t> originalPixelArray = std::vector<int32_t>(originalImage.getWidth() *originalImage.getHeight());;
     
 
-    std::vector<int32_t> newPixelArray = new Array(image.getWidth() *image.getHeight());;
+    std::vector<int32_t> newPixelArray = std::vector<int32_t>(image.getWidth() *image.getHeight());;
     
 
     int32_t width = originalImage.getWidth();;
@@ -800,13 +800,13 @@ originalImageData.getPixels(0, i, width, originalPixelArray, (i *width));
                         for (
     int32_t index2 = halfHeightDelta;index2 < height; index2++)
         {
-newPixelArray[index +(index2 *width)]= originalPixelArray[(index -halfWidthDelta) +((index2 -halfHeightDelta) *width)]!;
+newPixelArray[index +(index2 *width)]= originalPixelArray[(index -halfWidthDelta) +((index2 -halfHeightDelta) *width)];
     
 }
 
 }
 
-getImage = originalImmutableImage.getImage()getImage as org::eclipse::swt::graphics::Image
+getImage = originalImmutableImage.getImage()getImage
 getImage.
                     getImageData().setPixels(0, 0, image.getWidth(), newPixelArray, 0);
     

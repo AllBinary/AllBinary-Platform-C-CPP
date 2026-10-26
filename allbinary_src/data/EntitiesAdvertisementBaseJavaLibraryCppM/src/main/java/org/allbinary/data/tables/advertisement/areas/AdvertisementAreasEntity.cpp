@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
 
@@ -88,8 +88,9 @@ class AdvertisementAreasEntity: public AbSqlBean, public AdvertisementAreasEntit
 
     protected: const std::string tableName = "advertisements";
 
-public: AdvertisementAreasEntity(){
-            super(UserDbInitInfo());
+public: AdvertisementAreasEntity() : AbSqlBean(UserDbInitInfo()){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -135,7 +136,7 @@ this->setTableName(this->tableName);
             
     public: BasicArrayList get(std::string storeName){
 
-    HashMap<any, any> keysAndValues = StdUtil::getInstance().createHashMap();;
+    HashMap<Object*, Object*> keysAndValues = StdUtil::getInstance().createHashMap();;
     
 keysAndValues.put(StoreFrontData::getInstance().NAME, storeName);
     
@@ -156,7 +157,7 @@ keysAndValues.put(StoreFrontData::getInstance().NAME, storeName);
     int32_t index = 0;index < size; index++)
         {
 
-    HashMap<any, any> hashMap = hashMapVector.get(index) as HashMap<any, any>;;
+    HashMap<Object*, Object*> hashMap = hashMapVector.get(index);;
     
 
                         if(hashMap != 
@@ -164,7 +165,7 @@ keysAndValues.put(StoreFrontData::getInstance().NAME, storeName);
                                 )
                         
                                     {
-                                    vector.add(AdvertisementArea(hashMap) as AdvertisementAreaInterface);
+                                    vector.add(AdvertisementArea(hashMap));
     
 
                                     }
@@ -184,14 +185,14 @@ keysAndValues.put(StoreFrontData::getInstance().NAME, storeName);
             
     public: AdvertisementAreaInterface get(std::string storeName, std::string advertisementAreaName){
 
-    HashMap<any, any> keysAndValues = StdUtil::getInstance().createHashMap();;
+    HashMap<Object*, Object*> keysAndValues = StdUtil::getInstance().createHashMap();;
     
 keysAndValues.put(StoreFrontData::getInstance().NAME, storeName);
     
 keysAndValues.put(AdvertisementAreaData::getInstance().NAME, advertisementAreaName);
     
 
-    HashMap<any, any> hashMap = super.getRow(keysAndValues);;
+    HashMap<Object*, Object*> hashMap = super.getRow(keysAndValues);;
     
 
                         if(hashMap != 
@@ -203,7 +204,7 @@ keysAndValues.put(AdvertisementAreaData::getInstance().NAME, advertisementAreaNa
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return AdvertisementArea(hashMap) as AdvertisementAreaInterface;
+                        return AdvertisementArea(hashMap);
     
 
                                     }
@@ -258,8 +259,8 @@ stringBuffer.append(advertisementAreaData.NAME).append(this->sqlTypeStrings.MAX_
 }
 
 
-    public: void update(HashMap<any, any> updatedValues){
-super.updateWhere(AdvertisementAreaData::getInstance().NAME, updatedValues.get(AdvertisementAreaData::getInstance().NAME) as string, updatedValues);
+    public: void update(HashMap<Object*, Object*> updatedValues){
+super.updateWhere(AdvertisementAreaData::getInstance().NAME, updatedValues.get(AdvertisementAreaData::getInstance().NAME), updatedValues);
     
 }
 

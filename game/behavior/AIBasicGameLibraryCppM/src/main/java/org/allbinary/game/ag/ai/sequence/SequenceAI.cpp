@@ -20,7 +20,7 @@
 
             #include <vector>
         
-            #include "../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/ai/ArtificialIntelligence.h>
 
@@ -74,8 +74,9 @@ class SequenceAI: public ArrayAI {
 
     private: int32_t index= 0;
 
-public: SequenceAI(std::vector<ArtificialIntelligenceInterface> artificialIntelligenceInterfaceArray, AllBinaryLayer ownerLayerInterface, GameInput gameInput){
-            super(artificialIntelligenceInterfaceArray, ownerLayerInterface, gameInput);
+public: SequenceAI(std::vector<ArtificialIntelligenceInterface> artificialIntelligenceInterfaceArray, AllBinaryLayer ownerLayerInterface, GameInput gameInput) : ArrayAI(artificialIntelligenceInterfaceArray, ownerLayerInterface, gameInput){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -86,7 +87,7 @@ public: SequenceAI(std::vector<ArtificialIntelligenceInterface> artificialIntell
                 //@Throws(Exception.constructor)
             
     public: void processAI(AllBinaryLayerManager allBinaryLayerManager){
-this->getArtificialIntelligenceInterface()[this->index]!.processAI(allBinaryLayerManager);
+this->getArtificialIntelligenceInterface()[this->index].processAI(allBinaryLayerManager);
     
 }
 
@@ -102,7 +103,7 @@ this->index++;
                         
                                     {
                                     
-    ArtificialIntelligenceTransitionInterface artificialIntelligenceTransitionInterface = artificialIntelligenceInterface as unknown as ArtificialIntelligenceTransitionInterface;;
+    ArtificialIntelligenceTransitionInterface artificialIntelligenceTransitionInterface = artificialIntelligenceInterface as unknown;;
     
 artificialIntelligenceTransitionInterface.transition();
     
@@ -133,7 +134,7 @@ this->index= index;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->getArtificialIntelligenceInterface()[this->index]!;
+                        return this->getArtificialIntelligenceInterface()[this->index];
     
 }
 

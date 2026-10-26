@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
 #include <org/allbinary/business/context/modules/storefront/StoreFront.h>
 
@@ -102,9 +102,9 @@ this->name= name;
 
     StringMaker stringBuffer = StringMaker();;
     
-stringBuffer.append(PaymentGatewayPrimaryKey.constructor.toString()!);
+stringBuffer.append(PaymentGatewayPrimaryKey.constructor.toString());
     
-stringBuffer.append(StoreFront.constructor.toString()!);
+stringBuffer.append(StoreFront.constructor.toString());
     
 stringBuffer.append(" =");
     
@@ -112,7 +112,7 @@ stringBuffer.append(this->getStoreName());
     
 stringBuffer.append(CommonSeps::getInstance().SPACE);
     
-stringBuffer.append(PaymentGateway.constructor.toString()!);
+stringBuffer.append(PaymentGateway.constructor.toString());
     
 stringBuffer.append("=");
     

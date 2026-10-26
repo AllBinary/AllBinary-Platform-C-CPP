@@ -9,20 +9,14 @@
 
             #include <vector>
         
-            #include "../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-#include <jsinterop/annotations/JsType.h>
-
-      
 #include <org/allbinary/game/GameAdState.h>
 
       
 #include <org/allbinary/logic/system/SoftwareInformation.h>
-
-      
-#include <jsinterop/annotations/JsMethod.h>
 
       
 

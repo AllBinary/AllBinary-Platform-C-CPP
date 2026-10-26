@@ -18,11 +18,11 @@
 
 
 
-            #include "../../../../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../../../../../../../java/lang/Integer.h"
+            #include "java/lang/Integer.h"
         
-            #include "../../../../../../../../../java/lang/Long.h"
+            #include "java/lang/Long.h"
         
 #include <java/awt.h>
 
@@ -100,8 +100,9 @@ class MouseActionScriptInput: public BasicProfileActionScriptInput, public Mouse
 
     private: MouseActionScriptInputJPanel mouseActionScriptInputJPanel;
 
-public: MouseActionScriptInput(Node node){
-            super(NAME, node);
+public: MouseActionScriptInput(Node node) : BasicProfileActionScriptInput(NAME, node){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -204,8 +205,9 @@ this->mouseActionScriptInputJPanel= MouseActionScriptInputJPanel(this);
 }
 
 
-public: MouseActionScriptInput(){
-            super(NAME);
+public: MouseActionScriptInput() : BasicProfileActionScriptInput(NAME){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -257,9 +259,9 @@ this->mouseActionScriptInputJPanel.getMouseActionJDialog().setVisible(true);
 }
 
 
-    public: HashMap<any, any> toHashMap(){
+    public: HashMap<Object*, Object*> toHashMap(){
 
-    HashMap<any, any> hashMap = StdUtil::getInstance().createHashMap();;
+    HashMap<Object*, Object*> hashMap = StdUtil::getInstance().createHashMap();;
     
 hashMap.put(MouseActionScriptInputData::BUTTONS, std::to_string(getButtonClicks));
     
@@ -286,7 +288,7 @@ this->logUtil.putF("HashMap: " +hashMap.toString(), this, "toHashMap()");
 node.appendChild(mouseNode);
     
 
-    HashMap<any, any> hashMap = StdUtil::getInstance().createHashMap();;
+    HashMap<Object*, Object*> hashMap = StdUtil::getInstance().createHashMap();;
     
 hashMap.put(MouseActionScriptInputData::MOVE_X, std::to_string(x));
     

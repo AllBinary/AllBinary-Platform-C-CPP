@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
 #include <org/allbinary/util/BasicArrayList.h>
 
@@ -66,7 +66,7 @@ this->htmlTagVector= BasicArrayListD();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->htmlTagVector.get(index) as HtmlTag;
+                        return this->htmlTagVector.get(index);
     
 }
 

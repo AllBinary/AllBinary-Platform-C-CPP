@@ -23,21 +23,12 @@
 
             #include <vector>
         
-            #include "../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-#include <jsinterop/annotations/JsType.h>
-
-      
 #include <org/allbinary/math/Angle.h>
 
       
 #include <org/allbinary/math/AngleFactory.h>
-
-      
-#include <jsinterop/annotations/JsMethod.h>
-
-      
-#include <jsinterop/annotations/JsConstructor.h>
 
       
 
@@ -69,9 +60,9 @@ class DirectionUtil
 
     public: static DirectionUtil getInstance();
 
-    private: std::vector<Angle> directionArray = new Array(10);
+    private: std::vector<Angle> directionArray = std::vector<Angle>(10);
 
-    private: std::vector<Angle> directionArray2 = new Array(10);
+    private: std::vector<Angle> directionArray2 = std::vector<Angle>(10);
 
 private: DirectionUtil();
 

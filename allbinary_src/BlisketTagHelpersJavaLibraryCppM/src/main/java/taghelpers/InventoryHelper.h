@@ -21,7 +21,7 @@
         #ifndef TAGHELPERS_INVENTORYHELPER_H
         #define TAGHELPERS_INVENTORYHELPER_H
 
-            #include "../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
 
@@ -117,7 +117,7 @@ class InventoryHelper: public TagHelper {
 
     private: SearchRequest searchRequest;
 
-public: InventoryHelper(HashMap<any, any> propertiesHashMap, PageContext pageContext);
+public: InventoryHelper(HashMap<Object*, Object*> propertiesHashMap, PageContext pageContext);
 
     private: void getFormData();
 

@@ -7,19 +7,10 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_FORM_ITEM_ABTEXTITEM_H
         #define ORG_ALLBINARY_GRAPHICS_FORM_ITEM_ABTEXTITEM_H
 
-#include <jsinterop/annotations/JsType.h>
-
-      
 #include <javax/microedition/lcdui/Graphics.h>
 
       
 #include <org/allbinary/graphics/color/BasicColor.h>
-
-      
-#include <jsinterop/annotations/JsMethod.h>
-
-      
-#include <jsinterop/annotations/JsConstructor.h>
 
       
 

@@ -20,11 +20,8 @@
 
             #include <vector>
         
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-#include <java/util/Hashtable.h>
-
-      
 #include <javax/microedition/lcdui/Image.h>
 
       
@@ -40,10 +37,16 @@
 #include <org/allbinary/time/TimeDelayHelper.h>
 
       
+#include <org/allbinary/util/ABHashtable.h>
+
+      
 #include <org/allbinary/util/HashtableUtil.h>
 
       
 #include <org/microemu/device/playn/PlaynImage.h>
+
+      
+#include <playn/core/CoreImage.h>
 
       
 
@@ -69,8 +72,6 @@
 class ImageWaitCompleteUtil: public ImageCompleteUtil {
 
     protected: const LogUtil logUtil = LogUtil::getInstance();
-
-    private: const std::string METHOD_NAME = "waitForLoad";
 
     private: const TimeDelayHelper timeDelayHelper = TimeDelayHelper(18000);
 
@@ -112,10 +113,10 @@ this->waitForATime(image, name, this->timeDelayHelper);
             
     private: void waitForATime(Image image, std::string name, TimeDelayHelper timeDelayHelper){
 
-    PlaynImage playnImage = image as PlaynImage;;
+    PlaynImage playnImage = image;;
     
 
-    playn::core::Image playnCoreImage = playnImage.getImage() as playn::core::Image;;
+    CoreImage playnCoreImage = playnImage.getImage();;
     
 
         while(!playnCoreImage.isReady() || playnCoreImage.width() +playnCoreImage.height() <= 0)
@@ -152,7 +153,7 @@ this->waitForATime(image, name, this->timeDelayHelper);
 this->allTimeDelayHelper.setStartTimeTNT();
     
 
-    Hashtable<any, any> hashtable = GameFeatureImageCacheFactory::getInstance().getHashtableP();;
+    ABHashtable<Object*, Object*> hashtable = GameFeatureImageCacheFactory::getInstance().getHashtableP();;
     
 
     std::vector<Object*> objectArray = HashtableUtil::getInstance().getKeysAsArray(hashtable);;
@@ -169,7 +170,7 @@ PreLogUtil::put("Image Total: " +size, this, "waitForAll");
                         for (
     int32_t index = 0;index < size; index++)
         {
-this->waitForATime(hashtable.get(objectArray[index]!) as Image, objectArray[index]! as string, this->allTimeDelayHelper);
+this->waitForATime(hashtable.get(objectArray[index]), objectArray[index], this->allTimeDelayHelper);
     
 }
 

@@ -23,11 +23,11 @@
 
             #include <vector>
         
-            #include "../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../../../java/lang/Integer.h"
+            #include "java/lang/Integer.h"
         
 #include <java/util/HashMap.h>
 
@@ -77,7 +77,7 @@ class SearchParams
             : public Object
          {
 
-    private: HashMap<any, any> columnsAndSearchValues;
+    private: HashMap<Object*, Object*> columnsAndSearchValues;
 
     private: std::string order;
 
@@ -103,7 +103,7 @@ public: SearchParams(HttpServletRequest request);
 
     public: void setEndPage(std::string value);
 
-    public: HashMap<any, any> get();
+    public: HashMap<Object*, Object*> get();
 
     public: std::string getOrder();
 

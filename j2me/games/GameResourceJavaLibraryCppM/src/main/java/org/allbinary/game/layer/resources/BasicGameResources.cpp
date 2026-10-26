@@ -20,13 +20,10 @@
 
             #include <vector>
         
-            #include "../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-#include <jsinterop/annotations/JsType.h>
-
-      
 #include <org/allbinary/game/configuration/GameConfigurationCentral.h>
 
       
@@ -40,15 +37,6 @@
 
       
 #include <org/allbinary/string/CommonStrings.h>
-
-      
-#include <jsinterop/annotations/JsMethod.h>
-
-      
-#include <jsinterop/annotations/JsConstructor.h>
-
-      
-#include <jsinterop/annotations/JsProperty.h>
 
       
 
@@ -97,7 +85,7 @@ protected: BasicGameResources(){
                         if(scale > 1 && scale -1 < SIZE::size())
                         
                                     {
-                                    this->append(ROOT, SIZE[scale -1]!);
+                                    this->append(ROOT, SIZE[scale -1]);
     
 
                                     }

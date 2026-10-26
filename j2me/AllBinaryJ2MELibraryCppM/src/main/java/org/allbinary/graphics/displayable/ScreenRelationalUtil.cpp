@@ -6,7 +6,7 @@
 
             #include <vector>
         
-            #include "../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
 #include <javax/microedition/lcdui/Image.h>
 
@@ -75,10 +75,10 @@ class ScreenRelationalUtil
     std::vector<int32_t> last = displayInfoSingleton.getLast();;
     
 
-    float width = last[displayInfoSingleton.WIDTH]!;;
+    float width = last[displayInfoSingleton.WIDTH];;
     
 
-    float height = last[displayInfoSingleton.HEIGHT]!;;
+    float height = last[displayInfoSingleton.HEIGHT];;
     
 
     float largestSize = width;;

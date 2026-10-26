@@ -46,8 +46,9 @@ class RaceTrackGameFeature: public GameFeature {
 
     public: static const GameFeature AUTO_FINISH_AI = RaceTrackGameFeature("Auto Finish AI");
 
-protected: RaceTrackGameFeature(std::string name){
-            super(name);
+protected: RaceTrackGameFeature(std::string name) : GameFeature(name){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.

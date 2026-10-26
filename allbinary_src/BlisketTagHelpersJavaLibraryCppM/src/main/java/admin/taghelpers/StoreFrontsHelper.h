@@ -21,7 +21,7 @@
         #ifndef ADMIN_TAGHELPERS_STOREFRONTSHELPER_H
         #define ADMIN_TAGHELPERS_STOREFRONTSHELPER_H
 
-            #include "../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
 
@@ -92,7 +92,7 @@ class StoreFrontsHelper: public BasicTable {
 
     private: Portion portion;
 
-public: StoreFrontsHelper(HashMap<any, any> hashMap, PageContext pageContext);
+public: StoreFrontsHelper(HashMap<Object*, Object*> hashMap, PageContext pageContext);
 
     public: std::string drop();
 

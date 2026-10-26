@@ -21,7 +21,7 @@
         #ifndef VIEWS_GENERIC_INVENTORY_INVENTORYCOLUMNUTIL_H
         #define VIEWS_GENERIC_INVENTORY_INVENTORYCOLUMNUTIL_H
 
-            #include "../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
 #include <java/util/HashMap.h>
 
@@ -36,9 +36,6 @@
 
       
 #include <org/allbinary/data/tables/user/commerce/inventory/item/InventoryEntity.h>
-
-      
-#include <org/allbinary/logic/StdUtil.h>
 
       
 #include <org/allbinary/logic/communication/log/LogUtil.h>

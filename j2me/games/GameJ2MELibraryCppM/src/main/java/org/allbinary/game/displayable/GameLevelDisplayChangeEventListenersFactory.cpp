@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
 #include <org/allbinary/graphics/displayable/event/DisplayChangeEventHandler.h>
 
@@ -94,7 +94,7 @@ DisplayChangeEventHandler::getInstance().addListenerInterface(displayChangeEvent
                         for (
     int32_t index = this->list.size();--index >= 0; )
         {
-displayChangeEventListener= this->list.objectArray[index]! as DisplayChangeEventListener;
+displayChangeEventListener= this->list.objectArray[index];
     
 displayChangeEventHandler.removeListener(displayChangeEventListener);
     

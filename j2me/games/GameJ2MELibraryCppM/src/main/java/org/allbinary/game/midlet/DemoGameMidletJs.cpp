@@ -18,14 +18,8 @@
 
 
 
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-#include <jsinterop/annotations/JsPackage.h>
-
-      
-#include <jsinterop/annotations/JsType.h>
-
-      
 #include <org/allbinary/game/displayable/canvas/GameCanvasRunnableInterface.h>
 
       

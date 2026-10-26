@@ -21,7 +21,7 @@
         #ifndef TAGHELPERS_TRANSFORM_INFO_TRANSFORMINFOREQUESTHELPER_H
         #define TAGHELPERS_TRANSFORM_INFO_TRANSFORMINFOREQUESTHELPER_H
 
-            #include "../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
 
@@ -75,7 +75,7 @@ class TransformInfoRequestHelper: public ModifyTable {
 
     private: TransformInfoHttpInterface transformInfoInterface;
 
-public: TransformInfoRequestHelper(HashMap<any, any> propertiesHashMap, PageContext pageContext);
+public: TransformInfoRequestHelper(HashMap<Object*, Object*> propertiesHashMap, PageContext pageContext);
 
     public: std::string update();
 

@@ -20,7 +20,7 @@
 
             #include <vector>
         
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/game/layer/AllBinaryGameLayerManager.h>
 
@@ -120,8 +120,9 @@ class MultipassNoCacheWaypoint: public WaypointBase, public BuildingEventListene
 
     protected: PathFindingLayerInterface ownerLayer;
 
-public: MultipassNoCacheWaypoint(PathFindingLayerInterface ownerLayer, Sound sound){
-            super(sound);
+public: MultipassNoCacheWaypoint(PathFindingLayerInterface ownerLayer, Sound sound) : WaypointBase(sound){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -197,28 +198,28 @@ super.setAllBinaryGameLayerManager(allBinaryGameLayerManager);
                                     }
                                 
 
-    GeographicMapCompositeInterface geographicMapCompositeInterface = this->allBinaryGameLayerManagerP as GeographicMapCompositeInterface;;
+    GeographicMapCompositeInterface geographicMapCompositeInterface = this->allBinaryGameLayerManagerP;;
     
 
     BasicGeographicMap geographicMapInterface = geographicMapCompositeInterface.getGeographicMapInterface()[0];;
     
 
-    RaceTrackGeographicMap raceTrackGeographicMap = geographicMapInterface as RaceTrackGeographicMap;;
+    RaceTrackGeographicMap raceTrackGeographicMap = geographicMapInterface;;
     
 
     GeographicMapCellTypeFactory raceTrackGeographicMapCellTypeFactory = raceTrackGeographicMap.getGeographicMapCellTypeFactory();;
     
 
-    CustomMapGenerator customMapGenerator = raceTrackGeographicMap.getCustomMapGenerator() as CustomMapGenerator;;
+    CustomMapGenerator customMapGenerator = raceTrackGeographicMap.getCustomMapGenerator();;
     
 customMapGenerator.copyMapIntoCustomMap();
     
 
     std::vector<std::vector<int32_t>> customMapArray = customMapGenerator.getCustomMapArray();;
     
-customMapArray[startGeographicMapCellPosition.getRow()]![startGeographicMapCellPosition.getColumn()]= raceTrackGeographicMapCellTypeFactory.getStartType();
+customMapArray[startGeographicMapCellPosition.getRow()][startGeographicMapCellPosition.getColumn()]= raceTrackGeographicMapCellTypeFactory.getStartType();
     
-customMapArray[endGeographicMapCellPosition.getRow()]![endGeographicMapCellPosition.getColumn()]= raceTrackGeographicMapCellTypeFactory.getEndType();
+customMapArray[endGeographicMapCellPosition.getRow()][endGeographicMapCellPosition.getColumn()]= raceTrackGeographicMapCellTypeFactory.getEndType();
     
 
     PathFindingInfo pathFindingInfo = PathFindingInfoFactory::getInstance().getInstancePathFindingInfo(raceTrackGeographicMap, customMapArray);;
@@ -255,7 +256,7 @@ customMapArray[endGeographicMapCellPosition.getRow()]![endGeographicMapCellPosit
                                     }
                                 
 
-    GeographicMapCompositeInterface geographicMapCompositeInterface = this->allBinaryGameLayerManagerP as GeographicMapCompositeInterface;;
+    GeographicMapCompositeInterface geographicMapCompositeInterface = this->allBinaryGameLayerManagerP;;
     
 
     BasicGeographicMap geographicMapInterface = geographicMapCompositeInterface.getGeographicMapInterface()[0];;
@@ -323,7 +324,7 @@ this->logUtil.put(commonStrings.EXCEPTION, this, "getPathsList", e);
     BasicArrayList endList = this->ownerLayer.getEndGeographicMapCellPositionList();;
     
 
-    GeographicMapCellPosition endGeographicMapCellPosition = BasicArrayListUtil::getInstance().getRandom(endList) as GeographicMapCellPosition;;
+    GeographicMapCellPosition endGeographicMapCellPosition = BasicArrayListUtil::getInstance().getRandom(endList);;
     
 
                         if(startGeographicMapCellPosition == endGeographicMapCellPosition)
@@ -336,7 +337,7 @@ this->logUtil.put(commonStrings.EXCEPTION, this, "getPathsList", e);
                         for (
     int32_t index = endList.size() -1;index >= 0; index--)
         {
-endGeographicMapCellPosition= endList.get(index) as GeographicMapCellPosition;
+endGeographicMapCellPosition= endList.get(index);
     
 
                         if(startGeographicMapCellPosition != endGeographicMapCellPosition)
@@ -404,13 +405,13 @@ this->getConnectedWaypointList().clear();
                         
                                     {
                                     
-    UnitWaypointBehavior unitWaypointBehavior = unitLayer.getWaypointBehavior() as UnitWaypointBehavior;;
+    UnitWaypointBehavior unitWaypointBehavior = unitLayer.getWaypointBehavior();;
     
 
         while(this->getConnectedWaypointList().size() > 0)
         {
 
-    CollidableDestroyableDamageableLayer rtsLayer = this->getConnectedWaypointList().get(0) as CollidableDestroyableDamageableLayer;;
+    CollidableDestroyableDamageableLayer rtsLayer = this->getConnectedWaypointList().get(0);;
     
 
                         if(rtsLayer.isDestroyed())

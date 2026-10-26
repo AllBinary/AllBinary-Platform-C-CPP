@@ -23,9 +23,9 @@
 
             #include <vector>
         
-            #include "../../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/io/File.h>
 
@@ -89,7 +89,7 @@ class InputAutomationModuleConfigurations
 
     protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: HashMap<any, any> hashMap;
+    private: HashMap<Object*, Object*> hashMap;
 
 public: InputAutomationModuleConfigurations(AbeClientInformationInterface abeClientInformation, File file);
 
@@ -103,9 +103,9 @@ public: InputAutomationModuleConfigurations();
 
     public: void remove(InputAutomationModuleConfiguration inputAutomationModuleConfiguration);
 
-    public: HashMap<any, any> getHashMap();
+    public: HashMap<Object*, Object*> getHashMap();
 
-    public: void setHashMap(HashMap<any, any> hashMap);
+    public: void setHashMap(HashMap<Object*, Object*> hashMap);
 
 };
 

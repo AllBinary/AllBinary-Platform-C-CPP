@@ -18,11 +18,11 @@
 
 
 
-            #include "../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../java/lang/Thread.h"
+            #include "java/lang/Thread.h"
         
 #include <org/osgi/framework/BundleActivator.h>
 
@@ -136,9 +136,9 @@ this->logUtil.put(this->commonStrings.EXCEPTION, this, this->commonStrings.START
                 //@Throws(Exception.constructor)
             
     public: void registerAsService(){
-OSGIActivatorUtil::registerAsService(this->getBundleContext(), InputAutomationServiceFactory::getInstance(), InputAutomationConfigurationModuleChangeListener.constructor.toString()!);
+OSGIActivatorUtil::registerAsService(this->getBundleContext(), InputAutomationServiceFactory::getInstance(), InputAutomationConfigurationModuleChangeListener.constructor.toString());
     
-OSGIActivatorUtil::registerAsService(this->getBundleContext(), InputAutomationServiceFactory::getInstance(), InputAutomationRobotChangeListener.constructor.toString()!);
+OSGIActivatorUtil::registerAsService(this->getBundleContext(), InputAutomationServiceFactory::getInstance(), InputAutomationRobotChangeListener.constructor.toString());
     
 }
 

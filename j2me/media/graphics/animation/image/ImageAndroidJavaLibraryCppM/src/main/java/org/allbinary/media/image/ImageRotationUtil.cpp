@@ -18,9 +18,9 @@
 
 
 
-            #include "../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <javax/microedition/lcdui/Image.h>
 
@@ -95,7 +95,7 @@ private: ImageRotationUtil(){
                         
                                     {
                                     
-    Bitmap bitmap = (image as AndroidImageInterface).getBitmap();;
+    Bitmap bitmap = (image).getBitmap();;
     
 
     int32_t width = bitmap.getWidth();;
@@ -106,7 +106,7 @@ private: ImageRotationUtil(){
 this->matrix.setRotate(rotationInDegrees, (width>>1), (height>>1));
     
 
-    Canvas canvas = (image as AndroidImageInterface).getCanvas();;
+    Canvas canvas = (image).getCanvas();;
     
 canvas.concat(this->matrix);
     

@@ -21,13 +21,13 @@
         #ifndef ORG_ALLBINARY_THREAD_POOLEDTHREAD_H
         #define ORG_ALLBINARY_THREAD_POOLEDTHREAD_H
 
-            #include "../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../java/lang/InterruptedException.h"
+            #include "java/lang/InterruptedException.h"
         
-            #include "../../../java/lang/Thread.h"
+            #include "java/lang/Thread.h"
         
-            #include "../../../java/lang/Runnable.h"
+            #include "java/lang/Runnable.h"
         
 #include <org/allbinary/logic/communication/log/LogUtil.h>
 

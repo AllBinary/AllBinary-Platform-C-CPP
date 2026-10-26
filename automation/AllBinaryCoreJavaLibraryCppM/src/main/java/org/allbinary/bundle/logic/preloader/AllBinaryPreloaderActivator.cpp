@@ -18,13 +18,10 @@
 
 
 
-            #include "../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-#include <java/util/Hashtable.h>
-
-      
 #include <org/osgi/framework/BundleActivator.h>
 
       
@@ -47,6 +44,9 @@
 
       
 #include <org/allbinary/string/CommonStrings.h>
+
+      
+#include <org/allbinary/util/ABHashtable.h>
 
       
 
@@ -125,7 +125,7 @@ this->logUtil.put(this->commonStrings.EXCEPTION, this, "start", e);
             
     public: void registerAsService(){
 
-    Hashtable<any, any> properties = StdUtil::getInstance().createHashtable();;
+    ABHashtable<Object*, Object*> properties = StdUtil::getInstance().createHashtable();;
     
 
     ServiceRegistration serviceRegistration = AllBinaryPreloaderActivator::context.registerService(CRYPT_REGISTRY_NAME, CryptServiceFactory(), properties);;

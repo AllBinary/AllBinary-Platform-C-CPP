@@ -21,7 +21,7 @@
         #ifndef ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_INFO_TRANSFORMINFOBASIC_H
         #define ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_INFO_TRANSFORMINFOBASIC_H
 
-            #include "../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
 
@@ -74,13 +74,13 @@ class TransformInfoBasic: public AbContext, public TransformInfoHttpInterface {
 
     private: StoreFrontInterface storeFrontInterface;
 
-public: TransformInfoBasic(StoreFrontInterface storeFrontInterface, HashMap<any, any> propertiesHashMap, PageContext pageContext);
+public: TransformInfoBasic(StoreFrontInterface storeFrontInterface, HashMap<Object*, Object*> propertiesHashMap, PageContext pageContext);
 
     public: std::string getStoreName();
 
     public: std::string log();
 
-    public: void override(HashMap<any, any> hashMap);
+    public: void override(HashMap<Object*, Object*> hashMap);
 
     public: std::string getName();
 
@@ -142,7 +142,7 @@ public: TransformInfoBasic(StoreFrontInterface storeFrontInterface, HashMap<any,
 
                 //@Throws(Exception.constructor)
             
-    public: HashMap<any, any> toHashMap();
+    public: HashMap<Object*, Object*> toHashMap();
 
 };
 

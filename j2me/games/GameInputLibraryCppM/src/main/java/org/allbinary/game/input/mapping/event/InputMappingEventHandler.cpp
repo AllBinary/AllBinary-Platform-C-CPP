@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/logic/util/event/AllBinaryEventObject.h>
 
@@ -72,9 +72,9 @@ private: InputMappingEventHandler(){
             
     protected: void process(AllBinaryEventObject eventObject, EventListenerInterface eventListenerInterface){
 
-    InputMappingEventListenerInterface inputMappingEventListenerInterface = eventListenerInterface as InputMappingEventListenerInterface;;
+    InputMappingEventListenerInterface inputMappingEventListenerInterface = eventListenerInterface;;
     
-inputMappingEventListenerInterface.onInputMappingEvent(eventObject as InputMappingEvent);
+inputMappingEventListenerInterface.onInputMappingEvent(eventObject);
     
 }
 

@@ -21,7 +21,7 @@
         #ifndef ORG_ALLBINARY_INPUT_MEDIA_IMAGE_CAPTURE_SAVECAPTUREDIMAGEWORKER_H
         #define ORG_ALLBINARY_INPUT_MEDIA_IMAGE_CAPTURE_SAVECAPTUREDIMAGEWORKER_H
 
-            #include "../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/awt/image/BufferedImage.h>
 

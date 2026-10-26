@@ -18,11 +18,8 @@
 
 
 
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-#include <jsinterop/annotations/JsType.h>
-
-      
 #include <javax/microedition/lcdui/CommandListener.h>
 
       
@@ -65,12 +62,6 @@
 #include <org/allbinary/string/CommonSeps.h>
 
       
-#include <jsinterop/annotations/JsMethod.h>
-
-      
-#include <jsinterop/annotations/JsConstructor.h>
-
-      
 
 
 
@@ -95,8 +86,9 @@ class CustomTextBox: public GameCommandCanvas, public RawKeyEventListener {
 
     private: ABTextFieldItem textFieldItem;
 
-public: CustomTextBox(CommandListener cmdListener, std::string label, std::string text, int32_t maxSize, int32_t constraints, Font font, BasicColor backgroundBasicColor, BasicColor foregroundBasicColor){
-            super(cmdListener, label, backgroundBasicColor, foregroundBasicColor);
+public: CustomTextBox(CommandListener cmdListener, std::string label, std::string text, int32_t maxSize, int32_t constraints, Font font, BasicColor backgroundBasicColor, BasicColor foregroundBasicColor) : GameCommandCanvas(cmdListener, label, backgroundBasicColor, foregroundBasicColor){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.

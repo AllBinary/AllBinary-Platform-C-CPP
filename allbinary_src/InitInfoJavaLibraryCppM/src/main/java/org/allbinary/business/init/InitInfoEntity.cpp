@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
 
@@ -93,8 +93,9 @@ class InitInfoEntity: public InitSql {
 
     private: const std::string FAILED_TO_CREATE = "Failed to create ";
 
-public: InitInfoEntity(){
-            super(UserDbInitInfo());
+public: InitInfoEntity() : InitSql(UserDbInitInfo()){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -141,12 +142,12 @@ this->setTable(this->tableName);
 
         try {
             
-    HashMap<any, any> keyAndValue = StdUtil::getInstance().createHashMap();;
+    HashMap<Object*, Object*> keyAndValue = StdUtil::getInstance().createHashMap();;
     
 keyAndValue.put(this->NOTHING, this->NOTHING);
     
 
-    HashMap<any, any> hashMap = getRow(keyAndValue);;
+    HashMap<Object*, Object*> hashMap = getRow(keyAndValue);;
     
 
                         if(hashMap != 
@@ -212,12 +213,12 @@ keyAndValue.put(this->NOTHING, this->NOTHING);
 
         try {
             
-    HashMap<any, any> keyAndValue = StdUtil::getInstance().createHashMap();;
+    HashMap<Object*, Object*> keyAndValue = StdUtil::getInstance().createHashMap();;
     
 keyAndValue.put(this->NOTHING, this->NOTHING);
     
 
-    HashMap<any, any> hashMap = getRow(keyAndValue);;
+    HashMap<Object*, Object*> hashMap = getRow(keyAndValue);;
     
 
                         if(hashMap != 

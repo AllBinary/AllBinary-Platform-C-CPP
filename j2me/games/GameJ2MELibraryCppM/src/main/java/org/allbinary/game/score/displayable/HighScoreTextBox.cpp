@@ -18,11 +18,8 @@
 
 
 
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-#include <jsinterop/annotations/JsType.h>
-
-      
 #include <javax/microedition/lcdui/CommandListener.h>
 
       
@@ -83,15 +80,6 @@
 #include <org/allbinary/logic/system/security/licensing/InApplicationPurchaseFactory.h>
 
       
-#include <jsinterop/annotations/JsMethod.h>
-
-      
-#include <jsinterop/annotations/JsConstructor.h>
-
-      
-#include <jsinterop/annotations/JsProperty.h>
-
-      
 
 
 
@@ -124,8 +112,9 @@ class HighScoreTextBox: public CustomTextBox {
 
     public: bool submitted = false;
 
-public: HighScoreTextBox(HighScoresFactoryInterface highScoresFactoryInterface, HighScoresHelperBaseInterface highScoresHelper, AbeClientInformationInterface abeClientInformation, GameInfo gameInfo, CommandListener cmdListener, std::string name, HighScore highScore, BasicColor backgrounBasicColor, BasicColor foregroundBasicColor){
-            super(cmdListener, "New High Score Enter Name:", name, 12, TextField::ANY, Font::getDefaultFont(), backgrounBasicColor, foregroundBasicColor);
+public: HighScoreTextBox(HighScoresFactoryInterface highScoresFactoryInterface, HighScoresHelperBaseInterface highScoresHelper, AbeClientInformationInterface abeClientInformation, GameInfo gameInfo, CommandListener cmdListener, std::string name, HighScore highScore, BasicColor backgrounBasicColor, BasicColor foregroundBasicColor) : CustomTextBox(cmdListener, "New High Score Enter Name:", name, 12, TextField::ANY, Font::getDefaultFont(), backgrounBasicColor, foregroundBasicColor){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.

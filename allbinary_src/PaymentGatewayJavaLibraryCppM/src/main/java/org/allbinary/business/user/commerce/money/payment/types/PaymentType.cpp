@@ -18,9 +18,9 @@
 
 
 
-            #include "../../../../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
 
@@ -166,7 +166,7 @@ vector.addAllList(this->getBasicPaymentType().toVector());
                                 )
                         
                                     {
-                                    vector.add(this->paymentTransactionInterfaceFactoryInterface.constructor.name.toString()!);
+                                    vector.add(this->paymentTransactionInterfaceFactoryInterface.constructor.name.toString());
     
 
                                     }
@@ -177,7 +177,7 @@ vector.addAllList(this->getBasicPaymentType().toVector());
                                 )
                         
                                     {
-                                    vector.add(this->paymentProcessorInterfaceFactoryInterface.constructor.name.toString()!);
+                                    vector.add(this->paymentProcessorInterfaceFactoryInterface.constructor.name.toString());
     
 
                                     }
@@ -191,9 +191,9 @@ vector.addAllList(this->getBasicPaymentType().toVector());
 }
 
 
-    public: HashMap<any, any> toHashMap(){
+    public: HashMap<Object*, Object*> toHashMap(){
 
-    HashMap<any, any> hashMap = StdUtil::getInstance().createHashMap();;
+    HashMap<Object*, Object*> hashMap = StdUtil::getInstance().createHashMap();;
     
 hashMap.putAll(this->getBasicPaymentType().toHashMap());
     
@@ -203,7 +203,7 @@ hashMap.putAll(this->getBasicPaymentType().toHashMap());
                                 )
                         
                                     {
-                                    hashMap.put(PaymentGatewayData::PAYMENTTRANSACTIONINTERFACEFACTORYINTERFACE.toString(), this->paymentTransactionInterfaceFactoryInterface.constructor.name.toString()!);
+                                    hashMap.put(PaymentGatewayData::PAYMENTTRANSACTIONINTERFACEFACTORYINTERFACE.toString(), this->paymentTransactionInterfaceFactoryInterface.constructor.name.toString());
     
 
                                     }
@@ -214,7 +214,7 @@ hashMap.putAll(this->getBasicPaymentType().toHashMap());
                                 )
                         
                                     {
-                                    hashMap.put(PaymentGatewayData::PAYMENTPROCESSORINTERFACEFACTORYINTERFACE.toString(), this->paymentProcessorInterfaceFactoryInterface.constructor.name.toString()!);
+                                    hashMap.put(PaymentGatewayData::PAYMENTPROCESSORINTERFACEFACTORYINTERFACE.toString(), this->paymentProcessorInterfaceFactoryInterface.constructor.name.toString());
     
 
                                     }

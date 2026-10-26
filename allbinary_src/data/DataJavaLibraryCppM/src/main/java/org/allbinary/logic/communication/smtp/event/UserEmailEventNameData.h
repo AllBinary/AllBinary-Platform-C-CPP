@@ -21,9 +21,9 @@
         #ifndef ORG_ALLBINARY_LOGIC_COMMUNICATION_SMTP_EVENT_USEREMAILEVENTNAMEDATA_H
         #define ORG_ALLBINARY_LOGIC_COMMUNICATION_SMTP_EVENT_USEREMAILEVENTNAMEDATA_H
 
-            #include "../../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
 
@@ -57,7 +57,7 @@ class UserEmailEventNameData
             : public Object
          {
 
-    private: static HashMap<any, any> userNameEvenNameHashMap = StdUtil::getInstance().createHashMap();
+    private: static HashMap<Object*, Object*> userNameEvenNameHashMap = StdUtil::getInstance().createHashMap();
 
     private: static int32_t nextId = 0;
 

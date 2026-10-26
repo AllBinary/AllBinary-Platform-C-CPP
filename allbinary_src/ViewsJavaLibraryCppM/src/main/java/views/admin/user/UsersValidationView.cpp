@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/business/user/role/UserRole.h>
 
@@ -74,17 +74,18 @@ class UsersValidationView: public UsersView, public ValidationComponentInterface
 
     protected: const LogUtil logUtil = LogUtil::getInstance();
 
-public: UsersValidationView(TransformInfoInterface transformInfoInterface){
-            super(transformInfoInterface);
+public: UsersValidationView(TransformInfoInterface transformInfoInterface) : UsersView(transformInfoInterface){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
                     
 
-    TransformInfoHttpInterface httpTransformInfoInterface = this->getTransformInfoInterface() as TransformInfoHttpInterface;;
+    TransformInfoHttpInterface httpTransformInfoInterface = this->getTransformInfoInterface();;
     
 
-    std::string role = httpTransformInfoInterface.getPropertiesHashMap().get(UserRoleData::NAME.toString()) as string;;
+    std::string role = httpTransformInfoInterface.getPropertiesHashMap().get(UserRoleData::NAME.toString());;
     
 
     UserRole userRole = UserRoleB::getRole(role);;

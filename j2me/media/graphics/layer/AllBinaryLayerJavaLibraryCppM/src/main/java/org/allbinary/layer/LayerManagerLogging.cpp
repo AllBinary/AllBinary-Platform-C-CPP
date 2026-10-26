@@ -18,9 +18,9 @@
 
 
 
-            #include "../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../java/lang/Integer.h"
+            #include "java/lang/Integer.h"
         
 #include <org/allbinary/TsUtil.h>
 
@@ -206,7 +206,7 @@ this->stringBuilder.appendint(size).append(commonSeps.COLON_SEP);
                         for (
     int32_t index = 0;index < size; index++)
         {
-allBinaryLayer= (layerManager.getLayerAt(index) as AllBinaryLayer);
+allBinaryLayer= (layerManager.getLayerAt(index));
     
 this->stringBuilder.append(allBinaryLayer.getName()).append(commonSeps.COMMA);
     

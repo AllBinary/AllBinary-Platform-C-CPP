@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <javax/servlet/http/HttpServletRequest.h>
 
@@ -66,8 +66,9 @@ class GatewayView: public PaymentGatewayViewAbstract {
 
     protected: const LogUtil logUtil = LogUtil::getInstance();
 
-public: GatewayView(TransformInfoInterface transformInfoInterface){
-            super(transformInfoInterface);
+public: GatewayView(TransformInfoInterface transformInfoInterface) : PaymentGatewayViewAbstract(transformInfoInterface){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.

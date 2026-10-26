@@ -23,19 +23,22 @@
 
             #include <vector>
         
-            #include "../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../java/lang/IllegalArgumentException.h"
+            #include "java/lang/IllegalArgumentException.h"
         
-            #include "../../../java/lang/System.h"
+            #include "java/lang/System.h"
         
-            #include "../../../java/lang/Math.h"
+            #include "java/lang/Math.h"
         
-            #include "../../../java/lang/Double.h"
+            #include "java/lang/Double.h"
         
 #include <java/util/Enumeration.h>
+
+      
+#include <org/allbinary/graphics/GraphicsStrings.h>
 
       
 #include <org/allbinary/logic/math/PrimitiveIntUtil.h>
@@ -99,6 +102,8 @@ class SVGAsJSONSimpleLoader
             
     public: static void main(std::vector<std::string> args);
 
+    private: const GraphicsStrings graphicsStrings = GraphicsStrings::getInstance();
+
     private: const ShapeTypeFactory shapeTypeFactory = ShapeTypeFactory::getInstance();
 
     private: const std::string KEY_SVG = "svg";
@@ -120,10 +125,6 @@ class SVGAsJSONSimpleLoader
     private: const std::string KEY_X = PositionStrings::getInstance().X;
 
     private: const std::string KEY_Y = PositionStrings::getInstance().Y;
-
-    private: const std::string KEY_WIDTH = "width";
-
-    private: const std::string KEY_HEIGHT = "height";
 
     private: const std::string ERROR_PARSE_SVG_JSON = "Unable to parse SVG JSON";
 

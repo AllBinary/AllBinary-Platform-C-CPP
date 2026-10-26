@@ -20,14 +20,8 @@
 
             #include <vector>
         
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-#include <jsinterop/annotations/JsType.h>
-
-      
-#include <java/util/Hashtable.h>
-
-      
 #include <javax/microedition/rms/RecordEnumeration.h>
 
       
@@ -64,13 +58,10 @@
 #include <org/allbinary/util/HashtableUtil.h>
 
       
-#include <jsinterop/annotations/JsMethod.h>
-
-      
-#include <jsinterop/annotations/JsConstructor.h>
-
-      
 #include <org/allbinary/logic/StdUtil.h>
+
+      
+#include <org/allbinary/util/ABHashtable.h>
 
       
 
@@ -97,8 +88,9 @@ class InputPersistance: public BasicPersitance {
 
     private: const HashtableUtil hashtableUtil = HashtableUtil::getInstance();
 
-public: InputPersistance(std::string name){
-            super(name);
+public: InputPersistance(std::string name) : BasicPersitance(name){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -116,7 +108,7 @@ public: InputPersistance(std::string name){
     RecordEnumeration recordEnum = recordStore.enumerateRecords(NullRecordFilter::NULL_RECORD_FILTER, NullRecordComparator::NULL_RECORD_COMPARATOR, true);;
     
 
-    Hashtable<any, any> hashtable;;
+    ABHashtable<Object*, Object*> hashtable;;
     
 
     StringMaker stringBuffer = StringMaker();;
@@ -151,7 +143,7 @@ recordStore.closeRecordStore();
 
                 //@Throws(Exception.constructor)
             
-    public: void save(AbeClientInformationInterface abeClientInformation, Hashtable<any, any> hashtable){
+    public: void save(AbeClientInformationInterface abeClientInformation, ABHashtable<Object*, Object*> hashtable){
 PreLogUtil::put(StringMaker().append(this->persistanceStrings.NOT_SAVING).append(StringUtil::getInstance().toString(hashtable)).toString(), this, this->commonStrings.SAVE);
     
 
@@ -179,9 +171,9 @@ PreLogUtil::put(StringMaker().append(this->persistanceStrings.NOT_SAVING).append
                         for (
     int32_t index = 0;index < size; index++)
         {
-gameActionInput= inputObjectArray[index]! as Input;
+gameActionInput= inputObjectArray[index];
     
-list= hashtable.get(inputObjectArray[index]!) as BasicArrayList;
+list= hashtable.get(inputObjectArray[index]);
     
 
 
@@ -190,7 +182,7 @@ list= hashtable.get(inputObjectArray[index]!) as BasicArrayList;
                         for (
     int32_t index2 = 0;index2 < list.size(); index2++)
         {
-input= list.get(index2) as Input;
+input= list.get(index2);
     
 }
 

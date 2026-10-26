@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/data/tree/dom/DomNodeInterface.h>
 
@@ -66,8 +66,9 @@ class WorkFlowView: public HttpStoreComponentView, public DomNodeInterface {
 
     protected: WorkFlowInterface workFlowInterface;
 
-public: WorkFlowView(TransformInfoInterface transformInfoInterface){
-            super(transformInfoInterface);
+public: WorkFlowView(TransformInfoInterface transformInfoInterface) : HttpStoreComponentView(transformInfoInterface){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -109,7 +110,7 @@ public: WorkFlowView(TransformInfoInterface transformInfoInterface){
 
 
     public: void addDomNodeInterfaces(){
-this->addDomNodeInterface(this as DomNodeInterface);
+this->addDomNodeInterface(this);
     
 }
 

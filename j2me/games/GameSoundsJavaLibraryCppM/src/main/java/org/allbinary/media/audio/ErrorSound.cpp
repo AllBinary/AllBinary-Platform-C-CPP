@@ -53,8 +53,9 @@ class ErrorSound: public CompositeSound {
 }
 
 
-private: ErrorSound(){
-            super("resource:/wav/error.wav");
+private: ErrorSound() : CompositeSound("resource:/wav/error.wav"){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.

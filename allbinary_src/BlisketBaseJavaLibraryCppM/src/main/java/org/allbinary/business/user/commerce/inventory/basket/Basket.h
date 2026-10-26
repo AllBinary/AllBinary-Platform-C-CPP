@@ -23,11 +23,11 @@
 
             #include <vector>
         
-            #include "../../../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../../../java/lang/Integer.h"
+            #include "java/lang/Integer.h"
         
-            #include "../../../../../../../java/lang/Float.h"
+            #include "java/lang/Float.h"
         
 #include <java/io/Serializable.h>
 
@@ -80,7 +80,7 @@ class Basket
             : public Object
         : public BasketInterface, public Serializable {
 
-    private: HashMap<any, any> items = StdUtil::getInstance().createHashMap();
+    private: HashMap<Object*, Object*> items = StdUtil::getInstance().createHashMap();
 
 public: Basket();
 
@@ -96,7 +96,7 @@ public: Basket();
 
     public: Set getIds();
 
-    public: HashMap<any, any> getItems();
+    public: HashMap<Object*, Object*> getItems();
 
     public: Integer getNumberOf(std::string product);
 

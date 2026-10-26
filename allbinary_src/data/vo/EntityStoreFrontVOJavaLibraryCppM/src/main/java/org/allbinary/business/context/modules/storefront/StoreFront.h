@@ -23,11 +23,11 @@
 
             #include <vector>
         
-            #include "../../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../../../../java/lang/Long.h"
+            #include "java/lang/Long.h"
         
 #include <java/util/Calendar.h>
 
@@ -241,25 +241,25 @@ public: StoreFront();
 
 public: StoreFront(HttpServletRequest request);
 
-public: StoreFront(HashMap<any, any> hashMap);
+public: StoreFront(HashMap<Object*, Object*> hashMap);
 
     private: bool isColumn(std::string columnName);
 
                 //@Throws(Exception.constructor)
             
-    private: AbPath createPath(std::string key, HashMap<any, any> hashMap);
+    private: AbPath createPath(std::string key, HashMap<Object*, Object*> hashMap);
 
                 //@Throws(Exception.constructor)
             
-    private: AbPath createPath(std::string append, std::string key, HashMap<any, any> hashMap);
+    private: AbPath createPath(std::string append, std::string key, HashMap<Object*, Object*> hashMap);
 
-    private: std::string get(std::string key, HashMap<any, any> hashMap);
+    private: std::string get(std::string key, HashMap<Object*, Object*> hashMap);
 
-    private: std::string create(std::string append, std::string key, HashMap<any, any> hashMap);
+    private: std::string create(std::string append, std::string key, HashMap<Object*, Object*> hashMap);
 
                 //@Throws(Exception.constructor)
             
-    private: void getFormData(HashMap<any, any> storeHashMap);
+    private: void getFormData(HashMap<Object*, Object*> storeHashMap);
 
     public: Boolean isNameValid();
 
@@ -433,7 +433,7 @@ public: StoreFront(HashMap<any, any> hashMap);
 
                 //@Throws(Exception.constructor)
             
-    public: HashMap<any, any> toHashMap();
+    public: HashMap<Object*, Object*> toHashMap();
 
     public: Object* getKey();
 

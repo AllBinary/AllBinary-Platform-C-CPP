@@ -67,13 +67,14 @@ class DiagonalDownLeftTouchInputToGameKeyEventAction: public GameKeyCompleteMoti
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return DiagonalDownLeftTouchInputToGameKeyEventAction::instance() as GameKeyCompleteMotionGestureInputEvent;
+                        return DiagonalDownLeftTouchInputToGameKeyEventAction::instance();
     
 }
 
 
-private: DiagonalDownLeftTouchInputToGameKeyEventAction(){
-            super("Diagonal Down Left Action", TouchMotionGestureFactory::getInstance().DIAGONAL_DOWN_LEFT, PlatformInputMappingFactory::getInstance().getPersistentInputMappingInstance().getInputMapping());
+private: DiagonalDownLeftTouchInputToGameKeyEventAction() : GameKeyCompleteMotionGestureInputEvent("Diagonal Down Left Action", TouchMotionGestureFactory::getInstance().DIAGONAL_DOWN_LEFT, PlatformInputMappingFactory::getInstance().getPersistentInputMappingInstance().getInputMapping()){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.

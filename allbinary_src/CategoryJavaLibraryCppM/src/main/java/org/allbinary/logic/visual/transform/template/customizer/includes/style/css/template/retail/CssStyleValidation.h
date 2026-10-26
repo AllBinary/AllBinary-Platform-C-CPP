@@ -21,7 +21,7 @@
         #ifndef ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_TEMPLATE_CUSTOMIZER_INCLUDES_STYLE_CSS_TEMPLATE_RETAIL_CSSSTYLEVALIDATION_H
         #define ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_TEMPLATE_CUSTOMIZER_INCLUDES_STYLE_CSS_TEMPLATE_RETAIL_CSSSTYLEVALIDATION_H
 
-            #include "../../../../../../../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
 
@@ -94,7 +94,7 @@ public: CssStyleValidation();
 
 public: CssStyleValidation(Document document);
 
-public: CssStyleValidation(HashMap<any, any> hashMap);
+public: CssStyleValidation(HashMap<Object*, Object*> hashMap);
 
     public: Boolean isValid();
 

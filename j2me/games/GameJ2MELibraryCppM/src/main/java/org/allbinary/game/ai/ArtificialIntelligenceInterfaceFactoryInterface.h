@@ -21,11 +21,8 @@
         #ifndef ORG_ALLBINARY_GAME_AI_ARTIFICIALINTELLIGENCEINTERFACEFACTORYINTERFACE_H
         #define ORG_ALLBINARY_GAME_AI_ARTIFICIALINTELLIGENCEINTERFACEFACTORYINTERFACE_H
 
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-#include <java/util/Hashtable.h>
-
-      
 #include <org/allbinary/ai/ArtificialIntelligenceInterface.h>
 
       
@@ -33,6 +30,9 @@
 
       
 #include <org/allbinary/layer/AllBinaryLayer.h>
+
+      
+#include <org/allbinary/util/ABHashtable.h>
 
       
 
@@ -58,7 +58,7 @@ class ArtificialIntelligenceInterfaceFactoryInterface {
 
                 //@Throws(Exception.constructor)
             
-    ArtificialIntelligenceInterface getInstance(Hashtable<any, any> hashtable, AllBinaryLayer ownerLayerInterface, GameInput gameInput);
+    ArtificialIntelligenceInterface getInstance(ABHashtable<Object*, Object*> hashtable, AllBinaryLayer ownerLayerInterface, GameInput gameInput);
 
 };
 

@@ -21,9 +21,9 @@
         #ifndef ORG_ALLBINARY_CANVAS_PROFILINGREFRESHHELPER_H
         #define ORG_ALLBINARY_CANVAS_PROFILINGREFRESHHELPER_H
 
-            #include "../../../java/lang/System.h"
+            #include "java/lang/System.h"
         
-            #include "../../../java/lang/Integer.h"
+            #include "java/lang/Integer.h"
         
 #include <android/view/View.h>
 

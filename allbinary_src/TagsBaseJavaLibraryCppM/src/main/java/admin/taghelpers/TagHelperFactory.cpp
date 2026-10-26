@@ -18,11 +18,11 @@
 
 
 
-            #include "../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../java/lang/RuntimeException.h"
+            #include "java/lang/RuntimeException.h"
         
 #include <java/util/HashMap.h>
 
@@ -64,7 +64,7 @@ class TagHelperFactory
 
                 //@Throws(Exception.constructor, LicensingException.constructor)
             
-    public: Object* getInstance(HashMap<any, any> hashMap, PageContext pageContext){
+    public: Object* getInstance(HashMap<Object*, Object*> hashMap, PageContext pageContext){
 
 
 

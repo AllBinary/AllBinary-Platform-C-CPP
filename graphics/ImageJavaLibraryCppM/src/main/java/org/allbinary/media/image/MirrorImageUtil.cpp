@@ -20,7 +20,7 @@
 
             #include <vector>
         
-            #include "../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
 #include <java/awt.h>
 
@@ -177,7 +177,7 @@ g.dispose();
 this->logUtil.putF("numberOfFramesPerOrientation: " +numberOfFramesPerOrientation +" numberOfFrames: " +numberOfFrames, this, "getImages");
     
 
-    std::vector<BufferedImage> bufferedImageArray = new Array(numberOfFrames);;
+    std::vector<BufferedImage> bufferedImageArray = std::vector<BufferedImage>(numberOfFrames);;
     
 
     int32_t y = 0;;
@@ -203,7 +203,7 @@ bufferedImageArray[index]= bufferedImage.getSubimage(x, y, cellWidth, cellHeight
                         for (
     int32_t index = 0;index < numberOfFramesPerOrientation; index++)
         {
-bufferedImageArray[index +numberOfFramesPerOrientation]= this->getImage(bufferedImageArray[index]!, verticle, horizontal);
+bufferedImageArray[index +numberOfFramesPerOrientation]= this->getImage(bufferedImageArray[index], verticle, horizontal);
     
 }
 

@@ -20,9 +20,9 @@
 
             #include <vector>
         
-            #include "../../../../../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/io/DataOutputStream.h>
 
@@ -46,6 +46,9 @@
 
       
 #include <org/allbinary/data/tree/dom/document/DomDocumentHelper.h>
+
+      
+#include <org/allbinary/data/tree/dom/document/XmlDocumentHelper.h>
 
       
 #include <org/allbinary/data/tree/dom/document/mapping/DomDocumentMappingInterface.h>
@@ -117,7 +120,7 @@ class GenericProfileActions
 
     private: DefaultListModelHelper actionsDefaultListModelHelper;
 
-    private: HashMap<any, any> hashMap;
+    private: HashMap<Object*, Object*> hashMap;
 
 public: GenericProfileActions(GenericProfileActionsJPanel genericProfileActionsJPanel, std::string name){
 this->setName(name);
@@ -156,7 +159,7 @@ this->setGenericProfileActionsJPanel(genericProfileActionsJPanel);
     
 this->actionsDefaultListModelHelper= DefaultListModelHelper();
     
-this->setHashMap(HashMap<any, any>());
+this->setHashMap(HashMap<Object*, Object*>());
     
 }
 
@@ -170,7 +173,7 @@ this->setHashMap(HashMap<any, any>());
 
     DataOutputStream idOutData = DataOutputStream(idFile);;
     
-idOutData.writeBytes(DomDocumentHelper::toString(this->toXmlDoc()));
+idOutData.writeBytes(XmlDocumentHelper::toString(this->toXmlDoc()));
     
 }
 
@@ -219,7 +222,7 @@ this->fileInit(idFile);
             
     private: void fileInit(FileInputStream fileInputStream){
 
-    std::vector<int8_t> bytes = new Array(100000);;
+    std::vector<int8_t> bytes = std::vector<int8_t>(100000);;
     
 
     int32_t length = fileInputStream.read(bytes);;
@@ -338,7 +341,7 @@ this->getDefaultListModelHelper().add(genericConfigurationProfileAction.getName(
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->getHashMap().get(string) as GenericProfileAction;
+                        return this->getHashMap().get(string);
     
 }
 
@@ -374,9 +377,9 @@ this->save();
 }
 
 
-    public: HashMap<any, any> toHashMap(){
+    public: HashMap<Object*, Object*> toHashMap(){
 
-    HashMap<any, any> hashMap = StdUtil::getInstance().createHashMap();;
+    HashMap<Object*, Object*> hashMap = StdUtil::getInstance().createHashMap();;
     
 this->logUtil.putF("HashMap: " +hashMap.toString(), this, "toHashMap()");
     
@@ -412,10 +415,10 @@ this->logUtil.putF("HashMap: " +hashMap.toString(), this, "toHashMap()");
     int32_t index = 0;index < size; index++)
         {
 
-    std::string nextActionName = actionNameArray[index]! as string;;
+    std::string nextActionName = actionNameArray[index];;
     
 
-    GenericProfileAction nextGenericProfileAction = this->getAction(nextActionName) as GenericProfileAction;;
+    GenericProfileAction nextGenericProfileAction = this->getAction(nextActionName);;
     
 node.appendChild(nextGenericProfileAction.toXmlNode(document));
     
@@ -466,7 +469,7 @@ this->genericProfileActionsJPanel= genericProfileActionsJPanel;
 }
 
 
-    public: HashMap<any, any> getHashMap(){
+    public: HashMap<Object*, Object*> getHashMap(){
 
 
 
@@ -476,7 +479,7 @@ this->genericProfileActionsJPanel= genericProfileActionsJPanel;
 }
 
 
-    public: void setHashMap(HashMap<any, any> hashMap){
+    public: void setHashMap(HashMap<Object*, Object*> hashMap){
 this->hashMap= hashMap;
     
 }

@@ -21,24 +21,15 @@
         #ifndef ORG_ALLBINARY_LOGIC_STRING_TOKENS_UNIQUETOKENS_H
         #define ORG_ALLBINARY_LOGIC_STRING_TOKENS_UNIQUETOKENS_H
 
-            #include "../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../../../java/lang/NumberFormatException.h"
+            #include "java/lang/NumberFormatException.h"
         
-            #include "../../../../../java/lang/Integer.h"
+            #include "java/lang/Integer.h"
         
 #include <java/util/HashSet.h>
-
-      
-#include <org/allbinary/util/BasicArrayList.h>
-
-      
-#include <org/allbinary/util/BasicArrayListD.h>
-
-      
-#include <org/allbinary/logic/StdUtil.h>
 
       
 #include <org/allbinary/logic/io/path/AbPathData.h>

@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <javax/microedition/lcdui/NullCanvas.h>
 
@@ -66,8 +66,9 @@
 
 class DemoCanvasBasicStartInputProcessor: public BasicMenuInputProcessor {
 
-public: DemoCanvasBasicStartInputProcessor(BasicArrayList gameKeyEventList, RunnableCanvas gameCanvas){
-            super(gameKeyEventList,  -1, gameCanvas);
+public: DemoCanvasBasicStartInputProcessor(BasicArrayList gameKeyEventList, RunnableCanvas gameCanvas) : BasicMenuInputProcessor(gameKeyEventList,  -1, gameCanvas){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -94,7 +95,7 @@ public: DemoCanvasBasicStartInputProcessor(BasicArrayList gameKeyEventList, Runn
                         for (
     int32_t index = 0;index < size; index++)
         {
-gameKeyEvent= list.objectArray[index]! as GameKeyEvent;
+gameKeyEvent= list.objectArray[index];
     
 this->logUtil.putF(StringMaker().append("Start GameKey: ").append(StringUtil::getInstance().toString(gameKeyEvent)).toString(), this, GameInputStrings::getInstance().PROCESS_INPUT);
     

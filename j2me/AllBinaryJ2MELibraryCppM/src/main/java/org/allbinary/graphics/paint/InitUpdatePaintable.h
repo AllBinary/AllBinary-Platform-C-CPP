@@ -21,17 +21,8 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_PAINT_INITUPDATEPAINTABLE_H
         #define ORG_ALLBINARY_GRAPHICS_PAINT_INITUPDATEPAINTABLE_H
 
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-#include <jsinterop/annotations/JsType.h>
-
-      
-#include <jsinterop/annotations/JsMethod.h>
-
-      
-#include <jsinterop/annotations/JsConstructor.h>
-
-      
 
 
 

@@ -51,8 +51,9 @@ class TerrainEvent: public AllBinaryEventObject {
 
     private: BasicTerrainInfo basicTerrainInfo = BasicTerrainInfo::NULL_BASIC_TERRAIN_INFO;
 
-public: TerrainEvent(Object* basicTerrainInfo){
-            super(basicTerrainInfo);
+public: TerrainEvent(Object* basicTerrainInfo) : AllBinaryEventObject(basicTerrainInfo){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.

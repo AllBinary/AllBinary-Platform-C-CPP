@@ -10,9 +10,9 @@
 
 
 
-            #include "../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/awt/image/BufferedImage.h>
 
@@ -162,7 +162,7 @@ this->saveWithImageIO(File(filePath), bufferedImage);
 
                                     }
                                 
-writer= iter.next() as ImageWriter;
+writer= iter.next();
     
 ios= ImageIO::createImageOutputStream(file);
     

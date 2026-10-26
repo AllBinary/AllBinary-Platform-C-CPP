@@ -18,9 +18,9 @@
 
 
 
-            #include "../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <javax/xml/transform/Source.h>
 
@@ -117,12 +117,12 @@ this->basicURIResolver= basicURIResolver;
     StringMaker stringBuffer = StringMaker();;
     
 
-    TransformInfoHttpStoreInterface transformInfoHttpStoreInterface = this->parentTransformInfoInterface as TransformInfoHttpStoreInterface;;
+    TransformInfoHttpStoreInterface transformInfoHttpStoreInterface = this->parentTransformInfoInterface;;
     
 stringBuffer.append(URLGLOBALS::getMainPath()).append(FREEBLISKET_PATH_GLOBALS::getInstance().XSLPATH).append(transformInfoHttpStoreInterface.getStoreName()).append(AbPathData::getInstance().SEPARATOR).append(href);
     
 
-    AbPath fileAbPath = AbFilePath(stringBuffer.toString()) as AbPath;;
+    AbPath fileAbPath = AbFilePath(stringBuffer.toString());;
     
 
                         if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().XMLLOGGING))

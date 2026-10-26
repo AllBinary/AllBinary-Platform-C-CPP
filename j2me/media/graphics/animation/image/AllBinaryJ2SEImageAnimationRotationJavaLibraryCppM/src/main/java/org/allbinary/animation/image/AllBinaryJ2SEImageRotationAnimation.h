@@ -23,9 +23,9 @@
 
             #include <vector>
         
-            #include "../../../../java/lang/Throwable.h"
+            #include "java/lang/Throwable.h"
         
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <javax/microedition/lcdui/Graphics.h>
 
@@ -91,9 +91,9 @@ class AllBinaryJ2SEImageRotationAnimation: public ImageBaseRotationAnimation {
 
     private: Image realOriginalImage;
 
-    private: const std::vector<Image> originalImageArray = new Array(1);
+    private: const std::vector<Image> originalImageArray = std::vector<Image>(1);
 
-    private: const std::vector<Image> twoImages = new Array(2);
+    private: const std::vector<Image> twoImages = std::vector<Image>(2);
 
     private: Image imageToShow;
 

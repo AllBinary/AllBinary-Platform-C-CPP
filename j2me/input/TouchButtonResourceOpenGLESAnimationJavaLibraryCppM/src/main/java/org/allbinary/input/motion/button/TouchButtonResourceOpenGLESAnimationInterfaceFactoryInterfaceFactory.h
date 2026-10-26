@@ -21,7 +21,7 @@
         #ifndef ORG_ALLBINARY_INPUT_MOTION_BUTTON_TOUCHBUTTONRESOURCEOPENGLESANIMATIONINTERFACEFACTORYINTERFACEFACTORY_H
         #define ORG_ALLBINARY_INPUT_MOTION_BUTTON_TOUCHBUTTONRESOURCEOPENGLESANIMATIONINTERFACEFACTORYINTERFACEFACTORY_H
 
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/game/configuration/feature/Features.h>
 

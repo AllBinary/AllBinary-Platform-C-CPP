@@ -18,9 +18,9 @@
 
 
 
-            #include "../../../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/io/FileReader.h>
 
@@ -103,7 +103,7 @@ class Cpu
 
     private: const std::string CPUFILE = "/proc/cpuinfo";
 
-    private: HashMap<any, any> cpuHashMap;
+    private: HashMap<Object*, Object*> cpuHashMap;
 
 public: Cpu(std::string filePath){
 this->init(filePath);
@@ -187,7 +187,7 @@ this->cpuHashMap= StdUtil::getInstance().createHashMap();
                         
                                     {
                                     
-    AbFile file = fileVector.get(0) as AbFile;;
+    AbFile file = fileVector.get(0);;
     
 lineNumberReader= LineNumberReader(FileReader(file.getPath()));
     
@@ -288,7 +288,7 @@ nextLine= lineNumberReader.readLine();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->cpuHashMap.get(CpuInfo::PROCESSOR) as string;
+                        return this->cpuHashMap.get(CpuInfo::PROCESSOR);
     
 }
 
@@ -298,7 +298,7 @@ nextLine= lineNumberReader.readLine();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->cpuHashMap.get(CpuInfo::VENDORID) as string;
+                        return this->cpuHashMap.get(CpuInfo::VENDORID);
     
 }
 
@@ -308,7 +308,7 @@ nextLine= lineNumberReader.readLine();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->cpuHashMap.get(CpuInfo::CPUFAMILY) as string;
+                        return this->cpuHashMap.get(CpuInfo::CPUFAMILY);
     
 }
 
@@ -318,7 +318,7 @@ nextLine= lineNumberReader.readLine();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->cpuHashMap.get(CpuInfo::MODEL) as string;
+                        return this->cpuHashMap.get(CpuInfo::MODEL);
     
 }
 
@@ -328,7 +328,7 @@ nextLine= lineNumberReader.readLine();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->cpuHashMap.get(CpuInfo::MODELNAME) as string;
+                        return this->cpuHashMap.get(CpuInfo::MODELNAME);
     
 }
 
@@ -338,7 +338,7 @@ nextLine= lineNumberReader.readLine();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->cpuHashMap.get(CpuInfo::STEPPING) as string;
+                        return this->cpuHashMap.get(CpuInfo::STEPPING);
     
 }
 
@@ -348,7 +348,7 @@ nextLine= lineNumberReader.readLine();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->cpuHashMap.get(CpuInfo::CPUMHZ) as string;
+                        return this->cpuHashMap.get(CpuInfo::CPUMHZ);
     
 }
 
@@ -358,7 +358,7 @@ nextLine= lineNumberReader.readLine();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->cpuHashMap.get(CpuInfo::CACHESIZE) as string;
+                        return this->cpuHashMap.get(CpuInfo::CACHESIZE);
     
 }
 

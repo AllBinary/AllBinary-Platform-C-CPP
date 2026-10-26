@@ -20,9 +20,9 @@
 
             #include <vector>
         
-            #include "../../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/logic/communication/log/LogUtil.h>
 
@@ -88,8 +88,7 @@ this->columns= this->tiledLayer.getColumns();
     
 this->rows= this->tiledLayer.getRows();
     
-this->geographicMapCellPositionArray= new Array(this->rows).fill(null).map(() => new Array(this->columns).fill(0))
-                                                            ;
+this->geographicMapCellPositionArray= std::vector<std::vector<GeographicMapCellPosition>>(this->rows, std::vector<GeographicMapCellPosition>(this->columns));
     
 this->init();
     
@@ -202,7 +201,7 @@ this->logUtil.put(StringMaker().append(commonSeps.BRACKET_OPEN).appendint(rows).
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->geographicMapCellPositionArray[i_row]![i_column]!;
+                        return this->geographicMapCellPositionArray[i_row][i_column];
     
 }
 
@@ -223,7 +222,7 @@ this->logUtil.put(StringMaker().append(commonSeps.BRACKET_OPEN).appendint(rows).
             
     public: GeographicMapCellPosition createInstance(int32_t i_column, int32_t i_row, int32_t width, int32_t height){
 
-    Object* cellPositionCanBeNull = this->geographicMapCellPositionArray[i_row]![i_column];;
+    Object* cellPositionCanBeNull = this->geographicMapCellPositionArray[i_row][i_column];;
     
 
                         if(cellPositionCanBeNull == 
@@ -233,7 +232,7 @@ this->logUtil.put(StringMaker().append(commonSeps.BRACKET_OPEN).appendint(rows).
                                     {
                                     cellPositionCanBeNull= this->geographicMapCellPositionFactoryInterface.getInstance(this->geographicMapInterface, i_column, i_row, this->columns, this->rows, width, height);
     
-this->geographicMapCellPositionArray[i_row]![i_column]= cellPositionCanBeNull as GeographicMapCellPosition;
+this->geographicMapCellPositionArray[i_row][i_column]= *dynamic_cast<GeographicMapCellPosition*>(cellPositionCanBeNull);
     
 
                                     }
@@ -242,7 +241,7 @@ this->geographicMapCellPositionArray[i_row]![i_column]= cellPositionCanBeNull as
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return cellPositionCanBeNull as GeographicMapCellPosition;
+                        return *dynamic_cast<GeographicMapCellPosition*>(cellPositionCanBeNull);
     
 }
 

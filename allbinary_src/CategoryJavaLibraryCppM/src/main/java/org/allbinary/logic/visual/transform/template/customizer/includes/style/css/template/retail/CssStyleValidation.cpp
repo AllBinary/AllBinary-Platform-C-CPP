@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../../../../../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
 
@@ -99,7 +99,7 @@ this->cssStyleElementVector= StylesValidationFactory::getInstance().getInstance(
 }
 
 
-public: CssStyleValidation(HashMap<any, any> hashMap){
+public: CssStyleValidation(HashMap<Object*, Object*> hashMap){
 this->cssStyleElementVector= StylesValidationFactory::getInstance(hashMap);
     
 }
@@ -131,7 +131,7 @@ this->cssStyleElementVector= StylesValidationFactory::getInstance(hashMap);
     int32_t i = 0;i < size; i++)
         {
 
-    ValidationInterface styleValidationInterface = this->cssStyleElementVector.get(i) as ValidationInterface;;
+    ValidationInterface styleValidationInterface = this->cssStyleElementVector.get(i);;
     
 
                         if(!styleValidationInterface.isValid().valueOf())
@@ -261,7 +261,7 @@ node.appendChild(styleNode);
     int32_t i = 0;i < size; i++)
         {
 
-    DomNodeInterface styleDomNodeInterface = this->cssStyleElementVector.get(i) as DomNodeInterface;;
+    DomNodeInterface styleDomNodeInterface = this->cssStyleElementVector.get(i);;
     
 styleNode.appendChild(styleDomNodeInterface.toXmlNode(document));
     

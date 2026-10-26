@@ -21,7 +21,7 @@
         #ifndef ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_TEMPLATE_CUSTOMIZER_INCLUDES_STYLE_CSS_TEMPLATE_RETAIL_EDITCSSSTYLEVALIDATION_H
         #define ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_TEMPLATE_CUSTOMIZER_INCLUDES_STYLE_CSS_TEMPLATE_RETAIL_EDITCSSSTYLEVALIDATION_H
 
-            #include "../../../../../../../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
 
@@ -73,7 +73,7 @@ public: EditCssStyleValidation();
 
 public: EditCssStyleValidation(Document document);
 
-public: EditCssStyleValidation(HashMap<any, any> hashMap);
+public: EditCssStyleValidation(HashMap<Object*, Object*> hashMap);
 
     public: Boolean isValid();
 

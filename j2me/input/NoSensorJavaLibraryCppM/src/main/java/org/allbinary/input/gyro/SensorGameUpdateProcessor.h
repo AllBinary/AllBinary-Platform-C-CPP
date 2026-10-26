@@ -21,20 +21,14 @@
         #ifndef ORG_ALLBINARY_INPUT_GYRO_SENSORGAMEUPDATEPROCESSOR_H
         #define ORG_ALLBINARY_INPUT_GYRO_SENSORGAMEUPDATEPROCESSOR_H
 
-            #include "../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-#include <jsinterop/annotations/JsType.h>
-
-      
 #include <org/allbinary/input/AllBinarySensor.h>
 
       
 #include <org/allbinary/input/NoAllBinarySensor.h>
-
-      
-#include <jsinterop/annotations/JsMethod.h>
 
       
 

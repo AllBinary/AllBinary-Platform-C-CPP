@@ -82,8 +82,6 @@ class OwnershipPaintable: public Paintable, public UpdateMyFontInterface {
 }
 
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
-
     private: const DisplayInfoSingleton displayInfo = DisplayInfoSingleton::getInstance();
 
     private: MyFontProcessor myFontProcessor = UpdateMyFontProcessor(this);
@@ -146,7 +144,7 @@ graphics.setColor(this->color);
 
     int32_t height = this->displayInfo.getLastHeight();;
     
-graphics.drawString(this->COPYRIGHT, halfWidth -this->beginWidth, height -COPYRIGHT_Y, this->anchor);
+graphics.drawString(this->COPYRIGHT, halfWidth -this->beginWidth, height -this->COPYRIGHT_Y, this->anchor);
     
 }
 

@@ -21,7 +21,7 @@
         #ifndef VIEWS_GENERIC_ORDER_HISTORY_ORDERHISTORYVIEW_H
         #define VIEWS_GENERIC_ORDER_HISTORY_ORDERHISTORYVIEW_H
 
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/util/BasicArrayList.h>
 

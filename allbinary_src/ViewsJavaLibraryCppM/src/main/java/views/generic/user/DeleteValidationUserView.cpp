@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
 
@@ -79,17 +79,18 @@ class DeleteValidationUserView: public UserView, public ValidationComponentInter
 
     private: std::string userName;
 
-public: DeleteValidationUserView(TransformInfoInterface transformInfoInterface){
-            super(transformInfoInterface);
+public: DeleteValidationUserView(TransformInfoInterface transformInfoInterface) : UserView(transformInfoInterface){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
                     
 
-    HttpServletRequest httpServletRequest = this->getPageContext().getRequest() as HttpServletRequest;;
+    HttpServletRequest httpServletRequest = this->getPageContext().getRequest();;
     
 
-    HashMap<any, any> hashMap = RequestParams(httpServletRequest).toHashMap();;
+    HashMap<Object*, Object*> hashMap = RequestParams(httpServletRequest).toHashMap();;
     
 this->userName= UserName(hashMap).get();
     

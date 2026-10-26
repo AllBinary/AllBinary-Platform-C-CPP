@@ -21,11 +21,8 @@
         #ifndef ORG_ALLBINARY_IMAGE_OPENGLES_OPENGLIMAGECACHEFACTORY_H
         #define ORG_ALLBINARY_IMAGE_OPENGLES_OPENGLIMAGECACHEFACTORY_H
 
-            #include "../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-#include <jsinterop/annotations/JsType.h>
-
-      
 #include <org/allbinary/image/ImageCache.h>
 
       

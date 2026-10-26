@@ -18,9 +18,9 @@
 
 
 
-            #include "../../../../java/lang/Class.h"
+            #include "java/lang/Class.h"
         
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/lang/reflect/Method.h>
 
@@ -90,7 +90,7 @@ this->status= value;
     Object* anyType = OrderHistoryHelperFactory().getInstance(this->getPropertiesHashMap(), pageContext);;
     
 
-    Function helperClass = anyType->constructor;;
+    Class* helperClass = anyType->getClass();;
     
 
     Method method = helperClass.getMethod("setOrderStatus", 
@@ -98,7 +98,7 @@ this->status= value;
     
 
     std::string result = method.invoke(anyType, 
-                            nullptr) as string;;
+                            nullptr);;
     
 
 

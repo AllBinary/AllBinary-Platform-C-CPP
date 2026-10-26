@@ -23,13 +23,10 @@
 
             #include <vector>
         
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../../../java/lang/Integer.h"
+            #include "java/lang/Integer.h"
         
-#include <java/util/Hashtable.h>
-
-      
 #include <org/allbinary/game/input/GameInput.h>
 
       
@@ -43,6 +40,9 @@
 
       
 #include <org/allbinary/game/ai/BasicAI.h>
+
+      
+#include <org/allbinary/util/ABHashtable.h>
 
       
 
@@ -70,7 +70,7 @@ class KeyPressesAI: public BasicAI {
 
     protected: std::vector<Integer> keys;
 
-public: KeyPressesAI(Hashtable<any, any> hashtable, AllBinaryLayer ownerLayerInterface, GameInput gameInput);
+public: KeyPressesAI(ABHashtable<Object*, Object*> hashtable, AllBinaryLayer ownerLayerInterface, GameInput gameInput);
 
                 //@Throws(Exception.constructor)
             

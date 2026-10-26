@@ -21,7 +21,9 @@
         #ifndef ORG_ALLBINARY_INPUT_MOTION_BUTTON_TOUCHBUTTONLOCATIONHELPER_H
         #define ORG_ALLBINARY_INPUT_MOTION_BUTTON_TOUCHBUTTONLOCATIONHELPER_H
 
-            #include "../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
+        
+            #include "java/lang/Math.h"
         
 #include <org/allbinary/graphics/displayable/DisplayInfoSingleton.h>
 

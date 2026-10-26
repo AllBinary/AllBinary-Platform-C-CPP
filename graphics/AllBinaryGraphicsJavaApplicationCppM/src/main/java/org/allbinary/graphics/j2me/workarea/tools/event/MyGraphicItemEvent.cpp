@@ -44,8 +44,9 @@
 
 class MyGraphicItemEvent: public java::util::EventObject {
 
-public: MyGraphicItemEvent(Object* source){
-            super(source);
+public: MyGraphicItemEvent(Object* source) : java::util::EventObject(source){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -75,7 +76,7 @@ public: MyGraphicItemEvent(Object* source){
 
     public: std::string getCommand(){
 
-    MyGraphicItemEventSource myEventSource = this->getSource() as MyGraphicItemEventSource;;
+    MyGraphicItemEventSource myEventSource = this->getSource();;
     
 
 
@@ -88,7 +89,7 @@ public: MyGraphicItemEvent(Object* source){
 
     public: MutableTreeNode getTreeNode(){
 
-    MyGraphicItemEventSource myEventSource = this->getSource() as MyGraphicItemEventSource;;
+    MyGraphicItemEventSource myEventSource = this->getSource();;
     
 
 
@@ -101,7 +102,7 @@ public: MyGraphicItemEvent(Object* source){
 
     public: double getAngle(){
 
-    MyGraphicItemEventSource myEventSource = this->getSource() as MyGraphicItemEventSource;;
+    MyGraphicItemEventSource myEventSource = this->getSource();;
     
 
 

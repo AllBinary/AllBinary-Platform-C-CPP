@@ -20,9 +20,9 @@
 
             #include <vector>
         
-            #include "../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <javax/microedition/lcdui/Font.h>
 
@@ -174,7 +174,7 @@ PreLogUtil::put(StringMaker().append("Exception: stringLength: ").appendint(stri
                         
                                     {
                                     
-        while(currentLength > 0 && stringArray[index]![offset +currentLength] != ' ')
+        while(currentLength > 0 && stringArray[index][offset +currentLength] != ' ')
         {
 currentLength--;
     

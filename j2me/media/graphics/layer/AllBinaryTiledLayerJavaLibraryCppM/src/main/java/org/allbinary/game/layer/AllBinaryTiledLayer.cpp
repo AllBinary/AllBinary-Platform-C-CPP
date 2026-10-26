@@ -20,7 +20,7 @@
 
             #include <vector>
         
-            #include "../../../../java/lang/Integer.h"
+            #include "java/lang/Integer.h"
         
 #include <javax/microedition/lcdui/Graphics.h>
 
@@ -78,8 +78,9 @@ class AllBinaryTiledLayer: public Layer, public NamedInterface, public Paintable
 
     private: Integer dataId;
 
-public: AllBinaryTiledLayer(Integer dataId, int32_t width, int32_t height, int32_t cellWidth, int32_t cellHeight){
-            super(0, 0);
+public: AllBinaryTiledLayer(Integer dataId, int32_t width, int32_t height, int32_t cellWidth, int32_t cellHeight) : Layer(0, 0){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -117,7 +118,7 @@ stringBuffer.appendint(mapTwoDArray.size());
     
 stringBuffer.append(" c: ");
     
-stringBuffer.appendint(mapTwoDArray[0]!.size());
+stringBuffer.appendint(mapTwoDArray[0].size());
     
 stringBuffer.append(" rows: ");
     
@@ -149,7 +150,7 @@ this->logUtil.putF(stringBuffer.toString(), this, "setCells");
                         for (
     int32_t row = 0;row < rows; row++)
         {
-this->setCell(col, row, mapTwoDArray[row]![col]!);
+this->setCell(col, row, mapTwoDArray[row][col]);
     
 }
 
@@ -180,12 +181,12 @@ this->setCell(col, row, mapTwoDArray[row]![col]!);
     int32_t row = 0;row < rows; row++)
         {
 
-                        if(fromTileId == mapTwoDArray[row]![col])
+                        if(fromTileId == mapTwoDArray[row][col])
                         
                                     {
-                                    mapTwoDArray[row]![col]= toTileId;
+                                    mapTwoDArray[row][col]= toTileId;
     
-this->setCell(col, row, mapTwoDArray[row]![col]!);
+this->setCell(col, row, mapTwoDArray[row][col]);
     
 
                                     }
@@ -202,7 +203,7 @@ this->setCell(col, row, mapTwoDArray[row]![col]!);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->constructor.name.toString()!;;
+                        return this->constructor.name.toString();;
     
 }
 

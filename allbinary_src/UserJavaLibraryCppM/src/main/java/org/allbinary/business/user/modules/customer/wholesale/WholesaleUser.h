@@ -21,7 +21,7 @@
         #ifndef ORG_ALLBINARY_BUSINESS_USER_MODULES_CUSTOMER_WHOLESALE_WHOLESALEUSER_H
         #define ORG_ALLBINARY_BUSINESS_USER_MODULES_CUSTOMER_WHOLESALE_WHOLESALEUSER_H
 
-            #include "../../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
 
@@ -55,7 +55,7 @@ class WholesaleUser: public User {
 
 public: WholesaleUser();
 
-public: WholesaleUser(HashMap<any, any> userHashMap);
+public: WholesaleUser(HashMap<Object*, Object*> userHashMap);
 
     public: void validateSession(WeblisketSessionInterface weblisketSession);
 

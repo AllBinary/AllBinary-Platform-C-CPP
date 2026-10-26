@@ -21,13 +21,7 @@
         #ifndef ORG_ALLBINARY_GAME_INTERMISSIONINTERFACE_H
         #define ORG_ALLBINARY_GAME_INTERMISSIONINTERFACE_H
 
-#include <jsinterop/annotations/JsType.h>
-
-      
 #include <org/allbinary/time/TimeDelayHelper.h>
-
-      
-#include <jsinterop/annotations/JsMethod.h>
 
       
 

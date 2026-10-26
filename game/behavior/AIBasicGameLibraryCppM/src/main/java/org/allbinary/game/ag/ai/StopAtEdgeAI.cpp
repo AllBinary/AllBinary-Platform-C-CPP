@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/game/ai/BasicAI.h>
 
@@ -62,8 +62,9 @@
         
 class StopAtEdgeAI: public BasicAI {
 
-public: StopAtEdgeAI(AllBinaryLayer ownerLayerInterface, GameInput gameInput){
-            super(ownerLayerInterface, gameInput);
+public: StopAtEdgeAI(AllBinaryLayer ownerLayerInterface, GameInput gameInput) : BasicAI(ownerLayerInterface, gameInput){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -78,7 +79,7 @@ public: StopAtEdgeAI(AllBinaryLayer ownerLayerInterface, GameInput gameInput){
     AllBinaryLayer ownerLayerInterface = this->getOwnerLayerInterface();;
     
 
-    VelocityInterfaceCompositeInterface velocityInterfaceCompositeInterface = (ownerLayerInterface as VelocityInterfaceCompositeInterface);;
+    VelocityInterfaceCompositeInterface velocityInterfaceCompositeInterface = (ownerLayerInterface);;
     
 
     BasicVelocityProperties velocityProperties = velocityInterfaceCompositeInterface.getVelocityProperties();;

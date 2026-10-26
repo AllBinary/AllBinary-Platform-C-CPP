@@ -20,7 +20,7 @@
 
             #include <vector>
         
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <javax/microedition/lcdui/Canvas.h>
 
@@ -165,8 +165,9 @@ class DiveAndDirectionalTrackingAI: public BasicAI, public TrackingEventListener
 
     private: Direction lastDirection = DirectionFactory::getInstance().NO_DIRECTION;
 
-public: DiveAndDirectionalTrackingAI(AllBinaryLayer ownerLayerInterface, ArtificialIntelligenceInterface artificialIntelligenceInterface, GameInput gameInput, Visitor visitor){
-            super(ownerLayerInterface, gameInput);
+public: DiveAndDirectionalTrackingAI(AllBinaryLayer ownerLayerInterface, ArtificialIntelligenceInterface artificialIntelligenceInterface, GameInput gameInput, Visitor visitor) : BasicAI(ownerLayerInterface, gameInput){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -176,12 +177,12 @@ this->aiVistor= visitor;
 this->artificialIntelligenceInterface= artificialIntelligenceInterface;
     
 
-    DirectionalCompositeInterface directionalCompositeInterface = this->getOwnerLayerInterface() as unknown as DirectionalCompositeInterface;;
+    DirectionalCompositeInterface directionalCompositeInterface = this->getOwnerLayerInterface() as unknown;;
     
 this->directionalInterface= directionalCompositeInterface.getDirectionalInterface();
     
 
-    VelocityInterfaceCompositeInterface velocityInterfaceCompositeInterface = this->getOwnerLayerInterface() as unknown as VelocityInterfaceCompositeInterface;;
+    VelocityInterfaceCompositeInterface velocityInterfaceCompositeInterface = this->getOwnerLayerInterface() as unknown;;
     
 this->velocityInterface= velocityInterfaceCompositeInterface.getVelocityProperties();
     
@@ -255,7 +256,7 @@ TrackingEventHandler::getInstance().addListenerInterface(this);
                                     }
                                 
 
-    TrackingEvent lastTrackingEvent = this->list.removeAt(0) as TrackingEvent;;
+    TrackingEvent lastTrackingEvent = this->list.removeAt(0);;
     
 this->lastTrackingLayerInterface= lastTrackingEvent.getLayerInterface();
     
@@ -719,7 +720,7 @@ this->lastDirection= lastDirection;
                         if(value < 4)
                         
                                     {
-                                    super.setLastKey(this->directionToKeyMap[value]!);
+                                    super.setLastKey(this->directionToKeyMap[value]);
     
 
                                     }

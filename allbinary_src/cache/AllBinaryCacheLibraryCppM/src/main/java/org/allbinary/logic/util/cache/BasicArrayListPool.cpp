@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/util/BasicArrayList.h>
 
@@ -48,8 +48,9 @@
 
 class BasicArrayListPool: public AbstractArrayListPool {
 
-public: BasicArrayListPool(CacheableInterfaceFactoryInterface cacheableInterfaceFactoryInterface){
-            super(cacheableInterfaceFactoryInterface);
+public: BasicArrayListPool(CacheableInterfaceFactoryInterface cacheableInterfaceFactoryInterface) : AbstractArrayListPool(cacheableInterfaceFactoryInterface){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -77,7 +78,7 @@ this->buffers.clear();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->buffers.removeAt(size -1) as CacheableInterface;
+                        return this->buffers.removeAt(size -1);
     
 
                                     }
@@ -106,7 +107,7 @@ this->buffers.clear();
     int32_t index = usedList.size();--index >= 0; )
         {
 
-    CacheableInterface anyType = usedList.objectArray[index]! as CacheableInterface;;
+    CacheableInterface anyType = usedList.objectArray[index];;
     
 this->add(anyType);
     
@@ -128,7 +129,7 @@ usedList.clear();
     int32_t index = usedList.size();--index >= 0; )
         {
 
-    BasicArrayListCacheable list = usedList.objectArray[index]! as BasicArrayListCacheable;;
+    BasicArrayListCacheable list = usedList.objectArray[index];;
     
 
                         if(list.size() == 0)

@@ -18,9 +18,9 @@
 
 
 
-            #include "../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
 
@@ -82,7 +82,7 @@ this->email= AbEmail(basicEmailInfo.getEmailServerConfigurationInterface().getSm
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->email.getEmail() as Email;
+                        return this->email.getEmail();
     
 }
 
@@ -121,7 +121,7 @@ this->email= AbEmail(basicEmailInfo.getEmailServerConfigurationInterface().getSm
 
                 //@Throws(Exception.constructor)
             
-    public: HashMap<any, any> toHashMap(){
+    public: HashMap<Object*, Object*> toHashMap(){
 
 
 

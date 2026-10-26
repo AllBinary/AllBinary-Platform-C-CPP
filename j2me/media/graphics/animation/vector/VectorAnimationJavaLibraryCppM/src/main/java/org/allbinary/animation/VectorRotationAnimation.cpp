@@ -20,7 +20,7 @@
 
             #include <vector>
         
-            #include "../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/direction/Direction.h>
 
@@ -60,8 +60,9 @@
 
 class VectorRotationAnimation: public VectorBaseRotationAnimation {
 
-public: VectorRotationAnimation(std::vector<std::vector<std::vector<int32_t>>> currentPoints, BasicColor basicColor, AnimationBehavior animationBehavior){
-            super(AngleInfo::getInstance((AngleFactory::getInstance().TOTAL_ANGLE /currentPoints.size())), currentPoints, basicColor, animationBehavior);
+public: VectorRotationAnimation(std::vector<std::vector<std::vector<int32_t>>> currentPoints, BasicColor basicColor, AnimationBehavior animationBehavior) : VectorBaseRotationAnimation(AngleInfo::getInstance((AngleFactory::getInstance().TOTAL_ANGLE /currentPoints.size())), currentPoints, basicColor, animationBehavior){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.

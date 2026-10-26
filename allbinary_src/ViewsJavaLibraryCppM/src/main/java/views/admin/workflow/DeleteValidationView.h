@@ -21,7 +21,7 @@
         #ifndef VIEWS_ADMIN_WORKFLOW_DELETEVALIDATIONVIEW_H
         #define VIEWS_ADMIN_WORKFLOW_DELETEVALIDATIONVIEW_H
 
-            #include "../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/data/tables/workflow/WorkFlowEntityFactory.h>
 

@@ -21,17 +21,17 @@
         #ifndef ORG_ALLBINARY_THREAD_THREADPOOL_H
         #define ORG_ALLBINARY_THREAD_THREADPOOL_H
 
-            #include "../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../java/lang/RuntimeException.h"
+            #include "java/lang/RuntimeException.h"
         
-            #include "../../../java/lang/InterruptedException.h"
+            #include "java/lang/InterruptedException.h"
         
-            #include "../../../java/lang/Thread.h"
+            #include "java/lang/Thread.h"
         
-            #include "../../../java/lang/Runnable.h"
+            #include "java/lang/Runnable.h"
         
 #include <org/allbinary/logic/communication/log/LogUtil.h>
 

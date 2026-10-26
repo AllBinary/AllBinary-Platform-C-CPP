@@ -21,13 +21,7 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_PAINT_LOCATIONPAINTABLEINTERFACE_H
         #define ORG_ALLBINARY_GRAPHICS_PAINT_LOCATIONPAINTABLEINTERFACE_H
 
-#include <jsinterop/annotations/JsType.h>
-
-      
 #include <javax/microedition/lcdui/Graphics.h>
-
-      
-#include <jsinterop/annotations/JsMethod.h>
 
       
 

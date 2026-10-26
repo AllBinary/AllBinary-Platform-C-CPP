@@ -21,7 +21,7 @@
         #ifndef ADMIN_TAGHELPERS_INVENTORYHELPER_H
         #define ADMIN_TAGHELPERS_INVENTORYHELPER_H
 
-            #include "../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
 
@@ -67,7 +67,7 @@ class InventoryHelper: public BasicTable {
 
     private: Portion portion;
 
-public: InventoryHelper(HashMap<any, any> hashMap, PageContext pageContext);
+public: InventoryHelper(HashMap<Object*, Object*> hashMap, PageContext pageContext);
 
     public: std::string drop();
 

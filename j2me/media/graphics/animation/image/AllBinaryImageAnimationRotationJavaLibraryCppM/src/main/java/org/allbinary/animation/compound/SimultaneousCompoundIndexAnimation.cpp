@@ -20,7 +20,7 @@
 
             #include <vector>
         
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <javax/microedition/khronos/opengles/GL.h>
 
@@ -60,8 +60,9 @@ class SimultaneousCompoundIndexAnimation: public IndexedAnimation {
 
     private: std::vector<IndexedAnimation> animationInterfaceArray;
 
-public: SimultaneousCompoundIndexAnimation(std::vector<IndexedAnimation> animationInterfaceArray, AnimationBehavior animationBehavior){
-            super(animationBehavior);
+public: SimultaneousCompoundIndexAnimation(std::vector<IndexedAnimation> animationInterfaceArray, AnimationBehavior animationBehavior) : IndexedAnimation(animationBehavior){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -79,7 +80,7 @@ this->animationInterfaceArray= animationInterfaceArray;
                         for (
     int32_t index = this->animationInterfaceArray.size();--index >= 0; )
         {
-this->animationInterfaceArray[index]!.setFrame(frameIndex);
+this->animationInterfaceArray[index].setFrame(frameIndex);
     
 }
 
@@ -91,7 +92,7 @@ this->animationInterfaceArray[index]!.setFrame(frameIndex);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->animationInterfaceArray[0]!.getFrame();;
+                        return this->animationInterfaceArray[0].getFrame();;
     
 }
 
@@ -103,7 +104,7 @@ this->animationInterfaceArray[index]!.setFrame(frameIndex);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->animationInterfaceArray[0]!.getAnimationSize();;
+                        return this->animationInterfaceArray[0].getAnimationSize();;
     
 }
 
@@ -113,7 +114,7 @@ this->animationInterfaceArray[index]!.setFrame(frameIndex);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->animationInterfaceArray[0]!.getSize();;
+                        return this->animationInterfaceArray[0].getSize();;
     
 }
 
@@ -126,7 +127,7 @@ this->animationInterfaceArray[index]!.setFrame(frameIndex);
                         for (
     int32_t index = this->animationInterfaceArray.size();--index >= 0; )
         {
-this->animationInterfaceArray[index]!.previousFrame();
+this->animationInterfaceArray[index].previousFrame();
     
 }
 
@@ -143,7 +144,7 @@ this->animationInterfaceArray[index]!.previousFrame();
                         for (
     int32_t index = this->animationInterfaceArray.size();--index >= 0; )
         {
-this->animationInterfaceArray[index]!.nextFrame();
+this->animationInterfaceArray[index].nextFrame();
     
 }
 
@@ -172,7 +173,7 @@ this->animationInterfaceArray[index]!.nextFrame();
                         for (
     int32_t index = this->animationInterfaceArray.size();--index >= 0; )
         {
-this->animationInterfaceArray[index]!.paintXY(graphics, x, y);
+this->animationInterfaceArray[index].paintXY(graphics, x, y);
     
 }
 
@@ -187,7 +188,7 @@ this->animationInterfaceArray[index]!.paintXY(graphics, x, y);
                         for (
     int32_t index = this->animationInterfaceArray.size();--index >= 0; )
         {
-this->animationInterfaceArray[index]!.paintThreedXYZ(graphics, x, y, z);
+this->animationInterfaceArray[index].paintThreedXYZ(graphics, x, y, z);
     
 }
 
@@ -204,7 +205,7 @@ this->animationInterfaceArray[index]!.paintThreedXYZ(graphics, x, y, z);
                         for (
     int32_t index = this->animationInterfaceArray.size();--index >= 0; )
         {
-this->animationInterfaceArray[index]!.set(gl);
+this->animationInterfaceArray[index].set(gl);
     
 }
 

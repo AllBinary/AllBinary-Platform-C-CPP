@@ -46,8 +46,9 @@ class CapitalEvent: public AllBinaryEventObject {
 
     private: int32_t value= 0;
 
-public: CapitalEvent(Object* anyType){
-            super(anyType);
+public: CapitalEvent(Object* anyType) : AllBinaryEventObject(anyType){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.

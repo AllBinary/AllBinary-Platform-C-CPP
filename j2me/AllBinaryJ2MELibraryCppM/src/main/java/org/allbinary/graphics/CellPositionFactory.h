@@ -23,9 +23,9 @@
 
             #include <vector>
         
-            #include "../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/logic/communication/log/LogUtil.h>
 
@@ -68,8 +68,7 @@ class CellPositionFactory
 
     public: const CellPosition NONE = CellPosition( -1,  -1,  -1,  -1);
 
-    private: std::vector<std::vector<CellPosition>> cellPositionArray = new Array(0).fill(null).map(() => new Array(0).fill(0))
-                                                            ;
+    private: std::vector<std::vector<CellPosition>> cellPositionArray = std::vector<std::vector<CellPosition>>(0, std::vector<CellPosition>(0));
 
     private: int32_t columns= 0;
 

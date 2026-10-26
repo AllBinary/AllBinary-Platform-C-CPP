@@ -18,13 +18,10 @@
 
 
 
-            #include "../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-#include <java/util/Hashtable.h>
-
-      
 #include <org/allbinary/game/GameInfo.h>
 
       
@@ -53,6 +50,9 @@
 
       
 #include <org/allbinary/string/CommonStrings.h>
+
+      
+#include <org/allbinary/util/ABHashtable.h>
 
       
 #include <org/allbinary/util/HashtableUtil.h>
@@ -105,7 +105,7 @@ this->logUtil.putF("Begin Remote HighScores Retrieval", this, this->commonString
     GameInfoData gameInfoData = GameInfoData::getInstance();;
     
 
-    Hashtable<any, any> hashtable = abeClientInformation.toHashtable();;
+    ABHashtable<Object*, Object*> hashtable = abeClientInformation.toHashtable();;
     
 HashtableUtil::getInstance().putAll(gameInfo.toHashtable(), hashtable);
     
@@ -125,7 +125,7 @@ hashtable.put(RemoteHighScoresData::getInstance().GAME_CONFIGURATION, GameConfig
                         
                                     {
                                     
-    Hashtable<any, any> resultHashtable = XmlRpcRemoteHighScoresClient(abeClientInformation, "highscoresservicessl.php", "HighScoresService.process").get(hashtable, this->noCrypt) as Hashtable<any, any>;;
+    ABHashtable<Object*, Object*> resultHashtable = XmlRpcRemoteHighScoresClient(abeClientInformation, "highscoresservicessl.php", "HighScoresService.process").get(hashtable, this->noCrypt);;
     
 remoteHighScores.update(resultHashtable);
     

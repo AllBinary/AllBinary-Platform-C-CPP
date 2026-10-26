@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
 
@@ -93,8 +93,9 @@ class InventoryEntity: public AbSqlBean, public InventoryEntityInterface {
 
     private: const std::string tableName = "basicinventory";
 
-public: InventoryEntity(){
-            super(InventoryDbInitInfo());
+public: InventoryEntity() : AbSqlBean(InventoryDbInitInfo()){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -184,7 +185,7 @@ this->setTableName(this->tableName);
     BasicArrayList itemVector = BasicArrayListD();;
     
 
-    HashMap<any, any> keysAndValues = StdUtil::getInstance().createHashMap();;
+    HashMap<Object*, Object*> keysAndValues = StdUtil::getInstance().createHashMap();;
     
 
     BasicArrayList itemHashMapVector = super.getRows(keysAndValues);;
@@ -200,7 +201,7 @@ this->setTableName(this->tableName);
     int32_t i = 0;i < size; i++)
         {
 
-    HashMap<any, any> itemHashMap = itemHashMapVector.get(i) as HashMap<any, any>;;
+    HashMap<Object*, Object*> itemHashMap = itemHashMapVector.get(i);;
     
 
                         if(itemHashMap != 
@@ -209,7 +210,7 @@ this->setTableName(this->tableName);
                         
                                     {
                                     
-    std::string category = itemHashMap.get(basicItemData.CATEGORY) as string;;
+    std::string category = itemHashMap.get(basicItemData.CATEGORY);;
     
 
                         if(!StringValidationUtil::getInstance().isEmpty(category) && category.startsWith(storeFrontInterface.getCategoryPath()))
@@ -238,12 +239,12 @@ this->setTableName(this->tableName);
             
     public: ItemInterface getItem(std::string id){
 
-    HashMap<any, any> keysAndValues = StdUtil::getInstance().createHashMap();;
+    HashMap<Object*, Object*> keysAndValues = StdUtil::getInstance().createHashMap();;
     
 keysAndValues.put(basicItemData.ID, id);
     
 
-    HashMap<any, any> itemHashMap = super.getRow(keysAndValues);;
+    HashMap<Object*, Object*> itemHashMap = super.getRow(keysAndValues);;
     
 
                         if(itemHashMap != 
@@ -434,8 +435,8 @@ stringBuffer.append(this->sqlStrings.END);
 }
 
 
-    public: void update(HashMap<any, any> updatedValues){
-super.updateWhere(basicItemData.ID, updatedValues.get(basicItemData.ID) as string, updatedValues);
+    public: void update(HashMap<Object*, Object*> updatedValues){
+super.updateWhere(basicItemData.ID, updatedValues.get(basicItemData.ID), updatedValues);
     
 }
 

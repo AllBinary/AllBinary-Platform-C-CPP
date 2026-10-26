@@ -18,9 +18,9 @@
 
 
 
-            #include "../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/graphics/GPoint.h>
 
@@ -103,7 +103,7 @@ this->pointBasicArrayList= points;
                         for (
     int32_t index = 0;index < size; index++)
         {
-secondPoint= this->pointBasicArrayList.objectArray[index]! as GPoint;
+secondPoint= this->pointBasicArrayList.objectArray[index];
     
 
                         if(secondPoint.getX() != 1000)
@@ -177,7 +177,7 @@ this->rotate(static_cast<int32_t>(angle.getValue()));
                         for (
     int32_t index = 0;index < size; index++)
         {
-secondPoint= this->pointBasicArrayList.objectArray[index]! as GPoint;
+secondPoint= this->pointBasicArrayList.objectArray[index];
     
 
                         if(secondPoint.getX() != 1000)
@@ -244,7 +244,7 @@ this->pointBasicArrayList= newBasicArrayList;
                         for (
     int32_t index = 0;index < size; index++)
         {
-secondPoint= this->pointBasicArrayList.objectArray[index]! as GPoint;
+secondPoint= this->pointBasicArrayList.objectArray[index];
     
 
                         if(secondPoint.getX() != 1000)

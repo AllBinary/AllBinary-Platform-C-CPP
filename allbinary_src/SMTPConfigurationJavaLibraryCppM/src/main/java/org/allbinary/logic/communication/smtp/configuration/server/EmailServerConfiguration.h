@@ -21,7 +21,7 @@
         #ifndef ORG_ALLBINARY_LOGIC_COMMUNICATION_SMTP_CONFIGURATION_SERVER_EMAILSERVERCONFIGURATION_H
         #define ORG_ALLBINARY_LOGIC_COMMUNICATION_SMTP_CONFIGURATION_SERVER_EMAILSERVERCONFIGURATION_H
 
-            #include "../../../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
 #include <java/util/HashMap.h>
 
@@ -70,7 +70,7 @@ class EmailServerConfiguration
 
 public: EmailServerConfiguration();
 
-public: EmailServerConfiguration(HashMap<any, any> hashMap);
+public: EmailServerConfiguration(HashMap<Object*, Object*> hashMap);
 
 public: EmailServerConfiguration(std::string account, std::string password, std::string server);
 

@@ -21,13 +21,13 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_J2ME_WORKAREA_WORKAREAJPANEL_H
         #define ORG_ALLBINARY_GRAPHICS_J2ME_WORKAREA_WORKAREAJPANEL_H
 
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../../../java/lang/Integer.h"
+            #include "java/lang/Integer.h"
         
-            #include "../../../../../java/lang/Thread.h"
+            #include "java/lang/Thread.h"
         
-            #include "../../../../../java/lang/Runnable.h"
+            #include "java/lang/Runnable.h"
         
 #include <java/awt.h>
 
@@ -150,7 +150,7 @@ public: WorkAreaJPanel(WorkAreaDom workAreaDom, Dimension dimension);
 
     private: void initMyComponents(Dimension dimension);
 
-    private: HashMap<any, any> getCanvasHashMap();
+    private: HashMap<Object*, Object*> getCanvasHashMap();
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
     public: void play();

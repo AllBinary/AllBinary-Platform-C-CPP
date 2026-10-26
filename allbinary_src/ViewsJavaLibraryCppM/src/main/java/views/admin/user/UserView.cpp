@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/business/user/UserDomNode.h>
 
@@ -63,8 +63,9 @@ class UserView: public HttpContextView {
 
     protected: UserInterface user;
 
-public: UserView(TransformInfoInterface transformInfoInterface){
-            super(transformInfoInterface);
+public: UserView(TransformInfoInterface transformInfoInterface) : HttpContextView(transformInfoInterface){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -73,7 +74,7 @@ public: UserView(TransformInfoInterface transformInfoInterface){
 
 
     public: void addDomNodeInterfaces(){
-this->addDomNodeInterface(UserDomNode(this->user) as DomNodeInterface);
+this->addDomNodeInterface(UserDomNode(this->user));
     
 }
 

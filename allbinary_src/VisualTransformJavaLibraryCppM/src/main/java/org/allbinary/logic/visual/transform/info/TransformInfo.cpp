@@ -18,11 +18,11 @@
 
 
 
-            #include "../../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../../../../java/lang/Long.h"
+            #include "java/lang/Long.h"
         
 #include <java/util/Calendar.h>
 
@@ -43,6 +43,9 @@
 
       
 #include <org/allbinary/data/tree/dom/document/DomDocumentHelper.h>
+
+      
+#include <org/allbinary/data/tree/dom/document/XmlDocumentHelper.h>
 
       
 #include <org/allbinary/globals/FREEBLISKET_PATH_GLOBALS.h>
@@ -196,7 +199,7 @@ this->setDataFile(dataFileName);
 
                 //@Throws(Exception.constructor)
             
-    public: void override(HashMap<any, any> hashMap){
+    public: void override(HashMap<Object*, Object*> hashMap){
 
     TransformInfoData transformInfoData = TransformInfoData::getInstance();;
     
@@ -204,7 +207,7 @@ this->setDataFile(dataFileName);
     StringValidationUtil stringValidationUtil = StringValidationUtil::getInstance();;
     
 
-    std::string aName = hashMap.get(transformInfoData.NAME) as string;;
+    std::string aName = hashMap.get(transformInfoData.NAME);;
     
 
                         if(!stringValidationUtil.isEmpty(aName))
@@ -236,7 +239,7 @@ this->logUtil.putF(stringBuffer.toString(), this, "override(HashMap hashMap)");
                                     }
                                 
 
-    std::string aStoreName = hashMap.get(StoreFrontData::getInstance().NAME) as string;;
+    std::string aStoreName = hashMap.get(StoreFrontData::getInstance().NAME);;
     
 
                         if(!stringValidationUtil.isEmpty(aStoreName))
@@ -248,7 +251,7 @@ this->logUtil.putF(stringBuffer.toString(), this, "override(HashMap hashMap)");
                                     }
                                 
 
-    std::string aObjectFileName = hashMap.get(transformInfoData.OBJECTFILENAME) as string;;
+    std::string aObjectFileName = hashMap.get(transformInfoData.OBJECTFILENAME);;
     
 
                         if(!stringValidationUtil.isEmpty(aObjectFileName))
@@ -274,7 +277,7 @@ stringBuffer.append(AbPathData::getInstance().SEPARATOR);
     AbPath fileAbPath = AbPath(stringBuffer.toString(), StringUtil::getInstance().EMPTY_STRING);;
     
 
-    std::string aObject = hashMap.get(transformInfoData.OBJECT) as string;;
+    std::string aObject = hashMap.get(transformInfoData.OBJECT);;
     
 
                         if(!stringValidationUtil.isEmpty(aObject))
@@ -305,7 +308,7 @@ stringBuffer.append(AbPathData::getInstance().SEPARATOR);
                                     }
                                 
 
-                        if(!stringValidationUtil.isEmpty(hashMap.get(transformInfoData.OBJECTCONFIG) as string))
+                        if(!stringValidationUtil.isEmpty(hashMap.get(transformInfoData.OBJECTCONFIG)))
                         
                                     {
                                     
@@ -317,13 +320,13 @@ stringBuffer.append(AbPathData::getInstance().SEPARATOR);
 
                                     }
                                 
-this->setObjectConfig(hashMap.get(transformInfoData.OBJECTCONFIG) as string);
+this->setObjectConfig(hashMap.get(transformInfoData.OBJECTCONFIG));
     
 
                                     }
                                 
 
-    std::string objectConfigFileName = hashMap.get(transformInfoData.OBJECTCONFIGFILENAME) as string;;
+    std::string objectConfigFileName = hashMap.get(transformInfoData.OBJECTCONFIGFILENAME);;
     
 
                         if(!stringValidationUtil.isEmpty(objectConfigFileName))
@@ -344,7 +347,7 @@ this->setObjectConfigFile(objectConfigFileName);
                                     }
                                 
 
-    std::string type = hashMap.get(OutputTypeData::getInstance().NAME) as string;;
+    std::string type = hashMap.get(OutputTypeData::getInstance().NAME);;
     
 
                         if(!stringValidationUtil.isEmpty(type))
@@ -367,7 +370,7 @@ this->getObjectConfigInterface().setOutputTypeName(type);
                                     }
                                 
 
-    std::string aTemplateFileName = hashMap.get(transformInfoData.TEMPLATEFILENAME) as string;;
+    std::string aTemplateFileName = hashMap.get(transformInfoData.TEMPLATEFILENAME);;
     
 
                         if(!stringValidationUtil.isEmpty(aTemplateFileName))
@@ -379,7 +382,7 @@ this->getObjectConfigInterface().setOutputTypeName(type);
                                     }
                                 
 
-    std::string aTemplate = hashMap.get(transformInfoData.TEMPLATE) as string;;
+    std::string aTemplate = hashMap.get(transformInfoData.TEMPLATE);;
     
 
                         if(!stringValidationUtil.isEmpty(aTemplate))
@@ -410,7 +413,7 @@ this->getObjectConfigInterface().setOutputTypeName(type);
                                     }
                                 
 
-    std::string aDataFileName = hashMap.get(transformInfoData.DATAFILENAME) as string;;
+    std::string aDataFileName = hashMap.get(transformInfoData.DATAFILENAME);;
     
 
                         if(!stringValidationUtil.isEmpty(aDataFileName))
@@ -422,7 +425,7 @@ this->getObjectConfigInterface().setOutputTypeName(type);
                                     }
                                 
 
-    std::string aData = hashMap.get(transformInfoData.DATA) as string;;
+    std::string aData = hashMap.get(transformInfoData.DATA);;
     
 
                         if(!stringValidationUtil.isEmpty(aData))
@@ -795,7 +798,7 @@ this->data= fileData;
                         if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEWERROR))
                         
                                     {
-                                    this->logUtil.putF("Data: " +DomDocumentHelper::toString(DomDocumentHelper::create(data)), this, "getData()");
+                                    this->logUtil.putF("Data: " +XmlDocumentHelper::toString(DomDocumentHelper::create(data)), this, "getData()");
     
 
                                     }
@@ -919,12 +922,12 @@ stringBuffer.append(this->getDataFilePath().toFileSystemString());
 }
 
 
-    public: HashMap<any, any> toHashMap(){
+    public: HashMap<Object*, Object*> toHashMap(){
 
     TransformInfoData transformInfoData = TransformInfoData::getInstance();;
     
 
-    HashMap<any, any> hashMap = StdUtil::getInstance().createHashMap();;
+    HashMap<Object*, Object*> hashMap = StdUtil::getInstance().createHashMap();;
     
 hashMap.put(transformInfoData.NAME, this->name);
     

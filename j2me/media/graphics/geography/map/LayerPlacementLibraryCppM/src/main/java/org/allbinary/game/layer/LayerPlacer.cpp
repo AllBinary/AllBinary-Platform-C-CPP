@@ -18,14 +18,11 @@
 
 
 
-            #include "../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/util/Enumeration.h>
-
-      
-#include <java/util/Hashtable.h>
 
       
 #include <org/allbinary/graphics/GPoint.h>
@@ -41,6 +38,9 @@
 
       
 #include <org/allbinary/layer/LayerInterfaceVisitor.h>
+
+      
+#include <org/allbinary/util/ABHashtable.h>
 
       
 #include <org/allbinary/util/BasicArrayList.h>
@@ -105,7 +105,7 @@ this->dimension= dimension;
                         for (
     int32_t index = 0;index < size; index++)
         {
-layerPlacementInterface= list.objectArray[index]! as LayerPlacementInterface;
+layerPlacementInterface= list.objectArray[index];
     
 this->process(layerPlacementInterface);
     
@@ -124,16 +124,16 @@ this->process(layerPlacementInterface);
     LayerInterfaceFactory layerInterfaceFactory = LayerInterfaceFactory::getInstance();;
     
 
-    Hashtable<any, any> hashtable = layerPlacementInterface.getInstance();;
+    ABHashtable<Object*, Object*> hashtable = layerPlacementInterface.getInstance();;
     
 
-    Enumeration<any> enumeration = hashtable.keys();;
+    Enumeration<Object*> enumeration = hashtable.keys();;
     
 
     GPoint point;;
     
 
-    Hashtable<any, any> layerHashtable;;
+    ABHashtable<Object*, Object*> layerHashtable;;
     
 
     int32_t x= 0;;
@@ -150,9 +150,9 @@ this->process(layerPlacementInterface);
 
         while(this->enumerationUtil.hasMoreElements(enumeration))
         {
-point= this->enumerationUtil.nextElement(enumeration)! as GPoint;
+point= this->enumerationUtil.nextElement(enumeration);
     
-layerHashtable= hashtable.get(point) as Hashtable<any, any>;
+layerHashtable= hashtable.get(point);
     
 x= point.getX() +relativePoint.getX();
     

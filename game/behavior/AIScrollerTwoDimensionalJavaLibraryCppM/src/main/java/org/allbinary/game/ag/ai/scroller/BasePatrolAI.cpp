@@ -18,13 +18,10 @@
 
 
 
-            #include "../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../../../../java/lang/Integer.h"
+            #include "java/lang/Integer.h"
         
-#include <java/util/Hashtable.h>
-
-      
 #include <javax/microedition/lcdui/Canvas.h>
 
       
@@ -47,6 +44,9 @@
 
       
 #include <org/allbinary/logic/math/SmallIntegerSingletonFactory.h>
+
+      
+#include <org/allbinary/util/ABHashtable.h>
 
       
 
@@ -88,13 +88,14 @@ class BasePatrolAI: public BasicAI {
 
     protected: int32_t keyDirection = Canvas::RIGHT;
 
-public: BasePatrolAI(Hashtable<any, any> hashtable, AllBinaryLayer ownerLayerInterface, GameInput gameInput){
-            super(ownerLayerInterface, gameInput);
+public: BasePatrolAI(ABHashtable<Object*, Object*> hashtable, AllBinaryLayer ownerLayerInterface, GameInput gameInput) : BasicAI(ownerLayerInterface, gameInput){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this->maxDistance= hashtable.get(BasePatrolAI::MAX_DISTANCE) as Integer;
+this->maxDistance= hashtable.get(BasePatrolAI::MAX_DISTANCE);
     
 this->currentDistance= this->maxDistance.intValue();
     
@@ -111,7 +112,7 @@ this->changeDirectionIfReachedPacingAreaMax();
 
     private: void updateTotalDistance(){
 
-    VelocityInterfaceCompositeInterface velocityInterfaceCompositeInterface = this->getOwnerLayerInterface() as VelocityInterfaceCompositeInterface;;
+    VelocityInterfaceCompositeInterface velocityInterfaceCompositeInterface = this->getOwnerLayerInterface();;
     
 
     BasicVelocityProperties velocityProperties = velocityInterfaceCompositeInterface.getVelocityProperties();;

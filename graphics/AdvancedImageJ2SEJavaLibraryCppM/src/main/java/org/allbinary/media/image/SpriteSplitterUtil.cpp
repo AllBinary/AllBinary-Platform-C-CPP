@@ -20,11 +20,11 @@
 
             #include <vector>
         
-            #include "../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../../java/lang/Integer.h"
+            #include "java/lang/Integer.h"
         
 #include <java/awt/image/BufferedImage.h>
 
@@ -125,7 +125,7 @@ class SpriteSplitterUtil
                         for (
     int32_t index = 0;index < bufferedImageArray.size(); index++)
         {
-bufferedImage= bufferedImageArray[index]!;
+bufferedImage= bufferedImageArray[index];
     
 this->logUtil.putF(spriteType, this, this->commonStrings.RUN);
     
@@ -145,8 +145,7 @@ this->logUtil.putF(spriteType, this, this->commonStrings.RUN);
 
     int32_t rows = totalAnimations;;
     
-generatedBufferedImageArray= new Array(rows).fill(null).map(() => new Array(columns).fill(0))
-                                                            ;
+generatedBufferedImageArray= std::vector<std::vector<BufferedImage>>(rows, std::vector<BufferedImage>(columns));
     
 this->logUtil.putF("Processing Individual Cells columns: " +columns +" rows: " +rows, this, this->commonStrings.RUN);
     
@@ -184,20 +183,20 @@ y= cellHeight *index2;
         {
 x= cellWidth *index3;
     
-generatedBufferedImageArray[index2]![index3]= bufferedImage.getSubimage(x +widthReduction, y +heightReduction, cellWidth -(widthReduction *2), cellHeight -(heightReduction *2));
+generatedBufferedImageArray[index2][index3]= bufferedImage.getSubimage(x +widthReduction, y +heightReduction, cellWidth -(widthReduction *2), cellHeight -(heightReduction *2));
     
 
                         if(increaseWidth != 0 || increaseHeight != 0)
                         
                                     {
-                                    generatedBufferedImageArray[index2]![index3]= imageUtil.createBufferedImageAllowTranslate(generatedBufferedImageArray[index2]![index3]!, cellWidth +increaseWidth, cellHeight +increaseHeight, false, true);
+                                    generatedBufferedImageArray[index2][index3]= imageUtil.createBufferedImageAllowTranslate(generatedBufferedImageArray[index2][index3], cellWidth +increaseWidth, cellHeight +increaseHeight, false, true);
     
 
                                     }
                                 
 nameEnding= StringMaker().appendint(index2).append(this->commonSeps.UNDERSCORE).appendint(index3).toString();
     
-visitor.visit(generatedBufferedImageArray[index2]![index3]!, nameEnding, index);
+visitor.visit(generatedBufferedImageArray[index2][index3], nameEnding, index);
     
 }
 
@@ -227,7 +226,7 @@ imageUnifierProperties.setImageUnifierCell(imageUnifierCell);
 y= cellHeight *index2;
     
 
-    std::vector<BufferedImage> tempBufferedImageArray = new Array(columns);;
+    std::vector<BufferedImage> tempBufferedImageArray = std::vector<BufferedImage>(columns);;
     
 
 
@@ -236,7 +235,7 @@ y= cellHeight *index2;
                         for (
     int32_t index3 = 0;index3 < columns; index3++)
         {
-tempBufferedImageArray[index3]= generatedBufferedImageArray[index2]![index3]!;
+tempBufferedImageArray[index3]= generatedBufferedImageArray[index2][index3];
     
 nameEnding= StringMaker().appendint(index2).append(this->commonSeps.UNDERSCORE).appendint(1).append(this->_ROW).toString();
     
@@ -278,8 +277,7 @@ visitor.visit(generatedBufferedImage, nameEnding, index);
 
     int32_t rows = totalFrames2;;
     
-generatedBufferedImageArray= new Array(rows).fill(null).map(() => new Array(columns).fill(0))
-                                                            ;
+generatedBufferedImageArray= std::vector<std::vector<BufferedImage>>(rows, std::vector<BufferedImage>(columns));
     
 this->logUtil.putF("Processing Individual Cells for each Direction", this, this->commonStrings.RUN);
     
@@ -312,20 +310,20 @@ y= cellHeight *index2;
         {
 x= cellWidth *index3;
     
-generatedBufferedImageArray[index2]![index3]= bufferedImage.getSubimage(x +widthReduction, y +heightReduction, cellWidth -(widthReduction *2), cellHeight -(heightReduction *2));
+generatedBufferedImageArray[index2][index3]= bufferedImage.getSubimage(x +widthReduction, y +heightReduction, cellWidth -(widthReduction *2), cellHeight -(heightReduction *2));
     
 
                         if(increaseWidth != 0 || increaseHeight != 0)
                         
                                     {
-                                    generatedBufferedImageArray[index2]![index3]= ImageUtil::getInstance().createBufferedImageAllowTranslate(generatedBufferedImageArray[index2]![index3]!, cellWidth +increaseWidth, cellHeight +increaseHeight, false, true);
+                                    generatedBufferedImageArray[index2][index3]= ImageUtil::getInstance().createBufferedImageAllowTranslate(generatedBufferedImageArray[index2][index3], cellWidth +increaseWidth, cellHeight +increaseHeight, false, true);
     
 
                                     }
                                 
-nameEnding= StringMaker().append(this->commonStrings.DIRECTION_NAME[index2]!).append(this->commonSeps.UNDERSCORE).appendint(index3).toString();
+nameEnding= StringMaker().append(this->commonStrings.DIRECTION_NAME[index2]).append(this->commonSeps.UNDERSCORE).appendint(index3).toString();
     
-visitor.visit(generatedBufferedImageArray[index2]![index3]!, nameEnding, index);
+visitor.visit(generatedBufferedImageArray[index2][index3], nameEnding, index);
     
 }
 
@@ -355,7 +353,7 @@ this->logUtil.putF("Processing Rows from Cells for each Direction", this, this->
 y= cellHeight *index2;
     
 
-    std::vector<BufferedImage> tempBufferedImageArray = new Array(columns);;
+    std::vector<BufferedImage> tempBufferedImageArray = std::vector<BufferedImage>(columns);;
     
 
 
@@ -364,9 +362,9 @@ y= cellHeight *index2;
                         for (
     int32_t index3 = 0;index3 < columns; index3++)
         {
-tempBufferedImageArray[index3]= generatedBufferedImageArray[index2]![index3]!;
+tempBufferedImageArray[index3]= generatedBufferedImageArray[index2][index3];
     
-nameEnding= StringMaker().append(this->commonStrings.DIRECTION_NAME[index2]!).append(this->commonSeps.UNDERSCORE).appendint(1).append(this->_ROW).toString();
+nameEnding= StringMaker().append(this->commonStrings.DIRECTION_NAME[index2]).append(this->commonSeps.UNDERSCORE).appendint(1).append(this->_ROW).toString();
     
 }
 

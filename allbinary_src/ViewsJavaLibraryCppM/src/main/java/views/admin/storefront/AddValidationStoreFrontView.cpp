@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <javax/servlet/http/HttpServletRequest.h>
 
@@ -93,13 +93,14 @@ class AddValidationStoreFrontView: public HttpContextView, public ValidationComp
 
     protected: StoreFrontInterface newStoreFrontInterface;
 
-public: AddValidationStoreFrontView(TransformInfoInterface transformInfoInterface){
-            super(transformInfoInterface);
+public: AddValidationStoreFrontView(TransformInfoInterface transformInfoInterface) : HttpContextView(transformInfoInterface){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this->newStoreFrontInterface= StoreFront(this->getPageContext().getRequest() as HttpServletRequest) as StoreFrontInterface;
+this->newStoreFrontInterface= StoreFront(this->getPageContext().getRequest());
     
 
                         if(this->newStoreFrontInterface.getName() == 

@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/layer/AllBinaryLayer.h>
 
@@ -92,11 +92,11 @@ private: DropLayerProcessor(){
                         for (
     int32_t index = 0;index < size; index++)
         {
-layerInterface= list.objectArray[index]! as AllBinaryLayer;
+layerInterface= list.objectArray[index];
     
-dropLayerInterface= layerInterface as unknown as DropLayerInterface;
+dropLayerInterface= layerInterface as unknown;
     
-layerInterface= dropLayerInterface.getDroppedLayer() as unknown as AllBinaryLayer;
+layerInterface= dropLayerInterface.getDroppedLayer() as unknown;
     
 allBinaryLayerManager.append(layerInterface);
     

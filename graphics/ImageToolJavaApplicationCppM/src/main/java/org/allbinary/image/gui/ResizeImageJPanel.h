@@ -23,15 +23,15 @@
 
             #include <vector>
         
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../../java/lang/System.h"
+            #include "java/lang/System.h"
         
-            #include "../../../../java/lang/Integer.h"
+            #include "java/lang/Integer.h"
         
-            #include "../../../../java/lang/Float.h"
+            #include "java/lang/Float.h"
         
-            #include "../../../../java/lang/Thread.h"
+            #include "java/lang/Thread.h"
         
 #include <java/awt/image/BufferedImage.h>
 
@@ -133,7 +133,7 @@ public: ResizeImageJPanel(ImageProcessorInput imageProcessorInput);
 
     private: javax::swing::JTextField floatPercentJTextField;
 
-    private: javax::swing::JComboBox<string> jComboBox1;
+    private: javax::swing::JComboBox<std::string> jComboBox1;
 
     private: javax::swing::JLabel jLabel1;
 

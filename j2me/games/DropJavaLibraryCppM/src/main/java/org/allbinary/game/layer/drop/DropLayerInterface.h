@@ -21,7 +21,7 @@
         #ifndef ORG_ALLBINARY_GAME_LAYER_DROP_DROPLAYERINTERFACE_H
         #define ORG_ALLBINARY_GAME_LAYER_DROP_DROPLAYERINTERFACE_H
 
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/game/layer/pickup/PickedUpLayerInterface.h>
 

@@ -18,9 +18,9 @@
 
 
 
-            #include "../../../java/lang/System.h"
+            #include "java/lang/System.h"
         
-            #include "../../../java/lang/Integer.h"
+            #include "java/lang/Integer.h"
         
 #include <javax/microedition/lcdui/Command.h>
 
@@ -64,7 +64,7 @@ class NotificationBuilderAPI23: public NotificationBuilder {
 
     public: Parcelable build(Context context, Command command, std::string message, Integer integer, PendingIntent pendingIntent){
 
-    Notification notification = Builder(context).setSmallIcon(integer.intValue()).setTicker(message).setWhen(Date.now()).setContentTitle(command.getLabel()).setContentText(message).setContentIntent(pendingIntent).build();;
+    Notification notification = Builder(context).setSmallIcon(integer.intValue()).setTicker(message).setWhen(System.currentTimeMillis()).setContentTitle(command.getLabel()).setContentText(message).setContentIntent(pendingIntent).build();;
     
 
 

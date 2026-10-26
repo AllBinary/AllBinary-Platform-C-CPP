@@ -6,7 +6,7 @@
 
             #include <vector>
         
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <javax/microedition/lcdui/Font.h>
 
@@ -163,8 +163,9 @@ this->multipleScrollSelectionForm= multipleScrollSelectionForm;
 
     private: int32_t fontHeight = 0;
 
-public: MultipleScrollSelectionHorizontalForm(std::string title, std::vector<ABCustomItem> items, ItemPaintableFactory formPaintableFactory, int32_t border, BasicColor backgroundBasicColor, BasicColor foregroundBasicColor){
-            super(title, items, formPaintableFactory, border, 3, backgroundBasicColor, foregroundBasicColor);
+public: MultipleScrollSelectionHorizontalForm(std::string title, std::vector<ABCustomItem> items, ItemPaintableFactory formPaintableFactory, int32_t border, BasicColor backgroundBasicColor, BasicColor foregroundBasicColor) : ScrollSelectionForm(title, items, formPaintableFactory, border, 3, backgroundBasicColor, foregroundBasicColor){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.

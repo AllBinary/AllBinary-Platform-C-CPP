@@ -55,8 +55,9 @@ class NullLayer: public Layer {
 }
 
 
-private: NullLayer(){
-            super(0, 0);
+private: NullLayer() : Layer(0, 0){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.

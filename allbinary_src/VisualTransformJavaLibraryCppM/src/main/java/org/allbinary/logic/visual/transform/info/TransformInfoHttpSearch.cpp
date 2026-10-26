@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/globals/FREEBLISKET_PATH_GLOBALS.h>
 
@@ -63,8 +63,9 @@
 
 class TransformInfoHttpSearch: public TransformInfoHttp {
 
-public: TransformInfoHttpSearch(SearchRequest searchRequest){
-            super(searchRequest.getPropertiesHashMap(), searchRequest.getPageContext());
+public: TransformInfoHttpSearch(SearchRequest searchRequest) : TransformInfoHttp(searchRequest.getPropertiesHashMap(), searchRequest.getPageContext()){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.

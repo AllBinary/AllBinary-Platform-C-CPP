@@ -20,16 +20,17 @@
 
             #include <vector>
         
-            #include "../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../java/lang/Exception.h"
-        
-            #include "../../../../java/lang/System.h"
+            #include "java/lang/Exception.h"
         
 #include <java/io/InputStream.h>
 
       
 #include <javax/microedition/media/Player.h>
+
+      
+#include <org/allbinary/TsUtil.h>
 
       
 #include <org/allbinary/graphics/canvas/transition/progress/ProgressCanvasFactory.h>
@@ -121,7 +122,7 @@ Sounds(soundsFactoryInterface).stopAll();
     
 Sounds(soundsFactoryInterface).closeAll();
     
-System.gc();
+TsUtil::getInstance().gc();
     
 }
 
@@ -139,7 +140,7 @@ logUtil.putF(commonString.START, AllBinaryMediaManager::THIS, "creatPlayer(Input
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return NoPlayer::NO_PLAYER as Player;
+                        return NoPlayer::NO_PLAYER;
     
 }
 
@@ -157,7 +158,7 @@ logUtil.putF(commonString.START, AllBinaryMediaManager::THIS, "creatPlayer(locat
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return NoPlayer::NO_PLAYER as Player;
+                        return NoPlayer::NO_PLAYER;
     
 }
 

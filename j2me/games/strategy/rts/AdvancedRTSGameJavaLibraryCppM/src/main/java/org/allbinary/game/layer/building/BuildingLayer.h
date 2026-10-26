@@ -23,11 +23,8 @@
 
             #include <vector>
         
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-#include <java/util/Hashtable.h>
-
-      
 #include <javax/microedition/lcdui/Graphics.h>
 
       
@@ -163,6 +160,9 @@
 #include <org/allbinary/game/multiplayer/layer/RemoteInfo.h>
 
       
+#include <org/allbinary/util/ABHashtable.h>
+
+      
 
 
 
@@ -209,7 +209,7 @@ class BuildingLayer: public AdvancedRTSGameLayer, public RotationAnimationInterf
 
     private: Paintable healthBar;
 
-    private: Hashtable<any, any> pathsHashtable;
+    private: ABHashtable<Object*, Object*> pathsHashtable;
 
 public: BuildingLayer(RemoteInfo remoteInfo, BuildingPropertiesFactory buildingPropertiesFactory, AdvancedRTSProperties advancedRTSProperties, std::vector<Group> groupInterface, std::string rootName, std::string name, Health healthInterface, RTSFormInput rtsFormInput, AnimationInterfaceFactoryInterface animationInterfaceFactoryInterface, AnimationInterfaceFactoryInterface emptyAnimationInterfaceFactoryInterface, AnimationInterfaceFactoryInterface baseAnimationInterfaceFactoryInterface, AnimationInterfaceFactoryInterface buildAnimationInterfaceFactoryInterface, AnimationInterfaceFactoryInterface verticleBuildAnimationInterfaceFactoryInterface, ProceduralAnimationInterfaceFactoryInterface proceduralAnimationInterfaceFactoryInterface, Rectangle rectangle, int32_t x, int32_t y);
 

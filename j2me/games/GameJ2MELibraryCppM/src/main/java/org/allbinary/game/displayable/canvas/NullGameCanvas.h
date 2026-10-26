@@ -21,9 +21,9 @@
         #ifndef ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_NULLGAMECANVAS_H
         #define ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_NULLGAMECANVAS_H
 
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../../../java/lang/RuntimeException.h"
+            #include "java/lang/RuntimeException.h"
         
 #include <javax/microedition/lcdui/CommandListener.h>
 

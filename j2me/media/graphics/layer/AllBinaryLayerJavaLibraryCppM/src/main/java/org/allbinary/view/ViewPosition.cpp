@@ -18,16 +18,7 @@
 
 
 
-#include <jsinterop/annotations/JsType.h>
-
-      
 #include <org/allbinary/layer/AllBinaryLayer.h>
-
-      
-#include <jsinterop/annotations/JsMethod.h>
-
-      
-#include <jsinterop/annotations/JsConstructor.h>
 
       
 
@@ -64,8 +55,9 @@ class ViewPosition: public ViewPositionBase {
 
     private: AllBinaryLayer allbinaryLayer = AllBinaryLayer::NULL_ALLBINARY_LAYER;
 
-protected: ViewPosition(int32_t x, int32_t y, int32_t z){
-            super(x, y, z);
+protected: ViewPosition(int32_t x, int32_t y, int32_t z) : ViewPositionBase(x, y, z){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -134,7 +126,7 @@ protected: ViewPosition(int32_t x, int32_t y, int32_t z){
 
 
     public: void setAllbinaryLayer(Object* allbinaryLayer){
-this->allbinaryLayer= allbinaryLayer as unknown as AllBinaryLayer;
+this->allbinaryLayer= *dynamic_cast<AllBinaryLayer*>(allbinaryLayer as unknown);
     
 }
 

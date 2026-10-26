@@ -13,7 +13,7 @@
         #ifndef ORG_ALLBINARY_LOGIC_COMMUNICATION_SQL_ABDATABASEMANAGEMENT_H
         #define ORG_ALLBINARY_LOGIC_COMMUNICATION_SQL_ABDATABASEMANAGEMENT_H
 
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/net/InetAddress.h>
 

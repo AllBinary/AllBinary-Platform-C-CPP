@@ -21,13 +21,10 @@
         #ifndef ORG_ALLBINARY_GAME_LAYER_BUILDING_BUILDINGPROPERTIESFACTORY_H
         #define ORG_ALLBINARY_GAME_LAYER_BUILDING_BUILDINGPROPERTIESFACTORY_H
 
-            #include "../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-#include <java/util/Hashtable.h>
-
-      
 #include <org/allbinary/game/combat/damage/DamageFloaters.h>
 
       
@@ -62,6 +59,9 @@
 
       
 #include <org/allbinary/logic/StdUtil.h>
+
+      
+#include <org/allbinary/util/ABHashtable.h>
 
       
 
@@ -102,7 +102,7 @@ class BuildingPropertiesFactory
             
     public: Paintable getHealthBar(BuildingLayer buildingLayer);
 
-    public: Hashtable<any, any> getHashtable();
+    public: ABHashtable<Object*, Object*> getHashtable();
 
     public: TrackingEvent getTrackingEvent(BuildingLayer buildingLayer);
 

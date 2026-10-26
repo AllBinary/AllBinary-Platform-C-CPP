@@ -20,7 +20,7 @@
 
             #include <hilog/log.h>
         
-            #include "../../../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
 #include <org/allbinary/logic/system/hardware/components/interfaces/HardwareComponentInterface.h>
 

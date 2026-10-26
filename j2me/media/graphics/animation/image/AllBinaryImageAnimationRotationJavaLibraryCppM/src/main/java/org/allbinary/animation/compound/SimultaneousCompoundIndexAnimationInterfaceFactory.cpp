@@ -20,9 +20,9 @@
 
             #include <vector>
         
-            #include "../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/animation/Animation.h>
 
@@ -85,7 +85,7 @@ this->animationBehaviorFactory= animationBehaviorFactory;
     int32_t size = this->basicAnimationInterfaceFactoryInterfaceArray.size();;
     
 
-    std::vector<IndexedAnimation> animationInterfaceArray = new Array(size);;
+    std::vector<IndexedAnimation> animationInterfaceArray = std::vector<IndexedAnimation>(size);;
     
 
 
@@ -94,7 +94,7 @@ this->animationBehaviorFactory= animationBehaviorFactory;
                         for (
     int32_t index = 0;index < size; index++)
         {
-animationInterfaceArray[index]= this->basicAnimationInterfaceFactoryInterfaceArray[index]!.getInstance(instanceId) as IndexedAnimation;
+animationInterfaceArray[index]= this->basicAnimationInterfaceFactoryInterfaceArray[index].getInstance(instanceId);
     
 }
 

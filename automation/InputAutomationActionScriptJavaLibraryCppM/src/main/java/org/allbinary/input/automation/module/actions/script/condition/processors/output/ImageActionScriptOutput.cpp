@@ -18,9 +18,9 @@
 
 
 
-            #include "../../../../../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../../../../../../../../java/lang/Long.h"
+            #include "java/lang/Long.h"
         
 #include <java/util/HashMap.h>
 
@@ -91,8 +91,9 @@ class ImageActionScriptOutput: public BasicProfileActionScriptOutput, public Ima
 
     private: ImageActionScriptOutputJPanel actionScriptOutputJPanel;
 
-public: ImageActionScriptOutput(Node node){
-            super(NAME, node);
+public: ImageActionScriptOutput(Node node) : BasicProfileActionScriptOutput(NAME, node){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -184,8 +185,9 @@ this->actionScriptOutputJPanel= ImageActionScriptOutputJPanel(this);
 }
 
 
-public: ImageActionScriptOutput(){
-            super(NAME);
+public: ImageActionScriptOutput() : BasicProfileActionScriptOutput(NAME){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -209,9 +211,9 @@ this->actionScriptOutputJPanel= ImageActionScriptOutputJPanel(this);
 }
 
 
-    public: HashMap<any, any> toHashMap(){
+    public: HashMap<Object*, Object*> toHashMap(){
 
-    HashMap<any, any> hashMap = StdUtil::getInstance().createHashMap();;
+    HashMap<Object*, Object*> hashMap = StdUtil::getInstance().createHashMap();;
     
 hashMap.put(ImageActionScriptOutputData::DISPLAY, Boolean::toString(this->isDisplay()));
     

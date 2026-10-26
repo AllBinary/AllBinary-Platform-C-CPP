@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../../../../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
 
@@ -82,14 +82,15 @@ class InsertCssValidationView: public CssCustomizerView, public ValidationCompon
 
     protected: const LogUtil logUtil = LogUtil::getInstance();
 
-public: InsertCssValidationView(TransformInfoInterface transformInfoInterface){
-            super(transformInfoInterface);
+public: InsertCssValidationView(TransformInfoInterface transformInfoInterface) : CssCustomizerView(transformInfoInterface){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
                     
 
-    HashMap<any, any> requestHashMap = NameSpaceRequestParams(this->getPageContext()).toHashMap();;
+    HashMap<Object*, Object*> requestHashMap = NameSpaceRequestParams(this->getPageContext()).toHashMap();;
     
 this->styleValidationInterface= CssStyleValidation(requestHashMap);
     
@@ -127,7 +128,7 @@ this->styleValidationInterface= CssStyleValidation(requestHashMap);
                         if(isValid == Boolean::TRUE)
                         
                                     {
-                                    CustomizerUtil::getInstance().insert(this->getTransformInfoInterface(), this->styleValidationInterface as DomNodeInterface);
+                                    CustomizerUtil::getInstance().insert(this->getTransformInfoInterface(), this->styleValidationInterface);
     
 
                                     }

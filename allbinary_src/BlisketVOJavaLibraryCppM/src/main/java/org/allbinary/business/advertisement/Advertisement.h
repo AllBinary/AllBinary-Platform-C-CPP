@@ -21,7 +21,7 @@
         #ifndef ORG_ALLBINARY_BUSINESS_ADVERTISEMENT_ADVERTISEMENT_H
         #define ORG_ALLBINARY_BUSINESS_ADVERTISEMENT_ADVERTISEMENT_H
 
-            #include "../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
 #include <org/allbinary/business/advertisement/image/AdvertisementImageInterface.h>
 

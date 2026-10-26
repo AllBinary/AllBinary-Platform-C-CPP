@@ -18,13 +18,7 @@
 
 
 
-#include <jsinterop/annotations/JsType.h>
-
-      
 #include <org/allbinary/logic/util/event/AllBinaryEventObject.h>
-
-      
-#include <jsinterop/annotations/JsConstructor.h>
 
       
 
@@ -48,8 +42,9 @@
         
 class ViewPositionEvent: public AllBinaryEventObject {
 
-public: ViewPositionEvent(Object* anyType){
-            super(anyType);
+public: ViewPositionEvent(Object* anyType) : AllBinaryEventObject(anyType){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.

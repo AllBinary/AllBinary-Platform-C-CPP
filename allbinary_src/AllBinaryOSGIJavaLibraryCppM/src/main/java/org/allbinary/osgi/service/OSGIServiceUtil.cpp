@@ -20,9 +20,9 @@
 
             #include <vector>
         
-            #include "../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/util/BasicArrayList.h>
 
@@ -120,7 +120,7 @@ this->logUtil.putF("Service References: " +size, this, "getServicesObjectVector"
                         
                                     {
                                     
-    OSGIServiceInterface osgiServiceInterface = bundleContext.getService(serviceReference) as OSGIServiceInterface;;
+    OSGIServiceInterface osgiServiceInterface = bundleContext.getService(serviceReference);;
     
 
                         if(osgiServiceInterface == 

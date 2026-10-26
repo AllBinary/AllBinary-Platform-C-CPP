@@ -20,19 +20,10 @@
 
             #include <vector>
         
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../../../java/lang/RuntimeException.h"
+            #include "java/lang/RuntimeException.h"
         
-#include <jsinterop/annotations/JsType.h>
-
-      
-#include <org/allbinary/util/BasicArrayList.h>
-
-      
-#include <org/allbinary/util/BasicArrayListD.h>
-
-      
 #include <javax/microedition/lcdui/CommandListener.h>
 
       
@@ -186,15 +177,6 @@
 #include <org/allbinary/util/BasicArrayListD.h>
 
       
-#include <jsinterop/annotations/JsMethod.h>
-
-      
-#include <jsinterop/annotations/JsConstructor.h>
-
-      
-#include <jsinterop/annotations/JsProperty.h>
-
-      
 
 
 
@@ -260,8 +242,9 @@ class GameCommandCanvas: public MyCanvas, public MenuListener, public DisplayCha
 
     protected: int32_t fontHeight = 0;
 
-public: GameCommandCanvas(CommandListener cmdListener, std::string name, BasicColor backgroundBasicColor, BasicColor foregroundBasicColor){
-            super(name, CanvasStrings::getInstance().EMPTY_CHILD_NAME_LIST);
+public: GameCommandCanvas(CommandListener cmdListener, std::string name, BasicColor backgroundBasicColor, BasicColor foregroundBasicColor) : MyCanvas(name, CanvasStrings::getInstance().EMPTY_CHILD_NAME_LIST){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.

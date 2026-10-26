@@ -18,24 +18,12 @@
 
 
 
-            #include "../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../java/lang/System.h"
+            #include "java/lang/System.h"
         
-            #include "../../../java/lang/Long.h"
+            #include "java/lang/Long.h"
         
-#include <jsinterop/annotations/JsType.h>
-
-      
-#include <jsinterop/annotations/JsMethod.h>
-
-      
-#include <jsinterop/annotations/JsConstructor.h>
-
-      
-#include <jsinterop/annotations/JsProperty.h>
-
-      
 
 
 
@@ -74,7 +62,7 @@ this->lastStartTime= 0;
 
 
     public: int64_t setStartTime(){
-this->startTime= Date.now();
+this->startTime= System.currentTimeMillis();
     
 
 
@@ -96,7 +84,7 @@ this->startTime= Date.now();
                                     }
                                 
                         else {
-                            this->timeDelta= Date.now() -this->lastStartTime;
+                            this->timeDelta= System.currentTimeMillis() -this->lastStartTime;
     
 
                         }

@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
 
@@ -66,8 +66,9 @@ class TitleNotRequiredValidation: public TitleView, public ValidationInterface {
 
     protected: const LogUtil logUtil = LogUtil::getInstance();
 
-public: TitleNotRequiredValidation(){
-            super();
+public: TitleNotRequiredValidation() : TitleView(){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -75,8 +76,9 @@ public: TitleNotRequiredValidation(){
 }
 
 
-public: TitleNotRequiredValidation(Node node){
-            super(node);
+public: TitleNotRequiredValidation(Node node) : TitleView(node){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -84,8 +86,9 @@ public: TitleNotRequiredValidation(Node node){
 }
 
 
-public: TitleNotRequiredValidation(HashMap<any, any> hashMap){
-            super(hashMap);
+public: TitleNotRequiredValidation(HashMap<Object*, Object*> hashMap) : TitleView(hashMap){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.

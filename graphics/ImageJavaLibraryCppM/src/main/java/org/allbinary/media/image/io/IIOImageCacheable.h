@@ -21,7 +21,7 @@
         #ifndef ORG_ALLBINARY_MEDIA_IMAGE_IO_IIOIMAGECACHEABLE_H
         #define ORG_ALLBINARY_MEDIA_IMAGE_IO_IIOIMAGECACHEABLE_H
 
-            #include "../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
 #include <java/awt/image/BufferedImage.h>
 

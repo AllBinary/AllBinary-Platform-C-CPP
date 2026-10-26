@@ -21,7 +21,7 @@
         #ifndef ORG_ALLBINARY_THREAD_SYNCHOBJECT_H
         #define ORG_ALLBINARY_THREAD_SYNCHOBJECT_H
 
-            #include "../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
 
 

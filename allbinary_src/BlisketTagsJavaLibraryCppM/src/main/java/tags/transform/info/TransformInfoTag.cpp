@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <javax/servlet/jsp/JspTagException.h>
 
@@ -92,8 +92,9 @@ class TransformInfoTag: public ModifyTag {
 
     private: std::string type;
 
-public: TransformInfoTag(){
-            super(TransformInfoRequestHelperFactory());
+public: TransformInfoTag() : ModifyTag(TransformInfoRequestHelperFactory()){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -101,8 +102,9 @@ public: TransformInfoTag(){
 }
 
 
-public: TransformInfoTag(TagHelperFactoryInterface tagHelperFactoryInterface){
-            super(tagHelperFactoryInterface);
+public: TransformInfoTag(TagHelperFactoryInterface tagHelperFactoryInterface) : ModifyTag(tagHelperFactoryInterface){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.

@@ -18,9 +18,9 @@
 
 
 
-            #include "../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../java/lang/Throwable.h"
+            #include "java/lang/Throwable.h"
         
 #include <org/allbinary/string/CommonSeps.h>
 
@@ -104,7 +104,7 @@ className= StringMaker().append(className).append(CommonSeps::getInstance().FORW
 
     std::string message = LogFormatUtil::getInstance().get(className, functionName, specialMessage, exception);;
     
-PlayN::log().error(PreLogUtil::LOG_SUCCESS +message, exception as Throwable);
+PlayN::log().error(PreLogUtil::LOG_SUCCESS +message, *dynamic_cast<Throwable*>(exception));
     
 }
 
@@ -122,7 +122,7 @@ PlayN::log().debug(PreLogUtil::LOG_SUCCESS +message);
 
     std::string message = LogFormatUtil::getInstance().get(className, functionName, specialMessage, exception);;
     
-PlayN::log().error(PreLogUtil::LOG_SUCCESS +message, exception as Throwable);
+PlayN::log().error(PreLogUtil::LOG_SUCCESS +message, *dynamic_cast<Throwable*>(exception));
     
 }
 

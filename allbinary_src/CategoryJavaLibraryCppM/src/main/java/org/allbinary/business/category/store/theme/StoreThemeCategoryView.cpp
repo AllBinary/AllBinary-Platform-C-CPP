@@ -20,7 +20,7 @@
 
             #include <vector>
         
-            #include "../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/util/Arrays.h>
 
@@ -63,8 +63,9 @@
 
 class StoreThemeCategoryView: public CategoryView, public DomNodeInterface {
 
-public: StoreThemeCategoryView(StoreThemeCategoryInterface categoryInterface){
-            super(categoryInterface as StoreThemeCategoryInterface);
+public: StoreThemeCategoryView(StoreThemeCategoryInterface categoryInterface) : CategoryView(categoryInterface){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -79,7 +80,7 @@ public: StoreThemeCategoryView(StoreThemeCategoryInterface categoryInterface){
     Node node = super.toXmlNode(document);;
     
 
-    StoreThemeCategoryInterface storeThemeCategoryInterface = this->getCategoryInterface() as StoreThemeCategoryInterface;;
+    StoreThemeCategoryInterface storeThemeCategoryInterface = this->getCategoryInterface();;
     
 
     std::vector<ThemeValidation> themeValidationArray = storeThemeCategoryInterface.getThemes().toArray() as ThemeValidation[];;
@@ -97,7 +98,7 @@ Arrays::sort(themeValidationArray, ThemeComparator());
     int32_t index = 0;index < size; index++)
         {
 
-    ThemeValidation themeValidation = themeValidationArray[index]! as ThemeValidation;;
+    ThemeValidation themeValidation = themeValidationArray[index];;
     
 node.appendChild(themeValidation.toXmlNode(document));
     

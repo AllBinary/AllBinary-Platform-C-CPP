@@ -20,11 +20,11 @@
 
             #include <vector>
         
-            #include "../../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../../../../java/lang/Long.h"
+            #include "java/lang/Long.h"
         
 #include <java/util/Calendar.h>
 
@@ -257,11 +257,11 @@ this->setContextConfigurationInterface(ContextConfigurationInterfaceFactory::get
 }
 
 
-public: StoreFront(HashMap<any, any> hashMap){
+public: StoreFront(HashMap<Object*, Object*> hashMap){
 this->getFormData(hashMap);
     
 
-    std::string domDocumentString = hashMap.get(StoreFrontData::getInstance().CONFIGURATION) as string;;
+    std::string domDocumentString = hashMap.get(StoreFrontData::getInstance().CONFIGURATION);;
     
 
                         if(false)
@@ -280,7 +280,7 @@ this->setContextConfigurationInterface(ContextConfigurationInterfaceFactory::get
 
     private: bool isColumn(std::string columnName){
 
-                        if(columnName.compareTo(StoreFrontData::getInstance().NAME) == 0 || columnName.compareTo(UserData::MAINEMAIL) == 0)
+                        if(columnName.compare(StoreFrontData::getInstance().NAME) == 0 || columnName.compare(UserData::MAINEMAIL) == 0)
                         
                                     {
                                     
@@ -307,7 +307,7 @@ this->setContextConfigurationInterface(ContextConfigurationInterfaceFactory::get
 
                 //@Throws(Exception.constructor)
             
-    private: AbPath createPath(std::string key, HashMap<any, any> hashMap){
+    private: AbPath createPath(std::string key, HashMap<Object*, Object*> hashMap){
 
 
 
@@ -319,7 +319,7 @@ this->setContextConfigurationInterface(ContextConfigurationInterfaceFactory::get
 
                 //@Throws(Exception.constructor)
             
-    private: AbPath createPath(std::string append, std::string key, HashMap<any, any> hashMap){
+    private: AbPath createPath(std::string append, std::string key, HashMap<Object*, Object*> hashMap){
 
 
 
@@ -329,7 +329,7 @@ this->setContextConfigurationInterface(ContextConfigurationInterfaceFactory::get
 }
 
 
-    private: std::string get(std::string key, HashMap<any, any> hashMap){
+    private: std::string get(std::string key, HashMap<Object*, Object*> hashMap){
 
 
 
@@ -339,9 +339,9 @@ this->setContextConfigurationInterface(ContextConfigurationInterfaceFactory::get
 }
 
 
-    private: std::string create(std::string append, std::string key, HashMap<any, any> hashMap){
+    private: std::string create(std::string append, std::string key, HashMap<Object*, Object*> hashMap){
 
-    std::string path = hashMap.get(key) as string;;
+    std::string path = hashMap.get(key);;
     
 
                         if(StringValidationUtil::getInstance().isEmpty(path))
@@ -365,7 +365,7 @@ this->setContextConfigurationInterface(ContextConfigurationInterfaceFactory::get
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return hashMap.get(path) as string +append;
+                        return hashMap.get(path) +append;
     
 
                                     }
@@ -388,27 +388,27 @@ this->setContextConfigurationInterface(ContextConfigurationInterfaceFactory::get
 
                 //@Throws(Exception.constructor)
             
-    private: void getFormData(HashMap<any, any> storeHashMap){
+    private: void getFormData(HashMap<Object*, Object*> storeHashMap){
 
     StoreFrontData storeFrontData = StoreFrontData::getInstance();;
     
-this->name= storeHashMap.get(storeFrontData.NAME) as string;
+this->name= storeHashMap.get(storeFrontData.NAME);
     
-this->basketName= storeHashMap.get(storeFrontData.NAME) as string;
+this->basketName= storeHashMap.get(storeFrontData.NAME);
     
-this->homeHostName= storeHashMap.get(storeFrontData.HOMEHOSTNAME) as string;
+this->homeHostName= storeHashMap.get(storeFrontData.HOMEHOSTNAME);
     
 this->homeHostNamePath= this->createPath(storeFrontData.HOMEHOSTNAMEPATH, storeHashMap);
     
-this->hostName= storeHashMap.get(storeFrontData.HOSTNAME) as string;
+this->hostName= storeHashMap.get(storeFrontData.HOSTNAME);
     
 this->hostNamePath= this->createPath(storeFrontData.HOSTNAMEPATH, storeHashMap);
     
-this->testHomeHostName= storeHashMap.get(storeFrontData.TESTHOMEHOSTNAME) as string;
+this->testHomeHostName= storeHashMap.get(storeFrontData.TESTHOMEHOSTNAME);
     
 this->testHomeHostNamePath= this->createPath(storeFrontData.TESTHOMEHOSTNAMEPATH, storeHashMap);
     
-this->testHostName= storeHashMap.get(storeFrontData.TESTHOSTNAME) as string;
+this->testHostName= storeHashMap.get(storeFrontData.TESTHOSTNAME);
     
 this->testHostNamePath= this->createPath(storeFrontData.TESTHOSTNAMEPATH, storeHashMap);
     
@@ -418,33 +418,33 @@ this->staticPath= this->createPath(" Products" +AbPathData::getInstance().SEPARA
     
 this->categoryPath= this->createPath(StoreFront::RESOURCES, storeFrontData.CATEGORYPATH, storeHashMap);
     
-this->inventoryControl= storeHashMap.get(storeFrontData.INVENTORYCONTROL) as string;
+this->inventoryControl= storeHashMap.get(storeFrontData.INVENTORYCONTROL);
     
-this->subStores= storeHashMap.get(storeFrontData.SUBSTORES) as string;
+this->subStores= storeHashMap.get(storeFrontData.SUBSTORES);
     
-this->tagLocation= storeHashMap.get(storeFrontData.TAGLOCATION) as string;
+this->tagLocation= storeHashMap.get(storeFrontData.TAGLOCATION);
     
-this->packageLocation= storeHashMap.get(storeFrontData.PACKAGELOCATION) as string;
+this->packageLocation= storeHashMap.get(storeFrontData.PACKAGELOCATION);
     
-this->ftp= storeHashMap.get(storeFrontData.FTP) as string;
+this->ftp= storeHashMap.get(storeFrontData.FTP);
     
 this->ftpPath= this->createPath(storeFrontData.FTPPATH, storeHashMap);
     
-this->ftpUserName= storeHashMap.get(storeFrontData.FTPUSERNAME) as string;
+this->ftpUserName= storeHashMap.get(storeFrontData.FTPUSERNAME);
     
-this->ftpPassword= storeHashMap.get(storeFrontData.FTPPASSWORD) as string;
+this->ftpPassword= storeHashMap.get(storeFrontData.FTPPASSWORD);
     
-this->testFtp= storeHashMap.get(storeFrontData.TESTFTP) as string;
+this->testFtp= storeHashMap.get(storeFrontData.TESTFTP);
     
 this->testFtpPath= this->createPath(storeFrontData.TESTFTPPATH, storeHashMap);
     
-this->testFtpUserName= storeHashMap.get(storeFrontData.TESTFTPUSERNAME) as string;
+this->testFtpUserName= storeHashMap.get(storeFrontData.TESTFTPUSERNAME);
     
-this->testFtpPassword= storeHashMap.get(storeFrontData.TESTFTPPASSWORD) as string;
+this->testFtpPassword= storeHashMap.get(storeFrontData.TESTFTPPASSWORD);
     
-this->timeCreated= storeHashMap.get(EntryData::getInstance().TIMECREATED) as string;
+this->timeCreated= storeHashMap.get(EntryData::getInstance().TIMECREATED);
     
-this->lastModified= storeHashMap.get(EntryData::getInstance().LASTMODIFIED) as string;
+this->lastModified= storeHashMap.get(EntryData::getInstance().LASTMODIFIED);
     
 }
 
@@ -471,7 +471,7 @@ this->lastModified= storeHashMap.get(EntryData::getInstance().LASTMODIFIED) as s
     std::string storeNameEscaped = StringEscapeUtils::escapeHtml3(this->name);;
     
 
-                        if(this->name.compareTo(storeNameEscaped) != 0)
+                        if(this->name.compare(storeNameEscaped) != 0)
                         
                                     {
                                     isEscapedCharactersContained= true;
@@ -499,7 +499,7 @@ this->lastModified= storeHashMap.get(EntryData::getInstance().LASTMODIFIED) as s
                         
                                     {
                                     
-    HashMap<any, any> hashMap = SpecialCharacterUtil::getHashMap();;
+    HashMap<Object*, Object*> hashMap = SpecialCharacterUtil::getHashMap();;
     
 hashMap.put(
                                                 {
@@ -2046,12 +2046,12 @@ dataVector.add(time);
 
                 //@Throws(Exception.constructor)
             
-    public: HashMap<any, any> toHashMap(){
+    public: HashMap<Object*, Object*> toHashMap(){
 
     StoreFrontData storeFrontData = StoreFrontData::getInstance();;
     
 
-    HashMap<any, any> dataHashMap = StdUtil::getInstance().createHashMap();;
+    HashMap<Object*, Object*> dataHashMap = StdUtil::getInstance().createHashMap();;
     
 dataHashMap.put(storeFrontData.NAME, this->name);
     

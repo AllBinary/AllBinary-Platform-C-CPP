@@ -50,8 +50,9 @@ class DirectoryOrIncludeFileExtensionBooleanFileVisitor: public IncludeFileExten
 
     private: std::string includesString;
 
-public: DirectoryOrIncludeFileExtensionBooleanFileVisitor(BasicArrayList filterStringBasicArrayList){
-            super(filterStringBasicArrayList);
+public: DirectoryOrIncludeFileExtensionBooleanFileVisitor(BasicArrayList filterStringBasicArrayList) : IncludeFileExtensionsBooleanFileVisitor(filterStringBasicArrayList){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -63,8 +64,9 @@ this->includesString=
 }
 
 
-public: DirectoryOrIncludeFileExtensionBooleanFileVisitor(BasicArrayList filterStringBasicArrayList, std::string includesString){
-            super(filterStringBasicArrayList);
+public: DirectoryOrIncludeFileExtensionBooleanFileVisitor(BasicArrayList filterStringBasicArrayList, std::string includesString) : IncludeFileExtensionsBooleanFileVisitor(filterStringBasicArrayList){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.

@@ -21,9 +21,9 @@
         #ifndef ORG_ALLBINARY_LOGIC_VISUAL_DHTML_STYLE_STYLESVALIDATIONFACTORY_H
         #define ORG_ALLBINARY_LOGIC_VISUAL_DHTML_STYLE_STYLESVALIDATIONFACTORY_H
 
-            #include "../../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
 
@@ -37,7 +37,7 @@
 #include <org/allbinary/data/tree/dom/DomSearchHelper.h>
 
       
-#include <org/allbinary/data/tree/dom/document/DomDocumentHelper.h>
+#include <org/allbinary/data/tree/dom/document/XmlDocumentHelper.h>
 
       
 #include <org/allbinary/logic/communication/http/request/NameSpaceRequestParamData.h>
@@ -95,7 +95,7 @@ class StylesValidationFactory
 
                 //@Throws(Exception.constructor)
             
-    public: static BasicArrayList getInstance(HashMap<any, any> hashMap);
+    public: static BasicArrayList getInstance(HashMap<Object*, Object*> hashMap);
 
     protected: const LogUtil logUtil = LogUtil::getInstance();
 

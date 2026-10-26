@@ -18,13 +18,10 @@
 
 
 
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../../../java/lang/Integer.h"
+            #include "java/lang/Integer.h"
         
-#include <jsinterop/annotations/JsType.h>
-
-      
 #include <javax/microedition/lcdui/Canvas.h>
 
       
@@ -68,15 +65,6 @@
 
       
 #include <org/allbinary/logic/string/StringMaker.h>
-
-      
-#include <jsinterop/annotations/JsMethod.h>
-
-      
-#include <jsinterop/annotations/JsConstructor.h>
-
-      
-#include <jsinterop/annotations/JsProperty.h>
 
       
 
@@ -188,7 +176,7 @@ this->removeGameKeyEvent(canvas, keyCode, deviceId, false);
                         
                                     {
                                     
-    GameKeyEventSourceInterface gameKeyEventSourceInterface = canvas as unknown as GameKeyEventSourceInterface;;
+    GameKeyEventSourceInterface gameKeyEventSourceInterface = canvas as unknown;;
     
 
     GameKeyEvent gameKeyEvent = this->gameKeyEventFactory.getInstanceForInput(gameKeyEventSourceInterface, gameKey);;

@@ -21,7 +21,7 @@
         #ifndef TAGS_STOREVALIDATIONTRANSFORMTAG_H
         #define TAGS_STOREVALIDATIONTRANSFORMTAG_H
 
-            #include "../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <javax/servlet/jsp/JspTagException.h>
 

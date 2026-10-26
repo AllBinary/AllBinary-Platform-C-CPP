@@ -21,9 +21,9 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_COLOR_COLORUTIL_H
         #define ORG_ALLBINARY_GRAPHICS_COLOR_COLORUTIL_H
 
-            #include "../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../java/lang/Math.h"
+            #include "java/lang/Math.h"
         
 #include <java/awt.h>
 

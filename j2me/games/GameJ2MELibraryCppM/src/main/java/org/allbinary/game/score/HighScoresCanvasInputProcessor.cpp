@@ -18,9 +18,6 @@
 
 
 
-#include <jsinterop/annotations/JsType.h>
-
-      
 #include <javax/microedition/lcdui/Graphics.h>
 
       
@@ -37,12 +34,6 @@
 
       
 #include <org/allbinary/util/BasicArrayListD.h>
-
-      
-#include <jsinterop/annotations/JsMethod.h>
-
-      
-#include <jsinterop/annotations/JsConstructor.h>
 
       
 
@@ -68,8 +59,9 @@ class HighScoresCanvasInputProcessor: public PlayerGameInput {
 
     private: HighScoresCanvas highScoresCanvas;
 
-public: HighScoresCanvasInputProcessor(HighScoresCanvas highScoresCanvas){
-            super(BasicArrayListD(), BasicArrayListD(),  -1);
+public: HighScoresCanvasInputProcessor(HighScoresCanvas highScoresCanvas) : PlayerGameInput(BasicArrayListD(), BasicArrayListD(),  -1){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.

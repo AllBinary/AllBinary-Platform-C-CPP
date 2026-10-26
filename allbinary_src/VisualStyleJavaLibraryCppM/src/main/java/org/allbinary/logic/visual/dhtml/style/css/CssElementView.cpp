@@ -18,9 +18,9 @@
 
 
 
-            #include "../../../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
 
@@ -243,9 +243,9 @@ this->cssPropertyVector= CssPropertiesValidationFactory::getInstance(nodeList);
 }
 
 
-    public: HashMap<any, any> toHashMap(){
+    public: HashMap<Object*, Object*> toHashMap(){
 
-    HashMap<any, any> hashMap = StdUtil::getInstance().createHashMap();;
+    HashMap<Object*, Object*> hashMap = StdUtil::getInstance().createHashMap();;
     
 hashMap.put(DomData::VALUE, this->value);
     
@@ -266,7 +266,7 @@ hashMap.put(this->DESCRIPTION, this->description);
             
     public: Node toXmlNode(Document document){
 
-    HashMap<any, any> hashMap = this->toHashMap();;
+    HashMap<Object*, Object*> hashMap = this->toHashMap();;
     
 
                         if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEW))
@@ -291,7 +291,7 @@ hashMap.put(this->DESCRIPTION, this->description);
     int32_t index = 0;index < size; index++)
         {
 
-    DomNodeInterface cssPropertyDomNodeInterface = this->cssPropertyVector.get(index) as DomNodeInterface;;
+    DomNodeInterface cssPropertyDomNodeInterface = this->cssPropertyVector.get(index);;
     
 node.appendChild(cssPropertyDomNodeInterface.toXmlNode(document));
     
@@ -308,7 +308,7 @@ node.appendChild(cssPropertyDomNodeInterface.toXmlNode(document));
     int32_t index = 0;index < size2; index++)
         {
 
-    DomNodeInterface cssElementDomNodeInterface = this->cssElementVector.get(index) as DomNodeInterface;;
+    DomNodeInterface cssElementDomNodeInterface = this->cssElementVector.get(index);;
     
 node.appendChild(cssElementDomNodeInterface.toXmlNode(document));
     

@@ -18,15 +18,12 @@
 
 
 
-            #include "../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../../../java/lang/Integer.h"
+            #include "java/lang/Integer.h"
         
-#include <jsinterop/annotations/JsType.h>
-
-      
 #include <javax/microedition/rms/RecordStore.h>
 
       
@@ -52,15 +49,6 @@
 
       
 #include <org/allbinary/util/BasicArrayListD.h>
-
-      
-#include <jsinterop/annotations/JsMethod.h>
-
-      
-#include <jsinterop/annotations/JsConstructor.h>
-
-      
-#include <jsinterop/annotations/JsProperty.h>
 
       
 
@@ -130,7 +118,7 @@ RecordStore::deleteRecordStore(this->getRecordId(abeClientInformation));
     int32_t index = 0;index < size; index++)
         {
 
-    Integer integer = this->idList.objectArray[index]! as Integer;;
+    Integer integer = this->idList.objectArray[index];;
     
 this->delete(abeClientInformation, integer.intValue());
     

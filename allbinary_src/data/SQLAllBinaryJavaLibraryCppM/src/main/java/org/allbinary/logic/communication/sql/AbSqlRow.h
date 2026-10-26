@@ -23,7 +23,7 @@
 
             #include <vector>
         
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/sql/ResultSet.h>
 
@@ -119,30 +119,30 @@ public: AbSqlRow(DbConnectionInfo databaseConnectionInfoInterface);
     private: std::string getValue(std::string value);
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: void updateWhere(std::string key, std::string value, HashMap<any, any> updatedKeyValuePairs);
+    public: void updateWhere(std::string key, std::string value, HashMap<Object*, Object*> updatedKeyValuePairs);
 
                 //@Throws(Exception.constructor)
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: void updateWhere(HashMap<any, any> whereKeyValuePairs, HashMap<any, any> updatedKeyValuePairs);
+    public: void updateWhere(HashMap<Object*, Object*> whereKeyValuePairs, HashMap<Object*, Object*> updatedKeyValuePairs);
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
     public: void deleteWhere(std::string key, std::string value);
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: void deleteWhere(HashMap<any, any> keysAndValues);
+    public: void deleteWhere(HashMap<Object*, Object*> keysAndValues);
 
     public: void insert(BasicArrayList values);
 
-    public: HashMap<any, any> getRow(HashMap<any, any> keysAndValues);
+    public: HashMap<Object*, Object*> getRow(HashMap<Object*, Object*> keysAndValues);
 
-    public: BasicArrayList getRows(HashMap<any, any> keysAndValues);
+    public: BasicArrayList getRows(HashMap<Object*, Object*> keysAndValues);
 
-    public: BasicArrayList getRows(HashMap<any, any> keysAndValues, std::string more);
+    public: BasicArrayList getRows(HashMap<Object*, Object*> keysAndValues, std::string more);
 
     public: BasicArrayList getAllRows();
 
-    public: BasicArrayList getRowsWhereBetween(HashMap<any, any> whereKeyValuePairs, std::string betweenColumn, std::string smallest, std::string largest);
+    public: BasicArrayList getRowsWhereBetween(HashMap<Object*, Object*> whereKeyValuePairs, std::string betweenColumn, std::string smallest, std::string largest);
 
     public: BasicArrayList getRowsWhereBetween(std::string betweenColumn, std::string smallest, std::string largest);
 

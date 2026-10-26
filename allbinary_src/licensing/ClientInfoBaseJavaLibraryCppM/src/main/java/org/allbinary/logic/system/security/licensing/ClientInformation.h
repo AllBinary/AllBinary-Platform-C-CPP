@@ -21,14 +21,8 @@
         #ifndef ORG_ALLBINARY_LOGIC_SYSTEM_SECURITY_LICENSING_CLIENTINFORMATION_H
         #define ORG_ALLBINARY_LOGIC_SYSTEM_SECURITY_LICENSING_CLIENTINFORMATION_H
 
-            #include "../../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-#include <jsinterop/annotations/JsType.h>
-
-      
-#include <java/util/Hashtable.h>
-
-      
 #include <org/allbinary/TsUtil.h>
 
       
@@ -59,13 +53,10 @@
 #include <org/allbinary/util/BasicArrayListUtil.h>
 
       
-#include <jsinterop/annotations/JsMethod.h>
-
-      
-#include <jsinterop/annotations/JsConstructor.h>
-
-      
 #include <org/allbinary/logic/StdUtil.h>
+
+      
+#include <org/allbinary/util/ABHashtable.h>
 
       
 
@@ -131,7 +122,7 @@ public: ClientInformation(std::string name, std::string version, std::string spe
 
     public: int32_t getNumberOfLicenseServers();
 
-    public: Hashtable<any, any> toHashtable();
+    public: ABHashtable<Object*, Object*> toHashtable();
 
     public: bool isSameId(std::string alicenseId);
 

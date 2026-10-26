@@ -21,7 +21,7 @@
         #ifndef ADMIN_TAGS_DOWNLOADITEMSTAG_H
         #define ADMIN_TAGS_DOWNLOADITEMSTAG_H
 
-            #include "../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <javax/servlet/jsp/JspTagException.h>
 

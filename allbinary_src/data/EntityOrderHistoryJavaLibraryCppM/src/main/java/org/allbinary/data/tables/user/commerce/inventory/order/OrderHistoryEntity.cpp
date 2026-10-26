@@ -18,13 +18,13 @@
 
 
 
-            #include "../../../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../../../../../../java/lang/Integer.h"
+            #include "java/lang/Integer.h"
         
-            #include "../../../../../../../../java/lang/Long.h"
+            #include "java/lang/Long.h"
         
-            #include "../../../../../../../../java/lang/Float.h"
+            #include "java/lang/Float.h"
         
 #include <java/util/Calendar.h>
 
@@ -172,8 +172,9 @@ class OrderHistoryEntity: public AbSqlBean, public OrderHistoryEntityInterface {
 
     protected: const std::string tableName = "orderhistory";
 
-public: OrderHistoryEntity(){
-            super(HistoryDbInitInfo());
+public: OrderHistoryEntity() : AbSqlBean(HistoryDbInitInfo()){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -468,12 +469,12 @@ this->insert(vector);
     std::string time = Long(calendar.getTimeInMillis()).toString();;
     
 
-    HashMap<any, any> updateHashMap = StdUtil::getInstance().createHashMap();;
+    HashMap<Object*, Object*> updateHashMap = StdUtil::getInstance().createHashMap();;
     
 updateHashMap.put(OrderHistoryData::STATUS, status);
     
 
-                        if(status.compareTo(OrderHistoryData::CANCELLED) == 0)
+                        if(status.compare(OrderHistoryData::CANCELLED) == 0)
                         
                                     {
                                     updateHashMap.put(OrderHistoryData::CANCELDATE, time);
@@ -482,7 +483,7 @@ updateHashMap.put(OrderHistoryData::STATUS, status);
                                     }
                                 
                              else 
-                        if(status.compareTo(OrderHistoryData::SHIPPED) == 0)
+                        if(status.compare(OrderHistoryData::SHIPPED) == 0)
                         
                                     {
                                     updateHashMap.put(OrderHistoryData::SHIPPEDDATE, time);
@@ -520,7 +521,7 @@ super.updateWhere(OrderData::ID, orderId, updateHashMap);
     std::string time = Long(calendar.getTimeInMillis()).toString();;
     
 
-    HashMap<any, any> updateHashMap = StdUtil::getInstance().createHashMap();;
+    HashMap<Object*, Object*> updateHashMap = StdUtil::getInstance().createHashMap();;
     
 updateHashMap.put(PaymentData::METHOD, paymentMethod);
     
@@ -553,7 +554,7 @@ super.updateWhere(OrderData::ID, orderId, updateHashMap);
     BasicArrayList orderReviewVector = BasicArrayListD();;
     
 
-    HashMap<any, any> whereHashMap = StdUtil::getInstance().createHashMap();;
+    HashMap<Object*, Object*> whereHashMap = StdUtil::getInstance().createHashMap();;
     
 whereHashMap.put(StoreFrontData::getInstance().NAME, storeFrontInterface.getName());
     
@@ -571,7 +572,7 @@ whereHashMap.put(StoreFrontData::getInstance().NAME, storeFrontInterface.getName
     int32_t i = 0;i < size; i++)
         {
 
-    HashMap<any, any> orderReviewHashMap = orderHashMapVector.get(i) as HashMap<any, any>;;
+    HashMap<Object*, Object*> orderReviewHashMap = orderHashMapVector.get(i);;
     
 
     OrderHistory orderReview = OrderHistory(Basket(), orderReviewHashMap);;
@@ -596,7 +597,7 @@ orderReviewVector.add(orderReview);
     BasicArrayList orderReviewVector = BasicArrayListD();;
     
 
-    HashMap<any, any> whereHashMap = StdUtil::getInstance().createHashMap();;
+    HashMap<Object*, Object*> whereHashMap = StdUtil::getInstance().createHashMap();;
     
 whereHashMap.put(UserData::USERNAME, userName);
     
@@ -614,7 +615,7 @@ whereHashMap.put(UserData::USERNAME, userName);
     int32_t index = 0;index < size; index++)
         {
 
-    HashMap<any, any> orderReviewHashMap = orderHashMapVector.get(index) as HashMap<any, any>;;
+    HashMap<Object*, Object*> orderReviewHashMap = orderHashMapVector.get(index);;
     
 
     OrderHistory orderReview = OrderHistory(Basket(), orderReviewHashMap);;
@@ -639,7 +640,7 @@ orderReviewVector.add(orderReview);
     BasicArrayList orderReviewVector = BasicArrayListD();;
     
 
-    HashMap<any, any> whereHashMap = StdUtil::getInstance().createHashMap();;
+    HashMap<Object*, Object*> whereHashMap = StdUtil::getInstance().createHashMap();;
     
 whereHashMap.put(OrderHistoryData::STATUS, status);
     
@@ -657,7 +658,7 @@ whereHashMap.put(OrderHistoryData::STATUS, status);
     int32_t index = 0;index < size; index++)
         {
 
-    HashMap<any, any> orderReviewHashMap = orderHashMapVector.get(index) as HashMap<any, any>;;
+    HashMap<Object*, Object*> orderReviewHashMap = orderHashMapVector.get(index);;
     
 
     OrderHistory orderReview = OrderHistory(Basket(), orderReviewHashMap);;
@@ -695,7 +696,7 @@ orderReviewVector.add(orderReview);
     int32_t index = 0;index < size; index++)
         {
 
-    HashMap<any, any> orderReviewHashMap = orderHashMapVector.get(index) as HashMap<any, any>;;
+    HashMap<Object*, Object*> orderReviewHashMap = orderHashMapVector.get(index);;
     
 
     OrderHistory orderReview = OrderHistory(Basket(), orderReviewHashMap);;
@@ -717,12 +718,12 @@ orderReviewVector.add(orderReview);
             
     public: OrderHistory getOrder(std::string id){
 
-    HashMap<any, any> whereHashMap = StdUtil::getInstance().createHashMap();;
+    HashMap<Object*, Object*> whereHashMap = StdUtil::getInstance().createHashMap();;
     
 whereHashMap.put(OrderData::ID, id);
     
 
-    HashMap<any, any> orderReviewHashMap = super.getRow(whereHashMap);;
+    HashMap<Object*, Object*> orderReviewHashMap = super.getRow(whereHashMap);;
     
 
                         if(orderReviewHashMap != 
@@ -953,7 +954,7 @@ stringBuffer.append(") )");
 
                 //@Throws(Exception.constructor)
             
-    public: void update(HashMap<any, any> whereHashMap, HashMap<any, any> orderHashMap){
+    public: void update(HashMap<Object*, Object*> whereHashMap, HashMap<Object*, Object*> orderHashMap){
 
         try {
             updateWhere(whereHashMap, orderHashMap);

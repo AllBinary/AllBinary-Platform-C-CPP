@@ -20,7 +20,7 @@
 
             #include <vector>
         
-            #include "../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
 
@@ -53,6 +53,9 @@
 
       
 #include <org/allbinary/data/tree/dom/document/DomDocumentHelper.h>
+
+      
+#include <org/allbinary/data/tree/dom/document/XmlDocumentHelper.h>
 
       
 #include <org/allbinary/logic/StdUtil.h>
@@ -102,8 +105,9 @@ class NameSpaceRequestParams: public RequestParams {
 
     protected: const LogUtil logUtil = LogUtil::getInstance();
 
-public: NameSpaceRequestParams(){
-            super();
+public: NameSpaceRequestParams() : RequestParams(){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -120,8 +124,9 @@ public: NameSpaceRequestParams(){
 }
 
 
-public: NameSpaceRequestParams(HttpServletRequest httpServletRequest){
-            super(httpServletRequest);
+public: NameSpaceRequestParams(HttpServletRequest httpServletRequest) : RequestParams(httpServletRequest){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -138,8 +143,9 @@ public: NameSpaceRequestParams(HttpServletRequest httpServletRequest){
 }
 
 
-public: NameSpaceRequestParams(PageContext pageContext){
-            super(pageContext);
+public: NameSpaceRequestParams(PageContext pageContext) : RequestParams(pageContext){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -158,7 +164,7 @@ public: NameSpaceRequestParams(PageContext pageContext){
 
                 //@Throws(Exception.constructor)
             
-    private: Node createPackageNode(Document document, std::string packageName, HashMap<any, any> packagePropertiesHashMap){
+    private: Node createPackageNode(Document document, std::string packageName, HashMap<Object*, Object*> packagePropertiesHashMap){
 
     Node node = document.createElement(packageName);;
     
@@ -179,10 +185,10 @@ public: NameSpaceRequestParams(PageContext pageContext){
     int32_t index = 0;index < size; index++)
         {
 
-    std::string propertyName = propertyKeySetArray[index]! as string;;
+    std::string propertyName = propertyKeySetArray[index];;
     
 
-    std::string propertyValue = packagePropertiesHashMap.get(propertyName) as string;;
+    std::string propertyValue = packagePropertiesHashMap.get(propertyName);;
     
 
     Node propertyNode = ModDomHelper::createTextNode(document, propertyName, propertyValue);;
@@ -202,7 +208,7 @@ node.appendChild(propertyNode);
 
                 //@Throws(Exception.constructor)
             
-    private: Node createPackageMultiNode(Document document, NameSpaceRequestParam nameSpaceRequestParam, std::string packageName, HashMap<any, any> packagePropertiesHashMap){
+    private: Node createPackageMultiNode(Document document, NameSpaceRequestParam nameSpaceRequestParam, std::string packageName, HashMap<Object*, Object*> packagePropertiesHashMap){
 
     int32_t beginIndex = packageName.indexOf('[');;
     
@@ -216,10 +222,10 @@ node.appendChild(propertyNode);
     std::string selectedValue = nameSpaceRequestParam.getValue();;
     
 
-    std::string propertyValue = packagePropertiesHashMap.get(DomData::VALUE) as string;;
+    std::string propertyValue = packagePropertiesHashMap.get(DomData::VALUE);;
     
 
-                        if(propertyValue.compareTo(NameSpaceRequestParamData::VALUE) != 0)
+                        if(propertyValue.compare(NameSpaceRequestParamData::VALUE) != 0)
                         
                                     {
                                     selectedValue= propertyValue;
@@ -255,7 +261,7 @@ nextNode.appendChild(indexNode);
 
                 //@Throws(Exception.constructor)
             
-    private: Node getRootNode(std::string rootElementPackage, HashMap<any, any> packagePropertiesHashMap, Document document){
+    private: Node getRootNode(std::string rootElementPackage, HashMap<Object*, Object*> packagePropertiesHashMap, Document document){
 
     Node rootNode = DomSearchHelper::getNodeNoThrow(rootElementPackage, document.getChildNodes());;
     
@@ -283,7 +289,7 @@ document.appendChild(node);
                         if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().HTTPREQUEST))
                         
                                     {
-                                    this->logUtil.putF("\nAppended Document Created: " +DomDocumentHelper::toString(document), this, "getRootNode");
+                                    this->logUtil.putF("\nAppended Document Created: " +XmlDocumentHelper::toString(document), this, "getRootNode");
     
 
                                     }
@@ -321,7 +327,7 @@ document.appendChild(node);
 
                 //@Throws(Exception.constructor)
             
-    private: Node addNewProperties(Document document, Node node, HashMap<any, any> nextPackagePropertiesHashMap){
+    private: Node addNewProperties(Document document, Node node, HashMap<Object*, Object*> nextPackagePropertiesHashMap){
 
                         if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().HTTPREQUEST))
                         
@@ -348,10 +354,10 @@ document.appendChild(node);
     int32_t index = 0;index < size; index++)
         {
 
-    std::string nextPropertyName = propertyNameSetArray[index]! as string;;
+    std::string nextPropertyName = propertyNameSetArray[index];;
     
 
-    std::string propertyValue = StringUtil::getInstance().getNonNull(nextPackagePropertiesHashMap.get(nextPropertyName) as string);;
+    std::string propertyValue = StringUtil::getInstance().getNonNull(nextPackagePropertiesHashMap.get(nextPropertyName));;
     
 
     Node valueNode = DomSearchHelper::getNodeNoThrow(nextPropertyName, node.getChildNodes());;
@@ -375,7 +381,7 @@ document.appendChild(node);
                                     }
                                 
 
-                        if(propertyValue.compareTo(existingElementNodeTextNodeValue) != 0)
+                        if(propertyValue.compare(existingElementNodeTextNodeValue) != 0)
                         
                                     {
                                     
@@ -429,7 +435,7 @@ node.appendChild(newPropertyNode);
 
                 //@Throws(Exception.constructor)
             
-    private: bool isElementValueTextNodeEqual(HashMap<any, any> nextPackagePropertiesHashMap, Node node){
+    private: bool isElementValueTextNodeEqual(HashMap<Object*, Object*> nextPackagePropertiesHashMap, Node node){
 
                         if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().HTTPREQUEST))
                         
@@ -440,7 +446,7 @@ node.appendChild(newPropertyNode);
                                     }
                                 
 
-    std::string propertyValue = nextPackagePropertiesHashMap.get(DomData::VALUE) as string;;
+    std::string propertyValue = nextPackagePropertiesHashMap.get(DomData::VALUE);;
     
 
     Node valueNode = DomSearchHelper::getNodeNoThrow(DomData::VALUE, node.getChildNodes());;
@@ -455,7 +461,7 @@ node.appendChild(newPropertyNode);
     std::string existingElementNodeTextNodeValue = DomNodeHelper::getTextNodeValue(valueNode);;
     
 
-                        if(propertyValue.compareTo(existingElementNodeTextNodeValue) == 0)
+                        if(propertyValue.compare(existingElementNodeTextNodeValue) == 0)
                         
                                     {
                                     
@@ -500,7 +506,7 @@ node.appendChild(newPropertyNode);
 
                 //@Throws(Exception.constructor)
             
-    private: int32_t isElementValueTextNodeUnique(HashMap<any, any> nextPackagePropertiesHashMap, BasicArrayList elementNodeVector){
+    private: int32_t isElementValueTextNodeUnique(HashMap<Object*, Object*> nextPackagePropertiesHashMap, BasicArrayList elementNodeVector){
 
                         if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().HTTPREQUEST))
                         
@@ -521,7 +527,7 @@ node.appendChild(newPropertyNode);
     int32_t index = 0;index < size; index++)
         {
 
-    Node existingElementNode = elementNodeVector.get(index) as Node;;
+    Node existingElementNode = elementNodeVector.get(index);;
     
 
                         if(this->isElementValueTextNodeEqual(nextPackagePropertiesHashMap, existingElementNode))
@@ -567,7 +573,7 @@ node.appendChild(newPropertyNode);
     int32_t index = 1;index < size; index++)
         {
 
-    std::string nextPackageName = packageVector.get(index) as string;;
+    std::string nextPackageName = packageVector.get(index);;
     
 
                         if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().HTTPREQUEST))
@@ -579,7 +585,7 @@ node.appendChild(newPropertyNode);
                                     }
                                 
 
-    HashMap<any, any> nextPackagePropertiesHashMap = nameSpaceRequestParam.getPackageProperties(index);;
+    HashMap<Object*, Object*> nextPackagePropertiesHashMap = nameSpaceRequestParam.getPackageProperties(index);;
     
 
     BasicArrayList elementNodeVector = DomSearchHelper::getAllNodesNoThrow(nextPackageName, node.getChildNodes());;
@@ -613,7 +619,7 @@ node= nextNode;
                                     {
                                     this->logUtil.putF("\nAppended Package: " +node.getNodeName(), this, "addChildren");
     
-this->logUtil.putF("\nAppended Document Created: " +DomDocumentHelper::toString(document), this, "addChildren");
+this->logUtil.putF("\nAppended Document Created: " +XmlDocumentHelper::toString(document), this, "addChildren");
     
 
                                     }
@@ -645,7 +651,7 @@ node= nextNode;
                         if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().HTTPREQUEST))
                         
                                     {
-                                    this->logUtil.putF("\nAppended Multinode Element: " +DomDocumentHelper::toString(document), this, "addChildren");
+                                    this->logUtil.putF("\nAppended Multinode Element: " +XmlDocumentHelper::toString(document), this, "addChildren");
     
 
                                     }
@@ -664,7 +670,7 @@ node= nextNode;
                                     }
                                 
 
-    Node nodeNameDuplicateNode = elementNodeVector.get(isElementValueTextNodeUniqueIndex) as Node;;
+    Node nodeNameDuplicateNode = elementNodeVector.get(isElementValueTextNodeUniqueIndex);;
     
 node= this->addNewProperties(document, nodeNameDuplicateNode, nextPackagePropertiesHashMap);
     
@@ -720,10 +726,10 @@ node= this->addNewProperties(document, nodeNameDuplicateNode, nextPackagePropert
     int32_t index = 0;index < size; index++)
         {
 
-    std::string packageName = packageVector.get(index) as string;;
+    std::string packageName = packageVector.get(index);;
     
 
-    HashMap<any, any> packagePropertiesHashMap = nameSpaceRequestParam.getPackageProperties(packageVector.indexOf(packageName));;
+    HashMap<Object*, Object*> packagePropertiesHashMap = nameSpaceRequestParam.getPackageProperties(packageVector.indexOf(packageName));;
     
 
     Node rootNode = this->getRootNode(packageName, packagePropertiesHashMap, document);;
@@ -736,7 +742,7 @@ node= this->addNewProperties(document, nodeNameDuplicateNode, nextPackagePropert
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->addChildren(document, rootNode as Node, nameSpaceRequestParam);;
+                        return this->addChildren(document, rootNode, nameSpaceRequestParam);;
     
 
                                     }
@@ -754,12 +760,12 @@ node= this->addNewProperties(document, nodeNameDuplicateNode, nextPackagePropert
 
                 //@Throws(Exception.constructor)
             
-    public: HashMap<any, any> toHashMap(){
+    public: HashMap<Object*, Object*> toHashMap(){
 
     Document document = DomDocumentHelper::create();;
     
 
-    HashMap<any, any> hashMap = StdUtil::getInstance().createHashMap();;
+    HashMap<Object*, Object*> hashMap = StdUtil::getInstance().createHashMap();;
     
 
     Set keys = this->getMap().keySet();;
@@ -787,13 +793,13 @@ node= this->addNewProperties(document, nodeNameDuplicateNode, nextPackagePropert
     int32_t i = 0;i < keySize; i++)
         {
 
-    std::string key = keyArray[i]! as string;;
+    std::string key = keyArray[i];;
     
 
     Object* anyType = this->getMap().get(key);;
     
 
-    std::string className = anyType->constructor.name.toString()! as string;;
+    std::string className = anyType->constructor.name.toString();;
     
 
                         if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().HTTPREQUEST))
@@ -809,7 +815,7 @@ node= this->addNewProperties(document, nodeNameDuplicateNode, nextPackagePropert
                         
                                     {
                                     
-    std::string value = this->getMap().get(key) as string;;
+    std::string value = this->getMap().get(key);;
     
 
                         if(key.indexOf(NameSpaceRequestParamData::NAME) < 0)
@@ -824,13 +830,13 @@ node= this->addNewProperties(document, nodeNameDuplicateNode, nextPackagePropert
 
                                     }
                                 
-hashMap.put(key.toCharArray().slice(0, ).join(''), value.toCharArray().slice(0, ).join(''));
+hashMap.put(std::string(key), std::string(value));
     
 
                                     }
                                 
                         else {
-                            document= this->addNameSpace(key.toCharArray().slice(0, ).join(''), value.toCharArray().slice(0, ).join(''), document);
+                            document= this->addNameSpace(std::string(key), std::string(value), document);
     
 
                         }
@@ -858,13 +864,13 @@ hashMap.put(key.toCharArray().slice(0, ).join(''), value.toCharArray().slice(0, 
 
                                     }
                                 
-hashMap.put(key.toCharArray().slice(0, ).join(''), .toCharArray());
+hashMap.put(std::string(key), .toCharArray());
     
 
                                     }
                                 
                         else {
-                            document= this->addNameSpace(key.toCharArray().slice(0, ).join(''), .toCharArray(), document);
+                            document= this->addNameSpace(std::string(key), .toCharArray(), document);
     
 
                         }
@@ -878,7 +884,7 @@ hashMap.put(key.toCharArray().slice(0, ).join(''), .toCharArray());
                         if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().HTTPREQUEST))
                         
                                     {
-                                    this->logUtil.putF("NameSpaceRequestParams: " +this->getMap().toString() +"\ntoHashMap(): " +hashMap.toString() +"\nDocument Created: " +DomDocumentHelper::toString(document), this, "toHashMap()");
+                                    this->logUtil.putF("NameSpaceRequestParams: " +this->getMap().toString() +"\ntoHashMap(): " +hashMap.toString() +"\nDocument Created: " +XmlDocumentHelper::toString(document), this, "toHashMap()");
     
 
                                     }

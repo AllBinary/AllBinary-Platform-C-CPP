@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/game/layer/AllBinaryGameLayer.h>
 
@@ -54,8 +54,9 @@
 
 class BasicGravityConstantVelocityMovement: public BasicConstantVelocityMovement {
 
-public: BasicGravityConstantVelocityMovement(BasicDecimal speedBasicDecimal){
-            super(speedBasicDecimal, VelocityProperties(static_cast<int32_t>(speedBasicDecimal.getUnscaled()), static_cast<int32_t>(speedBasicDecimal.getUnscaled())));
+public: BasicGravityConstantVelocityMovement(BasicDecimal speedBasicDecimal) : BasicConstantVelocityMovement(speedBasicDecimal, VelocityProperties(static_cast<int32_t>(speedBasicDecimal.getUnscaled()), static_cast<int32_t>(speedBasicDecimal.getUnscaled()))){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.

@@ -20,11 +20,11 @@
 
             #include <vector>
         
-            #include "../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../java/lang/Class.h"
+            #include "java/lang/Class.h"
         
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
 
@@ -97,21 +97,21 @@ private: TagWorkFlowFactory(){
 
                 //@Throws(Exception.constructor, LicensingException.constructor)
             
-    public: WorkFlowInterface getInstance(AbeClientInformationInterface abeClientInformation, HashMap<any, any> propertiesHashMap, PageContext pageContext){
+    public: WorkFlowInterface getInstance(AbeClientInformationInterface abeClientInformation, HashMap<Object*, Object*> propertiesHashMap, PageContext pageContext){
 
         try {
             
-    std::string workFlowClassName = propertiesHashMap.get(DynamicObjectData::NAME) as string;;
+    std::string workFlowClassName = propertiesHashMap.get(DynamicObjectData::NAME);;
     
 
-    std::vector<Object*> params = new Array(2);;
+    std::vector<Object*> params = std::vector<Object*>(2);;
     
 
-    std::vector<Function> classes = new Array(2);;
+    std::vector<Class*> classes = std::vector<Class>(2);;
     
-classes[0]= propertiesHashMap.constructor;
+classes[0]= propertiesHashMap.getClass();
     
-classes[1]= AbeFactory::getInstance().constructor;
+classes[1]= AbeFactory::getInstance().getClass();
     
 params[0]= propertiesHashMap;
     
@@ -121,7 +121,7 @@ params[1]= pageContext;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return AbeFactory::getInstance().getInstance(abeClientInformation, workFlowClassName, classes, params) as WorkFlowInterface;
+                        return AbeFactory::getInstance().getInstance(abeClientInformation, workFlowClassName, classes, params);
     
 
                 //: 
@@ -132,7 +132,7 @@ params[1]= pageContext;
                         
                                     {
                                     
-    std::string workFlowClassName = propertiesHashMap.get(DynamicObjectData::NAME) as string;;
+    std::string workFlowClassName = propertiesHashMap.get(DynamicObjectData::NAME);;
     
 
     StringMaker stringBuffer = StringMaker();;
@@ -143,7 +143,7 @@ stringBuffer.append(workFlowClassName);
     
 stringBuffer.append("->");
     
-stringBuffer.append(TagWorkFlowFactory::instance.constructor.name.toString()!);
+stringBuffer.append(TagWorkFlowFactory::instance.constructor.name.toString());
     
 
     CommonStrings commonStrings = CommonStrings::getInstance();;
@@ -168,7 +168,7 @@ this->logUtil.put(stringBuffer.toString(), this, commonStrings.GET_INSTANCE, e);
                         
                                     {
                                     
-    std::string workFlowClassName = propertiesHashMap.get(DynamicObjectData::NAME) as string;;
+    std::string workFlowClassName = propertiesHashMap.get(DynamicObjectData::NAME);;
     
 
     StringMaker stringBuffer = StringMaker();;
@@ -179,7 +179,7 @@ stringBuffer.append(workFlowClassName);
     
 stringBuffer.append("->");
     
-stringBuffer.append(TagWorkFlowFactory::instance.constructor.name.toString()!);
+stringBuffer.append(TagWorkFlowFactory::instance.constructor.name.toString());
     
 
     CommonStrings commonStrings = CommonStrings::getInstance();;

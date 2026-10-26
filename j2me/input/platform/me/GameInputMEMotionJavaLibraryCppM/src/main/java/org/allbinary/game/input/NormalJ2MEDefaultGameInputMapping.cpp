@@ -49,8 +49,9 @@
 
 class NormalJ2MEDefaultGameInputMapping: public PersistentInputMapping {
 
-public: NormalJ2MEDefaultGameInputMapping(){
-            super(GamePersistanceStrings::getInstance().DEFAULT_INPUT_MAPPING_RECORD_ID);
+public: NormalJ2MEDefaultGameInputMapping() : PersistentInputMapping(GamePersistanceStrings::getInstance().DEFAULT_INPUT_MAPPING_RECORD_ID){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.

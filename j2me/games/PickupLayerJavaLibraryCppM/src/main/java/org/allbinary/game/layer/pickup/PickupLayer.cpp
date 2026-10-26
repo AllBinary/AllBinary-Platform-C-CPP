@@ -18,11 +18,8 @@
 
 
 
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-#include <jsinterop/annotations/JsType.h>
-
-      
 #include <javax/microedition/khronos/opengles/GL.h>
 
       
@@ -59,12 +56,6 @@
 #include <org/allbinary/view/ViewPositionBase.h>
 
       
-#include <jsinterop/annotations/JsMethod.h>
-
-      
-#include <jsinterop/annotations/JsConstructor.h>
-
-      
 
 
 
@@ -96,8 +87,9 @@ class PickupLayer: public MultiPlayerGameLayer, public PickedUpLayerInterface, p
 
     private: Animation animationInterface = NullAnimationFactory::getFactoryInstance().getInstance(0);
 
-public: PickupLayer(std::string name, RemoteInfo remoteInfo, int32_t total, PickedUpLayerInterfaceFactoryInterface pickedUpLayerInterfaceFactoryInterface, Animation animationInterface, Rectangle rectangle, ViewPositionBase viewPosition){
-            super(remoteInfo, BasicGroupFactory::getInstance().NONE_ARRAY, name, rectangle, viewPosition);
+public: PickupLayer(std::string name, RemoteInfo remoteInfo, int32_t total, PickedUpLayerInterfaceFactoryInterface pickedUpLayerInterfaceFactoryInterface, Animation animationInterface, Rectangle rectangle, ViewPositionBase viewPosition) : MultiPlayerGameLayer(remoteInfo, BasicGroupFactory::getInstance().NONE_ARRAY, name, rectangle, viewPosition){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -218,7 +210,7 @@ this->destroyed= destroyed;
             
     public: void set(GL gl){
 
-    OpenGLSurfaceChangedInterface openGLSurfaceChangedInterface = this->animationInterface as OpenGLSurfaceChangedInterface;;
+    OpenGLSurfaceChangedInterface openGLSurfaceChangedInterface = this->animationInterface;;
     
 openGLSurfaceChangedInterface.set(gl);
     

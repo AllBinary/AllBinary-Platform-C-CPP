@@ -18,15 +18,12 @@
 
 
 
-            #include "../../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../../../../java/lang/RuntimeException.h"
+            #include "java/lang/RuntimeException.h"
         
-#include <java/util/Hashtable.h>
-
-      
 #include <org/allbinary/logic/StdUtil.h>
 
       
@@ -70,6 +67,9 @@
 
       
 #include <org/allbinary/logic/system/hardware/components/interfaces/VideoInterface.h>
+
+      
+#include <org/allbinary/util/ABHashtable.h>
 
       
 
@@ -227,7 +227,7 @@ public: WindowsHardware(){
 }
 
 
-    public: Hashtable<any, any> difference(HardwareInterface hardwareInterface){
+    public: ABHashtable<Object*, Object*> difference(HardwareInterface hardwareInterface){
 
 
 

@@ -21,9 +21,9 @@
         #ifndef VIEWS_GENERIC_SHIPPING_SHIPPINGMETHODSVIEW_H
         #define VIEWS_GENERIC_SHIPPING_SHIPPINGMETHODSVIEW_H
 
-            #include "../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../java/lang/Float.h"
+            #include "java/lang/Float.h"
         
 #include <org/allbinary/util/BasicArrayList.h>
 

@@ -21,11 +21,8 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_CANVAS_TRANSITION_PROGRESS_PROGRESSCANVAS_H
         #define ORG_ALLBINARY_GRAPHICS_CANVAS_TRANSITION_PROGRESS_PROGRESSCANVAS_H
 
-            #include "../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-#include <jsinterop/annotations/JsType.h>
-
-      
 #include <javax/microedition/lcdui/CommandListener.h>
 
       
@@ -98,15 +95,6 @@
 #include <org/allbinary/thread/ThreadPool.h>
 
       
-#include <jsinterop/annotations/JsMethod.h>
-
-      
-#include <jsinterop/annotations/JsConstructor.h>
-
-      
-#include <jsinterop/annotations/JsProperty.h>
-
-      
 
 
 
@@ -126,6 +114,7 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         //#include "ProgressPaintable.h"
+#include "ProgressEndListener.h"
 
 class ProgressCanvas: public RunnableCanvas, public PaintableInterface, public UpdateMyFontInterface {
 
@@ -181,6 +170,8 @@ class ProgressPaintable: public Paintable {
 
     public: Processor inGameProcessor = Processor::getInstance();
 
+    public: ProgressEndListener progressEndListener = ProgressEndListener::instance;
+
 : ProgressCanvas(std::string title, BasicColor backgroundBasicColor, BasicColor foregroundBasicColor);
 
     public: void updateMeasurement(Graphics graphics);
@@ -210,6 +201,8 @@ class ProgressPaintable: public Paintable {
     public: void end();
 
     public: void endFromInitialLazyLoadingComplete();
+
+    public: bool isInGame();
 
     public: void endIfPaintedSinceStart();
 

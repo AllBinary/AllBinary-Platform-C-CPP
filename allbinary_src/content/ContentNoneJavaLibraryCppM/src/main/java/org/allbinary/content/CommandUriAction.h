@@ -21,7 +21,7 @@
         #ifndef ORG_ALLBINARY_CONTENT_COMMANDURIACTION_H
         #define ORG_ALLBINARY_CONTENT_COMMANDURIACTION_H
 
-            #include "../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
 #include <javax/microedition/lcdui/Command.h>
 

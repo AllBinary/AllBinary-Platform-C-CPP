@@ -20,7 +20,7 @@
         #ifndef ORG_ALLBINARY_GAME_LAYER_BUILDING_EVENT_LOCALPLAYERBUILDINGEVENTHANDLER_H
         #define ORG_ALLBINARY_GAME_LAYER_BUILDING_EVENT_LOCALPLAYERBUILDINGEVENTHANDLER_H
 
-            #include "../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/game/layer/RTSLayerEvent.h>
 

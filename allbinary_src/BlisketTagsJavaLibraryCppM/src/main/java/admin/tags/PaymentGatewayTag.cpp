@@ -18,9 +18,9 @@
 
 
 
-            #include "../../java/lang/Class.h"
+            #include "java/lang/Class.h"
         
-            #include "../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/lang/reflect/Method.h>
 
@@ -81,7 +81,7 @@ this->setTagRequestHelperFactory(PaymentGatewayHelperFactory());
     Object* anyType = PaymentGatewayHelperFactory().getInstance(this->getPropertiesHashMap(), this->pageContext);;
     
 
-    Function helperClass = anyType->constructor;;
+    Class* helperClass = anyType->getClass();;
     
 
     Method method = helperClass.getMethod(commonStrings.PROCESS, 
@@ -89,7 +89,7 @@ this->setTagRequestHelperFactory(PaymentGatewayHelperFactory());
     
 
     std::string result = method.invoke(anyType, 
-                            nullptr) as string;;
+                            nullptr);;
     
 
 

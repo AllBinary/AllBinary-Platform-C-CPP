@@ -21,7 +21,7 @@
         #ifndef ADMIN_TAGHELPERS_LOGHELPER_H
         #define ADMIN_TAGHELPERS_LOGHELPER_H
 
-            #include "../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
 
@@ -70,7 +70,7 @@ class LogHelper: public BasicTable {
 
     private: Portion portion;
 
-public: LogHelper(HashMap<any, any> hashMap, PageContext pageContext);
+public: LogHelper(HashMap<Object*, Object*> hashMap, PageContext pageContext);
 
     public: std::string drop();
 

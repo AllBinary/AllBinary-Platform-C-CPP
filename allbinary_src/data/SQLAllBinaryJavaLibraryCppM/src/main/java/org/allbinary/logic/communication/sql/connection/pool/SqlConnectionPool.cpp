@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
 #include <java/sql/Connection.h>
 
@@ -86,7 +86,7 @@ class SqlConnectionPool
 
     protected: const StdUtil stdUtil = StdUtil::getInstance();
 
-    private: HashMap<any, any> connectionHashMap = 
+    private: HashMap<Object*, Object*> connectionHashMap = 
                 null
             ;
 
@@ -146,7 +146,7 @@ private: SqlConnectionPool(){
                                 
                         else {
                             
-    BasicArrayList connectionVector = this->connectionHashMap.get(url) as BasicArrayList;;
+    BasicArrayList connectionVector = this->connectionHashMap.get(url);;
     
 
                         if(connectionVector == 
@@ -222,7 +222,7 @@ this->logUtil.putF(stringBuffer.toString(), this, this->METHOD_GET);
     int32_t i = 0;i < size; i++)
         {
 
-    Connection sqlConnection = connectionVector.get(i) as Connection;;
+    Connection sqlConnection = connectionVector.get(i);;
     
 
                         if(!sqlConnection.isClosed())
@@ -257,7 +257,7 @@ this->logUtil.putF(stringBuffer.toString(), this, METHOD_GET);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return sqlConnection as Connection;
+                        return sqlConnection;
     
 
                                     }
@@ -324,7 +324,7 @@ connectionVector.add(sqlConnection);
                                     }
                                 
                         else {
-                            connectionVector= this->connectionHashMap.get(url) as BasicArrayList;
+                            connectionVector= this->connectionHashMap.get(url);
     
 
                         if(connectionVector == 

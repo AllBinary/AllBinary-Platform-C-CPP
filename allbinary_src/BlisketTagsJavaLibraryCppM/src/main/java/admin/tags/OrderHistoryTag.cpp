@@ -20,9 +20,9 @@
 
             #include <vector>
         
-            #include "../../java/lang/Class.h"
+            #include "java/lang/Class.h"
         
-            #include "../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/lang/reflect/Method.h>
 
@@ -97,7 +97,7 @@ this->status= value;
 
         try {
             
-    HttpServletRequest request = this->pageContext.getRequest() as HttpServletRequest;;
+    HttpServletRequest request = this->pageContext.getRequest();;
     
 
     Object* anyType = OrderHistoryRequestHelperFactory().getInstance(this->getPropertiesHashMap(), pageContext);;
@@ -107,7 +107,7 @@ this->status= value;
                         
                                     {
                                     
-    Function helperClass = anyType->constructor;;
+    Class* helperClass = anyType->getClass();;
     
 
     Method method = helperClass.getMethod("setOrderStatus", 
@@ -115,7 +115,7 @@ this->status= value;
     
 
     std::string result = method.invoke(anyType, 
-                            nullptr) as string;;
+                            nullptr);;
     
 
 
@@ -128,12 +128,12 @@ this->status= value;
                                 
                         else {
                             
-    Function helperClass = anyType->constructor;;
+    Class* helperClass = anyType->getClass();;
     
 
-    std::vector<Function> methodParams = 
+    std::vector<Class*> methodParams = 
                                                         {
-                                                            this->status.constructor
+                                                            this->status.getClass()
                                                         };;
     
 
@@ -146,7 +146,7 @@ this->status= value;
                                                         };;
     
 
-    std::string result = method.invoke(anyType, methodArgs) as string;;
+    std::string result = method.invoke(anyType, methodArgs);;
     
 
 

@@ -21,12 +21,15 @@
         #ifndef ORG_ALLBINARY_LOGIC_SYSTEM_SECURITY_LICENSING_REGISTRATION_XMLRPCREMOTELICENSEREGISTRATIONCLIENT_H
         #define ORG_ALLBINARY_LOGIC_SYSTEM_SECURITY_LICENSING_REGISTRATION_XMLRPCREMOTELICENSEREGISTRATIONCLIENT_H
 
-            #include "../../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/io/IOException.h>
 
       
-#include <java/util/Hashtable.h>
+#include <org/apache/xmlrpc/XmlRpcClient.h>
+
+      
+#include <org/apache/xmlrpc/XmlRpcException.h>
 
       
 #include <org/allbinary/util/BasicArrayList.h>
@@ -38,16 +41,7 @@
 #include <org/allbinary/init/crypt/jcehelper/CryptInterface.h>
 
       
-#include <org/allbinary/logic/StdUtil.h>
-
-      
 #include <org/allbinary/string/CommonLabels.h>
-
-      
-#include <org/apache/xmlrpc/XmlRpcClient.h>
-
-      
-#include <org/apache/xmlrpc/XmlRpcException.h>
 
       
 #include <org/allbinary/logic/string/StringMaker.h>
@@ -63,6 +57,9 @@
 
       
 #include <org/allbinary/logic/system/security/licensing/AbeClientInformationInterface.h>
+
+      
+#include <org/allbinary/util/ABHashtable.h>
 
       
 

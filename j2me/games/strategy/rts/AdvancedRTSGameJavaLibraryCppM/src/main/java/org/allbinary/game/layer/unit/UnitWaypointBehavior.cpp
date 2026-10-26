@@ -18,9 +18,9 @@
 
 
 
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../../../java/lang/Integer.h"
+            #include "java/lang/Integer.h"
         
 #include <org/allbinary/game/input/form/PrimaryWaypointHelper.h>
 
@@ -186,7 +186,7 @@ ForcedLogUtil::log(EventStrings::getInstance().PERFORMANCE_MESSAGE, this);
             
     public: void onWaypointEvent(RTSLayerEvent event){
 
-    AdvancedRTSGameLayer advancedRTSGameLayer = event.getRtsLayer() as AdvancedRTSGameLayer;;
+    AdvancedRTSGameLayer advancedRTSGameLayer = event.getRtsLayer();;
     
 this->associatedAdvancedRTSGameLayer.waypointLogHelperP.onWaypointEvent(this->associatedAdvancedRTSGameLayer, advancedRTSGameLayer);
     
@@ -342,7 +342,7 @@ this->associatedAdvancedRTSGameLayer.waypointLogHelperP.setRandomGeographicMapCe
                         
                                     {
                                     
-    BasicArrayList geographicMapCellPositionBasicArrayList = BasicArrayListUtil::getInstance().getRandom(pathsList) as BasicArrayList;;
+    BasicArrayList geographicMapCellPositionBasicArrayList = BasicArrayListUtil::getInstance().getRandom(pathsList);;
     
 this->setGeographicMapCellHistoryPath(geographicMapCellPositionBasicArrayList);
     
@@ -436,7 +436,7 @@ this->getCompleteTimeDelayHelper().setStartTimeTNT();
                                     {
                                     this->associatedAdvancedRTSGameLayer.waypointLogHelperP.moveAwayFromBuilding(this->associatedAdvancedRTSGameLayer);
     
-this->setCurrentTargetLayerInterface(this->FAKE_WAYPOINT_LAYER as CollidableDestroyableDamageableLayer);
+this->setCurrentTargetLayerInterface(this->FAKE_WAYPOINT_LAYER);
     
 
     BasicArrayList pathsList = buildingLayer.getMoveOutOfBuildAreaPath(geographicMapCellPosition);;

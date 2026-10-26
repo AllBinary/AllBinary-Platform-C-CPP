@@ -21,7 +21,7 @@
         #ifndef TAGHELPERS_ORDERHISTORYHELPER_H
         #define TAGHELPERS_ORDERHISTORYHELPER_H
 
-            #include "../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
 
@@ -101,7 +101,7 @@ class OrderHistoryHelper: public TagHelper {
 
     private: StoreFrontInterface storeFrontInterface;
 
-    private: HashMap<any, any> propertiesHashMap;
+    private: HashMap<Object*, Object*> propertiesHashMap;
 
     private: PageContext pageContext;
 
@@ -117,7 +117,7 @@ class OrderHistoryHelper: public TagHelper {
 
     private: std::string newStatus;
 
-public: OrderHistoryHelper(HashMap<any, any> propertiesHashMap, PageContext pageContext);
+public: OrderHistoryHelper(HashMap<Object*, Object*> propertiesHashMap, PageContext pageContext);
 
     private: void getFormData();
 

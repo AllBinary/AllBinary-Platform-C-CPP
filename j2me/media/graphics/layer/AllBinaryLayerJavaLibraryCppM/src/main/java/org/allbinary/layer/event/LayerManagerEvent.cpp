@@ -18,9 +18,6 @@
 
 
 
-#include <jsinterop/annotations/JsType.h>
-
-      
 #include <org/allbinary/layer/AllBinaryLayer.h>
 
       
@@ -31,12 +28,6 @@
 
       
 #include <org/allbinary/logic/util/event/AllBinaryEventObject.h>
-
-      
-#include <jsinterop/annotations/JsMethod.h>
-
-      
-#include <jsinterop/annotations/JsConstructor.h>
 
       
 
@@ -64,8 +55,9 @@ class LayerManagerEvent: public AllBinaryEventObject {
 
     private: std::string crud;
 
-public: LayerManagerEvent(LayerManager layerManager, std::string crud){
-            super(layerManager);
+public: LayerManagerEvent(LayerManager layerManager, std::string crud) : AllBinaryEventObject(layerManager){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.

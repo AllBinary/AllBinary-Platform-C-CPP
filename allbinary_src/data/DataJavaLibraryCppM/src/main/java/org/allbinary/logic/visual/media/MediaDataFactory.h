@@ -21,7 +21,7 @@
         #ifndef ORG_ALLBINARY_LOGIC_VISUAL_MEDIA_MEDIADATAFACTORY_H
         #define ORG_ALLBINARY_LOGIC_VISUAL_MEDIA_MEDIADATAFACTORY_H
 
-            #include "../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
 
 

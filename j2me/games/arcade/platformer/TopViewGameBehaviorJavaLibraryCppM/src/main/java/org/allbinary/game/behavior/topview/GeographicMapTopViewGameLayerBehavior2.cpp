@@ -20,7 +20,7 @@
 
             #include <vector>
         
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/media/graphics/geography/map/MultiGeographicMapBehavior.h>
 
@@ -44,6 +44,9 @@
 
       
 #include <org/allbinary/media/graphics/geography/map/GeographicMapCellType.h>
+
+      
+#include <org/allbinary/media/graphics/geography/map/SimpleGeographicMapCellPositionFactory.h>
 
       
 
@@ -77,10 +80,11 @@ class GeographicMapTopViewGameLayerBehavior2: public GeographicMapTopViewLayerBe
 
     private: int32_t offsetY;
 
-    private: GeographicMapCellPosition previousGeographicMapCellPosition;
+    private: GeographicMapCellPosition previousGeographicMapCellPosition = SimpleGeographicMapCellPositionFactory::NULL_GEOGRAPHIC_MAP_CELL_POSITION;
 
-public: GeographicMapTopViewGameLayerBehavior2(int32_t maxGravityActionIndex, bool autoStepBlocks, int32_t offsetY){
-            super(maxGravityActionIndex);
+public: GeographicMapTopViewGameLayerBehavior2(int32_t maxGravityActionIndex, bool autoStepBlocks, int32_t offsetY) : GeographicMapTopViewLayerBehavior(maxGravityActionIndex){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -96,9 +100,7 @@ this->offsetY= offsetY;
             
     public: void gravity(VelocityProperties velocityProperties, std::vector<BasicGeographicMap> geographicMapInterfaceArray, std::vector<GeographicMapCellType> geographicMapCellTypeArray, GeographicMapCellPosition geographicMapCellPosition){
 
-                        if(geographicMapCellPosition != 
-                                    nullptr
-                                )
+                        if(geographicMapCellPosition != SimpleGeographicMapCellPositionFactory::NULL_GEOGRAPHIC_MAP_CELL_POSITION)
                         
                                     {
                                     this->geographicMapBehavior.getCellTypeAt(geographicMapInterfaceArray, geographicMapCellTypeArray, geographicMapCellPosition);
@@ -142,7 +144,7 @@ this->gravity();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return geographicMapInterfaceArray[0]!.getCellPositionAtXYNoThrow(xCellPosition, yCellPosition);;
+                        return geographicMapInterfaceArray[0].getCellPositionAtXYNoThrow(xCellPosition, yCellPosition);;
     
 }
 
@@ -160,7 +162,7 @@ this->gravity();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return geographicMapInterfaceArray[0]!.getCellPositionAtXYNoThrow(xCellPosition, yCellPosition);;
+                        return geographicMapInterfaceArray[0].getCellPositionAtXYNoThrow(xCellPosition, yCellPosition);;
     
 }
 
@@ -178,7 +180,7 @@ this->gravity();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return geographicMapInterfaceArray[0]!.getCellPositionAtXYNoThrow(xCellPosition, yCellPosition);;
+                        return geographicMapInterfaceArray[0].getCellPositionAtXYNoThrow(xCellPosition, yCellPosition);;
     
 }
 
@@ -196,7 +198,7 @@ this->gravity();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return geographicMapInterfaceArray[0]!.getCellPositionAtXYNoThrow(xCellPosition, yCellPosition);;
+                        return geographicMapInterfaceArray[0].getCellPositionAtXYNoThrow(xCellPosition, yCellPosition);;
     
 }
 
@@ -214,7 +216,7 @@ this->gravity();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return geographicMapInterfaceArray[0]!.getCellPositionAtXYNoThrow(xCellPosition, yCellPosition);;
+                        return geographicMapInterfaceArray[0].getCellPositionAtXYNoThrow(xCellPosition, yCellPosition);;
     
 }
 
@@ -232,7 +234,7 @@ this->gravity();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return geographicMapInterfaceArray[0]!.getCellPositionAtXYNoThrow(xCellPosition, yCellPosition);;
+                        return geographicMapInterfaceArray[0].getCellPositionAtXYNoThrow(xCellPosition, yCellPosition);;
     
 }
 
@@ -241,9 +243,7 @@ this->gravity();
             
     public: GeographicMapCellPosition getGeographicMapCellPositionIfNotSolidBlockOrOffMapLocation(std::vector<BasicGeographicMap> geographicMapInterfaceArray, std::vector<GeographicMapCellType> geographicMapCellTypeArray, VelocityProperties velocityProperties, AllBinaryLayer layer, int32_t x, int32_t y){
 
-    GeographicMapCellPosition geographicMapCellPosition = 
-                null
-            ;;
+    GeographicMapCellPosition geographicMapCellPosition = SimpleGeographicMapCellPositionFactory::NULL_GEOGRAPHIC_MAP_CELL_POSITION;;
     
 
     GeographicMapCellPosition topLeftGeographicMapCellPosition = this->getPositionTopLeft(geographicMapInterfaceArray, layer, x, y);;
@@ -251,16 +251,14 @@ this->gravity();
 geographicMapCellPosition= this->getGeographicMapCellPositionIfNotSolidBlockOrOffMap(geographicMapInterfaceArray, geographicMapCellTypeArray, topLeftGeographicMapCellPosition, velocityProperties, layer);
     
 
-                        if(geographicMapCellPosition == 
-                                    nullptr
-                                )
+                        if(geographicMapCellPosition == SimpleGeographicMapCellPositionFactory::NULL_GEOGRAPHIC_MAP_CELL_POSITION)
                         
                                     {
                                     
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return nullptr;
+                        return SimpleGeographicMapCellPositionFactory::NULL_GEOGRAPHIC_MAP_CELL_POSITION;
     
 
                                     }
@@ -271,16 +269,14 @@ geographicMapCellPosition= this->getGeographicMapCellPositionIfNotSolidBlockOrOf
 geographicMapCellPosition= this->getGeographicMapCellPositionIfNotSolidBlockOrOffMap(geographicMapInterfaceArray, geographicMapCellTypeArray, topRightGeographicMapCellPosition, velocityProperties, layer);
     
 
-                        if(geographicMapCellPosition == 
-                                    nullptr
-                                )
+                        if(geographicMapCellPosition == SimpleGeographicMapCellPositionFactory::NULL_GEOGRAPHIC_MAP_CELL_POSITION)
                         
                                     {
                                     
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return nullptr;
+                        return SimpleGeographicMapCellPositionFactory::NULL_GEOGRAPHIC_MAP_CELL_POSITION;
     
 
                                     }
@@ -291,16 +287,14 @@ geographicMapCellPosition= this->getGeographicMapCellPositionIfNotSolidBlockOrOf
 geographicMapCellPosition= this->getGeographicMapCellPositionIfNotSolidBlockOrOffMap(geographicMapInterfaceArray, geographicMapCellTypeArray, bottomLeftGeographicMapCellPosition, velocityProperties, layer);
     
 
-                        if(geographicMapCellPosition == 
-                                    nullptr
-                                )
+                        if(geographicMapCellPosition == SimpleGeographicMapCellPositionFactory::NULL_GEOGRAPHIC_MAP_CELL_POSITION)
                         
                                     {
                                     
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return nullptr;
+                        return SimpleGeographicMapCellPositionFactory::NULL_GEOGRAPHIC_MAP_CELL_POSITION;
     
 
                                     }
@@ -311,9 +305,7 @@ geographicMapCellPosition= this->getGeographicMapCellPositionIfNotSolidBlockOrOf
 geographicMapCellPosition= this->getGeographicMapCellPositionIfNotSolidBlockOrOffMap(geographicMapInterfaceArray, geographicMapCellTypeArray, bottomRightGeographicMapCellPosition, velocityProperties, layer);
     
 
-                        if(geographicMapCellPosition == 
-                                    nullptr
-                                )
+                        if(geographicMapCellPosition == SimpleGeographicMapCellPositionFactory::NULL_GEOGRAPHIC_MAP_CELL_POSITION)
                         
                                     {
                                     
@@ -336,16 +328,14 @@ geographicMapCellPosition= this->getGeographicMapCellPositionIfNotSolidBlockOrOf
             
     public: GeographicMapCellPosition getGeographicMapCellPositionIfNotSolidBlockOrOffMap(std::vector<BasicGeographicMap> geographicMapInterfaceArray, std::vector<GeographicMapCellType> geographicMapCellTypeArray, GeographicMapCellPosition geographicMapCellPosition, VelocityProperties velocityProperties, AllBinaryLayer layer){
 
-                        if(geographicMapCellPosition != 
-                                    nullptr
-                                )
+                        if(geographicMapCellPosition != SimpleGeographicMapCellPositionFactory::NULL_GEOGRAPHIC_MAP_CELL_POSITION)
                         
                                     {
                                     
     GeographicMapCellPosition possibleStepGeographicMapCellPosition = geographicMapCellPosition;;
     
 
-    AllBinaryTiledLayer tiledLayer = geographicMapInterfaceArray[0]!.getAllBinaryTiledLayer();;
+    AllBinaryTiledLayer tiledLayer = geographicMapInterfaceArray[0].getAllBinaryTiledLayer();;
     
 
                         if(possibleStepGeographicMapCellPosition.getColumn() > 0 && possibleStepGeographicMapCellPosition.getRow() > 0 && possibleStepGeographicMapCellPosition.getColumn() < tiledLayer.getColumns() && possibleStepGeographicMapCellPosition.getRow() < tiledLayer.getRows())
@@ -363,15 +353,13 @@ geographicMapCellPosition= this->getGeographicMapCellPositionIfNotSolidBlockOrOf
                         if(hasSolidBlock || hasOffMap)
                         
                                     {
-                                    this->previousGeographicMapCellPosition= 
-                                        nullptr
-                                    ;
+                                    this->previousGeographicMapCellPosition= SimpleGeographicMapCellPositionFactory::NULL_GEOGRAPHIC_MAP_CELL_POSITION;
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return nullptr;
+                        return SimpleGeographicMapCellPositionFactory::NULL_GEOGRAPHIC_MAP_CELL_POSITION;
     
 
                                     }
@@ -398,15 +386,13 @@ geographicMapCellPosition= this->getGeographicMapCellPositionIfNotSolidBlockOrOf
                             
                         }
                             
-this->previousGeographicMapCellPosition= 
-                                        nullptr
-                                    ;
+this->previousGeographicMapCellPosition= SimpleGeographicMapCellPositionFactory::NULL_GEOGRAPHIC_MAP_CELL_POSITION;
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return nullptr;
+                        return SimpleGeographicMapCellPositionFactory::NULL_GEOGRAPHIC_MAP_CELL_POSITION;
     
 }
 
@@ -415,14 +401,13 @@ this->previousGeographicMapCellPosition=
             
     public: void moveAndLand(std::vector<BasicGeographicMap> geographicMapInterfaceArray, std::vector<GeographicMapCellType> geographicMapCellTypeArray, GeographicMapCellPosition geographicMapCellPosition, VelocityProperties velocityProperties, AllBinaryLayer layer, int32_t x, int32_t y){
 
-                        if(geographicMapCellPosition != 
-                                    nullptr
-                                )
+                        if(geographicMapCellPosition != SimpleGeographicMapCellPositionFactory::NULL_GEOGRAPHIC_MAP_CELL_POSITION)
                         
                                     {
-                                    layer = layerlayer as TopViewCharacterInterface
-layer.
-                    terrainMove(geographicMapInterfaceArray, geographicMapCellTypeArray, x, y);
+                                    
+    TopViewCharacterInterface topViewCharacterInterface = (layer);;
+    
+topViewCharacterInterface.terrainMove(geographicMapInterfaceArray, geographicMapCellTypeArray, x, y);
     
 
                                     }
@@ -443,9 +428,7 @@ layer.
 this->moveAndLand(geographicMapInterfaceArray, geographicMapCellTypeArray, geographicMapCellPosition, velocityProperties, layer, x, y);
     
 
-                        if(geographicMapCellPosition == 
-                                    nullptr
-                                )
+                        if(geographicMapCellPosition == SimpleGeographicMapCellPositionFactory::NULL_GEOGRAPHIC_MAP_CELL_POSITION)
                         
                                     {
                                     
@@ -477,13 +460,11 @@ this->moveAndLand(geographicMapInterfaceArray, geographicMapCellTypeArray, geogr
     GeographicMapCellPosition geographicMapCellPosition = this->getLeftPosition(geographicMapInterfaceArray, layer);;
     
 
-                        if(geographicMapCellPosition != 
-                                    nullptr
-                                )
+                        if(geographicMapCellPosition != SimpleGeographicMapCellPositionFactory::NULL_GEOGRAPHIC_MAP_CELL_POSITION)
                         
                                     {
                                     
-    GeographicMapCellPosition possibleStepGeographicMapCellPosition = geographicMapInterfaceArray[0]!.getGeographicMapCellPositionFactory().getAt(geographicMapCellPosition.getColumn(), geographicMapCellPosition.getRow() -1);;
+    GeographicMapCellPosition possibleStepGeographicMapCellPosition = geographicMapInterfaceArray[0].getGeographicMapCellPositionFactory().getAt(geographicMapCellPosition.getColumn(), geographicMapCellPosition.getRow() -1);;
     
 this->geographicMapBehavior.getCellTypeAt(geographicMapInterfaceArray, geographicMapCellTypeArray, possibleStepGeographicMapCellPosition);
     
@@ -498,9 +479,10 @@ this->geographicMapBehavior.getCellTypeAt(geographicMapInterfaceArray, geographi
                         if(this->autoStepBlocks)
                         
                                     {
-                                    layer = layerlayer as TopViewCharacterInterface
-layer.
-                    leftp();
+                                    
+    TopViewCharacterInterface topViewCharacterInterface = (layer);;
+    
+topViewCharacterInterface.leftp();
     
 
                                     }
@@ -515,9 +497,10 @@ layer.
                                     }
                                 
                         else {
-                            layer = layerlayer as TopViewCharacterInterface
-layer.
-                    leftp();
+                            
+    TopViewCharacterInterface topViewCharacterInterface = (layer);;
+    
+topViewCharacterInterface.leftp();
     
 
                         }
@@ -535,13 +518,11 @@ layer.
     GeographicMapCellPosition geographicMapCellPosition = this->getRightPosition(geographicMapInterfaceArray, layer);;
     
 
-                        if(geographicMapCellPosition != 
-                                    nullptr
-                                )
+                        if(geographicMapCellPosition != SimpleGeographicMapCellPositionFactory::NULL_GEOGRAPHIC_MAP_CELL_POSITION)
                         
                                     {
                                     
-    GeographicMapCellPosition possibleStepGeographicMapCellPosition = geographicMapInterfaceArray[0]!.getGeographicMapCellPositionFactory().getAt(geographicMapCellPosition.getColumn(), geographicMapCellPosition.getRow() -1);;
+    GeographicMapCellPosition possibleStepGeographicMapCellPosition = geographicMapInterfaceArray[0].getGeographicMapCellPositionFactory().getAt(geographicMapCellPosition.getColumn(), geographicMapCellPosition.getRow() -1);;
     
 this->geographicMapBehavior.getCellTypeAt(geographicMapInterfaceArray, geographicMapCellTypeArray, possibleStepGeographicMapCellPosition);
     
@@ -556,9 +537,10 @@ this->geographicMapBehavior.getCellTypeAt(geographicMapInterfaceArray, geographi
                         if(this->autoStepBlocks)
                         
                                     {
-                                    layer = layerlayer as TopViewCharacterInterface
-layer.
-                    rightp();
+                                    
+    TopViewCharacterInterface topViewCharacterInterface = (layer);;
+    
+topViewCharacterInterface.rightp();
     
 
                                     }
@@ -573,9 +555,10 @@ layer.
                                     }
                                 
                         else {
-                            layer = layerlayer as TopViewCharacterInterface
-layer.
-                    rightp();
+                            
+    TopViewCharacterInterface topViewCharacterInterface = (layer);;
+    
+topViewCharacterInterface.rightp();
     
 
                         }

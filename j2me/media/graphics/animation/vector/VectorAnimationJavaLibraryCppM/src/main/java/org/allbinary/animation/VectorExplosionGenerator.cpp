@@ -20,9 +20,9 @@
 
             #include <vector>
         
-            #include "../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/graphics/GPoint.h>
 
@@ -102,7 +102,7 @@ private: VectorExplosionGenerator(){
     int32_t size = list.size();;
     
 
-    std::vector<std::vector<int32_t>> points = new Array(size).fill(null).map(() => new Array(2).fill(0));;
+    std::vector<std::vector<int32_t>> points = std::vector<std::vector<int32_t>>(size, std::vector<int32_t>(2));;
     
 
 
@@ -111,11 +111,11 @@ private: VectorExplosionGenerator(){
                         for (
     int32_t index = 0;index < size; index++)
         {
-point= list.objectArray[index]! as GPoint;
+point= list.objectArray[index];
     
-points[index]![0]= point.getX();
+points[index][0]= point.getX();
     
-points[index]![1]= point.getY();
+points[index][1]= point.getY();
     
 }
 
@@ -135,7 +135,7 @@ points[index]![1]= point.getY();
     BasicArrayList pointsBasicArrayList = this->getInstanceStartFrame(points, howMuch, type, true);;
     
 
-    BasicArrayList tempBasicArrayList = pointsBasicArrayList.objectArray[0]! as BasicArrayList;;
+    BasicArrayList tempBasicArrayList = pointsBasicArrayList.objectArray[0];;
     
 
     std::vector<std::vector<std::vector<int32_t>>> newPoints = this->vectorAnimationUtil.toAnimationArrayFromListOfPointListWithPointsPerFrame(pointsBasicArrayList, tempBasicArrayList.size());;
@@ -171,7 +171,7 @@ pointsBasicArrayList.add(this->createPointsBasicArrayList(points));
 
         while(frameIndex < howMuch)
         {
-tempBasicArrayList= pointsBasicArrayList.objectArray[frameIndex]! as BasicArrayList;
+tempBasicArrayList= pointsBasicArrayList.objectArray[frameIndex];
     
 pointBasicArrayList= this->createListFromPoints(tempBasicArrayList, points, howMuch, type);
     
@@ -230,9 +230,9 @@ frameIndex++;
 sectionBasicArrayList= BasicArrayListD();
     
 
-        while(points[index]![0] != 1000)
+        while(points[index][0] != 1000)
         {
-sectionBasicArrayList.add(tempBasicArrayList.objectArray[index]!);
+sectionBasicArrayList.add(tempBasicArrayList.objectArray[index]);
     
 index++;
     
@@ -269,7 +269,7 @@ sectionBasicArrayList= RandomTranslation::getInstance(sectionBasicArrayList, how
                         for (
     int32_t index2 = 0;index2 < size; index2++)
         {
-pointBasicArrayList.add(sectionBasicArrayList.objectArray[index2]!);
+pointBasicArrayList.add(sectionBasicArrayList.objectArray[index2]);
     
 }
 
@@ -284,10 +284,10 @@ pointBasicArrayList.add(sectionBasicArrayList.objectArray[index2]!);
                                     }
                                 
                              else 
-                        if(points[index]![0] == 1000)
+                        if(points[index][0] == 1000)
                         
                                     {
-                                    pointBasicArrayList.add(tempBasicArrayList.objectArray[index]!);
+                                    pointBasicArrayList.add(tempBasicArrayList.objectArray[index]);
     
 index++;
     
@@ -333,7 +333,7 @@ index++;
                         for (
     int32_t index = 0;index < points.size(); index++)
         {
-firstPointBasicArrayList.add(pointFactory.createXY(points[index]![0]!, points[index]![1]!));
+firstPointBasicArrayList.add(pointFactory.createXY(points[index][0], points[index][1]));
     
 }
 

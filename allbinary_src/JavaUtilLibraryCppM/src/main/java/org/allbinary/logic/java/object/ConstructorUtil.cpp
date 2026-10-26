@@ -20,9 +20,9 @@
 
             #include <vector>
         
-            #include "../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../java/lang/Class.h"
+            #include "java/lang/Class.h"
         
 #include <java/lang/reflect/Constructor.h>
 
@@ -56,7 +56,7 @@ class ConstructorUtil
             : public Object
          {
 
-    public: static std::string viewAll(Function myClass, std::string lineBreak){
+    public: static std::string viewAll(Class* myClass, std::string lineBreak){
 
     StringMaker stringBuffer = StringMaker();;
     
@@ -74,7 +74,7 @@ stringBuffer.append(lineBreak);
                         for (
     int32_t index = 0;index < constructor.size(); index++)
         {
-stringBuffer.append(ConstructorUtil::view(constructor[index]!, lineBreak));
+stringBuffer.append(ConstructorUtil::view(constructor[index], lineBreak));
     
 }
 
@@ -103,7 +103,7 @@ stringBuffer.append(ConstructorUtil::view(constructor[index]!, lineBreak));
 stringBuffer.append(constructor.getName());
     
 
-    std::vector<Function> classes = constructor.getParameterTypes();;
+    std::vector<Class*> classes = constructor.getParameterTypes();;
     
 
 
@@ -114,7 +114,7 @@ stringBuffer.append(constructor.getName());
         {
 stringBuffer.append(commonSeps.SPACE);
     
-stringBuffer.append(classes[index]!.getName());
+stringBuffer.append(classes[index].getName());
     
 stringBuffer.append(commonSeps.COLON);
     

@@ -47,7 +47,7 @@
 class AllBinaryEventCircularPool: public BaseCircularPool {
 
 public: AllBinaryEventCircularPool(int32_t max){
-this->OBJECT_ARRAY= new Array(max);
+this->OBJECT_ARRAY= std::vector<Object*>(max);
     
 this->circularIndexUtil= CircularIndexUtil::createInstance(max);
     

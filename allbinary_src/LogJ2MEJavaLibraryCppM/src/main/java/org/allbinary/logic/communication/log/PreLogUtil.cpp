@@ -18,11 +18,14 @@
 
 
 
-            #include "../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../java/lang/System.h"
+            #include "java/lang/System.h"
         
 #include <org/allbinary/logic/NullUtil.h>
+
+      
+#include <org/allbinary/logic/string/StringUtil.h>
 
       
 #include <org/allbinary/string/CommonStrings.h>
@@ -65,12 +68,12 @@ PreLogUtil::putOE(specialMessage, anyType, functionName, NullUtil::getInstance()
     std::string className = CommonStrings::getInstance().EMPTY;;
     
 
-                        if(anyType->constructor.name.toString()! != 
+                        if(anyType->constructor.name.toString() != 
                                     nullptr
                                 )
                         
                                     {
-                                    className= anyType->constructor.name.toString()!;
+                                    className= anyType->constructor.name.toString();
     
 
                                     }
@@ -94,6 +97,16 @@ PreLogUtil::putSE(specialMessage, className, functionName, NullUtil::getInstance
     std::string message = LogFormatUtil::getInstance().get(className, functionName, specialMessage, exception);;
     
 console.log(PreLogUtil::LOG_SUCCESS + message);
+    
+}
+
+
+    public: static std::string getClassName(Object* anyType){
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return anyType->constructor.name.toString();;
     
 }
 

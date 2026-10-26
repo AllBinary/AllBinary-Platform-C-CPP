@@ -21,11 +21,11 @@
         #ifndef ORG_ALLBINARY_BUSINESS_USER_MODULES_USER_H
         #define ORG_ALLBINARY_BUSINESS_USER_MODULES_USER_H
 
-            #include "../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../../../java/lang/Long.h"
+            #include "java/lang/Long.h"
         
 #include <java/util/Calendar.h>
 
@@ -186,11 +186,11 @@ public: User();
 
 public: User(HttpServletRequest request);
 
-public: User(HashMap<any, any> userHashMap);
+public: User(HashMap<Object*, Object*> userHashMap);
 
                 //@Throws(Exception.constructor)
             
-    public: void getFormData(HashMap<any, any> userHashMap);
+    public: void getFormData(HashMap<Object*, Object*> userHashMap);
 
     public: Boolean isValid();
 
@@ -292,9 +292,9 @@ public: User(HashMap<any, any> userHashMap);
 
                 //@Throws(Exception.constructor)
             
-    public: HashMap<any, any> toHashMap();
+    public: HashMap<Object*, Object*> toHashMap();
 
-    public: HashMap<any, any> toPasswordHashMap();
+    public: HashMap<Object*, Object*> toPasswordHashMap();
 
     public: void validateSession(WeblisketSessionInterface weblisketSession);
 

@@ -7,16 +7,14 @@
         #ifndef ORG_ALLBINARY_LAYER_LAYERMANAGER_H
         #define ORG_ALLBINARY_LAYER_LAYERMANAGER_H
 
-            #include "../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../java/lang/System.h"
-        
-#include <jsinterop/annotations/JsType.h>
+#include <javax/microedition/lcdui/Graphics.h>
 
       
-#include <javax/microedition/lcdui/Graphics.h>
+#include <org/allbinary/TsUtil.h>
 
       
 #include <org/allbinary/logic/communication/log/LogUtil.h>
@@ -34,13 +32,7 @@
 #include <org/allbinary/util/BasicArrayListD.h>
 
       
-#include <jsinterop/annotations/JsMethod.h>
-
-      
-#include <jsinterop/annotations/JsConstructor.h>
-
-      
-#include <jsinterop/annotations/JsProperty.h>
+#include <org/allbinary/logic/ABSystemWrapper.h>
 
       
 
@@ -72,6 +64,10 @@ class LayerManager
     protected: const LogUtil logUtil = LogUtil::getInstance();
 
     protected: const CommonStrings commonStrings = CommonStrings::getInstance();
+
+    private: const ABSystemWrapper systemWrapper = ABSystemWrapper::getInstance();
+
+    private: const TsUtil tsUtil = TsUtil::getInstance();
 
     private: LayerManagerLoggingBase layerManagerLogging;
 

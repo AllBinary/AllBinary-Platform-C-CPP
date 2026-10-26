@@ -21,11 +21,11 @@
         #ifndef ADMIN_TAGHELPERS_MODIFYTABLE_H
         #define ADMIN_TAGHELPERS_MODIFYTABLE_H
 
-            #include "../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../java/lang/RuntimeException.h"
+            #include "java/lang/RuntimeException.h"
         
 #include <org/allbinary/string/CommonStrings.h>
 

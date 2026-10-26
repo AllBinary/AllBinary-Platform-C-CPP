@@ -21,9 +21,9 @@
         #ifndef ORG_ALLBINARY_LOGIC_COMMUNICATION_HTTP_REQUEST_ABEHTTPREQUESTINFO_H
         #define ORG_ALLBINARY_LOGIC_COMMUNICATION_HTTP_REQUEST_ABEHTTPREQUESTINFO_H
 
-            #include "../../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../../java/lang/Integer.h"
+            #include "java/lang/Integer.h"
         
 #include <java/util/Enumeration.h>
 
@@ -31,10 +31,16 @@
 #include <java/util/HashMap.h>
 
       
-#include <java/util/Vector.h>
+#include <org/allbinary/util/BasicArrayList.h>
+
+      
+#include <org/allbinary/util/BasicArrayListD.h>
 
       
 #include <javax/servlet/http/HttpServletRequest.h>
+
+      
+#include <org/allbinary/logic/StdUtil.h>
 
       
 #include <org/allbinary/logic/string/StringMaker.h>
@@ -88,13 +94,13 @@ class AbeHttpRequestInfo
 
     private: std::string requestedFilePath;
 
-public: AbeHttpRequestInfo(HashMap<any, any> hashMap);
+public: AbeHttpRequestInfo(HashMap<Object*, Object*> hashMap);
 
 public: AbeHttpRequestInfo(HttpServletRequest httpServletRequest);
 
-    public: HashMap<any, any> toHashMap();
+    public: HashMap<Object*, Object*> toHashMap();
 
-    public: Vector toVector();
+    public: BasicArrayList toVector();
 
     public: std::string toString();
 

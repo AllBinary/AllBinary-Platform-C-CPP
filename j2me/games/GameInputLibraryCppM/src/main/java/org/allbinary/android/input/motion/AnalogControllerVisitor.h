@@ -21,15 +21,9 @@
         #ifndef ORG_ALLBINARY_ANDROID_INPUT_MOTION_ANALOGCONTROLLERVISITOR_H
         #define ORG_ALLBINARY_ANDROID_INPUT_MOTION_ANALOGCONTROLLERVISITOR_H
 
-            #include "../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-#include <jsinterop/annotations/JsType.h>
-
-      
 #include <org/allbinary/layer/AllBinaryLayerManager.h>
-
-      
-#include <jsinterop/annotations/JsMethod.h>
 
       
 

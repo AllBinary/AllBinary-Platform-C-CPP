@@ -23,13 +23,13 @@
 
             #include <vector>
         
-            #include "../../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../../../../java/lang/System.h"
+            #include "java/lang/System.h"
         
-            #include "../../../../../../java/lang/Integer.h"
+            #include "java/lang/Integer.h"
         
 #include <java/util/HashMap.h>
 
@@ -93,13 +93,13 @@ class Replace
 
     private: const std::string FOUND_KEY = "found key total: ";
 
-    private: HashMap<any, any> hashMap;
+    private: HashMap<Object*, Object*> hashMap;
 
 public: Replace(std::string key, std::string value);
 
 public: Replace(std::vector<std::string> keys, std::vector<std::string> values);
 
-public: Replace(HashMap<any, any> hashMap);
+public: Replace(HashMap<Object*, Object*> hashMap);
 
     public: std::string all(std::string replace);
 

@@ -20,11 +20,11 @@
 
             #include <vector>
         
-            #include "../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../java/lang/Class.h"
+            #include "java/lang/Class.h"
         
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
 
@@ -92,19 +92,19 @@ private: DbWorkFlowFactory(){
 
                 //@Throws(Exception.constructor, LicensingException.constructor)
             
-    public: WorkFlowInterface getInstance(AbeClientInformationInterface abeClientInformation, HashMap<any, any> hashMap){
+    public: WorkFlowInterface getInstance(AbeClientInformationInterface abeClientInformation, HashMap<Object*, Object*> hashMap){
 
         try {
             
-    std::string className = hashMap.get(DynamicObjectData::NAME) as string;;
+    std::string className = hashMap.get(DynamicObjectData::NAME);;
     
 
-    std::vector<Object*> params = new Array(1);;
+    std::vector<Object*> params = std::vector<Object*>(1);;
     
 
-    std::vector<Function> classes = new Array(1);;
+    std::vector<Class*> classes = std::vector<Class>(1);;
     
-classes[0]= hashMap.constructor;
+classes[0]= hashMap.getClass();
     
 params[0]= hashMap;
     
@@ -115,7 +115,7 @@ params[0]= hashMap;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return WorkFlowWrapper(anyType) as WorkFlowInterface;
+                        return WorkFlowWrapper(anyType);
     
 
                 //: 

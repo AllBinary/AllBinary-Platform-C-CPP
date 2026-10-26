@@ -20,9 +20,9 @@
 
             #include <vector>
         
-            #include "../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/io/ByteArrayOutputStream.h>
 
@@ -90,7 +90,7 @@ private: AbCryptUtil(){
     
 
         try {
-            outputStream= this->streamUtil.get(inputStream, ByteArrayOutputStream(), new Array(16384)) as ByteArrayOutputStream;
+            outputStream= this->streamUtil.get(inputStream, ByteArrayOutputStream(), std::vector<int8_t>(16384));
     
 
     AbCrypt abCrypt = AbCrypt(KeySpecFactory::getInstance().DESEDE);;

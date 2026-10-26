@@ -6,7 +6,7 @@
 
             #include <vector>
         
-            #include "../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
 
 
@@ -40,7 +40,7 @@ class PolygonRasterizer
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return instance;
+                        return PolygonRasterizer::instance();
     
 }
 
@@ -84,10 +84,10 @@ PolygonRasterizer::getInstance().fillPolygon(pathX, pathY, pointCount, pixelBuff
     FixedPoint fixedPoint = FixedPoint::getInstance();;
     
 
-    std::vector<int32_t> x = new Array(numPoints);;
+    std::vector<int32_t> x = std::vector<int32_t>(numPoints);;
     
 
-    std::vector<int32_t> y = new Array(numPoints);;
+    std::vector<int32_t> y = std::vector<int32_t>(numPoints);;
     
 
     int32_t minY = height;int32_t maxY = 0;;
@@ -99,17 +99,17 @@ PolygonRasterizer::getInstance().fillPolygon(pathX, pathY, pointCount, pixelBuff
                         for (
     int32_t i = 0;i < numPoints; i++)
         {
-x[i]= fixedPoint.toInt(polyX[i]!);
+x[i]= fixedPoint.toInt(polyX[i]);
     
-y[i]= fixedPoint.toInt(polyY[i]!);
+y[i]= fixedPoint.toInt(polyY[i]);
     
 
                         if(y[i] < minY)
-                        minY= y[i]!;
+                        minY= y[i];
                                 
 
                         if(y[i] > maxY)
-                        maxY= y[i]!;
+                        maxY= y[i];
                                 
 }
 
@@ -122,7 +122,7 @@ y[i]= fixedPoint.toInt(polyY[i]!);
                         maxY= height -1;
                                 
 
-    std::vector<int32_t> scanlineX = new Array(numPoints);;
+    std::vector<int32_t> scanlineX = std::vector<int32_t>(numPoints);;
     
 
 
@@ -192,7 +192,7 @@ scanlineX[intersectCount++]= interX;
                                     
     int32_t temp = scanlineX[i];;
     
-scanlineX[i]= scanlineX[j]!;
+scanlineX[i]= scanlineX[j];
     
 scanlineX[j]= temp;
     
@@ -258,13 +258,13 @@ buffer[rowOffset +pixelX]= colorRGB;
     int32_t height = 100;;
     
 
-    std::vector<int32_t> pathX = new Array(200);;
+    std::vector<int32_t> pathX = std::vector<int32_t>(200);;
     
 
-    std::vector<int32_t> pathY = new Array(200);;
+    std::vector<int32_t> pathY = std::vector<int32_t>(200);;
     
 
-    std::vector<int32_t> pixelBuffer = new Array(width *height);;
+    std::vector<int32_t> pixelBuffer = std::vector<int32_t>(width *height);;
     
 
     std::string svgPath = "M 32.139812,81.554575 14.450128,74.294372 V 50.000034 25.705697 l 17.73231,-7.268329 C 41.935209,14.439788 49.953112,11.168898 50,11.168723 c 0.04689,-1.74e-4 8.064791,3.270238 17.817562,7.267583 l 17.73231,7.267899 V 50 74.295795 l -17.73231,7.2679 c -9.752771,3.997344 -17.789855,7.264116 -17.860188,7.259492 -0.07033,-0.0046 -8.088235,-3.275499 -17.817562,-7.268612 z";;

@@ -18,9 +18,9 @@
 
 
 
-            #include "../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../../../../java/lang/Runnable.h"
+            #include "java/lang/Runnable.h"
         
 #include <javax/microedition/lcdui/Graphics.h>
 
@@ -239,8 +239,9 @@ logUtil.put(commonStrings.EXCEPTION, this, commonStrings.RUN, e);
 
     private: int32_t portion = 0;
 
-protected: AndroidTitleProgressBar(std::string title, BasicColor backgroundBasicColor, BasicColor foregroundBasicColor){
-            super(title, backgroundBasicColor, foregroundBasicColor);
+protected: AndroidTitleProgressBar(std::string title, BasicColor backgroundBasicColor, BasicColor foregroundBasicColor) : ProgressCanvas(title, backgroundBasicColor, foregroundBasicColor){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.

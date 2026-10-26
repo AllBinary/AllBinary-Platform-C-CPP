@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/business/user/NewUserFactory.h>
 
@@ -75,8 +75,9 @@ class UpdateValidationUserView: public HttpStoreComponentView, public Validation
 
     private: UserInterface user;
 
-public: UpdateValidationUserView(TransformInfoInterface transformInfoInterface){
-            super(transformInfoInterface);
+public: UpdateValidationUserView(TransformInfoInterface transformInfoInterface) : HttpStoreComponentView(transformInfoInterface){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.

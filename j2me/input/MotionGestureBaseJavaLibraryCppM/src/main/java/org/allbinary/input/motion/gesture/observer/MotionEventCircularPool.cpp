@@ -18,9 +18,9 @@
 
 
 
-            #include "../../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/game/input/InputFactory.h>
 
@@ -87,7 +87,7 @@ this->eventPool.initAllBinaryEventCircularPool(MotionEventFactory(this->eventPoo
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->eventPool.getInstance(motionGestureInput.getId() -this->MIN) as MotionGestureEvent;
+                        return this->eventPool.getInstance(motionGestureInput.getId() -this->MIN);
     
 }
 

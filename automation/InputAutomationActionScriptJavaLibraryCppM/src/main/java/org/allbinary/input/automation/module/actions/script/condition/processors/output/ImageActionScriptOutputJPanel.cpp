@@ -20,7 +20,7 @@
 
             #include <vector>
         
-            #include "../../../../../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/util/BasicArrayList.h>
 
@@ -106,7 +106,7 @@ this->setImageTypeJlistModel();
     BasicArrayList vector = imageTypes.getVector();;
     
 
-    std::vector<int32_t> selectedArray = new Array(vector.size());;
+    std::vector<int32_t> selectedArray = std::vector<int32_t>(vector.size());;
     
 
     int32_t size = vector.size();;
@@ -119,7 +119,7 @@ this->setImageTypeJlistModel();
     int32_t index = 0;index < size; index++)
         {
 
-    InputImageType imageType = vector.get(index) as InputImageType;;
+    InputImageType imageType = vector.get(index);;
     
 selectedArray[index++]= imageType.getIndex();
     
@@ -212,7 +212,7 @@ this->capturedImageActionScriptOutputInterface.log();
     int32_t index = 0;index < size; index++)
         {
 
-    InputImageType imageType = vector.get(index) as InputImageType;;
+    InputImageType imageType = vector.get(index);;
     
 defaultListModel.addElement(imageType.getName());
     
@@ -319,7 +319,7 @@ this->itemTypesJList.setModel(class extends javax::swing::AbstractListModel
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return strings[i]!;
+                        return strings[i];
     
 }
 

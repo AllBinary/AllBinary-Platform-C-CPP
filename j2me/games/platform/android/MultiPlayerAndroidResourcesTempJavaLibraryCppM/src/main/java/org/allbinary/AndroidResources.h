@@ -7,7 +7,7 @@
         #ifndef ORG_ALLBINARY_ANDROIDRESOURCES_H
         #define ORG_ALLBINARY_ANDROIDRESOURCES_H
 
-            #include "../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
 #include <org/allbinary/game/testgamedemo/R.h>
 

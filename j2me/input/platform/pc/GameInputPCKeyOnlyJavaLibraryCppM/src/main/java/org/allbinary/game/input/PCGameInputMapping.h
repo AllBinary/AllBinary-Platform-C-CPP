@@ -21,11 +21,8 @@
         #ifndef ORG_ALLBINARY_GAME_INPUT_PCGAMEINPUTMAPPING_H
         #define ORG_ALLBINARY_GAME_INPUT_PCGAMEINPUTMAPPING_H
 
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-#include <jsinterop/annotations/JsType.h>
-
-      
 #include <org/allbinary/game/configuration/persistance/GamePersistanceStrings.h>
 
       
@@ -33,12 +30,6 @@
 
       
 #include <org/allbinary/logic/system/security/licensing/AbeClientInformationInterface.h>
-
-      
-#include <jsinterop/annotations/JsMethod.h>
-
-      
-#include <jsinterop/annotations/JsConstructor.h>
 
       
 

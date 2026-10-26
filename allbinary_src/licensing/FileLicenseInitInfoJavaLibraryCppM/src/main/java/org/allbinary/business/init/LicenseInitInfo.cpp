@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
 #include <org/allbinary/debug/DebugFactory.h>
 
@@ -81,7 +81,7 @@ public: LicenseInitInfo(){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->serverVector.objectArray[index]! as string;
+                        return this->serverVector.objectArray[index];
     
 }
 

@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/logic/util/event/AllBinaryEventObject.h>
 
@@ -121,9 +121,9 @@ super.removeListener(eventListenerInterface);
 
         try {
             
-    AnalogControllerConfigurationEventListenerInterface playerGameInput = this->list.objectArray[index]! as AnalogControllerConfigurationEventListenerInterface;;
+    AnalogControllerConfigurationEventListenerInterface playerGameInput = this->list.objectArray[index];;
     
-playerGameInput.onAnalogControllerConfigurationEvent(eventObject as AnalogControllerConfigurationEvent);
+playerGameInput.onAnalogControllerConfigurationEvent(eventObject);
     
 
                 //: 
@@ -144,9 +144,9 @@ super.fireEvent(eventObject);
             
     protected: void process(AllBinaryEventObject eventObject, EventListenerInterface eventListenerInterface){
 
-    AnalogControllerConfigurationEventListenerInterface analogControllerConfigurationEventListenerInterface = (eventListenerInterface as AnalogControllerConfigurationEventListenerInterface);;
+    AnalogControllerConfigurationEventListenerInterface analogControllerConfigurationEventListenerInterface = (eventListenerInterface);;
     
-analogControllerConfigurationEventListenerInterface.onAnalogControllerConfigurationEvent(eventObject as AnalogControllerConfigurationEvent);
+analogControllerConfigurationEventListenerInterface.onAnalogControllerConfigurationEvent(eventObject);
     
 }
 

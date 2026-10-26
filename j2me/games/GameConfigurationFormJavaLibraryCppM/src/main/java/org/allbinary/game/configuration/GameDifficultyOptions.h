@@ -21,9 +21,9 @@
         #ifndef ORG_ALLBINARY_GAME_CONFIGURATION_GAMEDIFFICULTYOPTIONS_H
         #define ORG_ALLBINARY_GAME_CONFIGURATION_GAMEDIFFICULTYOPTIONS_H
 
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../../java/lang/Integer.h"
+            #include "java/lang/Integer.h"
         
 #include <javax/microedition/lcdui/Choice.h>
 
@@ -47,6 +47,9 @@
 
       
 #include <org/allbinary/graphics/displayable/screen/CommandForm.h>
+
+      
+#include <org/allbinary/logic/MEUtil.h>
 
       
 #include <org/allbinary/logic/string/StringMaker.h>
@@ -78,6 +81,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class GameDifficultyOptions: public CommandForm {
+
+    private: const MEUtil meUtil = MEUtil::getInstance();
 
     private: BasicArrayList list;
 

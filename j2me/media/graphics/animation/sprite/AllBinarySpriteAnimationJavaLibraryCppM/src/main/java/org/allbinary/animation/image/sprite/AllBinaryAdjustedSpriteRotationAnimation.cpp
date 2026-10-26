@@ -56,8 +56,9 @@ class AllBinaryAdjustedSpriteRotationAnimation: public AllBinarySpriteRotationAn
 
     private: int32_t dy;
 
-public: AllBinaryAdjustedSpriteRotationAnimation(Sprite sprite, Image image, int32_t dx, int32_t dy, AnimationBehavior animationBehavior){
-            super(sprite, image, animationBehavior);
+public: AllBinaryAdjustedSpriteRotationAnimation(Sprite sprite, Image image, int32_t dx, int32_t dy, AnimationBehavior animationBehavior) : AllBinarySpriteRotationAnimation(sprite, image, animationBehavior){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.

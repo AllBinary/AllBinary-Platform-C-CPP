@@ -20,13 +20,10 @@
 
             #include <vector>
         
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../../../java/lang/Integer.h"
+            #include "java/lang/Integer.h"
         
-#include <java/util/Hashtable.h>
-
-      
 #include <org/allbinary/game/input/GameInput.h>
 
       
@@ -43,6 +40,9 @@
 
       
 #include <org/allbinary/time/TimeDelayHelper.h>
+
+      
+#include <org/allbinary/util/ABHashtable.h>
 
       
 
@@ -71,8 +71,9 @@ class MultiKeyPressesAI: public KeyPressesAI {
 
     private: const GameTickTimeDelayHelper gameTickTimeDelayHelper = GameTickTimeDelayHelperFactory::getInstance();
 
-public: MultiKeyPressesAI(Hashtable<any, any> hashtable, AllBinaryLayer ownerLayerInterface, GameInput gameInput){
-            super(hashtable, ownerLayerInterface, gameInput);
+public: MultiKeyPressesAI(ABHashtable<Object*, Object*> hashtable, AllBinaryLayer ownerLayerInterface, GameInput gameInput) : KeyPressesAI(hashtable, ownerLayerInterface, gameInput){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -112,7 +113,7 @@ this->update();
     int32_t index = 0;index < size; index++)
         {
 
-    int32_t key = keys[index]!.intValue();;
+    int32_t key = keys[index].intValue();;
     
 
                         if(key !=  -1)
@@ -137,7 +138,7 @@ this->update();
     int32_t index = 0;index < size; index++)
         {
 
-    int32_t key = keys[index]!.intValue();;
+    int32_t key = keys[index].intValue();;
     
 
                         if(key !=  -1)

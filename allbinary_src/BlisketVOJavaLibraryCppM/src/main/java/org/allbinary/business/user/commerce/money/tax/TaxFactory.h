@@ -21,9 +21,9 @@
         #ifndef ORG_ALLBINARY_BUSINESS_USER_COMMERCE_MONEY_TAX_TAXFACTORY_H
         #define ORG_ALLBINARY_BUSINESS_USER_COMMERCE_MONEY_TAX_TAXFACTORY_H
 
-            #include "../../../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/business/DynamicObjectData.h>
 

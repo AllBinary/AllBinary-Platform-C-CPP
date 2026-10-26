@@ -20,13 +20,13 @@
 
             #include <vector>
         
-            #include "../../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../../../../java/lang/Integer.h"
+            #include "java/lang/Integer.h"
         
-            #include "../../../../../../java/lang/Double.h"
+            #include "java/lang/Double.h"
         
 #include <java/awt/image/BufferedImage.h>
 
@@ -83,7 +83,7 @@ class MeteredGameObject
     private: const std::string IS_DROPPPING_LABEL = "isDropping: ";
 
 public: MeteredGameObject(std::vector<BufferedImage> bufferedImage, Integer minX, Integer maxX, Integer y){
-this->setRatios(new Array(bufferedImage.length));
+this->setRatios(std::vector<Double>(bufferedImage.length));
     
 this->setMinX(minX);
     
@@ -101,14 +101,14 @@ this->setSize(maxX -minX);
     int32_t index = 0;index < bufferedImage.size(); index++)
         {
 
-    double nominator = GraphicsAnalysisUtil::getNominator(bufferedImage[index]!, this->getMinX(), this->getMaxX(), this->getY());;
+    double nominator = GraphicsAnalysisUtil::getNominator(bufferedImage[index], this->getMinX(), this->getMaxX(), this->getY());;
     
 this->getRatios()[index]= number(nominator /this->getSize());
     
 }
 
 
-                        if(this->getRatios()[bufferedImage.size() -1]!.doubleValue() > 0.93F)
+                        if(this->getRatios()[bufferedImage.size() -1].doubleValue() > 0.93F)
                         
                                     {
                                     this->setGood(true);
@@ -123,7 +123,7 @@ this->getRatios()[index]= number(nominator /this->getSize());
                         }
                             
 
-                        if(this->getRatios()[bufferedImage.size() -1]!.doubleValue() < this->getRatios()[0]!.doubleValue())
+                        if(this->getRatios()[bufferedImage.size() -1].doubleValue() < this->getRatios()[0].doubleValue())
                         
                                     {
                                     this->setDropping(true);
@@ -200,7 +200,7 @@ stringBuffer.append(this->RATIOS_LABEL);
                         for (
     int32_t index = 0;index < this->getRatios().length; index++)
         {
-stringBuffer.append(this->getRatios()[index]!.toString());
+stringBuffer.append(this->getRatios()[index].toString());
     
 
                         if(index < this->getRatios().length -1)

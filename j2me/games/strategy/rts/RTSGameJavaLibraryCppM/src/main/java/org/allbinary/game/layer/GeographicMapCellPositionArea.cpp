@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/util/BasicArrayList.h>
 
@@ -127,7 +127,7 @@ this->surroundingCircularIndexUtil.setSize(this->surroundingGeographicMapCellPos
 
     public: GeographicMapCellPosition getNextSurroundingGeographicMapCellPosition(){
 
-    GeographicMapCellPosition geographicMapCellPosition = this->surroundingGeographicMapCellPositionList.get(this->surroundingCircularIndexUtil.getIndex()) as GeographicMapCellPosition;;
+    GeographicMapCellPosition geographicMapCellPosition = this->surroundingGeographicMapCellPositionList.get(this->surroundingCircularIndexUtil.getIndex());;
     
 this->surroundingCircularIndexUtil.next();
     

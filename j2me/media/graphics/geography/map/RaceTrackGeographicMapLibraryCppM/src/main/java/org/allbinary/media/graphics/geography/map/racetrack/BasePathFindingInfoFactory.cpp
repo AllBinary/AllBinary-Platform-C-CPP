@@ -20,11 +20,11 @@
 
             #include <vector>
         
-            #include "../../../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../../../../../java/lang/RuntimeException.h"
+            #include "java/lang/RuntimeException.h"
         
 #include <org/allbinary/logic/communication/log/LogUtil.h>
 
@@ -121,7 +121,7 @@ this->finishLineId= raceTrackGeographicMapCellTypeFactory.getEndType();
 
         try {
             
-    int32_t cellTypeId = mapArray[row]![column];;
+    int32_t cellTypeId = mapArray[row][column];;
     
 
     int32_t geographicCellType = geographicMapInterface.getCellTypeFromMapCellTypeInt(cellTypeId);;
@@ -183,7 +183,7 @@ this->finishLineId= raceTrackGeographicMapCellTypeFactory.getEndType();
 
     CommonSeps commonSeps = CommonSeps::getInstance();;
     
-logUtil.put(StringMaker().append(commonSeps.BRACKET_OPEN).appendint(row).append(commonSeps.BRACKET_CLOSE).append(commonSeps.BRACKET_OPEN).appendint(column).append("] in [").appendint(mapArray.size()).append(commonSeps.BRACKET_CLOSE).append(commonSeps.BRACKET_OPEN).appendint(mapArray[0]!.size()).append(commonSeps.BRACKET_CLOSE).toString(), this, "visit", e);
+logUtil.put(StringMaker().append(commonSeps.BRACKET_OPEN).appendint(row).append(commonSeps.BRACKET_CLOSE).append(commonSeps.BRACKET_OPEN).appendint(column).append("] in [").appendint(mapArray.size()).append(commonSeps.BRACKET_CLOSE).append(commonSeps.BRACKET_OPEN).appendint(mapArray[0].size()).append(commonSeps.BRACKET_CLOSE).toString(), this, "visit", e);
     
 
 

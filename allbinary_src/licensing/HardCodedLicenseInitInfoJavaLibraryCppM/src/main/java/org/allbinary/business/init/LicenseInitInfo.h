@@ -21,11 +21,8 @@
         #ifndef ORG_ALLBINARY_BUSINESS_INIT_LICENSEINITINFO_H
         #define ORG_ALLBINARY_BUSINESS_INIT_LICENSEINITINFO_H
 
-            #include "../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-#include <jsinterop/annotations/JsType.h>
-
-      
 #include <org/allbinary/debug/DebugFactory.h>
 
       
@@ -39,12 +36,6 @@
 
       
 #include <org/allbinary/util/BasicArrayListD.h>
-
-      
-#include <jsinterop/annotations/JsMethod.h>
-
-      
-#include <jsinterop/annotations/JsConstructor.h>
 
       
 

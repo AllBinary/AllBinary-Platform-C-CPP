@@ -20,13 +20,10 @@
 
             #include <vector>
         
-            #include "../../../../../java/lang/Throwable.h"
+            #include "java/lang/Throwable.h"
         
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-#include <jsinterop/annotations/JsType.h>
-
-      
 #include <javax/microedition/lcdui/Graphics.h>
 
       
@@ -60,15 +57,6 @@
 #include <org/allbinary/string/CommonLabels.h>
 
       
-#include <jsinterop/annotations/JsMethod.h>
-
-      
-#include <jsinterop/annotations/JsConstructor.h>
-
-      
-#include <jsinterop/annotations/JsProperty.h>
-
-      
 
 
 
@@ -96,8 +84,9 @@ class SpriteIndexedAnimation: public IndexedAnimation, public ColorCompositeInte
 
     private: std::vector<BasicColor> basicColorArray;
 
-public: SpriteIndexedAnimation(Sprite sprite, Image image, std::vector<BasicColor> basicColorArray, AnimationBehavior animationBehavior){
-            super(animationBehavior);
+public: SpriteIndexedAnimation(Sprite sprite, Image image, std::vector<BasicColor> basicColorArray, AnimationBehavior animationBehavior) : IndexedAnimation(animationBehavior){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -169,7 +158,7 @@ break;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->basicColorArray[this->getFrame()]!;
+                        return this->basicColorArray[this->getFrame()];
     
 
                                     }

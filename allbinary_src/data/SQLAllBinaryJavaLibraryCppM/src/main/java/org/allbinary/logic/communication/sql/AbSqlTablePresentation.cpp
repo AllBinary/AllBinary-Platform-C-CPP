@@ -43,8 +43,9 @@
 
 class AbSqlTablePresentation: public AbSqlBasic {
 
-public: AbSqlTablePresentation(DbConnectionInfo databaseConnectionInfoInterface){
-            super(databaseConnectionInfoInterface);
+public: AbSqlTablePresentation(DbConnectionInfo databaseConnectionInfoInterface) : AbSqlBasic(databaseConnectionInfoInterface){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.

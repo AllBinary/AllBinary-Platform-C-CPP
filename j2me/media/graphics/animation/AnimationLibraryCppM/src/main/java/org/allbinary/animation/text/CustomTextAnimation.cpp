@@ -18,11 +18,8 @@
 
 
 
-            #include "../../../../java/lang/RuntimeException.h"
+            #include "java/lang/RuntimeException.h"
         
-#include <jsinterop/annotations/JsType.h>
-
-      
 #include <javax/microedition/lcdui/Font.h>
 
       
@@ -36,15 +33,6 @@
 
       
 #include <org/allbinary/logic/string/StringUtil.h>
-
-      
-#include <jsinterop/annotations/JsMethod.h>
-
-      
-#include <jsinterop/annotations/JsConstructor.h>
-
-      
-#include <jsinterop/annotations/JsProperty.h>
 
       
 
@@ -80,8 +68,9 @@ class CustomTextAnimation: public TextAnimation, public TextInterface {
 
     protected: bool hasChanged = true;
 
-public: CustomTextAnimation(std::string text, int32_t fontSize, AnimationBehavior animationBehavior){
-            super(text, animationBehavior);
+public: CustomTextAnimation(std::string text, int32_t fontSize, AnimationBehavior animationBehavior) : TextAnimation(text, animationBehavior){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -162,7 +151,7 @@ super.setText(text);
                         if(this->hasChanged)
                         
                                     {
-                                    this->textWidth= this->font.stringWidth(this->textArrayP[0]!);
+                                    this->textWidth= this->font.stringWidth(this->textArrayP[0]);
     
 this->hasChanged= false;
     

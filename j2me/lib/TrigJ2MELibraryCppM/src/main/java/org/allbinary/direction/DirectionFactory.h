@@ -21,7 +21,7 @@
         #ifndef ORG_ALLBINARY_DIRECTION_DIRECTIONFACTORY_H
         #define ORG_ALLBINARY_DIRECTION_DIRECTIONFACTORY_H
 
-            #include "../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
 #include <org/allbinary/logic/string/StringMaker.h>
 

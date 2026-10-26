@@ -6,15 +6,15 @@
 
             #include <vector>
         
-            #include "../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../java/lang/System.h"
+            #include "java/lang/System.h"
         
-            #include "../../../../java/lang/Integer.h"
+            #include "java/lang/Integer.h"
         
-            #include "../../../../java/lang/Long.h"
+            #include "java/lang/Long.h"
         
-            #include "../../../../java/lang/Float.h"
+            #include "java/lang/Float.h"
         
 #include <jsinterop/annotations/JsType.h>
 
@@ -89,6 +89,29 @@ this->ensureCapacity(this->currentLength +1);
     
 this->charArray[this->currentLength++]= c;
     
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return *this;
+    
+}
+
+
+    public: StringMaker appendCharArray(std::vector<char> charArray, int32_t start, int32_t end){
+this->ensureCapacity(this->currentLength +(end -start));
+    
+
+
+
+
+                        for (
+    int32_t index = start;index < end; index++)
+        {
+this->charArray[this->currentLength++]= charArray[index];
+    
+}
+
 
 
 
@@ -217,15 +240,12 @@ this->charArray[this->currentLength++]= 'e';
                         newCapacity= minSize;
                                 
 
-    std::vector<char> copy = 
-                                                        
-                                                        std::vector<char>(newCapacity)
-                                                    ;;
+    std::vector<char> copy = std::vector<char>(newCapacity);;
     
 
     int32_t min = this->min(this->charArray.size(), newCapacity);;
     
-std::copy(this->charArray.begin() + 0, this->charArray.begin() + 0 + min, copy.begin() + 0);
+System.arraycopy(this->charArray, 0, copy, 0, min);
     
 this->charArray= copy;
     

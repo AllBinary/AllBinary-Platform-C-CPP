@@ -20,9 +20,9 @@
 
             #include <vector>
         
-            #include "../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <javax/microedition/lcdui/Image.h>
 
@@ -70,7 +70,7 @@ private: ImageJ2MEScaleUtil(){
             
     public: std::vector<Image> scaleArray(std::vector<Image> images, int32_t width, int32_t height){
 
-    std::vector<Image> scaledImages = new Array(images.length);;
+    std::vector<Image> scaledImages = std::vector<Image>(images.length);;
     
 
 
@@ -79,7 +79,7 @@ private: ImageJ2MEScaleUtil(){
                         for (
     int32_t index = images.size();--index >= 0; )
         {
-scaledImages[index]= this->scale(images[index]!, width, height);
+scaledImages[index]= this->scale(images[index], width, height);
     
 }
 
@@ -102,12 +102,12 @@ scaledImages[index]= this->scale(images[index]!, width, height);
     int32_t sourceHeight = image.getHeight();;
     
 
-    std::vector<int32_t> originalData = new Array(image.getWidth() *image.getHeight());;
+    std::vector<int32_t> originalData = std::vector<int32_t>(image.getWidth() *image.getHeight());;
     
 image.getRGB(originalData, 0, image.getWidth(), 0, 0, image.getWidth(), image.getHeight());
     
 
-    std::vector<int32_t> scaledData = new Array(width *height);;
+    std::vector<int32_t> scaledData = std::vector<int32_t>(width *height);;
     
 
     int32_t heightRatioFactor = (8 *sourceHeight) /height;;
@@ -142,7 +142,7 @@ dy= (index *heightRatioFactor)>>3;
         {
 dx= (index2 *widthRatioFactor)>>3;
     
-scaledData[scaledIndex--]= originalData[(sourceWidth *dy) +dx]!;
+scaledData[scaledIndex--]= originalData[(sourceWidth *dy) +dx];
     
 }
 

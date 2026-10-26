@@ -6,7 +6,7 @@
 
             #include <vector>
         
-            #include "../../../../../java/lang/System.h"
+            #include "java/lang/System.h"
         
 #include <org/allbinary/logic/NullUtil.h>
 
@@ -88,7 +88,7 @@ this->print(data, stringBuilder);
                         for (
     int32_t i = 0;i < size; i++)
         {
-stringBuilder.appendint(data[i]!);
+stringBuilder.appendint(data[i]);
     
 stringBuilder.append(commonSeps.SPACE);
     

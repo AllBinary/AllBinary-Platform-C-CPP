@@ -6,9 +6,9 @@
 
             #include <vector>
         
-            #include "../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/awt/image/BufferedImage.h>
 
@@ -80,9 +80,9 @@ class MediaUtil
 }
 
 
-    private: static HashMap<any, any> getImageBufferPropertyHashMap(BufferedImage bufferedImage){
+    private: static HashMap<Object*, Object*> getImageBufferPropertyHashMap(BufferedImage bufferedImage){
 
-    HashMap<any, any> hashMap = StdUtil::getInstance().createHashMap();;
+    HashMap<Object*, Object*> hashMap = StdUtil::getInstance().createHashMap();;
     
 
     std::vector<std::string> propertyStringArray = bufferedImage.getPropertyNames();;
@@ -101,9 +101,9 @@ class MediaUtil
     int32_t index = 0;index < propertyStringArray.size(); index++)
         {
 
-    Object* propertyObject = bufferedImage.getProperty(propertyStringArray[index]!);;
+    Object* propertyObject = bufferedImage.getProperty(propertyStringArray[index]);;
     
-hashMap.put(propertyStringArray[index]!, propertyObject->toString());
+hashMap.put(propertyStringArray[index], propertyObject->toString());
     
 }
 
@@ -164,7 +164,7 @@ private: MediaUtil(){
                         
                                     {
                                     
-    HashMap<any, any> hashMap = this->getImageBufferPropertyHashMap(bufferedImage);;
+    HashMap<Object*, Object*> hashMap = this->getImageBufferPropertyHashMap(bufferedImage);;
     
 this->logUtil.putF("Image Properties: " +hashMap.toString(), this, "saveImageFile()");
     
@@ -183,7 +183,7 @@ imageFile.createNewFile();
     BufferedImage newBufferedImage = imageUtil.createBufferedImageForSave(bufferedImage, newWidth, newHeight);;
     
 
-    bool isWritten = ImageIOUtil::write(newBufferedImage as RenderedImage, mediaData.getName(), imageFile);;
+    bool isWritten = ImageIOUtil::write(newBufferedImage, mediaData.getName(), imageFile);;
     
 
                         if(!isWritten)

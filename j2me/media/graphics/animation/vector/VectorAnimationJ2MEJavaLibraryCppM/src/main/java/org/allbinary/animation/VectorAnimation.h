@@ -23,11 +23,8 @@
 
             #include <vector>
         
-            #include "../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-#include <jsinterop/annotations/JsType.h>
-
-      
 #include <javax/microedition/lcdui/Graphics.h>
 
       
@@ -40,22 +37,10 @@
 #include <org/allbinary/logic/NullUtil.h>
 
       
-#include <org/allbinary/logic/communication/log/LogUtil.h>
-
-      
 #include <org/allbinary/logic/math/PrimitiveIntUtil.h>
 
       
 #include <org/allbinary/util/CircularIndexUtil.h>
-
-      
-#include <jsinterop/annotations/JsMethod.h>
-
-      
-#include <jsinterop/annotations/JsConstructor.h>
-
-      
-#include <jsinterop/annotations/JsProperty.h>
 
       
 
@@ -83,8 +68,6 @@
 class VectorAnimation: public IndexedAnimation, public VectorAnimationInterface {
 
     public: static VectorAnimation createVectorAnimation(std::vector<std::vector<int32_t>> currentPoints2, BasicColor basicColor, AnimationBehavior animationBehavior);
-
-    protected: const LogUtil logUtil = LogUtil::getInstance();
 
     private: std::vector<std::vector<std::vector<int32_t>>> currentPoints = NullUtil::getInstance().NULL_INT_ARRAY_ARRAY_ARRAY;
 

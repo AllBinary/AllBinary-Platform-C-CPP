@@ -21,7 +21,7 @@
         #ifndef ORG_ALLBINARY_LOGIC_COMMUNICATION_FTP_CONFIGURATION_FTPCONFIGURATION_H
         #define ORG_ALLBINARY_LOGIC_COMMUNICATION_FTP_CONFIGURATION_FTPCONFIGURATION_H
 
-            #include "../../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
 #include <java/util/HashMap.h>
 
@@ -61,7 +61,7 @@ class FtpConfiguration
 
 public: FtpConfiguration();
 
-public: FtpConfiguration(HashMap<any, any> hashMap);
+public: FtpConfiguration(HashMap<Object*, Object*> hashMap);
 
     public: std::string getServer();
 

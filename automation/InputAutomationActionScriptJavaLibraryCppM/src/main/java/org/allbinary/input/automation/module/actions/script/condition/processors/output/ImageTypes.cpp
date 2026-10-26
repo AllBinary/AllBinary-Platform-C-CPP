@@ -20,9 +20,9 @@
 
             #include <vector>
         
-            #include "../../../../../../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/util/BasicArrayList.h>
 
@@ -90,7 +90,7 @@ class ImageTypes
     int32_t index = 0;index < anyType.size(); index++)
         {
 
-    InputImageType imageType = InputImageType::getInstance(anyType[index]! as string);;
+    InputImageType imageType = InputImageType::getInstance(anyType[index]);;
     
 imageTypes.getVector().add(imageType);
     
@@ -178,7 +178,7 @@ this->getVector().add(InputImageType::getInstance(nextImageTypeString));
     int32_t index = 0;index < size; index++)
         {
 
-    InputImageType imageType = this->vector.get(index) as InputImageType;;
+    InputImageType imageType = this->vector.get(index);;
     
 newNode.appendChild(ModDomHelper::createTextNode(document, ImageActionScriptOutputData::TYPE, imageType.getName()));
     
@@ -210,7 +210,7 @@ stringBuffer.append("ImageTypes: ");
     int32_t index = 0;index < size; index++)
         {
 
-    InputImageType imageType = this->vector.get(index) as InputImageType;;
+    InputImageType imageType = this->vector.get(index);;
     
 stringBuffer.append(imageType.getName());
     

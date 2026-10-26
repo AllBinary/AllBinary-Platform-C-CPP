@@ -64,8 +64,9 @@ class NoMenuInputProcessor: public BasicMenuInputProcessor {
 }
 
 
-private: NoMenuInputProcessor(){
-            super(BasicArrayListUtil::getInstance().getImmutableInstance(),  -1, NullCanvas::NULL_CANVAS);
+private: NoMenuInputProcessor() : BasicMenuInputProcessor(BasicArrayListUtil::getInstance().getImmutableInstance(),  -1, NullCanvas::NULL_CANVAS){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.

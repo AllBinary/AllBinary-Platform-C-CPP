@@ -54,8 +54,9 @@
         
 class AbFileInputStream: public FileInputStream {
 
-public: AbFileInputStream(std::string name){
-            super(name);
+public: AbFileInputStream(std::string name) : FileInputStream(name){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -63,8 +64,9 @@ public: AbFileInputStream(std::string name){
 }
 
 
-public: AbFileInputStream(AbFile file){
-            super(AbFileNativeUtil::get(file));
+public: AbFileInputStream(AbFile file) : FileInputStream(AbFileNativeUtil::get(file)){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -72,8 +74,9 @@ public: AbFileInputStream(AbFile file){
 }
 
 
-protected: AbFileInputStream(File file){
-            super(file);
+protected: AbFileInputStream(File file) : FileInputStream(file){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.

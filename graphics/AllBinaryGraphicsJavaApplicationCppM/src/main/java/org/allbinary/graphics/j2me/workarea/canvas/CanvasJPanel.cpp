@@ -20,22 +20,16 @@
 
             #include <vector>
         
-            #include "../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../../../../java/lang/Integer.h"
+            #include "java/lang/Integer.h"
         
-            #include "../../../../../../java/lang/Double.h"
+            #include "java/lang/Double.h"
         
 #include <java/awt.h>
 
       
 #include <java/util/HashMap.h>
-
-      
-#include <org/allbinary/util/BasicArrayList.h>
-
-      
-#include <org/allbinary/util/BasicArrayListD.h>
 
       
 #include <javax/swing/tree/DefaultMutableTreeNode.h>
@@ -188,7 +182,7 @@ class CanvasJPanel: public javax::swing::JPanel, public java::awt::event::MouseL
                 null
             ;
 
-    private: HashMap<any, any> graphicItemHashMap;
+    private: HashMap<Object*, Object*> graphicItemHashMap;
 
     private: IntegerDimension canvasDimension;
 
@@ -266,7 +260,7 @@ this->graphicItemHashMap= canvasDom.getGraphicItemHashMap();
     int32_t index = 0;index < size; index++)
         {
 
-    MutableTreeNode graphicItemTreeNode = graphicItemArray[index]! as MutableTreeNode;;
+    MutableTreeNode graphicItemTreeNode = graphicItemArray[index];;
     
 this->canvasTreeNode.add(graphicItemTreeNode);
     
@@ -508,10 +502,10 @@ this->setAngle(this->angle +angle);
     int32_t index = 0;index < size; index++)
         {
 
-    MutableTreeNode graphicItemNode = graphicItemArray[index]! as MutableTreeNode;;
+    MutableTreeNode graphicItemNode = graphicItemArray[index];;
     
 
-    GraphicItemInterface graphicItem = this->getGraphicItemHashMap().get(graphicItemNode) as GraphicItemInterface;;
+    GraphicItemInterface graphicItem = this->getGraphicItemHashMap().get(graphicItemNode);;
     
 
                         if(graphicItem.getName() == LinesGraphicItem::getStaticName())
@@ -564,7 +558,7 @@ newPoints.add(newGraphicItem);
     int32_t index = 0;index < size2; index++)
         {
 
-    GraphicItemInterface newGraphicItem = newPoints.get(index) as GraphicItemInterface;;
+    GraphicItemInterface newGraphicItem = newPoints.get(index);;
     
 this->canvasTreeNode.add(newGraphicItem.getTreeNode());
     
@@ -598,7 +592,7 @@ this->workAreaJTreeJPanel.repaint();
     int32_t index = 0;index < size; index++)
         {
 
-    GraphicItemInterface item = this->getGraphicItemHashMap().get(graphicItemArray[index]!) as GraphicItemInterface;;
+    GraphicItemInterface item = this->getGraphicItemHashMap().get(graphicItemArray[index]);;
     
 
     BasicArrayList basicArrayList = VectorExplosionGenerator::getInstance().createList(item.getPointsInterface().getPoints(), howMuch, VectorExplosionGenerator::getInstance().RANDOM);;
@@ -642,7 +636,7 @@ this->repaint();
     int32_t index = 0;index < size; index++)
         {
 
-    GraphicItemInterface item = this->getGraphicItemHashMap().get(graphicItemArray[index]!) as GraphicItemInterface;;
+    GraphicItemInterface item = this->getGraphicItemHashMap().get(graphicItemArray[index]);;
     
 
     BasicArrayList basicArrayList = VectorMirrorGenerator::getInstance().getInstance(item.getPointsInterface().getPoints(), width);;
@@ -723,7 +717,7 @@ this->canvasTreeNode.add(graphicItemClone.getTreeNode());
 
                 //@Throws(Exception.constructor)
             
-    public: void duplicateGraphicItemHashMap(HashMap<any, any> hashMap){
+    public: void duplicateGraphicItemHashMap(HashMap<Object*, Object*> hashMap){
 
     std::vector<Object*> mutableTreeNodeArray = hashMap.keys().();;
     
@@ -738,10 +732,10 @@ this->canvasTreeNode.add(graphicItemClone.getTreeNode());
     int32_t index = 0;index < size; index++)
         {
 
-    MutableTreeNode treeNode = mutableTreeNodeArray[index]! as MutableTreeNode;;
+    MutableTreeNode treeNode = mutableTreeNodeArray[index];;
     
 
-    GraphicItemInterface graphicItem = hashMap.get(treeNode) as GraphicItemInterface;;
+    GraphicItemInterface graphicItem = hashMap.get(treeNode);;
     
 this->duplicateGraphicItem(graphicItem);
     
@@ -750,7 +744,7 @@ this->duplicateGraphicItem(graphicItem);
 }
 
 
-    public: HashMap<any, any> getGraphicItemHashMap(){
+    public: HashMap<Object*, Object*> getGraphicItemHashMap(){
 
 
 
@@ -848,7 +842,7 @@ this->duplicateGraphicItem(graphicItem);
     int32_t index = 0;index < size; index++)
         {
 
-    GraphicItemInterface item = this->getGraphicItemHashMap().get(graphicItemArray[index]!) as GraphicItemInterface;;
+    GraphicItemInterface item = this->getGraphicItemHashMap().get(graphicItemArray[index]);;
     
 item.paint(graphics, angleDouble, this->getCanvasDimension(), this->getXPixelsPerWorkAreaPixel(), this->getYPixelsPerWorkAreaPixel());
     
@@ -1186,7 +1180,7 @@ StatusFactory::getInstance().setStatus("Key Pressed");
     int32_t index = 0;index < size; index++)
         {
 
-    GraphicItemInterface graphicItemInterface = this->graphicItemHashMap.get(graphicItemArray[index]!) as GraphicItemInterface;;
+    GraphicItemInterface graphicItemInterface = this->graphicItemHashMap.get(graphicItemArray[index]);;
     
 
     int32_t keyCode = keyEvent.getKeyCode();;
@@ -1298,7 +1292,7 @@ this->workAreaJTreeJPanel.repaint();
 
     public: void deselect(MyGraphicItemEvent evt){
 
-    GraphicItemInterface graphicItemInterface = this->getGraphicItemHashMap().get(evt.getTreeNode()) as GraphicItemInterface;;
+    GraphicItemInterface graphicItemInterface = this->getGraphicItemHashMap().get(evt.getTreeNode());;
     
 
                         if(graphicItemInterface != 
@@ -1320,7 +1314,7 @@ this->workAreaJTreeJPanel.repaint();
 
     public: void highlight(MyGraphicItemEvent evt){
 
-    GraphicItemInterface graphicItemInterface = this->getGraphicItemHashMap().get(evt.getTreeNode()) as GraphicItemInterface;;
+    GraphicItemInterface graphicItemInterface = this->getGraphicItemHashMap().get(evt.getTreeNode());;
     
 
                         if(graphicItemInterface != 
@@ -1374,7 +1368,7 @@ this->workAreaJTreeJPanel.repaint();
     MutableTreeNode treeNode = event.getTreeNode();;
     
 
-    GraphicItemInterface graphicItem = this->getGraphicItemHashMap().get(treeNode) as GraphicItemInterface;;
+    GraphicItemInterface graphicItem = this->getGraphicItemHashMap().get(treeNode);;
     
 
                         if(graphicItem != 
@@ -1401,7 +1395,7 @@ this->workAreaJTreeJPanel.repaint();
     MutableTreeNode treeNode = event.getTreeNode();;
     
 
-    GraphicItemInterface graphicItem = this->getGraphicItemHashMap().get(treeNode) as GraphicItemInterface;;
+    GraphicItemInterface graphicItem = this->getGraphicItemHashMap().get(treeNode);;
     
 
                         if(graphicItem != 

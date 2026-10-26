@@ -21,16 +21,10 @@
         #ifndef ORG_ALLBINARY_MIDLET_MIDLETCOMPOSITEINTERFACE_H
         #define ORG_ALLBINARY_MIDLET_MIDLETCOMPOSITEINTERFACE_H
 
-#include <jsinterop/annotations/JsType.h>
-
-      
 #include <javax/microedition/lcdui/Displayable.h>
 
       
 #include <javax/microedition/midlet/MIDlet.h>
-
-      
-#include <jsinterop/annotations/JsMethod.h>
 
       
 

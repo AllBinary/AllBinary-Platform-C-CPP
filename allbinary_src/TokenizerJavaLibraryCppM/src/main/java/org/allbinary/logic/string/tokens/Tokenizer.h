@@ -21,13 +21,10 @@
         #ifndef ORG_ALLBINARY_LOGIC_STRING_TOKENS_TOKENIZER_H
         #define ORG_ALLBINARY_LOGIC_STRING_TOKENS_TOKENIZER_H
 
-            #include "../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-#include <java/util/Hashtable.h>
-
-      
 #include <org/allbinary/TsUtil.h>
 
       
@@ -35,6 +32,9 @@
 
       
 #include <org/allbinary/logic/string/StringUtil.h>
+
+      
+#include <org/allbinary/util/ABHashtable.h>
 
       
 #include <org/allbinary/util/BasicArrayList.h>
@@ -80,7 +80,7 @@ public: Tokenizer(std::string sep);
 
     public: BasicArrayList getTokensFromString(std::string string, BasicArrayList tokenVector);
 
-    public: Hashtable<any, any> getTokens(BasicArrayList stringVector);
+    public: ABHashtable<Object*, Object*> getTokens(BasicArrayList stringVector);
 
 };
 

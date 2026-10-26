@@ -20,22 +20,19 @@
 
             #include <vector>
         
-            #include "../../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../../../../java/lang/Thread.h"
+            #include "java/lang/Thread.h"
         
-#include <java/awt.h>
+#include <java/awt/Rectangle.h>
 
       
 #include <java/awt/event/InputEvent.h>
 
       
 #include <java/awt/event/KeyEvent.h>
-
-      
-#include <java/util/Hashtable.h>
 
       
 #include <org/allbinary/util/BasicArrayList.h>
@@ -53,9 +50,6 @@
 #include <org/allbinary/input/automation/robot/TempInputRobotNames.h>
 
       
-#include <org/allbinary/logic/StdUtil.h>
-
-      
 #include <org/allbinary/logic/communication/log/LogUtil.h>
 
       
@@ -69,6 +63,9 @@
 
       
 #include <org/allbinary/time/TimeDelayHelper.h>
+
+      
+#include <org/allbinary/util/ABHashtable.h>
 
       
 
@@ -92,7 +89,6 @@
         #include "MotionRectanglesResultsListener.h"
 #include "MotionRectanglesResultsEvent.h"
 #include "MotionRectangles.h"
-#include "Rectangle.h"
 
 class TestInputForMotionRectanglesResultsWorker
             : public Object
@@ -133,7 +129,7 @@ this->run();
 
 
     public: void onEvent(AllBinaryEventObject allBinaryEventObject){
-this->onMotionRectanglesImageComparisonResultsEvent(allBinaryEventObject as MotionRectanglesResultsEvent);
+this->onMotionRectanglesImageComparisonResultsEvent(allBinaryEventObject);
     
 }
 
@@ -169,7 +165,7 @@ this->setRunning(true);
 timeHelper.setStartTimeTNT();
     
 
-    MotionRectangles motionRectangles = this->getMotionRectanglesVector().get(0) as MotionRectangles;;
+    MotionRectangles motionRectangles = this->getMotionRectanglesVector().get(0);;
     
 
     BasicArrayList motionRectangleVector = motionRectangles.getVector();;
@@ -179,10 +175,10 @@ timeHelper.setStartTimeTNT();
                         
                                     {
                                     
-    Rectangle rectangle = motionRectangleVector.get(0) as Rectangle;;
+    Rectangle rectangle = motionRectangleVector.get(0);;
     
 
-    Hashtable<any, any> robotHashtable = InputRobotFactory::getInstance().get();;
+    ABHashtable<Object*, Object*> robotHashtable = InputRobotFactory::getInstance().get();;
     
 
     std::vector<Object*> inputTypeNameArray = robotHashtable.keys().();;
@@ -198,10 +194,10 @@ timeHelper.setStartTimeTNT();
     int32_t index = 0;index < size; index++)
         {
 
-    std::string inputTypeNameString = inputTypeNameArray[index]! as string;;
+    std::string inputTypeNameString = inputTypeNameArray[index];;
     
 
-    InputRobotInterface inputRobotInterface = robotHashtable.get(inputTypeNameString) as InputRobotInterface;;
+    InputRobotInterface inputRobotInterface = robotHashtable.get(inputTypeNameString);;
     
 inputRobotInterface.mouseMoveToTarget(rectangle);
     

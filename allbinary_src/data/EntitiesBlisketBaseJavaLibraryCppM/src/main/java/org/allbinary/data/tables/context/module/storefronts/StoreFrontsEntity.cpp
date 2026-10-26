@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
 
@@ -79,8 +79,9 @@ class StoreFrontsEntity: public AbSqlBean, public StoreFrontsEntityInterface {
 
     protected: const std::string tableName = "storefronts";
 
-public: StoreFrontsEntity(){
-            super(UserDbInitInfo());
+public: StoreFrontsEntity() : AbSqlBean(UserDbInitInfo()){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -158,12 +159,12 @@ this->setTableName(this->tableName);
             
     public: StoreFront getStoreFrontInterface(std::string name){
 
-    HashMap<any, any> keysAndValues = StdUtil::getInstance().createHashMap();;
+    HashMap<Object*, Object*> keysAndValues = StdUtil::getInstance().createHashMap();;
     
 keysAndValues.put(StoreFrontData::getInstance().NAME, name);
     
 
-    HashMap<any, any> storeHashMap = super.getRow(keysAndValues);;
+    HashMap<Object*, Object*> storeHashMap = super.getRow(keysAndValues);;
     
 
                         if(storeHashMap != 
@@ -206,8 +207,8 @@ keysAndValues.put(StoreFrontData::getInstance().NAME, name);
 }
 
 
-    public: void update(HashMap<any, any> updatedValues){
-super.updateWhere(StoreFrontData::getInstance().NAME, updatedValues.get(StoreFrontData::getInstance().NAME) as string, updatedValues);
+    public: void update(HashMap<Object*, Object*> updatedValues){
+super.updateWhere(StoreFrontData::getInstance().NAME, updatedValues.get(StoreFrontData::getInstance().NAME), updatedValues);
     
 }
 

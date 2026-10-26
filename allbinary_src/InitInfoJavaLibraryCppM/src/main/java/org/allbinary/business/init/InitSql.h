@@ -23,11 +23,11 @@
 
             #include <vector>
         
-            #include "../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../java/lang/Class.h"
+            #include "java/lang/Class.h"
         
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/sql/Connection.h>
 
@@ -177,10 +177,10 @@ public: InitSql(DbConnectionInfo databaseConnectionInfoInterface);
 
     public: bool dropTable();
 
-    public: HashMap<any, any> getRow(HashMap<any, any> keysAndValues);
+    public: HashMap<Object*, Object*> getRow(HashMap<Object*, Object*> keysAndValues);
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: void updateWhere(std::string key, std::string value, HashMap<any, any> updatedKeyValuePairs);
+    public: void updateWhere(std::string key, std::string value, HashMap<Object*, Object*> updatedKeyValuePairs);
 
     public: void insert(BasicArrayList values);
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.

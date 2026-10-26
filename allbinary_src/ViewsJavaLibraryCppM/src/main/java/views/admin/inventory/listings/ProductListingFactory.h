@@ -21,9 +21,9 @@
         #ifndef VIEWS_ADMIN_INVENTORY_LISTINGS_PRODUCTLISTINGFACTORY_H
         #define VIEWS_ADMIN_INVENTORY_LISTINGS_PRODUCTLISTINGFACTORY_H
 
-            #include "../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/logic/communication/log/LogUtil.h>
 

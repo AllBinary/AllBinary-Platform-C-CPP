@@ -20,11 +20,9 @@
 
             #include <vector>
         
-            #include "../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../java/lang/Exception.h"
-        
-            #include "../../../../java/lang/System.h"
+            #include "java/lang/Exception.h"
         
 #include <java/io/IOException.h>
 
@@ -38,6 +36,9 @@
 #include <javax/microedition/media/Player.h>
 
       
+#include <org/allbinary/TsUtil.h>
+
+      
 #include <org/allbinary/game/configuration/feature/Features.h>
 
       
@@ -45,6 +46,9 @@
 
       
 #include <org/allbinary/graphics/canvas/transition/progress/ProgressCanvasFactory.h>
+
+      
+#include <org/allbinary/logic/ABSystemWrapper.h>
 
       
 #include <org/allbinary/logic/communication/log/LogUtil.h>
@@ -129,7 +133,7 @@ AllBinaryMediaManager::shutdown(soundsFactoryInterface);
     
 ProgressCanvasFactory::getInstance().addNormalPortion(50, "Media Manager");
     
-System.gc();
+TsUtil::getInstance().gc();
     
 Sounds(soundsFactoryInterface).init();
     
@@ -180,7 +184,7 @@ logUtil.putF(commonString.START, AllBinaryMediaManager::THIS, "shutdown");
                                 )
                         
                                     {
-                                    player= soundInterfaceArray[i]!.getPlayerP();
+                                    player= soundInterfaceArray[i].getPlayerP();
     
 
                         if(player != 
@@ -188,13 +192,13 @@ logUtil.putF(commonString.START, AllBinaryMediaManager::THIS, "shutdown");
                                 )
                         
                                     {
-                                    player2= (player as PlayerComposite).getPlayerP();
+                                    player2= (player).getPlayerP();
     
 
                         if(player2 instanceof AndroidMediaPlayerWrapper)
                         
                                     {
-                                    androidMediaPlayerWrapper= player2 as AndroidMediaPlayerWrapper;
+                                    androidMediaPlayerWrapper= player2;
     
 MediaPlayerUtil::getInstance().waitForMediaPlayer(androidMediaPlayerWrapper.getMediaPlayer());
     
@@ -205,7 +209,7 @@ MediaPlayerUtil::getInstance().waitForMediaPlayer(androidMediaPlayerWrapper.getM
                             
 
 
-                            throw Exception("Unknown Property Player: " +player.constructor.name.toString()!);
+                            throw Exception("Unknown Property Player: " +player.constructor.name.toString());
                     
 
                         }
@@ -220,7 +224,7 @@ MediaPlayerUtil::getInstance().waitForMediaPlayer(androidMediaPlayerWrapper.getM
 
 Sounds(soundsFactoryInterface).closeAll();
     
-System.gc();
+TsUtil::getInstance().gc();
     
 soundsFactoryInterface.setInitialized(false);
     

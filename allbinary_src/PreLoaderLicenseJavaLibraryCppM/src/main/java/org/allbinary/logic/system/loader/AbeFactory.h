@@ -23,13 +23,13 @@
 
             #include <vector>
         
-            #include "../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../java/lang/Class.h"
+            #include "java/lang/Class.h"
         
-            #include "../../../../../java/lang/ClassLoader.h"
+            #include "java/lang/ClassLoader.h"
         
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/lang/reflect/Constructor.h>
 
@@ -98,12 +98,12 @@ private: AbeFactory();
                 //@Throws(LicensingException.constructor)
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: Object* getInstance(AbeClientInformationInterface abeClientInformation, std::string className, std::vector<Function> classes, std::vector<Object*> params);
+    public: Object* getInstance(AbeClientInformationInterface abeClientInformation, std::string className, std::vector<Class*> classes, std::vector<Object*> params);
 
                 //@Throws(LicensingException.constructor)
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: Function constructor(AbeClientInformationInterface abeClientInformation, std::string className);
+    public: Class* getClass()(AbeClientInformationInterface abeClientInformation, std::string className);
 
 };
 

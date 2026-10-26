@@ -74,7 +74,7 @@ class GamePerformanceInitUpdatePaintable: public InitUpdatePaintable, public Upd
 
     private: MyFontProcessor myFontProcessor = UpdateMyFontProcessor(this);
 
-    private: std::vector<std::vector<char>> baseRefreshHelperCharArray = new Array(0).fill(null).map(() => new Array(0).fill(0));
+    private: std::vector<std::vector<char>> baseRefreshHelperCharArray = std::vector<std::vector<char>>(0, std::vector<char>(0));
 
     private: int32_t defaultStringWidth= 0;
 
@@ -128,17 +128,17 @@ graphics.setColor(this->RED);
                         for (
     int32_t index = size;index >= 0; )
         {
-charArray= this->baseRefreshHelperCharArray[index]!;
+charArray= this->baseRefreshHelperCharArray[index];
     
-charArray2= this->baseRefreshHelperCharArray[index +1]!;
+charArray2= this->baseRefreshHelperCharArray[index +1];
     
 size2= charArray.size();
     
 size3= charArray2.size();
     
-graphics.drawChars(charArray, 0, size2, 0, this->yArray[index]!, 0);
+graphics.drawChars(charArray, 0, size2, 0, this->yArray[index], 0);
     
-graphics.drawChars(charArray2, 0, size3, size2 *this->defaultStringWidth, this->yArray[index +1]!, 0);
+graphics.drawChars(charArray2, 0, size3, size2 *this->defaultStringWidth, this->yArray[index +1], 0);
     
 }
 

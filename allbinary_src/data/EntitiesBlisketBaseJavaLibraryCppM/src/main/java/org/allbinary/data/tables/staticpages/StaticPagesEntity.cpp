@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
 
@@ -84,8 +84,9 @@ class StaticPagesEntity: public AbSqlBean, public StaticPagesEntityInterface {
 
     private: const std::string TABLENAME = "staticpages";
 
-public: StaticPagesEntity(){
-            super(StaticPagesDbInitInfo());
+public: StaticPagesEntity() : AbSqlBean(StaticPagesDbInitInfo()){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -129,7 +130,7 @@ this->setTableName(this->TABLENAME);
 
     public: std::string getFile(std::string store, std::string keywords){
 
-    HashMap<any, any> whereHashMap = StdUtil::getInstance().createHashMap();;
+    HashMap<Object*, Object*> whereHashMap = StdUtil::getInstance().createHashMap();;
     
 whereHashMap.put(StoreFrontData::getInstance().NAME, store);
     
@@ -166,8 +167,8 @@ super.deleteWhere(basicItemData.KEYWORDS, keywords);
 }
 
 
-    public: void update(HashMap<any, any> updatedValues){
-super.updateWhere(basicItemData.KEYWORDS, updatedValues.get(basicItemData.KEYWORDS) as string, updatedValues);
+    public: void update(HashMap<Object*, Object*> updatedValues){
+super.updateWhere(basicItemData.KEYWORDS, updatedValues.get(basicItemData.KEYWORDS), updatedValues);
     
 }
 

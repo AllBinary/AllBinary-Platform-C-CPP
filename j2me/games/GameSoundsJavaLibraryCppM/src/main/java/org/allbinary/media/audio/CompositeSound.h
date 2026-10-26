@@ -21,17 +21,8 @@
         #ifndef ORG_ALLBINARY_MEDIA_AUDIO_COMPOSITESOUND_H
         #define ORG_ALLBINARY_MEDIA_AUDIO_COMPOSITESOUND_H
 
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-#include <jsinterop/annotations/JsType.h>
-
-      
-#include <jsinterop/annotations/JsMethod.h>
-
-      
-#include <jsinterop/annotations/JsConstructor.h>
-
-      
 
 
 

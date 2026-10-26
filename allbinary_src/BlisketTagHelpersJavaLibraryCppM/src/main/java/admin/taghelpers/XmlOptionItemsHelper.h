@@ -21,7 +21,7 @@
         #ifndef ADMIN_TAGHELPERS_XMLOPTIONITEMSHELPER_H
         #define ADMIN_TAGHELPERS_XMLOPTIONITEMSHELPER_H
 
-            #include "../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
 
@@ -67,7 +67,7 @@ class XmlOptionItemsHelper: public BasicTable {
 
     private: Portion portion;
 
-public: XmlOptionItemsHelper(HashMap<any, any> hashMap, PageContext pageContext);
+public: XmlOptionItemsHelper(HashMap<Object*, Object*> hashMap, PageContext pageContext);
 
     public: std::string create();
 

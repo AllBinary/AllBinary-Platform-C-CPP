@@ -20,7 +20,7 @@
 
             #include <vector>
         
-            #include "../../../../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/input/automation/module/DefaultListModelHelper.h>
 
@@ -269,7 +269,7 @@ this->getGenericProfileActionJPanel().setGenericProfileAction(genericProfileActi
 this->getGenericProfileActionJPanel().updateProfileActionUI();
     
 
-    javax::swing::GroupLayout layout = this->blankGenericProfileActionJPanel.getLayout() as javax::swing::GroupLayout;;
+    javax::swing::GroupLayout layout = this->blankGenericProfileActionJPanel.getLayout();;
     
 layout.setHorizontalGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING).addGap(0, 395, Short::MAX_VALUE).addComponent(this->getGenericProfileActionJPanel(), javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE));
     
@@ -287,7 +287,7 @@ this->logUtil.putF("Setting Configuration Profile Actions JPanel", this, "generi
 
         try {
             
-    std::string profileActionNameString = this->genericProfileActionsJList.getSelectedValue() as string;;
+    std::string profileActionNameString = this->genericProfileActionsJList.getSelectedValue();;
     
 this->updateProfileActionUI(profileActionNameString);
     
@@ -343,7 +343,7 @@ this->logUtil.put(this->commonStrings.EXCEPTION, this, "okNewProfileActionJButto
     int32_t index = 0;index < anyType.size(); index++)
         {
 
-    std::string nextSelectedValueString = anyType[index]! as string;;
+    std::string nextSelectedValueString = anyType[index];;
     
 this->getGenericProfileActions().remove(nextSelectedValueString);
     
@@ -373,7 +373,7 @@ this->setModel();
                                     {
                                     this->genericProfileActionsJList.setSelectedValue(this->genericProfileActionsJList.getModel().getElementAt(0), true);
     
-this->updateProfileActionUI(this->genericProfileActionsJList.getModel().getElementAt(0) as string);
+this->updateProfileActionUI(this->genericProfileActionsJList.getModel().getElementAt(0));
     
 
                                     }

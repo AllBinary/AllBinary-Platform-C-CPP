@@ -21,7 +21,7 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_DISPLAYABLE_SCREEN_FULLSCREENPAINTABLEFACTORY_H
         #define ORG_ALLBINARY_GRAPHICS_DISPLAYABLE_SCREEN_FULLSCREENPAINTABLEFACTORY_H
 
-            #include "../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
 #include <org/allbinary/game/paint/FullScreenPaintable.h>
 

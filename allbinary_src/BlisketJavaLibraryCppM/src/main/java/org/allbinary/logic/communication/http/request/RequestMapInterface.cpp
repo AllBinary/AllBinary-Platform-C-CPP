@@ -42,7 +42,7 @@
         
 class RequestMapInterface {
 
-    HashMap<any, any> getRequestHashMap()
+    HashMap<Object*, Object*> getRequestHashMap()
 
 };
 

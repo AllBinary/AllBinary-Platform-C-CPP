@@ -93,8 +93,6 @@ class HtmlTable: public HtmlTag {
 
     private: const std::string RULES = "rules";
 
-    private: const std::string WIDTH = "width";
-
     private: const std::string STYLE = "style";
 
     public: const std::string BORDERCOLLAPSE = "border-collapse: collapse";

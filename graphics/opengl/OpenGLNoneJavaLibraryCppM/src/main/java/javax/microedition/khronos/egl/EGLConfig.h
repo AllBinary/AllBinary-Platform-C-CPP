@@ -7,9 +7,9 @@
         #ifndef JAVAX_MICROEDITION_KHRONOS_EGL_EGLCONFIG_H
         #define JAVAX_MICROEDITION_KHRONOS_EGL_EGLCONFIG_H
 
-            #include "../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../java/lang/RuntimeException.h"
+            #include "java/lang/RuntimeException.h"
         
 
 

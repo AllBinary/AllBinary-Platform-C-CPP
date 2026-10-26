@@ -18,9 +18,9 @@
 
 
 
-            #include "../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
 
@@ -70,7 +70,7 @@ public: ValidatedViewHelperFactory(){
 
                 //@Throws(Exception.constructor, LicensingException.constructor)
             
-    public: Object* getInstance(HashMap<any, any> hashMap, PageContext pageContext){
+    public: Object* getInstance(HashMap<Object*, Object*> hashMap, PageContext pageContext){
 
 
 

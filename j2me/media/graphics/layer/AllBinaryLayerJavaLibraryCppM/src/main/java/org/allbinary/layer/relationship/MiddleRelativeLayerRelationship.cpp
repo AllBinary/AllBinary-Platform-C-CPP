@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/graphics/PointFactory.h>
 
@@ -51,8 +51,9 @@
 
 class MiddleRelativeLayerRelationship: public RelativeLayerRelationship {
 
-public: MiddleRelativeLayerRelationship(AllBinaryLayer layer){
-            super(layer, PointFactory::getInstance().createXY(layer.getHalfWidth(), layer.getHalfHeight()), BasicArrayListUtil::getInstance().getImmutableInstance());
+public: MiddleRelativeLayerRelationship(AllBinaryLayer layer) : RelativeLayerRelationship(layer, PointFactory::getInstance().createXY(layer.getHalfWidth(), layer.getHalfHeight()), BasicArrayListUtil::getInstance().getImmutableInstance()){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.

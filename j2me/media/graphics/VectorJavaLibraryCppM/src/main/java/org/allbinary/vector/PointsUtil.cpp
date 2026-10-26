@@ -20,7 +20,7 @@
 
             #include <vector>
         
-            #include "../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
 
 
@@ -62,7 +62,7 @@ class PointsUtil
     int32_t size = points.size();;
     
 
-    std::vector<std::vector<std::vector<int32_t>>> newPoints = Array.from({ length: size }, () => Array.from({ length: 0 }, () => new Array(0).fill(0)));;
+    std::vector<std::vector<std::vector<int32_t>>> newPoints = std::vector<std::vector<std::vector<int32_t>>>(size, std::vector<std::vector<int32_t>>(0, std::vector<int32_t>(0)));;
     
 
 
@@ -72,9 +72,9 @@ class PointsUtil
     int32_t index = 0;index < size; index++)
         {
 
-    int32_t size2 = points[index]!.size();;
+    int32_t size2 = points[index].size();;
     
-newPoints[index]= new Array(size2).fill(null).map(() => new Array(2).fill(0));
+newPoints[index]= std::vector<std::vector<int32_t>>(size2, std::vector<int32_t>(2));
     
 
 
@@ -84,20 +84,20 @@ newPoints[index]= new Array(size2).fill(null).map(() => new Array(2).fill(0));
     int32_t index2 = 0;index2 < size2; index2++)
         {
 
-                        if(points[index]![index2]![0] != 1000)
+                        if(points[index][index2][0] != 1000)
                         
                                     {
-                                    newPoints[index]![index2]![0]= points[index]![index2]![0] +x;
+                                    newPoints[index][index2][0]= points[index][index2][0] +x;
     
-newPoints[index]![index2]![1]= points[index]![index2]![1] +y;
+newPoints[index][index2][1]= points[index][index2][1] +y;
     
 
                                     }
                                 
                         else {
-                            newPoints[index]![index2]![0]= 1000;
+                            newPoints[index][index2][0]= 1000;
     
-newPoints[index]![index2]![1]= 1000;
+newPoints[index][index2][1]= 1000;
     
 
                         }
@@ -127,7 +127,7 @@ newPoints[index]![index2]![1]= 1000;
 
     public: std::vector<std::vector<int32_t>> adjust(std::vector<std::vector<int32_t>> points, int32_t x, int32_t y){
 
-    std::vector<std::vector<int32_t>> newPoints = new Array(points.length).fill(null).map(() => new Array(2).fill(0));;
+    std::vector<std::vector<int32_t>> newPoints = std::vector<std::vector<int32_t>>(points.length, std::vector<int32_t>(2));;
     
 
 
@@ -137,20 +137,20 @@ newPoints[index]![index2]![1]= 1000;
     int32_t index2 = 0;index2 < points.size(); index2++)
         {
 
-                        if(points[index2]![0] != 1000)
+                        if(points[index2][0] != 1000)
                         
                                     {
-                                    newPoints[index2]![0]= points[index2]![0] +x;
+                                    newPoints[index2][0]= points[index2][0] +x;
     
-newPoints[index2]![1]= points[index2]![1] +y;
+newPoints[index2][1]= points[index2][1] +y;
     
 
                                     }
                                 
                         else {
-                            newPoints[index2]![0]= 1000;
+                            newPoints[index2][0]= 1000;
     
-newPoints[index2]![1]= 1000;
+newPoints[index2][1]= 1000;
     
 
                         }

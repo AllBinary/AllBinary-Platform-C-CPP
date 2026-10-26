@@ -21,7 +21,7 @@
         #ifndef ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_TRANSFORMINFOCUSTOMURITRANSFORMER_H
         #define ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_TRANSFORMINFOCUSTOMURITRANSFORMER_H
 
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <javax/xml/transform/URIResolver.h>
 

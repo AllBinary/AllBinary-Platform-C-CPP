@@ -21,7 +21,7 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_OPENGLES_SHADER_LOADEDSHADERMANAGER_H
         #define ORG_ALLBINARY_GRAPHICS_OPENGLES_SHADER_LOADEDSHADERMANAGER_H
 
-            #include "../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
 
 

@@ -18,9 +18,9 @@
 
 
 
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../../java/lang/Integer.h"
+            #include "java/lang/Integer.h"
         
 #include <org/allbinary/business/user/address/StreetAddressData.h>
 
@@ -67,14 +67,15 @@ class EditValidationView: public ShippingAddressView, public ValidationComponent
 
     private: std::string value;
 
-public: EditValidationView(TransformInfoInterface transformInfoInterface){
-            super(transformInfoInterface);
+public: EditValidationView(TransformInfoInterface transformInfoInterface) : ShippingAddressView(transformInfoInterface){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
                     
 
-    TransformInfoHttpInterface httpTransformInfoInterface = this->getTransformInfoInterface() as TransformInfoHttpInterface;;
+    TransformInfoHttpInterface httpTransformInfoInterface = this->getTransformInfoInterface();;
     
 this->value= httpTransformInfoInterface.getPageContext().getRequest().getParameter(StreetAddressData::ID);
     

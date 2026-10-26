@@ -44,8 +44,9 @@
 
 class TopULayerBounds: public LayerBounds {
 
-public: TopULayerBounds(Rectangle rectangle){
-            super(rectangle);
+public: TopULayerBounds(Rectangle rectangle) : LayerBounds(rectangle){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.

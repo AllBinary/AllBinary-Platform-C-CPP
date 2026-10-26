@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/data/tables/workflow/WorkFlowEntityFactory.h>
 
@@ -70,8 +70,9 @@ class DeleteValidationView: public WorkFlowView, public ValidationComponentInter
 
     private: std::string workFlowName;
 
-public: DeleteValidationView(TransformInfoInterface transformInfoInterface){
-            super(transformInfoInterface);
+public: DeleteValidationView(TransformInfoInterface transformInfoInterface) : WorkFlowView(transformInfoInterface){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.

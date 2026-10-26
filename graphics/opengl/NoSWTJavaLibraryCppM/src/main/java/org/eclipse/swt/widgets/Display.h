@@ -21,7 +21,7 @@
         #ifndef ORG_ECLIPSE_SWT_WIDGETS_DISPLAY_H
         #define ORG_ECLIPSE_SWT_WIDGETS_DISPLAY_H
 
-            #include "../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
 
 

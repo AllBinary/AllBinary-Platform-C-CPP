@@ -18,7 +18,7 @@
 
 
 
-            #include "../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
 
@@ -80,9 +80,9 @@ class DownloadItemsRequestHelper: public ModifyTable {
 
     private: DownloadableItem downloadableItem;
 
-public: DownloadItemsRequestHelper(HashMap<any, any> hashMap, PageContext pageContext){
+public: DownloadItemsRequestHelper(HashMap<Object*, Object*> hashMap, PageContext pageContext){
 
-    HelperTag inventoryTag = hashMap.get(AbTagData::PARENT) as HelperTag;;
+    HelperTag inventoryTag = hashMap.get(AbTagData::PARENT);;
     
 
     InventoryItemViewParentTagHelper inventoryItemViewParentTagHelper = InventoryItemViewParentTagHelper::getInstance();;
@@ -205,7 +205,7 @@ DownloadItemsEntityFactory::getInstance().getDownloadItemsEntityInstance().inser
     std::string success = "Update Successful";;
     
 
-    HashMap<any, any> values = this->downloadableItem.toHashMap();;
+    HashMap<Object*, Object*> values = this->downloadableItem.toHashMap();;
     
 DownloadItemsEntityFactory::getInstance().getDownloadItemsEntityInstance().update(values);
     

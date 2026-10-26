@@ -20,7 +20,7 @@
 
             #include <vector>
         
-            #include "../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
 #include <java/awt.h>
 
@@ -49,12 +49,11 @@ class PointFactory
             : public Object
          {
 
-    private: static std::vector<std::vector<Point>> pointArray = new Array(3000).fill(null).map(() => new Array(3000).fill(0))
-                                                            ;
+    private: static std::vector<std::vector<Point>> pointArray = std::vector<std::vector<Point>>(3000, std::vector<Point>(3000));
 
     public: static Point getInstance(int32_t x, int32_t y){
 
-    Point point = PointFactory::pointArray[x]![y];;
+    Point point = PointFactory::pointArray[x][y];;
     
 
                         if(point == 
@@ -62,7 +61,7 @@ class PointFactory
                                 )
                         
                                     {
-                                    point= PointFactory::pointArray[x]![y]= Point(x, y);
+                                    point= PointFactory::pointArray[x][y]= Point(x, y);
     
 
                                     }

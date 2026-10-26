@@ -20,7 +20,7 @@
 
             #include <vector>
         
-            #include "../../../../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/util/BasicArrayList.h>
 
@@ -229,7 +229,7 @@ public: MetasValidation(Document document){
     Node node = document.createElement(HtmlMetasData::getInstance().NAME);;
     
 
-    std::vector<MetaValidation> metaArray = this->metaValidationVector.toArrayType(new Array(this->metaValidationVector.size())) as MetaValidation[];;
+    std::vector<MetaValidation> metaArray = this->metaValidationVector.toArrayType(std::vector<MetaValidation>(this->metaValidationVector.size())) as MetaValidation[];;
     
 
     int32_t size = metaArray.size();;

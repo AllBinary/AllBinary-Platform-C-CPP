@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/game/score/ScoreableInterface.h>
 
@@ -64,10 +64,10 @@ super.initAllBinaryLayerCircularPool(allbinaryLayerFactoryInterface, total);
             
     public: void visit(AllBinaryLayer sourceLayerInterface){
 
-    PointsLayer pointsLayer = this->getNextInstance() as PointsLayer;;
+    PointsLayer pointsLayer = this->getNextInstance();;
     
 
-    ScoreableInterface scoreableInterface = sourceLayerInterface as ScoreableInterface;;
+    ScoreableInterface scoreableInterface = sourceLayerInterface;;
     
 pointsLayer.visit(scoreableInterface);
     

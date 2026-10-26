@@ -18,16 +18,7 @@
 
 
 
-#include <jsinterop/annotations/JsType.h>
-
-      
 #include <org/allbinary/logic/util/event/AllBinaryEventObject.h>
-
-      
-#include <jsinterop/annotations/JsMethod.h>
-
-      
-#include <jsinterop/annotations/JsConstructor.h>
 
       
 
@@ -54,8 +45,9 @@ class DemoGameMidletEvent: public AllBinaryEventObject {
 
     private: DemoGameMidletState demoGameMidletState;
 
-public: DemoGameMidletEvent(Object* anyType, DemoGameMidletState demoGameMidletState){
-            super(anyType);
+public: DemoGameMidletEvent(Object* anyType, DemoGameMidletState demoGameMidletState) : AllBinaryEventObject(anyType){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.

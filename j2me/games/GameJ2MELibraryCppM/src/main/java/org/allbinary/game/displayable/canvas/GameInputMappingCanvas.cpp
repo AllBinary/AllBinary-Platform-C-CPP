@@ -18,13 +18,10 @@
 
 
 
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../../../java/lang/Integer.h"
+            #include "java/lang/Integer.h"
         
-#include <jsinterop/annotations/JsType.h>
-
-      
 #include <javax/microedition/lcdui/Command.h>
 
       
@@ -88,15 +85,6 @@
 #include <org/allbinary/util/BasicArrayList.h>
 
       
-#include <jsinterop/annotations/JsMethod.h>
-
-      
-#include <jsinterop/annotations/JsConstructor.h>
-
-      
-#include <jsinterop/annotations/JsProperty.h>
-
-      
 
 
 
@@ -142,8 +130,9 @@ class GameInputMappingCanvas: public GameCommandCanvas, public InputMappingInter
 
     private: Input selectedInput = this->NONE;
 
-public: GameInputMappingCanvas(AbeClientInformationInterface abeClientInformation, CommandListener commandListener, AllBinaryGameLayerManager allBinaryGameLayerManager, HelpPaintable helpPaintable){
-            super(commandListener, GameInputMappingCanvas::NAME, allBinaryGameLayerManager.getBackgroundBasicColor(), allBinaryGameLayerManager.getForegroundBasicColor());
+public: GameInputMappingCanvas(AbeClientInformationInterface abeClientInformation, CommandListener commandListener, AllBinaryGameLayerManager allBinaryGameLayerManager, HelpPaintable helpPaintable) : GameCommandCanvas(commandListener, GameInputMappingCanvas::NAME, allBinaryGameLayerManager.getBackgroundBasicColor(), allBinaryGameLayerManager.getForegroundBasicColor()){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -166,7 +155,7 @@ this->logUtil.putF(this->commonStrings.START, this, this->commonStrings.CONSTRUC
                                 
 this->abeClientInformation= abeClientInformation;
     
-this->helpPaintable= helpPaintable as InputMappingHelpPaintable;
+this->helpPaintable= helpPaintable;
     
 this->inputMapping= PlatformInputMappingFactory::getInstance().getPersistentInputMappingInstance();
     

@@ -23,16 +23,10 @@
 
             #include <vector>
         
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../../java/lang/Integer.h"
+            #include "java/lang/Integer.h"
         
-#include <jsinterop/annotations/JsType.h>
-
-      
-#include <java/util/Hashtable.h>
-
-      
 #include <javax/microedition/lcdui/Choice.h>
 
       
@@ -84,6 +78,9 @@
 #include <org/allbinary/input/gyro/OrientationData.h>
 
       
+#include <org/allbinary/logic/MEUtil.h>
+
+      
 #include <org/allbinary/logic/string/StringMaker.h>
 
       
@@ -96,13 +93,10 @@
 #include <org/allbinary/util/HashtableUtil.h>
 
       
-#include <jsinterop/annotations/JsMethod.h>
-
-      
-#include <jsinterop/annotations/JsConstructor.h>
-
-      
 #include <org/allbinary/logic/StdUtil.h>
+
+      
+#include <org/allbinary/util/ABHashtable.h>
 
       
 
@@ -131,6 +125,8 @@
 #include "GameConfigurationCentral.h"
 
 class GameOptionsForm: public CommandForm {
+
+    private: const MEUtil meUtil = MEUtil::getInstance();
 
 public: GameOptionsForm(CommandListener commandListener, std::string title, BasicColor backgrounBasicColor, BasicColor foregroundBasicColor);
 

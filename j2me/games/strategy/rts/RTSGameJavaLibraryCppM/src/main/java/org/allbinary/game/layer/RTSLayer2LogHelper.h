@@ -21,7 +21,7 @@
         #ifndef ORG_ALLBINARY_GAME_LAYER_RTSLAYER2LOGHELPER_H
         #define ORG_ALLBINARY_GAME_LAYER_RTSLAYER2LOGHELPER_H
 
-            #include "../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
 
 

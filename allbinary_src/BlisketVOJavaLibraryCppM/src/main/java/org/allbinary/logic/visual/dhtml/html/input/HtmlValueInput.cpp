@@ -47,8 +47,9 @@ class HtmlValueInput: public HtmlInput {
 
     private: const std::string VALUE = "VALUE";
 
-public: HtmlValueInput(std::string before, std::string type, std::string name, std::string value, std::string after){
-            super(before, type, name, after);
+public: HtmlValueInput(std::string before, std::string type, std::string name, std::string value, std::string after) : HtmlInput(before, type, name, after){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.

@@ -23,13 +23,13 @@
 
             #include <vector>
         
-            #include "../../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../../../../java/lang/Integer.h"
+            #include "java/lang/Integer.h"
         
-            #include "../../../../../../java/lang/Double.h"
+            #include "java/lang/Double.h"
         
 #include <java/util/HashMap.h>
 
@@ -41,6 +41,9 @@
 
       
 #include <org/allbinary/graphics/GPoint.h>
+
+      
+#include <org/allbinary/graphics/GraphicsStrings.h>
 
       
 #include <org/allbinary/graphics/PointFactory.h>
@@ -116,11 +119,9 @@ class CanvasDom
 
     public: static const std::string REAL_SIZE = "realSize";
 
-    public: static const std::string WIDTH = "width";
+    private: const GraphicsStrings graphicsStrings = GraphicsStrings::getInstance();
 
-    public: static const std::string HEIGHT = "height";
-
-    private: HashMap<any, any> graphicItemHashMap;
+    private: HashMap<Object*, Object*> graphicItemHashMap;
 
     private: double angle;
 
@@ -134,7 +135,7 @@ public: CanvasDom(CanvasJPanel canvasJPanel);
 
     public: double getAngle();
 
-    public: HashMap<any, any> getGraphicItemHashMap();
+    public: HashMap<Object*, Object*> getGraphicItemHashMap();
 
     public: void setAngle(double angle);
 

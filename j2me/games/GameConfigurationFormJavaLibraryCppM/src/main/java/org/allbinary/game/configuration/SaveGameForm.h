@@ -21,11 +21,9 @@
         #ifndef ORG_ALLBINARY_GAME_CONFIGURATION_SAVEGAMEFORM_H
         #define ORG_ALLBINARY_GAME_CONFIGURATION_SAVEGAMEFORM_H
 
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../../java/lang/System.h"
-        
-            #include "../../../../java/lang/Long.h"
+            #include "java/lang/Long.h"
         
 #include <javax/microedition/lcdui/CommandListener.h>
 
@@ -40,6 +38,12 @@
 
       
 #include <org/allbinary/graphics/displayable/screen/CommandForm.h>
+
+      
+#include <org/allbinary/logic/ABSystemWrapper.h>
+
+      
+#include <org/allbinary/logic/MEUtil.h>
 
       
 
@@ -70,6 +74,8 @@ class SaveGameForm: public CommandForm {
     public: static CommandForm createForm(CommandListener commandListener, std::string title, BasicColor backgrounBasicColor, BasicColor foregroundBasicColor);
 
     public: static CommandForm getInstance();
+
+    private: const MEUtil meUtil = MEUtil::getInstance();
 
 private: SaveGameForm(CommandListener commandListener, std::string title, BasicColor backgrounBasicColor, BasicColor foregroundBasicColor);
 

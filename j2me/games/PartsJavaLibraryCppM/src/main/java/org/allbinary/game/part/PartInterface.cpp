@@ -18,9 +18,6 @@
 
 
 
-#include <jsinterop/annotations/JsType.h>
-
-      
 #include <org/allbinary/animation/AnimationInterfaceCompositeInterface.h>
 
       

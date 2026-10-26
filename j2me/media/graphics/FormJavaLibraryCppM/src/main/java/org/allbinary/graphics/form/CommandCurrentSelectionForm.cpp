@@ -20,11 +20,8 @@
 
             #include <vector>
         
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-#include <jsinterop/annotations/JsType.h>
-
-      
 #include <javax/microedition/lcdui/Command.h>
 
       
@@ -61,15 +58,6 @@
 #include <org/allbinary/graphics/form/item/ABCustomItem.h>
 
       
-#include <jsinterop/annotations/JsMethod.h>
-
-      
-#include <jsinterop/annotations/JsConstructor.h>
-
-      
-#include <jsinterop/annotations/JsProperty.h>
-
-      
 
 
 
@@ -93,12 +81,13 @@
 
 class CommandCurrentSelectionForm: public ScrollCurrentSelectionForm, public UpdateMyFontInterface {
 
-    protected: const std::vector<Animation> selectedAnimationArray = new Array(16);
+    protected: const std::vector<Animation> selectedAnimationArray = std::vector<Animation>(16);
 
-    protected: const std::vector<Animation> unSelectedAnimationArray = new Array(16);
+    protected: const std::vector<Animation> unSelectedAnimationArray = std::vector<Animation>(16);
 
-public: CommandCurrentSelectionForm(std::string title, std::vector<ABCustomItem> items, int32_t border, bool moveForSmallScreen, BasicColor backgroundBasicColor, BasicColor foregroundBasicColor){
-            super(title, items, ItemPaintableFactory::getInstance(), border,  -3, moveForSmallScreen, backgroundBasicColor, foregroundBasicColor);
+public: CommandCurrentSelectionForm(std::string title, std::vector<ABCustomItem> items, int32_t border, bool moveForSmallScreen, BasicColor backgroundBasicColor, BasicColor foregroundBasicColor) : ScrollCurrentSelectionForm(title, items, ItemPaintableFactory::getInstance(), border,  -3, moveForSmallScreen, backgroundBasicColor, foregroundBasicColor){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -111,7 +100,7 @@ this->addAll(items);
 
 
     public: void updateMeasurement(Graphics graphics){
-this->updateAll(graphics, getAllitems());
+this->updateAll(graphics, this->getAllitems());
     
 super.updateMeasurement(graphics);
     
@@ -155,7 +144,7 @@ this->unSelectedAnimationArray[index]= nullAnimation;
                         for (
     int32_t index = items.size();--index >= 0; )
         {
-this->addAt(index, items[index]!);
+this->addAt(index, items[index]);
     
 }
 
@@ -233,9 +222,9 @@ adjustedBorder= 4;
                         for (
     int32_t index = items.size();--index >= 0; )
         {
-items[index]!.preMeasurement(graphics);
+items[index].preMeasurement(graphics);
     
-this->updateAt(index, items[index]!);
+this->updateAt(index, items[index]);
     
 }
 
@@ -275,7 +264,7 @@ this->updateAt(index, items[index]!);
                         
                                     {
                                     
-    RectangleAdjustedAnimation rectangleAdjustedAnimation = this->selectedAnimationArray[index]! as RectangleAdjustedAnimation;;
+    RectangleAdjustedAnimation rectangleAdjustedAnimation = this->selectedAnimationArray[index];;
     
 rectangleAdjustedAnimation.setWidth(rectWidth);
     
@@ -292,7 +281,7 @@ rectangleAdjustedAnimation.setBasicColorP(selectedButtonColor);
                                 
                         else {
                             
-    RectangleFilledAdjustedAnimation rectangleAdjustedAnimation = this->selectedAnimationArray[index]! as RectangleFilledAdjustedAnimation;;
+    RectangleFilledAdjustedAnimation rectangleAdjustedAnimation = this->selectedAnimationArray[index];;
     
 rectangleAdjustedAnimation.setWidth(rectWidth);
     
@@ -314,7 +303,7 @@ adjustedBorder= 4;
                         
                                     {
                                     
-    RectangleAdjustedAnimation rectangleAdjustedAnimation = this->unSelectedAnimationArray[index]! as RectangleAdjustedAnimation;;
+    RectangleAdjustedAnimation rectangleAdjustedAnimation = this->unSelectedAnimationArray[index];;
     
 rectangleAdjustedAnimation.setWidth(rectWidth);
     
@@ -331,7 +320,7 @@ rectangleAdjustedAnimation.setBasicColorP(buttonColor);
                                 
                         else {
                             
-    RectangleFilledAdjustedAnimation rectangleAdjustedAnimation = this->unSelectedAnimationArray[index]! as RectangleFilledAdjustedAnimation;;
+    RectangleFilledAdjustedAnimation rectangleAdjustedAnimation = this->unSelectedAnimationArray[index];;
     
 rectangleAdjustedAnimation.setWidth(rectWidth);
     
@@ -354,7 +343,7 @@ rectangleAdjustedAnimation.setBasicColorP(buttonColor);
     int32_t index = super.getSelectedIndex();;
     
 
-    CommandTextItem commandTextItem = this->get(index) as unknown as CommandTextItem;;
+    CommandTextItem commandTextItem = this->get(index) as unknown;;
     
 
 
@@ -417,7 +406,7 @@ super.paint(graphics);
                 //@Throws(Exception.constructor)
             
     public: int32_t paintItem(Graphics graphics, int32_t index, ABCustomItem item, int32_t x, int32_t y){
-this->selectedAnimationArray[index]!.paintXY(graphics, x, y);
+this->selectedAnimationArray[index].paintXY(graphics, x, y);
     
 
 
@@ -431,7 +420,7 @@ this->selectedAnimationArray[index]!.paintXY(graphics, x, y);
                 //@Throws(Exception.constructor)
             
     public: int32_t paintUnselectedItem(Graphics graphics, int32_t index, ABCustomItem item, int32_t x, int32_t y){
-this->unSelectedAnimationArray[index]!.paintXY(graphics, x, y);
+this->unSelectedAnimationArray[index].paintXY(graphics, x, y);
     
 
 

@@ -20,13 +20,13 @@
 
             #include <vector>
         
-            #include "../../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../../../../java/lang/System.h"
+            #include "java/lang/System.h"
         
-            #include "../../../../../../java/lang/Integer.h"
+            #include "java/lang/Integer.h"
         
 #include <java/util/HashMap.h>
 
@@ -129,7 +129,7 @@ console.log("New String: " +testString);
 
     private: const std::string FOUND_KEY = "found key total: ";
 
-    private: HashMap<any, any> hashMap;
+    private: HashMap<Object*, Object*> hashMap;
 
 public: Replace(std::string key, std::string value){
 this->hashMap= StdUtil::getInstance().createHashMap();
@@ -153,7 +153,7 @@ this->hashMap.put(keys, values);
 }
 
 
-public: Replace(HashMap<any, any> hashMap){
+public: Replace(HashMap<Object*, Object*> hashMap){
 this->hashMap= hashMap;
     
 }
@@ -195,7 +195,7 @@ this->hashMap= hashMap;
                         for (
     int32_t index2 = 0;index2 < size; index2++)
         {
-keys= keyArray[index2]! as string[];
+keys= keyArray[index2] as string[];
     
 values= this->hashMap.get(keys) as string[];
     
@@ -221,7 +221,7 @@ values= this->hashMap.get(keys) as string[];
         while(index < replace.size())
         {
 
-    int32_t begin = replace.indexOf(keys[0]!, index);;
+    int32_t begin = replace.indexOf(keys[0], index);;
     
 
                         if(begin !=  -1)
@@ -238,7 +238,7 @@ values= this->hashMap.get(keys) as string[];
 
                                     }
                                 
-nextKey= keys[0]!;
+nextKey= keys[0];
     
 end= begin +nextKey.size();
     
@@ -246,7 +246,7 @@ newStringBuffer.delete(0, newStringBuffer.length());
     
 newStringBuffer.append(replace.substring(0, begin));
     
-newStringBuffer.append(values[0]!);
+newStringBuffer.append(values[0]);
     
 index= newStringBuffer.length();
     
@@ -258,7 +258,7 @@ replace= newStringBuffer.toString();
                         if(keys.size() > 1)
                         
                                     {
-                                    nextSecondKey= keys[1]!;
+                                    nextSecondKey= keys[1];
     
 begin2= replace.indexOf(nextSecondKey, index);
     
@@ -273,7 +273,7 @@ newStringBuffer.delete(0, newStringBuffer.length());
     
 newStringBuffer.append(replace.substring(0, begin2));
     
-newStringBuffer.append(values[1]!);
+newStringBuffer.append(values[1]);
     
 index= newStringBuffer.length();
     
@@ -364,9 +364,9 @@ totalNumberOfReplaces++;
                         for (
     int32_t index2 = 0;index2 < size; index2++)
         {
-key= keyArray[index2]! as string;
+key= keyArray[index2];
     
-value= this->hashMap.get(key) as string;
+value= this->hashMap.get(key);
     
 
     int32_t index = 0;;

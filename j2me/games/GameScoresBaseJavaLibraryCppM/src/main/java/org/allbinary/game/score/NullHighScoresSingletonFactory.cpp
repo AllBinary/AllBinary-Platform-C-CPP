@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
 #include <org/allbinary/string/CommonStrings.h>
 
@@ -47,7 +47,7 @@ class NullHighScoresSingletonFactory
             : public Object
          {
 
-    private: static const HighScores SINGLETON = HighScores("Loading", "High Scores Not Loaded", CommonStrings::getInstance().PERIODS);
+    private: static const HighScores SINGLETON = HighScores(CommonStrings::getInstance().LOADING, "High Scores Not Loaded", CommonStrings::getInstance().PERIODS);
 
     public: static HighScores getInstance(){
 

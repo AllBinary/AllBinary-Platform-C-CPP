@@ -18,9 +18,9 @@
 
 
 
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../../../java/lang/Integer.h"
+            #include "java/lang/Integer.h"
         
 #include <java/sql/ResultSet.h>
 
@@ -74,8 +74,9 @@ class AbSqlColumn: public AbSqlTable {
 
     private: const std::string INVALID_RESULT = "-1";
 
-public: AbSqlColumn(DbConnectionInfo databaseConnectionInfoInterface){
-            super(databaseConnectionInfoInterface);
+public: AbSqlColumn(DbConnectionInfo databaseConnectionInfoInterface) : AbSqlTable(databaseConnectionInfoInterface){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.

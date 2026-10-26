@@ -18,13 +18,10 @@
 
 
 
-            #include "../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../../../../java/lang/Integer.h"
+            #include "java/lang/Integer.h"
         
-#include <java/util/Hashtable.h>
-
-      
 #include <javax/microedition/lcdui/Canvas.h>
 
       
@@ -62,6 +59,9 @@
 
       
 #include <org/allbinary/time/TimeDelayHelper.h>
+
+      
+#include <org/allbinary/util/ABHashtable.h>
 
       
 
@@ -103,13 +103,14 @@ class HorizontalScreenPatrolAI: public BasicAI {
 
     private: Sound sound;
 
-public: HorizontalScreenPatrolAI(Hashtable<any, any> hashtable, AllBinaryLayer ownerLayerInterface, GameInput gameInput){
-            super(ownerLayerInterface, gameInput);
+public: HorizontalScreenPatrolAI(ABHashtable<Object*, Object*> hashtable, AllBinaryLayer ownerLayerInterface, GameInput gameInput) : BasicAI(ownerLayerInterface, gameInput){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this->sound= hashtable.get(HorizontalScreenPatrolAI::SOUND) as Sound;
+this->sound= hashtable.get(HorizontalScreenPatrolAI::SOUND);
     
 
                         if(this->sound == 
@@ -168,7 +169,7 @@ this->secondaryPlayerQueue.add(this->sound);
                                     super.processKeyAI(Canvas::KEY_NUM1);
     
 
-    AllBinaryGameLayerManager gameLayerManager = allBinaryLayerManager as AllBinaryGameLayerManager;;
+    AllBinaryGameLayerManager gameLayerManager = allBinaryLayerManager;;
     
 
     int32_t FIRE = (gameLayerManager.getGameInfo().getCurrentLevel() +12)>>2;;

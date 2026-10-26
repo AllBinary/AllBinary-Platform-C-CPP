@@ -18,9 +18,9 @@
 
 
 
-            #include "../../../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
 
@@ -199,7 +199,7 @@ this->log();
 }
 
 
-public: RootStoreCategoryProperties(TransformInfoInterface transformInfoInterface, HashMap<any, any> categoryPropertiesHashMap){
+public: RootStoreCategoryProperties(TransformInfoInterface transformInfoInterface, HashMap<Object*, Object*> categoryPropertiesHashMap){
 this->transformInfoInterface= transformInfoInterface;
     
 
@@ -231,7 +231,7 @@ this->log();
             
     protected: void initPath(){
 
-    TransformInfoHttpInterface transformInfoHttpStoreInterface = this->transformInfoInterface as TransformInfoHttpInterface;;
+    TransformInfoHttpInterface transformInfoHttpStoreInterface = this->transformInfoInterface;;
     
 
     StoreFrontInterface storeFrontInterface = StoreFrontFactory::getInstance(transformInfoHttpStoreInterface.getStoreName());;
@@ -240,7 +240,7 @@ this->log();
     std::string postPath = storeFrontInterface.getCurrentHostNamePath() +storeFrontInterface.getCategoryPath();;
     
 
-    HttpServletRequest httpServletRequest = transformInfoHttpStoreInterface.getPageContext().getRequest() as HttpServletRequest;;
+    HttpServletRequest httpServletRequest = transformInfoHttpStoreInterface.getPageContext().getRequest();;
     
 this->webAppAbPath= AbPath(httpServletRequest.getContextPath() +postPath, StringUtil::getInstance().EMPTY_STRING);
     
@@ -359,9 +359,9 @@ this->category= value;
 }
 
 
-    public: HashMap<any, any> toHashMap(){
+    public: HashMap<Object*, Object*> toHashMap(){
 
-    HashMap<any, any> categoryHashMap = StdUtil::getInstance().createHashMap();;
+    HashMap<Object*, Object*> categoryHashMap = StdUtil::getInstance().createHashMap();;
     
 categoryHashMap.put(CategoryData::getInstance().NAME, this->getValue());
     

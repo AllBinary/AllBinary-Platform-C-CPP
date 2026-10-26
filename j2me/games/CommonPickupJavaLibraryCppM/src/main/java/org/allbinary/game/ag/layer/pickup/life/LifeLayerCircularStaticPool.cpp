@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/game/ag/life/Life.h>
 
@@ -67,10 +67,10 @@ super.initAllBinaryLayerCircularPool(allbinaryLayerFactoryInterface, total);
             
     public: void visit(AllBinaryLayer sourceLayerInterface){
 
-    LifeLayer lifeLayer = this->getNextInstance() as LifeLayer;;
+    LifeLayer lifeLayer = this->getNextInstance();;
     
 
-    LifeInterfaceCompositeInterface lifeInterfaceCompositeInterface = sourceLayerInterface as unknown as LifeInterfaceCompositeInterface;;
+    LifeInterfaceCompositeInterface lifeInterfaceCompositeInterface = sourceLayerInterface as unknown;;
     
 
     Life lifeInterface = lifeInterfaceCompositeInterface.getLifeInterface();;

@@ -18,13 +18,13 @@
 
 
 
-            #include "../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../java/lang/InterruptedException.h"
+            #include "java/lang/InterruptedException.h"
         
-            #include "../../../java/lang/Thread.h"
+            #include "java/lang/Thread.h"
         
-            #include "../../../java/lang/Runnable.h"
+            #include "java/lang/Runnable.h"
         
 #include <org/allbinary/logic/communication/log/LogUtil.h>
 
@@ -69,8 +69,9 @@ class PooledThread: public Thread {
 
     private: ThreadPool threadPool;
 
-public: PooledThread(ThreadPool threadPool){
-            super(threadPool.createName());
+public: PooledThread(ThreadPool threadPool) : Thread(threadPool.createName()){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.

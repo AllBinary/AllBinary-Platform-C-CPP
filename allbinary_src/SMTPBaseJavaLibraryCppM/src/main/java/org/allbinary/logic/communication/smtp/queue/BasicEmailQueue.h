@@ -21,7 +21,7 @@
         #ifndef ORG_ALLBINARY_LOGIC_COMMUNICATION_SMTP_QUEUE_BASICEMAILQUEUE_H
         #define ORG_ALLBINARY_LOGIC_COMMUNICATION_SMTP_QUEUE_BASICEMAILQUEUE_H
 
-            #include "../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <javax/mail/Transport.h>
 

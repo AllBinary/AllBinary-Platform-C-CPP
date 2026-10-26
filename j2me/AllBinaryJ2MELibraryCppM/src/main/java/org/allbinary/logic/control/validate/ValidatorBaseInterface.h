@@ -21,16 +21,10 @@
         #ifndef ORG_ALLBINARY_LOGIC_CONTROL_VALIDATE_VALIDATORBASEINTERFACE_H
         #define ORG_ALLBINARY_LOGIC_CONTROL_VALIDATE_VALIDATORBASEINTERFACE_H
 
-#include <jsinterop/annotations/JsType.h>
-
-      
-#include <java/util/Hashtable.h>
+#include <org/allbinary/util/ABHashtable.h>
 
       
 #include <org/allbinary/util/BasicArrayList.h>
-
-      
-#include <jsinterop/annotations/JsMethod.h>
 
       
 
@@ -58,7 +52,7 @@ class ValidatorBaseInterface {
 
     std::string validationInfo();
 
-    Hashtable<any, any> toHashtable();
+    ABHashtable<Object*, Object*> toHashtable();
 
     BasicArrayList toList();
 

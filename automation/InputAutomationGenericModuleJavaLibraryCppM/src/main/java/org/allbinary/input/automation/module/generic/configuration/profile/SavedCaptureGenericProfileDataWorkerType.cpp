@@ -49,8 +49,9 @@ class SavedCaptureGenericProfileDataWorkerType: public GenericProfileDataWorkerT
 
     private: int32_t lastFrame= 0;
 
-public: SavedCaptureGenericProfileDataWorkerType(std::string name, std::string path, int32_t lastFrame){
-            super(name);
+public: SavedCaptureGenericProfileDataWorkerType(std::string name, std::string path, int32_t lastFrame) : GenericProfileDataWorkerType(name){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.

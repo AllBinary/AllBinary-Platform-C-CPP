@@ -21,9 +21,9 @@
         #ifndef ORG_ALLBINARY_DATA_TABLES_GENERATOR_IDGENERATORENTITY_H
         #define ORG_ALLBINARY_DATA_TABLES_GENERATOR_IDGENERATORENTITY_H
 
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../../../java/lang/Long.h"
+            #include "java/lang/Long.h"
         
 #include <java/util/HashMap.h>
 
@@ -93,7 +93,7 @@ public: IdGeneratorEntity();
 
     public: void update(std::string name, Long value);
 
-    public: void update(HashMap<any, any> hashMap);
+    public: void update(HashMap<Object*, Object*> hashMap);
 
     public: std::string createTable();
 

@@ -21,7 +21,7 @@
         #ifndef VIEWS_ADMIN_PAYMENT_GATEWAY_PAYMENTGATEWAYCOMPONENT_H
         #define VIEWS_ADMIN_PAYMENT_GATEWAY_PAYMENTGATEWAYCOMPONENT_H
 
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/business/user/commerce/money/payment/gateway/PaymentGatewayInterface.h>
 

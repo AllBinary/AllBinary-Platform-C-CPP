@@ -20,11 +20,11 @@
 
             #include <vector>
         
-            #include "../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../../java/lang/RuntimeException.h"
+            #include "java/lang/RuntimeException.h"
         
 #include <javax/microedition/media/Control.h>
 
@@ -284,7 +284,7 @@ this->logUtil.put(this->commonStrings.EXCEPTION, this, "stop", e);
 
     public: void setVolume(int32_t leftVolume, int32_t rightVolume){
 
-    Controllable2 controllable2 = (this->player as unknown as Controllable2);;
+    Controllable2 controllable2 = (this->player as unknown);;
     
 controllable2.setVolume(leftVolume, rightVolume);
     

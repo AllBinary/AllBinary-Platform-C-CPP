@@ -23,9 +23,6 @@
 
             #include <vector>
         
-#include <jsinterop/annotations/JsType.h>
-
-      
 #include <javax/microedition/khronos/egl/EGLConfig.h>
 
       
@@ -39,15 +36,6 @@
 
       
 #include <org/allbinary/string/CommonSeps.h>
-
-      
-#include <jsinterop/annotations/JsMethod.h>
-
-      
-#include <jsinterop/annotations/JsConstructor.h>
-
-      
-#include <jsinterop/annotations/JsProperty.h>
 
       
 

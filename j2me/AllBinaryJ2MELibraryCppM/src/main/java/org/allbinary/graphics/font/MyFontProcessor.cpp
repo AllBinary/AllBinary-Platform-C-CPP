@@ -18,18 +18,12 @@
 
 
 
-            #include "../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-#include <jsinterop/annotations/JsType.h>
-
-      
 #include <javax/microedition/lcdui/Font.h>
 
       
 #include <javax/microedition/lcdui/Graphics.h>
-
-      
-#include <jsinterop/annotations/JsMethod.h>
 
       
 
@@ -82,7 +76,7 @@ class MyFontProcessor
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return instance;
+                        return MyFontProcessor::instance();
     
 }
 

@@ -21,9 +21,9 @@
         #ifndef ORG_ALLBINARY_BUSINESS_USER_NEWUSERFACTORY_H
         #define ORG_ALLBINARY_BUSINESS_USER_NEWUSERFACTORY_H
 
-            #include "../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
 
@@ -81,7 +81,7 @@ class NewUserFactory
 
                 //@Throws(Exception.constructor)
             
-    public: static UserInterface getInstance(HttpServletRequest httpServletRequest, HashMap<any, any> propertiesHashMap);
+    public: static UserInterface getInstance(HttpServletRequest httpServletRequest, HashMap<Object*, Object*> propertiesHashMap);
 
 private: NewUserFactory();
 

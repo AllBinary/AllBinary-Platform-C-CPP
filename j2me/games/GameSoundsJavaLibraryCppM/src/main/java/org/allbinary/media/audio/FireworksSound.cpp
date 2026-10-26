@@ -53,8 +53,9 @@ class FireworksSound: public CompositeSound {
 }
 
 
-private: FireworksSound(){
-            super("resource:/wav/fireworks.wav");
+private: FireworksSound() : CompositeSound("resource:/wav/fireworks.wav"){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.

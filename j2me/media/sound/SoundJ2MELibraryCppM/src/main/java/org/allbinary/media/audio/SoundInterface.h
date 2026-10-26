@@ -21,7 +21,7 @@
         #ifndef ORG_ALLBINARY_MEDIA_AUDIO_SOUNDINTERFACE_H
         #define ORG_ALLBINARY_MEDIA_AUDIO_SOUNDINTERFACE_H
 
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <javax/microedition/media/Player.h>
 

@@ -21,7 +21,7 @@
         #ifndef ORG_ALLBINARY_ANIMATION_IMAGE_ALLBINARYPLATFORMIMAGEROTATIONANIMATIONFACTORY_H
         #define ORG_ALLBINARY_ANIMATION_IMAGE_ALLBINARYPLATFORMIMAGEROTATIONANIMATIONFACTORY_H
 
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <javax/microedition/lcdui/Image.h>
 

@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/logic/communication/log/LogUtil.h>
 
@@ -68,8 +68,9 @@ class EditGenericBodyValidationView: public GenericBodyCustomizerView, public Va
 
     protected: const LogUtil logUtil = LogUtil::getInstance();
 
-public: EditGenericBodyValidationView(TransformInfoInterface transformInfoInterface){
-            super(transformInfoInterface);
+public: EditGenericBodyValidationView(TransformInfoInterface transformInfoInterface) : GenericBodyCustomizerView(transformInfoInterface){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.

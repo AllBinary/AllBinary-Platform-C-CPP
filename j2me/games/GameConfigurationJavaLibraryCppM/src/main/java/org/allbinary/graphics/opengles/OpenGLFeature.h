@@ -21,13 +21,7 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_OPENGLES_OPENGLFEATURE_H
         #define ORG_ALLBINARY_GRAPHICS_OPENGLES_OPENGLFEATURE_H
 
-#include <jsinterop/annotations/JsType.h>
-
-      
 #include <org/allbinary/game/configuration/feature/Feature.h>
-
-      
-#include <jsinterop/annotations/JsConstructor.h>
 
       
 

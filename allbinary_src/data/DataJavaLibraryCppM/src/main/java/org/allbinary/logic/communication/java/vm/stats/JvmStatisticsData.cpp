@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
 
 
@@ -68,7 +68,8 @@ class JvmStatisticsData
     public: static const std::string NUMBER_OF_THREADS = JvmStatisticsData::JVM_STATISTICS +"NUMBER_OF_THREADS";
 
 private: JvmStatisticsData(){
-            super();
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.

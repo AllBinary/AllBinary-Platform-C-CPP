@@ -20,7 +20,7 @@
 
             #include <vector>
         
-            #include "../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
 #include <java/util/Collection.h>
 
@@ -126,7 +126,7 @@ this->serviceReference= serviceReference;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->serviceReference.getProperty(key as string);;
+                        return this->serviceReference.getProperty(key);;
     
 }
 
@@ -172,7 +172,7 @@ this->serviceReference= serviceReference;
 }
 
 
-    public: Collection<any> values(){
+    public: Collection<Object*> values(){
 
 
 

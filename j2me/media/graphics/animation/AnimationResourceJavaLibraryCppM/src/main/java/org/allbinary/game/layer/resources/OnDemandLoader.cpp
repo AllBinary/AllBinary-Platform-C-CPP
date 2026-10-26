@@ -20,9 +20,9 @@
 
             #include <vector>
         
-            #include "../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/animation/resource/BaseResourceAnimationInterfaceFactoryInterfaceFactory.h>
 
@@ -200,7 +200,7 @@ PreLogUtil::put(StringMaker().append(commonStrings.START).appendint(onDemandArra
                         for (
     int32_t onDemandIndex = onDemandArray.size();--onDemandIndex >= 0; )
         {
-onDemandResources= this->onDemandResourcesFactory.remove(onDemandArray[onDemandIndex]!);
+onDemandResources= this->onDemandResourcesFactory.remove(onDemandArray[onDemandIndex]);
     
 
                         if(onDemandResources != OnDemandResources::NULL_ON_DEMAND_RESOURCES)

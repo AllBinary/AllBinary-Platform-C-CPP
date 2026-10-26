@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/util/BasicArrayList.h>
 
@@ -76,8 +76,9 @@ class RootContextView: public HttpStoreComponentView, public TransformTemplateIn
 
     protected: const LogUtil logUtil = LogUtil::getInstance();
 
-public: RootContextView(TransformInfoInterface transformInfoInterface){
-            super(transformInfoInterface);
+public: RootContextView(TransformInfoInterface transformInfoInterface) : HttpStoreComponentView(transformInfoInterface){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -179,7 +180,7 @@ public: RootContextView(TransformInfoInterface transformInfoInterface){
                                     }
                                 
 
-    TransformInfo transformInfoInterface = componentsVector.get(0) as TransformInfo;;
+    TransformInfo transformInfoInterface = componentsVector.get(0);;
     
 
     std::string viewName = transformInfoInterface.getName();;

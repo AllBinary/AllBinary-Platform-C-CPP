@@ -18,9 +18,9 @@
 
 
 
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../../java/lang/Integer.h"
+            #include "java/lang/Integer.h"
         
 #include <org/allbinary/util/BasicArrayList.h>
 
@@ -91,16 +91,17 @@ class BillingAddressesView: public HttpStoreComponentView, public DomNodeInterfa
 
     protected: BasicArrayList streetAddresses;
 
-public: BillingAddressesView(TransformInfoInterface transformInfoInterface){
-            super(transformInfoInterface);
+public: BillingAddressesView(TransformInfoInterface transformInfoInterface) : HttpStoreComponentView(transformInfoInterface){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
                     
 
-    TransformInfoHttpInterface httpTransformInfoInterface = this->getTransformInfoInterface() as TransformInfoHttpInterface;;
+    TransformInfoHttpInterface httpTransformInfoInterface = this->getTransformInfoInterface();;
     
-this->request= httpTransformInfoInterface.getPageContext().getRequest() as HttpServletRequest;
+this->request= httpTransformInfoInterface.getPageContext().getRequest();
     
 }
 
@@ -132,7 +133,7 @@ this->request= httpTransformInfoInterface.getPageContext().getRequest() as HttpS
     int32_t index = 0;index < size; index++)
         {
 
-    StreetAddress streetAddress = this->streetAddresses.get(index) as StreetAddress;;
+    StreetAddress streetAddress = this->streetAddresses.get(index);;
     
 billingAddressesNode.appendChild(streetAddress.toXmlNode(document));
     
@@ -171,7 +172,7 @@ billingAddressesNode.appendChild(ModDomHelper::createNameValueNodes(document, St
 
 
     public: void addDomNodeInterfaces(){
-this->addDomNodeInterface(this as DomNodeInterface);
+this->addDomNodeInterface(this);
     
 }
 

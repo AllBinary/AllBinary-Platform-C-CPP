@@ -20,9 +20,9 @@
 
             #include <vector>
         
-            #include "../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <javax/microedition/lcdui/Graphics.h>
 
@@ -50,7 +50,7 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "AnimationInterfaceFactoryInterface.h"
 #include "ProceduralAnimationInterfaceFactoryInterface.h"
-#include "IndexedAnimationInterface.h"
+#include "IndexedAnimation.h"
 #include "NullIndexedAnimation.h"
 #include "IndexedAnimationBehavior.h"
 //#include "NullIndexedAnimationInner.h"
@@ -60,7 +60,7 @@ class NullIndexedAnimationFactory
             : public Object
         : public AnimationInterfaceFactoryInterface, public ProceduralAnimationInterfaceFactoryInterface {
 
-    public: static const std::vector<IndexedAnimationInterface> NULL_INDEXED_ANIMATION_ARRAY = {};
+    public: static const std::vector<IndexedAnimation> NULL_INDEXED_ANIMATION_ARRAY = {};
 
     private: static NullIndexedAnimationFactory NULL_INDEXED_ANIMATION_FACTORY = NullIndexedAnimationFactory();
 
@@ -80,7 +80,8 @@ class NullIndexedAnimationInner: public NullIndexedAnimation {
 
 
 : NullIndexedAnimationInner(){
-            super(IndexedAnimationBehavior(1, 250));
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.

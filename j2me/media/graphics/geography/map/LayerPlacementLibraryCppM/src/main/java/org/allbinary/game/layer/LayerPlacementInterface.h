@@ -21,9 +21,9 @@
         #ifndef ORG_ALLBINARY_GAME_LAYER_LAYERPLACEMENTINTERFACE_H
         #define ORG_ALLBINARY_GAME_LAYER_LAYERPLACEMENTINTERFACE_H
 
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-#include <java/util/Hashtable.h>
+#include <org/allbinary/util/ABHashtable.h>
 
       
 
@@ -56,7 +56,7 @@ class LayerPlacementInterface {
 
                 //@Throws(Exception.constructor)
             
-    Hashtable<any, any> getInstance();
+    ABHashtable<Object*, Object*> getInstance();
 
 };
 

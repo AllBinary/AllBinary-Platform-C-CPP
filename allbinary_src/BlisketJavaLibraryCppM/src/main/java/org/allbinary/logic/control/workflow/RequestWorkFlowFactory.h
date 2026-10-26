@@ -21,9 +21,9 @@
         #ifndef ORG_ALLBINARY_LOGIC_CONTROL_WORKFLOW_REQUESTWORKFLOWFACTORY_H
         #define ORG_ALLBINARY_LOGIC_CONTROL_WORKFLOW_REQUESTWORKFLOWFACTORY_H
 
-            #include "../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
 
@@ -89,7 +89,7 @@ class RequestWorkFlowFactory
 
                 //@Throws(Exception.constructor, LicensingException.constructor)
             
-    public: static WorkFlowInterface getInstance(HashMap<any, any> hashMap, PageContext pageContext);
+    public: static WorkFlowInterface getInstance(HashMap<Object*, Object*> hashMap, PageContext pageContext);
 
 private: RequestWorkFlowFactory();
 

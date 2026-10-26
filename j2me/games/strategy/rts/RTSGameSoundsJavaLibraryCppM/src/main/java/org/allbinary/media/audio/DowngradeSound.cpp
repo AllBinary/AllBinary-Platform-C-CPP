@@ -56,8 +56,9 @@ class DowngradeSound: public CompositeSound {
 }
 
 
-private: DowngradeSound(){
-            super("resource:/wav/downgrade.wav");
+private: DowngradeSound() : CompositeSound("resource:/wav/downgrade.wav"){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.

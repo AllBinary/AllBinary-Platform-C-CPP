@@ -18,25 +18,10 @@
 
 
 
-            #include "../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-#include <java/util/Hashtable.h>
-
-      
-#include <jsinterop/annotations/JsType.h>
-
-      
-#include <jsinterop/annotations/JsMethod.h>
-
-      
-#include <jsinterop/annotations/JsConstructor.h>
-
-      
-#include <jsinterop/annotations/JsProperty.h>
-
-      
 #include <org/allbinary/game/input/Input.h>
 
       
@@ -62,6 +47,9 @@
 
       
 #include <org/allbinary/logic/StdUtil.h>
+
+      
+#include <org/allbinary/util/ABHashtable.h>
 
       
 
@@ -92,7 +80,7 @@ class InputMapping
 
     protected: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    private: const Hashtable<any, any> hashtable = StdUtil::getInstance().createHashtable();
+    private: const ABHashtable<Object*, Object*> hashtable = StdUtil::getInstance().createHashtable();
 
     private: const BasicArrayList mappedList = BasicArrayListD();
 
@@ -105,7 +93,7 @@ protected: InputMapping(){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->hashtable.length;;
+                        return this->hashtable.size();;
     
 }
 
@@ -267,12 +255,12 @@ this->hashtable.put(id, list);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return mappingInputCanBeNullList as BasicArrayList;
+                        return *dynamic_cast<BasicArrayList*>(mappingInputCanBeNullList);
     
 }
 
 
-    public: Hashtable<any, any> getHashtable(){
+    public: ABHashtable<Object*, Object*> getHashtable(){
 
 
 

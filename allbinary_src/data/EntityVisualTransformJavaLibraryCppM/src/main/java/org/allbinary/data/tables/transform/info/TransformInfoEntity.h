@@ -21,7 +21,7 @@
         #ifndef ORG_ALLBINARY_DATA_TABLES_TRANSFORM_INFO_TRANSFORMINFOENTITY_H
         #define ORG_ALLBINARY_DATA_TABLES_TRANSFORM_INFO_TRANSFORMINFOENTITY_H
 
-            #include "../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
 
@@ -125,7 +125,7 @@ public: TransformInfoEntity(TransformInfoObjectConfigGeneratorFactoryInterface t
 
                 //@Throws(Exception.constructor)
             
-    public: TransformInfoInterface get(std::string name, HashMap<any, any> propertiesHashMap, PageContext pageContext);
+    public: TransformInfoInterface get(std::string name, HashMap<Object*, Object*> propertiesHashMap, PageContext pageContext);
 
                 //@Throws(Exception.constructor)
             
@@ -139,7 +139,7 @@ public: TransformInfoEntity(TransformInfoObjectConfigGeneratorFactoryInterface t
 
     public: std::string createTable();
 
-    public: void update(HashMap<any, any> updatedValues);
+    public: void update(HashMap<Object*, Object*> updatedValues);
 
     public: std::string dropTable();
 

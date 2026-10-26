@@ -23,9 +23,9 @@
 
             #include <vector>
         
-            #include "../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/TsUtil.h>
 
@@ -54,6 +54,9 @@
 #include <org/allbinary/logic/io/FileStreamFactory.h>
 
       
+#include <org/allbinary/logic/string/StringMaker.h>
+
+      
 #include <org/allbinary/logic/string/StringUtil.h>
 
       
@@ -61,6 +64,9 @@
 
       
 #include <org/allbinary/logic/system/security/crypt/WeakCrypt.h>
+
+      
+#include <org/allbinary/string/CommonLabels.h>
 
       
 

@@ -20,7 +20,7 @@
 
             #include <vector>
         
-            #include "../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
 #include <jsinterop/annotations/JsType.h>
 
@@ -170,6 +170,8 @@ class CommonStrings
     public: const std::string ADD_LISTENER = "addListener";
 
     public: const std::string REMOVE_LISTENER = "removeListener";
+
+    public: const std::string SIZE = "size";
 
 };
 

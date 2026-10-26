@@ -21,7 +21,7 @@
         #ifndef ORG_ALLBINARY_BUSINESS_ADVERTISEMENT_CAMPAIGN_ADVERTISEMENTCAMPAIGN_H
         #define ORG_ALLBINARY_BUSINESS_ADVERTISEMENT_CAMPAIGN_ADVERTISEMENTCAMPAIGN_H
 
-            #include "../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
 #include <java/util/HashMap.h>
 
@@ -60,9 +60,9 @@ class AdvertisementCampaign
             : public Object
         : public AdvertisementCampaignInterface {
 
-    private: HashMap<any, any> hashMap;
+    private: HashMap<Object*, Object*> hashMap;
 
-public: AdvertisementCampaign(HashMap<any, any> hashMap);
+public: AdvertisementCampaign(HashMap<Object*, Object*> hashMap);
 
     public: Object* getComponent();
 

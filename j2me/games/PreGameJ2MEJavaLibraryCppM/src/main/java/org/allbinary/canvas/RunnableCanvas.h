@@ -21,22 +21,23 @@
         #ifndef ORG_ALLBINARY_CANVAS_RUNNABLECANVAS_H
         #define ORG_ALLBINARY_CANVAS_RUNNABLECANVAS_H
 
-            #include "../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../java/lang/System.h"
+            #include "java/lang/Thread.h"
         
-            #include "../../../java/lang/Thread.h"
-        
-#include <jsinterop/annotations/JsType.h>
+#include <javax/microedition/lcdui/CommandListener.h>
 
       
-#include <javax/microedition/lcdui/CommandListener.h>
+#include <org/allbinary/TsUtil.h>
 
       
 #include <org/allbinary/game/displayable/canvas/NullWaitGameRunnable.h>
 
       
 #include <org/allbinary/graphics/displayable/MyCanvas.h>
+
+      
+#include <org/allbinary/logic/ABSystemWrapper.h>
 
       
 #include <org/allbinary/logic/NullUtil.h>
@@ -72,15 +73,6 @@
 #include <org/allbinary/util/BasicArrayList.h>
 
       
-#include <jsinterop/annotations/JsMethod.h>
-
-      
-#include <jsinterop/annotations/JsConstructor.h>
-
-      
-#include <jsinterop/annotations/JsProperty.h>
-
-      
 
 
 
@@ -107,6 +99,10 @@ class RunnableCanvas: public MyCanvas, public RunnableInterface {
     protected: const NullUtil nullUtil = NullUtil::getInstance();
 
     protected: const StdUtil stdUtil = StdUtil::getInstance();
+
+    protected: const ABSystemWrapper systemWrapper = ABSystemWrapper::getInstance();
+
+    protected: const TsUtil tsUtil = TsUtil::getInstance();
 
     private: Thread thread = NullThread::NULL_THREAD;
 

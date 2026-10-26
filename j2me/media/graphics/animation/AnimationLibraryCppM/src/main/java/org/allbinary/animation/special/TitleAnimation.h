@@ -23,9 +23,7 @@
 
             #include <vector>
         
-            #include "../../../../java/lang/System.h"
-        
-            #include "../../../../java/lang/Integer.h"
+            #include "java/lang/Integer.h"
         
 #include <javax/microedition/lcdui/Graphics.h>
 
@@ -48,7 +46,7 @@
 #include <org/allbinary/graphics/displayable/DisplayInfoSingleton.h>
 
       
-#include <org/allbinary/logic/communication/log/LogUtil.h>
+#include <org/allbinary/logic/ABSystemWrapper.h>
 
       
 #include <org/allbinary/logic/math/PrimitiveIntUtil.h>
@@ -78,7 +76,7 @@ class TitleAnimation: public SpecialAnimation {
 
     public: static TitleAnimation createAnimation(std::vector<IndexedAnimation> animationInterfaceArray, std::vector<BasicColor> basicColorArray, std::vector<int32_t> dxArray, std::vector<int32_t> dyArray, int32_t y, int32_t width);
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: const ABSystemWrapper systemWrapper = ABSystemWrapper::getInstance();
 
     public: float deltaX= 0.0;
 

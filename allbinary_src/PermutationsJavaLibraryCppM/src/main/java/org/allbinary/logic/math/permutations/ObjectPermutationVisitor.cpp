@@ -6,7 +6,7 @@
 
             #include <vector>
         
-            #include "../../../../../java/lang/System.h"
+            #include "java/lang/System.h"
         
 #include <org/allbinary/TsUtil.h>
 
@@ -91,7 +91,7 @@ this->print(data, stringBuilder);
                         for (
     int32_t i = 0;i < size; i++)
         {
-stringBuilder.appendint(tsUtil.hashCode(data[i]!));
+stringBuilder.appendint(tsUtil.hashCode(data[i]));
     
 stringBuilder.append(CommonSeps::getInstance().SPACE);
     

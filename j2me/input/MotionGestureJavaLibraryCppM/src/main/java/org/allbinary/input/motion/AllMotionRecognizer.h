@@ -21,11 +21,8 @@
         #ifndef ORG_ALLBINARY_INPUT_MOTION_ALLMOTIONRECOGNIZER_H
         #define ORG_ALLBINARY_INPUT_MOTION_ALLMOTIONRECOGNIZER_H
 
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-#include <jsinterop/annotations/JsType.h>
-
-      
 #include <org/allbinary/graphics/CustomGPoint.h>
 
       

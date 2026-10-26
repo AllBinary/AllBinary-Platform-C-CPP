@@ -18,9 +18,9 @@
 
 
 
-            #include "../../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
 
@@ -78,7 +78,7 @@ class GraphicItemFactory
 }
 
 
-    private: HashMap<any, any> graphicItems;
+    private: HashMap<Object*, Object*> graphicItems;
 
     private: const GraphicsItemInterfaceFactoryInterface DEFAULT = SelectionToolFactory();
 
@@ -92,7 +92,7 @@ this->graphicItems.put(LinesGraphicItem::getStaticName(), LinesGraphicItemFactor
 
     public: GraphicsItemInterfaceFactoryInterface getInstance(std::string itemName){
 
-    GraphicsItemInterfaceFactoryInterface graphicsItemInterfaceFactoryInterface = this->graphicItems.get(itemName) as GraphicsItemInterfaceFactoryInterface;;
+    GraphicsItemInterfaceFactoryInterface graphicsItemInterfaceFactoryInterface = this->graphicItems.get(itemName);;
     
 
                         if(graphicsItemInterfaceFactoryInterface == 
@@ -116,12 +116,12 @@ this->graphicItems.put(LinesGraphicItem::getStaticName(), LinesGraphicItemFactor
 
                 //@Throws(Exception.constructor)
             
-    public: HashMap<any, any> getInstance(BasicArrayList graphicItemNodeList){
+    public: HashMap<Object*, Object*> getInstance(BasicArrayList graphicItemNodeList){
 
     int32_t numberOfItems = graphicItemNodeList.size();;
     
 
-    HashMap<any, any> graphicItemHashMap = StdUtil::getInstance().createHashMap();;
+    HashMap<Object*, Object*> graphicItemHashMap = StdUtil::getInstance().createHashMap();;
     
 
                         if(LOGGING::contains(LOGGING::MENUEVENT))
@@ -138,7 +138,7 @@ this->graphicItems.put(LinesGraphicItem::getStaticName(), LinesGraphicItemFactor
     int32_t index = 0;index < numberOfItems; index++)
         {
 
-    GraphicItemInterface graphicItem = GraphicItemBuilder::getInstance(graphicItemNodeList.get(index) as Node);;
+    GraphicItemInterface graphicItem = GraphicItemBuilder::getInstance(graphicItemNodeList.get(index));;
     
 graphicItemHashMap.put(graphicItem.getTreeNode(), graphicItem);
     

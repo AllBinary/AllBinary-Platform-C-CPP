@@ -46,8 +46,9 @@
 
 class ExcludeFileExtensionsBooleanFileVisitor: public BooleanFileVisitor {
 
-public: ExcludeFileExtensionsBooleanFileVisitor(BasicArrayList filterStringBasicArrayList){
-            super(filterStringBasicArrayList);
+public: ExcludeFileExtensionsBooleanFileVisitor(BasicArrayList filterStringBasicArrayList) : BooleanFileVisitor(filterStringBasicArrayList){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -93,7 +94,7 @@ public: ExcludeFileExtensionsBooleanFileVisitor(BasicArrayList filterStringBasic
     std::string fileName = fileNameAndExtension.substring(startIndex);;
     
 
-                        if(fileName.compareTo(fileNameString) == 0)
+                        if(fileName.compare(fileNameString) == 0)
                         
                                     {
                                     

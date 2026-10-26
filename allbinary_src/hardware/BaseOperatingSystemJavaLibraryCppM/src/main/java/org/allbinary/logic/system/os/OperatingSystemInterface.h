@@ -21,13 +21,7 @@
         #ifndef ORG_ALLBINARY_LOGIC_SYSTEM_OS_OPERATINGSYSTEMINTERFACE_H
         #define ORG_ALLBINARY_LOGIC_SYSTEM_OS_OPERATINGSYSTEMINTERFACE_H
 
-#include <jsinterop/annotations/JsType.h>
-
-      
 #include <org/allbinary/logic/java/character/CharacterSet.h>
-
-      
-#include <jsinterop/annotations/JsMethod.h>
 
       
 

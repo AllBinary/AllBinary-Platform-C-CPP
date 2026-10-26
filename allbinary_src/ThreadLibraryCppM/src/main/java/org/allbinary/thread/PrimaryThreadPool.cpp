@@ -18,9 +18,9 @@
 
 
 
-            #include "../../../java/lang/System.h"
+            #include "java/lang/System.h"
         
-            #include "../../../java/lang/Runnable.h"
+            #include "java/lang/Runnable.h"
         
 #include <org/allbinary/logic/string/StringMaker.h>
 
@@ -62,8 +62,9 @@ class PrimaryThreadPool: public ThreadPool {
 }
 
 
-public: PrimaryThreadPool(std::string poolName, int32_t numThreads, int32_t priority){
-            super(poolName, numThreads, priority);
+public: PrimaryThreadPool(std::string poolName, int32_t numThreads, int32_t priority) : ThreadPool(poolName, numThreads, priority){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -72,7 +73,7 @@ public: PrimaryThreadPool(std::string poolName, int32_t numThreads, int32_t prio
 
 
     public: void runTask(Runnable task){
-this->logUtil.putF(StringMaker().append(StringUtil::getInstance().toString(task)).appendlong(Date.now()).toString(), this, this->threadPoolStrings.ADD_TASK);
+this->logUtil.putF(StringMaker().append(StringUtil::getInstance().toString(task)).appendlong(System.currentTimeMillis()).toString(), this, this->threadPoolStrings.ADD_TASK);
     
 super.runTask(task);
     

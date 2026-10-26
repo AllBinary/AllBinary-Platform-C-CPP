@@ -21,9 +21,9 @@
         #ifndef ORG_ALLBINARY_GAME_MEDIA_GRAPHICS_GEOGRAPHY_MAP_RACETRACK_DYNAMICRACETRACKSPATHPRINTER_H
         #define ORG_ALLBINARY_GAME_MEDIA_GRAPHICS_GEOGRAPHY_MAP_RACETRACK_DYNAMICRACETRACKSPATHPRINTER_H
 
-            #include "../../../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../../../../../../java/lang/System.h"
+            #include "java/lang/System.h"
         
 #include <org/allbinary/util/BasicArrayList.h>
 

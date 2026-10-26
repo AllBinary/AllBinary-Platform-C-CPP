@@ -21,12 +21,6 @@
         #ifndef ORG_ALLBINARY_ANIMATION_TEXT_TEXTINTERFACE_H
         #define ORG_ALLBINARY_ANIMATION_TEXT_TEXTINTERFACE_H
 
-#include <jsinterop/annotations/JsType.h>
-
-      
-#include <jsinterop/annotations/JsMethod.h>
-
-      
 
 
 

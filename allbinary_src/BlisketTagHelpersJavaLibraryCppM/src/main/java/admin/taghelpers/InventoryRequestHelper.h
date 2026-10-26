@@ -21,7 +21,7 @@
         #ifndef ADMIN_TAGHELPERS_INVENTORYREQUESTHELPER_H
         #define ADMIN_TAGHELPERS_INVENTORYREQUESTHELPER_H
 
-            #include "../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
 
@@ -91,7 +91,7 @@ class InventoryRequestHelper: public ModifyTable {
 
     private: ItemInterface itemInterface;
 
-public: InventoryRequestHelper(HashMap<any, any> propertiesHashMap, PageContext pageContext);
+public: InventoryRequestHelper(HashMap<Object*, Object*> propertiesHashMap, PageContext pageContext);
 
                 //@Throws(Exception.constructor)
             

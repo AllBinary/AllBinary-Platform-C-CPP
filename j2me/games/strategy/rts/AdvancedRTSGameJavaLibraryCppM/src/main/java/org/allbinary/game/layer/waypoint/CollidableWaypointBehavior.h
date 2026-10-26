@@ -21,7 +21,7 @@
         #ifndef ORG_ALLBINARY_GAME_LAYER_WAYPOINT_COLLIDABLEWAYPOINTBEHAVIOR_H
         #define ORG_ALLBINARY_GAME_LAYER_WAYPOINT_COLLIDABLEWAYPOINTBEHAVIOR_H
 
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/game/layer/CollidableCompositeLayer.h>
 

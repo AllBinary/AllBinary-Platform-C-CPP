@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/logic/util/event/AllBinaryEventObject.h>
 
@@ -72,9 +72,9 @@ private: BoundsChangeEventHandler(){
             
     protected: void process(AllBinaryEventObject eventObject, EventListenerInterface eventListenerInterface){
 
-    BoundsChangeEventListener boundsChangeEventListener = eventListenerInterface as BoundsChangeEventListener;;
+    BoundsChangeEventListener boundsChangeEventListener = eventListenerInterface;;
     
-boundsChangeEventListener.onBoundsChangeEvent(eventObject as BoundsChangeEvent);
+boundsChangeEventListener.onBoundsChangeEvent(eventObject);
     
 }
 

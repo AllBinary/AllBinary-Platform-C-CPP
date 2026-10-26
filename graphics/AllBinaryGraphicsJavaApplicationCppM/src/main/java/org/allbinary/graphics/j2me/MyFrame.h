@@ -23,15 +23,15 @@
 
             #include <vector>
         
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../../java/lang/System.h"
+            #include "java/lang/System.h"
         
-            #include "../../../../java/lang/Integer.h"
+            #include "java/lang/Integer.h"
         
-            #include "../../../../java/lang/Thread.h"
+            #include "java/lang/Thread.h"
         
-            #include "../../../../java/lang/Runnable.h"
+            #include "java/lang/Runnable.h"
         
 #include <java/awt.h>
 
@@ -97,6 +97,9 @@
 
       
 #include <org/allbinary/math/AngleFactory.h>
+
+      
+#include <org/allbinary/string/CommonLabels.h>
 
       
 #include <org/allbinary/string/CommonStrings.h>
@@ -239,7 +242,7 @@ public: MyFrame();
 
                 //@Throws(Exception.constructor)
             
-    public: void onHashMap(HashMap<any, any> hashMap);
+    public: void onHashMap(HashMap<Object*, Object*> hashMap);
 
     private: WorkAreaJPanelInterface getSelectedWorkArea();
 

@@ -21,7 +21,7 @@
         #ifndef ORG_OSGI_FRAMEWORK_NULLSERVICEREFERENCEFACTORY_H
         #define ORG_OSGI_FRAMEWORK_NULLSERVICEREFERENCEFACTORY_H
 
-            #include "../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
 
 

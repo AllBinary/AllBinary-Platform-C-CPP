@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/logic/util/event/AllBinaryEventObject.h>
 
@@ -122,9 +122,9 @@ super.removeListener(eventListenerInterface);
 
         try {
             
-    CompleteMotionGestureInputEventListener completeMotionGestureInputEventListener = this->list.objectArray[index]! as CompleteMotionGestureInputEventListener;;
+    CompleteMotionGestureInputEventListener completeMotionGestureInputEventListener = this->list.objectArray[index];;
     
-completeMotionGestureInputEventListener.onCompleteMotionGestureInputEvent(eventObject as CompleteMotionGestureInputEvent);
+completeMotionGestureInputEventListener.onCompleteMotionGestureInputEvent(eventObject);
     
 
                 //: 
@@ -145,9 +145,9 @@ super.fireEvent(eventObject);
             
     protected: void process(AllBinaryEventObject eventObject, EventListenerInterface eventListenerInterface){
 
-    CompleteMotionGestureInputEventListenerInterface completeMotionGestureInputEventListenerInterface = eventListenerInterface as CompleteMotionGestureInputEventListenerInterface;;
+    CompleteMotionGestureInputEventListenerInterface completeMotionGestureInputEventListenerInterface = eventListenerInterface;;
     
-completeMotionGestureInputEventListenerInterface.onCompleteMotionGestureInputEvent(eventObject as CompleteMotionGestureInputEvent);
+completeMotionGestureInputEventListenerInterface.onCompleteMotionGestureInputEvent(eventObject);
     
 }
 

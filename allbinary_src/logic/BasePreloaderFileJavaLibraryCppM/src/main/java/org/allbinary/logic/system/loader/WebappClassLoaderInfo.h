@@ -21,9 +21,9 @@
         #ifndef ORG_ALLBINARY_LOGIC_SYSTEM_LOADER_WEBAPPCLASSLOADERINFO_H
         #define ORG_ALLBINARY_LOGIC_SYSTEM_LOADER_WEBAPPCLASSLOADERINFO_H
 
-            #include "../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../java/lang/ClassLoader.h"
+            #include "java/lang/ClassLoader.h"
         
 #include <org/allbinary/logic/NullUtil.h>
 

@@ -21,7 +21,7 @@
         #ifndef ORG_ALLBINARY_GAME_HEALTH_HEALTHBARTHREEDANIMATION_H
         #define ORG_ALLBINARY_GAME_HEALTH_HEALTHBARTHREEDANIMATION_H
 
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <javax/microedition/khronos/opengles/GL10.h>
 

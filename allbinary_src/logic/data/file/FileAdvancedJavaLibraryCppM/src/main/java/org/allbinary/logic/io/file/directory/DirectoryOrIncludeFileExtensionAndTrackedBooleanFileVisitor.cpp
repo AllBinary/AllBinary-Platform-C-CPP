@@ -20,17 +20,12 @@
 
             #include <vector>
         
-            #include "../../../../../../java/lang/Exception.h"
+            #include "java/lang/System.h"
         
-            #include "../../../../../../java/lang/System.h"
-        
-#include <java/io/File.h>
+#include <org/allbinary/java/runtime/process/git/GitProcessHelper.h>
 
       
 #include <org/allbinary/logic/io/file/AbFile.h>
-
-      
-#include <org/allbinary/logic/io/file/AbFileNativeUtil.h>
 
       
 #include <org/allbinary/logic/io/file/CommonDataFileStrings.h>
@@ -64,8 +59,6 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "TrackedStrings.h"
-#include "ProcessBuilder.h"
-#include "Process.h"
 
 class DirectoryOrIncludeFileExtensionAndTrackedBooleanFileVisitor: public IncludeFileExtensionsBooleanFileVisitor {
 
@@ -91,10 +84,13 @@ console.log(filePath +" is Tracked: " +result);
 
     private: const TrackedStrings trackedStrings = TrackedStrings::getInstance();
 
+    private: const GitProcessHelper gitProcessHelper = GitProcessHelper::getInstance();
+
     private: std::string includesString;
 
-public: DirectoryOrIncludeFileExtensionAndTrackedBooleanFileVisitor(BasicArrayList filterStringBasicArrayList){
-            super(filterStringBasicArrayList);
+public: DirectoryOrIncludeFileExtensionAndTrackedBooleanFileVisitor(BasicArrayList filterStringBasicArrayList) : IncludeFileExtensionsBooleanFileVisitor(filterStringBasicArrayList){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -106,8 +102,9 @@ this->includesString=
 }
 
 
-public: DirectoryOrIncludeFileExtensionAndTrackedBooleanFileVisitor(BasicArrayList filterStringBasicArrayList, std::string includesString){
-            super(filterStringBasicArrayList);
+public: DirectoryOrIncludeFileExtensionAndTrackedBooleanFileVisitor(BasicArrayList filterStringBasicArrayList, std::string includesString) : IncludeFileExtensionsBooleanFileVisitor(filterStringBasicArrayList){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -174,7 +171,7 @@ this->includesString= includesString;
                         
                                     {
                                     
-                        if(this->isGitTracked(file))
+                        if(this->gitProcessHelper.isTracked(file))
                         
                                     {
                                     
@@ -213,41 +210,6 @@ this->includesString= includesString;
                         //if statement needs to be on the same line and ternary does not work the same way.
                         return Boolean::FALSE;
     
-}
-
-
-    private: bool isGitTracked(AbFile file){
-
-        try {
-            
-    File nativeFile = AbFileNativeUtil::get(file);;
-    
-
-    File parentFile = nativeFile.getParentFile();;
-    
-
-    Process process = ProcessBuilder(this->trackedStrings.GIT_COMMAND, this->trackedStrings.CHANGE_DIRECTORY_OPTION, parentFile.getPath(), this->trackedStrings.LIST_FILES_COMMAND, this->trackedStrings.ERROR_UNMATCH_OPTION, this->trackedStrings.PATHSPEC_SEPARATOR, nativeFile.getName()).redirectErrorStream(true).start();;
-    
-process.getInputStream().readAllBytes();
-    
-
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return process.waitFor() == 0;
-    
-
-                //: 
-} catch(e) 
-            {
-
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return false;
-    
-}
-
 }
 
 

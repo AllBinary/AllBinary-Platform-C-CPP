@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
 
@@ -58,8 +58,9 @@
 
 class JvmStatisticsMapping: public JvmStatistics, public TableMappingInterface {
 
-public: JvmStatisticsMapping(){
-            super();
+public: JvmStatisticsMapping() : JvmStatistics(){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -67,9 +68,9 @@ public: JvmStatisticsMapping(){
 }
 
 
-    public: HashMap<any, any> toHashMap(){
+    public: HashMap<Object*, Object*> toHashMap(){
 
-    HashMap<any, any> hashMap = StdUtil::getInstance().createHashMap();;
+    HashMap<Object*, Object*> hashMap = StdUtil::getInstance().createHashMap();;
     
 hashMap.put(JvmStatisticsData::FREE_MEMORY_BYTES, this->getFreeMemoryBytesString());
     

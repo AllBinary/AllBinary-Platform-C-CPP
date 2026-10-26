@@ -20,9 +20,9 @@
 
             #include <vector>
         
-            #include "../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/game/layer/pickup/CountedPickedUpLayerInterfaceFactory.h>
 
@@ -101,7 +101,7 @@ this->list= BasicArrayListD();
                         for (
     int32_t index = 0;index < partInterfaceArray.size(); index++)
         {
-this->list.add(partInterfaceArray[index]!);
+this->list.add(partInterfaceArray[index]);
     
 }
 
@@ -121,7 +121,7 @@ this->list.add(partInterfaceArray[index]!);
                         for (
     int32_t index = 0;index < size; index++)
         {
-layerInterfaceFactoryInterface= countedBasicArrayList.objectArray[index]! as CountedPickedUpLayerInterfaceFactory;
+layerInterfaceFactoryInterface= countedBasicArrayList.objectArray[index];
     
 this->list.add(CountedLayerInterfaceFactoryPart(0, layerInterfaceFactoryInterface));
     
@@ -144,7 +144,7 @@ stringBuffer.appendint(countedBasicArrayList.size());
 this->logUtil.putF(stringBuffer.toString(), this, commonStrings.GET_INSTANCE);
     
 
-    std::vector<PartInterface> newPartInterfaceArray = new Array(this->list.size());;
+    std::vector<PartInterface> newPartInterfaceArray = std::vector<PartInterface>(this->list.size());;
     
 
     int32_t newSize = newPartInterfaceArray.size();;
@@ -156,7 +156,7 @@ this->logUtil.putF(stringBuffer.toString(), this, commonStrings.GET_INSTANCE);
                         for (
     int32_t index = 0;index < newSize; index++)
         {
-newPartInterfaceArray[index]= this->list.get(index) as PartInterface;
+newPartInterfaceArray[index]= this->list.get(index);
     
 }
 

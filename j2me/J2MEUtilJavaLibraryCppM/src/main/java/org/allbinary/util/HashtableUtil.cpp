@@ -20,12 +20,12 @@
 
             #include <vector>
         
-            #include "../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
 #include <java/util/Enumeration.h>
 
       
-#include <java/util/Hashtable.h>
+#include <jsinterop/annotations/JsType.h>
 
       
 
@@ -47,6 +47,7 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "EnumerationUtil.h"
+#include "ABHashtable.h"
 #include "BasicArrayListS.h"
 #include "BasicArrayList.h"
 
@@ -68,9 +69,9 @@ class HashtableUtil
 
     private: const EnumerationUtil enumerationUtil = EnumerationUtil::getInstance();
 
-    public: void putAll(Hashtable<any, any> fromHashtable, Hashtable<any, any> hashtable){
+    public: void putAll(ABHashtable<Object*, Object*> fromHashtable, ABHashtable<Object*, Object*> hashtable){
 
-    Enumeration<any> enumeration = fromHashtable.keys();;
+    Enumeration<Object*> enumeration = fromHashtable.keys();;
     
 
     Object* keyCanBeNull;;
@@ -81,7 +82,7 @@ class HashtableUtil
 
         while(this->enumerationUtil.hasMoreElements(enumeration))
         {
-keyCanBeNull= this->enumerationUtil.nextElement(enumeration)!;
+keyCanBeNull= this->enumerationUtil.nextElement(enumeration);
     
 valueCanBeNull= hashtable.get(keyCanBeNull);
     
@@ -105,20 +106,20 @@ valueCanBeNull= hashtable.get(keyCanBeNull);
 }
 
 
-    public: std::vector<Object*> getKeysAsArray(Hashtable<any, any> hashtable){
+    public: std::vector<Object*> getKeysAsArray(ABHashtable<Object*, Object*> hashtable){
 
-    std::vector<Object*> objectArray = new Array(hashtable.length);;
+    std::vector<Object*> objectArray = std::vector<Object*>(hashtable.size());;
     
 
     int32_t index = 0;;
     
 
-    Enumeration<any> enumeration = hashtable.keys();;
+    Enumeration<Object*> enumeration = hashtable.keys();;
     
 
         while(this->enumerationUtil.hasMoreElements(enumeration))
         {
-objectArray[index++]= this->enumerationUtil.nextElement(enumeration)!;
+objectArray[index++]= this->enumerationUtil.nextElement(enumeration);
     
 }
 
@@ -131,17 +132,17 @@ objectArray[index++]= this->enumerationUtil.nextElement(enumeration)!;
 }
 
 
-    public: BasicArrayList getKeysAsList(Hashtable<any, any> hashtable){
+    public: BasicArrayList getKeysAsList(ABHashtable<Object*, Object*> hashtable){
 
-    BasicArrayList list = BasicArrayListS(hashtable.length);;
+    BasicArrayList list = BasicArrayListS(hashtable.size());;
     
 
-    Enumeration<any> enumeration = hashtable.keys();;
+    Enumeration<Object*> enumeration = hashtable.keys();;
     
 
         while(this->enumerationUtil.hasMoreElements(enumeration))
         {
-list.add(this->enumerationUtil.nextElement(enumeration)!);
+list.add(this->enumerationUtil.nextElement(enumeration));
     
 }
 

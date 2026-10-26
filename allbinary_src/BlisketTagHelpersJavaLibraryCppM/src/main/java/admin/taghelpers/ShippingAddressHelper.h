@@ -21,9 +21,9 @@
         #ifndef ADMIN_TAGHELPERS_SHIPPINGADDRESSHELPER_H
         #define ADMIN_TAGHELPERS_SHIPPINGADDRESSHELPER_H
 
-            #include "../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../java/lang/Integer.h"
+            #include "java/lang/Integer.h"
         
 #include <java/util/HashMap.h>
 
@@ -103,7 +103,7 @@ class ShippingAddressHelper: public BasicTable {
 
     private: Portion portion;
 
-public: ShippingAddressHelper(HashMap<any, any> hashMap, PageContext pageContext);
+public: ShippingAddressHelper(HashMap<Object*, Object*> hashMap, PageContext pageContext);
 
     private: void getAddressForm();
 

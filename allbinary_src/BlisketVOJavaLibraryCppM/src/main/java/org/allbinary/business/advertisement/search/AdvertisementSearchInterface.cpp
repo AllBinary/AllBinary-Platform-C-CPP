@@ -66,7 +66,7 @@ class AdvertisementSearchInterface {
 
     int32_t getProductsPerPage()
 
-    HashMap<any, any> getSearchParams()
+    HashMap<Object*, Object*> getSearchParams()
 
     void setCategory(AdvertisementCategoryInterface advertisementCategoryInterface)
 
@@ -78,7 +78,7 @@ class AdvertisementSearchInterface {
 
     void setProductsPerPage(int32_t productsPerPage)
 
-    void setSearchParams(HashMap<any, any> columnAndKeywordHashMap)
+    void setSearchParams(HashMap<Object*, Object*> columnAndKeywordHashMap)
 
 };
 

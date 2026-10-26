@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
 #include <org/allbinary/game/displayable/canvas/AllBinaryGameCanvas.h>
 
@@ -75,7 +75,7 @@ class ColorFromEventUtil
     BasicColor color = this->YELLOW;;
     
 
-    GeographicMapCompositeInterface geographicMapCompositeInterface = gameCanvasInterface.getLayerManager() as GeographicMapCompositeInterface;;
+    GeographicMapCompositeInterface geographicMapCompositeInterface = gameCanvasInterface.getLayerManager();;
     
 
     BasicGeographicMap geographicMapInterface = geographicMapCompositeInterface.getGeographicMapInterface()[0];;

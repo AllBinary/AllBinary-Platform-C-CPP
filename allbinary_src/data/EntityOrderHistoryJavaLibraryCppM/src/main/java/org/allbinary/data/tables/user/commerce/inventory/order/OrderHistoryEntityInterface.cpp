@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
 
@@ -86,7 +86,7 @@ class OrderHistoryEntityInterface: public BasicDataTableInterface {
 
                 //@Throws(Exception.constructor)
             
-    void update(HashMap<any, any> whereHashMap, HashMap<any, any> orderHashMap)
+    void update(HashMap<Object*, Object*> whereHashMap, HashMap<Object*, Object*> orderHashMap)
 
 };
 

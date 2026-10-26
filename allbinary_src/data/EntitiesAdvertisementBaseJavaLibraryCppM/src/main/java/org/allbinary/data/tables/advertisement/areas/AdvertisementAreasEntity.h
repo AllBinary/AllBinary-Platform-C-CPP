@@ -21,7 +21,7 @@
         #ifndef ORG_ALLBINARY_DATA_TABLES_ADVERTISEMENT_AREAS_ADVERTISEMENTAREASENTITY_H
         #define ORG_ALLBINARY_DATA_TABLES_ADVERTISEMENT_AREAS_ADVERTISEMENTAREASENTITY_H
 
-            #include "../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
 
@@ -107,7 +107,7 @@ public: AdvertisementAreasEntity();
 
     public: std::string createTable();
 
-    public: void update(HashMap<any, any> updatedValues);
+    public: void update(HashMap<Object*, Object*> updatedValues);
 
     public: std::string dropTable();
 

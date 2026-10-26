@@ -46,8 +46,9 @@ class ColorChangeEvent: public AllBinaryEventObject {
 
     private: BasicColor basicColor = BasicColorFactory::getInstance().WHITE;
 
-public: ColorChangeEvent(Object* anyType){
-            super(anyType);
+public: ColorChangeEvent(Object* anyType) : AllBinaryEventObject(anyType){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.

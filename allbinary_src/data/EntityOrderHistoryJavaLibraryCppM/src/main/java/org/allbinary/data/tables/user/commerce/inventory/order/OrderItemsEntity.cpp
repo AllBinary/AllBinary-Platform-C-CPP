@@ -20,7 +20,7 @@
 
             #include <vector>
         
-            #include "../../../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
 
@@ -134,8 +134,9 @@ class OrderItemsEntity: public AbSqlBean, public OrderItemsEntityInterface {
 
     protected: const std::string tableName = "orderitems";
 
-public: OrderItemsEntity(){
-            super(HistoryDbInitInfo());
+public: OrderItemsEntity() : AbSqlBean(HistoryDbInitInfo()){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -180,7 +181,7 @@ this->setTableName(this->tableName);
     int32_t i = 0;i < itemsSize; i++)
         {
 
-    std::string item = itemsArray[i]! as string;;
+    std::string item = itemsArray[i];;
     
 
     ItemInterface itemInterface = inventoryEntity.getItem(item);;
@@ -308,10 +309,10 @@ this->insert(vector);
 
         try {
             
-    HashMap<any, any> whereHashMap = StdUtil::getInstance().createHashMap();;
+    HashMap<Object*, Object*> whereHashMap = StdUtil::getInstance().createHashMap();;
     
 
-    HashMap<any, any> updateHashMap = StdUtil::getInstance().createHashMap();;
+    HashMap<Object*, Object*> updateHashMap = StdUtil::getInstance().createHashMap();;
     
 whereHashMap.put(OrderData::ID, orderId);
     
@@ -356,10 +357,10 @@ super.updateWhere(whereHashMap, updateHashMap);
     int32_t index = 0;index < size; index++)
         {
 
-    std::string status = itemStatusVector.get(index) as string;;
+    std::string status = itemStatusVector.get(index);;
     
 
-                        if(status.compareTo(OrderHistoryData::SHIPPED) != 0)
+                        if(status.compare(OrderHistoryData::SHIPPED) != 0)
                         
                                     {
                                     
@@ -410,7 +411,7 @@ super.updateWhere(whereHashMap, updateHashMap);
     BasketReview basketReview = BasketReview();;
     
 
-    HashMap<any, any> keyValues = StdUtil::getInstance().createHashMap();;
+    HashMap<Object*, Object*> keyValues = StdUtil::getInstance().createHashMap();;
     
 keyValues.put(OrderData::ID, orderId);
     
@@ -443,7 +444,7 @@ keyValues.put(OrderData::ID, orderId);
     int32_t i = 0;i < itemsSize; i++)
         {
 
-    HashMap<any, any> itemHashMap = itemsArray[i]! as HashMap<any, any>;;
+    HashMap<Object*, Object*> itemHashMap = itemsArray[i];;
     
 itemHashMap.put(basicItemData.INBASKETS, EMPTY_STRING);
     

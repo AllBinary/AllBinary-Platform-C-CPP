@@ -6,11 +6,8 @@
 
             #include <vector>
         
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-#include <jsinterop/annotations/JsType.h>
-
-      
 #include <org/allbinary/game/GameInfo.h>
 
       
@@ -84,7 +81,7 @@ this->abeClientInformation= abeClientInformation;
 }
 
 
-    private: const std::vector<HighScores> highScoresArray = new Array(1);
+    private: const std::vector<HighScores> highScoresArray = std::vector<HighScores>(1);
 
     private: const std::string TOP = "Top";
 

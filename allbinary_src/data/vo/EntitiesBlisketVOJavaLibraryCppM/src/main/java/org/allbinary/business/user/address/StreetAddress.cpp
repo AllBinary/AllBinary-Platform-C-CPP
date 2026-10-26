@@ -20,9 +20,9 @@
 
             #include <vector>
         
-            #include "../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
 
@@ -208,26 +208,26 @@ this->log();
 }
 
 
-public: StreetAddress(HashMap<any, any> address){
-this->id= address.get(StreetAddressData::ID) as string;
+public: StreetAddress(HashMap<Object*, Object*> address){
+this->id= address.get(StreetAddressData::ID);
     
-this->name= address.get(StreetAddressData::NAME) as string;
+this->name= address.get(StreetAddressData::NAME);
     
-this->street= address.get(StreetAddressData::STREET) as string;
+this->street= address.get(StreetAddressData::STREET);
     
-this->city= address.get(StreetAddressData::CITY) as string;
+this->city= address.get(StreetAddressData::CITY);
     
-this->state= address.get(StreetAddressData::STATE) as string;
+this->state= address.get(StreetAddressData::STATE);
     
-this->code= address.get(StreetAddressData::CODE) as string;
+this->code= address.get(StreetAddressData::CODE);
     
-this->country= address.get(StreetAddressData::COUNTRY) as string;
-    
-
-    std::string def = address.get(StreetAddressData::DEFAULT) as string;;
+this->country= address.get(StreetAddressData::COUNTRY);
     
 
-                        if(true && def.compareTo(StreetAddressData::DEFAULT) == 0)
+    std::string def = address.get(StreetAddressData::DEFAULT);;
+    
+
+                        if(true && def.compare(StreetAddressData::DEFAULT) == 0)
                         
                                     {
                                     this->isDefault= true;
@@ -592,9 +592,9 @@ this->logUtil.put(commonStrings.EXCEPTION, this, "toValidationInfoNode", e);
 }
 
 
-    public: HashMap<any, any> toHashMap(){
+    public: HashMap<Object*, Object*> toHashMap(){
 
-    HashMap<any, any> hashMap = StdUtil::getInstance().createHashMap();;
+    HashMap<Object*, Object*> hashMap = StdUtil::getInstance().createHashMap();;
     
 hashMap.put(StreetAddressData::ID, this->id);
     
@@ -626,7 +626,7 @@ hashMap.put(StreetAddressData::COUNTRY, this->country);
     StringUtil stringUtil = StringUtil::getInstance();;
     
 
-    HashMap<any, any> hashMap = this->toHashMap();;
+    HashMap<Object*, Object*> hashMap = this->toHashMap();;
     
 
     Set keySet = hashMap.keys();;
@@ -648,10 +648,10 @@ hashMap.put(StreetAddressData::COUNTRY, this->country);
     int32_t i = 0;i < size; i++)
         {
 
-    std::string name = keyArray[i]! as string;;
+    std::string name = keyArray[i];;
     
 
-    std::string value = stringUtil.getNonNull(hashMap.get(name) as string);;
+    std::string value = stringUtil.getNonNull(hashMap.get(name));;
     
 node.appendChild(ModDomHelper::createNameValueNodes(document, name, value));
     

@@ -21,25 +21,10 @@
         #ifndef ORG_ALLBINARY_GAME_INPUT_MAPPING_INPUTMAPPING_H
         #define ORG_ALLBINARY_GAME_INPUT_MAPPING_INPUTMAPPING_H
 
-            #include "../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-#include <java/util/Hashtable.h>
-
-      
-#include <jsinterop/annotations/JsType.h>
-
-      
-#include <jsinterop/annotations/JsMethod.h>
-
-      
-#include <jsinterop/annotations/JsConstructor.h>
-
-      
-#include <jsinterop/annotations/JsProperty.h>
-
-      
 #include <org/allbinary/game/input/Input.h>
 
       
@@ -65,6 +50,9 @@
 
       
 #include <org/allbinary/logic/StdUtil.h>
+
+      
+#include <org/allbinary/util/ABHashtable.h>
 
       
 
@@ -95,7 +83,7 @@ class InputMapping
 
     protected: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    private: const Hashtable<any, any> hashtable = StdUtil::getInstance().createHashtable();
+    private: const ABHashtable<Object*, Object*> hashtable = StdUtil::getInstance().createHashtable();
 
     private: const BasicArrayList mappedList = BasicArrayListD();
 
@@ -121,7 +109,7 @@ protected: InputMapping();
 
     public: BasicArrayList getMappedInput(Input id);
 
-    public: Hashtable<any, any> getHashtable();
+    public: ABHashtable<Object*, Object*> getHashtable();
 
 };
 

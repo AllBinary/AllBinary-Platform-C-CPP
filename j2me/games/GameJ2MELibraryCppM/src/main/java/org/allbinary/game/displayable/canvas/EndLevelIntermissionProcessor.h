@@ -21,7 +21,7 @@
         #ifndef ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_ENDLEVELINTERMISSIONPROCESSOR_H
         #define ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_ENDLEVELINTERMISSIONPROCESSOR_H
 
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/canvas/Processor.h>
 

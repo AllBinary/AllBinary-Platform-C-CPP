@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
 #include <java/util/HashMap.h>
 
@@ -62,7 +62,7 @@ class SpecialCharacterUtil
             : public Object
          {
 
-    public: static HashMap<any, any> getHashMap(){
+    public: static HashMap<Object*, Object*> getHashMap(){
 
     CommonSeps commonSeps = CommonSeps::getInstance();;
     
@@ -73,7 +73,7 @@ class SpecialCharacterUtil
     StringUtil stringUtil = StringUtil::getInstance();;
     
 
-    HashMap<any, any> hashMap = StdUtil::getInstance().createHashMap();;
+    HashMap<Object*, Object*> hashMap = StdUtil::getInstance().createHashMap();;
     
 hashMap.put("!", stringUtil.EMPTY_STRING);
     

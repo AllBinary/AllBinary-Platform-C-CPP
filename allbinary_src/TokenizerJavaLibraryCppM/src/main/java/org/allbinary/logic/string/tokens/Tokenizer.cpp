@@ -18,13 +18,10 @@
 
 
 
-            #include "../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-#include <java/util/Hashtable.h>
-
-      
 #include <org/allbinary/TsUtil.h>
 
       
@@ -32,6 +29,9 @@
 
       
 #include <org/allbinary/logic/string/StringUtil.h>
+
+      
+#include <org/allbinary/util/ABHashtable.h>
 
       
 #include <org/allbinary/util/BasicArrayList.h>
@@ -198,9 +198,9 @@ break;
 }
 
 
-    public: Hashtable<any, any> getTokens(BasicArrayList stringVector){
+    public: ABHashtable<Object*, Object*> getTokens(BasicArrayList stringVector){
 
-    Hashtable<any, any> tokenHashtable = StdUtil::getInstance().createHashtable();;
+    ABHashtable<Object*, Object*> tokenHashtable = StdUtil::getInstance().createHashtable();;
     
 
     std::string string = StringUtil::getInstance().EMPTY_STRING;;
@@ -218,7 +218,7 @@ break;
                         for (
     int32_t index = 0;index < size; index++)
         {
-string= stringVector.objectArray[index]! as string;
+string= stringVector.objectArray[index];
     
 end= string.indexOf(this->sep);
     

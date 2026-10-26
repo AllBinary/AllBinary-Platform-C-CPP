@@ -21,7 +21,7 @@
         #ifndef ORG_ALLBINARY_GAME_LAYER_ADVANCEDRTSPROPERTIES_H
         #define ORG_ALLBINARY_GAME_LAYER_ADVANCEDRTSPROPERTIES_H
 
-            #include "../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
 #include <org/allbinary/animation/transition/shake/NoShakeAnimationListener.h>
 

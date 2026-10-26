@@ -88,7 +88,7 @@ this->basicSetColorUtil.setBasicColorP3(graphics, this->foregroundBasicColor, th
                         for (
     int32_t index = list.size();--index >= 0; )
         {
-touchButton= list.objectArray[index]! as TouchButton;
+touchButton= list.objectArray[index];
     
 touchButton.paint(graphics);
     
@@ -101,7 +101,7 @@ touchButton.paint(graphics);
                         for (
     int32_t index = list.size();--index >= 0; )
         {
-touchButton= list.objectArray[index]! as TouchButton;
+touchButton= list.objectArray[index];
     
 touchButton.paintHint(graphics);
     

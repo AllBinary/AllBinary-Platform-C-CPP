@@ -18,11 +18,8 @@
 
 
 
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-#include <jsinterop/annotations/JsType.h>
-
-      
 #include <org/allbinary/game/layer/AllBinaryGameLayer.h>
 
       
@@ -57,8 +54,9 @@
 
 class OptimizedTickableLayerProcessor: public LayerProcessor {
 
-public: OptimizedTickableLayerProcessor(){
-            super(OptimizedTickableLayerManager());
+public: OptimizedTickableLayerProcessor() : LayerProcessor(OptimizedTickableLayerManager()){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -70,7 +68,7 @@ public: OptimizedTickableLayerProcessor(){
             
     public: void processAt(AllBinaryLayerManager allBinaryLayerManager, AllBinaryLayer layerInterface, int32_t index){
 
-    AllBinaryGameLayer tickableInterface = layerInterface as AllBinaryGameLayer;;
+    AllBinaryGameLayer tickableInterface = layerInterface;;
     
 tickableInterface.processTick(allBinaryLayerManager);
     

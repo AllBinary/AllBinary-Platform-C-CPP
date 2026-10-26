@@ -20,7 +20,7 @@
 
             #include <vector>
         
-            #include "../../../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <javax/microedition/lcdui/Graphics.h>
 
@@ -70,8 +70,9 @@ class LivesHudWidget: public BasicHud, public PaintableInterface {
 
     private: Animation animationInterface;
 
-public: LivesHudWidget(Animation animationInterface, Life lifeInterface, int32_t location, int32_t direction){
-            super(location, direction, 2, BasicColorFactory::getInstance().WHITE);
+public: LivesHudWidget(Animation animationInterface, Life lifeInterface, int32_t location, int32_t direction) : BasicHud(location, direction, 2, BasicColorFactory::getInstance().WHITE){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -81,7 +82,7 @@ this->lifeInterface= lifeInterface;
 
     int32_t size = static_cast<int32_t>(this->getLifeInterface().getMaxlives());;
     
-this->xArray= new Array(size);
+this->xArray= std::vector<int32_t>(size);
     
 this->animationInterface= animationInterface;
     
@@ -138,7 +139,7 @@ this->myFontProcessor.process(graphics);
                         for (
     int32_t index = static_cast<int32_t>(this->getLifeInterface().get());--index >= 0; )
         {
-this->animationInterface.paintXY(graphics, this->xArray[index]!, this->getY());
+this->animationInterface.paintXY(graphics, this->xArray[index], this->getY());
     
 }
 

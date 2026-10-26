@@ -18,17 +18,14 @@
 
 
 
-            #include "../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../java/lang/InterruptedException.h"
+            #include "java/lang/InterruptedException.h"
         
-            #include "../../../java/lang/Runnable.h"
+            #include "java/lang/Runnable.h"
         
-#include <jsinterop/annotations/JsType.h>
-
-      
 #include <org/allbinary/logic/communication/log/LogUtil.h>
 
       
@@ -39,15 +36,6 @@
 
       
 #include <org/allbinary/util/BasicArrayListD.h>
-
-      
-#include <jsinterop/annotations/JsMethod.h>
-
-      
-#include <jsinterop/annotations/JsConstructor.h>
-
-      
-#include <jsinterop/annotations/JsProperty.h>
 
       
 
@@ -132,7 +120,7 @@ public: ThreadPool(std::string poolName, int32_t numThreads, int32_t priority){
 
                                     }
                                 
-this->currentPriorityRunnable= runnable as PriorityRunnable;
+this->currentPriorityRunnable= runnable;
     
 
                         if(!(this->currentPriorityRunnable == this->threadObjectUtil.NULL_PRIORITY_RUNNABLE))
@@ -219,7 +207,7 @@ this->taskQueue= BasicArrayListD();
                         for (
     int32_t index = 0;index < size; index++)
         {
-runnable= this->taskQueue.get(index) as PriorityRunnable;
+runnable= this->taskQueue.get(index);
     
 
                         if(runnable.getPriority() > task.getPriority())
@@ -305,7 +293,7 @@ this->taskQueue.addAt(index, task);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->taskQueue.removeAt(0) as Runnable;
+                        return this->taskQueue.removeAt(0);
     
 }
 

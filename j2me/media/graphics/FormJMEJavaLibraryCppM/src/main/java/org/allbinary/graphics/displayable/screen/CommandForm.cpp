@@ -18,14 +18,8 @@
 
 
 
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-#include <jsinterop/annotations/JsType.h>
-
-      
-#include <java/util/Stack.h>
-
-      
 #include <javax/microedition/lcdui/Command.h>
 
       
@@ -65,13 +59,10 @@
 #include <org/allbinary/string/CommonStrings.h>
 
       
-#include <jsinterop/annotations/JsMethod.h>
+#include <org/allbinary/logic/StdUtil.h>
 
       
-#include <jsinterop/annotations/JsConstructor.h>
-
-      
-#include <jsinterop/annotations/JsProperty.h>
+#include <org/allbinary/util/ABStack.h>
 
       
 
@@ -112,7 +103,7 @@ class CommandForm: public Form, public MyCommandInterface, public MenuListener {
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return CommandForm::NULL_COMMAND_FORM as CommandForm;
+                        return CommandForm::NULL_COMMAND_FORM;
     
 }
 
@@ -123,15 +114,16 @@ class CommandForm: public Form, public MyCommandInterface, public MenuListener {
 
     private: const Processor repaintProcessor = ScreenRepaintProcessorFactory::getInstance().create(this);
 
-    private: Stack<any> commandStack;
+    private: ABStack<Object*> commandStack;
 
-public: CommandForm(CommandListener commandListener, std::string formTitle, BasicColor backgrounBasicColor, BasicColor foregroundBasicColor){
-            super(formTitle);
+public: CommandForm(CommandListener commandListener, std::string formTitle, BasicColor backgrounBasicColor, BasicColor foregroundBasicColor) : Form(formTitle){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this->commandStack= Stack<any>();
+this->commandStack= StdUtil::getInstance().createStack();
     
 
         try {
@@ -192,7 +184,7 @@ super.addCommand(command);
 
     public: void removeAllCommands(){
 
-    int32_t size = this->commandStack.length;;
+    int32_t size = this->commandStack.size();;
     
 
 
@@ -201,7 +193,7 @@ super.addCommand(command);
                         for (
     int32_t index = 0;index < size; index++)
         {
-super.removeCommand(this->commandStack.pop() as Command);
+super.removeCommand(this->commandStack.pop());
     
 }
 

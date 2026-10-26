@@ -45,8 +45,9 @@
         
 class OptimizedAllBinaryCollisionLayerManager: public LayerManager {
 
-public: OptimizedAllBinaryCollisionLayerManager(){
-            super(LayerManagerNoDebug::getInstance());
+public: OptimizedAllBinaryCollisionLayerManager() : LayerManager(LayerManagerNoDebug::getInstance()){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.

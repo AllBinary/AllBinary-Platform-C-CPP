@@ -23,25 +23,19 @@
 
             #include <vector>
         
-            #include "../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../java/lang/RuntimeException.h"
+            #include "java/lang/RuntimeException.h"
         
 #include <java/io/InputStream.h>
-
-      
-#include <java/util/Hashtable.h>
 
       
 #include <javax/microedition/lcdui/Image.h>
 
       
 #include <javax/microedition/lcdui/NullImage.h>
-
-      
-#include <jsinterop/annotations/JsType.h>
 
       
 #include <org/allbinary/logic/communication/log/LogUtil.h>
@@ -62,16 +56,10 @@
 #include <org/allbinary/util/BasicArrayListD.h>
 
       
-#include <jsinterop/annotations/JsProperty.h>
-
-      
-#include <jsinterop/annotations/JsMethod.h>
-
-      
-#include <jsinterop/annotations/JsConstructor.h>
-
-      
 #include <org/allbinary/logic/StdUtil.h>
+
+      
+#include <org/allbinary/util/ABHashtable.h>
 
       
 
@@ -102,17 +90,17 @@ class ImageCacheBase
 
     protected: const ImageFactory imageFactory = ImageFactory::getInstance();
 
-    protected: const Hashtable<any, any> hashtable = StdUtil::getInstance().createHashtable();
+    protected: const ABHashtable<Object*, Object*> hashtable = StdUtil::getInstance().createHashtable();
 
     protected: const int32_t SIZE = 128;
 
-    protected: const std::vector<int32_t> widths = new Array(this->SIZE);
+    protected: const std::vector<int32_t> widths = std::vector<int32_t>(this->SIZE);
 
-    protected: const std::vector<int32_t> heights = new Array(this->SIZE);
+    protected: const std::vector<int32_t> heights = std::vector<int32_t>(this->SIZE);
 
-    protected: const std::vector<BasicArrayList> listOfList = new Array(this->SIZE);
+    protected: const std::vector<BasicArrayList> listOfList = std::vector<BasicArrayList>(this->SIZE);
 
-    protected: const std::vector<BasicArrayList> availableListOfList = new Array(this->SIZE);
+    protected: const std::vector<BasicArrayList> availableListOfList = std::vector<BasicArrayList>(this->SIZE);
 
     protected: int32_t volume = 0;
 
@@ -146,7 +134,7 @@ public: ImageCacheBase();
 
     public: std::string toString();
 
-    public: Hashtable<any, any> getHashtableP();
+    public: ABHashtable<Object*, Object*> getHashtableP();
 
     public: void init(Image image);
 

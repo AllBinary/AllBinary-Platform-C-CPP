@@ -79,8 +79,9 @@ class J2MEGameKey: public Input {
 }
 
 
-protected: J2MEGameKey(int32_t key, std::string keyName){
-            super(key, keyName);
+protected: J2MEGameKey(int32_t key, std::string keyName) : Input(key, keyName){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.

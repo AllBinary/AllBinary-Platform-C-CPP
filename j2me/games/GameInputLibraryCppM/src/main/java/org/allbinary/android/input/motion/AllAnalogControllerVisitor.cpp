@@ -67,7 +67,7 @@ class AllAnalogControllerVisitor: public AnalogControllerVisitor {
                         for (
     int32_t index = analogLocationInputList.size() -1;index >= 0; index--)
         {
-analogLocationInput= analogLocationInputList.get(index) as AnalogLocationInput;
+analogLocationInput= analogLocationInputList.get(index);
     
 analogLocationInputProcessor.process(allbinaryLayerManager, analogLocationInput);
     

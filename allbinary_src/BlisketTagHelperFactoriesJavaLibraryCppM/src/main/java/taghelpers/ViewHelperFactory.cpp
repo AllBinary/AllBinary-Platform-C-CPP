@@ -18,7 +18,7 @@
 
 
 
-            #include "../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
 
@@ -65,7 +65,7 @@ public: ViewHelperFactory(){
 
                 //@Throws(Exception.constructor, LicensingException.constructor)
             
-    public: Object* getInstance(HashMap<any, any> hashMap, PageContext pageContext){
+    public: Object* getInstance(HashMap<Object*, Object*> hashMap, PageContext pageContext){
 
         try {
             

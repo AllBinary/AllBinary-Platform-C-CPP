@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
 #include <java/util/HashMap.h>
 
@@ -63,14 +63,14 @@ class GameSkill
             : public Object
          {
 
-    private: static HashMap<any, any> hashMap = StdUtil::getInstance().createHashMap();
+    private: static HashMap<Object*, Object*> hashMap = StdUtil::getInstance().createHashMap();
 
     public: static GameSkill getInstance(GameSkillType gameSkillType, std::string extra){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return GameSkill::hashMap.get(StringMaker().append(gameSkillType.getName()).append(CommonSeps::getInstance().SPACE).append(extra).toString()) as GameSkill;
+                        return GameSkill::hashMap.get(StringMaker().append(gameSkillType.getName()).append(CommonSeps::getInstance().SPACE).append(extra).toString());
     
 }
 

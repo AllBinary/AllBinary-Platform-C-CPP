@@ -18,9 +18,9 @@
 
 
 
-            #include "../../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/business/entry/EntryData.h>
 
@@ -84,7 +84,7 @@ class UserConfigurationView
     private: UserConfigurationInterface userConfigurationInterface;
 
 public: UserConfigurationView(Node node){
-this->userConfigurationInterface= UserConfiguration() as UserConfigurationInterface;
+this->userConfigurationInterface= UserConfiguration();
     
 
     NodeList childNodeList = node.getChildNodes();;
@@ -96,7 +96,7 @@ this->userConfigurationInterface= UserConfiguration() as UserConfigurationInterf
     UserEmailConfigurationView userEmailConfigurationView = UserEmailConfigurationView(emailConfigurationNode);;
     
 
-    UserEmailConfigurationInterface userEmailConfigurationInterface = userEmailConfigurationView.getEmailConfigurationInterface() as UserEmailConfigurationInterface;;
+    UserEmailConfigurationInterface userEmailConfigurationInterface = userEmailConfigurationView.getEmailConfigurationInterface();;
     
 this->userConfigurationInterface.setUserEmailConfigurationInterface(userEmailConfigurationInterface);
     

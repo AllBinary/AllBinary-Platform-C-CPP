@@ -18,9 +18,9 @@
 
 
 
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../../java/lang/Integer.h"
+            #include "java/lang/Integer.h"
         
 #include <java/util/HashMap.h>
 
@@ -100,8 +100,9 @@ class EditValidationView: public DownloadableInventoryItemView, public Validatio
 
     private: std::string downloadItemId;
 
-public: EditValidationView(TransformInfoInterface transformInfoInterface){
-            super(transformInfoInterface, StringUtil::getInstance().EMPTY_STRING);
+public: EditValidationView(TransformInfoInterface transformInfoInterface) : DownloadableInventoryItemView(transformInfoInterface, StringUtil::getInstance().EMPTY_STRING){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -115,7 +116,7 @@ this->getFormData();
             
     public: void getFormData(){
 
-    HashMap<any, any> hashMap = RequestParams(request).toHashMap();;
+    HashMap<Object*, Object*> hashMap = RequestParams(request).toHashMap();;
     
 
                         if(hashMap == 
@@ -131,9 +132,9 @@ this->getFormData();
 
                                     }
                                 
-this->id= hashMap.get(basicItemData.ID) as string;
+this->id= hashMap.get(basicItemData.ID);
     
-this->downloadItemId= hashMap.get(DownloadItemData::ID) as string;
+this->downloadItemId= hashMap.get(DownloadItemData::ID);
     
 }
 
@@ -199,7 +200,7 @@ this->itemInterface= InventoryEntityFactory::getInstance().getInventoryEntityIns
 
                                     }
                                 
-this->downloadableItem= vector.get(0) as DownloadableItem;
+this->downloadableItem= vector.get(0);
     
 
                                     }

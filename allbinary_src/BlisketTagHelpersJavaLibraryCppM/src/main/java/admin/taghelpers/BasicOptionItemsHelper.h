@@ -21,7 +21,7 @@
         #ifndef ADMIN_TAGHELPERS_BASICOPTIONITEMSHELPER_H
         #define ADMIN_TAGHELPERS_BASICOPTIONITEMSHELPER_H
 
-            #include "../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
 
@@ -70,7 +70,7 @@ class BasicOptionItemsHelper: public BasicTable {
 
     private: Portion portion;
 
-public: BasicOptionItemsHelper(HashMap<any, any> hashMap, PageContext pageContext);
+public: BasicOptionItemsHelper(HashMap<Object*, Object*> hashMap, PageContext pageContext);
 
     public: std::string create();
 

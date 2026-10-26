@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <javax/servlet/http/HttpServletRequest.h>
 
@@ -65,8 +65,9 @@ class TransformStoreDocument: public TransformHttpRequestDocument {
 
     protected: const LogUtil logUtil = LogUtil::getInstance();
 
-public: TransformStoreDocument(PageContext pageContext, WeblisketSession weblisketSession){
-            super(pageContext, weblisketSession);
+public: TransformStoreDocument(PageContext pageContext, WeblisketSession weblisketSession) : TransformHttpRequestDocument(pageContext, weblisketSession){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -87,7 +88,7 @@ public: TransformStoreDocument(PageContext pageContext, WeblisketSession weblisk
                                 
 this->getBaseNode().appendChild(StoreFrontViewFactory::getInstance(storeName).toXmlNode(this->getDoc()));
     
-this->getBaseNode().appendChild(RequestParams(pageContext.getRequest() as HttpServletRequest).toXmlNode(this->getDoc()));
+this->getBaseNode().appendChild(RequestParams(pageContext.getRequest()).toXmlNode(this->getDoc()));
     
 
                 //: 
@@ -112,8 +113,9 @@ this->getBaseNode().appendChild(RequestParams(pageContext.getRequest() as HttpSe
 }
 
 
-public: TransformStoreDocument(SearchRequest searchRequest){
-            super(searchRequest);
+public: TransformStoreDocument(SearchRequest searchRequest) : TransformHttpRequestDocument(searchRequest){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.

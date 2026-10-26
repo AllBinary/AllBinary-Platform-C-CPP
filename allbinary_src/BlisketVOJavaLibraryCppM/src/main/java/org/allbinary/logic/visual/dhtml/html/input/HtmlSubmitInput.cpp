@@ -41,8 +41,9 @@
 
 class HtmlSubmitInput: public HtmlValueInput {
 
-public: HtmlSubmitInput(std::string before, std::string name, std::string value, std::string after){
-            super(before, HtmlInputData::getInstance().SUBMIT, name, value, after);
+public: HtmlSubmitInput(std::string before, std::string name, std::string value, std::string after) : HtmlValueInput(before, HtmlInputData::getInstance().SUBMIT, name, value, after){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.

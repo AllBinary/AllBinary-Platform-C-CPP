@@ -21,7 +21,7 @@
         #ifndef ORG_ALLBINARY_MEDIA_IMAGE_IMAGESWTUTIL_H
         #define ORG_ALLBINARY_MEDIA_IMAGE_IMAGESWTUTIL_H
 
-            #include "../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
 #include <org/eclipse/swt/graphics/Color.h>
 

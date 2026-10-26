@@ -21,11 +21,11 @@
         #ifndef ORG_ALLBINARY_INPUT_AUTOMATION_ACTIONS_SCRIPT_CONDITION_COLORATACTIONSCRIPTCONDITION_H
         #define ORG_ALLBINARY_INPUT_AUTOMATION_ACTIONS_SCRIPT_CONDITION_COLORATACTIONSCRIPTCONDITION_H
 
-            #include "../../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../../../../../java/lang/Integer.h"
+            #include "java/lang/Integer.h"
         
-            #include "../../../../../../../java/lang/Long.h"
+            #include "java/lang/Long.h"
         
 #include <java/awt/Color.h>
 
@@ -123,7 +123,7 @@ class ColorAtActionScriptCondition: public BasicProfileActionScriptCondition, pu
 
     private: Point point;
 
-    private: ColorRangeInterface colorRangeInterface = ColorRange() as ColorRangeInterface;
+    private: ColorRangeInterface colorRangeInterface = ColorRange();
 
 public: ColorAtActionScriptCondition(Node node);
 
@@ -137,7 +137,7 @@ public: ColorAtActionScriptCondition();
 
     public: void showDialog();
 
-    public: HashMap<any, any> toHashMap();
+    public: HashMap<Object*, Object*> toHashMap();
 
                 //@Throws(Exception.constructor)
             

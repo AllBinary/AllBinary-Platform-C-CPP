@@ -18,11 +18,8 @@
 
 
 
-            #include "../../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-#include <jsinterop/annotations/JsType.h>
-
-      
 #include <org/allbinary/input/motion/gesture/configuration/MotionGestureConfiguration.h>
 
       

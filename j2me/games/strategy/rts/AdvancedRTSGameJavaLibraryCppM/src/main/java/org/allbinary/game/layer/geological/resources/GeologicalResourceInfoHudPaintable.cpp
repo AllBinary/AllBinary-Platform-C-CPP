@@ -85,7 +85,7 @@ this->fontHeight= (2 *font.getHeight());
 super.updateSelectionInfo();
     
 
-    RTSLayer rtsLayer = this->rtsLayerP as RTSLayer;;
+    RTSLayer rtsLayer = this->rtsLayerP;;
     
 
     BasicArrayList list = rtsLayer.geographicMapCellPositionAreaBase.getOccupyingGeographicMapCellPositionList();;
@@ -101,7 +101,7 @@ super.updateSelectionInfo();
     int32_t index = list.size();--index >= 0; )
         {
 
-    GeologicalGeographicMapCellPosition geographicMapCellPosition = list.get(index) as GeologicalGeographicMapCellPosition;;
+    GeologicalGeographicMapCellPosition geographicMapCellPosition = list.get(index);;
     
 total += geographicMapCellPosition.getGeologicalResource().getTotal();
     

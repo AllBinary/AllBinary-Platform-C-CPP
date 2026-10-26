@@ -42,8 +42,9 @@
         
 class TimeCreated: public Time {
 
-public: TimeCreated(std::string time){
-            super(time);
+public: TimeCreated(std::string time) : Time(time){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -51,8 +52,9 @@ public: TimeCreated(std::string time){
 }
 
 
-public: TimeCreated(int64_t time){
-            super(time);
+public: TimeCreated(int64_t time) : Time(time){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.

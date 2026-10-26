@@ -21,9 +21,9 @@
         #ifndef ORG_ALLBINARY_BUSINESS_USER_MODULES_ADMIN_ADMINUSERFACTORY_H
         #define ORG_ALLBINARY_BUSINESS_USER_MODULES_ADMIN_ADMINUSERFACTORY_H
 
-            #include "../../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
 
@@ -66,7 +66,7 @@ public: AdminUserFactory();
 
                 //@Throws(Exception.constructor)
             
-    public: UserInterface getInstance(HashMap<any, any> hashMap);
+    public: UserInterface getInstance(HashMap<Object*, Object*> hashMap);
 
 };
 

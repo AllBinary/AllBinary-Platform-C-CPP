@@ -18,9 +18,9 @@
 
 
 
-            #include "../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/game/layer/AdvancedRTSGameLayer.h>
 
@@ -99,7 +99,7 @@ class AssignWaypointsUtil
     BasicArrayList list = ownerAdvancedRTSGameLayer.getWaypointBehavior().getOwnedWaypointList();;
     
 
-    UnitWaypointBehavior unitWaypointBehavior = unitLayer.getWaypointBehavior() as UnitWaypointBehavior;;
+    UnitWaypointBehavior unitWaypointBehavior = unitLayer.getWaypointBehavior();;
     
 
 
@@ -109,7 +109,7 @@ class AssignWaypointsUtil
     int32_t index = list.size() -1;index >= 0; index--)
         {
 
-    RTSLayer waypointLayer = list.get(index) as RTSLayer;;
+    RTSLayer waypointLayer = list.get(index);;
     
 this->WAYPOINT_EVENT.setRtsLayer(waypointLayer);
     

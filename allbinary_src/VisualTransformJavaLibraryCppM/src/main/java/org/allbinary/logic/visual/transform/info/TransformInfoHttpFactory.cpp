@@ -18,9 +18,9 @@
 
 
 
-            #include "../../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
 
@@ -74,7 +74,7 @@ class TransformInfoHttpFactory
 
                 //@Throws(Exception.constructor)
             
-    public: static TransformInfoInterface getInstance(HashMap<any, any> propertiesHashMap, PageContext pageContext){
+    public: static TransformInfoInterface getInstance(HashMap<Object*, Object*> propertiesHashMap, PageContext pageContext){
 
     LogUtil logUtil = LogUtil::getInstance();;
     
@@ -100,7 +100,7 @@ class TransformInfoHttpFactory
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return TransformInfoHttpStore(storeFrontInterface, propertiesHashMap, pageContext) as TransformInfoInterface;
+                        return TransformInfoHttpStore(storeFrontInterface, propertiesHashMap, pageContext);
     
 
                                     }
@@ -122,7 +122,7 @@ class TransformInfoHttpFactory
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return TransformInfoHttpContext(propertiesHashMap, pageContext) as TransformInfoInterface;
+                        return TransformInfoHttpContext(propertiesHashMap, pageContext);
     
 
                         }

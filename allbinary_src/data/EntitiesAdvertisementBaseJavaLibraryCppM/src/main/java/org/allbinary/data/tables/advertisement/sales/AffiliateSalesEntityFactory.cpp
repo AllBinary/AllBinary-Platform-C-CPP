@@ -18,9 +18,9 @@
 
 
 
-            #include "../../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/logic/communication/log/LogUtil.h>
 
@@ -65,7 +65,7 @@ class AffiliateSalesEntityFactory
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return AffiliateSalesEntity() as AffiliateSalesEntityInterface;
+                        return AffiliateSalesEntity();
     
 
                 //: 

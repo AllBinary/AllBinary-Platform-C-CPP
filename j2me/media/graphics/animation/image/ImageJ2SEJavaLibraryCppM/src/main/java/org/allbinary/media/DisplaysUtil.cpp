@@ -20,7 +20,7 @@
 
             #include <vector>
         
-            #include "../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
 #include <java/awt/Dimension.h>
 
@@ -111,7 +111,7 @@ class DisplaysUtil
     int32_t size = graphicsDeviceArray.size();;
     
 
-    std::vector<Rectangle> rectangleArray = new Array(size);;
+    std::vector<Rectangle> rectangleArray = std::vector<Rectangle>(size);;
     
 
 
@@ -120,7 +120,7 @@ class DisplaysUtil
                         for (
     int32_t index = 0;index < size; index++)
         {
-graphicsDevice= graphicsDeviceArray[index]!;
+graphicsDevice= graphicsDeviceArray[index];
     
 displayMode= graphicsDevice.getDisplayMode();
     

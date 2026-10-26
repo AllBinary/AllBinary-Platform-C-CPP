@@ -18,9 +18,9 @@
 
 
 
-            #include "../../../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
 
@@ -63,12 +63,12 @@ class ItemFactoryUnused
 
                 //@Throws(MoneyException.constructor)
             
-    public: static TableMappingInterface getInstance(HashMap<any, any> hashMap){
+    public: static TableMappingInterface getInstance(HashMap<Object*, Object*> hashMap){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return Item(hashMap) as TableMappingInterface;
+                        return Item(hashMap);
     
 }
 
@@ -80,7 +80,7 @@ class ItemFactoryUnused
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return Item(RequestParams(request).toHashMap()) as TableMappingInterface;
+                        return Item(RequestParams(request).toHashMap());
     
 }
 

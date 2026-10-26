@@ -20,9 +20,9 @@
 
             #include <hilog/log.h>
         
-            #include "../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../java/lang/RuntimeException.h"
+            #include "java/lang/RuntimeException.h"
         
 #include <android/os/Parcelable.h>
 

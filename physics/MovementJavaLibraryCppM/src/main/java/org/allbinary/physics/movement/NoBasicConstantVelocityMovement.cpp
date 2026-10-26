@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/game/layer/AllBinaryGameLayer.h>
 
@@ -51,8 +51,9 @@
 
 class NoBasicConstantVelocityMovement: public BasicConstantVelocityMovement {
 
-public: NoBasicConstantVelocityMovement(){
-            super(BasicDecimal::ZERO_BIGDECIMAL, BasicVelocityProperties());
+public: NoBasicConstantVelocityMovement() : BasicConstantVelocityMovement(BasicDecimal::ZERO_BIGDECIMAL, BasicVelocityProperties()){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.

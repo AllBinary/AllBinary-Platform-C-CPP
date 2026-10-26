@@ -42,8 +42,9 @@ class NoTimeDelayHelper: public TimeDelayHelper {
 
     public: static const NoTimeDelayHelper SINGLETON = NoTimeDelayHelper();
 
-public: NoTimeDelayHelper(){
-            super(0);
+public: NoTimeDelayHelper() : TimeDelayHelper(0){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.

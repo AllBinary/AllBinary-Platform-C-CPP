@@ -20,11 +20,11 @@
 
             #include <vector>
         
-            #include "../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../java/lang/Class.h"
+            #include "java/lang/Class.h"
         
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
 
@@ -116,7 +116,7 @@ public: InitializerDatabase(AbeClientInformationInterface abeClientInformation, 
     StringMaker stringBuffer = StringMaker();;
     
 
-    HashMap<any, any> hashMap = StdUtil::getInstance().createHashMap();;
+    HashMap<Object*, Object*> hashMap = StdUtil::getInstance().createHashMap();;
     
 
     Set keys = map.keySet();;
@@ -135,12 +135,12 @@ public: InitializerDatabase(AbeClientInformationInterface abeClientInformation, 
     int32_t index = 0;index < size; index++)
         {
 
-    std::string key = keyArray[index]! as string;;
+    std::string key = keyArray[index];;
     
 
     std::vector<std::string> values = map.get(key) as string[];;
     
-hashMap.put(key.toCharArray().slice(0, ).join(''), .toCharArray());
+hashMap.put(std::string(key), .toCharArray());
     
 stringBuffer.delete(0, stringBuffer.length());
     
@@ -150,7 +150,7 @@ stringBuffer.append(key);
     
 stringBuffer.append(" Value: ");
     
-stringBuffer.append(values[0]!);
+stringBuffer.append(values[0]);
     
 this->logUtil.putF(stringBuffer.toString(), this, "getFormData()");
     
@@ -161,29 +161,29 @@ this->getFormData(abeClientInformation, hashMap);
 }
 
 
-public: InitializerDatabase(AbeClientInformationInterface abeClientInformation, HashMap<any, any> initHashMap){
+public: InitializerDatabase(AbeClientInformationInterface abeClientInformation, HashMap<Object*, Object*> initHashMap){
 this->getFormData(abeClientInformation, initHashMap);
     
 }
 
 
-    public: void getFormData(AbeClientInformationInterface abeClientInformation, HashMap<any, any> hashMap){
+    public: void getFormData(AbeClientInformationInterface abeClientInformation, HashMap<Object*, Object*> hashMap){
 
         try {
             
     InitializerData initializerData = InitializerData::getInstance();;
     
-this->setAdminDbUserName(hashMap.get(initializerData.DBUSER) as string);
+this->setAdminDbUserName(hashMap.get(initializerData.DBUSER));
     
-this->setAdminDbPassword(hashMap.get(initializerData.DBPASSWORD) as string);
+this->setAdminDbPassword(hashMap.get(initializerData.DBPASSWORD));
     
-this->setAdminJdbcDriver(hashMap.get(initializerData.ADMINJDBCDRIVER) as string);
+this->setAdminJdbcDriver(hashMap.get(initializerData.ADMINJDBCDRIVER));
     
-this->setAdminSchema(hashMap.get(initializerData.ADMINSCHEMA) as string);
+this->setAdminSchema(hashMap.get(initializerData.ADMINSCHEMA));
     
-this->setAdminServer(hashMap.get(initializerData.ADMINSERVER) as string);
+this->setAdminServer(hashMap.get(initializerData.ADMINSERVER));
     
-this->setAdminPort(hashMap.get(initializerData.ADMINPORT) as string);
+this->setAdminPort(hashMap.get(initializerData.ADMINPORT));
     
 
     DbConnectionInfo dbConnectionInfo = DbConnectionInfo();;
@@ -205,7 +205,7 @@ dbConnectionInfo.setServer(getAdminServer());
     
 dbConnectionInfo.setPort(getAdminPort());
     
-this->initDb= DynamicInitDb(abeClientInformation, dbConnectionInfo as DatabaseConnectionInfoInterface);
+this->initDb= DynamicInitDb(abeClientInformation, dbConnectionInfo);
     
 
                 //: 

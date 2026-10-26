@@ -21,7 +21,7 @@
         #ifndef ORG_ALLBINARY_THREAD_CONCURRENTIMAGELOADINGPROCESSOR_H
         #define ORG_ALLBINARY_THREAD_CONCURRENTIMAGELOADINGPROCESSOR_H
 
-            #include "../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/graphics/canvas/transition/progress/ProgressCanvas.h>
 
@@ -58,22 +58,26 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "BaseImageLoadingProcessor.h"
 #include "ABRunnable.h"
+//#include "ImageCacheRunnable.h"
 #include "ImageThreadPool.h"
 
 class ConcurrentImageLoadingProcessor: public BaseImageLoadingProcessor {
 
     protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const CommonStrings commonStrings = CommonStrings::getInstance();
+//inner= member=true isStatic=
+class ImageCacheRunnable: public ABRunnable {
 
     private: ImageCache imageCache;
 
-    private: const ABRunnable runnable = class extends ABRunnable
-                                {
-                                
+public: ImageCacheRunnable(ImageCache imageCache);
+
     public: void run();
-                                }
-                            ;
+
+};
+
+            
+    private: ABRunnable runnable;
 
 public: ConcurrentImageLoadingProcessor(ImageCache imageCache);
 

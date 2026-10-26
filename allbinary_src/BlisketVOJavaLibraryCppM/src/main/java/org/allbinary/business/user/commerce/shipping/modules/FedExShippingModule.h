@@ -21,7 +21,7 @@
         #ifndef ORG_ALLBINARY_BUSINESS_USER_COMMERCE_SHIPPING_MODULES_FEDEXSHIPPINGMODULE_H
         #define ORG_ALLBINARY_BUSINESS_USER_COMMERCE_SHIPPING_MODULES_FEDEXSHIPPINGMODULE_H
 
-            #include "../../../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
 #include <org/allbinary/business/user/commerce/inventory/order/OrderInterface.h>
 

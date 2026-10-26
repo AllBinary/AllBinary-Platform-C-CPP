@@ -18,11 +18,8 @@
 
 
 
-            #include "../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-#include <jsinterop/annotations/JsType.h>
-
-      
 #include <org/allbinary/animation/resource/FeatureResourceAnimationInterfaceFactoryInterface.h>
 
       
@@ -54,12 +51,6 @@
 
       
 #include <org/allbinary/util/BasicArrayListD.h>
-
-      
-#include <jsinterop/annotations/JsMethod.h>
-
-      
-#include <jsinterop/annotations/JsConstructor.h>
 
       
 
@@ -138,7 +129,7 @@ private: FeaturedAnimationInterfaceFactoryInterfaceFactory(){
     int32_t index = 0;index < size; index++)
         {
 
-    FeatureResourceAnimationInterfaceFactoryInterface featureInterface = list.objectArray[index]! as FeatureResourceAnimationInterfaceFactoryInterface;;
+    FeatureResourceAnimationInterfaceFactoryInterface featureInterface = list.objectArray[index];;
     
 
                         if(featureInterface.isFeature())
@@ -180,7 +171,7 @@ private: FeaturedAnimationInterfaceFactoryInterfaceFactory(){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->getBasicAnimationInterfaceFactoryInstance(resource) as ProceduralAnimationInterfaceFactoryInterface;
+                        return this->getBasicAnimationInterfaceFactoryInstance(resource);
     
 }
 
@@ -192,7 +183,7 @@ private: FeaturedAnimationInterfaceFactoryInterfaceFactory(){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->getBasicAnimationInterfaceFactoryInstance(resource) as AnimationInterfaceFactoryInterface;
+                        return this->getBasicAnimationInterfaceFactoryInstance(resource);
     
 }
 
@@ -222,7 +213,7 @@ private: FeaturedAnimationInterfaceFactoryInterfaceFactory(){
                         for (
     int32_t index = 0;index < size; index++)
         {
-featureInterface= list.objectArray[index]! as FeatureResourceAnimationInterfaceFactoryInterface;
+featureInterface= list.objectArray[index];
     
 
                         if(featureInterface.isFeature())
@@ -311,7 +302,7 @@ stringBuffer.append(resource);
         {
 stringBuffer.append(CommonSeps::getInstance().NEW_LINE);
     
-featureInterface= list.objectArray[index]! as FeatureResourceAnimationInterfaceFactoryInterface;
+featureInterface= list.objectArray[index];
     
 
                         if(featureInterface.isFeature())
@@ -349,7 +340,7 @@ stringBuffer.append(RESOURCES_LABEL);
                         for (
     int32_t index = 0;index < size; index++)
         {
-featureInterface= list.objectArray[index]! as FeatureResourceAnimationInterfaceFactoryInterface;
+featureInterface= list.objectArray[index];
     
 stringBuffer.append(featureInterface.toString());
     

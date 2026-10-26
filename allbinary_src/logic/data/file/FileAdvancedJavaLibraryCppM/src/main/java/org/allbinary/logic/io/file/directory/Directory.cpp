@@ -20,9 +20,9 @@
 
             #include <vector>
         
-            #include "../../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/io/FileFilter.h>
 
@@ -269,13 +269,13 @@ PreLogUtil::putOE("Error Creating Directories: " +directory, this, "create", e);
                         for (
     int32_t index = 0;index < size; index++)
         {
-fileList.add(files[index]!);
+fileList.add(files[index]);
     
 
                         if(isRecursiveSearch)
                         
                                     {
-                                    recursiveFileList= this->search(fileFilter, files[index]!, isRecursiveSearch);
+                                    recursiveFileList= this->search(fileFilter, files[index], isRecursiveSearch);
     
 fileList.addAllList(recursiveFileList);
     
@@ -360,13 +360,13 @@ fileList.addAllList(recursiveFileList);
                         for (
     int32_t index = 0;index < files.size(); index++)
         {
-fileList.add(files[index]!);
+fileList.add(files[index]);
     
 
                         if(isRecursiveSearch)
                         
                                     {
-                                    recursiveFileList= this->search(files[index]!, isRecursiveSearch);
+                                    recursiveFileList= this->search(files[index], isRecursiveSearch);
     
 fileList.addAllList(recursiveFileList);
     
@@ -452,10 +452,10 @@ fileList.addAllList(recursiveFileList);
     int32_t index = 0;index < files.size(); index++)
         {
 
-                        if(files[index]!.getPath().indexOf(searchValue) >= 0)
+                        if(files[index].getPath().indexOf(searchValue) >= 0)
                         
                                     {
-                                    fileList.add(files[index]!);
+                                    fileList.add(files[index]);
     
 
                                     }
@@ -464,7 +464,7 @@ fileList.addAllList(recursiveFileList);
                         if(isRecursiveSearch)
                         
                                     {
-                                    recursiveFileList= this->search(searchValue, files[index]!, isRecursiveSearch);
+                                    recursiveFileList= this->search(searchValue, files[index], isRecursiveSearch);
     
 fileList.addAllList(recursiveFileList);
     
@@ -549,7 +549,7 @@ fileList.addAllList(recursiveFileList);
                         for (
     int32_t index = 0;index < files.size(); index++)
         {
-fileList.add(files[index]!);
+fileList.add(files[index]);
     
 
                         if(level <= 0)
@@ -564,7 +564,7 @@ fileList.add(files[index]!);
 
                                     }
                                 
-recursiveFileList= this->search(level -1, files[index]!, isRecursiveSearch);
+recursiveFileList= this->search(level -1, files[index], isRecursiveSearch);
     
 fileList.addAllList(recursiveFileList);
     

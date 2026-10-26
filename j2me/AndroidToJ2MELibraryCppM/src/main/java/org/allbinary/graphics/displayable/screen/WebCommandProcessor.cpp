@@ -18,9 +18,9 @@
 
 
 
-            #include "../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../java/lang/ClassNotFoundException.h"
+            #include "java/lang/ClassNotFoundException.h"
         
 #include <android/content/Context.h>
 
@@ -100,12 +100,12 @@ class WebCommandProcessor
 
         try {
             
-    Context context = this->aboutCommandProcessor.getContext() as Context;;
+    Context context = this->aboutCommandProcessor.getContext();;
     
 
     Intent intent = Intent(context, TsUtil::getInstance().getClassClassLoader(this).loadClass(this->WEB_VIEW_ACTIVITY));;
     
-intent.putExtra(this->aboutCommandProcessor.URL, this->list.removeAt(0) as string);
+intent.putExtra(this->aboutCommandProcessor.URL, this->list.removeAt(0));
     
 intent.setFlags(Intent::FLAG_ACTIVITY_NEW_TASK);
     

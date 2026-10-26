@@ -20,11 +20,11 @@
 
             #include <vector>
         
-            #include "../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../java/lang/Class.h"
+            #include "java/lang/Class.h"
         
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/sql/Connection.h>
 
@@ -264,7 +264,7 @@ this->executeSQLStatement(tableData);
 }
 
 
-    public: HashMap<any, any> getRow(HashMap<any, any> keysAndValues){
+    public: HashMap<Object*, Object*> getRow(HashMap<Object*, Object*> keysAndValues){
 
     StringMaker stringBuffer = StringMaker();;
     
@@ -277,7 +277,7 @@ stringBuffer.append(this->sqlStrings.WHERE);
 
         try {
             
-    HashMap<any, any> result = 
+    HashMap<Object*, Object*> result = 
                 null
             ;;
     
@@ -298,7 +298,7 @@ stringBuffer.append(this->sqlStrings.WHERE);
     int32_t i = 0;i < size; i++)
         {
 
-    std::string key = keyArray[i]! as string;;
+    std::string key = keyArray[i];;
     
 
     std::string value = .toCharArray();;
@@ -422,7 +422,7 @@ result.put(columnName, field);
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public: void updateWhere(std::string key, std::string value, HashMap<any, any> updatedKeyValuePairs){
+    public: void updateWhere(std::string key, std::string value, HashMap<Object*, Object*> updatedKeyValuePairs){
 
     StringMaker stringBuffer = StringMaker();;
     
@@ -448,7 +448,7 @@ stringBuffer.append(this->sqlStrings.SET);
     int32_t i = 0;i < size; i++)
         {
 
-    std::string columnName = columnArray[i]!.toString();;
+    std::string columnName = columnArray[i].toString();;
     
 stringBuffer.append(this->commonSeps.SPACE);
     
@@ -457,7 +457,7 @@ stringBuffer.append(columnName);
 stringBuffer.append(this->EQUAL_QUOTE);
     
 
-    std::string columnValue = updatedKeyValuePairs.get(columnName) as string;;
+    std::string columnValue = updatedKeyValuePairs.get(columnName);;
     
 
                         if(false)
@@ -552,7 +552,7 @@ stringBuffer.append(this->sqlStrings.VALUES);
     int32_t i = 0;i < size -1; i++)
         {
 
-    std::string value = this->getValue(values.get(i) as string);;
+    std::string value = this->getValue(values.get(i));;
     
 stringBuffer.append(value);
     
@@ -561,7 +561,7 @@ stringBuffer.append(this->sqlStrings.SINGLE_QUOTE_COMMA_SEP);
 }
 
 
-    std::string value = this->getValue(values.get(values.size() -1) as string);;
+    std::string value = this->getValue(values.get(values.size() -1));;
     
 stringBuffer.append(value);
     
@@ -747,7 +747,7 @@ PreLogUtil::putOE(this->commonStrings.EXCEPTION, INIT_SQL, "createConnection()",
             
     std::string jdbcDriver = this->databaseConnectionInfoInterface.getJdbcDriver();;
     
-PreLogUtil::put(StringMaker().append("Loading DbConnnectionInfo: ").append(this->databaseConnectionInfoInterface.constructor.name.toString()!).append(" Driver: ").append(jdbcDriver).toString(), this->INIT_SQL, "initialize()");
+PreLogUtil::put(StringMaker().append("Loading DbConnnectionInfo: ").append(this->databaseConnectionInfoInterface.constructor.name.toString()).append(" Driver: ").append(jdbcDriver).toString(), this->INIT_SQL, "initialize()");
     
 Class::forName(jdbcDriver).newInstance();
     

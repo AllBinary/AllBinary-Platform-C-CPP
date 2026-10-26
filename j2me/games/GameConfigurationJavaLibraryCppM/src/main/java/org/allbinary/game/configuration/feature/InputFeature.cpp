@@ -40,8 +40,9 @@
 
 class InputFeature: public Feature {
 
-: InputFeature(std::string name){
-            super(name);
+: InputFeature(std::string name) : Feature(name){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.

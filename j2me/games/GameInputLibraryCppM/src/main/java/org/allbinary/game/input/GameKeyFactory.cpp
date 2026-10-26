@@ -18,11 +18,8 @@
 
 
 
-            #include "../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-#include <jsinterop/annotations/JsType.h>
-
-      
 #include <javax/microedition/lcdui/Canvas.h>
 
       
@@ -30,12 +27,6 @@
 
       
 #include <org/allbinary/string/CommonPhoneStrings.h>
-
-      
-#include <jsinterop/annotations/JsMethod.h>
-
-      
-#include <jsinterop/annotations/JsProperty.h>
 
       
 
@@ -79,7 +70,7 @@ class GameKeyFactory
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return GameKeyFactory::instance() as GameKeyFactory;
+                        return GameKeyFactory::instance();
     
 }
 

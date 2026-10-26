@@ -18,13 +18,7 @@
 
 
 
-#include <jsinterop/annotations/JsType.h>
-
-      
 #include <javax/microedition/lcdui/Command.h>
-
-      
-#include <jsinterop/annotations/JsMethod.h>
 
       
 

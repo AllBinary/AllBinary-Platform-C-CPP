@@ -7,7 +7,7 @@
         #ifndef ORG_ECLIPSE_SWT_GRAPHICS_RESOURCE_H
         #define ORG_ECLIPSE_SWT_GRAPHICS_RESOURCE_H
 
-            #include "../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
 
 

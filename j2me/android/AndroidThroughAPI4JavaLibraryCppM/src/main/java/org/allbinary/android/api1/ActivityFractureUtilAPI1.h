@@ -21,7 +21,7 @@
         #ifndef ORG_ALLBINARY_ANDROID_API1_ACTIVITYFRACTUREUTILAPI1_H
         #define ORG_ALLBINARY_ANDROID_API1_ACTIVITYFRACTUREUTILAPI1_H
 
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/android/ActivityFractureUtil.h>
 

@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/business/user/address/StreetAddress.h>
 
@@ -60,8 +60,9 @@
 
 class ValidationView: public ShippingAddressesView, public ValidationComponentInterface {
 
-public: ValidationView(TransformInfoInterface transformInfoInterface){
-            super(transformInfoInterface);
+public: ValidationView(TransformInfoInterface transformInfoInterface) : ShippingAddressesView(transformInfoInterface){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -101,7 +102,7 @@ this->streetAddressList= billingAddressesEntity.get();
     int32_t index = 0;index < size; index++)
         {
 
-    StreetAddress streetAddress = streetAddressList.get(index) as StreetAddress;;
+    StreetAddress streetAddress = streetAddressList.get(index);;
     
 
                         if(streetAddress.isValid() == Boolean::FALSE)

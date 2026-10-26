@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/util/BasicArrayList.h>
 
@@ -76,8 +76,9 @@ class PaymentView: public HttpStoreComponentView, public DomNodeInterface {
 
     protected: const LogUtil logUtil = LogUtil::getInstance();
 
-public: PaymentView(TransformInfoInterface transformInfoInterface){
-            super(transformInfoInterface);
+public: PaymentView(TransformInfoInterface transformInfoInterface) : HttpStoreComponentView(transformInfoInterface){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -109,7 +110,7 @@ document.appendChild(paymentNode);
     int32_t index = 0;index < size; index++)
         {
 
-    Payment payment = paymentVector.get(index) as Payment;;
+    Payment payment = paymentVector.get(index);;
     
 paymentNode.appendChild(payment.toXmlNode(document));
     
@@ -145,7 +146,7 @@ paymentNode.appendChild(payment.toXmlNode(document));
 
 
     public: void addDomNodeInterfaces(){
-this->addDomNodeInterface(this as DomNodeInterface);
+this->addDomNodeInterface(this);
     
 }
 

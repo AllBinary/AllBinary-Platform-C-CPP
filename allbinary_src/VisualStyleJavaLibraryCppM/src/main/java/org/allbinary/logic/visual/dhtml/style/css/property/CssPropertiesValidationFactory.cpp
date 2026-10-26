@@ -18,9 +18,9 @@
 
 
 
-            #include "../../../../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
 
@@ -89,7 +89,7 @@ class CssPropertiesValidationFactory
                         
                                     {
                                     
-    ValidationInterface cssPropertyValidationInterface = CssPropertyValidationFactory::getInstance(node) as ValidationInterface;;
+    ValidationInterface cssPropertyValidationInterface = CssPropertyValidationFactory::getInstance(node);;
     
 propertiesVector.add(cssPropertyValidationInterface);
     
@@ -107,7 +107,7 @@ propertiesVector.add(cssPropertyValidationInterface);
 }
 
 
-    public: static BasicArrayList getInstance(HashMap<any, any> hashMap){
+    public: static BasicArrayList getInstance(HashMap<Object*, Object*> hashMap){
 
     BasicArrayList styles = BasicArrayListD();;
     

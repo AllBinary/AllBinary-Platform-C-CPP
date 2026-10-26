@@ -20,7 +20,7 @@
 
             #include <vector>
         
-            #include "../../../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <javax/microedition/lcdui/Graphics.h>
 
@@ -88,8 +88,9 @@ class HealthHudWidget: public BasicHud, public PaintableInterface, public Health
 
     private: const GameTickTimeDelayHelper gameTickTimeDelayHelper = GameTickTimeDelayHelperFactory::getInstance();
 
-public: HealthHudWidget(Animation animationInterface, Health healthInterface, int32_t location, int32_t direction){
-            super(location, direction, 2, BasicColorFactory::getInstance().WHITE);
+public: HealthHudWidget(Animation animationInterface, Health healthInterface, int32_t location, int32_t direction) : BasicHud(location, direction, 2, BasicColorFactory::getInstance().WHITE){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -108,7 +109,7 @@ this->updateMaxWidth= healthInterface.getMaxHealth() *16;
     
 this->updateMaxHeight= 16;
     
-this->xArray= new Array(30);
+this->xArray= std::vector<int32_t>(30);
     
 this->update();
     
@@ -210,7 +211,7 @@ this->myFontProcessor.process(graphics);
                         if(this->timeDelayHelper.isTime(this->gameTickTimeDelayHelper.startTime))
                         
                                     {
-                                    this->animationInterface.paintXY(graphics, this->xArray[index]!, this->getY());
+                                    this->animationInterface.paintXY(graphics, this->xArray[index], this->getY());
     
 
                                     }

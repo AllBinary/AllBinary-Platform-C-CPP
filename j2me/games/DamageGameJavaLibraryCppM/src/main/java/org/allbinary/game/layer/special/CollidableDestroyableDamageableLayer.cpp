@@ -20,13 +20,10 @@
 
             #include <vector>
         
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../../../java/lang/RuntimeException.h"
+            #include "java/lang/RuntimeException.h"
         
-#include <jsinterop/annotations/JsType.h>
-
-      
 #include <javax/microedition/lcdui/Graphics.h>
 
       
@@ -99,15 +96,6 @@
 #include <org/allbinary/view/ViewPositionBase.h>
 
       
-#include <jsinterop/annotations/JsMethod.h>
-
-      
-#include <jsinterop/annotations/JsConstructor.h>
-
-      
-#include <jsinterop/annotations/JsProperty.h>
-
-      
 
 
 
@@ -130,7 +118,7 @@
 
 class CollidableDestroyableDamageableLayer: public CollidableCompositeLayer, public DestroyableInterface, public DamageableInterface, public PickupCompositeInterface, public SpecialGameInputInterface {
 
-    public: static Object* NULL_COLLIDABLE_DESTROYABLE_DAMAGE_LAYER = NullUtil::getInstance().NULL_OBJECT;
+    private: static Object* NULL_COLLIDABLE_DESTROYABLE_DAMAGE_LAYER = NullUtil::getInstance().NULL_OBJECT;
 
     public: static CollidableDestroyableDamageableLayer getNullInstance(){
 
@@ -146,7 +134,7 @@ class CollidableDestroyableDamageableLayer: public CollidableCompositeLayer, pub
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return CollidableDestroyableDamageableLayer::NULL_COLLIDABLE_DESTROYABLE_DAMAGE_LAYER as CollidableDestroyableDamageableLayer;
+                        return CollidableDestroyableDamageableLayer::NULL_COLLIDABLE_DESTROYABLE_DAMAGE_LAYER;
     
 }
 
@@ -179,8 +167,9 @@ class CollidableDestroyableDamageableLayer: public CollidableCompositeLayer, pub
 
     public: bool isDropped = false;
 
-public: CollidableDestroyableDamageableLayer(std::vector<Group> groupInterface, std::string name, Rectangle layerInfo, ViewPositionBase viewPosition){
-            super(name, layerInfo, viewPosition, CollidableNeverCollideBehaviorFactory::getInstance());
+public: CollidableDestroyableDamageableLayer(std::vector<Group> groupInterface, std::string name, Rectangle layerInfo, ViewPositionBase viewPosition) : CollidableCompositeLayer(name, layerInfo, viewPosition, CollidableNeverCollideBehaviorFactory::getInstance()){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -523,7 +512,7 @@ stringBuffer.append(commonSeps.NEW_LINE);
                         for (
     int32_t index = 0;index < size; index++)
         {
-stringBuffer.append(groupInterfaceArray[index]!.toString());
+stringBuffer.append(groupInterfaceArray[index].toString());
     
 stringBuffer.append(commonSeps.COMMA);
     

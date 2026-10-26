@@ -21,7 +21,7 @@
         #ifndef ORG_ALLBINARY_EMULATOR_INITEMULATORFACTORY_H
         #define ORG_ALLBINARY_EMULATOR_INITEMULATORFACTORY_H
 
-            #include "../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
 
 

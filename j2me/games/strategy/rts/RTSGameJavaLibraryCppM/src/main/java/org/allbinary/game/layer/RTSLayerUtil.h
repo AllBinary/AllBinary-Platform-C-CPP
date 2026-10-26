@@ -23,15 +23,12 @@
 
             #include <vector>
         
-            #include "../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../../java/lang/Integer.h"
+            #include "java/lang/Integer.h"
         
-#include <java/util/Hashtable.h>
-
-      
 #include <org/allbinary/game/identification/GroupCommonFactory.h>
 
       
@@ -69,6 +66,9 @@
 
       
 #include <org/allbinary/media/graphics/geography/map/racetrack/BaseRaceTrackGeographicMap.h>
+
+      
+#include <org/allbinary/util/ABHashtable.h>
 
       
 
@@ -127,7 +127,7 @@ class RTSLayerUtil
             
     public: void destroyAndClear(BasicArrayList list);
 
-    public: Hashtable<any, any> createFakeRTSLayerHashtable(BaseRaceTrackGeographicMap baseRaceTrackGeographicMap);
+    public: ABHashtable<Object*, Object*> createFakeRTSLayerHashtable(BaseRaceTrackGeographicMap baseRaceTrackGeographicMap);
 
 };
 

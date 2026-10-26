@@ -21,7 +21,7 @@
         #ifndef ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_INFO_TRANSFORMINFOHTTP_H
         #define ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_INFO_TRANSFORMINFOHTTP_H
 
-            #include "../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
 
@@ -93,25 +93,25 @@ class TransformInfoHttp: public TransformInfo, public TransformInfoHttpInterface
 
     private: AbContext abContext;
 
-public: TransformInfoHttp(HashMap<any, any> propertiesHashMap, PageContext pageContext, bool crud);
+public: TransformInfoHttp(HashMap<Object*, Object*> propertiesHashMap, PageContext pageContext, bool crud);
 
-public: TransformInfoHttp(HttpServletRequest request, HashMap<any, any> propertiesHashMap, PageContext pageContext);
+public: TransformInfoHttp(HttpServletRequest request, HashMap<Object*, Object*> propertiesHashMap, PageContext pageContext);
 
-public: TransformInfoHttp(HashMap<any, any> databaseHashMap, HashMap<any, any> propertiesHashMap, PageContext pageContext);
+public: TransformInfoHttp(HashMap<Object*, Object*> databaseHashMap, HashMap<Object*, Object*> propertiesHashMap, PageContext pageContext);
 
-public: TransformInfoHttp(HashMap<any, any> propertiesHashMap, PageContext pageContext);
+public: TransformInfoHttp(HashMap<Object*, Object*> propertiesHashMap, PageContext pageContext);
 
 public: TransformInfoHttp(TransformInfoHttp parentViewOfThisTransformInfoInterface);
 
                 //@Throws(Exception.constructor)
             
-    private: void set(HashMap<any, any> hashMap);
+    private: void set(HashMap<Object*, Object*> hashMap);
 
     public: WeblisketSessionInterface getWeblisketSession();
 
     public: PageContext getPageContext();
 
-    public: HashMap<any, any> getPropertiesHashMap();
+    public: HashMap<Object*, Object*> getPropertiesHashMap();
 
                 //@Throws(Exception.constructor)
             

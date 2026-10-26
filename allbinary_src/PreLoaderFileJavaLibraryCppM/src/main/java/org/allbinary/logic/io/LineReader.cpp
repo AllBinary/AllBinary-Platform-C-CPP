@@ -20,9 +20,9 @@
 
             #include <vector>
         
-            #include "../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/io/DataInputStream.h>
 
@@ -78,7 +78,7 @@ public: LineReader(std::string fileName){
 
         try {
             
-    std::vector<int8_t> bytes = new Array(100000);;
+    std::vector<int8_t> bytes = std::vector<int8_t>(100000);;
     
 this->fileName= fileName;
     

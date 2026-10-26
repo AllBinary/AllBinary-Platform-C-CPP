@@ -23,22 +23,16 @@
 
             #include <vector>
         
-            #include "../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../../../../java/lang/Integer.h"
+            #include "java/lang/Integer.h"
         
-            #include "../../../../../../java/lang/Double.h"
+            #include "java/lang/Double.h"
         
 #include <java/awt.h>
 
       
 #include <java/util/HashMap.h>
-
-      
-#include <org/allbinary/util/BasicArrayList.h>
-
-      
-#include <org/allbinary/util/BasicArrayListD.h>
 
       
 #include <javax/swing/tree/DefaultMutableTreeNode.h>
@@ -191,7 +185,7 @@ class CanvasJPanel: public javax::swing::JPanel, public java::awt::event::MouseL
                 nullptr
             ;
 
-    private: HashMap<any, any> graphicItemHashMap;
+    private: HashMap<Object*, Object*> graphicItemHashMap;
 
     private: IntegerDimension canvasDimension;
 
@@ -257,9 +251,9 @@ public: CanvasJPanel(WorkAreaJTreeJPanel workAreaJTreeJPanel, Dimension dimensio
 
                 //@Throws(Exception.constructor)
             
-    public: void duplicateGraphicItemHashMap(HashMap<any, any> hashMap);
+    public: void duplicateGraphicItemHashMap(HashMap<Object*, Object*> hashMap);
 
-    public: HashMap<any, any> getGraphicItemHashMap();
+    public: HashMap<Object*, Object*> getGraphicItemHashMap();
 
     public: int32_t getXPixelsPerWorkAreaPixel();
 

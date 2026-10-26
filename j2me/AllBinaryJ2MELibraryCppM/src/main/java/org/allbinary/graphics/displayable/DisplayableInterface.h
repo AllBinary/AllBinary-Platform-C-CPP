@@ -21,16 +21,10 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_DISPLAYABLE_DISPLAYABLEINTERFACE_H
         #define ORG_ALLBINARY_GRAPHICS_DISPLAYABLE_DISPLAYABLEINTERFACE_H
 
-#include <jsinterop/annotations/JsType.h>
-
-      
 #include <javax/microedition/lcdui/Command.h>
 
       
 #include <javax/microedition/lcdui/CommandListener.h>
-
-      
-#include <jsinterop/annotations/JsMethod.h>
 
       
 

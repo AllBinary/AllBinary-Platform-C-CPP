@@ -50,7 +50,7 @@ class TagHelperFactoryInterface {
 
                 //@Throws(LicensingException.constructor)
             
-    Object* getInstance(HashMap<any, any> hashMap, PageContext pageContext)
+    Object* getInstance(HashMap<Object*, Object*> hashMap, PageContext pageContext)
 
 };
 

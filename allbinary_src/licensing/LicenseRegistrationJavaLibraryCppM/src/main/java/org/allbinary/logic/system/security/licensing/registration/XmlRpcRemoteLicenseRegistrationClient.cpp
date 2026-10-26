@@ -18,12 +18,15 @@
 
 
 
-            #include "../../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/io/IOException.h>
 
       
-#include <java/util/Hashtable.h>
+#include <org/apache/xmlrpc/XmlRpcClient.h>
+
+      
+#include <org/apache/xmlrpc/XmlRpcException.h>
 
       
 #include <org/allbinary/util/BasicArrayList.h>
@@ -35,16 +38,7 @@
 #include <org/allbinary/init/crypt/jcehelper/CryptInterface.h>
 
       
-#include <org/allbinary/logic/StdUtil.h>
-
-      
 #include <org/allbinary/string/CommonLabels.h>
-
-      
-#include <org/apache/xmlrpc/XmlRpcClient.h>
-
-      
-#include <org/apache/xmlrpc/XmlRpcException.h>
 
       
 #include <org/allbinary/logic/string/StringMaker.h>
@@ -60,6 +54,9 @@
 
       
 #include <org/allbinary/logic/system/security/licensing/AbeClientInformationInterface.h>
+
+      
+#include <org/allbinary/util/ABHashtable.h>
 
       
 
@@ -87,8 +84,9 @@ class XmlRpcRemoteLicenseRegistrationClient: public XmlRpcAbeClient {
 
     private: const std::string PAGE = "licenseregistrationserverssl.php";
 
-public: XmlRpcRemoteLicenseRegistrationClient(AbeClientInformationInterface clientInfo){
-            super(clientInfo, "LicenseRegistrationServer.process");
+public: XmlRpcRemoteLicenseRegistrationClient(AbeClientInformationInterface clientInfo) : XmlRpcAbeClient(clientInfo, "LicenseRegistrationServer.process"){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -140,7 +138,7 @@ xmlRpcClient.setBasicAuthentication(
                             nullptr);
     
 
-    Hashtable<any, any> hashtable = anyType as Hashtable<any, any>;;
+    ABHashtable<Object*, Object*> hashtable = *dynamic_cast<ABHashtable<Object*, Object*>*>(anyType);;
     
 this->logUtil.putF(CLIENT_INFO +hashtable.toString(), this, this->commonStrings.GET);
     

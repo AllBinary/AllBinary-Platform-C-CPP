@@ -18,9 +18,9 @@
 
 
 
-            #include "../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
 
@@ -115,7 +115,7 @@ this->category= CategoryUtil::getNameFromNode(node);
 }
 
 
-public: CategoryProperties(HashMap<any, any> categoryPropertiesHashMap){
+public: CategoryProperties(HashMap<Object*, Object*> categoryPropertiesHashMap){
 this->category= .toCharArray();
     
 }
@@ -260,7 +260,7 @@ pathStringBuffer.append(abPathData.SEPARATOR).append(this->getValue());
                         for (
     int32_t index = 0;index < size; index++)
         {
-pathStringBuffer.append(list.get(index) as string);
+pathStringBuffer.append(list.get(index));
     
 }
 
@@ -333,9 +333,9 @@ this->category= value;
 }
 
 
-    public: HashMap<any, any> toHashMap(){
+    public: HashMap<Object*, Object*> toHashMap(){
 
-    HashMap<any, any> categoryHashMap = StdUtil::getInstance().createHashMap();;
+    HashMap<Object*, Object*> categoryHashMap = StdUtil::getInstance().createHashMap();;
     
 categoryHashMap.put(CategoryData::getInstance().NAME, this->category);
     

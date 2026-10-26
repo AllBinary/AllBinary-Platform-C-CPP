@@ -18,13 +18,10 @@
 
 
 
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../../../java/lang/Integer.h"
+            #include "java/lang/Integer.h"
         
-#include <jsinterop/annotations/JsType.h>
-
-      
 #include <org/allbinary/game/input/PlayerGameInput.h>
 
       
@@ -44,12 +41,6 @@
 
       
 #include <org/allbinary/util/BasicArrayListD.h>
-
-      
-#include <jsinterop/annotations/JsMethod.h>
-
-      
-#include <jsinterop/annotations/JsConstructor.h>
 
       
 
@@ -136,7 +127,7 @@ super.removeListener(eventListenerInterface);
 
         try {
             
-    PlayerGameInput playerGameInput = this->list.objectArray[index]! as PlayerGameInput;;
+    PlayerGameInput playerGameInput = this->list.objectArray[index];;
     
 playerGameInput.onDownKey(eventObject);
     
@@ -161,7 +152,7 @@ this->logUtil.put(this->commonStrings.EXCEPTION, this, EventStrings::getInstance
         {
 
         try {
-            eventListenerInterface= this->eventListenerInterfaceList.get(index) as EventListenerInterface;
+            eventListenerInterface= this->eventListenerInterfaceList.get(index);
     
 this->processI(eventObject, eventListenerInterface);
     
@@ -196,7 +187,7 @@ index++;
 
         try {
             
-    PlayerGameInput playerGameInput = this->list.objectArray[index]! as PlayerGameInput;;
+    PlayerGameInput playerGameInput = this->list.objectArray[index];;
     
 playerGameInput.onDownKeyEvent(eventObject);
     
@@ -221,7 +212,7 @@ this->logUtil.put(this->commonStrings.EXCEPTION, this, EventStrings::getInstance
         {
 
         try {
-            eventListenerInterface= this->eventListenerInterfaceList.get(index) as EventListenerInterface;
+            eventListenerInterface= this->eventListenerInterfaceList.get(index);
     
 this->processEvent(eventObject, eventListenerInterface);
     
@@ -244,7 +235,7 @@ index++;
             
     protected: void processI(Integer eventObject, EventListenerInterface eventListenerInterface){
 
-    DownKeyEventListenerInterface downKeyEventListenerInterface = eventListenerInterface as DownKeyEventListenerInterface;;
+    DownKeyEventListenerInterface downKeyEventListenerInterface = eventListenerInterface;;
     
 downKeyEventListenerInterface.onDownKey(eventObject);
     
@@ -255,7 +246,7 @@ downKeyEventListenerInterface.onDownKey(eventObject);
             
     protected: void processEvent(GameKeyEvent eventObject, EventListenerInterface eventListenerInterface){
 
-    DownKeyEventListenerInterface downKeyEventListenerInterface = eventListenerInterface as DownKeyEventListenerInterface;;
+    DownKeyEventListenerInterface downKeyEventListenerInterface = eventListenerInterface;;
     
 downKeyEventListenerInterface.onDownKeyEvent(eventObject);
     
@@ -284,7 +275,7 @@ stringBuffer.appendint(this->list.size());
         {
 
         try {
-            eventListenerInterface= this->list.get(index) as EventListenerInterface;
+            eventListenerInterface= this->list.get(index);
     
 stringBuffer.append(DownKeyEventHandlerBase::LISTENER_LABEL);
     

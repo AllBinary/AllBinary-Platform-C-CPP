@@ -18,9 +18,9 @@
 
 
 
-            #include "../../../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
 
@@ -106,11 +106,11 @@ this->document= DomDocumentFileHelper::createDocument(xmlFile);
 }
 
 
-    public: HashMap<any, any> toTransformInfoPropertiesHashMap(){
+    public: HashMap<Object*, Object*> toTransformInfoPropertiesHashMap(){
 
         try {
             
-    HashMap<any, any> transformInfoPropertiesHashMap = StdUtil::getInstance().createHashMap();;
+    HashMap<Object*, Object*> transformInfoPropertiesHashMap = StdUtil::getInstance().createHashMap();;
     
 
     Node transformInfosNode = this->document.getElementsByTagName(TransformInfosData::getInstance().NAME).item(0);;
@@ -146,7 +146,7 @@ this->document= DomDocumentFileHelper::createDocument(xmlFile);
                         for (
     int32_t index = 0;index < size; index++)
         {
-node= transformInfoNodeVector.get(index) as Node;
+node= transformInfoNodeVector.get(index);
     
 transformInfoProperties= TransformInfoPropertiesFactory::getInstance().getInstance(node);
     

@@ -21,7 +21,7 @@
         #ifndef ORG_ALLBINARY_INPUT_MOTION_ONLYTOUCHBUTTONRECOGNIZER_H
         #define ORG_ALLBINARY_INPUT_MOTION_ONLYTOUCHBUTTONRECOGNIZER_H
 
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/input/motion/button/TouchButtonRecognizer.h>
 

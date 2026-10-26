@@ -20,7 +20,7 @@
 
             #include <vector>
         
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <javax/microedition/lcdui/Canvas.h>
 
@@ -62,8 +62,9 @@ class SpinnerAI: public BasicAI {
 
     private: std::vector<int32_t> direction;
 
-public: SpinnerAI(std::vector<int32_t> direction, AllBinaryLayer ownerLayerInterface, GameInput gameInput){
-            super(ownerLayerInterface, gameInput);
+public: SpinnerAI(std::vector<int32_t> direction, AllBinaryLayer ownerLayerInterface, GameInput gameInput) : BasicAI(ownerLayerInterface, gameInput){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -80,7 +81,7 @@ this->direction= direction;
                         if(this->isEven)
                         
                                     {
-                                    super.processKeyAI(this->direction[0]!);
+                                    super.processKeyAI(this->direction[0]);
     
 this->isEven= false;
     

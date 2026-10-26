@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
 
 
@@ -50,7 +50,7 @@ class URIResolverStrings
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return instance;
+                        return URIResolverStrings::instance();
     
 }
 

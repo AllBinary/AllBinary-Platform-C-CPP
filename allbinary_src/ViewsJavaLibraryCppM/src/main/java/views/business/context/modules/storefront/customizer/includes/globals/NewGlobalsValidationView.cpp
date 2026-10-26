@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/data/tree/dom/DomNodeInterface.h>
 
@@ -68,8 +68,9 @@ class NewGlobalsValidationView: public GlobalsView, public ValidationComponentIn
 
     protected: const LogUtil logUtil = LogUtil::getInstance();
 
-public: NewGlobalsValidationView(TransformInfoInterface transformInfoInterface){
-            super(transformInfoInterface);
+public: NewGlobalsValidationView(TransformInfoInterface transformInfoInterface) : GlobalsView(transformInfoInterface){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -95,7 +96,7 @@ public: NewGlobalsValidationView(TransformInfoInterface transformInfoInterface){
             
 
                             {
-                            CustomizerUtil::getInstance().insert(this->getTransformInfoInterface(), this as DomNodeInterface);
+                            CustomizerUtil::getInstance().insert(this->getTransformInfoInterface(), this);
     
 
                             }

@@ -59,7 +59,7 @@ this->init();
 
 
     public: void init(){
-this->totalVisitedArray= new Array(this->geographicMapCellHistoryArray.length);
+this->totalVisitedArray= std::vector<int32_t>(this->geographicMapCellHistoryArray.length);
     
 }
 
@@ -84,9 +84,9 @@ this->totalVisitedArray= new Array(this->geographicMapCellHistoryArray.length);
                         for (
     int32_t index = 0;index < size; index++)
         {
-totalVisited= this->geographicMapCellHistoryArray[index]!.getTotalVisited();
+totalVisited= this->geographicMapCellHistoryArray[index].getTotalVisited();
     
-currentTotalVisited= this->totalVisitedArray[index]!;
+currentTotalVisited= this->totalVisitedArray[index];
     
 
                         if(currentTotalVisited < totalVisited)

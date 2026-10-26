@@ -21,7 +21,7 @@
         #ifndef ADMIN_TAGHELPERS_PAYMENTTRANSACTIONRESULTHELPER_H
         #define ADMIN_TAGHELPERS_PAYMENTTRANSACTIONRESULTHELPER_H
 
-            #include "../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
 
@@ -67,7 +67,7 @@ class PaymentTransactionResultHelper: public BasicTable {
 
     private: Portion portion;
 
-public: PaymentTransactionResultHelper(HashMap<any, any> hashMap, PageContext pageContext);
+public: PaymentTransactionResultHelper(HashMap<Object*, Object*> hashMap, PageContext pageContext);
 
     public: std::string drop();
 

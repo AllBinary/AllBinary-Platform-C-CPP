@@ -21,7 +21,7 @@
         #ifndef WORKFLOWS_TEMPLATE_DATA_BASICSTOREWORKFLOW_H
         #define WORKFLOWS_TEMPLATE_DATA_BASICSTOREWORKFLOW_H
 
-            #include "../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
 
@@ -57,7 +57,7 @@
 
 class BasicStoreWorkFlow: public BasicWorkFlow, public StoreWorkFlowInterface {
 
-public: BasicStoreWorkFlow(HashMap<any, any> propertiesHashMap, PageContext pageContext);
+public: BasicStoreWorkFlow(HashMap<Object*, Object*> propertiesHashMap, PageContext pageContext);
 
                 //@Throws(Exception.constructor)
             

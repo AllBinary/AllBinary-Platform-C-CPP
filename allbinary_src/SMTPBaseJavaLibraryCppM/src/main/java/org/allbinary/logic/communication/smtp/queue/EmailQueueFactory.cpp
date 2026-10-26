@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
 
 
@@ -45,7 +45,7 @@ class EmailQueueFactory
             : public Object
          {
 
-    private: static EmailQueueInterface emailQueueInterface = BasicEmailQueue::getInstance() as EmailQueueInterface;
+    private: static EmailQueueInterface emailQueueInterface = BasicEmailQueue::getInstance();
 
     public: static EmailQueueInterface getInstance(){
 

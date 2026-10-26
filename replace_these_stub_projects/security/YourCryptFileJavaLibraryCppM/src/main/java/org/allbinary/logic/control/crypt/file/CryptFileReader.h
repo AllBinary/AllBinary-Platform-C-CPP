@@ -7,9 +7,9 @@
         #ifndef ORG_ALLBINARY_LOGIC_CONTROL_CRYPT_FILE_CRYPTFILEREADER_H
         #define ORG_ALLBINARY_LOGIC_CONTROL_CRYPT_FILE_CRYPTFILEREADER_H
 
-            #include "../../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/io/InputStream.h>
 

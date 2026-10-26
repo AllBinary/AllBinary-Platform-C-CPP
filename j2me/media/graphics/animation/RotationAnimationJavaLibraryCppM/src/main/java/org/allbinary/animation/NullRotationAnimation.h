@@ -7,11 +7,8 @@
         #ifndef ORG_ALLBINARY_ANIMATION_NULLROTATIONANIMATION_H
         #define ORG_ALLBINARY_ANIMATION_NULLROTATIONANIMATION_H
 
-            #include "../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-#include <jsinterop/annotations/JsType.h>
-
-      
 #include <org/allbinary/math/AngleFactory.h>
 
       
@@ -19,12 +16,6 @@
 
       
 #include <org/allbinary/util/CircularIndexUtil.h>
-
-      
-#include <jsinterop/annotations/JsMethod.h>
-
-      
-#include <jsinterop/annotations/JsConstructor.h>
 
       
 

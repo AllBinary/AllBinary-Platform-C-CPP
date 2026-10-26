@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
 
@@ -50,8 +50,9 @@
         
 class WizardWebStoreAdminUser: public User {
 
-public: WizardWebStoreAdminUser(){
-            super();
+public: WizardWebStoreAdminUser() : User(){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -59,8 +60,9 @@ public: WizardWebStoreAdminUser(){
 }
 
 
-public: WizardWebStoreAdminUser(HashMap<any, any> userHashMap){
-            super(userHashMap);
+public: WizardWebStoreAdminUser(HashMap<Object*, Object*> userHashMap) : User(userHashMap){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.

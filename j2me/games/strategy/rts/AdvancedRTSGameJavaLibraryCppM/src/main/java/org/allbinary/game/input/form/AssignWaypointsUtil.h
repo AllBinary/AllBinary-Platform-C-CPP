@@ -21,9 +21,9 @@
         #ifndef ORG_ALLBINARY_GAME_INPUT_FORM_ASSIGNWAYPOINTSUTIL_H
         #define ORG_ALLBINARY_GAME_INPUT_FORM_ASSIGNWAYPOINTSUTIL_H
 
-            #include "../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/game/layer/AdvancedRTSGameLayer.h>
 

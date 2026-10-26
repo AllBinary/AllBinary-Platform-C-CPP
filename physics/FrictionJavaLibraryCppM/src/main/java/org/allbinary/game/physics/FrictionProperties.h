@@ -21,7 +21,7 @@
         #ifndef ORG_ALLBINARY_GAME_PHYSICS_FRICTIONPROPERTIES_H
         #define ORG_ALLBINARY_GAME_PHYSICS_FRICTIONPROPERTIES_H
 
-            #include "../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
 #include <org/allbinary/game/physics/friction/FrictionData.h>
 

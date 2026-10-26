@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/game/layer/AllBinaryGameLayer.h>
 
@@ -59,8 +59,9 @@ class DelayedConstantVelocityMovement: public BasicConstantVelocityMovement {
 
     private: const TimeDelayHelper timeDelayHelper = TimeDelayHelper(60);
 
-public: DelayedConstantVelocityMovement(BasicDecimal basicDecimal, BasicVelocityProperties velocityProperties){
-            super(basicDecimal, velocityProperties);
+public: DelayedConstantVelocityMovement(BasicDecimal basicDecimal, BasicVelocityProperties velocityProperties) : BasicConstantVelocityMovement(basicDecimal, velocityProperties){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.

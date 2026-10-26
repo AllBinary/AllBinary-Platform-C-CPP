@@ -49,7 +49,7 @@ class AndroidAPI9KeyFactory: public AndroidKeyFactory {
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return AndroidAPI9KeyFactory::instance() as AndroidAPI9KeyFactory;
+                        return AndroidAPI9KeyFactory::instance();
     
 }
 

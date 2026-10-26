@@ -21,7 +21,7 @@
         #ifndef ORG_ALLBINARY_INPUT_GYRO_ALLBINARYORIENTATIONSENSOR_H
         #define ORG_ALLBINARY_INPUT_GYRO_ALLBINARYORIENTATIONSENSOR_H
 
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/game/input/CompleteMotionGestureInputEventListenerInterface.h>
 

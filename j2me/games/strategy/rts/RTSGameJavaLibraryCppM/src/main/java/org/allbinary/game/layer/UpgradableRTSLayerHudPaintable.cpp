@@ -146,7 +146,7 @@ this->percentCompleteX2= this->imageX +commonButtons.STANDARD_BUTTON_SIZE -this-
 
     public: void updateSelectionInfo(){
 
-    RTSLayer rtsLayer = this->getRtsLayer() as RTSLayer;;
+    RTSLayer rtsLayer = this->getRtsLayer();;
     
 this->rtsLayerCompositePaintableLateInit.update(rtsLayer);
     
@@ -167,7 +167,7 @@ this->setName(rtsLayer.getName());
 
     public: void updateInfo(){
 
-    RTSLayer rtsLayer = this->getRtsLayer() as RTSLayer;;
+    RTSLayer rtsLayer = this->getRtsLayer();;
     
 this->percentComplete= rtsLayer.getPercentComplete();
     

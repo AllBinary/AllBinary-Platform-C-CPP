@@ -18,11 +18,11 @@
 
 
 
-            #include "../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../java/lang/System.h"
+            #include "java/lang/System.h"
         
-            #include "../../../../../java/lang/Integer.h"
+            #include "java/lang/Integer.h"
         
 #include <org/allbinary/TsUtil.h>
 
@@ -102,12 +102,12 @@ this->put(specialMessage, anyType, functionName, exception);
     std::string className = CommonStrings::getInstance().EMPTY;;
     
 
-                        if(anyType->constructor.name.toString()! != 
+                        if(anyType->constructor.name.toString() != 
                                     nullptr
                                 )
                         
                                     {
-                                    className= StringMaker().append(anyType->constructor.name.toString()!).append(CommonSeps::getInstance().COLON).append(Integer::toHexString(TsUtil::getInstance().hashCode(anyType))).toString();
+                                    className= StringMaker().append(anyType->constructor.name.toString()).append(CommonSeps::getInstance().COLON).append(Integer::toHexString(TsUtil::getInstance().hashCode(anyType))).toString();
     
 
                                     }
@@ -136,12 +136,18 @@ console.log(this->LOG_SUCCESS + message);
     std::string className = CommonStrings::getInstance().EMPTY;;
     
 
-                        if(anyType->constructor.name.toString()! != 
+                        if(anyType->constructor.name.toString() != 
                                     nullptr
                                 )
                         
                                     {
-                                    className= StringMaker().append(anyType->constructor.name.toString()!).append(CommonSeps::getInstance().COLON).append(Integer::toHexString(TsUtil::getInstance().hashCode(anyType))).toString();
+                                    
+    int32_t hashCodeValue = TsUtil::getInstance().hashCode(anyType);;
+    
+
+    std::string hexString = Integer::toHexString(hashCodeValue);;
+    
+className= StringMaker().append(anyType->constructor.name.toString()).append(CommonSeps::getInstance().COLON).append(hexString).toString();
     
 
                                     }

@@ -20,11 +20,8 @@
         #ifndef ORG_ALLBINARY_GAME_LAYER_ADVANCEDRTSLAYERUTIL_H
         #define ORG_ALLBINARY_GAME_LAYER_ADVANCEDRTSLAYERUTIL_H
 
-            #include "../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-#include <java/util/Hashtable.h>
-
-      
 #include <org/allbinary/game/layer/waypoint/WorkWaypoint.h>
 
       
@@ -32,6 +29,9 @@
 
       
 #include <org/allbinary/media/graphics/geography/map/racetrack/BaseRaceTrackGeographicMap.h>
+
+      
+#include <org/allbinary/util/ABHashtable.h>
 
       
 
@@ -62,7 +62,7 @@ class AdvancedRTSLayerUtil
 
     public: static AdvancedRTSLayerUtil getInstance();
 
-    public: Hashtable<any, any> createFakeRTSLayerHashtable(BaseRaceTrackGeographicMap baseRaceTrackGeographicMap);
+    public: ABHashtable<Object*, Object*> createFakeRTSLayerHashtable(BaseRaceTrackGeographicMap baseRaceTrackGeographicMap);
 
 };
 

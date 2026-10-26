@@ -21,7 +21,7 @@
         #ifndef VIEWS_ADMIN_STOREFRONT_STATISTICS_VALIDATIONSTOREFRONTSTATISTICSVIEW_H
         #define VIEWS_ADMIN_STOREFRONT_STATISTICS_VALIDATIONSTOREFRONTSTATISTICSVIEW_H
 
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/business/context/modules/storefront/StoreFrontInterface.h>
 

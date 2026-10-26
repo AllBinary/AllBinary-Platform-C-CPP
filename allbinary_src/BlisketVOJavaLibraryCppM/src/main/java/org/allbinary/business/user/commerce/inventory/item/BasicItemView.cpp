@@ -20,9 +20,9 @@
 
             #include <vector>
         
-            #include "../../../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
 
@@ -113,7 +113,7 @@ this->vector= vector;
                                     }
                                 
 
-    HashMap<any, any> hashMap = this->itemInterface.toHashMap();;
+    HashMap<Object*, Object*> hashMap = this->itemInterface.toHashMap();;
     
 
     std::string EMPTY_STRING = StringUtil::getInstance().EMPTY_STRING;;
@@ -143,10 +143,10 @@ hashMap.put(this->basicItemData.IMAGE, EMPTY_STRING);
     int32_t index = 0;index < size2; index++)
         {
 
-    std::string name = nameArray[index]! as string;;
+    std::string name = nameArray[index];;
     
 
-    std::string value = hashMap.get(name) as string;;
+    std::string value = hashMap.get(name);;
     
 value= stringUtil.getNonNull(value);
     
@@ -170,7 +170,7 @@ node.appendChild(totalNode);
     int32_t index = 0;index < size; index++)
         {
 
-    DomNodeInterface domNodeInterface = this->vector.get(index) as DomNodeInterface;;
+    DomNodeInterface domNodeInterface = this->vector.get(index);;
     
 
     Node customNode = domNodeInterface.toXmlNode(document);;

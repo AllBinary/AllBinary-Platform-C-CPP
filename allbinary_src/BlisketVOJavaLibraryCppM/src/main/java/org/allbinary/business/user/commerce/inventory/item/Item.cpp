@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
 
@@ -84,8 +84,9 @@ class Item: public BasicItem, public OrderItemInterface {
 
     private: std::string special;
 
-public: Item(HashMap<any, any> itemHashMap){
-            super(itemHashMap);
+public: Item(HashMap<Object*, Object*> itemHashMap) : BasicItem(itemHashMap){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -112,16 +113,16 @@ this->shippingAddress= StreetAddress();
 }
 
 
-    private: void setData(HashMap<any, any> itemHashMap){
-this->group= itemHashMap.get(ShippingMethodData::GROUP) as string;
+    private: void setData(HashMap<Object*, Object*> itemHashMap){
+this->group= itemHashMap.get(ShippingMethodData::GROUP);
     
-this->tax= itemHashMap.get(OrderHistoryData::TAX) as string;
+this->tax= itemHashMap.get(OrderHistoryData::TAX);
     
-this->shippingType= itemHashMap.get(ShippingMethodData::NAME) as string;
+this->shippingType= itemHashMap.get(ShippingMethodData::NAME);
     
-this->shippingCost= itemHashMap.get(ShippingMethodData::COST) as string;
+this->shippingCost= itemHashMap.get(ShippingMethodData::COST);
     
-this->shippedDate= itemHashMap.get(OrderHistoryData::SHIPPEDDATE) as string;
+this->shippedDate= itemHashMap.get(OrderHistoryData::SHIPPEDDATE);
     
 itemHashMap.put(StreetAddressData::NAME, itemHashMap.get(ShippingAddressData::NAME));
     
@@ -236,9 +237,9 @@ this->special= value;
 }
 
 
-    public: HashMap<any, any> toHashMap(){
+    public: HashMap<Object*, Object*> toHashMap(){
 
-    HashMap<any, any> hashMap = super.toHashMap();;
+    HashMap<Object*, Object*> hashMap = super.toHashMap();;
     
 hashMap.put(ShippingMethodData::GROUP, this->group);
     

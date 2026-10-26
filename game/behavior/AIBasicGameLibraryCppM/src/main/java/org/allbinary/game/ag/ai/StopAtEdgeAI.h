@@ -21,7 +21,7 @@
         #ifndef ORG_ALLBINARY_GAME_AG_AI_STOPATEDGEAI_H
         #define ORG_ALLBINARY_GAME_AG_AI_STOPATEDGEAI_H
 
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/game/ai/BasicAI.h>
 

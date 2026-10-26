@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/awt/image/BufferedImage.h>
 
@@ -113,7 +113,7 @@ this->run();
 
 
     public: void onEvent(AllBinaryEventObject allBinaryEventObject){
-this->onCaptureEvent(allBinaryEventObject as CapturedImageWorkerResultsEvent);
+this->onCaptureEvent(allBinaryEventObject);
     
 }
 
@@ -131,7 +131,7 @@ this->setRunning(true);
 timeHelper.setStartTimeTNT();
     
 
-    CapturedImageWorkerResultsEvent capturedImageWorkerResultsEvent = (this->capturedImageWorkerResultsEventVector.get(0) as CapturedImageWorkerResultsEvent);;
+    CapturedImageWorkerResultsEvent capturedImageWorkerResultsEvent = (this->capturedImageWorkerResultsEventVector.get(0));;
     
 
     BufferedImage screenBufferedImage = capturedImageWorkerResultsEvent.getBufferedImage();;

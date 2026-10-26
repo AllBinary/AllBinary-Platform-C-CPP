@@ -18,9 +18,9 @@
 
 
 
-            #include "../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/logic/system/os/GenericOperatingSystem.h>
 
@@ -86,7 +86,7 @@ class HardwareFactory
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return LinuxHardware() as HardwareInterface;
+                        return LinuxHardware();
     
 
                                     }
@@ -99,7 +99,7 @@ class HardwareFactory
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return WindowsHardware() as HardwareInterface;
+                        return WindowsHardware();
     
 
                                     }

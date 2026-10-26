@@ -18,9 +18,9 @@
 
 
 
-            #include "../../../java/lang/System.h"
+            #include "java/lang/System.h"
         
-            #include "../../../java/lang/Integer.h"
+            #include "java/lang/Integer.h"
         
 #include <android/view/View.h>
 
@@ -87,7 +87,7 @@ this->worstFrameProcessingTime= 0;
 
 
     public: void nextFrame(){
-this->frameProcessingTimeElapsed= Date.now() -this->frameProcessingTimeElapsed;
+this->frameProcessingTimeElapsed= System.currentTimeMillis() -this->frameProcessingTimeElapsed;
     
 
                         if(this->firstTime != true)

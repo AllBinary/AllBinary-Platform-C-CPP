@@ -10,7 +10,7 @@
                 *  You may obtain the AllBinary Open License Version 1 legal agreement from
                 *  AllBinary or the root directory of AllBinary's AllBinary Platform repository.
                 *  
-                *  Created By: Travis Berthelot  
+                *  Created By: Travis Berthelot   
         */
         
         /* Generated Code Do Not Modify */
@@ -20,7 +20,7 @@
 
             #include <vector>
         
-            #include "../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
 
 
@@ -59,11 +59,14 @@ class AngleIncrementInfoFactory
 }
 
 
-    private: const std::vector<AngleIncrementInfo> angleIncrementInfo = new Array(static_cast<int32_t>(AngleFactory::getInstance().TOTAL_ANGLE));
+    private: const std::vector<AngleIncrementInfo> angleIncrementInfo = std::vector<AngleIncrementInfo>(static_cast<int32_t>(AngleFactory::getInstance().TOTAL_ANGLE));
 
     public: AngleIncrementInfo getAt(int16_t angleIncrement){
 
     int32_t halfAngleIncrement = (static_cast<int32_t>(angleIncrement)>>1);;
+    
+
+    AngleIncrementInfo angleIncrementInfo;;
     
 
     AngleIncrementInfo angleIncrementInfoCanBeNull = this->angleIncrementInfo[halfAngleIncrement];;
@@ -74,18 +77,30 @@ class AngleIncrementInfoFactory
                                 )
                         
                                     {
-                                    angleIncrementInfoCanBeNull= AngleIncrementInfo(angleIncrement);
+                                    angleIncrementInfo= AngleIncrementInfo(angleIncrement);
     
-this->angleIncrementInfo[halfAngleIncrement]= angleIncrementInfoCanBeNull;
+this->angleIncrementInfo[halfAngleIncrement]= angleIncrementInfo;
     
-
-                                    }
-                                
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return angleIncrementInfoCanBeNull;
+                        return angleIncrementInfo;
+    
+
+                                    }
+                                
+                        else {
+                            angleIncrementInfo= angleIncrementInfoCanBeNull;
+    
+
+                        }
+                            
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return angleIncrementInfo;
     
 }
 

@@ -21,7 +21,7 @@
         #ifndef ORG_ALLBINARY_EMULATOR_SWT_SWTPROCESSORUTIL_H
         #define ORG_ALLBINARY_EMULATOR_SWT_SWTPROCESSORUTIL_H
 
-            #include "../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
 
 

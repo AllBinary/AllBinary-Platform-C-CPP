@@ -18,11 +18,11 @@
 
 
 
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../../java/lang/Integer.h"
+            #include "java/lang/Integer.h"
         
-            #include "../../../../java/lang/Thread.h"
+            #include "java/lang/Thread.h"
         
 #include <java/awt.h>
 
@@ -118,8 +118,9 @@ class CanvasImageJPanel: public javax::swing::JPanel, public ImageProcessedVisit
 
     private: BufferedImage result;
 
-public: CanvasImageJPanel(ImageProcessorInput imageProcessorInput){
-            super();
+public: CanvasImageJPanel(ImageProcessorInput imageProcessorInput) : javax::swing::JPanel(){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -426,7 +427,7 @@ file= File(filePath);
                                     }
                                 
 
-    bool isWritten = ImageIO::write(this->result as RenderedImage, imageStrings.PNG, file);;
+    bool isWritten = ImageIO::write(this->result, imageStrings.PNG, file);;
     
 this->logUtil.putF(StringMaker().append("File: ").append(StringUtil::getInstance().toString(file)).append(" Wrote: ").appendboolean(isWritten).toString(), this, this->commonStrings.RUN);
     

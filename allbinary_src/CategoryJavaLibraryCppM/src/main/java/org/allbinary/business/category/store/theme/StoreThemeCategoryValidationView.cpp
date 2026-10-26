@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/logic/control/validate/ValidationInterface.h>
 
@@ -52,8 +52,9 @@
 
 class StoreThemeCategoryValidationView: public StoreThemeCategoryView, public ValidationInterface {
 
-public: StoreThemeCategoryValidationView(StoreThemeCategoryInterface categoryInterface){
-            super(categoryInterface as StoreThemeCategoryInterface);
+public: StoreThemeCategoryValidationView(StoreThemeCategoryInterface categoryInterface) : StoreThemeCategoryView(categoryInterface){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.

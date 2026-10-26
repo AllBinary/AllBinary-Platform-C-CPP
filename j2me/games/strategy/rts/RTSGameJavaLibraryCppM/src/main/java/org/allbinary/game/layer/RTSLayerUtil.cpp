@@ -20,15 +20,12 @@
 
             #include <vector>
         
-            #include "../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../../java/lang/Integer.h"
+            #include "java/lang/Integer.h"
         
-#include <java/util/Hashtable.h>
-
-      
 #include <org/allbinary/game/identification/GroupCommonFactory.h>
 
       
@@ -66,6 +63,9 @@
 
       
 #include <org/allbinary/media/graphics/geography/map/racetrack/BaseRaceTrackGeographicMap.h>
+
+      
+#include <org/allbinary/util/ABHashtable.h>
 
       
 
@@ -163,7 +163,7 @@ rtsLayer.setLevel(rtsLayer.getLevel() -1);
                         for (
     int32_t index = size;--index >= 0; )
         {
-partInterface= partInterfaceArray[index]! as BasicWeaponPart;
+partInterface= partInterfaceArray[index];
     
 partInterface.setWeaponProperties(this->createWeaponProperties(partInterface.getWeaponProperties(), rtsLayer.getLevel(), rtsLayer.getLevel() +1));
     
@@ -193,7 +193,7 @@ rtsLayer.setLevel(rtsLayer.getLevel() +1);
                         for (
     int32_t index = size;--index >= 0; )
         {
-partInterface= partInterfaceArray[index]! as BasicWeaponPart;
+partInterface= partInterfaceArray[index];
     
 partInterface.setWeaponProperties(this->createWeaponProperties(partInterface.getWeaponProperties(), rtsLayer.getLevel(), rtsLayer.getLevel() -1));
     
@@ -254,7 +254,7 @@ cost= this->getCostExponential(cost);
                         for (
     int32_t index = size -1;index >= 0; index--)
         {
-partInterface= partInterfaceArray[index]! as BasicWeaponPart;
+partInterface= partInterfaceArray[index];
     
 weaponProperties= partInterface.getWeaponProperties();
     
@@ -300,7 +300,7 @@ total += this->getWeaponPropertiesCost(weaponProperties);
                         for (
     int32_t index = size -1;index >= 0; index--)
         {
-partInterface= partInterfaceArray[index]! as BasicWeaponPart;
+partInterface= partInterfaceArray[index];
     
 weaponProperties= partInterface.getWeaponProperties();
     
@@ -354,7 +354,7 @@ this->logUtil.putF(StringMaker().append("Total Cost: ").appendint(downgradeCost)
                         for (
     int32_t index = size -1;index >= 0; index--)
         {
-partInterface= partInterfaceArray[index]! as BasicWeaponPart;
+partInterface= partInterfaceArray[index];
     
 weaponProperties= partInterface.getWeaponProperties();
     
@@ -390,7 +390,7 @@ this->logUtil.putF(StringMaker().append("Total Cost: ").appendint(upgradeCost).t
                         for (
     int32_t index = list.size() -1;index >= 0; index--)
         {
-rtsLayer= list.get(index) as RTSLayer;
+rtsLayer= list.get(index);
     
 rtsLayer.setDestroyed(true);
     
@@ -401,9 +401,9 @@ list.clear();
 }
 
 
-    public: Hashtable<any, any> createFakeRTSLayerHashtable(BaseRaceTrackGeographicMap baseRaceTrackGeographicMap){
+    public: ABHashtable<Object*, Object*> createFakeRTSLayerHashtable(BaseRaceTrackGeographicMap baseRaceTrackGeographicMap){
 
-    Hashtable<any, any> hashtable = StdUtil::getInstance().createHashtable();;
+    ABHashtable<Object*, Object*> hashtable = StdUtil::getInstance().createHashtable();;
     
 
     FakeLayerManager layerManager = FakeLayerManager(GameInfo::NONE);;

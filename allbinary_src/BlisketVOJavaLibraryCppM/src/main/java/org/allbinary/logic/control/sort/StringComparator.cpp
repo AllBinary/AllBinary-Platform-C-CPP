@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
 #include <java/util/Comparator.h>
 
@@ -52,16 +52,16 @@ public: StringComparator(){
 
     public: int32_t compare(Object* anyType, Object* object2){
 
-    std::string string = anyType as string;;
+    std::string string = anyType;;
     
 
-    std::string string2 = object2 as string;;
+    std::string string2 = object2;;
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return string.compareTo(string2);;
+                        return string.compare(string2);;
     
 }
 

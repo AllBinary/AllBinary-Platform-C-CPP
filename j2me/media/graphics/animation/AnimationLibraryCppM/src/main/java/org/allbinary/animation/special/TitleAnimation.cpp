@@ -20,9 +20,7 @@
 
             #include <vector>
         
-            #include "../../../../java/lang/System.h"
-        
-            #include "../../../../java/lang/Integer.h"
+            #include "java/lang/Integer.h"
         
 #include <javax/microedition/lcdui/Graphics.h>
 
@@ -45,7 +43,7 @@
 #include <org/allbinary/graphics/displayable/DisplayInfoSingleton.h>
 
       
-#include <org/allbinary/logic/communication/log/LogUtil.h>
+#include <org/allbinary/logic/ABSystemWrapper.h>
 
       
 #include <org/allbinary/logic/math/PrimitiveIntUtil.h>
@@ -83,7 +81,7 @@ class TitleAnimation: public SpecialAnimation {
 }
 
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
+    protected: const ABSystemWrapper systemWrapper = ABSystemWrapper::getInstance();
 
     public: float deltaX= 0.0;
 
@@ -109,13 +107,14 @@ class TitleAnimation: public SpecialAnimation {
 
     private: const DisplayInfoSingleton displayInfoSingleton = DisplayInfoSingleton::getInstance();
 
-public: TitleAnimation(std::vector<IndexedAnimation> animationInterfaceArray, std::vector<BasicColor> basicColorArray, std::vector<int32_t> dxArray, std::vector<int32_t> dyArray, int32_t y, int32_t width, AnimationBehavior animationBehavior){
-            super(animationBehavior);
+public: TitleAnimation(std::vector<IndexedAnimation> animationInterfaceArray, std::vector<BasicColor> basicColorArray, std::vector<int32_t> dxArray, std::vector<int32_t> dyArray, int32_t y, int32_t width, AnimationBehavior animationBehavior) : SpecialAnimation(animationBehavior){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this->lastFrameStartTime= Date.now();
+this->lastFrameStartTime= this->systemWrapper.currentTimeMillis();
     
 this->animationInterfaceArray= animationInterfaceArray;
     
@@ -138,13 +137,13 @@ this->reset();
 
     public: void nextFrame(){
 
-    int64_t currentTime = Date.now();;
+    int64_t currentTime = this->systemWrapper.currentTimeMillis();;
     
 
     int64_t totalTimeElapsed = currentTime -this->lastFrameStartTime;;
     
 
-    IndexedAnimationBehavior indexedAnimationBehavior = this->getAnimationBehavior() as IndexedAnimationBehavior;;
+    IndexedAnimationBehavior indexedAnimationBehavior = this->getAnimationBehavior();;
     
 
                         if(totalTimeElapsed > indexedAnimationBehavior.frameDelayTime)
@@ -158,7 +157,7 @@ this->lastFrameStartTime= currentTime;
                                     }
                                 
 
-                        if(this->animationInterfaceArray[0]!.getFrame() == 0)
+                        if(this->animationInterfaceArray[0].getFrame() == 0)
                         
                                     {
                                     indexedAnimationBehavior.loopIndex++;
@@ -171,7 +170,7 @@ this->lastFrameStartTime= currentTime;
 
     public: bool isComplete(){
 
-    IndexedAnimationBehavior indexedAnimationBehavior = this->getAnimationBehavior() as IndexedAnimationBehavior;;
+    IndexedAnimationBehavior indexedAnimationBehavior = this->getAnimationBehavior();;
     
 
                         if(indexedAnimationBehavior.loopTotal ==  -1 || indexedAnimationBehavior.loopIndex < indexedAnimationBehavior.loopTotal || this->getFrame() != 0)
@@ -218,7 +217,7 @@ this->lastFrameStartTime= currentTime;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->animationInterfaceArray[0]!.getSize();;
+                        return this->animationInterfaceArray[0].getSize();;
     
 }
 
@@ -228,7 +227,7 @@ this->lastFrameStartTime= currentTime;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->animationInterfaceArray[0]!.getFrame();;
+                        return this->animationInterfaceArray[0].getFrame();;
     
 }
 
@@ -241,7 +240,7 @@ this->lastFrameStartTime= currentTime;
                         for (
     int32_t index = 0;index < this->sizeP; index++)
         {
-this->animationInterfaceArray[index]!.setFrame(frame);
+this->animationInterfaceArray[index].setFrame(frame);
     
 }
 
@@ -258,7 +257,7 @@ this->setFrame(this->getSize() -1);
 this->setLastFrame();
     
 
-    IndexedAnimationBehavior indexedAnimationBehavior = (this->getAnimationBehavior() as IndexedAnimationBehavior);;
+    IndexedAnimationBehavior indexedAnimationBehavior = (this->getAnimationBehavior());;
     
 indexedAnimationBehavior.reset();
     
@@ -273,7 +272,7 @@ indexedAnimationBehavior.reset();
                         for (
     int32_t index = 0;index < this->sizeP; index++)
         {
-this->animationInterfaceArray[index]!.previousFrame();
+this->animationInterfaceArray[index].previousFrame();
     
 }
 
@@ -324,12 +323,12 @@ deltaY= this->dyArray[index] +this->y;
                         if(this->basicColorArray[index] != this->CLEAR_COLOR)
                         
                                     {
-                                    this->basicSetColorUtil.setBasicColorP(graphics, this->basicColorArray[index]!);
+                                    this->basicSetColorUtil.setBasicColorP(graphics, this->basicColorArray[index]);
     
 
                                     }
                                 
-this->animationInterfaceArray[index]!.paintXY(graphics, deltaX, deltaY);
+this->animationInterfaceArray[index].paintXY(graphics, deltaX, deltaY);
     
 }
 

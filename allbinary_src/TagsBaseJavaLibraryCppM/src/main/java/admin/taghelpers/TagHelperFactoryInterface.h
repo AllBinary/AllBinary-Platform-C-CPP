@@ -21,7 +21,7 @@
         #ifndef ADMIN_TAGHELPERS_TAGHELPERFACTORYINTERFACE_H
         #define ADMIN_TAGHELPERS_TAGHELPERFACTORYINTERFACE_H
 
-            #include "../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
 
@@ -55,7 +55,7 @@ class TagHelperFactoryInterface {
 
                 //@Throws(Exception.constructor, LicensingException.constructor)
             
-    Object* getInstance(HashMap<any, any> hashMap, PageContext pageContext);
+    Object* getInstance(HashMap<Object*, Object*> hashMap, PageContext pageContext);
 
 };
 

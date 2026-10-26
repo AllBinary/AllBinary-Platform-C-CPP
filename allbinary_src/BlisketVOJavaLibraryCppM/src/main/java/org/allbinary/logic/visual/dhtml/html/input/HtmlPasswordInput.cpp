@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../../../../../java/lang/Integer.h"
+            #include "java/lang/Integer.h"
         
 
 
@@ -43,8 +43,9 @@
 
 class HtmlPasswordInput: public HtmlLengthInput {
 
-public: HtmlPasswordInput(std::string before, std::string name, std::string value, std::string after){
-            super(before, HtmlInputData::getInstance().PASSWORD, name, value, after);
+public: HtmlPasswordInput(std::string before, std::string name, std::string value, std::string after) : HtmlLengthInput(before, HtmlInputData::getInstance().PASSWORD, name, value, after){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.

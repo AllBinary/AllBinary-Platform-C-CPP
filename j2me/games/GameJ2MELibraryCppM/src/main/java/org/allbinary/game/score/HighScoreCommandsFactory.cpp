@@ -56,11 +56,12 @@ class HighScoreCommandsFactory: public HighScoreCommandsBaseFactory {
 }
 
 
-private: HighScoreCommandsFactory(){
-            super(
+private: HighScoreCommandsFactory() : HighScoreCommandsBaseFactory(
                                                 {
                                                     HighScoreCommands::getInstance().PERSONAL,HighScoreCommands::getInstance().WORLD
-                                                });
+                                                }){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.

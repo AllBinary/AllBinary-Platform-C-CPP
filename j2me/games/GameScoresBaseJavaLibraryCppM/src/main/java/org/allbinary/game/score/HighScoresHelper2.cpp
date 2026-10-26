@@ -104,7 +104,7 @@ this->circularIndexUtil.next();
 
         while(highScores.getTotal() < 1 && index < this->highScoresArrayP.size())
         {
-highScores= this->highScoresArrayP[this->circularIndexUtil.next()]!;
+highScores= this->highScoresArrayP[this->circularIndexUtil.next()];
     
 index++;
     

@@ -20,9 +20,9 @@
 
             #include <vector>
         
-            #include "../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/graphics/color/BasicColor.h>
 
@@ -105,7 +105,7 @@ this->framePoints= VectorRotationGenerator::getInstance().getInstance(this->vect
                         
                                     {
                                     
-    IndexedAnimation rotationAnimationInterface = animationInterface as IndexedAnimation;;
+    IndexedAnimation rotationAnimationInterface = animationInterface;;
     
 frame= rotationAnimationInterface.getFrame();
     
@@ -113,7 +113,7 @@ frame= rotationAnimationInterface.getFrame();
                                     }
                                 
 
-    std::vector<std::vector<std::vector<int32_t>>> points = this->vectorExplosionGenerator.getInstance(this->framePoints[frame]!, 6, this->vectorExplosionGenerator.ROTATION);;
+    std::vector<std::vector<std::vector<int32_t>>> points = this->vectorExplosionGenerator.getInstance(this->framePoints[frame], 6, this->vectorExplosionGenerator.ROTATION);;
     
 
 

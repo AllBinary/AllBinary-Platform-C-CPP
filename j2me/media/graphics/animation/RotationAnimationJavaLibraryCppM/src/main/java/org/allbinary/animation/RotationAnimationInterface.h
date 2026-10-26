@@ -21,16 +21,10 @@
         #ifndef ORG_ALLBINARY_ANIMATION_ROTATIONANIMATIONINTERFACE_H
         #define ORG_ALLBINARY_ANIMATION_ROTATIONANIMATIONINTERFACE_H
 
-#include <jsinterop/annotations/JsType.h>
-
-      
 #include <org/allbinary/direction/DirectionalInterface.h>
 
       
 #include <org/allbinary/math/AngleInfo.h>
-
-      
-#include <jsinterop/annotations/JsMethod.h>
 
       
 

@@ -20,7 +20,7 @@
 
             #include <vector>
         
-            #include "../../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
 #include <org/allbinary/util/BasicArrayList.h>
 
@@ -156,7 +156,7 @@ result += this->END;
                         for (
     int32_t i = 0;i < inputSize; i++)
         {
-result += inputArray[i]!.toString();
+result += inputArray[i].toString();
     
 result += " ";
     

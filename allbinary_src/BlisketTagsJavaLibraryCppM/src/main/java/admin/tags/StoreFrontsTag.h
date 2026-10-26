@@ -21,7 +21,7 @@
         #ifndef ADMIN_TAGS_STOREFRONTSTAG_H
         #define ADMIN_TAGS_STOREFRONTSTAG_H
 
-            #include "../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/lang/reflect/Method.h>
 

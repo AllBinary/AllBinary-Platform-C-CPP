@@ -20,7 +20,7 @@
 
             #include <vector>
         
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <javax/microedition/lcdui/Canvas.h>
 
@@ -93,7 +93,7 @@
 
 class ScrollMapPlayerGameInput: public PlayerGameInput {
 
-    protected: const std::vector<GameInputProcessor> inputProcessorArray = new Array(InputFactory::getInstance().MAX);
+    protected: const std::vector<GameInputProcessor> inputProcessorArray = std::vector<GameInputProcessor>(InputFactory::getInstance().MAX);
 
     private: const int32_t border = 150;
 
@@ -107,8 +107,9 @@ class ScrollMapPlayerGameInput: public PlayerGameInput {
 
     private: int32_t maxRight= 0;
 
-public: ScrollMapPlayerGameInput(BasicGeographicMap geographicMapInterface, BasicArrayList list, int32_t playerInputId){
-            super(list, BasicArrayListD(), playerInputId);
+public: ScrollMapPlayerGameInput(BasicGeographicMap geographicMapInterface, BasicArrayList list, int32_t playerInputId) : PlayerGameInput(list, BasicArrayListD(), playerInputId){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -331,7 +332,7 @@ GameInputProcessorUtil::init(this->inputProcessorArray);
                 //@Throws(Exception.constructor)
             
     public: void processInputKey(int32_t key){
-this->inputProcessorArray[key]!.processEvent(AllBinaryGameLayerManager::getNullInstance(), GameKeyEvent::NONE);
+this->inputProcessorArray[key].processEvent(AllBinaryGameLayerManager::getNullInstance(), GameKeyEvent::NONE);
     
 }
 
@@ -355,7 +356,7 @@ this->inputProcessorArray[key]!.processEvent(AllBinaryGameLayerManager::getNullI
     int32_t index = 0;index < size; index++)
         {
 
-    GameKeyEvent gameKeyEvent = this->inputList.get(index) as GameKeyEvent;;
+    GameKeyEvent gameKeyEvent = this->inputList.get(index);;
     
 key= gameKeyEvent.getKey();
     

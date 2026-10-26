@@ -18,9 +18,9 @@
 
 
 
-            #include "../../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/business/user/UserInterface.h>
 
@@ -129,7 +129,7 @@ this->notifyUser();
     std::string emailBody = "New Password: " +this->newPassword;;
     
 
-    BasicEmailInfo basicEmailInfo = AdminEmailInfo(emailSubject, emailBody) as BasicEmailInfo;;
+    BasicEmailInfo basicEmailInfo = AdminEmailInfo(emailSubject, emailBody);;
     
 
     EmailInfo emailInfo = EmailInfo(basicEmailInfo);;
@@ -178,7 +178,7 @@ adminUserEmailEventHandler.receiveEmailInfo(UserEmailEventNameData::NEWPASSWORD,
     std::string body = "New Password: " +this->newPassword;;
     
 
-    BasicEmailInfo basicEmailInfo = AdminEmailInfo(subject, body) as BasicEmailInfo;;
+    BasicEmailInfo basicEmailInfo = AdminEmailInfo(subject, body);;
     
 
     EmailInfo emailInfo = EmailInfo(basicEmailInfo);;

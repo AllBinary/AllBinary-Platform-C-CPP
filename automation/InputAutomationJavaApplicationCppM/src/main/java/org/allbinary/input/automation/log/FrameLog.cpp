@@ -20,11 +20,11 @@
 
             #include <vector>
         
-            #include "../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../../../java/lang/Long.h"
+            #include "java/lang/Long.h"
         
 #include <java/io/File.h>
 
@@ -108,7 +108,7 @@ this->infoStringBuffer.append(infoString);
                         for (
     int32_t index = 0;index < size; index++)
         {
-this->addAction(vectorOfStrings.get(index) as string);
+this->addAction(vectorOfStrings.get(index));
     
 }
 

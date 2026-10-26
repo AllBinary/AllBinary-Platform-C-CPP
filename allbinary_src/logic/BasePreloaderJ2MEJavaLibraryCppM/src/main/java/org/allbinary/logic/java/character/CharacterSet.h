@@ -21,17 +21,8 @@
         #ifndef ORG_ALLBINARY_LOGIC_JAVA_CHARACTER_CHARACTERSET_H
         #define ORG_ALLBINARY_LOGIC_JAVA_CHARACTER_CHARACTERSET_H
 
-            #include "../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-#include <jsinterop/annotations/JsType.h>
-
-      
-#include <jsinterop/annotations/JsMethod.h>
-
-      
-#include <jsinterop/annotations/JsConstructor.h>
-
-      
 
 
 

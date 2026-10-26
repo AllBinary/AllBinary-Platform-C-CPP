@@ -20,9 +20,9 @@
 
             #include <vector>
         
-            #include "../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../../../../java/lang/Long.h"
+            #include "java/lang/Long.h"
         
 #include <java/util/HashMap.h>
 
@@ -108,8 +108,9 @@ class GenericInputAutomationWorker: public AbstractInputAutomationWorker {
 
     private: GenericProfile genericProfile;
 
-public: GenericInputAutomationWorker(InputAutomationActionInterface inputAutomationActionInterface, GenericProfile genericProfile, MotionRectangleConstraintsInterface motionRectangleConstraintsInterface, ImageComparatorConstraintsInterface imageComparatorConstraintsInterface){
-            super(inputAutomationActionInterface);
+public: GenericInputAutomationWorker(InputAutomationActionInterface inputAutomationActionInterface, GenericProfile genericProfile, MotionRectangleConstraintsInterface motionRectangleConstraintsInterface, ImageComparatorConstraintsInterface imageComparatorConstraintsInterface) : AbstractInputAutomationWorker(inputAutomationActionInterface){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -140,7 +141,7 @@ this->setGenericProfile(genericProfile);
     int32_t index = 0;index < size; index++)
         {
 
-    GenericProfileDataWorkerType genericProfileDataWorkerType = vector.get(index) as GenericProfileDataWorkerType;;
+    GenericProfileDataWorkerType genericProfileDataWorkerType = vector.get(index);;
     
 this->logUtil.putF("Adding Listener: " +genericProfileDataWorkerType, this, this->commonStrings.CONSTRUCTOR);
     
@@ -175,7 +176,7 @@ this->logUtil.putF(this->commonStrings.START, this, this->PROCESS_DATA_WORKER_RE
 this->waitForDataWorkers();
     
 
-    J2SECacheInterface cacheInterface = CapturedBufferedImagesCacheSingleton::getInstance() as J2SECacheInterface;;
+    J2SECacheInterface cacheInterface = CapturedBufferedImagesCacheSingleton::getInstance();;
     
 
     std::vector<Object*> keyArray = cacheInterface.keySet().();;
@@ -186,7 +187,7 @@ this->waitForDataWorkers();
                                     {
                                     this->logUtil.putF("Image Available", this, this->PROCESS_DATA_WORKER_RESULTS);
     
-this->setFrame(keyArray[keyArray.size() -1]! as Long);
+this->setFrame(keyArray[keyArray.size() -1]);
     
 
                         if(getFrame() > this->lastFrame)
@@ -195,7 +196,7 @@ this->setFrame(keyArray[keyArray.size() -1]! as Long);
                                     this->logUtil.putF("Processing new frame: " +getFrame(), this, this->PROCESS_DATA_WORKER_RESULTS);
     
 
-    HashMap<any, any> hashMap = this->getGenericProfile().getGenericProfileActions().getHashMap();;
+    HashMap<Object*, Object*> hashMap = this->getGenericProfile().getGenericProfileActions().getHashMap();;
     
 
     Set set = hashMap.keys();;
@@ -216,12 +217,12 @@ this->logUtil.putF("Processing " +set.size() +"Actions", this, this->PROCESS_DAT
     int32_t index = 0;index < size; index++)
         {
 
-    std::string actionNameString = actionNameArray[index]! as string;;
+    std::string actionNameString = actionNameArray[index];;
     
 this->logUtil.putF("Processing Action: " +actionNameString, this, this->PROCESS_DATA_WORKER_RESULTS);
     
 
-    GenericProfileAction genericProfileAction = hashMap.get(actionNameString) as GenericProfileAction;;
+    GenericProfileAction genericProfileAction = hashMap.get(actionNameString);;
     
 
     GenericProfileActionScript genericProfileActionScript = genericProfileAction.getGenericProfileActionScript();;

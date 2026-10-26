@@ -21,9 +21,6 @@
         #ifndef ORG_ALLBINARY_GAME_PART_PARTINTERFACE_H
         #define ORG_ALLBINARY_GAME_PART_PARTINTERFACE_H
 
-#include <jsinterop/annotations/JsType.h>
-
-      
 #include <org/allbinary/animation/AnimationInterfaceCompositeInterface.h>
 
       

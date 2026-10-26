@@ -20,9 +20,9 @@
 
             #include <vector>
         
-            #include "../../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/util/BasicArrayList.h>
 
@@ -145,7 +145,7 @@ reusableList.clear();
     int32_t index = occupyList.size() -1;index >= 0; index--)
         {
 
-    GeographicMapCellPosition layerGeographicMapCellPosition = occupyList.get(index) as GeographicMapCellPosition;;
+    GeographicMapCellPosition layerGeographicMapCellPosition = occupyList.get(index);;
     
 
     BasicArrayList surroundingGeographicMapCellPositionList = this->getAllSurroundingAt(geographicMapInterface, layerGeographicMapCellPosition, this->reusableSingleThreadedSurroundingList);;
@@ -158,7 +158,7 @@ reusableList.clear();
     int32_t index2 = surroundingGeographicMapCellPositionList.size() -1;index2 >= 0; index2--)
         {
 
-    GeographicMapCellPosition geographicMapCellPosition = surroundingGeographicMapCellPositionList.get(index2) as GeographicMapCellPosition;;
+    GeographicMapCellPosition geographicMapCellPosition = surroundingGeographicMapCellPositionList.get(index2);;
     
 
                         if(!reusableList.contains(geographicMapCellPosition) && !occupyList.contains(geographicMapCellPosition))
@@ -219,9 +219,9 @@ reusableSurroundingList.clear();
                         for (
     int32_t index = 0;index < 8; index++)
         {
-column= layerGeographicMapCellPosition.getColumn() +this->surroundArray[index]![0];
+column= layerGeographicMapCellPosition.getColumn() +this->surroundArray[index][0];
     
-row= layerGeographicMapCellPosition.getRow() +this->surroundArray[index]![1];
+row= layerGeographicMapCellPosition.getRow() +this->surroundArray[index][1];
     
 
                         if(tiledLayer.isOnTileLayer(column, row))

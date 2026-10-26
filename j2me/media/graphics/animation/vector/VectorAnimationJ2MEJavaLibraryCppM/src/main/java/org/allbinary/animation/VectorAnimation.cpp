@@ -20,11 +20,8 @@
 
             #include <vector>
         
-            #include "../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-#include <jsinterop/annotations/JsType.h>
-
-      
 #include <javax/microedition/lcdui/Graphics.h>
 
       
@@ -37,22 +34,10 @@
 #include <org/allbinary/logic/NullUtil.h>
 
       
-#include <org/allbinary/logic/communication/log/LogUtil.h>
-
-      
 #include <org/allbinary/logic/math/PrimitiveIntUtil.h>
 
       
 #include <org/allbinary/util/CircularIndexUtil.h>
-
-      
-#include <jsinterop/annotations/JsMethod.h>
-
-      
-#include <jsinterop/annotations/JsConstructor.h>
-
-      
-#include <jsinterop/annotations/JsProperty.h>
 
       
 
@@ -81,7 +66,7 @@ class VectorAnimation: public IndexedAnimation, public VectorAnimationInterface 
 
     public: static VectorAnimation createVectorAnimation(std::vector<std::vector<int32_t>> currentPoints2, BasicColor basicColor, AnimationBehavior animationBehavior){
 
-    std::vector<std::vector<std::vector<int32_t>>> currentPoints = Array.from({ length: 1 }, () => Array.from({ length: currentPoints2.length }, () => new Array(0).fill(2)));;
+    std::vector<std::vector<std::vector<int32_t>>> currentPoints = std::vector<std::vector<std::vector<int32_t>>>(1, std::vector<std::vector<int32_t>>(currentPoints2.length, std::vector<int32_t>(2)));;
     
 
     int32_t size = currentPoints2.size();;
@@ -93,9 +78,9 @@ class VectorAnimation: public IndexedAnimation, public VectorAnimationInterface 
                         for (
     int32_t index = 0;index < size; index++)
         {
-currentPoints[0]![index]![0]= currentPoints2[index]![0]!;
+currentPoints[0][index][0]= currentPoints2[index][0];
     
-currentPoints[0]![index]![1]= currentPoints2[index]![1]!;
+currentPoints[0][index][1]= currentPoints2[index][1];
     
 }
 
@@ -108,14 +93,13 @@ currentPoints[0]![index]![1]= currentPoints2[index]![1]!;
 }
 
 
-    protected: const LogUtil logUtil = LogUtil::getInstance();
-
     private: std::vector<std::vector<std::vector<int32_t>>> currentPoints = NullUtil::getInstance().NULL_INT_ARRAY_ARRAY_ARRAY;
 
     private: CircularIndexUtil circularIndexUtil = CircularIndexUtil::createInstance(0);
 
-public: VectorAnimation(std::vector<std::vector<std::vector<int32_t>>> currentPoints, BasicColor basicColor, AnimationBehavior animationBehavior){
-            super(animationBehavior);
+public: VectorAnimation(std::vector<std::vector<std::vector<int32_t>>> currentPoints, BasicColor basicColor, AnimationBehavior animationBehavior) : IndexedAnimation(animationBehavior){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -299,13 +283,13 @@ this->circularIndexUtil.previous();
 
         while(--index >= 0)
         {
-nextPoint= currentPointsFrame[index]!;
+nextPoint= currentPointsFrame[index];
     
-point= currentPointsFrame[index +1]!;
+point= currentPointsFrame[index +1];
     
-nextPointX= nextPoint[0]!;
+nextPointX= nextPoint[0];
     
-nextPointY= nextPoint[1]!;
+nextPointY= nextPoint[1];
     
 
                         if(nextPointX != 1000)
@@ -364,7 +348,7 @@ this->circularIndexUtil.setIndex(index);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->currentPoints[frame]!;
+                        return this->currentPoints[frame];
     
 }
 

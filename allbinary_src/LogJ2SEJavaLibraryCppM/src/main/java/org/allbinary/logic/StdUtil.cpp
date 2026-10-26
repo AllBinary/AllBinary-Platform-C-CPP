@@ -18,15 +18,18 @@
 
 
 
-            #include "../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-#include <java/util/HashMap.h>
+#include <org/allbinary/util/ABHashMap.h>
 
       
-#include <java/util/Hashtable.h>
+#include <org/allbinary/util/ABHashtable.h>
 
       
-#include <java/util/Stack.h>
+#include <org/allbinary/util/ABStack.h>
+
+      
+#include <org/allbinary/util/ABVector.h>
 
       
 
@@ -64,36 +67,48 @@
 }
 
 
-    /*actual*/ public: const Hashtable<any, any> NULL_TABLE = this->createHashtable();
+    /*actual*/ public: const ABVector<Object*> EMPTY_VECTOR = this->createVector();
 
-    /*actual*/ public: const HashMap<any, any> NULL_MAP = this->createHashMap();
+    /*actual*/ public: const ABHashtable<Object*, Object*> NULL_TABLE = this->createHashtable();
 
-    public: Stack<any> createStack(){
+    /*actual*/ public: const ABHashMap<Object*, Object*> NULL_MAP = this->createHashMap();
+
+    public: ABStack<Object*> createStack(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return Stack<any>();
+                        return ABStack<Object*>();
     
 }
 
 
-    public: Hashtable<any, any> createHashtable(){
+    public: ABVector<Object*> createVector(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return Hashtable<any, any>();
+                        return ABVector<Object*>();
     
 }
 
 
-    public: HashMap<any, any> createHashMap(){
+    public: ABHashtable<Object*, Object*> createHashtable(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return HashMap<any, any>();
+                        return ABHashtable<Object*, Object*>();
+    
+}
+
+
+    public: ABHashMap<Object*, Object*> createHashMap(){
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return ABHashMap<Object*, Object*>();
     
 }
 

@@ -23,11 +23,9 @@
 
             #include <vector>
         
-            #include "../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../java/lang/Exception.h"
-        
-            #include "../../../../java/lang/System.h"
+            #include "java/lang/Exception.h"
         
 #include <java/io/IOException.h>
 
@@ -41,6 +39,9 @@
 #include <javax/microedition/media/Player.h>
 
       
+#include <org/allbinary/TsUtil.h>
+
+      
 #include <org/allbinary/game/configuration/feature/Features.h>
 
       
@@ -48,6 +49,9 @@
 
       
 #include <org/allbinary/graphics/canvas/transition/progress/ProgressCanvasFactory.h>
+
+      
+#include <org/allbinary/logic/ABSystemWrapper.h>
 
       
 #include <org/allbinary/logic/communication/log/LogUtil.h>

@@ -18,9 +18,9 @@
 
 
 
-            #include "../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../java/lang/Integer.h"
+            #include "java/lang/Integer.h"
         
 #include <org/allbinary/util/BasicArrayList.h>
 
@@ -93,8 +93,9 @@ class InventoryView: public HttpStoreComponentView, public DomNodeInterface {
 
     protected: const LogUtil logUtil = LogUtil::getInstance();
 
-public: InventoryView(TransformInfoInterface transformInfoInterface){
-            super(transformInfoInterface);
+public: InventoryView(TransformInfoInterface transformInfoInterface) : HttpStoreComponentView(transformInfoInterface){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -138,7 +139,7 @@ inventoryNode.appendChild(ModDomHelper::createNameValueNodes(document, SearchDat
     int32_t index = 0;index < size; index++)
         {
 
-    ItemInterface itemInterface = itemVector.get(index) as ItemInterface;;
+    ItemInterface itemInterface = itemVector.get(index);;
     
 
                         if(itemInterface != 
@@ -192,7 +193,7 @@ inventoryNode.appendChild(node);
 
 
     public: void addDomNodeInterfaces(){
-this->addDomNodeInterface(this as DomNodeInterface);
+this->addDomNodeInterface(this);
     
 }
 

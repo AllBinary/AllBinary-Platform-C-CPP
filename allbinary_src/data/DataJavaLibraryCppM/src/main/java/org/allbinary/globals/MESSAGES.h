@@ -21,7 +21,7 @@
         #ifndef ORG_ALLBINARY_GLOBALS_MESSAGES_H
         #define ORG_ALLBINARY_GLOBALS_MESSAGES_H
 
-            #include "../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
 
 

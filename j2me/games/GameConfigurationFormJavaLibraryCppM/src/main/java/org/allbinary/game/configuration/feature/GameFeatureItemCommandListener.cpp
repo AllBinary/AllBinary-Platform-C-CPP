@@ -18,9 +18,9 @@
 
 
 
-            #include "../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <javax/microedition/lcdui/Command.h>
 
@@ -100,7 +100,7 @@ this->logUtil.putF(StringMaker().append(CommonLabels::getInstance().ITEM_LABEL).
                         if(item instanceof GameConfigurationGauge)
                         
                                     {
-                                    GameConfigurationUtil::getInstance().change(this->gameOptionsForm, item as GameConfigurationGauge);
+                                    GameConfigurationUtil::getInstance().change(this->gameOptionsForm, item);
     
 
                                     }

@@ -21,7 +21,7 @@
         #ifndef ORG_ALLBINARY_GAME_COLLISION_OPTIMIZEDALLBINARYCOLLISIONLAYERPROCESSORFORCOLLIDABLELAYER_H
         #define ORG_ALLBINARY_GAME_COLLISION_OPTIMIZEDALLBINARYCOLLISIONLAYERPROCESSORFORCOLLIDABLELAYER_H
 
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/game/layer/CollidableCompositeLayer.h>
 

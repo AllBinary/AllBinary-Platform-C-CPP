@@ -23,7 +23,7 @@
 
             #include <vector>
         
-            #include "../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/logic/string/StringMaker.h>
 
@@ -61,8 +61,7 @@
 
 class PathFindingNodeCost: public PathFindingNode, public Comparable<PathFindingNodeCost> {
 
-    public: static const std::vector<std::vector<PathFindingNodeCost>> NULL_PATH_FINDING_NODE_COST_ARRAY_ARRAY = new Array(0).fill(null).map(() => new Array(0).fill(0))
-                                                            ;
+    public: static const std::vector<std::vector<PathFindingNodeCost>> NULL_PATH_FINDING_NODE_COST_ARRAY_ARRAY = std::vector<std::vector<PathFindingNodeCost>>(0, std::vector<PathFindingNodeCost>(0));
 
     private: const CommonSeps commonSeps = CommonSeps::getInstance();
 

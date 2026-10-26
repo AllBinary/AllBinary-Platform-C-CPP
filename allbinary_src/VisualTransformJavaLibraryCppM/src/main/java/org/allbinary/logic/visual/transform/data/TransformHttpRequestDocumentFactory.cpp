@@ -18,9 +18,9 @@
 
 
 
-            #include "../../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <javax/servlet/jsp/PageContext.h>
 
@@ -60,7 +60,7 @@ class TransformHttpRequestDocumentFactory
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return TransformHttpRequestDocument(pageContext, weblisketSession) as TransformDocumentInterface;
+                        return TransformHttpRequestDocument(pageContext, weblisketSession);
     
 }
 

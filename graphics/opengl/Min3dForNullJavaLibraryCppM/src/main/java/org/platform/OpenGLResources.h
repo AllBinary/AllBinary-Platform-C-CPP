@@ -7,11 +7,11 @@
         #ifndef ORG_PLATFORM_OPENGLRESOURCES_H
         #define ORG_PLATFORM_OPENGLRESOURCES_H
 
-            #include "../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../java/lang/RuntimeException.h"
+            #include "java/lang/RuntimeException.h"
         
 #include <java/io/InputStream.h>
 

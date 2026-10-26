@@ -23,7 +23,7 @@
 
             #include <vector>
         
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/sql/ResultSet.h>
 
@@ -75,9 +75,9 @@ public: AbSqlBean(DbConnectionInfo databaseConnectionInfoInterface);
 
     public: std::string getField(std::string key, std::string value, std::string requestedField);
 
-    public: std::string getField(HashMap<any, any> keysAndValues, std::string requestedField);
+    public: std::string getField(HashMap<Object*, Object*> keysAndValues, std::string requestedField);
 
-    public: std::string isSubsetOfEntry(std::string key, std::string value, HashMap<any, any> columnsAndValues);
+    public: std::string isSubsetOfEntry(std::string key, std::string value, HashMap<Object*, Object*> columnsAndValues);
 
 };
 

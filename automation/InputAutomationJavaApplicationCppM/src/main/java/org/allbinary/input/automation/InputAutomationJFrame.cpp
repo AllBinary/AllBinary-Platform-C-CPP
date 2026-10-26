@@ -20,9 +20,9 @@
 
             #include <vector>
         
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../../java/lang/Thread.h"
+            #include "java/lang/Thread.h"
         
 #include <org/allbinary/thread/ARunnable.h>
 
@@ -757,7 +757,7 @@ this->logUtil.putF("Nothing", this, "focusLost");
 
         try {
             
-    std::string gameAutomationRobotModuleNameString = this->inputAutomationModuleJList.getSelectedValue() as string;;
+    std::string gameAutomationRobotModuleNameString = this->inputAutomationModuleJList.getSelectedValue();;
     
 
                         if(true)
@@ -768,7 +768,7 @@ this->logUtil.putF("Nothing", this, "focusLost");
 this->getAutomationModuleConfigurationJPanel().removeAll();
     
 
-    javax::swing::GroupLayout layout = this->getAutomationModuleConfigurationJPanel().getLayout() as javax::swing::GroupLayout;;
+    javax::swing::GroupLayout layout = this->getAutomationModuleConfigurationJPanel().getLayout();;
     
 layout.setHorizontalGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING).addGap(0, 395, Short::MAX_VALUE).addComponent(this->inputAutomationModuleInterface.getConfigurationJPanel(), javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE));
     

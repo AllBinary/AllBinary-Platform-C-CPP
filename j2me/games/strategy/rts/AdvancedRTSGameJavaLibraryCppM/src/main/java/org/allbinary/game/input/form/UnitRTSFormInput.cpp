@@ -19,9 +19,9 @@
 
             #include <vector>
         
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../../../java/lang/Integer.h"
+            #include "java/lang/Integer.h"
         
 #include <org/allbinary/graphics/form/item/ABCustomItem.h>
 
@@ -137,8 +137,9 @@ class UnitRTSFormInput: public RTSFormInput {
 
     protected: GameNotificationEvent newUnitGameNotificationEvent;
 
-public: UnitRTSFormInput(std::vector<Group> groupInterface){
-            super(groupInterface);
+public: UnitRTSFormInput(std::vector<Group> groupInterface) : RTSFormInput(groupInterface){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -164,7 +165,7 @@ this->getHashtable().put(WorkWaypoint::ID, smallIntegerSingletonFactory.getAt(50
 super.setAllBinaryGameLayerManager(allBinaryGameLayerManager);
     
 
-    GeographicMapCompositeInterface geographicMapCompositeInterface = allBinaryGameLayerManager as GeographicMapCompositeInterface;;
+    GeographicMapCompositeInterface geographicMapCompositeInterface = allBinaryGameLayerManager;;
     
 
     BasicGeographicMap geographicMapInterface = geographicMapCompositeInterface.getGeographicMapInterface()[0];;
@@ -182,7 +183,7 @@ this->newUnitGameNotificationEvent.setBasicColorP(geographicMapInterface.getFore
 super.process(layerManager);
     
 
-    RTSLayer associatedRtsLayer2 = associatedRtsLayer as RTSLayer;;
+    RTSLayer associatedRtsLayer2 = associatedRtsLayer;;
     
 
     GeographicMapCellPositionAreaBase geographicMapCellPositionArea = associatedRtsLayer2.geographicMapCellPositionAreaBase;;
@@ -192,7 +193,7 @@ super.process(layerManager);
     
 this->getHashtable().put(Layer::ID, associatedRtsLayer);
     
-this->getHashtable().put(UnitRTSFormInput::DECAL_ID, (rtsPlayerLayerInterface as AdvancedRTSPlayerLayerInterface).getDecalBasicColor());
+this->getHashtable().put(UnitRTSFormInput::DECAL_ID, (rtsPlayerLayerInterface).getDecalBasicColor());
     
 
                         if(this->newUnconstructedRTSLayerInterfaceArray[itemIndex] == CollidableDestroyableDamageableLayer::getNullInstance())
@@ -208,12 +209,12 @@ this->getHashtable().put(UnitRTSFormInput::DECAL_ID, (rtsPlayerLayerInterface as
     GPoint cellPoint = geographicMapCellPosition.getPoint();;
     
 
-    RTSLayer rtsLayer = this->newUnconstructedRTSLayerInterfaceArray[itemIndex]! as RTSLayer;;
+    RTSLayer rtsLayer = this->newUnconstructedRTSLayerInterfaceArray[itemIndex];;
     
 rtsLayer.setPosition(cellPoint.getX(), cellPoint.getY(), rtsLayer.getZP());
     
 
-    GeographicMapCompositeInterface geographicMapCompositeInterface = rtsLayer.allBinaryGameLayerManagerP as GeographicMapCompositeInterface;;
+    GeographicMapCompositeInterface geographicMapCompositeInterface = rtsLayer.allBinaryGameLayerManagerP;;
     
 
     BasicGeographicMap geographicMapInterface = geographicMapCompositeInterface.getGeographicMapInterface()[0];;
@@ -227,11 +228,11 @@ rtsLayer.geographicMapCellPositionAreaBase.update(geographicMapInterface);
     GPoint cellPoint = geographicMapCellPosition.getMidPoint();;
     
 
-    RTSLayer rtsLayer = this->newUnconstructedRTSLayerInterfaceArray[itemIndex]! as RTSLayer;;
+    RTSLayer rtsLayer = this->newUnconstructedRTSLayerInterfaceArray[itemIndex];;
     
 rtsLayer.setPosition(cellPoint.getX() -rtsLayer.getHalfWidth(), cellPoint.getY() -rtsLayer.getHalfHeight(), rtsLayer.getZP());
     
-this->attemptBuild(associatedRtsLayer2, rtsPlayerLayerInterface, layerManager, rtsLayer as RTSLayer, itemIndex);
+this->attemptBuild(associatedRtsLayer2, rtsPlayerLayerInterface, layerManager, rtsLayer, itemIndex);
     
 }
 
@@ -274,12 +275,12 @@ rtsPlayerLayerInterface.add(BuildingSound::getInstance());
     
 capital.removeMoney(cost);
     
-AssignWaypointsUtil::getInstance().set(layerInterface as UnitLayer, associatedRtsLayer as AdvancedRTSGameLayer);
+AssignWaypointsUtil::getInstance().set(layerInterface, associatedRtsLayer);
     
 layerManager.appendAt(layerInterface, PlayersSingletonFactory::total);
     
 
-    AdvancedRTSPlayerLayerInterface advancedRTSPlayerLayerInterface = rtsPlayerLayerInterface as AdvancedRTSPlayerLayerInterface;;
+    AdvancedRTSPlayerLayerInterface advancedRTSPlayerLayerInterface = rtsPlayerLayerInterface;;
     
 
     AdvancedPlayerOwnedRTSLayers advancedPlayerOwnedRTSLayers = advancedRTSPlayerLayerInterface.getAdvancedPlayerOwnedRTSLayers();;

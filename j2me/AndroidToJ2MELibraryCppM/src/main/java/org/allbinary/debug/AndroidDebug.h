@@ -21,11 +21,11 @@
         #ifndef ORG_ALLBINARY_DEBUG_ANDROIDDEBUG_H
         #define ORG_ALLBINARY_DEBUG_ANDROIDDEBUG_H
 
-            #include "../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../java/lang/System.h"
+            #include "java/lang/System.h"
         
-            #include "../../../java/lang/Long.h"
+            #include "java/lang/Long.h"
         
 #include <android/os/Debug.h>
 

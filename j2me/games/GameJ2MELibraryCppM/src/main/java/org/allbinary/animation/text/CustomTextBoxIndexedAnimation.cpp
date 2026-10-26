@@ -76,8 +76,9 @@ class CustomTextBoxIndexedAnimation: public IndexedAnimation, public RawKeyEvent
 
     private: TextChangeListener textChangeListener = TextChangeListener::getInstance();
 
-public: CustomTextBoxIndexedAnimation(CustomTextBox customTextBox){
-            super(AnimationBehavior::getInstance());
+public: CustomTextBoxIndexedAnimation(CustomTextBox customTextBox) : IndexedAnimation(AnimationBehavior::getInstance()){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.

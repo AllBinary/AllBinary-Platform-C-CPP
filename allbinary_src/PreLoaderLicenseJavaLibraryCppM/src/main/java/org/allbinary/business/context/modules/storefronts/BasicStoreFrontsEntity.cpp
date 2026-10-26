@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
 
@@ -65,8 +65,9 @@ class BasicStoreFrontsEntity: public InitSql {
 
     protected: const std::string tableName = "storefronts";
 
-public: BasicStoreFrontsEntity(){
-            super(UserDbInitInfo());
+public: BasicStoreFrontsEntity() : InitSql(UserDbInitInfo()){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -80,12 +81,12 @@ this->setTable(this->tableName);
             
     public: BasicStoreFrontInterface getStoreFrontInterface(std::string name){
 
-    HashMap<any, any> keysAndValues = StdUtil::getInstance().createHashMap();;
+    HashMap<Object*, Object*> keysAndValues = StdUtil::getInstance().createHashMap();;
     
 keysAndValues.put(StoreFrontData::getInstance().NAME, name);
     
 
-    HashMap<any, any> storeHashMap = super.getRow(keysAndValues);;
+    HashMap<Object*, Object*> storeHashMap = super.getRow(keysAndValues);;
     
 
                         if(storeHashMap == 
@@ -107,7 +108,7 @@ keysAndValues.put(StoreFrontData::getInstance().NAME, name);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return BasicStoreFront(storeHashMap) as BasicStoreFrontInterface;
+                        return BasicStoreFront(storeHashMap);
     
 }
 

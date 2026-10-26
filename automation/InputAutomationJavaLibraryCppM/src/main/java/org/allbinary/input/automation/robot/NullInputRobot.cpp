@@ -18,9 +18,9 @@
 
 
 
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../../../java/lang/Integer.h"
+            #include "java/lang/Integer.h"
         
 #include <java/awt.h>
 
@@ -71,9 +71,10 @@ class NullInputRobot: public AbstractInputRobot, public InputRobotInterface {
 
     protected: const LogUtil logUtil = LogUtil::getInstance();
 
-public: NullInputRobot(){
-            super(
-                            nullptr);
+public: NullInputRobot() : AbstractInputRobot(
+                            nullptr){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.

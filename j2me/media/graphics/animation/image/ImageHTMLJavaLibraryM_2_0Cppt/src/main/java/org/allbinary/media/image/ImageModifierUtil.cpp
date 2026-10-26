@@ -20,11 +20,11 @@
 
             #include <vector>
         
-            #include "../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../java/lang/Throwable.h"
+            #include "java/lang/Throwable.h"
         
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <javax/microedition/lcdui/Graphics.h>
 
@@ -59,16 +59,13 @@
 #include <playn/core/Canvas.h>
 
       
+#include <playn/core/CoreImage.h>
+
+      
 #include <playn/core/ImageImpl.h>
 
       
-#include <playn/core/PlayN.h>
-
-      
-#include <playn/html/HtmlGraphics.h>
-
-      
-#include <playn/html/HtmlImage.h>
+#include <playn/html/HTMLPlaynUtil.h>
 
       
 
@@ -110,6 +107,8 @@ class ImageModifierUtil
 
     private: const ResourceCallbackStrings resourceCallbackStrings = ResourceCallbackStrings::getInstance();
 
+    private: const HTMLPlaynUtil playnUtil = HTMLPlaynUtil::getInstance();
+
     private: std::vector<bool> alphaArray;
 
     public: void setColor(Image unusedOriginalImage, Image image, int32_t imageIndex, BasicColor basicColor){
@@ -149,19 +148,16 @@ this->setAlpha2(originalImage, image, imageIndex, alpha);
 
     public: void setAlpha2(Image originalImage, Image image, int32_t imageIndex, float alpha){
 
-    PlaynImage htmlImage = image as PlaynImage;;
+    PlaynImage htmlImage = image;;
     
 
-    ImageImpl canvasImage = htmlImage.getImage() as ImageImpl;;
+    ImageImpl canvasImage = htmlImage.getImage();;
     
 
-    playn::core::Image originalPlaynImage = (originalImage as PlaynImage).getImage() as playn::core::Image;;
+    CoreImage originalPlaynImage = (originalImage).getImage();;
     
 
-    PlayN playN = PlayN::getInstance();;
-    
-
-    Canvas canvas = (graphics as HtmlGraphics).get(canvasImage as HtmlImage);;
+    Canvas canvas = this->playnUtil.getCanvas(canvasImage);;
     
 canvas.clear();
     
@@ -180,16 +176,13 @@ canvas.draw(originalPlaynImage, 0, 0);
     float alphaFloat = alphaF /255;;
     
 
-    PlaynImage htmlImage = image as PlaynImage;;
+    PlaynImage htmlImage = image;;
     
 
-    ImageImpl canvasImage = htmlImage.getImage() as ImageImpl;;
+    ImageImpl canvasImage = htmlImage.getImage();;
     
 
-    PlayN playN = PlayN::getInstance();;
-    
-
-    Canvas canvas = (graphics as HtmlGraphics).get(canvasImage as HtmlImage);;
+    Canvas canvas = this->playnUtil.getCanvas(canvasImage);;
     
 canvas.setAlpha(alphaFloat);
     
@@ -200,10 +193,10 @@ canvas.setAlpha(alphaFloat);
 
     int32_t size = originalImageArray.size();;
     
-this->alphaArray= new Array(size);
+this->alphaArray= std::vector<bool>(size);
     
 
-    std::vector<Image> imageArray = new Array(size);;
+    std::vector<Image> imageArray = std::vector<Image>(size);;
     
 
 
@@ -212,9 +205,9 @@ this->alphaArray= new Array(size);
                         for (
     int32_t index = 0;index < size; index++)
         {
-imageArray[index]= originalImageArray[index]!;
+imageArray[index]= originalImageArray[index];
     
-this->handleImage(imageArray, index, originalImageArray[index]!);
+this->handleImage(imageArray, index, originalImageArray[index]);
     
 }
 
@@ -229,7 +222,7 @@ this->handleImage(imageArray, index, originalImageArray[index]!);
 
     public: void handleImage(std::vector<Image> imageArray, int32_t index, Image image){
 
-    playn::core::Image image3 = (image as PlaynImage).getImage() as playn::core::Image;;
+    CoreImage image3 = (image).getImage();;
     
 
                         if(image3 != 
@@ -289,7 +282,7 @@ image3.addCallback(callback);
 }
 
 
-    public: void copy(std::vector<Image> imageArray, int32_t index, Image image, playn::core::Image image3){
+    public: void copy(std::vector<Image> imageArray, int32_t index, Image image, CoreImage image3){
 
         try {
             

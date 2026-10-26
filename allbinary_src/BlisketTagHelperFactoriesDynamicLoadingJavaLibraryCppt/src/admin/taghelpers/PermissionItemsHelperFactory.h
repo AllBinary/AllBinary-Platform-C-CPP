@@ -21,7 +21,7 @@
         #ifndef ADMIN_TAGHELPERS_PERMISSIONITEMSHELPERFACTORY_H
         #define ADMIN_TAGHELPERS_PERMISSIONITEMSHELPERFACTORY_H
 
-            #include "../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
 #include <java/util/HashMap.h>
 
@@ -65,7 +65,7 @@ public: PermissionItemsHelperFactory();
 
                 //@Throws(LicensingException.constructor)
             
-    public: Object* getInstance(HashMap<any, any> hashMap, PageContext pageContext);
+    public: Object* getInstance(HashMap<Object*, Object*> hashMap, PageContext pageContext);
 
 };
 

@@ -18,14 +18,8 @@
 
 
 
-            #include "../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-#include <jsinterop/annotations/JsType.h>
-
-      
-#include <jsinterop/annotations/JsMethod.h>
-
-      
 
 
 
@@ -56,12 +50,12 @@ class TextChangeListener
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return instance;
+                        return TextChangeListener::instance();
     
 }
 
 
-    void onMeasure(){
+    public: void onMeasure(){
 }
 
 

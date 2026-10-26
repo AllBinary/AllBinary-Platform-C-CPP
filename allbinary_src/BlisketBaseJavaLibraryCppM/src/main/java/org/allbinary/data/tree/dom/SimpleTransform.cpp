@@ -18,9 +18,9 @@
 
 
 
-            #include "../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/io/StringBufferInputStream.h>
 
@@ -29,6 +29,9 @@
 
       
 #include <org/allbinary/data/tree/dom/document/DomDocumentHelper.h>
+
+      
+#include <org/allbinary/data/tree/dom/document/XmlDocumentHelper.h>
 
       
 #include <org/allbinary/logic/io/AbFileLocalInputStream.h>
@@ -89,7 +92,7 @@ this->dataFilePath= dataFilePath;
     Document document = DomDocumentHelper::create(AbFileLocalInputStream(AbFile::createAbFileFromAbPath(this->dataFilePath)));;
     
 
-    std::string result = XslHelper::getInstance().translate(StreamSource(inputStream), StreamSource(StringBufferInputStream(DomDocumentHelper::toString(document))));;
+    std::string result = XslHelper::getInstance().translate(StreamSource(inputStream), StreamSource(StringBufferInputStream(XmlDocumentHelper::toString(document))));;
     
 
 

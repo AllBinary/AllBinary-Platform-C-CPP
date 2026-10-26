@@ -18,13 +18,13 @@
 
 
 
-            #include "../../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../../../../java/lang/Integer.h"
+            #include "java/lang/Integer.h"
         
-            #include "../../../../../../java/lang/Double.h"
+            #include "java/lang/Double.h"
         
 #include <org/allbinary/graphics/GPoint.h>
 
@@ -106,7 +106,7 @@ class PointsDomUtil
     org::w3c::dom::Document document = WorkAreaJPanel::getDocument();;
     
 
-    Node linesNode = document.createElement(this->LINES) as Node;;
+    Node linesNode = document.createElement(this->LINES);;
     
 
     int32_t size2 = tempPointVector.size();;
@@ -131,9 +131,9 @@ class PointsDomUtil
                         if(index < size && index < size2)
                         
                                     {
-                                    rotatedFirstPoint= tempPointVector.get(index) as GPoint;
+                                    rotatedFirstPoint= tempPointVector.get(index);
     
-firstPoint= pointVector.get(index) as GPoint;
+firstPoint= pointVector.get(index);
     
 index++;
     
@@ -144,13 +144,13 @@ index++;
         while(index < size && index < size2)
         {
 
-    Node lineNode = document.createElement(this->LINE) as Node;;
+    Node lineNode = document.createElement(this->LINE);;
     
 
-    GPoint rotatedSecondPoint = tempPointVector.get(index) as GPoint;;
+    GPoint rotatedSecondPoint = tempPointVector.get(index);;
     
 
-    GPoint secondPoint = pointVector.get(index) as GPoint;;
+    GPoint secondPoint = pointVector.get(index);;
     
 
     Node pointOneNode = this->getPointNode(firstPoint, this->POINTONE);;
@@ -196,21 +196,21 @@ index++;
     org::w3c::dom::Document document = WorkAreaJPanel::getDocument();;
     
 
-    Node pointNode = document.createElement(pointName) as Node;;
+    Node pointNode = document.createElement(pointName);;
     
 
-    Node xNode = document.createElement(PositionStrings::getInstance().X) as Node;;
+    Node xNode = document.createElement(PositionStrings::getInstance().X);;
     
 
-    Node xTextNode = document.createTextNode(std::to_string(getX)) as Node;;
+    Node xTextNode = document.createTextNode(std::to_string(getX));;
     
 xNode.appendChild(xTextNode);
     
 
-    Node yNode = document.createElement(PositionStrings::getInstance().Y) as Node;;
+    Node yNode = document.createElement(PositionStrings::getInstance().Y);;
     
 
-    Node yTextNode = document.createTextNode(std::to_string(getY)) as Node;;
+    Node yTextNode = document.createTextNode(std::to_string(getY));;
     
 yNode.appendChild(yTextNode);
     

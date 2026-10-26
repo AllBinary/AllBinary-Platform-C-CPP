@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
 #include <org/allbinary/bounds/BoundsVisitorInterface.h>
 
@@ -68,9 +68,9 @@ public: ReverseVelocityBoundsVisitor(LayerInterface layerInterface){
 this->layerInterface= layerInterface;
     
 
-    VelocityInterfaceCompositeInterface velocityInterfaceCompositeInterface = layerInterface as VelocityInterfaceCompositeInterface;;
+    VelocityInterfaceCompositeInterface velocityInterfaceCompositeInterface = layerInterface;;
     
-this->velocityInterface= velocityInterfaceCompositeInterface.getVelocityProperties() as VelocityInterface;
+this->velocityInterface= velocityInterfaceCompositeInterface.getVelocityProperties();
     
 }
 

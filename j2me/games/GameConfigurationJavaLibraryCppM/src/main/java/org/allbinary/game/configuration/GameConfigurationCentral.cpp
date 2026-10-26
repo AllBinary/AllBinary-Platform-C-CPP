@@ -18,18 +18,12 @@
 
 
 
-            #include "../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../../java/lang/Integer.h"
+            #include "java/lang/Integer.h"
         
-#include <jsinterop/annotations/JsType.h>
-
-      
-#include <java/util/Hashtable.h>
-
-      
 #include <org/allbinary/game/configuration/persistance/GameConfigurationPersistanceSingleton.h>
 
       
@@ -57,16 +51,10 @@
 #include <org/allbinary/string/CommonStrings.h>
 
       
+#include <org/allbinary/util/ABHashtable.h>
+
+      
 #include <org/allbinary/util/BasicArrayList.h>
-
-      
-#include <jsinterop/annotations/JsMethod.h>
-
-      
-#include <jsinterop/annotations/JsConstructor.h>
-
-      
-#include <jsinterop/annotations/JsProperty.h>
 
       
 
@@ -109,7 +97,7 @@ class GameConfigurationCentral
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return GameConfigurationCentral::SINGLETON as GameConfigurationCentral;
+                        return GameConfigurationCentral::SINGLETON;
     
 }
 
@@ -209,13 +197,13 @@ keyValuePersistance.loadAll(abeClientInformation);
                         
                                     {
                                     
-    Hashtable<any, any> hashtable = keyValuePersistance.get(0);;
+    ABHashtable<Object*, Object*> hashtable = keyValuePersistance.get(0);;
     
 
     Object* anyType = this->SCALE.getName();;
     
 
-    std::string value = hashtable.get(anyType) as string;;
+    std::string value = hashtable.get(anyType);;
     
 this->SCALE.setValue(smallIntegerSingletonFactory.getAt(Integer::valueOf(value).intValue()));
     

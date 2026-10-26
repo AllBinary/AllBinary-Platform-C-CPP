@@ -18,9 +18,9 @@
 
 
 
-            #include "../../../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
 
@@ -86,9 +86,9 @@ class CssElementsValidationFactory
                         for (
     int32_t index = 0;index < size; index++)
         {
-cssElementStyleNode= cssElementStyleNodeList.get(index) as Node;
+cssElementStyleNode= cssElementStyleNodeList.get(index);
     
-cssValidationInterface= CssElementValidationFactory::getInstance(cssElementStyleNode) as ValidationInterface;
+cssValidationInterface= CssElementValidationFactory::getInstance(cssElementStyleNode);
     
 styles.add(cssValidationInterface);
     
@@ -103,7 +103,7 @@ styles.add(cssValidationInterface);
 }
 
 
-    public: static BasicArrayList getInstance(HashMap<any, any> hashMap){
+    public: static BasicArrayList getInstance(HashMap<Object*, Object*> hashMap){
 
     BasicArrayList styles = BasicArrayListD();;
     

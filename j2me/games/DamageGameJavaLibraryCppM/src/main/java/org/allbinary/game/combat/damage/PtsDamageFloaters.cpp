@@ -87,11 +87,11 @@ class PtsDamageFloaters: public DamageFloaters {
 
     private: AllBinaryLayer layerInterface;
 
-    private: std::vector<int32_t> lastDamage = new Array(5);
+    private: std::vector<int32_t> lastDamage = std::vector<int32_t>(5);
 
-    private: std::vector<std::vector<char>> lastDamageString = new Array(5).fill(null).map(() => new Array(0).fill(0));
+    private: std::vector<std::vector<char>> lastDamageString = std::vector<std::vector<char>>(5, std::vector<char>(0));
 
-    private: std::vector<int32_t> lastDamageStringSizeArray = new Array(5);
+    private: std::vector<int32_t> lastDamageStringSizeArray = std::vector<int32_t>(5);
 
     private: CircularIndexUtil circularIndexUtil = CircularIndexUtil::createInstance(5);
 
@@ -125,7 +125,7 @@ this->lastDamageString[index]= CHAR_ARRAY;
     
 this->lastDamage[index]= damage;
     
-this->lastDamageString[index]= this->primitiveLongUtil.getCharArray(this->lastDamage[index]!);
+this->lastDamageString[index]= this->primitiveLongUtil.getCharArray(this->lastDamage[index]);
     
 this->lastDamageStringSizeArray[index]= this->primitiveLongUtil.getCurrentTotalDigits();
     
@@ -162,7 +162,7 @@ this->circularIndexUtil.next();
     
 this->basicSetColorUtil.setBasicColorP(graphics, PtsDamageFloaters::basicColorArrayIndexer.get());
     
-graphics.drawChars(this->lastDamageString[index]!, 0, this->lastDamageStringSizeArray[index]!, x -this->myRandomFactory.getNextInt(delta), y -delta, 0);
+graphics.drawChars(this->lastDamageString[index], 0, this->lastDamageStringSizeArray[index], x -this->myRandomFactory.getNextInt(delta), y -delta, 0);
     
 PtsDamageFloaters::basicColorArrayIndexer.next();
     

@@ -20,13 +20,10 @@
 
             #include <vector>
         
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../../../java/lang/Thread.h"
+            #include "java/lang/Thread.h"
         
-#include <java/util/Hashtable.h>
-
-      
 #include <java/util/Set.h>
 
       
@@ -43,6 +40,9 @@
 
       
 #include <org/allbinary/media/image/comparison/motion/MotionRectangleConstraintsInterface.h>
+
+      
+#include <org/allbinary/util/ABHashtable.h>
 
       
 
@@ -72,8 +72,9 @@ class TestInputAutomationActionWorker: public AbstractInputAutomationWorker {
 
     private: int32_t sleep;
 
-public: TestInputAutomationActionWorker(int32_t sleep, InputAutomationActionInterface inputAutomationActionInterface, ImageComparatorConstraintsInterface imageComparatorConstraintsInterface, MotionRectangleConstraintsInterface motionRectangleConstraintsInterface){
-            super(inputAutomationActionInterface);
+public: TestInputAutomationActionWorker(int32_t sleep, InputAutomationActionInterface inputAutomationActionInterface, ImageComparatorConstraintsInterface imageComparatorConstraintsInterface, MotionRectangleConstraintsInterface motionRectangleConstraintsInterface) : AbstractInputAutomationWorker(inputAutomationActionInterface){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -99,7 +100,7 @@ Thread::sleep(2000);
 this->logUtil.putF(this->commonStrings.START, this, this->commonStrings.PROCESS);
     
 
-    Hashtable<any, any> hashtable = InputRobotFactory::getInstance().get();;
+    ABHashtable<Object*, Object*> hashtable = InputRobotFactory::getInstance().get();;
     
 
     Set set = hashtable.keys();;
@@ -118,10 +119,10 @@ this->logUtil.putF(this->commonStrings.START, this, this->commonStrings.PROCESS)
     int32_t index = 0;index < size; index++)
         {
 
-    std::string inputTypeNameString = inputTypeNameArray[index]! as string;;
+    std::string inputTypeNameString = inputTypeNameArray[index];;
     
 
-    InputRobotInterface robot = hashtable.get(inputTypeNameString) as InputRobotInterface;;
+    InputRobotInterface robot = hashtable.get(inputTypeNameString);;
     
 
                         if(this->sleep > 0)

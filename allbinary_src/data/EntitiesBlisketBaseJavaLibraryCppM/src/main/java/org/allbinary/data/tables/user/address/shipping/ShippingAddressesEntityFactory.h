@@ -21,9 +21,9 @@
         #ifndef ORG_ALLBINARY_DATA_TABLES_USER_ADDRESS_SHIPPING_SHIPPINGADDRESSESENTITYFACTORY_H
         #define ORG_ALLBINARY_DATA_TABLES_USER_ADDRESS_SHIPPING_SHIPPINGADDRESSESENTITYFACTORY_H
 
-            #include "../../../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/data/tables/user/address/StreetAddressesEntity.h>
 

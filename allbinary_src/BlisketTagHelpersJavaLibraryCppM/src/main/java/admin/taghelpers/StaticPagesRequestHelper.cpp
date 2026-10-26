@@ -18,7 +18,7 @@
 
 
 
-            #include "../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
 
@@ -138,15 +138,16 @@ class StaticPagesRequestHelper: public AbContext, public TagHelperInterface {
 
     private: std::string xslFile;
 
-public: StaticPagesRequestHelper(HashMap<any, any> propertiesHashMap, PageContext pageContext){
-            super(propertiesHashMap, pageContext);
+public: StaticPagesRequestHelper(HashMap<Object*, Object*> propertiesHashMap, PageContext pageContext) : AbContext(propertiesHashMap, pageContext){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this->request= pageContext.getRequest() as HttpServletRequest;
+this->request= pageContext.getRequest();
     
-this->xslFile= propertiesHashMap.get(TransformInfoData::getInstance().TEMPLATEFILENAME) as string;
+this->xslFile= propertiesHashMap.get(TransformInfoData::getInstance().TEMPLATEFILENAME);
     
 this->getFormData();
     
@@ -185,10 +186,10 @@ this->searchParams= SearchParams(this->request);
     std::string adminEmailTextBody = "Generated static pages for store: " +this->storeName;;
     
 
-    BasicEmailInfo adminBasicEmailInfo = AdminEmailInfo(adminEmailSubject, adminEmailTextBody) as BasicEmailInfo;;
+    BasicEmailInfo adminBasicEmailInfo = AdminEmailInfo(adminEmailSubject, adminEmailTextBody);;
     
 
-    BasicEmailInfo storeAdminBasicEmailInfo = StoreEmailInfo(storeFrontInterface, adminEmailSubject, adminEmailTextBody) as BasicEmailInfo;;
+    BasicEmailInfo storeAdminBasicEmailInfo = StoreEmailInfo(storeFrontInterface, adminEmailSubject, adminEmailTextBody);;
     
 
     EmailInfo storeAdminEmailInfo = EmailInfo(storeAdminBasicEmailInfo);;

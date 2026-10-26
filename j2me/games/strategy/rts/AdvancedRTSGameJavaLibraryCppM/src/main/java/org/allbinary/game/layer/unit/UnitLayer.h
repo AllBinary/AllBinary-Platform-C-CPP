@@ -23,15 +23,12 @@
 
             #include <vector>
         
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../../../java/lang/Math.h"
+            #include "java/lang/Math.h"
         
-            #include "../../../../../java/lang/Integer.h"
+            #include "java/lang/Integer.h"
         
-#include <java/util/Hashtable.h>
-
-      
 #include <javax/microedition/lcdui/Canvas.h>
 
       
@@ -350,6 +347,9 @@
 #include <org/allbinary/string/CommonPhoneStrings.h>
 
       
+#include <org/allbinary/util/ABHashtable.h>
+
+      
 #include <org/allbinary/util/BasicArrayList.h>
 
       
@@ -428,7 +428,7 @@ class UnitLayer: public AdvancedRTSGameLayer, public BuildingEventListenerInterf
 
     private: RotationAnimation initResourceAnimation;
 
-    private: IndexedAnimation resourceAnimation = NullIndexedAnimationFactory::getFactoryInstance().getInstance(0) as IndexedAnimation;
+    private: IndexedAnimation resourceAnimation = NullIndexedAnimationFactory::getFactoryInstance().getInstance(0);
 
     private: PathAnimation initPathAnimation;
 

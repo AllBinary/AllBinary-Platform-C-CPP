@@ -18,9 +18,11 @@
 
 
 
-            #include "../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../java/lang/RuntimeException.h"
+            #include "java/lang/Exception.h"
+        
+            #include "java/lang/RuntimeException.h"
         
 #include <java/io/IOException.h>
 
@@ -86,7 +88,7 @@ class OpenGLImageUtilBase
 }
 
 
-                //@Throws(IOException.constructor)
+                //@Throws(Exception.constructor)
             
     public: OpenGLBitmap createImageFromInputStream(InputStream inputStream){
 

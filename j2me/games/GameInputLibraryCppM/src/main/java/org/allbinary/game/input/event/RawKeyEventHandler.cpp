@@ -18,9 +18,9 @@
 
 
 
-            #include "../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/logic/communication/log/LogUtil.h>
 
@@ -110,7 +110,7 @@ this->eventListenerInterfaceList= BasicArrayListD();
                         for (
     int32_t index = 0;index < size; index++)
         {
-eventListenerInterface= vector.get(index) as RawKeyEventListener;
+eventListenerInterface= vector.get(index);
     
 this->addListener(eventListenerInterface);
     
@@ -171,7 +171,7 @@ this->eventListenerInterfaceList.remove(eventListenerInterface);
         {
 
         try {
-            eventListenerInterface= this->eventListenerInterfaceList.get(index) as RawKeyEventListener;
+            eventListenerInterface= this->eventListenerInterfaceList.get(index);
     
 this->process(keyCode, deviceId, repeated, eventListenerInterface);
     
@@ -230,7 +230,7 @@ stringBuffer.appendint(this->eventListenerInterfaceList.size());
         {
 
         try {
-            eventListenerInterface= this->eventListenerInterfaceList.get(index) as RawKeyEventListener;
+            eventListenerInterface= this->eventListenerInterfaceList.get(index);
     
 stringBuffer.append(RawKeyEventHandler::LISTENER_LABEL);
     

@@ -23,11 +23,17 @@
 
             #include <vector>
         
-            #include "../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../java/lang/ClassLoader.h"
+            #include "java/lang/ClassLoader.h"
         
-            #include "../../java/lang/InterruptedException.h"
+            #include "java/lang/InterruptedException.h"
+        
+            #include "java/lang/System.h"
+        
+            #include "java/lang/Float.h"
+        
+            #include "java/lang/Double.h"
         
 #include <javax/microedition/lcdui/Displayable.h>
 
@@ -68,7 +74,7 @@
 
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
-        
+        //J2SE
 class TsUtil
             : public Object
          {
@@ -76,6 +82,10 @@ class TsUtil
     private: static TsUtil instance() { return TsUtil(); }
 
     public: static TsUtil getInstance();
+
+    public: double longBitsToDouble(int64_t bits);
+
+    public: float intBitsToFloat(int32_t bits);
 
     public: int32_t hashCode(Object* anyType);
 
@@ -102,6 +112,8 @@ class TsUtil
     public: std::vector<int8_t> getByteArray(std::string string);
 
     public: bool isItemListener(Displayable owner);
+
+    public: void gc();
 
 };
 

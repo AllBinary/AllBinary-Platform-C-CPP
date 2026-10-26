@@ -53,7 +53,7 @@ class TransformInfoHttpInterface: public TransformInfoInterface {
 
     PageContext getPageContext()
 
-    HashMap<any, any> getPropertiesHashMap()
+    HashMap<Object*, Object*> getPropertiesHashMap()
 
 };
 

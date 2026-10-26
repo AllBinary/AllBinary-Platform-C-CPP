@@ -20,9 +20,9 @@
 
             #include <vector>
         
-            #include "../../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 
 
@@ -66,7 +66,7 @@ class MultiGeographicMapBehavior
                         for (
     int32_t index = size;--index >= 0; )
         {
-cellType= geographicMapInterfaceArray[index]!.getCellTypeAt(geographicMapCellPosition);
+cellType= geographicMapInterfaceArray[index].getCellTypeAt(geographicMapCellPosition);
     
 geographicMapCellTypeArray[index]= cellType;
     

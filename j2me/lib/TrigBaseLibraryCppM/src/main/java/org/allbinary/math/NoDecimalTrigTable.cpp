@@ -20,11 +20,11 @@
 
             #include <vector>
         
-            #include "../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../java/lang/Integer.h"
+            #include "java/lang/Integer.h"
         
 #include <jsinterop/annotations/JsType.h>
 
@@ -106,11 +106,11 @@ private: NoDecimalTrigTable(){
 
     int64_t MAX_VALUE = (Integer::MAX_VALUE);;
     
-this->noDecimalSin= new Array(TOTAL_ANGLE);
+this->noDecimalSin= std::vector<int64_t>(TOTAL_ANGLE);
     
-this->noDecimalCos= new Array(TOTAL_ANGLE);
+this->noDecimalCos= std::vector<int64_t>(TOTAL_ANGLE);
     
-this->noDecimalTan= new Array(TOTAL_ANGLE +1);
+this->noDecimalTan= std::vector<int64_t>(TOTAL_ANGLE +1);
     
 this->noDecimalSin[0]= 0;
     
@@ -2282,7 +2282,7 @@ this->noDecimalTan[0]=  -174;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->noDecimalSin[angle]!;
+                        return this->noDecimalSin[angle];
     
 }
 
@@ -2292,7 +2292,7 @@ this->noDecimalTan[0]=  -174;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->noDecimalCos[angle]!;
+                        return this->noDecimalCos[angle];
     
 }
 
@@ -2302,7 +2302,7 @@ this->noDecimalTan[0]=  -174;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->noDecimalTan[angle]!;
+                        return this->noDecimalTan[angle];
     
 }
 
@@ -2552,7 +2552,7 @@ PreLogUtil::put(stringMaker.append("screenX: ").appendint(screenX).append(" scre
     int32_t screenY2 = static_cast<int32_t>( -screenY);;
     
 
-    std::vector<int32_t> dx = new Array(4);;
+    std::vector<int32_t> dx = std::vector<int32_t>(4);;
     
 dx[0]= (screenX -targetX);
     
@@ -2563,7 +2563,7 @@ dx[2]= (screenX2 -targetX);
 dx[3]= (screenX2 -targetX2);
     
 
-    std::vector<int32_t> dy = new Array(4);;
+    std::vector<int32_t> dy = std::vector<int32_t>(4);;
     
 dy[0]= (screenY -targetY);
     
@@ -2596,19 +2596,19 @@ dy[3]= (screenY2 -targetY2);
                         for (
     int32_t index2 = 0;index2 < dy.size(); index2++)
         {
-angleOfTarget= this->antiTan(dx[index]!, dy[index2]!);
+angleOfTarget= this->antiTan(dx[index], dy[index2]);
     
 angle= angleFactory.getAt(static_cast<int32_t>(angleOfTarget));
     
 stringMaker.delete(0, stringMaker.length());
     
-PreLogUtil::put(stringMaker.append(CommonLabels::getInstance().INDEX_LABEL).appendint(index).append(" index2: ").appendint(index2).append(PositionStrings::getInstance().DX_LABEL).appendint(dx[index]!).append(PositionStrings::getInstance().DY_LABEL).appendint(dy[index2]!).append(TARGET_ANGLE).appendshort(angleOfTarget).append(CommonSeps::getInstance().EQUALS).appendshort(angle.getValue()).toString(), this, METHOD_NAME);
+PreLogUtil::put(stringMaker.append(CommonLabels::getInstance().INDEX_LABEL).appendint(index).append(" index2: ").appendint(index2).append(PositionStrings::getInstance().DX_LABEL).appendint(dx[index]).append(PositionStrings::getInstance().DY_LABEL).appendint(dy[index2]).append(TARGET_ANGLE).appendshort(angleOfTarget).append(CommonSeps::getInstance().EQUALS).appendshort(angle.getValue()).toString(), this, METHOD_NAME);
     
 }
 
 }
 
-angleOfTarget= this->antiTan(dx[0]!, dy[0]!);
+angleOfTarget= this->antiTan(dx[0], dy[0]);
     
 
 

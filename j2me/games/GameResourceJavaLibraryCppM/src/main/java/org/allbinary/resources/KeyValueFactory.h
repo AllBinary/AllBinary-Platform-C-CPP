@@ -21,12 +21,12 @@
         #ifndef ORG_ALLBINARY_RESOURCES_KEYVALUEFACTORY_H
         #define ORG_ALLBINARY_RESOURCES_KEYVALUEFACTORY_H
 
-            #include "../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-#include <java/util/Hashtable.h>
+#include <org/allbinary/logic/StdUtil.h>
 
       
-#include <org/allbinary/logic/StdUtil.h>
+#include <org/allbinary/util/ABHashtable.h>
 
       
 
@@ -56,7 +56,7 @@ class KeyValueFactory
 
     public: static KeyValueFactory getInstance();
 
-    public: const Hashtable<any, any> MAP = StdUtil::getInstance().createHashtable();
+    public: const ABHashtable<Object*, Object*> MAP = StdUtil::getInstance().createHashtable();
 
     public: std::string get(std::string key);
 

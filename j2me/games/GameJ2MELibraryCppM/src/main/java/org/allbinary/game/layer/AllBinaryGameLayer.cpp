@@ -18,11 +18,8 @@
 
 
 
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-#include <jsinterop/annotations/JsType.h>
-
-      
 #include <javax/microedition/khronos/opengles/GL.h>
 
       
@@ -83,15 +80,6 @@
 #include <org/allbinary/view/event/ViewPositionEventListenerInterface.h>
 
       
-#include <jsinterop/annotations/JsMethod.h>
-
-      
-#include <jsinterop/annotations/JsConstructor.h>
-
-      
-#include <jsinterop/annotations/JsProperty.h>
-
-      
 
 
 
@@ -143,8 +131,9 @@ this->basicSetColorUtil.setBasicColorP(graphics, this->BLACK);
 
     private: const BasicArrayList gameKeyEventList = BasicArrayListD();
 
-public: AllBinaryGameLayer(std::string name, Rectangle layerInfo, ViewPositionBase viewPosition){
-            super(name, layerInfo, viewPosition);
+public: AllBinaryGameLayer(std::string name, Rectangle layerInfo, ViewPositionBase viewPosition) : AllBinaryLayer(name, layerInfo, viewPosition){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.

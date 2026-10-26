@@ -47,8 +47,9 @@
 
 class SelectableTextItem: public ABTextItem {
 
-public: SelectableTextItem(std::string label, int32_t layout, std::string altText, BasicColor backgroundBasicColor, BasicColor foregroundBasicColor){
-            super(label, layout, altText, backgroundBasicColor, foregroundBasicColor);
+public: SelectableTextItem(std::string label, int32_t layout, std::string altText, BasicColor backgroundBasicColor, BasicColor foregroundBasicColor) : ABTextItem(label, layout, altText, backgroundBasicColor, foregroundBasicColor){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.

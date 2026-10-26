@@ -21,7 +21,7 @@
         #ifndef ORG_ALLBINARY_GAME_AG_AI_NULLAI_H
         #define ORG_ALLBINARY_GAME_AG_AI_NULLAI_H
 
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/ai/ArtificialIntelligence.h>
 

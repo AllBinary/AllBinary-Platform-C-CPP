@@ -20,11 +20,11 @@
 
             #include <vector>
         
-            #include "../../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../../../../java/lang/Long.h"
+            #include "java/lang/Long.h"
         
 #include <java/util/Calendar.h>
 
@@ -54,6 +54,9 @@
 
       
 #include <org/allbinary/data/tree/dom/document/DomDocumentHelper.h>
+
+      
+#include <org/allbinary/data/tree/dom/document/XmlDocumentHelper.h>
 
       
 #include <org/allbinary/logic/StdUtil.h>
@@ -132,28 +135,28 @@ this->workFlowDoc.appendChild(workFlowNode);
 }
 
 
-public: BasicWorkFlow(HashMap<any, any> hashMap, PageContext pageContext){
+public: BasicWorkFlow(HashMap<Object*, Object*> hashMap, PageContext pageContext){
 
     WeblisketSession weblisketSession = WeblisketSession(hashMap, pageContext);;
     
 this->storeName= weblisketSession.getStoreName();
     
 
-    HashMap<any, any> requestHashMap = RequestParams(pageContext).toHashMap();;
+    HashMap<Object*, Object*> requestHashMap = RequestParams(pageContext).toHashMap();;
     
-this->workFlowName= requestHashMap.get(WorkFlowData::getInstance().NAME) as string;
+this->workFlowName= requestHashMap.get(WorkFlowData::getInstance().NAME);
     
-this->workFlowDoc= DomDocumentHelper::create(requestHashMap.get(WorkFlowData::getInstance().DATA) as string);
+this->workFlowDoc= DomDocumentHelper::create(requestHashMap.get(WorkFlowData::getInstance().DATA));
     
 }
 
 
-public: BasicWorkFlow(HashMap<any, any> hashMap){
-this->workFlowName= hashMap.get(WorkFlowData::getInstance().NAME) as string;
+public: BasicWorkFlow(HashMap<Object*, Object*> hashMap){
+this->workFlowName= hashMap.get(WorkFlowData::getInstance().NAME);
     
-this->storeName= hashMap.get(StoreFrontData::getInstance().NAME) as string;
+this->storeName= hashMap.get(StoreFrontData::getInstance().NAME);
     
-this->workFlowDoc= DomDocumentHelper::create(hashMap.get(WorkFlowData::getInstance().DATA) as string);
+this->workFlowDoc= DomDocumentHelper::create(hashMap.get(WorkFlowData::getInstance().DATA));
     
 }
 
@@ -198,7 +201,7 @@ values.add(this->workFlowName);
     
 values.add(this->storeName);
     
-values.add(DomDocumentHelper::toString(this->workFlowDoc));
+values.add(XmlDocumentHelper::toString(this->workFlowDoc));
     
 
     Calendar calendar = Calendar::getInstance();;
@@ -221,15 +224,15 @@ values.add(time);
 
                 //@Throws(Exception.constructor)
             
-    public: HashMap<any, any> toHashMap(){
+    public: HashMap<Object*, Object*> toHashMap(){
 
-    HashMap<any, any> hashMap = StdUtil::getInstance().createHashMap();;
+    HashMap<Object*, Object*> hashMap = StdUtil::getInstance().createHashMap();;
     
 hashMap.put(WorkFlowData::getInstance().NAME, this->workFlowName);
     
 hashMap.put(StoreFrontData::getInstance().NAME, this->storeName);
     
-hashMap.put(WorkFlowData::getInstance().DATA, DomDocumentHelper::toString(this->workFlowDoc));
+hashMap.put(WorkFlowData::getInstance().DATA, XmlDocumentHelper::toString(this->workFlowDoc));
     
 
     Calendar calendar = Calendar::getInstance();;
@@ -252,7 +255,7 @@ hashMap.put(EntryData::getInstance().LASTMODIFIED, time);
 
         try {
             
-    HashMap<any, any> hashMap = this->toHashMap();;
+    HashMap<Object*, Object*> hashMap = this->toHashMap();;
     
 
     Set keySet = hashMap.keys();;
@@ -274,10 +277,10 @@ hashMap.put(EntryData::getInstance().LASTMODIFIED, time);
     int32_t index = 0;index < size; index++)
         {
 
-    std::string name = nameArray[index]! as string;;
+    std::string name = nameArray[index];;
     
 
-    std::string value = hashMap.get(name) as string;;
+    std::string value = hashMap.get(name);;
     
 node.appendChild(ModDomHelper::createNameValueNodes(document, name, value));
     

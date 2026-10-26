@@ -23,7 +23,7 @@
 
             #include <vector>
         
-            #include "../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
 
@@ -76,6 +76,9 @@
 #include <org/allbinary/data/tree/dom/document/DomDocumentHelper.h>
 
       
+#include <org/allbinary/data/tree/dom/document/XmlDocumentHelper.h>
+
+      
 #include <org/allbinary/logic/communication/log/LogUtil.h>
 
       
@@ -125,7 +128,7 @@ class CategoryRequestHelper: public ModifyTable {
 
     private: PageContext pageContext;
 
-    private: HashMap<any, any> hashMap;
+    private: HashMap<Object*, Object*> hashMap;
 
     private: HttpServletRequest request;
 
@@ -137,7 +140,7 @@ class CategoryRequestHelper: public ModifyTable {
 
     private: TransformInfoInterface transformInfoInterface;
 
-public: CategoryRequestHelper(HashMap<any, any> hashMap, PageContext pageContext);
+public: CategoryRequestHelper(HashMap<Object*, Object*> hashMap, PageContext pageContext);
 
     public: void getXmlData();
 

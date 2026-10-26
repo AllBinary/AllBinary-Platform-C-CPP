@@ -20,7 +20,7 @@
 
             #include <vector>
         
-            #include "../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <android/view/MotionEvent.h>
 
@@ -87,7 +87,7 @@ class GameInputMotionEventProcessorAPI5: public BaseGameInputMotionEventProcesso
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return GameInputMotionEventProcessorAPI5::instance() as GameInputMotionEventProcessorAPI5;
+                        return GameInputMotionEventProcessorAPI5::instance();
     
 }
 
@@ -104,7 +104,7 @@ private: GameInputMotionEventProcessorAPI5(){
 
     int32_t size = GameInputMotionInfoAPI5::getInstance().MAX_POINTERS;;
     
-this->motionRecognizerArray= new Array(size);
+this->motionRecognizerArray= std::vector<AllMotionRecognizer>(size);
     
 this->TOTAL_MINUS_ONE= size;
     
@@ -211,7 +211,7 @@ ForcedLogUtil::log(message +motionEvent.getPointerCount(), this);
 
     int32_t y = static_cast<int32_t>(((motionEvent.getY(pointerIndex) -this->displayInfo.getTop()) /scalableListener.getRatio(this->displayInfo.getRatio())));;
     
-this->motionRecognizerArray[pointerId]!.processStartMotionEvent(x, y, motionEvent.getDeviceId(), 0);
+this->motionRecognizerArray[pointerId].processStartMotionEvent(x, y, motionEvent.getDeviceId(), 0);
     
 
                                     }
@@ -248,7 +248,7 @@ this->motionRecognizerArray[pointerId]!.processStartMotionEvent(x, y, motionEven
 
     int32_t y = static_cast<int32_t>(((motionEvent.getY(pointerIndex) -this->displayInfo.getTop()) /scalableListener.getRatio(this->displayInfo.getRatio())));;
     
-this->motionRecognizerArray[pointerId]!.processEndMotionEvent(x, y, motionEvent.getDeviceId(), 0);
+this->motionRecognizerArray[pointerId].processEndMotionEvent(x, y, motionEvent.getDeviceId(), 0);
     
 
                                     }
@@ -285,7 +285,7 @@ this->motionRecognizerArray[pointerId]!.processEndMotionEvent(x, y, motionEvent.
 
     int32_t y = static_cast<int32_t>(((motionEvent.getY(pointerIndex) -this->displayInfo.getTop()) /scalableListener.getRatio(this->displayInfo.getRatio())));;
     
-this->motionRecognizerArray[pointerId]!.processDraggedMotionEvent(x, y, motionEvent.getDeviceId(), 0);
+this->motionRecognizerArray[pointerId].processDraggedMotionEvent(x, y, motionEvent.getDeviceId(), 0);
     
 
                                     }

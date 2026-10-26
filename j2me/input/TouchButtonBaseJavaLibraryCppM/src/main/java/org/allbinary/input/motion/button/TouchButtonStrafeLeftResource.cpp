@@ -52,8 +52,9 @@ class TouchButtonStrafeLeftResource: public TouchButtonResource {
 }
 
 
-private: TouchButtonStrafeLeftResource(){
-            super("/touch_button_strafe_left_arrow_64_by_64.png", "/touch_button_strafe_left_arrow_hint_64_by_64.png");
+private: TouchButtonStrafeLeftResource() : TouchButtonResource("/touch_button_strafe_left_arrow_64_by_64.png", "/touch_button_strafe_left_arrow_hint_64_by_64.png"){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.

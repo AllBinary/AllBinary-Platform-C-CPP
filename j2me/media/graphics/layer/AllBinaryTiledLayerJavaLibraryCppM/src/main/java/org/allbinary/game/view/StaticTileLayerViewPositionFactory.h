@@ -21,9 +21,9 @@
         #ifndef ORG_ALLBINARY_GAME_VIEW_STATICTILELAYERVIEWPOSITIONFACTORY_H
         #define ORG_ALLBINARY_GAME_VIEW_STATICTILELAYERVIEWPOSITIONFACTORY_H
 
-            #include "../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/view/ViewPositionBase.h>
 

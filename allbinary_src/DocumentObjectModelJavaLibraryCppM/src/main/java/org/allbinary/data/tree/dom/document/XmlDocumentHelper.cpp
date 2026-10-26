@@ -18,10 +18,13 @@
 
 
 
-            #include "../../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
+#include <java/io/ByteArrayOutputStream.h>
+
+      
 #include <java/io/StringReader.h>
 
       
@@ -99,6 +102,48 @@ class XmlDocumentHelper
                         //if statement needs to be on the same line and ternary does not work the same way.
                         return XmlDocumentHelper::instance();
     
+}
+
+
+                //@Throws(Exception.constructor)
+            
+    public: static std::string toString(Document document){
+
+        try {
+            
+    DOMSource domSource = DOMSource(document);;
+    
+
+    ByteArrayOutputStream byteArrayOutputStream = ByteArrayOutputStream();;
+    
+
+    StreamResult streamResult = StreamResult(byteArrayOutputStream);;
+    
+
+    TransformerFactory copyTransformerFactory = TransformerFactory::newInstance();;
+    
+
+    Transformer copyTransformer = copyTransformerFactory.newTransformer();;
+    
+copyTransformer.transform(domSource, streamResult);
+    
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return byteArrayOutputStream.toString();;
+    
+
+                //: 
+} catch(e) 
+            {
+
+
+
+                            throw e;
+                    
+}
+
 }
 
 

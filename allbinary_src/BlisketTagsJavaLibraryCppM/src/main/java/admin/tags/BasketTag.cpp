@@ -18,7 +18,7 @@
 
 
 
-            #include "../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/lang/reflect/Method.h>
 
@@ -83,7 +83,7 @@ class BasketTag: public CustomTagSupport {
 
     private: std::string storeName;
 
-    private: HashMap<any, any> propertiesHashMap;
+    private: HashMap<Object*, Object*> propertiesHashMap;
 
 public: BasketTag(){
 }
@@ -115,7 +115,7 @@ this->storeName= value;
     
 
     Boolean emptyBoolean = method.invoke(anyType, 
-                            nullptr) as Boolean;;
+                            nullptr);;
     
 
 
@@ -171,7 +171,7 @@ this->storeName= value;
     
 
     Boolean emptyBoolean = method.invoke(anyType, 
-                            nullptr) as Boolean;;
+                            nullptr);;
     
 
 
@@ -230,7 +230,7 @@ this->storeName= value;
     
 
     Boolean emptyBoolean = method.invoke(anyType, 
-                            nullptr) as Boolean;;
+                            nullptr);;
     
 
 
@@ -289,7 +289,7 @@ this->storeName= value;
     
 
     Boolean emptyBoolean = method.invoke(anyType, 
-                            nullptr) as Boolean;;
+                            nullptr);;
     
 
 
@@ -348,7 +348,7 @@ this->storeName= value;
 this->propertiesHashMap.put(StoreFrontData::getInstance().NAME, this->storeName);
     
 
-                        if(this->command.compareTo(BasketData::INSERT) == 0)
+                        if(this->command.compare(BasketData::INSERT) == 0)
                         
                                     {
                                     
@@ -364,7 +364,7 @@ this->propertiesHashMap.put(StoreFrontData::getInstance().NAME, this->storeName)
                                     }
                                 
                              else 
-                        if(this->command.compareTo(BasketData::DELETE) == 0)
+                        if(this->command.compare(BasketData::DELETE) == 0)
                         
                                     {
                                     this->removeItemFromBasket();
@@ -373,7 +373,7 @@ this->propertiesHashMap.put(StoreFrontData::getInstance().NAME, this->storeName)
                                     }
                                 
                              else 
-                        if(this->command.compareTo(BasketData::ADJUST) == 0)
+                        if(this->command.compare(BasketData::ADJUST) == 0)
                         
                                     {
                                     this->adjustBasket();
@@ -382,7 +382,7 @@ this->propertiesHashMap.put(StoreFrontData::getInstance().NAME, this->storeName)
                                     }
                                 
                              else 
-                        if(this->command.compareTo(BasketData::ISEMPTY) == 0)
+                        if(this->command.compare(BasketData::ISEMPTY) == 0)
                         
                                     {
                                     

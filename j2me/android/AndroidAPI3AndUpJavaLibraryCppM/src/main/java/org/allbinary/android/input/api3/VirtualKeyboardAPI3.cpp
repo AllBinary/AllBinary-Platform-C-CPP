@@ -18,9 +18,9 @@
 
 
 
-            #include "../../../../../java/lang/Integer.h"
+            #include "java/lang/Integer.h"
         
-            #include "../../../../../java/lang/Runnable.h"
+            #include "java/lang/Runnable.h"
         
 #include <android/app/Activity.h>
 
@@ -81,8 +81,9 @@ class VirtualKeyboardAPI3: public VirtualKeyboard, public VirtualKeyboardEventLi
 
     private: Runnable hideVirtualKeyboardRunnable;
 
-public: VirtualKeyboardAPI3(Activity activity){
-            super();
+public: VirtualKeyboardAPI3(Activity activity) : VirtualKeyboard(){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -111,7 +112,7 @@ ForcedLogUtil::log(EventStrings::getInstance().PERFORMANCE_MESSAGE, this);
 
     public: void onVirtualKeyboardEvent(VirtualKeyboardEvent virtualKeyboardEvent){
 
-    Boolean isShow = virtualKeyboardEvent.getSource() as Boolean;;
+    Boolean isShow = virtualKeyboardEvent.getSource();;
     
 
                         if(isShow.valueOf())

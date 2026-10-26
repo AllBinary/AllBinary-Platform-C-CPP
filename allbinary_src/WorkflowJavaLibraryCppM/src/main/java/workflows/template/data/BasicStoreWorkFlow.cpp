@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
 
@@ -54,8 +54,9 @@
 
 class BasicStoreWorkFlow: public BasicWorkFlow, public StoreWorkFlowInterface {
 
-public: BasicStoreWorkFlow(HashMap<any, any> propertiesHashMap, PageContext pageContext){
-            super(propertiesHashMap, pageContext);
+public: BasicStoreWorkFlow(HashMap<Object*, Object*> propertiesHashMap, PageContext pageContext) : BasicWorkFlow(propertiesHashMap, pageContext){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -70,7 +71,7 @@ public: BasicStoreWorkFlow(HashMap<any, any> propertiesHashMap, PageContext page
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this->getPropertiesHashMap().get(StoreFrontData::getInstance().NAME) as string;
+                        return this->getPropertiesHashMap().get(StoreFrontData::getInstance().NAME);
     
 }
 

@@ -20,15 +20,15 @@
 
             #include <vector>
         
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../../java/lang/System.h"
+            #include "java/lang/System.h"
         
-            #include "../../../../java/lang/Integer.h"
+            #include "java/lang/Integer.h"
         
-            #include "../../../../java/lang/Float.h"
+            #include "java/lang/Float.h"
         
-            #include "../../../../java/lang/Thread.h"
+            #include "java/lang/Thread.h"
         
 #include <java/awt/image/BufferedImage.h>
 
@@ -98,8 +98,9 @@ class ResizeImageJPanel: public javax::swing::JPanel, public ImageProcessorInput
 
     private: ImageProcessorInput imageProcessorInput;
 
-public: ResizeImageJPanel(ImageProcessorInput imageProcessorInput){
-            super();
+public: ResizeImageJPanel(ImageProcessorInput imageProcessorInput) : javax::swing::JPanel(){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -109,7 +110,7 @@ initComponents();
 this->imageProcessorInput= imageProcessorInput;
     
 
-    std::vector<std::string> numberStringArray = new Array(101);;
+    std::vector<std::string> numberStringArray = std::vector<std::string>(101);;
     
 numberStringArray[0]= std::to_string();
     
@@ -127,7 +128,7 @@ numberStringArray[index]= std::to_string(index);
 this->jComboBox1.setModel(javax::swing::DefaultComboBoxModel(numberStringArray));
     
 
-    Raster araster = this->imageProcessorInput.getBufferedImageArray()[0]!.getAlphaRaster();;
+    Raster araster = this->imageProcessorInput.getBufferedImageArray()[0].getAlphaRaster();;
     
 
                         if(araster == 
@@ -163,7 +164,7 @@ class extends Thread
     ImageUtil imageUtil = ImageUtil::getInstance();;
     
 
-    Integer percent = Integer::valueOf(this->jComboBox1.getSelectedItem() as string);;
+    Integer percent = Integer::valueOf(this->jComboBox1.getSelectedItem());;
     
 
     number percentAsFloat = Float::parseFloat(this->floatPercentJTextField.getText());;
@@ -199,10 +200,10 @@ class extends Thread
                                 
                         else {
                             
-    Integer width = Integer::valueOf(this->jTextField1.getText() as string);;
+    Integer width = Integer::valueOf(this->jTextField1.getText());;
     
 
-    Integer height = Integer::valueOf(this->jTextField2.getText() as string);;
+    Integer height = Integer::valueOf(this->jTextField2.getText());;
     
 generatedBufferedImageArray= imageUtil.createBufferedImage3(imageProcessorInput.getBufferedImageArray(), width, height, true);
     
@@ -210,7 +211,7 @@ generatedBufferedImageArray= imageUtil.createBufferedImage3(imageProcessorInput.
                         }
                             
 
-    Raster araster = generatedBufferedImageArray[0]!.getAlphaRaster();;
+    Raster araster = generatedBufferedImageArray[0].getAlphaRaster();;
     
 
                         if(araster == 
@@ -239,7 +240,7 @@ generatedBufferedImageArray= imageUtil.createBufferedImage3(imageProcessorInput.
                         for (
     int32_t index = 0;index < generatedBufferedImageArray.size(); index++)
         {
-imagePersistanceUtil.saveWithBatik(FileWrapperUtil::wrapFile(files[index]!), generatedBufferedImageArray[index]!);
+imagePersistanceUtil.saveWithBatik(FileWrapperUtil::wrapFile(files[index]), generatedBufferedImageArray[index]);
     
 }
 
@@ -290,7 +291,7 @@ class extends Thread
                         for (
     int32_t index = 0;index < size; index++)
         {
-bufferedImage= bufferedImageArray[0]!;
+bufferedImage= bufferedImageArray[0];
     
 this->jTextField1.setText(std::to_string(getWidth));
     
@@ -345,7 +346,7 @@ class extends Thread
                         for (
     int32_t index = 0;index < size; index++)
         {
-bufferedImage= bufferedImageArray[0]!;
+bufferedImage= bufferedImageArray[0];
     
 this->jTextField1.setText(std::to_string());
     
@@ -400,7 +401,7 @@ class extends Thread
                         for (
     int32_t index = 0;index < size; index++)
         {
-bufferedImage= bufferedImageArray[0]!;
+bufferedImage= bufferedImageArray[0];
     
 this->jTextField1.setText(std::to_string());
     
@@ -576,7 +577,7 @@ this->updateFor16Below();
 
     private: javax::swing::JTextField floatPercentJTextField;
 
-    private: javax::swing::JComboBox<string> jComboBox1;
+    private: javax::swing::JComboBox<std::string> jComboBox1;
 
     private: javax::swing::JLabel jLabel1;
 

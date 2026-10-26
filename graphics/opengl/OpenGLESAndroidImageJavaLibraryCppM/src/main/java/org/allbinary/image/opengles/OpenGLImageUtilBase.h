@@ -21,9 +21,9 @@
         #ifndef ORG_ALLBINARY_IMAGE_OPENGLES_OPENGLIMAGEUTILBASE_H
         #define ORG_ALLBINARY_IMAGE_OPENGLES_OPENGLIMAGEUTILBASE_H
 
-            #include "../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../java/lang/RuntimeException.h"
+            #include "java/lang/RuntimeException.h"
         
 #include <java/io/IOException.h>
 

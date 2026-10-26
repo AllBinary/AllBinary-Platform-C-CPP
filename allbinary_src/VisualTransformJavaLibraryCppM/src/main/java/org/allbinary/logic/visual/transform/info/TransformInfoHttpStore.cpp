@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
 
@@ -75,8 +75,9 @@ class TransformInfoHttpStore: public TransformInfoHttp, public TransformInfoHttp
 
     protected: const LogUtil logUtil = LogUtil::getInstance();
 
-public: TransformInfoHttpStore(HashMap<any, any> propertiesHashMap, PageContext pageContext){
-            super(propertiesHashMap, pageContext, true);
+public: TransformInfoHttpStore(HashMap<Object*, Object*> propertiesHashMap, PageContext pageContext) : TransformInfoHttp(propertiesHashMap, pageContext, true){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -93,8 +94,9 @@ public: TransformInfoHttpStore(HashMap<any, any> propertiesHashMap, PageContext 
 }
 
 
-public: TransformInfoHttpStore(HashMap<any, any> databaseHashMap, HashMap<any, any> propertiesHashMap, PageContext pageContext){
-            super(databaseHashMap, propertiesHashMap, pageContext);
+public: TransformInfoHttpStore(HashMap<Object*, Object*> databaseHashMap, HashMap<Object*, Object*> propertiesHashMap, PageContext pageContext) : TransformInfoHttp(databaseHashMap, propertiesHashMap, pageContext){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -119,13 +121,14 @@ this->logUtil.putF(stringBuffer.toString(), this, "Constructor(HashMap, HashMap 
 
                                     }
                                 
-this->setStoreName(databaseHashMap.get(StoreFrontData::getInstance().NAME) as string);
+this->setStoreName(databaseHashMap.get(StoreFrontData::getInstance().NAME));
     
 }
 
 
-public: TransformInfoHttpStore(StoreFrontInterface storeFrontInterface, HashMap<any, any> propertiesHashMap, PageContext pageContext){
-            super(propertiesHashMap, pageContext);
+public: TransformInfoHttpStore(StoreFrontInterface storeFrontInterface, HashMap<Object*, Object*> propertiesHashMap, PageContext pageContext) : TransformInfoHttp(propertiesHashMap, pageContext){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.

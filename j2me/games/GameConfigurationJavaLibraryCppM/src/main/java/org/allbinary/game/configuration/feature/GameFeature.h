@@ -21,12 +21,6 @@
         #ifndef ORG_ALLBINARY_GAME_CONFIGURATION_FEATURE_GAMEFEATURE_H
         #define ORG_ALLBINARY_GAME_CONFIGURATION_FEATURE_GAMEFEATURE_H
 
-#include <jsinterop/annotations/JsType.h>
-
-      
-#include <jsinterop/annotations/JsConstructor.h>
-
-      
 
 
 

@@ -18,15 +18,12 @@
 
 
 
-            #include "../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../java/lang/System.h"
+            #include "java/lang/System.h"
         
-            #include "../../../java/lang/Long.h"
+            #include "java/lang/Long.h"
         
-#include <jsinterop/annotations/JsType.h>
-
-      
 #include <org/allbinary/logic/string/StringMaker.h>
 
       
@@ -34,15 +31,6 @@
 
       
 #include <org/allbinary/string/CommonLabels.h>
-
-      
-#include <jsinterop/annotations/JsMethod.h>
-
-      
-#include <jsinterop/annotations/JsConstructor.h>
-
-      
-#include <jsinterop/annotations/JsProperty.h>
 
       
 
@@ -84,7 +72,7 @@ this->setStartTimeTNT();
 
     public: bool isTimeTNT(){
 
-    int64_t currentTime = Date.now();;
+    int64_t currentTime = System.currentTimeMillis();;
     
 
                         if(currentTime -this->startTime > this->delay)
@@ -112,7 +100,7 @@ this->setStartTimeTNT();
 
     public: bool isTimeSinceTNT(int32_t delay){
 
-    int64_t currentTime = Date.now();;
+    int64_t currentTime = System.currentTimeMillis();;
     
 
                         if(currentTime -this->startTime > delay)
@@ -216,7 +204,7 @@ this->setStartTimeTNT();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return Date.now() -this->startTime;
+                        return System.currentTimeMillis() -this->startTime;
     
 }
 
@@ -302,7 +290,7 @@ this->startTime= startTime;
 
 
     public: void setStartTimeTNT(){
-this->startTime= Date.now();
+this->startTime= System.currentTimeMillis();
     
 }
 
@@ -320,7 +308,7 @@ this->startTime= Long::MAX_VALUE;
                         if(this->elapsedTimeAtPause != Long::MIN_VALUE)
                         
                                     {
-                                    this->startTime= Date.now() +this->elapsedTimeAtPause;
+                                    this->startTime= System.currentTimeMillis() +this->elapsedTimeAtPause;
     
 this->elapsedTimeAtPause= Long::MIN_VALUE;
     
@@ -382,7 +370,7 @@ this->setStartTimeTNT();
 
     public: std::string toString(){
 
-    int64_t currentTime = Date.now();;
+    int64_t currentTime = System.currentTimeMillis();;
     
 
     int64_t elapsed = this->getElapsed(currentTime);;

@@ -20,13 +20,13 @@
 
             #include <vector>
         
-            #include "../../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../../../../java/lang/System.h"
+            #include "java/lang/System.h"
         
-            #include "../../../../../../java/lang/Thread.h"
+            #include "java/lang/Thread.h"
         
 #include <java/io/File.h>
 
@@ -191,7 +191,7 @@ this->logUtil.putF(this->commonStrings.START, this, "updateModules");
                         for (
     int32_t index = 0;index < size; index++)
         {
-bundle= this->install(list.get(index) as URL);
+bundle= this->install(list.get(index));
     
 
                         if(bundle != 
@@ -211,11 +211,11 @@ bundle= this->install(list.get(index) as URL);
 
                 //@Throws(Exception.constructor)
             
-    private: HashMap<any, any> getAllJarSymbolicNameHashMap(){
+    private: HashMap<Object*, Object*> getAllJarSymbolicNameHashMap(){
 this->logUtil.putF(this->commonStrings.START, this, "getAllJarSymbolicNameHashMap");
     
 
-    HashMap<any, any> hashMap = StdUtil::getInstance().createHashMap();;
+    HashMap<Object*, Object*> hashMap = StdUtil::getInstance().createHashMap();;
     
 
     BasicArrayList jarFileBasicArrayList = this->getJarModuleFileBasicArrayList();;
@@ -235,7 +235,7 @@ this->logUtil.putF("Jar Module Files: " +jarFileBasicArrayList, this, "getAllJar
                         for (
     int32_t index = 0;index < size; index++)
         {
-file= jarFileBasicArrayList.get(index) as File;
+file= jarFileBasicArrayList.get(index);
     
 
                         if(!file.isDirectory())
@@ -390,10 +390,10 @@ this->logUtil.putF(CommonLabels::getInstance().START +symbolicName, this, "isIns
                         for (
     int32_t index = 0;index < size; index++)
         {
-nextSymbolicName= list.get(index) as string;
+nextSymbolicName= list.get(index);
     
 
-                        if(nextSymbolicName.compareTo(symbolicName) == 0)
+                        if(nextSymbolicName.compare(symbolicName) == 0)
                         
                                     {
                                     
@@ -425,7 +425,7 @@ this->logUtil.putF(this->commonStrings.START, this, "findNewModules");
     BasicArrayList vector = BasicArrayListD();;
     
 
-    HashMap<any, any> hashMap = this->getAllJarSymbolicNameHashMap();;
+    HashMap<Object*, Object*> hashMap = this->getAllJarSymbolicNameHashMap();;
     
 this->logUtil.putF("All: " +hashMap, this, "findNewModules");
     
@@ -446,7 +446,7 @@ this->logUtil.putF("All: " +hashMap, this, "findNewModules");
     int32_t index = 0;index < size; index++)
         {
 
-    std::string symbolicName = symbolicNameArray[index]! as string;;
+    std::string symbolicName = symbolicNameArray[index];;
     
 
                         if(!this->isInstalled(symbolicName))

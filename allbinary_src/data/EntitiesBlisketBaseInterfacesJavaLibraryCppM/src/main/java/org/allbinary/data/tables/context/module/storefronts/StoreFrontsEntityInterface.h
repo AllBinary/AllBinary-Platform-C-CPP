@@ -21,7 +21,7 @@
         #ifndef ORG_ALLBINARY_DATA_TABLES_CONTEXT_MODULE_STOREFRONTS_STOREFRONTSENTITYINTERFACE_H
         #define ORG_ALLBINARY_DATA_TABLES_CONTEXT_MODULE_STOREFRONTS_STOREFRONTSENTITYINTERFACE_H
 
-            #include "../../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
 
@@ -69,7 +69,7 @@ class StoreFrontsEntityInterface: public BasicDataTableInterface {
 
     void insert(BasicArrayList values);
 
-    void update(HashMap<any, any> updatedValues);
+    void update(HashMap<Object*, Object*> updatedValues);
 
 };
 

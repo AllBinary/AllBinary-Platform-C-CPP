@@ -20,7 +20,7 @@
 
             #include <vector>
         
-            #include "../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/android/input/motion/AnalogLocationInputProcessor.h>
 
@@ -149,7 +149,7 @@ customGPoint= analogLocationInput.getCustomGPoint();
                         if(x < 0)
                         
                                     {
-                                    this->inputProcessorArray[this->leftGameKeyEvent.getKey()]!.processAnalog(allbinaryLayerManager, this->leftGameKeyEvent, x);
+                                    this->inputProcessorArray[this->leftGameKeyEvent.getKey()].processAnalog(allbinaryLayerManager, this->leftGameKeyEvent, x);
     
 
                                     }
@@ -158,7 +158,7 @@ customGPoint= analogLocationInput.getCustomGPoint();
                         if(x > 0)
                         
                                     {
-                                    this->inputProcessorArray[this->rightGameKeyEvent.getKey()]!.processAnalog(allbinaryLayerManager, this->rightGameKeyEvent, x);
+                                    this->inputProcessorArray[this->rightGameKeyEvent.getKey()].processAnalog(allbinaryLayerManager, this->rightGameKeyEvent, x);
     
 
                                     }
@@ -167,7 +167,7 @@ customGPoint= analogLocationInput.getCustomGPoint();
                         if(y < 0)
                         
                                     {
-                                    this->inputProcessorArray[this->downGameKeyEvent.getKey()]!.processAnalog(allbinaryLayerManager, this->downGameKeyEvent, y);
+                                    this->inputProcessorArray[this->downGameKeyEvent.getKey()].processAnalog(allbinaryLayerManager, this->downGameKeyEvent, y);
     
 
                                     }
@@ -176,7 +176,7 @@ customGPoint= analogLocationInput.getCustomGPoint();
                         if(y > 0)
                         
                                     {
-                                    this->inputProcessorArray[this->upGameKeyEvent.getKey()]!.processAnalog(allbinaryLayerManager, this->upGameKeyEvent, y);
+                                    this->inputProcessorArray[this->upGameKeyEvent.getKey()].processAnalog(allbinaryLayerManager, this->upGameKeyEvent, y);
     
 
                                     }
@@ -185,7 +185,7 @@ customGPoint= analogLocationInput.getCustomGPoint();
                         if(leftTrigger > 0)
                         
                                     {
-                                    this->inputProcessorArray[this->leftTriggerGameKeyEvent.getKey()]!.processAnalog(allbinaryLayerManager, this->leftTriggerGameKeyEvent, leftTrigger);
+                                    this->inputProcessorArray[this->leftTriggerGameKeyEvent.getKey()].processAnalog(allbinaryLayerManager, this->leftTriggerGameKeyEvent, leftTrigger);
     
 
                                     }
@@ -194,7 +194,7 @@ customGPoint= analogLocationInput.getCustomGPoint();
                         if(rightTrigger > 0)
                         
                                     {
-                                    this->inputProcessorArray[this->rightTriggerGameKeyEvent.getKey()]!.processAnalog(allbinaryLayerManager, this->rightTriggerGameKeyEvent, rightTrigger);
+                                    this->inputProcessorArray[this->rightTriggerGameKeyEvent.getKey()].processAnalog(allbinaryLayerManager, this->rightTriggerGameKeyEvent, rightTrigger);
     
 
                                     }

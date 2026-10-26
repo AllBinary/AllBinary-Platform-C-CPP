@@ -18,9 +18,9 @@
 
 
 
-            #include "../../../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/util/BasicArrayList.h>
 
@@ -37,7 +37,7 @@
 #include <org/allbinary/data/tree/dom/document/DomDocumentHelper.h>
 
       
-#include <org/allbinary/logic/StdUtil.h>
+#include <org/allbinary/data/tree/dom/document/XmlDocumentHelper.h>
 
       
 #include <org/allbinary/logic/communication/log/LogUtil.h>
@@ -336,7 +336,7 @@ this->document= document;
     NamedNodeMap viewAttributes = viewNode.getAttributes();;
     
 
-    Attr attrNode = viewAttributes.getNamedItem(TransformInfoData::getInstance().NAME) as Attr;;
+    Attr attrNode = viewAttributes.getNamedItem(TransformInfoData::getInstance().NAME);;
     
 
                         if(transformInfoInterface.getName().compareTo(attrNode.getValue()) == 0)
@@ -381,7 +381,7 @@ this->document= document;
             
     public: std::string getName(){
 
-    Attr attrNode = this->getTemplateAttributes().getNamedItem(TransformInfoObjectConfigData::getInstance().NAME) as Attr;;
+    Attr attrNode = this->getTemplateAttributes().getNamedItem(TransformInfoObjectConfigData::getInstance().NAME);;
     
 
 
@@ -396,7 +396,7 @@ this->document= document;
             
     public: void setName(std::string name){
 
-    Attr attrNode = this->getTemplateAttributes().getNamedItem(TransformInfoObjectConfigData::getInstance().NAME) as Attr;;
+    Attr attrNode = this->getTemplateAttributes().getNamedItem(TransformInfoObjectConfigData::getInstance().NAME);;
     
 attrNode.setValue(name);
     
@@ -479,7 +479,7 @@ this->logUtil.putF(stringBuffer.toString(), this, "getNodeVector(nodename)");
     int32_t index = 0;index < size; index++)
         {
 
-    Node viewNode = viewNodeVector.get(index) as Node;;
+    Node viewNode = viewNodeVector.get(index);;
     
 viewVector.add(TransformInfoDomNode(viewNode));
     
@@ -514,7 +514,7 @@ viewVector.add(TransformInfoDomNode(viewNode));
     int32_t index = 0;index < size; index++)
         {
 
-    Node viewNode = viewNodeVector.get(index) as Node;;
+    Node viewNode = viewNodeVector.get(index);;
     
 viewVector.add(TransformInfoDomNode(viewNode).getTransformInfoInterface());
     
@@ -576,13 +576,13 @@ viewVector.add(TransformInfoDomNode(viewNode).getTransformInfoInterface());
     NamedNodeMap attributes = node.getAttributes();;
     
 
-    Attr attrNode = attributes.getNamedItem(GROUP) as Attr;;
+    Attr attrNode = attributes.getNamedItem(GROUP);;
     
 
     std::string value = attrNode.getValue();;
     
 
-                        if(value.compareTo(group) == 0)
+                        if(value.compare(group) == 0)
                         
                                     {
                                     componentsNode= node;
@@ -621,7 +621,7 @@ break;
     int32_t index = 0;index < size; index++)
         {
 
-    Node viewNode = viewNodeVector.get(index) as Node;;
+    Node viewNode = viewNodeVector.get(index);;
     
 viewVector.add(TransformInfoDomNode(viewNode));
     
@@ -801,7 +801,7 @@ this->outputTypeName= outputTypeName;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return DomDocumentHelper::toString(this->document);;
+                        return XmlDocumentHelper::toString(this->document);;
     
 
                                     }

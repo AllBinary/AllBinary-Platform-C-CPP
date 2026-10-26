@@ -18,13 +18,10 @@
 
 
 
-            #include "../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../../../../java/lang/Integer.h"
+            #include "java/lang/Integer.h"
         
-#include <java/util/Hashtable.h>
-
-      
 #include <javax/microedition/lcdui/Canvas.h>
 
       
@@ -50,6 +47,9 @@
 
       
 #include <org/allbinary/logic/math/MathUtil.h>
+
+      
+#include <org/allbinary/util/ABHashtable.h>
 
       
 #include <org/allbinary/util/BasicArrayList.h>
@@ -79,14 +79,15 @@ class FlockingAI: public BasicAI {
 
     private: int32_t allowedDistance;
 
-public: FlockingAI(Hashtable<any, any> hashtable, AllBinaryLayer ownerLayerInterface, GameInput gameInput){
-            super(ownerLayerInterface, gameInput);
+public: FlockingAI(ABHashtable<Object*, Object*> hashtable, AllBinaryLayer ownerLayerInterface, GameInput gameInput) : BasicAI(ownerLayerInterface, gameInput){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
                     
 
-    Integer allowedDistance = hashtable.get(BasePatrolAI::MAX_DISTANCE) as Integer;;
+    Integer allowedDistance = hashtable.get(BasePatrolAI::MAX_DISTANCE);;
     
 this->allowedDistance= allowedDistance.intValue();
     
@@ -112,14 +113,19 @@ this->allowedDistance= allowedDistance.intValue();
     int32_t size = list.size();;
     
 
+    AllBinaryLayer allBinaryLayer;;
+    
+
+    AllBinaryLayer ownerLayerInterface;;
+    
+
 
 
 
                         for (
     int32_t index = 0;index < size; index++)
         {
-
-    AllBinaryLayer allBinaryLayer = list.get(index) as AllBinaryLayer;;
+allBinaryLayer= list.get(index);
     
 
                         if(allBinaryLayer.getType() != WeaponLayer::getStaticType())
@@ -162,8 +168,7 @@ farAllbinaryLayer= allBinaryLayer;
                         if(farAllbinaryLayer != AllBinaryLayer::NULL_ALLBINARY_LAYER)
                         
                                     {
-                                    
-    AllBinaryLayer ownerLayerInterface = this->getOwnerLayerInterface();;
+                                    ownerLayerInterface= this->getOwnerLayerInterface();
     
 
                         if(farAllbinaryLayer.getXP() < ownerLayerInterface.getXP())

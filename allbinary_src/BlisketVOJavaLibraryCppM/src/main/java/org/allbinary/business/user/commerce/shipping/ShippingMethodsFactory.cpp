@@ -18,9 +18,9 @@
 
 
 
-            #include "../../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/util/BasicArrayList.h>
 
@@ -170,7 +170,7 @@ stringBuffer.append(sep);
 stringBuffer.append(ShippingMethodsFactory::SHIPPINGMETHODSFILEPATHSTRING);
     
 
-    AbPath abPath = AbPath(stringBuffer.toString(), this->SHIPPINGMETHODSFILENAME) as AbPath;;
+    AbPath abPath = AbPath(stringBuffer.toString(), this->SHIPPINGMETHODSFILENAME);;
     
 
     std::string data = CryptFileReader(TransformInfoObjectConfigData::getInstance().UNCRYPTED_EXTENSION, TransformInfoObjectConfigData::getInstance().ENCRYPTED_EXTENSION).get(abPath);;
@@ -205,7 +205,7 @@ this->shippingVector= BasicArrayListD();
     std::string shippingMethodClassName = DomNodeHelper::getTextNodeValue(classNameNode);;
     
 
-    ShippingInterface shippingMethodInterface = AbeFactory::getInstance().getInstance(abeClientInformation, shippingMethodClassName) as ShippingInterface;;
+    ShippingInterface shippingMethodInterface = AbeFactory::getInstance().getInstance(abeClientInformation, shippingMethodClassName);;
     
 this->shippingVector.add(shippingMethodInterface);
     
@@ -216,7 +216,7 @@ this->shippingVector.add(shippingMethodInterface);
     std::string defaultShippingMethodNameNodeValue = DomNodeHelper::getTextNodeValue(defaultShippingMethodNameNode);;
     
 
-                        if(true && defaultShippingMethodNameNodeValue.compareTo(ShippingMethodData::DEFAULT) == 0)
+                        if(true && defaultShippingMethodNameNodeValue.compare(ShippingMethodData::DEFAULT) == 0)
                         this->defaultShippingMethodInterface= shippingMethodInterface;
                                 
 }

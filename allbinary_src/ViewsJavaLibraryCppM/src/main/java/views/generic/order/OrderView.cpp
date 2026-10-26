@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <javax/servlet/http/HttpServletRequest.h>
 
@@ -87,13 +87,14 @@ class OrderView: public HttpStoreComponentView, public DomNodeInterface {
 
     protected: BasketReview basketReview;
 
-public: OrderView(TransformInfoInterface transformInfoInterface){
-            super(transformInfoInterface);
+public: OrderView(TransformInfoInterface transformInfoInterface) : HttpStoreComponentView(transformInfoInterface){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this->request= this->getPageContext().getRequest() as HttpServletRequest;
+this->request= this->getPageContext().getRequest();
     
 this->getFormData();
     
@@ -166,7 +167,7 @@ node.appendChild(orderHistoryNode);
 
 
     public: void addDomNodeInterfaces(){
-this->addDomNodeInterface(this as DomNodeInterface);
+this->addDomNodeInterface(this);
     
 }
 

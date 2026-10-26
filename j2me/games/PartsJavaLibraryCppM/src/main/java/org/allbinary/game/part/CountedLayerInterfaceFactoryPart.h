@@ -23,13 +23,10 @@
 
             #include <vector>
         
-            #include "../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-#include <java/util/Hashtable.h>
-
-      
 #include <javax/microedition/lcdui/Font.h>
 
       
@@ -61,6 +58,9 @@
 
       
 #include <org/allbinary/logic/math/PrimitiveLongUtil.h>
+
+      
+#include <org/allbinary/util/ABHashtable.h>
 
       
 
@@ -113,7 +113,7 @@ public: CountedLayerInterfaceFactoryPart(int32_t total, CountedPickedUpLayerInte
 
                 //@Throws(Exception.constructor)
             
-    public: AllBinaryLayer getInstance(Hashtable<any, any> hashtable, int32_t x, int32_t y, int32_t z);
+    public: AllBinaryLayer getInstance(ABHashtable<Object*, Object*> hashtable, int32_t x, int32_t y, int32_t z);
 
     public: int32_t getTotal();
 

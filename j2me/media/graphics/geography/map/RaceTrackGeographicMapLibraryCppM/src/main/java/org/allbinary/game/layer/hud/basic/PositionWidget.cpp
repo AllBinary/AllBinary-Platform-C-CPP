@@ -18,9 +18,9 @@
 
 
 
-            #include "../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../../../../java/lang/Integer.h"
+            #include "java/lang/Integer.h"
         
 #include <javax/microedition/lcdui/Graphics.h>
 
@@ -110,8 +110,9 @@ stringBuffer.append(std::to_string(position));
 
     private: std::string positionString = StringUtil::getInstance().EMPTY_STRING;
 
-public: PositionWidget(int32_t position, int32_t location, int32_t direction, BasicColor basicColor){
-            super(location, direction, 2, basicColor);
+public: PositionWidget(int32_t position, int32_t location, int32_t direction, BasicColor basicColor) : BasicHud(location, direction, 2, basicColor){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.

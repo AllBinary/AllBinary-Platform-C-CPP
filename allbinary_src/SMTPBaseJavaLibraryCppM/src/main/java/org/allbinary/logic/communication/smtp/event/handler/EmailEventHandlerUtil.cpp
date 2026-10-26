@@ -18,9 +18,9 @@
 
 
 
-            #include "../../../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/util/BasicArrayList.h>
 
@@ -169,7 +169,7 @@ userEmailEventHandler.addListener(LogUserEmailEventListenerModule());
     int32_t index = 0;index < size; index++)
         {
 
-    UserInterface userInterface = userVector.get(index) as UserInterface;;
+    UserInterface userInterface = userVector.get(index);;
     
 
     BasicArrayList vector = EmailEventHandlerUtil::getUserEmailEventListenerVector(abeClientInformation, userEmailEventNameData, userInterface);;

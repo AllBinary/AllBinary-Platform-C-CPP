@@ -20,18 +20,9 @@
 
             #include <vector>
         
-            #include "../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-#include <jsinterop/annotations/JsType.h>
-
-      
 #include <org/allbinary/logic/string/StringMaker.h>
-
-      
-#include <jsinterop/annotations/JsMethod.h>
-
-      
-#include <jsinterop/annotations/JsConstructor.h>
 
       
 
@@ -57,14 +48,14 @@ class Direction
             : public Object
          {
 
-    private: static std::vector<Direction> directionArray = new Array(13);
+    private: static std::vector<Direction> directionArray = std::vector<Direction>(13);
 
     public: static Direction getInstance(int32_t direction){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return Direction::directionArray[direction]!;
+                        return Direction::directionArray[direction];
     
 }
 

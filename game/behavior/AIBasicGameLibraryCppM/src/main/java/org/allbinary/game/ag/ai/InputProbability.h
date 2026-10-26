@@ -23,13 +23,10 @@
 
             #include <vector>
         
-            #include "../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../java/lang/Integer.h"
+            #include "java/lang/Integer.h"
         
-#include <java/util/Hashtable.h>
-
-      
 #include <org/allbinary/logic/StdUtil.h>
 
       
@@ -37,6 +34,9 @@
 
       
 #include <org/allbinary/time/TimeDelayHelper.h>
+
+      
+#include <org/allbinary/util/ABHashtable.h>
 
       
 
@@ -82,7 +82,7 @@ public: InputProbability(std::vector<std::vector<Integer>> likelyhoodIntegerArra
 
     public: TimeDelayHelper getTimeDelayHelper();
 
-    public: Hashtable<any, any> toHashtable();
+    public: ABHashtable<Object*, Object*> toHashtable();
 
 };
 

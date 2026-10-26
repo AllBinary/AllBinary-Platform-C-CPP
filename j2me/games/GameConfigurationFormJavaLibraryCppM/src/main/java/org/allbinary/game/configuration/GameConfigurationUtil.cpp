@@ -18,11 +18,11 @@
 
 
 
-            #include "../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../../java/lang/Integer.h"
+            #include "java/lang/Integer.h"
         
 #include <javax/microedition/lcdui/Item.h>
 
@@ -212,7 +212,7 @@ gameConfigurationCentral.SPEED_CHALLENGE_LEVEL.setValue(gameConfiguration.getVal
                         
                                     {
                                     
-    GameConfigurationGauge gauge = item as GameConfigurationGauge;;
+    GameConfigurationGauge gauge = item;;
     
 
     std::string name = item.getLabel();;

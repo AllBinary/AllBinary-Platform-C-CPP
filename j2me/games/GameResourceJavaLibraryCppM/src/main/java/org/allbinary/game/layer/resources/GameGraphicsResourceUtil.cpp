@@ -18,9 +18,9 @@
 
 
 
-            #include "../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/game/configuration/feature/Features.h>
 
@@ -91,7 +91,7 @@ class GameGraphicsResourceUtil
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return GameGraphicsResourceUtil::instance() as GameGraphicsResourceUtil;
+                        return GameGraphicsResourceUtil::instance();
     
 }
 

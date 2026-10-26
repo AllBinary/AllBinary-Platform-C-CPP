@@ -20,7 +20,7 @@
 
             #include <vector>
         
-            #include "../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <javax/microedition/lcdui/Font.h>
 
@@ -90,8 +90,9 @@ class VelocityWidget: public BasicHud {
 
     private: int32_t offset2 = 0;
 
-public: VelocityWidget(int32_t powerOfTenVelocity, int32_t location, int32_t direction, BasicColor basicColor){
-            super(location, direction, 2, basicColor);
+public: VelocityWidget(int32_t powerOfTenVelocity, int32_t location, int32_t direction, BasicColor basicColor) : BasicHud(location, direction, 2, basicColor){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.

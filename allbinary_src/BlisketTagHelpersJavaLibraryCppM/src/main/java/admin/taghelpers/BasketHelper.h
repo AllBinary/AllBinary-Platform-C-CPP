@@ -21,7 +21,7 @@
         #ifndef ADMIN_TAGHELPERS_BASKETHELPER_H
         #define ADMIN_TAGHELPERS_BASKETHELPER_H
 
-            #include "../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
 
@@ -75,13 +75,13 @@ class BasketHelper: public TagHelper {
 
     private: StoreFrontInterface storeFrontInterface;
 
-    private: HashMap<any, any> propertiesHashMap;
+    private: HashMap<Object*, Object*> propertiesHashMap;
 
     private: PageContext pageContext;
 
     private: const int32_t MAX = 200;
 
-public: BasketHelper(HashMap<any, any> hashMap, PageContext pageContext);
+public: BasketHelper(HashMap<Object*, Object*> hashMap, PageContext pageContext);
 
     public: Boolean isBasketEmpty();
 

@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
 #include <org/allbinary/logic/communication/log/LogUtil.h>
 
@@ -92,7 +92,7 @@ this->logUtil.putF(StringMaker().append(CommonLabels::getInstance().START_LABEL)
     int32_t index = this->eventList.size() -1;index >= 0; index--)
         {
 
-    GameKeyCompleteMotionGestureInputEvent gameKeyCompleteMotionGestureInputEvent = this->eventList.objectArray[index]! as GameKeyCompleteMotionGestureInputEvent;;
+    GameKeyCompleteMotionGestureInputEvent gameKeyCompleteMotionGestureInputEvent = this->eventList.objectArray[index];;
     
 gameKeyCompleteMotionGestureInputEvent.update();
     

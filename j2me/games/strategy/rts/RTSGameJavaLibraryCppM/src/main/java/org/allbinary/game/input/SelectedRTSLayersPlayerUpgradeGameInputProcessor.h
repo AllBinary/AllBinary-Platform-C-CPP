@@ -21,7 +21,7 @@
         #ifndef ORG_ALLBINARY_GAME_INPUT_SELECTEDRTSLAYERSPLAYERUPGRADEGAMEINPUTPROCESSOR_H
         #define ORG_ALLBINARY_GAME_INPUT_SELECTEDRTSLAYERSPLAYERUPGRADEGAMEINPUTPROCESSOR_H
 
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/game/input/event/GameKeyEvent.h>
 

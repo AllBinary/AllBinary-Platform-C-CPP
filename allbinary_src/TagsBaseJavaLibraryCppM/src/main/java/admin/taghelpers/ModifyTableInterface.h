@@ -21,7 +21,7 @@
         #ifndef ADMIN_TAGHELPERS_MODIFYTABLEINTERFACE_H
         #define ADMIN_TAGHELPERS_MODIFYTABLEINTERFACE_H
 
-            #include "../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 
 

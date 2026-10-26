@@ -21,7 +21,7 @@
         #ifndef ORG_ALLBINARY_GAME_SCORE_HIGHSCORESCANVASCHANGELEVELINPUTPROCESSORFACTORY_H
         #define ORG_ALLBINARY_GAME_SCORE_HIGHSCORESCANVASCHANGELEVELINPUTPROCESSORFACTORY_H
 
-            #include "../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
 #include <org/allbinary/game/score/displayable/HighScoresCanvas.h>
 

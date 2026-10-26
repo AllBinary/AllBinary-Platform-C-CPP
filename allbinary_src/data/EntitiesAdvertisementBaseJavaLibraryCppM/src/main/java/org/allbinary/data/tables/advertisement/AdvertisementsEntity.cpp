@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
 
@@ -87,8 +87,9 @@ class AdvertisementsEntity: public AbSqlBean, public AdvertisementsEntityInterfa
 
     private: const std::string _INDEX = "_index";
 
-public: AdvertisementsEntity(){
-            super(UserDbInitInfo());
+public: AdvertisementsEntity() : AbSqlBean(UserDbInitInfo()){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -132,7 +133,7 @@ this->setTableName(this->tableName);
 
     public: BasicArrayList get(std::string storeName){
 
-    HashMap<any, any> keysAndValues = StdUtil::getInstance().createHashMap();;
+    HashMap<Object*, Object*> keysAndValues = StdUtil::getInstance().createHashMap();;
     
 keysAndValues.put(StoreFrontData::getInstance().NAME, storeName);
     
@@ -153,7 +154,7 @@ keysAndValues.put(StoreFrontData::getInstance().NAME, storeName);
     int32_t index = 0;index < size; index++)
         {
 
-    HashMap<any, any> hashMap = hashMapVector.get(index) as HashMap<any, any>;;
+    HashMap<Object*, Object*> hashMap = hashMapVector.get(index);;
     
 }
 
@@ -168,14 +169,14 @@ keysAndValues.put(StoreFrontData::getInstance().NAME, storeName);
 
     public: AdvertisementInterface get(std::string storeName, std::string advertismentName){
 
-    HashMap<any, any> keysAndValues = StdUtil::getInstance().createHashMap();;
+    HashMap<Object*, Object*> keysAndValues = StdUtil::getInstance().createHashMap();;
     
 keysAndValues.put(StoreFrontData::getInstance().NAME, storeName);
     
 keysAndValues.put(AdvertisementData::getInstance().NAME, advertismentName);
     
 
-    HashMap<any, any> hashMap = super.getRow(keysAndValues);;
+    HashMap<Object*, Object*> hashMap = super.getRow(keysAndValues);;
     
 
 
@@ -221,8 +222,8 @@ stringBuffer.append(DynamicObjectData::NAME).append(this->sqlTypeStrings.MAX_CHA
 }
 
 
-    public: void update(HashMap<any, any> updatedValues){
-super.updateWhere(EntryData::getInstance().ID, updatedValues.get(EntryData::getInstance().ID) as string, updatedValues);
+    public: void update(HashMap<Object*, Object*> updatedValues){
+super.updateWhere(EntryData::getInstance().ID, updatedValues.get(EntryData::getInstance().ID), updatedValues);
     
 }
 

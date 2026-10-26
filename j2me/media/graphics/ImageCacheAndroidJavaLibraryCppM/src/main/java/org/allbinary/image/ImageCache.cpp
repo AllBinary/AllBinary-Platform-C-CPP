@@ -20,15 +20,13 @@
 
             #include <vector>
         
-            #include "../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../java/lang/RuntimeException.h"
+            #include "java/lang/RuntimeException.h"
         
-            #include "../../../java/lang/System.h"
+            #include "java/lang/Integer.h"
         
-            #include "../../../java/lang/Integer.h"
-        
-            #include "../../../java/lang/Thread.h"
+            #include "java/lang/Thread.h"
         
 #include <java/io/InputStream.h>
 
@@ -37,6 +35,9 @@
 
       
 #include <javax/microedition/lcdui/NullImage.h>
+
+      
+#include <org/allbinary/TsUtil.h>
 
       
 #include <org/allbinary/string/CommonStrings.h>
@@ -49,6 +50,9 @@
 
       
 #include <org/allbinary/game/gd/resource/GDResources.h>
+
+      
+#include <org/allbinary/logic/ABSystemWrapper.h>
 
       
 #include <org/allbinary/logic/string/StringUtil.h>
@@ -82,6 +86,10 @@ class ImageCache: public ImageCacheBase {
     public: static const ImageCache NULL_IMAGE_CACHE = ImageCache();
 
     protected: const CommonStrings commonStrings = CommonStrings::getInstance();
+
+    private: const ABSystemWrapper systemWrapper = ABSystemWrapper::getInstance();
+
+    private: const TsUtil tsUtil = TsUtil::getInstance();
 
 public: ImageCache(){
 }
@@ -152,7 +160,7 @@ this->logUtil.putF(StringMaker().append("unable to find key: ").append(StringUti
                         if(this->volume > 32000)
                         
                                     {
-                                    System.gc();
+                                    this->tsUtil.gc();
     
 this->volume= 0;
     
@@ -176,7 +184,7 @@ this->nextIndex++;
 
                                     }
                                 
-this->listOfList[foundIndex]!.add(image);
+this->listOfList[foundIndex].add(image);
     
 
                                     }
@@ -197,7 +205,7 @@ this->listOfList[foundIndex]!.add(image);
     ResourceUtil resourceUtil = ResourceUtil::getInstance();;
     
 
-    Integer resourceId = resourceUtil.getResourceId(key as string);;
+    Integer resourceId = resourceUtil.getResourceId(key);;
     
 
     Image image = this->getImage(resourceId);;
@@ -207,7 +215,7 @@ this->listOfList[foundIndex]!.add(image);
                         
                                     {
                                     
-    InputStream inputStream = resourceUtil.getResourceAsStream(key as string);;
+    InputStream inputStream = resourceUtil.getResourceAsStream(key);;
     
 
         try {
@@ -223,9 +231,9 @@ this->logUtil.put("Exception: Trying Again After GC", this, this->commonStrings.
     
 this->logUtil.putF(StringMaker().append("InputStream: ").append(StringUtil::getInstance().toString(inputStream)).toString(), this, this->commonStrings.GET);
     
-System.gc();
+this->tsUtil.gc();
     
-System.gc();
+this->tsUtil.gc();
     
 this->logUtil.putF(Memory::getInfo(), this, this->commonStrings.GET);
     

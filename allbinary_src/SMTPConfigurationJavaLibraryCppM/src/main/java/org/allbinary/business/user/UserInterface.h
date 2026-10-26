@@ -152,7 +152,7 @@ class UserInterface: public TableMappingInterface, public ValidationInterface {
 
     void setUserConfigurationInterface(UserConfigurationInterface userConfigurationInterface);
 
-    HashMap<any, any> toPasswordHashMap();
+    HashMap<Object*, Object*> toPasswordHashMap();
 
     void validateSession(WeblisketSessionInterface weblisketSession);
 

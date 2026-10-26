@@ -58,8 +58,9 @@ class NoPlayerGameInput: public PlayerGameInput {
 }
 
 
-private: NoPlayerGameInput(){
-            super(BasicArrayListD(), BasicArrayListD(),  -1);
+private: NoPlayerGameInput() : PlayerGameInput(BasicArrayListD(), BasicArrayListD(),  -1){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.

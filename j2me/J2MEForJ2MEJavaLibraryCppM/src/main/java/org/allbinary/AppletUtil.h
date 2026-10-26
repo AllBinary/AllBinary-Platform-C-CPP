@@ -21,7 +21,7 @@
         #ifndef ORG_ALLBINARY_APPLETUTIL_H
         #define ORG_ALLBINARY_APPLETUTIL_H
 
-            #include "../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
 
 

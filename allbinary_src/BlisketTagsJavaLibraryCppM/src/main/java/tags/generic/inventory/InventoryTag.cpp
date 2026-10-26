@@ -18,9 +18,9 @@
 
 
 
-            #include "../../../java/lang/Class.h"
+            #include "java/lang/Class.h"
         
-            #include "../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/lang/reflect/Method.h>
 
@@ -66,8 +66,9 @@ class InventoryTag: public StoreValidationTransformTag {
 
     protected: const LogUtil logUtil = LogUtil::getInstance();
 
-public: InventoryTag(){
-            super();
+public: InventoryTag() : StoreValidationTransformTag(){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -84,7 +85,7 @@ public: InventoryTag(){
     Object* anyType = InventoryHelperFactory().getInstance(this->getPropertiesHashMap(), this->pageContext);;
     
 
-    Function addressHelperClass = anyType->constructor;;
+    Class* addressHelperClass = anyType->getClass();;
     
 
     Method method = addressHelperClass.getMethod("search", 
@@ -92,7 +93,7 @@ public: InventoryTag(){
     
 
     std::string result = method.invoke(anyType, 
-                            nullptr) as string;;
+                            nullptr);;
     
 pageContext.getOut().print(result);
     
@@ -157,7 +158,7 @@ pageContext.getOut().print("Exception: " +e +"<br>");
     Object* anyType = InventoryHelperFactory().getInstance(this->getPropertiesHashMap(), this->pageContext);;
     
 
-    Function helperClass = anyType->constructor;;
+    Class* helperClass = anyType->getClass();;
     
 
     Method method = helperClass.getMethod("viewSummary", 
@@ -165,7 +166,7 @@ pageContext.getOut().print("Exception: " +e +"<br>");
     
 
     std::string result = method.invoke(anyType, 
-                            nullptr) as string;;
+                            nullptr);;
     
 pageContext.getOut().print(result);
     

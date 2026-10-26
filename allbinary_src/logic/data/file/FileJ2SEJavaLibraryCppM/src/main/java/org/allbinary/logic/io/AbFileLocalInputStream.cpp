@@ -49,8 +49,9 @@
 
 class AbFileLocalInputStream: public AbFileInputStream {
 
-public: AbFileLocalInputStream(AbFile file){
-            super(AbFileNativeUtil::get(file));
+public: AbFileLocalInputStream(AbFile file) : AbFileInputStream(AbFileNativeUtil::get(file)){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.

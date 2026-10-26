@@ -21,7 +21,7 @@
         #ifndef ORG_ALLBINARY_BUSINESS_CATEGORY_STORE_THEME_THEMECOMPARATOR_H
         #define ORG_ALLBINARY_BUSINESS_CATEGORY_STORE_THEME_THEMECOMPARATOR_H
 
-            #include "../../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
 #include <java/util/Comparator.h>
 

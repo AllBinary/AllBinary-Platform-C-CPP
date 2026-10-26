@@ -21,7 +21,7 @@
         #ifndef TAGHELPERS_VALIDATIONVIEWHELPER_H
         #define TAGHELPERS_VALIDATIONVIEWHELPER_H
 
-            #include "../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
 
@@ -67,7 +67,7 @@ class ValidationViewHelper: public ViewHelper, public ValidationComponentInterfa
 
     private: ValidationComponentInterface viewInterface;
 
-public: ValidationViewHelper(HashMap<any, any> hashMap, PageContext pageContext);
+public: ValidationViewHelper(HashMap<Object*, Object*> hashMap, PageContext pageContext);
 
     public: Boolean isValid();
 

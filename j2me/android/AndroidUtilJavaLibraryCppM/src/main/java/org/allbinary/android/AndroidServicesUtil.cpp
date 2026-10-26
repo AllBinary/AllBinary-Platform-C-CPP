@@ -20,7 +20,7 @@
 
             #include <hilog/log.h>
         
-            #include "../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
 #include <java/util/List.h>
 
@@ -90,7 +90,7 @@ class AndroidServicesUtil
 
     public: bool isServiceRunning(std::string name){
 
-    ActivityManager activityManager = this->resourceUtil.getContext().getSystemService(Context::ACTIVITY_SERVICE) as unknown as ActivityManager;;
+    ActivityManager activityManager = this->resourceUtil.getContext().getSystemService(Context::ACTIVITY_SERVICE) as unknown;;
     
 
     List<RunningServiceInfo> runningServicesList = activityManager.getRunningServices(this->SERVICE_LIMIT_MAX);;
@@ -105,7 +105,7 @@ class AndroidServicesUtil
     std::string serviceName;;
     
 
-    int32_t size = runningServicesList.length;;
+    int32_t size = runningServicesList.size;;
     
 
 

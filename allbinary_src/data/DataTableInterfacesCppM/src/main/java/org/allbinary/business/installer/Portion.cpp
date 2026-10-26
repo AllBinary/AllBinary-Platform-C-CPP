@@ -18,9 +18,9 @@
 
 
 
-            #include "../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../java/lang/Integer.h"
+            #include "java/lang/Integer.h"
         
 #include <java/util/HashMap.h>
 
@@ -52,10 +52,10 @@ class Portion
 
     private: Integer total;
 
-public: Portion(HashMap<any, any> hashMap){
-this->current= hashMap.get("current") as Integer;
+public: Portion(HashMap<Object*, Object*> hashMap){
+this->current= hashMap.get("current");
     
-this->total= hashMap.get("total") as Integer;
+this->total= hashMap.get("total");
     
 }
 

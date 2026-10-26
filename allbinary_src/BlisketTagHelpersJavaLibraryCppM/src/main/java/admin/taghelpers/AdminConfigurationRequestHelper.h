@@ -21,7 +21,7 @@
         #ifndef ADMIN_TAGHELPERS_ADMINCONFIGURATIONREQUESTHELPER_H
         #define ADMIN_TAGHELPERS_ADMINCONFIGURATIONREQUESTHELPER_H
 
-            #include "../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
 
@@ -67,7 +67,7 @@ class AdminConfigurationRequestHelper: public ModifyTable {
 
     private: HttpServletRequest request;
 
-public: AdminConfigurationRequestHelper(HashMap<any, any> hashMap, PageContext pageContext);
+public: AdminConfigurationRequestHelper(HashMap<Object*, Object*> hashMap, PageContext pageContext);
 
     public: std::string insert();
 

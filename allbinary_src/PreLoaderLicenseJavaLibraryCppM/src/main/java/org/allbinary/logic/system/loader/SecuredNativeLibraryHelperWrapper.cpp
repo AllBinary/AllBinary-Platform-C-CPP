@@ -52,8 +52,9 @@ class SecuredNativeLibraryHelperWrapper: public NativeLibraryHelperWrapper {
 
     private: SecuredNativeLibraryInterface securedNativeLibraryInterface;
 
-public: SecuredNativeLibraryHelperWrapper(SecuredNativeLibraryInterface securedNativeLibraryInterface){
-            super(securedNativeLibraryInterface.getLibraryName());
+public: SecuredNativeLibraryHelperWrapper(SecuredNativeLibraryInterface securedNativeLibraryInterface) : NativeLibraryHelperWrapper(securedNativeLibraryInterface.getLibraryName()){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.

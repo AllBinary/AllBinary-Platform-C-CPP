@@ -18,14 +18,8 @@
 
 
 
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-#include <jsinterop/annotations/JsType.h>
-
-      
-#include <java/util/Stack.h>
-
-      
 #include <javax/microedition/lcdui/Canvas.h>
 
       
@@ -65,16 +59,10 @@
 #include <org/allbinary/util/BasicArrayList.h>
 
       
-#include <jsinterop/annotations/JsMethod.h>
-
-      
-#include <jsinterop/annotations/JsConstructor.h>
-
-      
-#include <jsinterop/annotations/JsProperty.h>
-
-      
 #include <org/allbinary/logic/StdUtil.h>
+
+      
+#include <org/allbinary/util/ABStack.h>
 
       
 
@@ -115,7 +103,7 @@ class MyCanvas: public Canvas, public DisplayableInterface, public MyCommandInte
 
     private: BasicArrayList childNameList;
 
-    private: Stack<any> commandStack;
+    private: ABStack<Object*> commandStack;
 
     private: CommandListener commandListener = NullCommandListener::NULL_COMMAND_LISTENER;
 
@@ -149,7 +137,7 @@ this->displayInfo.update(this, this->canvasStrings.SIZE_CHANGED);
 }
 
 
-    public: Stack<any> getCommandStack(){
+    public: ABStack<Object*> getCommandStack(){
 
 
 
@@ -198,7 +186,7 @@ super.removeCommand(command);
 
     public: void removeAllCommands(){
 
-    int32_t size = this->commandStack.length;;
+    int32_t size = this->commandStack.size();;
     
 
 
@@ -207,7 +195,7 @@ super.removeCommand(command);
                         for (
     int32_t index = 0;index < size; index++)
         {
-super.removeCommand(this->commandStack.pop() as Command);
+super.removeCommand(this->commandStack.pop());
     
 }
 

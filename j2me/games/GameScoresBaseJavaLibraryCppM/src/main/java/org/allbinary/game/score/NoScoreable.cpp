@@ -52,8 +52,9 @@ class NoScoreable: public Scoreable {
 }
 
 
-private: NoScoreable(){
-            super(0);
+private: NoScoreable() : Scoreable(0){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.

@@ -43,7 +43,7 @@
 
 class J2SECacheInterface: public AutomaticCacheInterface {
 
-    Set<any> keySet()
+    Set<Object*> keySet()
 
 };
 

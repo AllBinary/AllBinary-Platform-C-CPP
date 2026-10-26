@@ -18,9 +18,9 @@
 
 
 
-            #include "../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <javax/microedition/lcdui/Image.h>
 
@@ -71,7 +71,7 @@ private: ImageCreationUtil(){
             
     public: Image createImageWH(int32_t width, int32_t height){
 
-    Image image = GameFeatureImageCacheFactory::getInstance().get(this->constructor.name.toString()!, width, height);;
+    Image image = GameFeatureImageCacheFactory::getInstance().get(this->constructor.name.toString(), width, height);;
     
 
 
@@ -86,7 +86,7 @@ private: ImageCreationUtil(){
             
     public: Image createImage(int32_t width, int32_t height, float maxScaleX, float maxScaleY){
 
-    Image image = GameFeatureImageCacheFactory::getInstance().get(this->constructor.name.toString()!, static_cast<int32_t>((width *maxScaleX)) +1, static_cast<int32_t>((height *maxScaleY)) +1);;
+    Image image = GameFeatureImageCacheFactory::getInstance().get(this->constructor.name.toString(), static_cast<int32_t>((width *maxScaleX)) +1, static_cast<int32_t>((height *maxScaleY)) +1);;
     
 
 

@@ -20,11 +20,11 @@
 
             #include <vector>
         
-            #include "../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../java/lang/Class.h"
+            #include "java/lang/Class.h"
         
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
 
@@ -174,7 +174,7 @@ public: Initializer(Map map){
     StringMaker stringBuffer = StringMaker();;
     
 
-    HashMap<any, any> hashMap = StdUtil::getInstance().createHashMap();;
+    HashMap<Object*, Object*> hashMap = StdUtil::getInstance().createHashMap();;
     
 
     Set keys = map.keySet();;
@@ -193,12 +193,12 @@ public: Initializer(Map map){
     int32_t index = 0;index < size; index++)
         {
 
-    std::string key = keyArray[index]! as string;;
+    std::string key = keyArray[index];;
     
 
     std::vector<std::string> values = map.get(key) as string[];;
     
-hashMap.put(key.toCharArray().slice(0, ).join(''), .toCharArray());
+hashMap.put(std::string(key), .toCharArray());
     
 stringBuffer.delete(0, stringBuffer.length());
     
@@ -208,7 +208,7 @@ stringBuffer.append(key);
     
 stringBuffer.append(" Value: ");
     
-stringBuffer.append(values[0]!);
+stringBuffer.append(values[0]);
     
 this->logUtil.putF(stringBuffer.toString(), this, "getFormData()");
     
@@ -219,87 +219,87 @@ this->getFormData(hashMap);
 }
 
 
-public: Initializer(HashMap<any, any> initHashMap){
+public: Initializer(HashMap<Object*, Object*> initHashMap){
 this->getFormData(initHashMap);
     
 }
 
 
-    public: void getFormData(HashMap<any, any> hashMap){
+    public: void getFormData(HashMap<Object*, Object*> hashMap){
 
         try {
             
     InitializerData initializerData = InitializerData::getInstance();;
     
-this->userJdbcDriver= hashMap.get(initializerData.CUSTOMERJDBCDRIVER) as string;
+this->userJdbcDriver= hashMap.get(initializerData.CUSTOMERJDBCDRIVER);
     
-this->userName= hashMap.get(initializerData.CUSTOMERNAME) as string;
+this->userName= hashMap.get(initializerData.CUSTOMERNAME);
     
-this->userUserName= hashMap.get(initializerData.CUSTOMERUSERNAME) as string;
+this->userUserName= hashMap.get(initializerData.CUSTOMERUSERNAME);
     
-this->userPassword= hashMap.get(initializerData.CUSTOMERPASSWORD) as string;
+this->userPassword= hashMap.get(initializerData.CUSTOMERPASSWORD);
     
-this->userSchema= hashMap.get(initializerData.CUSTOMERSCHEMA) as string;
+this->userSchema= hashMap.get(initializerData.CUSTOMERSCHEMA);
     
-this->userServer= hashMap.get(initializerData.CUSTOMERSERVER) as string;
+this->userServer= hashMap.get(initializerData.CUSTOMERSERVER);
     
-this->userPort= hashMap.get(initializerData.CUSTOMERPORT) as string;
+this->userPort= hashMap.get(initializerData.CUSTOMERPORT);
     
-this->historyJdbcDriver= hashMap.get(initializerData.HISTORYJDBCDRIVER) as string;
+this->historyJdbcDriver= hashMap.get(initializerData.HISTORYJDBCDRIVER);
     
-this->historyName= hashMap.get(initializerData.HISTORYNAME) as string;
+this->historyName= hashMap.get(initializerData.HISTORYNAME);
     
-this->historyUserName= hashMap.get(initializerData.HISTORYUSERNAME) as string;
+this->historyUserName= hashMap.get(initializerData.HISTORYUSERNAME);
     
-this->historyPassword= hashMap.get(initializerData.HISTORYPASSWORD) as string;
+this->historyPassword= hashMap.get(initializerData.HISTORYPASSWORD);
     
-this->historySchema= hashMap.get(initializerData.HISTORYSCHEMA) as string;
+this->historySchema= hashMap.get(initializerData.HISTORYSCHEMA);
     
-this->historyServer= hashMap.get(initializerData.HISTORYSERVER) as string;
+this->historyServer= hashMap.get(initializerData.HISTORYSERVER);
     
-this->historyPort= hashMap.get(initializerData.HISTORYPORT) as string;
+this->historyPort= hashMap.get(initializerData.HISTORYPORT);
     
-this->logJdbcDriver= hashMap.get(initializerData.LOGJDBCDRIVER) as string;
+this->logJdbcDriver= hashMap.get(initializerData.LOGJDBCDRIVER);
     
-this->logName= hashMap.get(initializerData.LOGNAME) as string;
+this->logName= hashMap.get(initializerData.LOGNAME);
     
-this->logUserName= hashMap.get(initializerData.LOGUSERNAME) as string;
+this->logUserName= hashMap.get(initializerData.LOGUSERNAME);
     
-this->logPassword= hashMap.get(initializerData.LOGPASSWORD) as string;
+this->logPassword= hashMap.get(initializerData.LOGPASSWORD);
     
-this->logSchema= hashMap.get(initializerData.LOGSCHEMA) as string;
+this->logSchema= hashMap.get(initializerData.LOGSCHEMA);
     
-this->logServer= hashMap.get(initializerData.LOGSERVER) as string;
+this->logServer= hashMap.get(initializerData.LOGSERVER);
     
-this->logPort= hashMap.get(initializerData.LOGPORT) as string;
+this->logPort= hashMap.get(initializerData.LOGPORT);
     
-this->inventoryJdbcDriver= hashMap.get(initializerData.INVENTORYJDBCDRIVER) as string;
+this->inventoryJdbcDriver= hashMap.get(initializerData.INVENTORYJDBCDRIVER);
     
-this->inventoryName= hashMap.get(initializerData.INVENTORYNAME) as string;
+this->inventoryName= hashMap.get(initializerData.INVENTORYNAME);
     
-this->inventoryUserName= hashMap.get(initializerData.INVENTORYUSERNAME) as string;
+this->inventoryUserName= hashMap.get(initializerData.INVENTORYUSERNAME);
     
-this->inventoryPassword= hashMap.get(initializerData.INVENTORYPASSWORD) as string;
+this->inventoryPassword= hashMap.get(initializerData.INVENTORYPASSWORD);
     
-this->inventorySchema= hashMap.get(initializerData.INVENTORYSCHEMA) as string;
+this->inventorySchema= hashMap.get(initializerData.INVENTORYSCHEMA);
     
-this->inventoryServer= hashMap.get(initializerData.INVENTORYSERVER) as string;
+this->inventoryServer= hashMap.get(initializerData.INVENTORYSERVER);
     
-this->inventoryPort= hashMap.get(initializerData.INVENTORYPORT) as string;
+this->inventoryPort= hashMap.get(initializerData.INVENTORYPORT);
     
-this->staticPagesJdbcDriver= hashMap.get(initializerData.STATICPAGESJDBCDRIVER) as string;
+this->staticPagesJdbcDriver= hashMap.get(initializerData.STATICPAGESJDBCDRIVER);
     
-this->staticPagesName= hashMap.get(initializerData.STATICPAGESNAME) as string;
+this->staticPagesName= hashMap.get(initializerData.STATICPAGESNAME);
     
-this->staticPagesUserName= hashMap.get(initializerData.STATICPAGESUSERNAME) as string;
+this->staticPagesUserName= hashMap.get(initializerData.STATICPAGESUSERNAME);
     
-this->staticPagesPassword= hashMap.get(initializerData.STATICPAGESPASSWORD) as string;
+this->staticPagesPassword= hashMap.get(initializerData.STATICPAGESPASSWORD);
     
-this->staticPagesSchema= hashMap.get(initializerData.STATICPAGESSCHEMA) as string;
+this->staticPagesSchema= hashMap.get(initializerData.STATICPAGESSCHEMA);
     
-this->staticPagesServer= hashMap.get(initializerData.STATICPAGESSERVER) as string;
+this->staticPagesServer= hashMap.get(initializerData.STATICPAGESSERVER);
     
-this->staticPagesPort= hashMap.get(initializerData.STATICPAGESPORT) as string;
+this->staticPagesPort= hashMap.get(initializerData.STATICPAGESPORT);
     
 
                 //: 

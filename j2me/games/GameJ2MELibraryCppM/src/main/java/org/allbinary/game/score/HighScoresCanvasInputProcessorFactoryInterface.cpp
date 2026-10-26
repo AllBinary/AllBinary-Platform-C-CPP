@@ -18,13 +18,7 @@
 
 
 
-#include <jsinterop/annotations/JsType.h>
-
-      
 #include <org/allbinary/game/score/displayable/HighScoresCanvas.h>
-
-      
-#include <jsinterop/annotations/JsMethod.h>
 
       
 

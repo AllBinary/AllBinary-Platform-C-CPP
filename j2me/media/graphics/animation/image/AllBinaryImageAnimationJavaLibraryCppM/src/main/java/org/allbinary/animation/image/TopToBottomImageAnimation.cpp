@@ -20,7 +20,7 @@
 
             #include <vector>
         
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <javax/microedition/lcdui/Graphics.h>
 
@@ -61,8 +61,9 @@ class TopToBottomImageAnimation: public ImageSegmentAnimation {
 
     private: int32_t currentHeight;
 
-public: TopToBottomImageAnimation(Image image, std::vector<int32_t> sequenceArray, AnimationBehavior animationBehavior){
-            super(image, sequenceArray, animationBehavior);
+public: TopToBottomImageAnimation(Image image, std::vector<int32_t> sequenceArray, AnimationBehavior animationBehavior) : ImageSegmentAnimation(image, sequenceArray, animationBehavior){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.

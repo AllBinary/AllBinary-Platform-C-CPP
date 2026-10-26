@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/business/user/commerce/inventory/order/OrderHistoryFactory.h>
 
@@ -68,8 +68,9 @@ class ValidationView: public OrderView, public ValidationComponentInterface {
 
     protected: const LogUtil logUtil = LogUtil::getInstance();
 
-public: ValidationView(TransformInfoInterface transformInfoInterface){
-            super(transformInfoInterface);
+public: ValidationView(TransformInfoInterface transformInfoInterface) : OrderView(transformInfoInterface){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.

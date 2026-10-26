@@ -41,8 +41,9 @@ class FillAnimation: public IndexedAnimation {
 
     private: int32_t height;
 
-public: FillAnimation(std::vector<int32_t> pixelBuffer, int32_t width, int32_t height, AnimationBehavior animationBehavior){
-            super(animationBehavior);
+public: FillAnimation(std::vector<int32_t> pixelBuffer, int32_t width, int32_t height, AnimationBehavior animationBehavior) : IndexedAnimation(animationBehavior){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.

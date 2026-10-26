@@ -20,9 +20,9 @@
 
             #include <vector>
         
-            #include "../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../java/lang/Math.h"
+            #include "java/lang/Math.h"
         
 #include <java/awt/Graphics2D.h>
 
@@ -158,7 +158,7 @@ g.clearRect(0, 0, newBufferedImage.getWidth(), newBufferedImage.getHeight());
 
     public: std::vector<BufferedImage> getRotatedImages(Image bufferedImage, int32_t numberOfFrames, int32_t totalAngle){
 
-    std::vector<BufferedImage> bufferedImageArray = new Array(numberOfFrames);;
+    std::vector<BufferedImage> bufferedImageArray = std::vector<BufferedImage>(numberOfFrames);;
     
 
     double arc = () *totalAngle /360;;
@@ -257,7 +257,7 @@ columnIndex= 0;
 
                                     }
                                 
-nextBufferedImage= bufferedImageArray[index]!;
+nextBufferedImage= bufferedImageArray[index];
     
 g.drawImage(nextBufferedImage, nextBufferedImage.getWidth(
                             nullptr) *columnIndex, nextBufferedImage.getHeight(

@@ -18,9 +18,9 @@
 
 
 
-            #include "../../../../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/util/BasicArrayList.h>
 
@@ -174,7 +174,7 @@ this->vector.remove(genericProfileDataWorkerType);
     int32_t index = 0;index < size; index++)
         {
 
-    GenericProfileDataWorkerType genericProfileDataWorkerType = this->vector.get(index) as GenericProfileDataWorkerType;;
+    GenericProfileDataWorkerType genericProfileDataWorkerType = this->vector.get(index);;
     
 node.appendChild(genericProfileDataWorkerType.toXmlNode(document));
     

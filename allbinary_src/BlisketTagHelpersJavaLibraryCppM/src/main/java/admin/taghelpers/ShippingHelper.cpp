@@ -18,7 +18,7 @@
 
 
 
-            #include "../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
 
@@ -78,7 +78,7 @@ class ShippingHelper: public TagHelper {
 
     private: StoreFrontInterface storeFrontInterface;
 
-    private: HashMap<any, any> propertiesHashMap;
+    private: HashMap<Object*, Object*> propertiesHashMap;
 
     private: PageContext pageContext;
 
@@ -86,13 +86,13 @@ class ShippingHelper: public TagHelper {
 
     private: std::string shippingType;
 
-public: ShippingHelper(HashMap<any, any> hashMap, PageContext pageContext){
+public: ShippingHelper(HashMap<Object*, Object*> hashMap, PageContext pageContext){
 this->pageContext= pageContext;
     
-this->request= pageContext.getRequest() as HttpServletRequest;
+this->request= pageContext.getRequest();
     
 
-    std::string storeName = hashMap.get(StoreFrontData::getInstance().NAME) as string;;
+    std::string storeName = hashMap.get(StoreFrontData::getInstance().NAME);;
     
 
                         if(true)

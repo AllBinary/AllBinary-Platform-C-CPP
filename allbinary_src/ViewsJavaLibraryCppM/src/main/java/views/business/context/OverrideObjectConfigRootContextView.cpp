@@ -18,9 +18,9 @@
 
 
 
-            #include "../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-#include <org/allbinary/data/tree/dom/document/DomDocumentHelper.h>
+#include <org/allbinary/data/tree/dom/document/XmlDocumentHelper.h>
 
       
 #include <org/allbinary/logic/communication/log/LogUtil.h>
@@ -88,8 +88,9 @@ class OverrideObjectConfigRootContextView: public HttpStoreComponentView {
 
     protected: const LogUtil logUtil = LogUtil::getInstance();
 
-public: OverrideObjectConfigRootContextView(Object transformInfoInterface){
-            super(transformInfoInterface);
+public: OverrideObjectConfigRootContextView(Object transformInfoInterface) : HttpStoreComponentView(transformInfoInterface){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -121,7 +122,7 @@ public: OverrideObjectConfigRootContextView(Object transformInfoInterface){
                                     }
                                 
 
-    TransformInfoInterface rootTransformInfoInterface = TransformInfoHttp(this->getTransformInfoInterface() as TransformInfoHttp) as TransformInfoInterface;;
+    TransformInfoInterface rootTransformInfoInterface = TransformInfoHttp(this->getTransformInfoInterface());;
     
 
     StringMaker stringBuffer = StringMaker();;
@@ -167,7 +168,7 @@ stringBuffer.append(CommonSeps::getInstance().SPACE);
                         if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEW))
                         
                                     {
-                                    this->logUtil.putF("Retrieved OverrideObjectConfig: " +DomDocumentHelper::toString(overrideObjectConfigDocument), this, "view()");
+                                    this->logUtil.putF("Retrieved OverrideObjectConfig: " +XmlDocumentHelper::toString(overrideObjectConfigDocument), this, "view()");
     
 
                                     }
@@ -179,7 +180,7 @@ stringBuffer.append(CommonSeps::getInstance().SPACE);
     TransformInterface rootComponentInterface = transformFactory.getInstance(this->abeClientInformation, rootTransformInfoInterface.getName(), rootTransformInfoInterface);;
     
 
-    TransformTemplateInterface transformTemplateInterface = rootComponentInterface as TransformTemplateInterface;;
+    TransformTemplateInterface transformTemplateInterface = rootComponentInterface;;
     
 
     TransformInterface componentInterface = transformFactory.getInstance(this->abeClientInformation, transformTemplateInterface.getName(), rootComponentInterface.getTransformInfoInterface());;

@@ -21,7 +21,7 @@
         #ifndef ORG_ALLBINARY_GAME_MEDIA_GRAPHICS_GEOGRAPHY_MAP_RACETRACK_BASEPATHFINDERGRAPHVISITOR_H
         #define ORG_ALLBINARY_GAME_MEDIA_GRAPHICS_GEOGRAPHY_MAP_RACETRACK_BASEPATHFINDERGRAPHVISITOR_H
 
-            #include "../../../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/jgrapht/GraphPath.h>
 
@@ -63,6 +63,7 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
+template<typename V, typename E>
 class BasePathFinderGraphVisitor: public PathFinderGraphVisitorBase {
 
     protected: BasicGeographicMap geographicMapInterface;

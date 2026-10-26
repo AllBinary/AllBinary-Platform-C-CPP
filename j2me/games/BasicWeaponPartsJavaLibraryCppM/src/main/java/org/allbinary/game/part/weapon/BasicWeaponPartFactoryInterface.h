@@ -21,7 +21,7 @@
         #ifndef ORG_ALLBINARY_GAME_PART_WEAPON_BASICWEAPONPARTFACTORYINTERFACE_H
         #define ORG_ALLBINARY_GAME_PART_WEAPON_BASICWEAPONPARTFACTORYINTERFACE_H
 
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 
 

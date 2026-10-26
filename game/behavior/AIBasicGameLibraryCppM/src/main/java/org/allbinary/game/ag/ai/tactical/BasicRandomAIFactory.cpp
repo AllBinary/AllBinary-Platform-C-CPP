@@ -18,13 +18,10 @@
 
 
 
-            #include "../../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-#include <java/util/Hashtable.h>
-
-      
 #include <org/allbinary/ai/ArtificialIntelligenceInterface.h>
 
       
@@ -44,6 +41,9 @@
 
       
 #include <org/allbinary/logic/util/visitor/Visitor.h>
+
+      
+#include <org/allbinary/util/ABHashtable.h>
 
       
 
@@ -72,9 +72,9 @@ class BasicRandomAIFactory
 
                 //@Throws(Exception.constructor)
             
-    public: ArtificialIntelligenceInterface getInstance(Hashtable<any, any> hashtable, AllBinaryLayer ownerLayerInterface, GameInput gameInput){
+    public: ArtificialIntelligenceInterface getInstance(ABHashtable<Object*, Object*> hashtable, AllBinaryLayer ownerLayerInterface, GameInput gameInput){
 
-    Visitor visitor = hashtable.get(BasicAI::AI_VISITOR) as Visitor;;
+    Visitor visitor = hashtable.get(BasicAI::AI_VISITOR);;
     
 
                         if(visitor == 
@@ -91,7 +91,7 @@ class BasicRandomAIFactory
                                     }
                                 
 
-    InputProbability inputProbability = hashtable.get(InputProbability::INPUT_PROBABILITY) as InputProbability;;
+    InputProbability inputProbability = hashtable.get(InputProbability::INPUT_PROBABILITY);;
     
 
 

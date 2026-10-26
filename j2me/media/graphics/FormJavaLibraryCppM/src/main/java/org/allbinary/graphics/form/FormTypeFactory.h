@@ -21,21 +21,12 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_FORM_FORMTYPEFACTORY_H
         #define ORG_ALLBINARY_GRAPHICS_FORM_FORMTYPEFACTORY_H
 
-            #include "../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-#include <jsinterop/annotations/JsType.h>
-
-      
 #include <org/allbinary/graphics/displayable/DisplayInfoSingleton.h>
 
       
 #include <org/allbinary/logic/string/StringUtil.h>
-
-      
-#include <jsinterop/annotations/JsMethod.h>
-
-      
-#include <jsinterop/annotations/JsProperty.h>
 
       
 

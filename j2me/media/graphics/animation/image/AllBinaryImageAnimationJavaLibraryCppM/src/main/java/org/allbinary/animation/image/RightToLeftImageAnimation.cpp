@@ -18,11 +18,8 @@
 
 
 
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-#include <jsinterop/annotations/JsType.h>
-
-      
 #include <javax/microedition/lcdui/Graphics.h>
 
       
@@ -39,12 +36,6 @@
 
       
 #include <org/allbinary/logic/math/PrimitiveIntUtil.h>
-
-      
-#include <jsinterop/annotations/JsMethod.h>
-
-      
-#include <jsinterop/annotations/JsConstructor.h>
 
       
 
@@ -73,8 +64,9 @@ class RightToLeftImageAnimation: public ImageSegmentAnimation {
 
     private: int32_t currentWidth= 0;
 
-public: RightToLeftImageAnimation(Image image, AnimationBehavior animationBehavior){
-            super(image, PrimitiveIntUtil::getArrayInstance(), animationBehavior);
+public: RightToLeftImageAnimation(Image image, AnimationBehavior animationBehavior) : ImageSegmentAnimation(image, PrimitiveIntUtil::getArrayInstance(), animationBehavior){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.

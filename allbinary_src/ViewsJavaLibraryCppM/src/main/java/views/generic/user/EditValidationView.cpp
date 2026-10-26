@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/business/user/username/UserName.h>
 
@@ -68,8 +68,9 @@ class EditValidationView: public UserView, public ValidationComponentInterface {
 
     protected: const LogUtil logUtil = LogUtil::getInstance();
 
-public: EditValidationView(TransformInfoInterface transformInfoInterface){
-            super(transformInfoInterface);
+public: EditValidationView(TransformInfoInterface transformInfoInterface) : UserView(transformInfoInterface){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.

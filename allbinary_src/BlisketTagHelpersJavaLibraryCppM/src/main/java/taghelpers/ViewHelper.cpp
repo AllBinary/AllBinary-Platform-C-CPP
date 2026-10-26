@@ -18,9 +18,9 @@
 
 
 
-            #include "../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
 
@@ -86,7 +86,7 @@ class ViewHelper
 
     private: TransformInterface componentInterface;
 
-public: ViewHelper(HashMap<any, any> hashMap, PageContext pageContext){
+public: ViewHelper(HashMap<Object*, Object*> hashMap, PageContext pageContext){
 this->componentInterface= TransformFactory::getInstance().getInstance(this->abeClientInformation, hashMap, pageContext);
     
 }
@@ -126,7 +126,7 @@ this->componentInterface= TransformFactory::getInstance().getInstance(this->abeC
                         if(this->componentInterface != 
                                     nullptr
                                 )
-                        error += this->componentInterface.constructor.name.toString()!;
+                        error += this->componentInterface.constructor.name.toString();
                                 
                              else 
                         if()
@@ -171,7 +171,7 @@ this->componentInterface= TransformFactory::getInstance().getInstance(this->abeC
                         if(this->componentInterface != 
                                     nullptr
                                 )
-                        error += this->componentInterface.constructor.name.toString()!;
+                        error += this->componentInterface.constructor.name.toString();
                                 
                              else 
                         if()

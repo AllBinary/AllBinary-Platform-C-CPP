@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
 
@@ -69,7 +69,7 @@ class WorkFlowEntityInterface: public BasicDataTableInterface {
 
     void insert(BasicArrayList values)
 
-    void update(HashMap<any, any> updatedValues)
+    void update(HashMap<Object*, Object*> updatedValues)
 
 };
 

@@ -51,7 +51,7 @@ class PropertiesTag: public CommandTag {
 
     protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: HashMap<any, any> propertiesHashMap;
+    private: HashMap<Object*, Object*> propertiesHashMap;
 
 public: PropertiesTag(){
 
@@ -68,7 +68,7 @@ this->propertiesHashMap= StdUtil::getInstance().createHashMap();
 }
 
 
-    protected: HashMap<any, any> getPropertiesHashMap(){
+    protected: HashMap<Object*, Object*> getPropertiesHashMap(){
 
 
 

@@ -20,11 +20,8 @@
 
             #include <vector>
         
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-#include <jsinterop/annotations/JsType.h>
-
-      
 #include <javax/microedition/lcdui/CommandListener.h>
 
       
@@ -55,15 +52,6 @@
 #include <org/allbinary/string/CommonStrings.h>
 
       
-#include <jsinterop/annotations/JsMethod.h>
-
-      
-#include <jsinterop/annotations/JsConstructor.h>
-
-      
-#include <jsinterop/annotations/JsProperty.h>
-
-      
 
 
 
@@ -88,8 +76,9 @@ class CommonGameInitialization: public BaseGameInitialization {
 
     protected: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-protected: CommonGameInitialization(std::vector<ResourceInitialization> resourceInitializationArray, int32_t portion){
-            super(resourceInitializationArray, portion);
+protected: CommonGameInitialization(std::vector<ResourceInitialization> resourceInitializationArray, int32_t portion) : BaseGameInitialization(resourceInitializationArray, portion){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -128,7 +117,7 @@ progressCanvas.addNormalPortion(50, "Angles");
     
 this->initGame();
     
-this->resourceInitializationArray[this->GAME_RESOURCES]!.init();
+this->resourceInitializationArray[this->GAME_RESOURCES].init();
     
 
                                     }

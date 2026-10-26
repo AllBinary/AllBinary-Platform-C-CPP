@@ -21,20 +21,14 @@
         #ifndef ORG_ALLBINARY_GAME_SCORE_REMOTE_REMOTEHIGHSCORES_H
         #define ORG_ALLBINARY_GAME_SCORE_REMOTE_REMOTEHIGHSCORES_H
 
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../../../java/lang/Long.h"
+            #include "java/lang/Long.h"
         
 #include <java/util/Enumeration.h>
 
       
-#include <java/util/Hashtable.h>
-
-      
 #include <org/allbinary/util/BasicArrayList.h>
-
-      
-#include <org/allbinary/util/BasicArrayListD.h>
 
       
 #include <org/allbinary/game/GameInfo.h>
@@ -55,13 +49,22 @@
 #include <org/allbinary/logic/communication/log/LogUtil.h>
 
       
+#include <org/allbinary/logic/string/StringMaker.h>
+
+      
 #include <org/allbinary/logic/system/SoftwareInformation.h>
 
       
 #include <org/allbinary/logic/system/security/licensing/AbeClientInformationInterface.h>
 
       
+#include <org/allbinary/string/CommonLabels.h>
+
+      
 #include <org/allbinary/string/CommonStrings.h>
+
+      
+#include <org/allbinary/util/ABHashtable.h>
 
       
 #include <org/allbinary/util/EnumerationUtil.h>
@@ -91,7 +94,7 @@
 
 class RemoteHighScores: public HighScores {
 
-    private: static const Hashtable<any, any> hashTable = StdUtil::getInstance().createHashtable();
+    private: static const ABHashtable<Object*, Object*> hashTable = StdUtil::getInstance().createHashtable();
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
     public: static HighScores getInstance(AbeClientInformationInterface abeClientInformation, SoftwareInformation softwareInformation, GameInfo gameInfo, std::string heading, std::string columnTwoHeading, Boolean isAscending);
@@ -115,7 +118,7 @@ private: RemoteHighScores(AbeClientInformationInterface abeClientInformation, So
 
     public: void addHighScore(HighScore newHighScore);
 
-    public: void update(Hashtable<any, any> hashtable);
+    public: void update(ABHashtable<Object*, Object*> hashtable);
 
     private: void setAscending(Boolean ascending);
 

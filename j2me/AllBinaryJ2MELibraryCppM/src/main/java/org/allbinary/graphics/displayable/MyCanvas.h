@@ -21,14 +21,8 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_DISPLAYABLE_MYCANVAS_H
         #define ORG_ALLBINARY_GRAPHICS_DISPLAYABLE_MYCANVAS_H
 
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-#include <jsinterop/annotations/JsType.h>
-
-      
-#include <java/util/Stack.h>
-
-      
 #include <javax/microedition/lcdui/Canvas.h>
 
       
@@ -68,16 +62,10 @@
 #include <org/allbinary/util/BasicArrayList.h>
 
       
-#include <jsinterop/annotations/JsMethod.h>
-
-      
-#include <jsinterop/annotations/JsConstructor.h>
-
-      
-#include <jsinterop/annotations/JsProperty.h>
-
-      
 #include <org/allbinary/logic/StdUtil.h>
+
+      
+#include <org/allbinary/util/ABStack.h>
 
       
 
@@ -118,7 +106,7 @@ class MyCanvas: public Canvas, public DisplayableInterface, public MyCommandInte
 
     private: BasicArrayList childNameList;
 
-    private: Stack<any> commandStack;
+    private: ABStack<Object*> commandStack;
 
     private: CommandListener commandListener = NullCommandListener::NULL_COMMAND_LISTENER;
 
@@ -130,7 +118,7 @@ public: MyCanvas(std::string name, BasicArrayList childNameList);
 
     protected: void sizeChanged(int32_t w, int32_t h);
 
-    public: Stack<any> getCommandStack();
+    public: ABStack<Object*> getCommandStack();
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
     public: bool isCommand(Command command);

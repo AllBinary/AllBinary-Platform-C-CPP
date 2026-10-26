@@ -21,13 +21,7 @@
         #ifndef ORG_ALLBINARY_GAME_COMBAT_DAMAGE_DAMAGEFLOATERS_H
         #define ORG_ALLBINARY_GAME_COMBAT_DAMAGE_DAMAGEFLOATERS_H
 
-#include <jsinterop/annotations/JsType.h>
-
-      
 #include <org/allbinary/graphics/paint/Paintable.h>
-
-      
-#include <jsinterop/annotations/JsMethod.h>
 
       
 

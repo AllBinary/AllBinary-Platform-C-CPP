@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/game/layer/RTSLayerEvent.h>
 
@@ -74,9 +74,9 @@ private: BuildingEventHandler(){
             
     protected: void process(AllBinaryEventObject eventObject, EventListenerInterface eventListenerInterface){
 
-    BuildingEventListenerInterface buildingEventListenerInterface = (eventListenerInterface as BuildingEventListenerInterface);;
+    BuildingEventListenerInterface buildingEventListenerInterface = (eventListenerInterface);;
     
-buildingEventListenerInterface.onBuildingEvent(eventObject as RTSLayerEvent);
+buildingEventListenerInterface.onBuildingEvent(eventObject);
     
 }
 

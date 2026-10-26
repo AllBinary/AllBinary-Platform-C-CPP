@@ -21,17 +21,11 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_FORM_ITEMINDEXDX_H
         #define ORG_ALLBINARY_GRAPHICS_FORM_ITEMINDEXDX_H
 
-            #include "../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-#include <jsinterop/annotations/JsType.h>
-
-      
 #include <org/allbinary/graphics/form/item/ABCustomItem.h>
-
-      
-#include <jsinterop/annotations/JsMethod.h>
 
       
 

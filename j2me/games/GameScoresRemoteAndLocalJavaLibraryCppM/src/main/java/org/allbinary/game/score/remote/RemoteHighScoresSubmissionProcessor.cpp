@@ -18,15 +18,12 @@
 
 
 
-            #include "../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../../../java/lang/Long.h"
+            #include "java/lang/Long.h"
         
-#include <java/util/Hashtable.h>
-
-      
 #include <org/allbinary/game/GameInfoData.h>
 
       
@@ -55,6 +52,9 @@
 
       
 #include <org/allbinary/string/CommonStrings.h>
+
+      
+#include <org/allbinary/util/ABHashtable.h>
 
       
 #include <org/allbinary/util/HashtableUtil.h>
@@ -107,7 +107,7 @@ public: RemoteHighScoresSubmissionProcessor(){
     GameInfoData gameInfoData = GameInfoData::getInstance();;
     
 
-    Hashtable<any, any> hashtable = abeClientInformation.toHashtable();;
+    ABHashtable<Object*, Object*> hashtable = abeClientInformation.toHashtable();;
     
 HashtableUtil::getInstance().putAll(highScore.getGameInfo().toHashtable(), hashtable);
     
@@ -133,7 +133,7 @@ hashtable.put(RemoteHighScoresData::getInstance().SCORE, std::to_string(getScore
                         
                                     {
                                     
-    Hashtable<any, any> resultHashtable = XmlRpcRemoteHighScoresClient(abeClientInformation, "highscoresubmissionservicessl.php", "HighScoreSubmissionService.process").get(hashtable, this->noCrypt) as Hashtable<any, any>;;
+    ABHashtable<Object*, Object*> resultHashtable = XmlRpcRemoteHighScoresClient(abeClientInformation, "highscoresubmissionservicessl.php", "HighScoreSubmissionService.process").get(hashtable, this->noCrypt);;
     
 remoteHighScores.update(resultHashtable);
     

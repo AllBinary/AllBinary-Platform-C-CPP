@@ -20,7 +20,7 @@
 
             #include <vector>
         
-            #include "../../../../../../java/lang/Integer.h"
+            #include "java/lang/Integer.h"
         
 #include <org/allbinary/AndroidResources.h>
 
@@ -102,7 +102,7 @@ class TouchButtonAndroidResources: public Init {
                                                         };;
     
 
-    std::vector<int32_t> RESOURCE_ARRAY = new Array(RESOURCE_STRING_ARRAY::length);;
+    std::vector<int32_t> RESOURCE_ARRAY = std::vector<int32_t>(RESOURCE_STRING_ARRAY::length);;
     
 
                         if(CommonButtons::getInstance().STANDARD_BUTTON_SIZE == 128)
@@ -130,7 +130,7 @@ RESOURCE_ARRAY[8]= androidResources.raw.touch_button_strafe_right_arrow_128_by_1
                         if(OperatingSystemFactory::getInstance().getOperatingSystemInstance().isOverScan())
                         
                                     {
-                                    resourceUtil.addResource(RESOURCE_STRING_ARRAY[2]!.HINT, Integer::valueOf(androidResources.raw.ouya_o));
+                                    resourceUtil.addResource(RESOURCE_STRING_ARRAY[2].HINT, Integer::valueOf(androidResources.raw.ouya_o));
     
 
                                     }
@@ -167,7 +167,7 @@ RESOURCE_ARRAY[8]= androidResources.raw.touch_button_strafe_right_arrow_64_by_64
                         for (
     int32_t index = 0;index < RESOURCE_ARRAY::size(); index++)
         {
-resourceUtil.addResource(RESOURCE_STRING_ARRAY[index]!.RESOURCE, Integer::valueOf(RESOURCE_ARRAY[index]!));
+resourceUtil.addResource(RESOURCE_STRING_ARRAY[index].RESOURCE, Integer::valueOf(RESOURCE_ARRAY[index]));
     
 }
 

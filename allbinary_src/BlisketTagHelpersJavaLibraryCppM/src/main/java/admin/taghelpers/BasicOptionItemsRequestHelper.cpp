@@ -18,9 +18,9 @@
 
 
 
-            #include "../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../java/lang/Long.h"
+            #include "java/lang/Long.h"
         
 #include <java/util/Calendar.h>
 
@@ -108,8 +108,8 @@ class BasicOptionItemsRequestHelper: public ModifyTable {
 
     private: std::string lastModified;
 
-public: BasicOptionItemsRequestHelper(HashMap<any, any> hashMap, PageContext pageContext){
-this->request= pageContext.getRequest() as HttpServletRequest;
+public: BasicOptionItemsRequestHelper(HashMap<Object*, Object*> hashMap, PageContext pageContext){
+this->request= pageContext.getRequest();
     
 this->getFormData();
     
@@ -172,9 +172,9 @@ this->lastModified= this->request.getParameter(EntryData::getInstance().LASTMODI
 }
 
 
-    private: HashMap<any, any> getHashMap(){
+    private: HashMap<Object*, Object*> getHashMap(){
 
-    HashMap<any, any> values = StdUtil::getInstance().createHashMap();;
+    HashMap<Object*, Object*> values = StdUtil::getInstance().createHashMap();;
     
 values.put(basicItemData.ID, id);
     
@@ -369,7 +369,7 @@ BasicOptionItemsEntityFactory::getInstance().getBasicOptionItemsEntityInstance()
     std::string success = "Update Pricing Successful";;
     
 
-    HashMap<any, any> values = this->getHashMap();;
+    HashMap<Object*, Object*> values = this->getHashMap();;
     
 BasicOptionItemsEntityFactory::getInstance().getBasicOptionItemsEntityInstance().update(values);
     

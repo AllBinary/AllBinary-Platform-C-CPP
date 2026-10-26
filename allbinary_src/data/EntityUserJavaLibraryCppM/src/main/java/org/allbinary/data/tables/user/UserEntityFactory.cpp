@@ -18,9 +18,9 @@
 
 
 
-            #include "../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/logic/communication/log/LogUtil.h>
 
@@ -62,7 +62,7 @@ class UserEntityFactory
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return org::allbinary::data::tables::user::UserEntity() as UserEntity;
+                        return org::allbinary::data::tables::user::UserEntity();
     
 
                 //: 

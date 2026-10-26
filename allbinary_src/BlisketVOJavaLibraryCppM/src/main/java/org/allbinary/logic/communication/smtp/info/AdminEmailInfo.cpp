@@ -18,7 +18,7 @@
 
 
 
-            #include "../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <org/allbinary/business/context/configuration/ContextConfigurationInterface.h>
 
@@ -62,8 +62,9 @@ class AdminEmailInfo: public BasicEmailInfo {
 
     protected: const LogUtil logUtil = LogUtil::getInstance();
 
-public: AdminEmailInfo(std::string subject, std::string textBody){
-            super(subject, textBody);
+public: AdminEmailInfo(std::string subject, std::string textBody) : BasicEmailInfo(subject, textBody){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -89,7 +90,7 @@ this->init();
             
     protected: void init(){
 
-    AdminConfigurationInterface adminConfigurationInterface = AdminConfiguration() as AdminConfigurationInterface;;
+    AdminConfigurationInterface adminConfigurationInterface = AdminConfiguration();;
     
 
     ContextConfigurationInterface contextConfigurationInterface = adminConfigurationInterface.getContextConfigurationInterface();;

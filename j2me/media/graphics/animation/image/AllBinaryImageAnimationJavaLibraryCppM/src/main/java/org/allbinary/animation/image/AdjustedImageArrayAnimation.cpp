@@ -20,7 +20,7 @@
 
             #include <vector>
         
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <javax/microedition/lcdui/Graphics.h>
 
@@ -57,8 +57,9 @@ class AdjustedImageArrayAnimation: public ImageArrayAnimation {
 
     private: int32_t dy= 0;
 
-public: AdjustedImageArrayAnimation(std::vector<Image> imageArray, int32_t dx, int32_t dy, AnimationBehavior animationBehavior){
-            super(imageArray, animationBehavior);
+public: AdjustedImageArrayAnimation(std::vector<Image> imageArray, int32_t dx, int32_t dy, AnimationBehavior animationBehavior) : ImageArrayAnimation(imageArray, animationBehavior){
+
+                        //super/this constructor call is in the constructor initializer list.
                     
 
                             //For kotlin this is before the body of the constructor.

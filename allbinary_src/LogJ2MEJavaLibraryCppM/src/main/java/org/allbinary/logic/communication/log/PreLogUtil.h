@@ -21,11 +21,14 @@
         #ifndef ORG_ALLBINARY_LOGIC_COMMUNICATION_LOG_PRELOGUTIL_H
         #define ORG_ALLBINARY_LOGIC_COMMUNICATION_LOG_PRELOGUTIL_H
 
-            #include "../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../java/lang/System.h"
+            #include "java/lang/System.h"
         
 #include <org/allbinary/logic/NullUtil.h>
+
+      
+#include <org/allbinary/logic/string/StringUtil.h>
 
       
 #include <org/allbinary/string/CommonStrings.h>
@@ -64,6 +67,8 @@
     /*actual*/ public: static void putS(std::string specialMessage, std::string className, std::string functionName);
 
     /*actual*/ public: static void putSE(std::string specialMessage, std::string className, std::string functionName, Object* exception);
+
+    public: static std::string getClassName(Object* anyType);
 
 public: PreLogUtil();
 

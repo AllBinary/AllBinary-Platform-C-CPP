@@ -23,11 +23,8 @@
 
             #include <vector>
         
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-#include <jsinterop/annotations/JsType.h>
-
-      
 #include <javax/microedition/lcdui/Font.h>
 
       
@@ -55,9 +52,6 @@
 #include <org/allbinary/graphics/threed/SWTJOGLProcessor.h>
 
       
-#include <org/allbinary/logic/communication/log/LogUtil.h>
-
-      
 #include <org/allbinary/logic/string/StringMaker.h>
 
       
@@ -68,15 +62,6 @@
 
       
 #include <org/allbinary/util/BasicArrayListD.h>
-
-      
-#include <jsinterop/annotations/JsMethod.h>
-
-      
-#include <jsinterop/annotations/JsConstructor.h>
-
-      
-#include <jsinterop/annotations/JsProperty.h>
 
       
 
@@ -100,8 +85,6 @@
         #include "TextChangeListener.h"
 
 class TextAnimation: public IndexedAnimation, public UpdateMyFontInterface {
-
-    protected: const LogUtil logUtil = LogUtil::getInstance();
 
     private: const MyFontProcessor updateMyFontProcessor = UpdateMyFontProcessor(this);
 

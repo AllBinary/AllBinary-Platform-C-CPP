@@ -21,17 +21,11 @@
         #ifndef ORG_ALLBINARY_GAME_INPUT_EVENT_DOWNKEYEVENTLISTENERINTERFACE_H
         #define ORG_ALLBINARY_GAME_INPUT_EVENT_DOWNKEYEVENTLISTENERINTERFACE_H
 
-            #include "../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
-            #include "../../../../../java/lang/Integer.h"
+            #include "java/lang/Integer.h"
         
-#include <jsinterop/annotations/JsType.h>
-
-      
 #include <org/allbinary/logic/util/event/EventListenerInterface.h>
-
-      
-#include <jsinterop/annotations/JsMethod.h>
 
       
 

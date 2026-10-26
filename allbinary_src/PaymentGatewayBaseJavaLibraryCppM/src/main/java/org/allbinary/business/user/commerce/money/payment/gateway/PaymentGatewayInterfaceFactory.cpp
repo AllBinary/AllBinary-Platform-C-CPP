@@ -18,9 +18,9 @@
 
 
 
-            #include "../../../../../../../../java/lang/Object.h"
+            #include "java/lang/Object.h"
         
-            #include "../../../../../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
 
@@ -128,7 +128,7 @@ public: PaymentGatewayInterfaceFactory(){
             
     public: PaymentGatewayInterface getInstance(BasicPaymentType paymentType){
 
-    HashMap<any, any> hashMap = StdUtil::getInstance().createHashMap();;
+    HashMap<Object*, Object*> hashMap = StdUtil::getInstance().createHashMap();;
     
 hashMap.put(PaymentGatewayData::NAME.toString(), paymentType.getName());
     
@@ -143,14 +143,14 @@ hashMap.put(PaymentGatewayData::NAME.toString(), paymentType.getName());
 
                 //@Throws(Exception.constructor)
             
-    public: PaymentGatewayInterface getInstance(HashMap<any, any> hashMap){
+    public: PaymentGatewayInterface getInstance(HashMap<Object*, Object*> hashMap){
 
     CommonStrings commonStrings = CommonStrings::getInstance();;
     
 
         try {
             
-    std::string gatewayName = hashMap.get(PaymentGatewayData::NAME.toString()) as string;;
+    std::string gatewayName = hashMap.get(PaymentGatewayData::NAME.toString());;
     
 
     BasicPaymentType paymentType = BasicPaymentTypeUtil::getInstance().get(gatewayName);;

@@ -21,7 +21,7 @@
         #ifndef TAGS_WORKFLOW_PROCESSING_BASIC_BASICWORKFLOWTAG_H
         #define TAGS_WORKFLOW_PROCESSING_BASIC_BASICWORKFLOWTAG_H
 
-            #include "../../../../java/lang/Exception.h"
+            #include "java/lang/Exception.h"
         
 #include <javax/servlet/jsp/JspTagException.h>
 

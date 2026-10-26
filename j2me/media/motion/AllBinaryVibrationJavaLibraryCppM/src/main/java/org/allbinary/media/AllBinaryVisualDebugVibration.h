@@ -21,7 +21,7 @@
         #ifndef ORG_ALLBINARY_MEDIA_ALLBINARYVISUALDEBUGVIBRATION_H
         #define ORG_ALLBINARY_MEDIA_ALLBINARYVISUALDEBUGVIBRATION_H
 
-            #include "../../../java/lang/Integer.h"
+            #include "java/lang/Integer.h"
         
 #include <javax/microedition/lcdui/Font.h>
 
